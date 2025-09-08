@@ -331,7 +331,7 @@ window.Quarto = {
 <p>What is important to know here is that when you change the value of a variable which has an “immutable” data type you are changing a <em>reference</em> whereas when you are changing “mutable” variables you are changing the data itself. Examples of mutable data types in Python include the <code>list</code>, <code>dictionary</code> and the <code>set</code>. On the other hand, examples of immutable data types are given by the <code>int</code>, <code>float</code>, <code>decimal</code>, <code>bool</code> and the <code>tuple</code>. In general, the more complicated data types discussed so far are “mutable”.</p>
 <p>The distinction between a data type being “mutable” or “immutable” may seem dull and/or trivial but, in practice, can result in some very unexpected behaviour, especially when multiple variables are using the same <em>reference</em> (i.e.&nbsp;“looking” at the same place in memory)!</p>
 <p>For example, in the below code we may expect <code>a</code> and <code>b</code> to have different values:</p>
-<div id="ffbef39b" class="cell" data-execution_count="1">
+<div id="f118ffbd" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">7</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a <span class="co"># a and b are now both looking in the same place in memory</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span> <span class="co"># Here we have changed the reference</span></span>
@@ -343,7 +343,7 @@ window.Quarto = {
 </div>
 </div>
 <p>And they do! However, if we change <code>a</code> from being <code>7</code> to a list containing <code>7</code>, perhaps surprisingly, changing the value of <code>a</code> also changes the value <code>b</code>!</p>
-<div id="1070756f" class="cell" data-execution_count="2">
+<div id="213ffae5" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">7</span>]</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a <span class="co"># a and b are now both looking in the same place in memory</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span> <span class="co"># Here we have changed the data itself!</span></span>
@@ -358,7 +358,7 @@ window.Quarto = {
 <p>In the first example, when we assign <code>a=10</code>, we are telling Python that <code>a</code> must change where it is “looking” in the computers memory. This does not have any effect on the value of <code>b</code>.</p>
 <p>In the second example, however, when we assign <code>a[0]=10</code>, we are telling Python that the data stored in the location which <code>a</code> is “looking” at at must be changed. As <code>b</code> is also “looking” at this location in memory, this does have an effect on the value of <code>b</code>. It has changed!</p>
 <p>It is worth noting though that if an operation is performed then a copy might be made:</p>
-<div id="5d6888fe" class="cell" data-execution_count="3">
+<div id="13e949dc" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">7</span>]</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a<span class="op">*</span><span class="dv">2</span> <span class="co"># In this case b is a reference to a new object.</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span></span>
@@ -373,7 +373,7 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p><strong>Note:</strong> In this case <code>a</code> is a <code>list</code> so we use the <code>list</code> constructor. For other datatypes similar constructors exist and would be used in this situation (e.g.&nbsp;<code>set</code>, <code>dict</code>, etc…).</p>
 </blockquote>
-<div id="e36e5e49" class="cell" data-execution_count="4">
+<div id="b4e9ec0d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">7</span>]</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="bu">list</span>(a) <span class="co"># This time, a and b are not both looking in the same place in memory!</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">10</span></span>
@@ -389,7 +389,7 @@ window.Quarto = {
 <p>For example, in the below a function is called on a variable <code>b</code>, yet a seemingly unrelated variable <code>a</code> was affected by calling the function. This is because <code>a</code> and <code>b</code> were both references to the same object in memory, as oppose to being distinct copies of the object.</p>
 <p>If you are not familiar with functions, do not worry; these will be covered in depth later in the course and, for now, move past this example.</p>
 </blockquote>
-<div id="2863823a" class="cell" data-execution_count="5">
+<div id="98bad12e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> function1(x):</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    x.append(<span class="dv">10</span>)</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(x)</span>
@@ -418,18 +418,18 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-id-function">The <code>id()</code> Function</h2>
 <p>Now that we understand the difference between mutable and immutable types, let’s take a look at the Python <code>id()</code> function, which can help us visualise what is happening with references and memory locations.</p>
 <p>The <code>id()</code> function returns the unique identifier (memory address) of an object. This identifier tells us exactly where some data lives physically on a machine - essentially showing us the reference that a variable is pointing to.</p>
-<div id="bb9e8456" class="cell" data-execution_count="6">
+<div id="5a6d4738" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic usage of id()</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">42</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ID of x:"</span>, <span class="bu">id</span>(x))</span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"ID of the literal 42:"</span>, <span class="bu">id</span>(<span class="dv">42</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>ID of x: 4353518632
-ID of the literal 42: 4353518632</code></pre>
+<pre><code>ID of x: 4317391912
+ID of the literal 42: 4317391912</code></pre>
 </div>
 </div>
 <p>With immutable data types, when you reassign a variable, you are changing the reference (the variable now points to a different location in memory). Let’s see this with our integer example:</p>
-<div id="adc5ced4" class="cell" data-execution_count="7">
+<div id="009cc7f7" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"---------------"</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before a = 10:"</span>)</span>
 <span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"---------------"</span>)</span>
@@ -456,21 +456,21 @@ ID of the literal 42: 4353518632</code></pre>
 <pre><code>---------------
 Before a = 10:
 ---------------
-a = 7, id(a) = 4353517512
-b = 7, id(b) = 4353517512
+a = 7, id(a) = 4317390792
+b = 7, id(b) = 4317390792
 a and b reference the same object: True
 ---------------
 After a = 10:
 ---------------
-a = 10, id(a) = 4353517608
-b = 7,  id(b) = 4353517512
+a = 10, id(a) = 4317390888
+b = 7,  id(b) = 4317390792
 a and b now reference different objects: False
 id(a) changed: False
 This is why changing a did not change b!</code></pre>
 </div>
 </div>
 <p>With mutable data types, when you modify the data, you are changing the data itself (the reference stays the same - the variable is still “looking” at the same location in memory). Let’s reproduce our list example:</p>
-<div id="7f60990b" class="cell" data-execution_count="8">
+<div id="5a5d834b" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"---------------"</span>)</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before a[0] = 10:"</span>)</span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"---------------"</span>)</span>
@@ -497,14 +497,14 @@ This is why changing a did not change b!</code></pre>
 <pre><code>---------------
 Before a[0] = 10:
 ---------------
-a = [7], id(a) = 4393606080
-b = [7], id(b) = 4393606080
+a = [7], id(a) = 4357994496
+b = [7], id(b) = 4357994496
 a and b reference the same object: True
 ---------------
 After a[0] = 10:
 ---------------
-a = [10], id(a) = 4393606080
-b = [10], id(b) = 4393606080
+a = [10], id(a) = 4357994496
+b = [10], id(b) = 4357994496
 a and b still reference the same object: True
 id(a) remained the same: True
 This is why changing a also changed b!</code></pre>
@@ -518,7 +518,7 @@ This is why changing a also changed b!</code></pre>
 <blockquote class="blockquote">
 <p><strong>Warning:</strong> Avoid using the <code>is</code> operator for “immutable” types such as strings and numbers; the result is unpredictable and in most cases the <code>==</code> is more appropriate for purpose.</p>
 </blockquote>
-<div id="ffa809db" class="cell" data-execution_count="9">
+<div id="23d63535" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a and b are set to both represent the same object in memory.</span></span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> b <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -555,7 +555,7 @@ list_b = list_a
 list_a.append(4)
 print(list_b)</code></pre>
 <p>Run the code in the box below to verify your answer.</p>
-<div id="a0666b68" class="cell" data-execution_count="10">
+<div id="a6889594" class="cell" data-execution_count="10">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Question 2:</strong> Consider these two similar-looking pieces of code. Predict what each will output and explain the difference:</p>
@@ -572,7 +572,7 @@ a[1] = 5
 a[2] = 6
 print(b)</code></pre>
 <p>Run the code above to verify your answers.</p>
-<div id="8c8af660" class="cell" data-execution_count="11">
+<div id="21d7eb41" class="cell" data-execution_count="11">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Question 3:</strong> In the below we have a list of 3 values, <code>x=1</code>, <code>y=2</code> and <code>z=3</code>. We want to work out the value of:</p>
@@ -580,7 +580,7 @@ print(b)</code></pre>
 <p><span class="math inline">\(x + y + z + x^2 + y^2 + z^2\)</span> <span class="math inline">\(= 1 + 2 + 3 + 1 + 4 + 9\)</span> <span class="math inline">\(= 20\)</span></p>
 </blockquote>
 <p>The below code should give us <span class="math inline">\(20\)</span> as an answer… but it doesn’t - something has gone wrong! Can you see what is wrong in the below code? How would you fix it?</p>
-<div id="c63a345c" class="cell" data-execution_count="12">
+<div id="09ea9e4c" class="cell" data-execution_count="12">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>xyz <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a list of x squared, y squared, z squared</span></span>
@@ -606,7 +606,7 @@ print(b)</code></pre>
 </div>
 </div>
 <p><strong>Question 4:</strong> You have a list of lists representing a grid. You want to create a backup copy before making changes, but the following approach doesn’t work correctly. Explain what has gone wrong here.</p>
-<div id="23bbc879" class="cell" data-execution_count="13">
+<div id="4e0eeb30" class="cell" data-execution_count="13">
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> [[<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">3</span>, <span class="dv">4</span>], [<span class="dv">5</span>, <span class="dv">6</span>]]</span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>backup <span class="op">=</span> <span class="bu">list</span>(grid)</span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -621,7 +621,7 @@ backup = [[999, 2], [3, 4], [5, 6]]</code></pre>
 </div>
 </div>
 <p><strong>Question 5:</strong> The following code creates a 3x3 grid filled with zeros, but when you try to modify one cell, unexpected behavior occurs. Identify the problem and provide a solution:</p>
-<div id="295ff70e" class="cell" data-execution_count="14">
+<div id="dfb278f4" class="cell" data-execution_count="14">
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># This code has a problem!</span></span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>grid <span class="op">=</span> [[<span class="dv">0</span>] <span class="op">*</span> <span class="dv">3</span>] <span class="op">*</span> <span class="dv">3</span></span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Initial grid:"</span>, grid)</span>
@@ -635,7 +635,7 @@ backup = [[999, 2], [3, 4], [5, 6]]</code></pre>
 After setting grid[0][0] = 1: [[1, 0, 0], [1, 0, 0], [1, 0, 0]]</code></pre>
 </div>
 </div>
-<div id="2fb01135" class="cell" data-execution_count="15">
+<div id="b30d88e4" class="cell" data-execution_count="15">
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your solution code here...</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
