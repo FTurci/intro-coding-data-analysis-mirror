@@ -2,9 +2,9 @@
   {
     "objectID": "01/week_01_intro_to_data_types_advanced.html",
     "href": "01/week_01_intro_to_data_types_advanced.html",
-    "title": "",
+    "title": "Exercises - Advanced: Copying and References",
     "section": "",
-    "text": "Code",
+    "text": "Welcome to the Week 1 Advanced Python Notebook. This notebook is designed for students who already have substantial experience with Python and feel confident working with both the Beginner and Intermediate material.\nYour task today is to carefully read through the content and complete the exercises at the end. These exercises are more challenging and are intended to deepen your understanding of how Python handles data behind the scenes.\nIn this notebook, you will explore the critical differences between immutable and mutable data types in Python. Specifically, you will learn how Python handles copying and references, which can be critical knowledge when it comes to debugging complex code.\nWork through the examples carefully, and take your time with the exercises. They are designed to stretch your understanding and prepare you for advanced applications of Python.",
     "crumbs": [
       "Home",
       "01 Introduction to Data Types",
@@ -14,7 +14,7 @@
   {
     "objectID": "01/week_01_intro_to_data_types_advanced.html#immutable-vs-mutable",
     "href": "01/week_01_intro_to_data_types_advanced.html#immutable-vs-mutable",
-    "title": "",
+    "title": "Exercises - Advanced: Copying and References",
     "section": "Immutable vs Mutable",
     "text": "Immutable vs Mutable\nIn Python, all data types can be described as either “immutable” or “mutable”.\nTo understand the difference between “immutable” and “mutable” types, it may be useful to introduce the notion of a reference. You can think of a reference as an address which tells us where some data lives physically on a machine. When we talk about variables, we really are talking about reference’s (which we have named) that point us to some data in memory.\nWhen you reassign the value of a variable in your code, there are actually two possible things that could be happening. The reference could be changed (i.e. the variable now represents a different place in memory), or the data itself could be changed (i.e. the variable is still “looking” at the same location in memory, but the data that is stored there has changed).\nWhat is important to know here is that when you change the value of a variable which has an “immutable” data type you are changing a reference whereas when you are changing “mutable” variables you are changing the data itself. Examples of mutable data types in Python include the list, dictionary and the set. On the other hand, examples of immutable data types are given by the int, float, decimal, bool and the tuple. In general, the more complicated data types discussed so far are “mutable”.\nThe distinction between a data type being “mutable” or “immutable” may seem dull and/or trivial but, in practice, can result in some very unexpected behaviour, especially when multiple variables are using the same reference (i.e. “looking” at the same place in memory)!\nFor example, in the below code we may expect a and b to have different values:\n\n\n\n\n\n\nAnd they do! However, if we change a from being 7 to a list containing 7, perhaps surprisingly, changing the value of a also changes the value b!\n\n\n\n\n\n\nIn both the examples above, we start by assigning a and b as references to the same location in memory.\nIn the first example, when we assign a=10, we are telling Python that a must change where it is “looking” in the computers memory. This does not have any effect on the value of b.\nIn the second example, however, when we assign a[0]=10, we are telling Python that the data stored in the location which a is “looking” at at must be changed. As b is also “looking” at this location in memory, this does have an effect on the value of b. It has changed!\nIt is worth noting though that if an operation is performed then a copy might be made:\n\n\n\n\n\n\nIn this case, to ensure we are working with a copy of a and not just a reference to the same variable, we can use the list constructor (see below).\n\nNote: In this case a is a list so we use the list constructor. For other datatypes similar constructors exist and would be used in this situation (e.g. set, dict, etc…).\n\n\n\n\n\n\n\n\nWarning: Errors of this type can often cause extremely anti-intuitive behaviour, including unexpected interactions between functions.\nFor example, in the below a function is called on a variable b, yet a seemingly unrelated variable a was affected by calling the function. This is because a and b were both references to the same object in memory, as oppose to being distinct copies of the object.\nIf you are not familiar with functions, do not worry; these will be covered in depth later in the course and, for now, move past this example.",
     "crumbs": [
@@ -26,7 +26,7 @@
   {
     "objectID": "01/week_01_intro_to_data_types_advanced.html#the-id-function",
     "href": "01/week_01_intro_to_data_types_advanced.html#the-id-function",
-    "title": "",
+    "title": "Exercises - Advanced: Copying and References",
     "section": "The id() Function",
     "text": "The id() Function\nNow that we understand the difference between mutable and immutable types, let’s take a look at the Python id() function, which can help us visualise what is happening with references and memory locations.\nThe id() function returns the unique identifier (memory address) of an object. This identifier tells us exactly where some data lives physically on a machine - essentially showing us the reference that a variable is pointing to.\n\n\n\n\n\n\nWith immutable data types, when you reassign a variable, you are changing the reference (the variable now points to a different location in memory). Let’s see this with our integer example:\n\n\n\n\n\n\nWith mutable data types, when you modify the data, you are changing the data itself (the reference stays the same - the variable is still “looking” at the same location in memory). Let’s reproduce our list example:",
     "crumbs": [
@@ -38,7 +38,7 @@
   {
     "objectID": "01/week_01_intro_to_data_types_advanced.html#the-is-operator",
     "href": "01/week_01_intro_to_data_types_advanced.html#the-is-operator",
-    "title": "",
+    "title": "Exercises - Advanced: Copying and References",
     "section": "The is Operator",
     "text": "The is Operator\nThe is operator and == operator are often confused with one another but they are not same. The is checks if both the variables point to the same object in memory whereas the == sign checks if the values of the two variables are equal.\nIf the is operator returns True then the equality is definitely True, but the opposite may or may not be the case. For an example see the below.\n\nWarning: Avoid using the is operator for “immutable” types such as strings and numbers; the result is unpredictable and in most cases the == is more appropriate for purpose.",
     "crumbs": [
@@ -50,7 +50,7 @@
   {
     "objectID": "01/week_01_intro_to_data_types_advanced.html#exercises",
     "href": "01/week_01_intro_to_data_types_advanced.html#exercises",
-    "title": "",
+    "title": "Exercises - Advanced: Copying and References",
     "section": "Exercises",
     "text": "Exercises\nQuestion 1: Predict the output of the following code. What will be printed and why?\nlist_a = [1, 2, 3]\nlist_b = list_a\nlist_a.append(4)\nprint(list_b)\nRun the code in the box below to verify your answer.\n\n\n\n\n\n\nQuestion 2: Consider these two similar-looking pieces of code. Predict what each will output and explain the difference:\nCode A:\na = [1, 2, 3]\nb = a\na = [4, 5, 6]\nprint(b)\nCode B:\na = [1, 2, 3]\nb = a\na[0] = 4\na[1] = 5\na[2] = 6\nprint(b)\nRun the code above to verify your answers.\n\n\n\n\n\n\nQuestion 3: In the below we have a list of 3 values, x=1, y=2 and z=3. We want to work out the value of:\n\n\\(x + y + z + x^2 + y^2 + z^2\\) \\(= 1 + 2 + 3 + 1 + 4 + 9\\) \\(= 20\\)\n\nThe below code should give us \\(20\\) as an answer… but it doesn’t - something has gone wrong! Can you see what is wrong in the below code? How would you fix it?\n\n\n\n\n\n\nQuestion 4: You have a list of lists representing a grid. You want to create a backup copy before making changes, but the following approach doesn’t work correctly. Explain what has gone wrong here.\n\n\n\n\n\n\nQuestion 5: The following code creates a 3x3 grid filled with zeros, but when you try to modify one cell, unexpected behavior occurs. Identify the problem and provide a solution:",
     "crumbs": [
@@ -674,7 +674,7 @@
     "href": "index.html#how-to-use",
     "title": "Introduction to Coding and Data Analysis",
     "section": "How to use",
-    "text": "How to use\n\nYou will find the more theoretical introduction under Lesson\nThe hands-on exercises will be under Exercises\nOver the course of the weeks the solutions will be released under Solution\n\nImportant. You can use the search button 🔎 to search across all the pages and skim through the course.\nNote. Many of the following pages also allow you to inetract with the code by running Python snippets inside your browser. You can use this as a fallback option if Noteable is unreachable.\nThe present content mirrors the interactive notebooks released on Noteable.",
+    "text": "How to use\n\nYou will find the more theoretical introduction under Lesson\nThe hands-on exercises will be under Exercises\nOver the course of the weeks the solutions will be released under Solutions\nRegularly, interactive Formative tests will be released under formative tests\n\nImportant. You can use the search button 🔎 to search across all the pages and skim through the course.\nNote. Many of the following pages also allow you to interact with the code by running Python snippets inside your browser. It is useful - As a fallback option if Noteable is unreachable. - For the regularly released formative tests.\nThe content in this website mirrors the interactive notebooks released on Noteable.",
     "crumbs": [
       "Home",
       "Course Overview",
