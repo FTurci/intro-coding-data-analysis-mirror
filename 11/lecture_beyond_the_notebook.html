@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.31">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Beyond the notebook – Introduction to Coding and Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-748393fd2cb2ea724105813453792ea0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Intro to Coding &amp; Data Analysis</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lessons" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lessons</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lessons">    
+        <li>
+    <a class="dropdown-item" href="../01/week_01_home.html">
+ <span class="dropdown-text">01 - Introduction to Data Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/lecture_intro_numpy.html">
+ <span class="dropdown-text">07 - Introduction to NumPy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - Working with NumPy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/lecture_intro_matplotlib.html">
+ <span class="dropdown-text">09 - Introduction to Matplotlib</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/lecture_multidimensionalArrays.html">
+ <span class="dropdown-text">10 - Multidimensional Arrays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/lecture_beyond_the_notebook.html">
+ <span class="dropdown-text">11 - Beyond the Notebook</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exercises">    
+        <li>
+    <a class="dropdown-item" href="../01/week_01_intro_to_data_types_beginner.html">
+ <span class="dropdown-text">01 - Intro to Data Types Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../01/week_01_intro_to_data_types_intermediate.html">
+ <span class="dropdown-text">01 - Intro to Data Types Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../01/week_01_intro_to_data_types_advanced.html">
+ <span class="dropdown-text">01 - Intro to Data Types Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/exercises_numpy.html">
+ <span class="dropdown-text">07 - NumPy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/exercises_lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - NumPy Working Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/exercises_plotting_data_from_file.html">
+ <span class="dropdown-text">09 - Plotting Data Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part1.html">
+ <span class="dropdown-text">10 - Part 1 Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part2.html">
+ <span class="dropdown-text">10 - Part 2 Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_numpy_riddles.html">
+ <span class="dropdown-text">11 - NumPy Riddles</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_python_riddles.html">
+ <span class="dropdown-text">11 - Python Riddles</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-solutions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Solutions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-solutions">    
+        <li>
+    <a class="dropdown-item" href="../07/exercises_numpy_solutions.html">
+ <span class="dropdown-text">07 - NumPy Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/exercises_lecture_working_with_numpy_solutions.html">
+ <span class="dropdown-text">08 - NumPy Working Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/exercises_plotting_data_from_file_solutions.html">
+ <span class="dropdown-text">09 - Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part1_solutions.html">
+ <span class="dropdown-text">10 - Part 1 Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part2_solutions.html">
+ <span class="dropdown-text">10 - Part 2 Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_numpy_riddles_solutions.html">
+ <span class="dropdown-text">11 - NumPy Riddles Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_python_riddles_solutions.html">
+ <span class="dropdown-text">11 - Python Riddles Solutions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-formative-tests" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Formative tests</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-formative-tests">    
+        <li>
+    <a class="dropdown-item" href="../formative/basic_structures.html">
+ <span class="dropdown-text">Variables, lists, dictionaries and branches</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../11/lecture_beyond_the_notebook.html">11 Beyond the Notebook</a></li><li class="breadcrumb-item"><a href="../11/lecture_beyond_the_notebook.html">Beyond the notebook</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../figs/banner.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Overview</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Coding and Data Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">01 Introduction to Data Types</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 1: Introduction to Data Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: Basic Data Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Collections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Copying and References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">07 Introduction to NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07/lecture_intro_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The <code>numpy</code> module</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07/exercises_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>numpy</code> Exercises</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07/exercises_numpy_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">08 Working with NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Arrays in NumPy: Indexing and Random Data Generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/exercises_lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises - Working with NumPy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/exercises_lecture_working_with_numpy_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">09 Introduction to Matplotlib</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/lecture_intro_matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>matplotlib</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/exercises_plotting_data_from_file.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting data from file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/exercises_plotting_data_from_file_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/fun_matplotlib_decoration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Add some decoration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">10 Multidimensional Arrays</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/lecture_multidimensionalArrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-dimensional arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating a mask containing a circle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part1_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions - Part 1</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using a mask</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part2_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions - Part 2</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/hint1_mask.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hint 1 - creating a square mask</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/hint2_apply_mask.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Hint 2 - applying a rectangular mask</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">11 Beyond the Notebook</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/lecture_beyond_the_notebook.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Beyond the notebook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/exercises_numpy_riddles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consolidation - <code>numpy</code> riddles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/exercises_numpy_riddles_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions - NumPy Riddles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/exercises_python_riddles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consolidation - <code>Python</code> riddles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/exercises_python_riddles_solutions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Solutions - Python Riddles</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">example.html</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#our-file-system" id="toc-our-file-system" class="nav-link active" data-scroll-target="#our-file-system">Our file system</a></li>
+  <li><a href="#pathway-to-the-current-directory" id="toc-pathway-to-the-current-directory" class="nav-link" data-scroll-target="#pathway-to-the-current-directory">Pathway to the current directory</a></li>
+  <li><a href="#listing-the-content-of-the-current-directory" id="toc-listing-the-content-of-the-current-directory" class="nav-link" data-scroll-target="#listing-the-content-of-the-current-directory">Listing the content of the current directory</a></li>
+  <li><a href="#creating-a-new-directory" id="toc-creating-a-new-directory" class="nav-link" data-scroll-target="#creating-a-new-directory">Creating a new directory</a></li>
+  <li><a href="#changing-directory" id="toc-changing-directory" class="nav-link" data-scroll-target="#changing-directory">Changing directory</a></li>
+  <li><a href="#creating-an-empty-file" id="toc-creating-an-empty-file" class="nav-link" data-scroll-target="#creating-an-empty-file">Creating an empty file</a></li>
+  <li><a href="#viewing-file-content" id="toc-viewing-file-content" class="nav-link" data-scroll-target="#viewing-file-content">Viewing file content</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  <li><a href="#running-scripts-from-the-notebook" id="toc-running-scripts-from-the-notebook" class="nav-link" data-scroll-target="#running-scripts-from-the-notebook">Running scripts: from the notebook</a></li>
+  <li><a href="#the-terminal" id="toc-the-terminal" class="nav-link" data-scroll-target="#the-terminal">The Terminal</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise</a></li>
+  <li><a href="#exercise-running-scripts-from-the-terminal" id="toc-exercise-running-scripts-from-the-terminal" class="nav-link" data-scroll-target="#exercise-running-scripts-from-the-terminal">Exercise: Running scripts from the Terminal</a></li>
+  <li><a href="#reusing-code" id="toc-reusing-code" class="nav-link" data-scroll-target="#reusing-code">Reusing code</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise</a></li>
+  <li><a href="#more-exercises-on-the-terminal" id="toc-more-exercises-on-the-terminal" class="nav-link" data-scroll-target="#more-exercises-on-the-terminal">More exercises on the terminal</a></li>
+  <li><a href="#riddles" id="toc-riddles" class="nav-link" data-scroll-target="#riddles">Riddles</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../11/lecture_beyond_the_notebook.html">11 Beyond the Notebook</a></li><li class="breadcrumb-item"><a href="../11/lecture_beyond_the_notebook.html">Beyond the notebook</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Beyond the notebook</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="our-file-system" class="level2">
+<h2 class="anchored" data-anchor-id="our-file-system">Our file system</h2>
+<p>Our notebooks in <code>jupyter</code> do not exist in the void. They are stored in a directory on an online account on the <em>Noteable</em> server. These directories have a <strong>structure</strong>, the <em>file system</em>, and we can navigate this structure using dedicated commands.</p>
+<p>These are not python commands, but are in fact specific to the file system itself, and follow different logic and conventions. For this reason, we prepend them with the <code>!</code> character. At the moment, we will use one command per cell.</p>
+</section>
+<section id="pathway-to-the-current-directory" class="level2">
+<h2 class="anchored" data-anchor-id="pathway-to-the-current-directory">Pathway to the current directory</h2>
+<p>First, let’s check where we are right now in the file system. To do so, we query the <strong>p</strong>athway to the <strong>w</strong>orking <strong><em>d</em></strong>irectory with the <code>pwd</code> command.</p>
+<div id="16a3c5d6" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pwd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>/Users/ft14968/Repos/intro-coding-data-analysis/quarto/11</code></pre>
+</div>
+</div>
+<p>This shows where we currently are, and each of you should have a different path, with a different username.</p>
+</section>
+<section id="listing-the-content-of-the-current-directory" class="level2">
+<h2 class="anchored" data-anchor-id="listing-the-content-of-the-current-directory">Listing the content of the current directory</h2>
+<p>The <code>ls</code> command lists the files and directories in the current directory. The current directory is represented by a <code>.</code> (dot).</p>
+<div id="cbe10e3f" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> ls </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>example.html
+
+example.qmd
+
+<span class="ansi-cyan-fg ansi-bold">exercises_numpy_riddles_solutions_files</span>
+
+exercises_numpy_riddles_solutions.html
+
+exercises_numpy_riddles_solutions.qmd
+
+exercises_numpy_riddles.html
+
+exercises_numpy_riddles.qmd
+
+exercises_python_riddles_solutions.html
+
+exercises_python_riddles_solutions.qmd
+
+exercises_python_riddles.qmd
+
+lecture_beyond_the_notebook.qmd
+
+lecture_beyond_the_notebook.quarto_ipynb
+
+parabola.png
+
+<span class="ansi-cyan-fg ansi-bold">src2</span>
+</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="creating-a-new-directory" class="level2">
+<h2 class="anchored" data-anchor-id="creating-a-new-directory">Creating a new directory</h2>
+<p>The <code>mkdir</code> command creates a new directory in the specified path. For example, to create a new directory in the current directory we can write</p>
+<div id="66a39d23" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> mkdir new_directory </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can check its existence with <code>ls</code>.</p>
+<div id="ac200757" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> ls</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<div class="ansi-escaped-output">
+<pre>example.html
+
+example.qmd
+
+<span class="ansi-cyan-fg ansi-bold">exercises_numpy_riddles_solutions_files</span>
+
+exercises_numpy_riddles_solutions.html
+
+exercises_numpy_riddles_solutions.qmd
+
+exercises_numpy_riddles.html
+
+exercises_numpy_riddles.qmd
+
+exercises_python_riddles_solutions.html
+
+exercises_python_riddles_solutions.qmd
+
+exercises_python_riddles.qmd
+
+lecture_beyond_the_notebook.qmd
+
+lecture_beyond_the_notebook.quarto_ipynb
+
+<span class="ansi-cyan-fg ansi-bold">new_directory</span>
+
+parabola.png
+
+<span class="ansi-cyan-fg ansi-bold">src2</span>
+</pre>
+</div>
+</div>
+</div>
+<p>Equally, we can go back to the <code>jupyter</code> interface and see the new directory in the graphical user interface.</p>
+</section>
+<section id="changing-directory" class="level2">
+<h2 class="anchored" data-anchor-id="changing-directory">Changing directory</h2>
+<p>It is easy to change the current directory with the <code>cd</code> command. For example, to go to the <code>new_directory</code> with</p>
+<div id="a12ac7fd" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> cd new_directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And we we can go back to the previous directory with the <code>cd</code> command again using <code>..</code></p>
+<div id="79e300e2" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> cd ..</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="creating-an-empty-file" class="level2">
+<h2 class="anchored" data-anchor-id="creating-an-empty-file">Creating an empty file</h2>
+<p>The <code>touch</code> command creates a new file in the specified path. For example, to create a new file in the current directory we can write</p>
+<div id="d98ba9fc" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> touch new_directory<span class="op">/</span>new_file.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We can check its existence with <code>ls</code>.</p>
+<div id="841fb553" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> ls new_directory</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>new_file.txt</code></pre>
+</div>
+</div>
+<p>We can open this file in the graphical user interface and edit the contents</p>
+<p>[follows demonstration in <em>Noteable</em> with dummy text in the file <code>new_file.txt</code>]</p>
+</section>
+<section id="viewing-file-content" class="level2">
+<h2 class="anchored" data-anchor-id="viewing-file-content">Viewing file content</h2>
+<p>The <code>cat</code> command prints the content of a file. For example, to view the content of <code>new_file.txt</code> we can write</p>
+<div id="7e66eb25" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> cat new_directory<span class="op">/</span>new_file.txt </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Several other commands exist to display parts of files, such as <code>head</code>, <code>tail</code> etc. Try them if you like!</p>
+</section>
+<section id="exercise" class="level2">
+<h2 class="anchored" data-anchor-id="exercise">Exercise</h2>
+<ul>
+<li>Create a new jupyter notebook using the graphical user interface.</li>
+<li>From the <strong>notebook</strong>, use the commands above to create:
+<ul>
+<li>a new directory called <code>src</code></li>
+<li>a new file inside the directory called <code>naive_script.py</code></li>
+<li>open it with double click for the files tab in <code>jupyter</code> and write a minimal code</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>save the file</li>
+<li>use the <code>cat</code> command from the notebook to view the content of <code>naive_script.py</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="running-scripts-from-the-notebook" class="level2">
+<h2 class="anchored" data-anchor-id="running-scripts-from-the-notebook">Running scripts: from the notebook</h2>
+<p>For the entire duration of this course, you have been running <code>python</code> codes by typing them inside the notebook cells and executing the code cells.</p>
+<p>The notebooks are complex files, that contain a lot of information beyond your code: the markdown, images, and a lot of extra data (called metadata).</p>
+<p>A much more essential way to store <code>python</code> code is to use <strong>scripts</strong>. These are files with the <code>.py</code> extension, like your <code>naive_script.py</code> file. Inside a script you can only have</p>
+<ul>
+<li><code>python</code> code</li>
+<li><code>python</code> comments to the code (i.e.&nbsp;lines prepended by the <code>#</code>)</li>
+</ul>
+<p>This means that the scripts are simple, portable pure text files containing <strong>instructions</strong> in the <code>python</code> language.</p>
+<p>Can we execute such instructions? Yes, we <strong>run</strong> a script in various way. A simple way is to do it directly from a code cell in the notebook. For this we use a special <code>jupyter</code> command called <code>run</code> followed by the path to the script.</p>
+<p>[check that you are in the correct path and the script exist]</p>
+<div id="1ff07f91" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>run src<span class="op">/</span>naive_script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/core/magics/execution.py:727</span>, in <span class="ansi-cyan-fg">ExecutionMagics.run</span><span class="ansi-blue-fg">(self, parameter_s, runner, file_finder)</span>
+<span class="ansi-green-fg">    726</span>     fpath = arg_lst[<span class="ansi-green-fg">0</span>]
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">727</span>     filename = <span class="ansi-yellow-bg">file_finder</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fpath</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    728</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">IndexError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> e:
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/utils/path.py:90</span>, in <span class="ansi-cyan-fg">get_py_filename</span><span class="ansi-blue-fg">(name)</span>
+<span class="ansi-green-fg">     89</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> py_name
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">90</span> <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">IOError</span>(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">File `</span><span style="font-weight:bold;color:rgb(175,95,135)">%r</span><span class="ansi-yellow-fg">` not found.</span><span class="ansi-yellow-fg">"</span> % name)
+
+<span class="ansi-red-fg">OSError</span>: File `'src/naive_script.py'` not found.
+
+The above exception was the direct cause of the following exception:
+
+<span class="ansi-red-fg">Exception</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[10]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">run_line_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">run</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">src/naive_script.py</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/core/interactiveshell.py:2481</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_line_magic</span><span class="ansi-blue-fg">(self, magic_name, line, _stack_depth)</span>
+<span class="ansi-green-fg">   2479</span>     kwargs[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">local_ns</span><span class="ansi-yellow-fg">'</span>] = <span style="color:rgb(0,135,0)">self</span>.get_local_scope(stack_depth)
+<span class="ansi-green-fg">   2480</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> <span style="color:rgb(0,135,0)">self</span>.builtin_trap:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">2481</span>     result = <span class="ansi-yellow-bg">fn</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   2483</span> <span style="font-style:italic;color:rgb(95,135,135)"># The code below prevents the output from being displayed</span>
+<span class="ansi-green-fg">   2484</span> <span style="font-style:italic;color:rgb(95,135,135)"># when using magics with decorator @output_can_be_silenced</span>
+<span class="ansi-green-fg">   2485</span> <span style="font-style:italic;color:rgb(95,135,135)"># when the last Python token in the expression is a ';'.</span>
+<span class="ansi-green-fg">   2486</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">getattr</span>(fn, magic.MAGIC_OUTPUT_CAN_BE_SILENCED, <span style="font-weight:bold;color:rgb(0,135,0)">False</span>):
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/core/magics/execution.py:738</span>, in <span class="ansi-cyan-fg">ExecutionMagics.run</span><span class="ansi-blue-fg">(self, parameter_s, runner, file_finder)</span>
+<span class="ansi-green-fg">    736</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> os.name == <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">nt</span><span class="ansi-yellow-fg">'</span> <span style="font-weight:bold;color:rgb(175,0,255)">and</span> re.match(<span class="ansi-yellow-fg">r</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">^</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">.*</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">$</span><span class="ansi-yellow-fg">"</span>,fpath):
+<span class="ansi-green-fg">    737</span>         warn(<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">For Windows, use double quotes to wrap a filename: </span><span style="font-weight:bold;color:rgb(175,95,135)">%r</span><span class="ansi-yellow-fg">un </span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">mypath</span><span style="font-weight:bold;color:rgb(175,95,0)">\\</span><span class="ansi-yellow-fg">myfile.py</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">'</span>)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">738</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">Exception</span>(msg) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">e</span>
+<span class="ansi-green-fg">    739</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>:
+<span class="ansi-green-fg">    740</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> fpath <span style="font-weight:bold;color:rgb(175,0,255)">in</span> sys.meta_path:
+
+<span class="ansi-red-fg">Exception</span>: File `'src/naive_script.py'` not found.</pre>
+</div>
+</div>
+</div>
+<p>As you can see, we have executed the instructions of the script and its textual output has been printed in the notebook. No variables are created during the process.</p>
+</section>
+<section id="the-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="the-terminal">The Terminal</h2>
+<p>All the commands that we have seen above can be used in a pure-text environment called <strong>the terminal</strong>. The terminal is a text-based interface to an operating system (local or remote).</p>
+<p>You do not use the mouse to perform actions. Instead, you <strong>write</strong> commands. These commands belong to the scripting language called <code>bash</code> (see <a href="https://www.gnu.org/software/bash/manual/html_node/index.html">here</a> for more information). It is different from <code>python</code>, they can interact together in the notebook.</p>
+<p>You can launch a terminal directly from <code>Noteable</code> by clicking on the <code>New</code> button, then selecting <code>Terminal</code>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="attachment:image.png" class="img-fluid figure-img"></p>
+<figcaption>image.png</figcaption>
+</figure>
+</div>
+</section>
+<section id="exercise-1" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1">Exercise</h2>
+<ul>
+<li>We try to navigate folders from the terminal and create a file</li>
+<li>Open the terminal and
+<ul>
+<li>change the directory to <code>src</code> (using <code>cd</code>)</li>
+<li>create a new file inside the directory called <code>parabola.py</code> (use <code>touch</code>)</li>
+<li>go back to the <code>Noteable</code> file tab, refresh the web-page and open the <code>parabola.py</code> file</li>
+<li>open it and write a minimal code to plot a parabola. For example:</li>
+</ul>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">1.</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span><span class="fl">1.</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>c <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>xlo <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>xhi <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>npoints <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(xlo, xhi, npoints)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">*</span>x <span class="op">+</span> c</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>plt.plot(x,y)</span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">"parabola.png"</span>)</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<ul>
+<li>save the file and go back to the Terminal tab</li>
+<li>use the <code>cat</code> command to check the content</li>
+</ul></li>
+</ul>
+</section>
+<section id="exercise-running-scripts-from-the-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-running-scripts-from-the-terminal">Exercise: Running scripts from the Terminal</h2>
+<p>We have seen that we can run the scripts from the notebook using the <code>run</code> command. In a very similar way, we can run scripts from the terminal, just by using the <code>python</code> command followed by the path to the script.</p>
+<p>Do the following:</p>
+<ul>
+<li>first run the <code>parabola</code> script from the notebook using <code>run</code>: you should see the plot appear in the notebook.</li>
+<li>then go back to the Terminal and run the <code>parabola.py</code> script using the <code>python</code> command followed by the path to the script: e.g.&nbsp;<code>python src/parabola.py</code>. Where is the output?</li>
+</ul>
+<div id="5615e490" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>run src<span class="op">/</span>parabola.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">OSError</span>                                   Traceback (most recent call last)
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/core/magics/execution.py:727</span>, in <span class="ansi-cyan-fg">ExecutionMagics.run</span><span class="ansi-blue-fg">(self, parameter_s, runner, file_finder)</span>
+<span class="ansi-green-fg">    726</span>     fpath = arg_lst[<span class="ansi-green-fg">0</span>]
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">727</span>     filename = <span class="ansi-yellow-bg">file_finder</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">fpath</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">    728</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">IndexError</span> <span style="font-weight:bold;color:rgb(0,135,0)">as</span> e:
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/utils/path.py:90</span>, in <span class="ansi-cyan-fg">get_py_filename</span><span class="ansi-blue-fg">(name)</span>
+<span class="ansi-green-fg">     89</span>         <span style="font-weight:bold;color:rgb(0,135,0)">return</span> py_name
+<span class="ansi-green-fg">---&gt; </span><span class="ansi-green-fg">90</span> <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">IOError</span>(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">File `</span><span style="font-weight:bold;color:rgb(175,95,135)">%r</span><span class="ansi-yellow-fg">` not found.</span><span class="ansi-yellow-fg">"</span> % name)
+
+<span class="ansi-red-fg">OSError</span>: File `'src/parabola.py'` not found.
+
+The above exception was the direct cause of the following exception:
+
+<span class="ansi-red-fg">Exception</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span class="ansi-yellow-bg">get_ipython</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">)</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">run_line_magic</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">run</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-fg ansi-yellow-bg">src/parabola.py</span><span class="ansi-yellow-fg ansi-yellow-bg">'</span><span class="ansi-yellow-bg">)</span>
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/core/interactiveshell.py:2481</span>, in <span class="ansi-cyan-fg">InteractiveShell.run_line_magic</span><span class="ansi-blue-fg">(self, magic_name, line, _stack_depth)</span>
+<span class="ansi-green-fg">   2479</span>     kwargs[<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">local_ns</span><span class="ansi-yellow-fg">'</span>] = <span style="color:rgb(0,135,0)">self</span>.get_local_scope(stack_depth)
+<span class="ansi-green-fg">   2480</span> <span style="font-weight:bold;color:rgb(0,135,0)">with</span> <span style="color:rgb(0,135,0)">self</span>.builtin_trap:
+<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">2481</span>     result = <span class="ansi-yellow-bg">fn</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">args</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">*</span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">)</span>
+<span class="ansi-green-fg">   2483</span> <span style="font-style:italic;color:rgb(95,135,135)"># The code below prevents the output from being displayed</span>
+<span class="ansi-green-fg">   2484</span> <span style="font-style:italic;color:rgb(95,135,135)"># when using magics with decorator @output_can_be_silenced</span>
+<span class="ansi-green-fg">   2485</span> <span style="font-style:italic;color:rgb(95,135,135)"># when the last Python token in the expression is a ';'.</span>
+<span class="ansi-green-fg">   2486</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> <span style="color:rgb(0,135,0)">getattr</span>(fn, magic.MAGIC_OUTPUT_CAN_BE_SILENCED, <span style="font-weight:bold;color:rgb(0,135,0)">False</span>):
+
+<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/IPython/core/magics/execution.py:738</span>, in <span class="ansi-cyan-fg">ExecutionMagics.run</span><span class="ansi-blue-fg">(self, parameter_s, runner, file_finder)</span>
+<span class="ansi-green-fg">    736</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> os.name == <span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">nt</span><span class="ansi-yellow-fg">'</span> <span style="font-weight:bold;color:rgb(175,0,255)">and</span> re.match(<span class="ansi-yellow-fg">r</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">^</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">.*</span><span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">$</span><span class="ansi-yellow-fg">"</span>,fpath):
+<span class="ansi-green-fg">    737</span>         warn(<span class="ansi-yellow-fg">'</span><span class="ansi-yellow-fg">For Windows, use double quotes to wrap a filename: </span><span style="font-weight:bold;color:rgb(175,95,135)">%r</span><span class="ansi-yellow-fg">un </span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">mypath</span><span style="font-weight:bold;color:rgb(175,95,0)">\\</span><span class="ansi-yellow-fg">myfile.py</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">'</span>)
+<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">738</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">Exception</span>(msg) <span style="font-weight:bold;color:rgb(0,135,0)">from</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">e</span>
+<span class="ansi-green-fg">    739</span> <span style="font-weight:bold;color:rgb(0,135,0)">except</span> <span style="font-weight:bold;color:rgb(215,95,95)">TypeError</span>:
+<span class="ansi-green-fg">    740</span>     <span style="font-weight:bold;color:rgb(0,135,0)">if</span> fpath <span style="font-weight:bold;color:rgb(175,0,255)">in</span> sys.meta_path:
+
+<span class="ansi-red-fg">Exception</span>: File `'src/parabola.py'` not found.</pre>
+</div>
+</div>
+</div>
+</section>
+<section id="reusing-code" class="level2">
+<h2 class="anchored" data-anchor-id="reusing-code">Reusing code</h2>
+<p>The most useful feature of the scripts is that they can store code for future usage in an organized manner. We do not need to have all of our code in a single notebook: we can split the relvant bits, put them into scripts and use them again and again in different projects.</p>
+<p>What allows us to do this is the special <code>python</code> keywork <code>import</code>, that we have already used many times.</p>
+<p>Let’s move our working directory to <code>src</code> and try importing our <code>parabola.py</code> script</p>
+<div id="c3f5c78d" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cd src</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[Errno 2] No such file or directory: 'src'
+/Users/ft14968/Repos/intro-coding-data-analysis/quarto/11</code></pre>
+</div>
+</div>
+<p>In <code>python</code> we can only import <code>.py</code> files, so we drop the <code>.py</code> extension when importing.</p>
+<div id="1fa15a17" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> parabola</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">ModuleNotFoundError</span>                       Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[13]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="font-weight:bold;color:rgb(0,135,0)">import</span><span style="color:rgb(188,188,188)"> </span><span class="ansi-blue-fg ansi-bold">parabola</span>
+
+<span class="ansi-red-fg">ModuleNotFoundError</span>: No module named 'parabola'</pre>
+</div>
+</div>
+</div>
+<p>Now the variables defined in <code>parabola.py</code> are available in our current notebook.</p>
+<div id="5ca845e9" class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parabola.xhi)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<div class="ansi-escaped-output">
+<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
+<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
+<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[14]</span><span class="ansi-green-fg">, line 1</span>
+<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">1</span> <span style="color:rgb(0,135,0)">print</span>(<span class="ansi-yellow-bg">parabola</span>.xhi)
+
+<span class="ansi-red-fg">NameError</span>: name 'parabola' is not defined</pre>
+</div>
+</div>
+</div>
+<p>Congratulations! You have written your first <code>python</code> <strong>module</strong>!</p>
+</section>
+<section id="exercise-2" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2">Exercise</h2>
+<p>The module above is not very useful. A better way to reuse code is to encapsulate it in a **custom .</p>
+<ul>
+<li><p>Modify your <code>parabola.py</code> script to create a function <code>plot_parabola</code> that takes <code>a</code>, <code>b</code>, <code>c</code>, <code>xlo</code>, <code>xhi</code> as parameters.</p></li>
+<li><p>Then, import your parabola module in the present notebook using the following line:</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> parabola <span class="im">as</span> pb</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p>Can you find a way to access your function <code>plot_parabola</code> from <code>pb</code> ?</p></li>
+<li><p>Improve your function to customize the appearence of the plot (adding custom labels, colors, linestyles) and use the function with such changes. <strong>Important</strong> you will need to restart the notebook for these to take effect, because a module is loaded only once.</p></li>
+</ul>
+</section>
+<section id="more-exercises-on-the-terminal" class="level2">
+<h2 class="anchored" data-anchor-id="more-exercises-on-the-terminal">More exercises on the terminal</h2>
+<ol type="1">
+<li>Most commands in <code>bash</code> allow you to acces their documentation with <code>&lt;name_of_the_command&gt; --help</code>. Can you find out what the command <code>mv</code> does?</li>
+</ol>
+<div id="3d095cd5" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co">##YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ol start="2" type="1">
+<li>Find a way to rename your <code>parabola.py</code> script to <code>geometry.py</code></li>
+</ol>
+<div id="72872a0c" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co">##YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Most commands in <code>bash</code> support options, using the dash <code>-</code> sytax. For example, <code>ls -l</code> will list the files in a long format. Can you use <code>ls --help</code> to find out what the <code>-l</code> option does</p>
+<div id="66da55e1" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>ls <span class="op">--</span><span class="bu">help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>ls: unrecognized option `--help'
+usage: ls [-@ABCFGHILOPRSTUWXabcdefghiklmnopqrstuvwxy1%,] [--color=when] [-D format] [file ...]</code></pre>
+</div>
+</div>
+<ul>
+<li>Can you find an additional option for <code>ls -l</code> to fils files in reverse time order?</li>
+</ul>
+<div id="9dae7655" class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co">##YOUR CODE HERE</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="riddles" class="level2">
+<h2 class="anchored" data-anchor-id="riddles">Riddles</h2>
+<p>To revise the material from the previous lectures, we can try to solve some riddles.</p>
+<p>You can find the exercises here below</p>
+<ul>
+<li><a href="../11/exercises_python_riddles.html">Python Riddles</a></li>
+<li><a href="../11/exercises_numpy_riddles.html">Numpy Riddles</a></li>
+</ul>
+
+
+<!-- -->
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../11";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb26" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Beyond the notebook</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Our file system</span></span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>Our notebooks in <span class="in">`jupyter`</span> do not exist in the void. They are stored in a directory on an online account on the *Noteable* server. These directories have a **structure**, the *file system*, and we can navigate this structure using dedicated commands.</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>These are not python commands, but are in fact specific to the file system itself, and follow different logic and conventions. For this reason, we prepend them with the <span class="in">`!`</span> character. At the moment, we will use one command per cell.</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pathway to the current directory</span></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>First, let's check where we are right now in the file system. To do so, we query the **p**athway to the **w**orking ***d***irectory with the <span class="in">`pwd`</span> command.</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> pwd</span>
+<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a>This shows where we currently are, and each of you should have a different path, with a different username.</span>
+<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a><span class="fu">## Listing the content of the current directory</span></span>
+<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a>The <span class="in">`ls`</span> command lists the files and directories in the current directory. The current directory is represented by a <span class="in">`.`</span> (dot).</span>
+<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> ls </span>
+<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating a new directory</span></span>
+<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>The <span class="in">`mkdir`</span> command creates a new directory in the specified path. For example, to create a new directory in the current directory we can write</span>
+<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> mkdir new_directory </span>
+<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>We can check its existence with <span class="in">`ls`</span>.</span>
+<span id="cb26-47"><a href="#cb26-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-50"><a href="#cb26-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-51"><a href="#cb26-51" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> ls</span>
+<span id="cb26-52"><a href="#cb26-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-53"><a href="#cb26-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-54"><a href="#cb26-54" aria-hidden="true" tabindex="-1"></a>Equally, we can go back to the <span class="in">`jupyter`</span> interface and see the new directory in the graphical user interface.</span>
+<span id="cb26-55"><a href="#cb26-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-56"><a href="#cb26-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## Changing directory</span></span>
+<span id="cb26-57"><a href="#cb26-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-58"><a href="#cb26-58" aria-hidden="true" tabindex="-1"></a>It is easy to change the current directory with the <span class="in">`cd`</span> command. For example, to go to the <span class="in">`new_directory`</span> with</span>
+<span id="cb26-59"><a href="#cb26-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-62"><a href="#cb26-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-63"><a href="#cb26-63" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> cd new_directory</span>
+<span id="cb26-64"><a href="#cb26-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-65"><a href="#cb26-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-66"><a href="#cb26-66" aria-hidden="true" tabindex="-1"></a>And we we can go back to the previous directory with the <span class="in">`cd`</span> command again using <span class="in">`..`</span></span>
+<span id="cb26-67"><a href="#cb26-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-70"><a href="#cb26-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-71"><a href="#cb26-71" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> cd ..</span>
+<span id="cb26-72"><a href="#cb26-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-73"><a href="#cb26-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-74"><a href="#cb26-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating an empty file</span></span>
+<span id="cb26-75"><a href="#cb26-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-76"><a href="#cb26-76" aria-hidden="true" tabindex="-1"></a>The <span class="in">`touch`</span> command creates a new file in the specified path. For example, to create a new file in the current directory we can write</span>
+<span id="cb26-77"><a href="#cb26-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-80"><a href="#cb26-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-81"><a href="#cb26-81" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> touch new_directory<span class="op">/</span>new_file.txt</span>
+<span id="cb26-82"><a href="#cb26-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-83"><a href="#cb26-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-84"><a href="#cb26-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-85"><a href="#cb26-85" aria-hidden="true" tabindex="-1"></a>We can check its existence with <span class="in">`ls`</span>.</span>
+<span id="cb26-86"><a href="#cb26-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-89"><a href="#cb26-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-90"><a href="#cb26-90" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> ls new_directory</span>
+<span id="cb26-91"><a href="#cb26-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-92"><a href="#cb26-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-93"><a href="#cb26-93" aria-hidden="true" tabindex="-1"></a>We can open this file in the graphical user interface and edit the contents</span>
+<span id="cb26-94"><a href="#cb26-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-95"><a href="#cb26-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-96"><a href="#cb26-96" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">follows demonstration in *Noteable* with dummy text in the file `new_file.txt`</span><span class="co">]</span></span>
+<span id="cb26-97"><a href="#cb26-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-98"><a href="#cb26-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Viewing file content</span></span>
+<span id="cb26-99"><a href="#cb26-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-100"><a href="#cb26-100" aria-hidden="true" tabindex="-1"></a>The <span class="in">`cat`</span> command prints the content of a file. For example, to view the content of <span class="in">`new_file.txt`</span> we can write</span>
+<span id="cb26-101"><a href="#cb26-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-104"><a href="#cb26-104" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-105"><a href="#cb26-105" aria-hidden="true" tabindex="-1"></a><span class="op">!</span> cat new_directory<span class="op">/</span>new_file.txt </span>
+<span id="cb26-106"><a href="#cb26-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-107"><a href="#cb26-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-108"><a href="#cb26-108" aria-hidden="true" tabindex="-1"></a>Several other commands exist to display parts of files, such as <span class="in">`head`</span>, <span class="in">`tail`</span> etc. Try them if you like!</span>
+<span id="cb26-109"><a href="#cb26-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-110"><a href="#cb26-110" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise</span></span>
+<span id="cb26-111"><a href="#cb26-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-112"><a href="#cb26-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Create a new jupyter notebook using the graphical user interface.</span>
+<span id="cb26-113"><a href="#cb26-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>From the **notebook**, use the commands above to create:</span>
+<span id="cb26-114"><a href="#cb26-114" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>a new directory called <span class="in">`src`</span></span>
+<span id="cb26-115"><a href="#cb26-115" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>a new file inside the directory called <span class="in">`naive_script.py`</span></span>
+<span id="cb26-116"><a href="#cb26-116" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>open it with double click for the files tab in <span class="in">`jupyter`</span> and write a minimal code</span>
+<span id="cb26-117"><a href="#cb26-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-118"><a href="#cb26-118" aria-hidden="true" tabindex="-1"></a>    <span class="in">```python</span></span>
+<span id="cb26-119"><a href="#cb26-119" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span>
+<span id="cb26-120"><a href="#cb26-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-121"><a href="#cb26-121" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
+<span id="cb26-122"><a href="#cb26-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-123"><a href="#cb26-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-124"><a href="#cb26-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-125"><a href="#cb26-125" aria-hidden="true" tabindex="-1"></a><span class="in">    - save the file</span></span>
+<span id="cb26-126"><a href="#cb26-126" aria-hidden="true" tabindex="-1"></a><span class="in">    - use the `cat` command from the notebook to view the content of `naive_script.py`</span></span>
+<span id="cb26-127"><a href="#cb26-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-128"><a href="#cb26-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-129"><a href="#cb26-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## Running scripts: from the notebook</span></span>
+<span id="cb26-130"><a href="#cb26-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-131"><a href="#cb26-131" aria-hidden="true" tabindex="-1"></a>For the entire duration of this course, you have been running <span class="in">`python`</span> codes by typing them inside the notebook cells and executing the code cells.</span>
+<span id="cb26-132"><a href="#cb26-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-133"><a href="#cb26-133" aria-hidden="true" tabindex="-1"></a>The notebooks are complex files, that contain a lot of information beyond your code: the markdown, images, and a lot of extra data (called metadata).</span>
+<span id="cb26-134"><a href="#cb26-134" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-135"><a href="#cb26-135" aria-hidden="true" tabindex="-1"></a>A much more essential way to store <span class="in">`python`</span> code is to use **scripts**. These are files with the <span class="in">`.py`</span> extension, like your <span class="in">`naive_script.py`</span> file. Inside a script you can only have</span>
+<span id="cb26-136"><a href="#cb26-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-137"><a href="#cb26-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`python`</span> code</span>
+<span id="cb26-138"><a href="#cb26-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`python`</span> comments to the code (i.e. lines prepended by the <span class="in">`#`</span>)</span>
+<span id="cb26-139"><a href="#cb26-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-140"><a href="#cb26-140" aria-hidden="true" tabindex="-1"></a>This means that the scripts are simple, portable pure text files containing **instructions** in the <span class="in">`python`</span> language.</span>
+<span id="cb26-141"><a href="#cb26-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-142"><a href="#cb26-142" aria-hidden="true" tabindex="-1"></a>Can we execute such instructions? Yes, we **run** a script in various way. A simple way is to do it directly from a code  cell in the notebook. For this we use a special <span class="in">`jupyter`</span> command called <span class="in">`run`</span> followed by the path to the script.</span>
+<span id="cb26-143"><a href="#cb26-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-144"><a href="#cb26-144" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">check that you are in the correct path and the script exist</span><span class="co">]</span></span>
+<span id="cb26-145"><a href="#cb26-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-148"><a href="#cb26-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-149"><a href="#cb26-149" aria-hidden="true" tabindex="-1"></a>run src<span class="op">/</span>naive_script.py</span>
+<span id="cb26-150"><a href="#cb26-150" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-151"><a href="#cb26-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-152"><a href="#cb26-152" aria-hidden="true" tabindex="-1"></a>As you can see, we have executed the instructions of the script and its textual output has been printed in the notebook. No variables are created during the process.</span>
+<span id="cb26-153"><a href="#cb26-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-154"><a href="#cb26-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Terminal</span></span>
+<span id="cb26-155"><a href="#cb26-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-156"><a href="#cb26-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-157"><a href="#cb26-157" aria-hidden="true" tabindex="-1"></a>All the commands that we have seen above can be used in a pure-text environment called **the terminal**. The terminal is a text-based interface to an operating system (local or remote).</span>
+<span id="cb26-158"><a href="#cb26-158" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-159"><a href="#cb26-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-160"><a href="#cb26-160" aria-hidden="true" tabindex="-1"></a>You do not use the mouse to perform actions. Instead, you **write** commands. These commands belong to the scripting language called <span class="in">`bash`</span> (see <span class="co">[</span><span class="ot">here</span><span class="co">](https://www.gnu.org/software/bash/manual/html_node/index.html)</span> for more information). It is different from <span class="in">`python`</span>, they can interact together in the notebook.</span>
+<span id="cb26-161"><a href="#cb26-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-162"><a href="#cb26-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-163"><a href="#cb26-163" aria-hidden="true" tabindex="-1"></a>You can launch a terminal directly from <span class="in">`Noteable`</span> by clicking on the <span class="in">`New`</span> button, then selecting <span class="in">`Terminal`</span>.</span>
+<span id="cb26-164"><a href="#cb26-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-165"><a href="#cb26-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-166"><a href="#cb26-166" aria-hidden="true" tabindex="-1"></a><span class="al">![image.png](attachment:image.png)</span></span>
+<span id="cb26-167"><a href="#cb26-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-168"><a href="#cb26-168" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise</span></span>
+<span id="cb26-169"><a href="#cb26-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-170"><a href="#cb26-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We try to navigate folders from the terminal and create a file</span>
+<span id="cb26-171"><a href="#cb26-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Open the terminal and</span>
+<span id="cb26-172"><a href="#cb26-172" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>change the directory to <span class="in">`src`</span> (using <span class="in">`cd`</span>)</span>
+<span id="cb26-173"><a href="#cb26-173" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>create a new file inside the directory called <span class="in">`parabola.py`</span> (use <span class="in">`touch`</span>)</span>
+<span id="cb26-174"><a href="#cb26-174" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>go back to the <span class="in">`Noteable`</span> file tab, refresh the web-page and open the <span class="in">`parabola.py`</span>  file</span>
+<span id="cb26-175"><a href="#cb26-175" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>open it and write a minimal code to plot a parabola. For example:</span>
+<span id="cb26-176"><a href="#cb26-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-177"><a href="#cb26-177" aria-hidden="true" tabindex="-1"></a>    <span class="in">```python</span></span>
+<span id="cb26-178"><a href="#cb26-178" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb26-179"><a href="#cb26-179" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb26-180"><a href="#cb26-180" aria-hidden="true" tabindex="-1"></a>    a <span class="op">=</span> <span class="fl">1.</span></span>
+<span id="cb26-181"><a href="#cb26-181" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span><span class="fl">1.</span></span>
+<span id="cb26-182"><a href="#cb26-182" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb26-183"><a href="#cb26-183" aria-hidden="true" tabindex="-1"></a>    xlo <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb26-184"><a href="#cb26-184" aria-hidden="true" tabindex="-1"></a>    xhi <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb26-185"><a href="#cb26-185" aria-hidden="true" tabindex="-1"></a>    npoints <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb26-186"><a href="#cb26-186" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> np.linspace(xlo, xhi, npoints)</span>
+<span id="cb26-187"><a href="#cb26-187" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> a<span class="op">*</span>x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b<span class="op">*</span>x <span class="op">+</span> c</span>
+<span id="cb26-188"><a href="#cb26-188" aria-hidden="true" tabindex="-1"></a>    plt.plot(x,y)</span>
+<span id="cb26-189"><a href="#cb26-189" aria-hidden="true" tabindex="-1"></a>    plt.savefig(<span class="st">"parabola.png"</span>)</span>
+<span id="cb26-190"><a href="#cb26-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-191"><a href="#cb26-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-192"><a href="#cb26-192" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
+<span id="cb26-193"><a href="#cb26-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-194"><a href="#cb26-194" aria-hidden="true" tabindex="-1"></a><span class="in">    - save the file and go back to the Terminal tab</span></span>
+<span id="cb26-195"><a href="#cb26-195" aria-hidden="true" tabindex="-1"></a><span class="in">    - use the `cat` command to check the content </span></span>
+<span id="cb26-196"><a href="#cb26-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-197"><a href="#cb26-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-198"><a href="#cb26-198" aria-hidden="true" tabindex="-1"></a><span class="fu">##  Exercise: Running scripts from the Terminal</span></span>
+<span id="cb26-199"><a href="#cb26-199" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-200"><a href="#cb26-200" aria-hidden="true" tabindex="-1"></a>We have seen that we can run the scripts from the notebook using the <span class="in">`run`</span> command. In a very similar way, we can run scripts from the terminal, just by using the <span class="in">`python`</span> command followed by the path to the script.</span>
+<span id="cb26-201"><a href="#cb26-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-202"><a href="#cb26-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-203"><a href="#cb26-203" aria-hidden="true" tabindex="-1"></a>Do the following:</span>
+<span id="cb26-204"><a href="#cb26-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-205"><a href="#cb26-205" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>first run the <span class="in">`parabola`</span> script from the notebook using <span class="in">`run`</span>: you should see the plot appear in the notebook.</span>
+<span id="cb26-206"><a href="#cb26-206" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>then go back to the Terminal and run the <span class="in">`parabola.py`</span> script using the <span class="in">`python`</span> command followed by the path to the script: e.g.  <span class="in">`python src/parabola.py`</span>. Where is the output?</span>
+<span id="cb26-207"><a href="#cb26-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-210"><a href="#cb26-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-211"><a href="#cb26-211" aria-hidden="true" tabindex="-1"></a>run src<span class="op">/</span>parabola.py</span>
+<span id="cb26-212"><a href="#cb26-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-213"><a href="#cb26-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-214"><a href="#cb26-214" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reusing code</span></span>
+<span id="cb26-215"><a href="#cb26-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-216"><a href="#cb26-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-217"><a href="#cb26-217" aria-hidden="true" tabindex="-1"></a>The most useful feature of the scripts is that they can store code for future usage in an organized manner. We do not need to have all of our code in a single notebook: we can split the relvant bits, put them into scripts and use them again and again in different projects.</span>
+<span id="cb26-218"><a href="#cb26-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-219"><a href="#cb26-219" aria-hidden="true" tabindex="-1"></a>What allows us to do this is the  special <span class="in">`python`</span> keywork <span class="in">`import`</span>, that we have already used many times. </span>
+<span id="cb26-220"><a href="#cb26-220" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-221"><a href="#cb26-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-222"><a href="#cb26-222" aria-hidden="true" tabindex="-1"></a>Let's move our working directory to <span class="in">`src`</span> and try importing our <span class="in">`parabola.py`</span> script</span>
+<span id="cb26-223"><a href="#cb26-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-226"><a href="#cb26-226" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-227"><a href="#cb26-227" aria-hidden="true" tabindex="-1"></a>cd src</span>
+<span id="cb26-228"><a href="#cb26-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-229"><a href="#cb26-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-230"><a href="#cb26-230" aria-hidden="true" tabindex="-1"></a>In <span class="in">`python`</span> we can only import <span class="in">`.py`</span> files, so we drop the <span class="in">`.py`</span> extension when importing.</span>
+<span id="cb26-231"><a href="#cb26-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-234"><a href="#cb26-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-235"><a href="#cb26-235" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> parabola</span>
+<span id="cb26-236"><a href="#cb26-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-237"><a href="#cb26-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-238"><a href="#cb26-238" aria-hidden="true" tabindex="-1"></a>Now the variables defined in <span class="in">`parabola.py`</span> are available in our current notebook.</span>
+<span id="cb26-239"><a href="#cb26-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-242"><a href="#cb26-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-243"><a href="#cb26-243" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(parabola.xhi)</span>
+<span id="cb26-244"><a href="#cb26-244" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-245"><a href="#cb26-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-246"><a href="#cb26-246" aria-hidden="true" tabindex="-1"></a>Congratulations! You have written your first <span class="in">`python`</span> **module**!</span>
+<span id="cb26-247"><a href="#cb26-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-248"><a href="#cb26-248" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise</span></span>
+<span id="cb26-249"><a href="#cb26-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-250"><a href="#cb26-250" aria-hidden="true" tabindex="-1"></a>The module above is not very useful. A better way to reuse code is to encapsulate it in a **custom .</span>
+<span id="cb26-251"><a href="#cb26-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-252"><a href="#cb26-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-253"><a href="#cb26-253" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Modify your <span class="in">`parabola.py`</span> script to create a function <span class="in">`plot_parabola`</span> that takes <span class="in">`a`</span>, <span class="in">`b`</span>, <span class="in">`c`</span>, <span class="in">`xlo`</span>, <span class="in">`xhi`</span> as parameters.</span>
+<span id="cb26-254"><a href="#cb26-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-255"><a href="#cb26-255" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Then, import your parabola module in the present notebook using the following line:</span>
+<span id="cb26-256"><a href="#cb26-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-257"><a href="#cb26-257" aria-hidden="true" tabindex="-1"></a>    <span class="in">```python</span></span>
+<span id="cb26-258"><a href="#cb26-258" aria-hidden="true" tabindex="-1"></a>    <span class="im">import</span> parabola <span class="im">as</span> pb</span>
+<span id="cb26-259"><a href="#cb26-259" aria-hidden="true" tabindex="-1"></a>    <span class="in">```</span></span>
+<span id="cb26-260"><a href="#cb26-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-261"><a href="#cb26-261" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Can you find a way to access your function <span class="in">`plot_parabola`</span> from <span class="in">`pb`</span> ?</span>
+<span id="cb26-262"><a href="#cb26-262" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Improve your function to customize the appearence of the plot (adding custom labels, colors, linestyles) and use the function with such changes. **Important** you will need to restart the notebook for these to take effect, because a module is loaded only once.</span>
+<span id="cb26-263"><a href="#cb26-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-264"><a href="#cb26-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-265"><a href="#cb26-265" aria-hidden="true" tabindex="-1"></a><span class="fu">## More exercises on the terminal</span></span>
+<span id="cb26-266"><a href="#cb26-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-267"><a href="#cb26-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-268"><a href="#cb26-268" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Most commands in <span class="in">`bash`</span> allow you to acces their documentation with <span class="in">`&lt;name_of_the_command&gt; --help `</span>. Can you find out what the command <span class="in">`mv`</span> does?</span>
+<span id="cb26-269"><a href="#cb26-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-270"><a href="#cb26-270" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-273"><a href="#cb26-273" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-274"><a href="#cb26-274" aria-hidden="true" tabindex="-1"></a><span class="co">##YOUR CODE HERE</span></span>
+<span id="cb26-275"><a href="#cb26-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-276"><a href="#cb26-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-277"><a href="#cb26-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-278"><a href="#cb26-278" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Find a way to rename your <span class="in">`parabola.py`</span> script to <span class="in">`geometry.py`</span></span>
+<span id="cb26-279"><a href="#cb26-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-282"><a href="#cb26-282" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-283"><a href="#cb26-283" aria-hidden="true" tabindex="-1"></a><span class="co">##YOUR CODE HERE</span></span>
+<span id="cb26-284"><a href="#cb26-284" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-285"><a href="#cb26-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-286"><a href="#cb26-286" aria-hidden="true" tabindex="-1"></a>Most commands in <span class="in">`bash`</span> support options, using the dash <span class="in">`-`</span> sytax. For example, <span class="in">`ls -l`</span> will list the files in a long format. Can you use  <span class="in">`ls --help`</span> to find out what the <span class="in">`-l`</span> option does</span>
+<span id="cb26-287"><a href="#cb26-287" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-290"><a href="#cb26-290" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-291"><a href="#cb26-291" aria-hidden="true" tabindex="-1"></a>ls <span class="op">--</span><span class="bu">help</span></span>
+<span id="cb26-292"><a href="#cb26-292" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-293"><a href="#cb26-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-294"><a href="#cb26-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-295"><a href="#cb26-295" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Can you find an additional option for <span class="in">`ls -l`</span> to fils files in reverse time order?</span>
+<span id="cb26-296"><a href="#cb26-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-299"><a href="#cb26-299" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb26-300"><a href="#cb26-300" aria-hidden="true" tabindex="-1"></a><span class="co">##YOUR CODE HERE</span></span>
+<span id="cb26-301"><a href="#cb26-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb26-302"><a href="#cb26-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-303"><a href="#cb26-303" aria-hidden="true" tabindex="-1"></a><span class="fu">## Riddles</span></span>
+<span id="cb26-304"><a href="#cb26-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-305"><a href="#cb26-305" aria-hidden="true" tabindex="-1"></a>To revise the material from the previous lectures, we can try to solve some riddles.</span>
+<span id="cb26-306"><a href="#cb26-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-307"><a href="#cb26-307" aria-hidden="true" tabindex="-1"></a>You can find the exercises here below</span>
+<span id="cb26-308"><a href="#cb26-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-309"><a href="#cb26-309" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Python Riddles</span><span class="co">](exercises_python_riddles.qmd)</span></span>
+<span id="cb26-310"><a href="#cb26-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Numpy Riddles</span><span class="co">](exercises_numpy_riddles.qmd)</span></span>
+<span id="cb26-311"><a href="#cb26-311" aria-hidden="true" tabindex="-1"></a></span>
+</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2024 Introduction to Coding and Data Analysis</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
