@@ -1110,23 +1110,13 @@ margin-right: 0; }
 <div class="fragment">
 <div class="columns">
 <div class="column" style="width:50%;">
-<div id="19a86c3a" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>list_ex <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]</span>
-<span id="cb3-2"><a></a><span class="bu">print</span>(list_ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1, 2, 3, 4]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>list_ex = [1, 2, 3, 4]</span>
+<span id="cb3-2"><a></a>print(list_ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column" style="width:50%;">
-<div id="0344b098" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb5-2"><a></a><span class="co">#notice that we explicitly call the np.array()</span></span>
-<span id="cb5-3"><a></a>arr_ex <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>]) </span>
-<span id="cb5-4"><a></a><span class="bu">print</span>(arr_ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1 2 3 4]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>import numpy as np</span>
+<span id="cb4-2"><a></a>#notice that we explicitly call the np.array()</span>
+<span id="cb4-3"><a></a>arr_ex = np.array([1, 2, 3, 4]) </span>
+<span id="cb4-4"><a></a>print(arr_ex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div></div>
 <p>We are going to see these differences in detail.</p>
 </div>
@@ -1134,24 +1124,14 @@ margin-right: 0; }
 <section id="arrays-from-lists" class="slide level2">
 <h2>Arrays from lists</h2>
 <p>A purely numerical list can readily be converted to an array.</p>
-<div id="628cd91e" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb7-2"><a></a><span class="co"># Create array from list</span></span>
-<span id="cb7-3"><a></a>list1 <span class="op">=</span> [<span class="fl">1.</span>,<span class="fl">1.</span>,<span class="fl">2.</span>,<span class="fl">3.</span>,<span class="fl">5.</span>,<span class="fl">8.</span>]</span>
-<span id="cb7-4"><a></a>arr1 <span class="op">=</span> np.array(list1)</span>
-<span id="cb7-5"><a></a><span class="bu">print</span>(arr1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1. 1. 2. 3. 5. 8.]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>import numpy as np</span>
+<span id="cb5-2"><a></a># Create array from list</span>
+<span id="cb5-3"><a></a>list1 = [1.,1.,2.,3.,5.,8.]</span>
+<span id="cb5-4"><a></a>arr1 = np.array(list1)</span>
+<span id="cb5-5"><a></a>print(arr1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>The type of the elements yields the <strong>data type</strong> of the array</p>
-<div id="d066b484" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="bu">print</span>(arr1.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>float64</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>print(arr1.dtype)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <blockquote>
 <p>Try and change the list1 object to contain only integers and see the change!</p>
 </blockquote>
@@ -1161,150 +1141,90 @@ margin-right: 0; }
 <h2>Array properties</h2>
 <p>Arrays possess plenty of properties.</p>
 <p>These are accessed with the <code>.</code> notation<sup>1</sup>.</p>
-<div id="ff79966c" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Data type: </span><span class="sc">{</span>arr1<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb11-2"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Shape: </span><span class="sc">{</span>arr1<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb11-3"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Shape: </span><span class="sc">{</span>arr1<span class="sc">.</span>size<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Data type: float64
-Shape: (6,)
-Shape: 6</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>print(f&quot;Data type: {arr1.dtype}&quot;)</span>
+<span id="cb7-2"><a></a>print(f&quot;Shape: {arr1.shape}&quot;)</span>
+<span id="cb7-3"><a></a>print(f&quot;Shape: {arr1.size}&quot;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>For now, we consider only 1d arrays, i.e. sequences. Their length is is their <code>size</code> and corresponds to the first element of the property <code>shape</code>.</p>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>use <code>.</code> and then <code>TAB</code> to see all of the properties</p></li></ol></aside></section>
 <section id="accessing-array-elements" class="slide level2">
 <h2>Accessing array elements</h2>
 <p>Similarly to lists, we access an element in an array via zero-based <strong>indexing</strong></p>
-<div id="dab96495" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="bu">print</span>(arr1[<span class="dv">0</span>])    <span class="co"># First element</span></span>
-<span id="cb13-2"><a></a><span class="bu">print</span>(arr1[<span class="op">-</span><span class="dv">1</span>])   <span class="co"># Last element</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>1.0
-8.0</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>print(arr1[0])    # First element</span>
+<span id="cb8-2"><a></a>print(arr1[-1])   # Last element</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Again, similarly to lists, we can access regions of the array via <strong>slicing</strong></p>
-<div id="11f41499" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="bu">print</span>(arr1[<span class="dv">3</span>:<span class="dv">6</span>])  <span class="co"># Elements from index 3 to 6</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[3. 5. 8.]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>print(arr1[3:6])  # Elements from index 3 to 6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="element-wise-operations" class="slide level2">
 <h2>Element-wise Operations</h2>
 <p>The main motivation to use arrays is that lists are cumbersome when performing maths.</p>
 <p>Suppose we have a list and want to double all of its elements:</p>
-<div id="680b9dde" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>list1 <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>list1 = [1,2,3,4]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>We need to loop over all of them and create a new list</p>
-<div id="572bd2eb" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a></a>list2 <span class="op">=</span> []</span>
-<span id="cb18-2"><a></a><span class="cf">for</span> item <span class="kw">in</span> list1:</span>
-<span id="cb18-3"><a></a>    list2.append(<span class="dv">2</span><span class="op">*</span>item)</span>
-<span id="cb18-4"><a></a><span class="bu">print</span>(list2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[2, 4, 6, 8]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>list2 = []</span>
+<span id="cb11-2"><a></a>for item in list1:</span>
+<span id="cb11-3"><a></a>    list2.append(2*item)</span>
+<span id="cb11-4"><a></a>print(list2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>In fact, we can do this in a slightly more compact way using <strong>list comprehension</strong></p>
-<div id="68442a73" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a></a>list2 <span class="op">=</span> [item<span class="op">*</span><span class="dv">2</span> <span class="cf">for</span> item <span class="kw">in</span> list1]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a>list2 = [item*2 for item in list1]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Still, an explicit loop is needed. Loops in Python are <strong>slow</strong>.</p>
 </section>
 <section id="element-wise-operations-1" class="slide level2">
 <h2>Element-wise Operations</h2>
 <p>The <code>numpy</code> syntax avoids the explicit Python loop.</p>
-<div id="e41c653b" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>arr1 <span class="op">=</span> np.array(list1)</span>
-<span id="cb21-2"><a></a>arr2 <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>arr1</span>
-<span id="cb21-3"><a></a><span class="bu">print</span>(arr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[2 4 6 8]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>arr1 = np.array(list1)</span>
+<span id="cb13-2"><a></a>arr2 = 2*arr1</span>
+<span id="cb13-3"><a></a>print(arr2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>This is not just a cosmetic change: under the hood <code>numpy</code> uses an efficient architecture that performs operations in <strong>compiled code</strong>, making it much faster than Python loops.</p>
 </section>
 <section id="performance-advantage" class="slide level2">
 <h2>Performance advantage</h2>
 <p>This performance difference can be tracked explicitly.</p>
 <p>We create a large list and a large array with identical content</p>
-<div id="66be405e" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># Create a large list and array</span></span>
-<span id="cb23-2"><a></a>large_list <span class="op">=</span> <span class="bu">list</span>(<span class="bu">range</span>(<span class="dv">1_000_000</span>))</span>
-<span id="cb23-3"><a></a>large_array <span class="op">=</span> np.array(large_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a># Create a large list and array</span>
+<span id="cb14-2"><a></a>large_list = list(range(1_000_000))</span>
+<span id="cb14-3"><a></a>large_array = np.array(large_list)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>And then track the time for the two operations</p>
-<div id="c41aa4b0" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a></a><span class="im">import</span> time</span>
-<span id="cb24-2"><a></a><span class="co">#  Track the time taken for the list multiplication</span></span>
-<span id="cb24-3"><a></a>start <span class="op">=</span> time.time()</span>
-<span id="cb24-4"><a></a>list_result <span class="op">=</span> [x <span class="op">*</span> <span class="dv">2</span> <span class="cf">for</span> x <span class="kw">in</span> large_list]</span>
-<span id="cb24-5"><a></a>end <span class="op">=</span> time.time()</span>
-<span id="cb24-6"><a></a><span class="bu">print</span>(<span class="ss">f&quot;List comprehension time: </span><span class="sc">{</span>end <span class="op">-</span> start<span class="sc">:.5f}</span><span class="ss"> seconds&quot;</span>)</span>
-<span id="cb24-7"><a></a></span>
-<span id="cb24-8"><a></a><span class="co"># Time array multiplication</span></span>
-<span id="cb24-9"><a></a>start <span class="op">=</span> time.time()</span>
-<span id="cb24-10"><a></a>array_result <span class="op">=</span> large_array <span class="op">*</span> <span class="dv">2</span></span>
-<span id="cb24-11"><a></a>end <span class="op">=</span> time.time()</span>
-<span id="cb24-12"><a></a><span class="bu">print</span>(<span class="ss">f&quot;NumPy array time: </span><span class="sc">{</span>end <span class="op">-</span> start<span class="sc">:.5f}</span><span class="ss"> seconds&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>List comprehension time: 0.01995 seconds
-NumPy array time: 0.00118 seconds</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a></a>import time</span>
+<span id="cb15-2"><a></a>#  Track the time taken for the list multiplication</span>
+<span id="cb15-3"><a></a>start = time.time()</span>
+<span id="cb15-4"><a></a>list_result = [x * 2 for x in large_list]</span>
+<span id="cb15-5"><a></a>end = time.time()</span>
+<span id="cb15-6"><a></a>print(f&quot;List comprehension time: {end - start:.5f} seconds&quot;)</span>
+<span id="cb15-7"><a></a></span>
+<span id="cb15-8"><a></a># Time array multiplication</span>
+<span id="cb15-9"><a></a>start = time.time()</span>
+<span id="cb15-10"><a></a>array_result = large_array * 2</span>
+<span id="cb15-11"><a></a>end = time.time()</span>
+<span id="cb15-12"><a></a>print(f&quot;NumPy array time: {end - start:.5f} seconds&quot;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="general-mathematical-functions" class="slide level2">
 <h2>General mathematical functions</h2>
 <p>The multiplication we performed earlier is done <strong>element-wise</strong>: every element is update according to teh same rule.</p>
 <p>We can apply plenty of element-wise operations to the arrays.</p>
 <p>Many of these are available as <code>numpy</code> functions directly accessed from the <code>np.</code> module</p>
-<div id="2a514ef4" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a></a><span class="co"># Element-wise functions</span></span>
-<span id="cb26-2"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Square root: </span><span class="sc">{</span>np<span class="sc">.</span>sqrt(arr1)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb26-3"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Mean: </span><span class="sc">{</span>np<span class="sc">.</span>mean(arr1)<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb26-4"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Cosine: </span><span class="sc">{</span>np<span class="sc">.</span>cos(arr1)<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Square root: [1.         1.41421356 1.73205081 2.        ]
-Mean: 2.5
-Cosine: [ 0.54030231 -0.41614684 -0.9899925  -0.65364362]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a># Element-wise functions</span>
+<span id="cb16-2"><a></a>print(f&quot;Square root: {np.sqrt(arr1)}&quot;)</span>
+<span id="cb16-3"><a></a>print(f&quot;Mean: {np.mean(arr1)}&quot;)</span>
+<span id="cb16-4"><a></a>print(f&quot;Cosine: {np.cos(arr1)}&quot;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p>The operations do not modify the original array, but produce <strong>new copies</strong></p>
-<div id="f131e0df" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a></a>arr2 <span class="op">=</span> arr1<span class="op">*</span><span class="dv">3</span><span class="op">/</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">5</span></span>
-<span id="cb28-2"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Original: </span><span class="sc">{</span>arr1<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb28-3"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Modified: </span><span class="sc">{</span>arr2<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Original: [1 2 3 4]
-Modified: [ 6.5  8.   9.5 11. ]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a></a>arr2 = arr1*3/2 + 5</span>
+<span id="cb17-2"><a></a>print(f&quot;Original: {arr1}&quot;)</span>
+<span id="cb17-3"><a></a>print(f&quot;Modified: {arr2}&quot;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="sums" class="slide level2">
 <h2>Sums</h2>
 <p>Other convenent <code>numpy</code> functions allow you to accumulate values without loops.</p>
 <p>Assume we have an array <span class="math inline">\(x\)</span></p>
-<div id="b45b0ef2" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a></a>x <span class="op">=</span> np.array([<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb18-1"><a></a>x = np.array([1,2,3,4,5,6,7,8])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Sums</strong></p>
 <p><span class="math display">\[
 S = \sum_{i=1}^{n} x_i
 \]</span></p>
 <p>In NumPy, this is translated as:</p>
-<div id="c6f88b69" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a></a>S <span class="op">=</span> np.<span class="bu">sum</span>(x)</span>
-<span id="cb31-2"><a></a><span class="bu">print</span>(S)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>36</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb19-1"><a></a>S = np.sum(x)</span>
+<span id="cb19-2"><a></a>print(S)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sums-1" class="slide level2">
 <h2>Sums</h2>
@@ -1313,13 +1233,8 @@ S = \sum_{i=1}^{n} x_i
 y_i = \sum_{j=1}^{i} x_j
 \]</span></p>
 <p>In NumPy, this is translated as:</p>
-<div id="a9fbe8bb" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a></a> y <span class="op">=</span> np.cumsum(x)</span>
-<span id="cb33-2"><a></a> <span class="bu">print</span>(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[ 1  3  6 10 15 21 28 36]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb20-1"><a></a> y = np.cumsum(x)</span>
+<span id="cb20-2"><a></a> print(y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="example-molecular-masses" class="slide level2">
 <h2>Example: molecular masses</h2>
@@ -1334,15 +1249,10 @@ M = \sum_{i=1}^{n} a_i m_i
 </ul>
 <div class="fragment">
 <p>With <code>numpy</code>, you can compute this as:</p>
-<div id="02e24194" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a></a>a <span class="op">=</span> np.array([<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">4</span>])      <span class="co"># Number of atoms for each element</span></span>
-<span id="cb35-2"><a></a>m <span class="op">=</span> np.array([<span class="fl">12.01</span>, <span class="fl">1.01</span>, <span class="fl">16.00</span>])  <span class="co"># Atomic masses (e.g., C, H, O)</span></span>
-<span id="cb35-3"><a></a>M <span class="op">=</span> np.<span class="bu">sum</span>(a <span class="op">*</span> m)</span>
-<span id="cb35-4"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Molecular mass: </span><span class="sc">{</span>M<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Molecular mass: 89.03</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb21-1"><a></a>a = np.array([2, 1, 4])      # Number of atoms for each element</span>
+<span id="cb21-2"><a></a>m = np.array([12.01, 1.01, 16.00])  # Atomic masses (e.g., C, H, O)</span>
+<span id="cb21-3"><a></a>M = np.sum(a * m)</span>
+<span id="cb21-4"><a></a>print(f&quot;Molecular mass: {M}&quot;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="operations-between-arrays" class="slide level2">
@@ -1350,47 +1260,22 @@ M = \sum_{i=1}^{n} a_i m_i
 <p>You can perform arithmetic operations directly between arrays of the same shape. Operations like addition, subtraction, multiplication, and division are applied <strong>element-wise</strong>.</p>
 <p>For example:</p>
 <p><strong>Element-wise operations:</strong></p>
-<div id="89967544" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a></a>added <span class="op">=</span> arr1 <span class="op">+</span> arr2</span>
-<span id="cb37-2"><a></a>multiplied <span class="op">=</span> arr1 <span class="op">*</span> arr2</span>
-<span id="cb37-3"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Added: </span><span class="sc">{</span>added<span class="sc">}</span><span class="ss">&quot;</span>)</span>
-<span id="cb37-4"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Multiplied: </span><span class="sc">{</span>multiplied<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Added: [ 7.5 10.  12.5 15. ]
-Multiplied: [ 6.5 16.  28.5 44. ]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb22-1"><a></a>added = arr1 + arr2</span>
+<span id="cb22-2"><a></a>multiplied = arr1 * arr2</span>
+<span id="cb22-3"><a></a>print(f&quot;Added: {added}&quot;)</span>
+<span id="cb22-4"><a></a>print(f&quot;Multiplied: {multiplied}&quot;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="fragment">
 <p><strong>Note:</strong> Arrays must have compatible shapes!</p>
-<div id="cc23cb41" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a></a>arr3 <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>])</span>
-<span id="cb39-2"><a></a>arr4 <span class="op">=</span> np.array([<span class="dv">4</span>, <span class="dv">5</span>])</span>
-<span id="cb39-3"><a></a>result <span class="op">=</span> arr3 <span class="op">+</span> arr4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[21]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> arr3 = np.array([<span class="ansi-green-fg">1</span>, <span class="ansi-green-fg">2</span>, <span class="ansi-green-fg">3</span>])
-<span class="ansi-green-fg">      2</span> arr4 = np.array([<span class="ansi-green-fg">4</span>, <span class="ansi-green-fg">5</span>])
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> result = <span class="ansi-yellow-bg">arr3</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">+</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">arr4</span>
-
-<span class="ansi-red-fg">ValueError</span>: operands could not be broadcast together with shapes (3,) (2,) </pre>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb23-1"><a></a>arr3 = np.array([1, 2, 3])</span>
+<span id="cb23-2"><a></a>arr4 = np.array([4, 5])</span>
+<span id="cb23-3"><a></a>result = arr3 + arr4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="combining-arrays" class="slide level2">
 <h2>Combining arrays</h2>
 <p>With lists, the <code>+</code> operator concatenated different lists. Since for arrays the sign <code>+</code> corresponds to true mathematical addition, a dedicated concatenation function exists:</p>
-<div id="f95ba907" class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a></a>combined <span class="op">=</span> np.concatenate([arr1, arr2])</span>
-<span id="cb40-2"><a></a><span class="bu">print</span>(<span class="ss">f&quot;Unique elements: </span><span class="sc">{</span>combined<span class="sc">}</span><span class="ss">&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Unique elements: [ 1.   2.   3.   4.   6.5  8.   9.5 11. ]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb24-1"><a></a>combined = np.concatenate([arr1, arr2])</span>
+<span id="cb24-2"><a></a>print(f&quot;Unique elements: {combined}&quot;)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Many other variations of concatenation exist. Consult the <a href="https://numpy.org/doc/stable/">documentation</a>.</p>
 </section>
 <section id="key-takeaways" class="slide level2">

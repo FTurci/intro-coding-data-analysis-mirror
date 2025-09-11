@@ -1719,7 +1719,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-45"><a href="#cb53-45" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-46"><a href="#cb53-46" aria-hidden="true" tabindex="-1"></a>Below are some examples of lists and tuples. Note again that lists and tuples can contain data of any type.</span>
 <span id="cb53-47"><a href="#cb53-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-50"><a href="#cb53-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-50"><a href="#cb53-50" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-51"><a href="#cb53-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Example tuple</span></span>
 <span id="cb53-52"><a href="#cb53-52" aria-hidden="true" tabindex="-1"></a>example_tuple <span class="op">=</span> (<span class="st">'random string'</span>, <span class="dv">8</span>, <span class="va">True</span>)</span>
 <span id="cb53-53"><a href="#cb53-53" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_tuple)</span>
@@ -1731,7 +1731,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-59"><a href="#cb53-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-60"><a href="#cb53-60" aria-hidden="true" tabindex="-1"></a>This means they can also be nested. I.e. we can put a list in a list, a tuple in a tuple, a list in a tuple and a tuple in a list!</span>
 <span id="cb53-61"><a href="#cb53-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-64"><a href="#cb53-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-64"><a href="#cb53-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-65"><a href="#cb53-65" aria-hidden="true" tabindex="-1"></a>TupleAndListInTuple <span class="op">=</span> (example_tuple, example_list)</span>
 <span id="cb53-66"><a href="#cb53-66" aria-hidden="true" tabindex="-1"></a>TupleAndListInList <span class="op">=</span> [example_tuple, example_list]</span>
 <span id="cb53-67"><a href="#cb53-67" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(TupleAndListInTuple)</span>
@@ -1742,7 +1742,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-72"><a href="#cb53-72" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-73"><a href="#cb53-73" aria-hidden="true" tabindex="-1"></a>Lists and tuples can be added to using the concatenation operator, <span class="in">`+`</span>, like so:</span>
 <span id="cb53-74"><a href="#cb53-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-77"><a href="#cb53-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-77"><a href="#cb53-77" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-78"><a href="#cb53-78" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
 <span id="cb53-79"><a href="#cb53-79" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> example_list <span class="op">+</span> [<span class="dv">4</span>]</span>
 <span id="cb53-80"><a href="#cb53-80" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">+=</span>  [<span class="dv">5</span>]</span>
@@ -1760,7 +1760,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-92"><a href="#cb53-92" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-93"><a href="#cb53-93" aria-hidden="true" tabindex="-1"></a>Python uses zero indexing, which means that the first element in a list of length <span class="in">`n`</span> is indexed as <span class="in">`0`</span> and the last element is indexed as <span class="in">`n-1`</span>. For example see the below (note that the same can also be done for tuples):</span>
 <span id="cb53-94"><a href="#cb53-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-97"><a href="#cb53-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-97"><a href="#cb53-97" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-98"><a href="#cb53-98" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> [<span class="dv">2</span>,<span class="st">'str'</span>,<span class="dv">4</span>,<span class="dv">9</span>,<span class="dv">0</span>]</span>
 <span id="cb53-99"><a href="#cb53-99" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-100"><a href="#cb53-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Work out the length of the list</span></span>
@@ -1776,7 +1776,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-110"><a href="#cb53-110" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-111"><a href="#cb53-111" aria-hidden="true" tabindex="-1"></a>For a list of length <span class="in">`n`</span> any index can be used between <span class="in">`-n`</span> and <span class="in">`(n-1)`</span> (inclusive) to access elements in the list. Indices outside of this range, however, will give an "<span class="in">`index out of range`</span>" error.</span>
 <span id="cb53-112"><a href="#cb53-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-115"><a href="#cb53-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-115"><a href="#cb53-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-116"><a href="#cb53-116" aria-hidden="true" tabindex="-1"></a><span class="co"># Examples of circular wrap-around</span></span>
 <span id="cb53-117"><a href="#cb53-117" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list)</span>
 <span id="cb53-118"><a href="#cb53-118" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list[<span class="op">-</span><span class="dv">2</span>])</span>
@@ -1794,7 +1794,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-130"><a href="#cb53-130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-131"><a href="#cb53-131" aria-hidden="true" tabindex="-1"></a>You may be more familiar with indexing of the form <span class="in">`example_list[a,b]`</span> (i.e. only one set of square brackets); this syntax does exist in Python but unfortunately not for lists. In fact, this syntax is used heavily by numpy arrays (which we will cover later in the course).</span>
 <span id="cb53-132"><a href="#cb53-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-135"><a href="#cb53-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-135"><a href="#cb53-135" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-136"><a href="#cb53-136" aria-hidden="true" tabindex="-1"></a>exampleNested <span class="op">=</span> [(<span class="st">'str'</span>, <span class="dv">20</span>, <span class="st">'str2'</span>), [<span class="va">False</span>, <span class="dv">8</span>, <span class="fl">9.5</span>]]</span>
 <span id="cb53-137"><a href="#cb53-137" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exampleNested[<span class="dv">0</span>][<span class="dv">1</span>])</span>
 <span id="cb53-138"><a href="#cb53-138" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(exampleNested[<span class="dv">1</span>][<span class="dv">0</span>])</span>
@@ -1805,7 +1805,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-143"><a href="#cb53-143" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-144"><a href="#cb53-144" aria-hidden="true" tabindex="-1"></a>A range of index values can be specified to extract values from a list using a colon, <span class="in">`:`</span>. This way of accessing data is known as *slicing* and can be performed as follows:</span>
 <span id="cb53-145"><a href="#cb53-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-148"><a href="#cb53-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-148"><a href="#cb53-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-149"><a href="#cb53-149" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
 <span id="cb53-150"><a href="#cb53-150" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list[<span class="dv">0</span>:<span class="dv">3</span>])</span>
 <span id="cb53-151"><a href="#cb53-151" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1814,7 +1814,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-154"><a href="#cb53-154" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-155"><a href="#cb53-155" aria-hidden="true" tabindex="-1"></a>When indexing in python you can leave the start and end values implicit. This will give the same effect as starting from the beginning of the list and ending at the end of the list. For example:</span>
 <span id="cb53-156"><a href="#cb53-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-159"><a href="#cb53-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-159"><a href="#cb53-159" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-160"><a href="#cb53-160" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
 <span id="cb53-161"><a href="#cb53-161" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-162"><a href="#cb53-162" aria-hidden="true" tabindex="-1"></a><span class="co"># The below two lines will give the same</span></span>
@@ -1831,7 +1831,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-173"><a href="#cb53-173" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-174"><a href="#cb53-174" aria-hidden="true" tabindex="-1"></a>You can also indicate a step size when indexing by using the following syntax:</span>
 <span id="cb53-175"><a href="#cb53-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-178"><a href="#cb53-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-178"><a href="#cb53-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-179"><a href="#cb53-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Print every second element between the 0th and 5th elements</span></span>
 <span id="cb53-180"><a href="#cb53-180" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list[<span class="dv">0</span>:<span class="dv">5</span>:<span class="dv">2</span>])</span>
 <span id="cb53-181"><a href="#cb53-181" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list[::<span class="dv">2</span>])</span>
@@ -1839,7 +1839,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-183"><a href="#cb53-183" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-184"><a href="#cb53-184" aria-hidden="true" tabindex="-1"></a>And you can run backwards through the list by using negative integers as the step size. For example:</span>
 <span id="cb53-185"><a href="#cb53-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-188"><a href="#cb53-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-188"><a href="#cb53-188" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-189"><a href="#cb53-189" aria-hidden="true" tabindex="-1"></a><span class="co"># Print the list backwards</span></span>
 <span id="cb53-190"><a href="#cb53-190" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list[::<span class="op">-</span><span class="dv">1</span>])</span>
 <span id="cb53-191"><a href="#cb53-191" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -1848,7 +1848,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-194"><a href="#cb53-194" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-195"><a href="#cb53-195" aria-hidden="true" tabindex="-1"></a>Other operations are also available for lists and tuples. Most notably, the <span class="in">`*`</span> symbol can be used to replicate a list or tuple like so:</span>
 <span id="cb53-196"><a href="#cb53-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-199"><a href="#cb53-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-199"><a href="#cb53-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-200"><a href="#cb53-200" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>]</span>
 <span id="cb53-201"><a href="#cb53-201" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list<span class="op">*</span><span class="dv">2</span>)</span>
 <span id="cb53-202"><a href="#cb53-202" aria-hidden="true" tabindex="-1"></a></span>
@@ -1866,7 +1866,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-214"><a href="#cb53-214" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb53-215"><a href="#cb53-215" aria-hidden="true" tabindex="-1"></a>A few examples of these functions are given below. Try changing and editing the below code to check your understanding! Again, this is by no means a comprehensive list; more information can be found in the <span class="co">[</span><span class="ot">Python API</span><span class="co">](https://docs.python.org/3/tutorial/datastructures.html)</span> or in the <span class="co">[</span><span class="ot">W3 schools documentation</span><span class="co">](https://www.w3schools.com/python/python_lists.asp)</span>.</span>
 <span id="cb53-216"><a href="#cb53-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-219"><a href="#cb53-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-219"><a href="#cb53-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-220"><a href="#cb53-220" aria-hidden="true" tabindex="-1"></a><span class="co"># Here is an example list</span></span>
 <span id="cb53-221"><a href="#cb53-221" aria-hidden="true" tabindex="-1"></a>example_list <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>]</span>
 <span id="cb53-222"><a href="#cb53-222" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_list)</span>
@@ -1899,7 +1899,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-249"><a href="#cb53-249" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb53-250"><a href="#cb53-250" aria-hidden="true" tabindex="-1"></a>Examples of these are given below. For more information on tuples please visit the <span class="co">[</span><span class="ot">Python API</span><span class="co">](https://docs.python.org/3/tutorial/datastructures.html)</span> or the <span class="co">[</span><span class="ot">W3 schools documentation</span><span class="co">](https://www.w3schools.com/python/python_tuples.asp)</span>.</span>
 <span id="cb53-251"><a href="#cb53-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-254"><a href="#cb53-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-254"><a href="#cb53-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-255"><a href="#cb53-255" aria-hidden="true" tabindex="-1"></a>example_tuple <span class="op">=</span> (<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</span>
 <span id="cb53-256"><a href="#cb53-256" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-257"><a href="#cb53-257" aria-hidden="true" tabindex="-1"></a><span class="co"># Count how many times the value 3 occurs</span></span>
@@ -1921,7 +1921,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-273"><a href="#cb53-273" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-274"><a href="#cb53-274" aria-hidden="true" tabindex="-1"></a>Below are some examples of sets and dictionarys.</span>
 <span id="cb53-275"><a href="#cb53-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-278"><a href="#cb53-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-278"><a href="#cb53-278" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-279"><a href="#cb53-279" aria-hidden="true" tabindex="-1"></a>example_set <span class="op">=</span> {<span class="dv">1</span>,<span class="st">'str'</span>,<span class="dv">3</span>}</span>
 <span id="cb53-280"><a href="#cb53-280" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_set)</span>
 <span id="cb53-281"><a href="#cb53-281" aria-hidden="true" tabindex="-1"></a></span>
@@ -1937,7 +1937,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-291"><a href="#cb53-291" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-292"><a href="#cb53-292" aria-hidden="true" tabindex="-1"></a>Elements can be added to dictionarys as <span class="in">`key`</span>s and <span class="in">`value`</span>s. For example; in the first line below the <span class="in">`key`</span> is <span class="in">`a`</span> and the <span class="in">`value`</span> is <span class="in">`b`</span>. Note that a key does not have to be a string; integers and floats work just as well. Values can be of any data type.</span>
 <span id="cb53-293"><a href="#cb53-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-296"><a href="#cb53-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-296"><a href="#cb53-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-297"><a href="#cb53-297" aria-hidden="true" tabindex="-1"></a><span class="co"># Here we assign value 'b' to key 'a'</span></span>
 <span id="cb53-298"><a href="#cb53-298" aria-hidden="true" tabindex="-1"></a>example_dict[<span class="st">'a'</span>] <span class="op">=</span> <span class="st">'b'</span></span>
 <span id="cb53-299"><a href="#cb53-299" aria-hidden="true" tabindex="-1"></a></span>
@@ -1952,7 +1952,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-308"><a href="#cb53-308" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-309"><a href="#cb53-309" aria-hidden="true" tabindex="-1"></a>We can then retreive <span class="in">`value`</span>s from the dictionary using the <span class="in">`key`</span>s we stored them under. This can be done with either square brackets or the built-in <span class="in">`get`</span> function. For example:</span>
 <span id="cb53-310"><a href="#cb53-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-313"><a href="#cb53-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-313"><a href="#cb53-313" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-314"><a href="#cb53-314" aria-hidden="true" tabindex="-1"></a><span class="co"># Using square brackets</span></span>
 <span id="cb53-315"><a href="#cb53-315" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_dict[<span class="dv">10</span>])</span>
 <span id="cb53-316"><a href="#cb53-316" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_dict[<span class="st">'a'</span>])</span>
@@ -1966,7 +1966,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-324"><a href="#cb53-324" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-325"><a href="#cb53-325" aria-hidden="true" tabindex="-1"></a>Elements can be removed from a dictionary using the <span class="in">`pop`</span> and <span class="in">`del`</span> methods. For example:</span>
 <span id="cb53-326"><a href="#cb53-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-329"><a href="#cb53-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-329"><a href="#cb53-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-330"><a href="#cb53-330" aria-hidden="true" tabindex="-1"></a><span class="co"># Example dictionary</span></span>
 <span id="cb53-331"><a href="#cb53-331" aria-hidden="true" tabindex="-1"></a>example_dict <span class="op">=</span> {<span class="st">'A'</span>:<span class="dv">1</span>, <span class="st">'B'</span>:<span class="st">'str'</span>, <span class="st">'C'</span>:<span class="dv">2</span>}</span>
 <span id="cb53-332"><a href="#cb53-332" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_dict)</span>
@@ -1990,7 +1990,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-350"><a href="#cb53-350" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb53-351"><a href="#cb53-351" aria-hidden="true" tabindex="-1"></a>Examples of these functions are given below. For full documentation and details on more functions see the <span class="co">[</span><span class="ot">Python API</span><span class="co">](https://docs.python.org/3/tutorial/datastructures.html)</span> and <span class="co">[</span><span class="ot">W3 schools Python documentation</span><span class="co">](https://www.w3schools.com/python/python_dictionaries.asp)</span>.</span>
 <span id="cb53-352"><a href="#cb53-352" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-355"><a href="#cb53-355" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-355"><a href="#cb53-355" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-356"><a href="#cb53-356" aria-hidden="true" tabindex="-1"></a>example_dict <span class="op">=</span> {<span class="st">'A'</span>:<span class="dv">1</span>, <span class="st">'B'</span>:<span class="st">'str'</span>, <span class="st">'C'</span>:<span class="dv">2</span>}</span>
 <span id="cb53-357"><a href="#cb53-357" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_dict.keys())</span>
 <span id="cb53-358"><a href="#cb53-358" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_dict.values())</span>
@@ -2005,7 +2005,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-367"><a href="#cb53-367" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-368"><a href="#cb53-368" aria-hidden="true" tabindex="-1"></a>Multiple elements can also be added to a set at once using the <span class="in">`update`</span> method.</span>
 <span id="cb53-369"><a href="#cb53-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-372"><a href="#cb53-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-372"><a href="#cb53-372" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-373"><a href="#cb53-373" aria-hidden="true" tabindex="-1"></a>example_set <span class="op">=</span> {<span class="dv">1</span>,<span class="st">'str'</span>,<span class="dv">3</span>}</span>
 <span id="cb53-374"><a href="#cb53-374" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_set)</span>
 <span id="cb53-375"><a href="#cb53-375" aria-hidden="true" tabindex="-1"></a></span>
@@ -2025,7 +2025,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-389"><a href="#cb53-389" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-390"><a href="#cb53-390" aria-hidden="true" tabindex="-1"></a>However, there is no notion of indexing for Python <span class="in">`set`</span>s as sets are **unordered**. This means that individual elements cannot be accessed in the same manor as in dictionarys, lists and tuples. We can check if an element is in a set, however, using the <span class="in">`in`</span> keyword.</span>
 <span id="cb53-391"><a href="#cb53-391" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-394"><a href="#cb53-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-394"><a href="#cb53-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-395"><a href="#cb53-395" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span> <span class="kw">in</span> example_set)</span>
 <span id="cb53-396"><a href="#cb53-396" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">2</span> <span class="kw">in</span> example_set)</span>
 <span id="cb53-397"><a href="#cb53-397" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -2034,7 +2034,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-400"><a href="#cb53-400" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-401"><a href="#cb53-401" aria-hidden="true" tabindex="-1"></a>Elements can be removed from a set using the <span class="in">`remove`</span> function. Note: the <span class="in">`remove`</span> function will errror if the requested value is not in the set.</span>
 <span id="cb53-402"><a href="#cb53-402" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-405"><a href="#cb53-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-405"><a href="#cb53-405" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-406"><a href="#cb53-406" aria-hidden="true" tabindex="-1"></a>example_set.remove(<span class="dv">1</span>)</span>
 <span id="cb53-407"><a href="#cb53-407" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_set)</span>
 <span id="cb53-408"><a href="#cb53-408" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -2051,7 +2051,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-419"><a href="#cb53-419" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb53-420"><a href="#cb53-420" aria-hidden="true" tabindex="-1"></a>Examples of these are given below. For full documentation and details on more functions see the <span class="co">[</span><span class="ot">Python API</span><span class="co">](https://docs.python.org/3/tutorial/datastructures.html)</span> and <span class="co">[</span><span class="ot">W3 schools Python documentation</span><span class="co">](https://www.w3schools.com/python/python_sets.asp)</span>.</span>
 <span id="cb53-421"><a href="#cb53-421" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-424"><a href="#cb53-424" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-424"><a href="#cb53-424" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-425"><a href="#cb53-425" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Sets'</span>)</span>
 <span id="cb53-426"><a href="#cb53-426" aria-hidden="true" tabindex="-1"></a>set1 <span class="op">=</span> {<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>}</span>
 <span id="cb53-427"><a href="#cb53-427" aria-hidden="true" tabindex="-1"></a>set2 <span class="op">=</span> {<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>}</span>
@@ -2081,7 +2081,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-451"><a href="#cb53-451" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-452"><a href="#cb53-452" aria-hidden="true" tabindex="-1"></a>**Question 1:** The below code creates a <span class="in">`list`</span> of numbers:</span>
 <span id="cb53-453"><a href="#cb53-453" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-456"><a href="#cb53-456" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-456"><a href="#cb53-456" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-457"><a href="#cb53-457" aria-hidden="true" tabindex="-1"></a><span class="co"># List of numbers</span></span>
 <span id="cb53-458"><a href="#cb53-458" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">9</span>]</span>
 <span id="cb53-459"><a href="#cb53-459" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -2095,13 +2095,13 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-467"><a href="#cb53-467" aria-hidden="true" tabindex="-1"></a> </span>
 <span id="cb53-468"><a href="#cb53-468" aria-hidden="true" tabindex="-1"></a>Make sure to print the list after each change.</span>
 <span id="cb53-469"><a href="#cb53-469" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-472"><a href="#cb53-472" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-472"><a href="#cb53-472" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-473"><a href="#cb53-473" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
 <span id="cb53-474"><a href="#cb53-474" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-475"><a href="#cb53-475" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-476"><a href="#cb53-476" aria-hidden="true" tabindex="-1"></a>**Question 2:** The below code creates a <span class="in">`list`</span>, casts it to a <span class="in">`set`</span> and then casts it back to a <span class="in">`list`</span>.</span>
 <span id="cb53-477"><a href="#cb53-477" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-480"><a href="#cb53-480" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-480"><a href="#cb53-480" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-481"><a href="#cb53-481" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the list</span></span>
 <span id="cb53-482"><a href="#cb53-482" aria-hidden="true" tabindex="-1"></a>my_list <span class="op">=</span> [<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
 <span id="cb53-483"><a href="#cb53-483" aria-hidden="true" tabindex="-1"></a></span>
@@ -2120,7 +2120,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-496"><a href="#cb53-496" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-497"><a href="#cb53-497" aria-hidden="true" tabindex="-1"></a>**Question 3:** A string can be converted to a set using the <span class="in">`set()`</span> constructor. Use this fact to identify which letter appears in <span class="in">`string2`</span> but not in <span class="in">`string1`</span> below:</span>
 <span id="cb53-498"><a href="#cb53-498" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-501"><a href="#cb53-501" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-501"><a href="#cb53-501" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-502"><a href="#cb53-502" aria-hidden="true" tabindex="-1"></a><span class="co"># Here are two strings</span></span>
 <span id="cb53-503"><a href="#cb53-503" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"This is a long random sentence - I wonder which letters it contains and which letters it doesn't."</span></span>
 <span id="cb53-504"><a href="#cb53-504" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"This task makes a clear and coherent string with words taken inside a small set"</span></span>
@@ -2130,7 +2130,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-508"><a href="#cb53-508" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-509"><a href="#cb53-509" aria-hidden="true" tabindex="-1"></a>**Question 4:** The below code creates a tuple named <span class="in">`t`</span>.</span>
 <span id="cb53-510"><a href="#cb53-510" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-513"><a href="#cb53-513" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-513"><a href="#cb53-513" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-514"><a href="#cb53-514" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>)</span>
 <span id="cb53-515"><a href="#cb53-515" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-516"><a href="#cb53-516" aria-hidden="true" tabindex="-1"></a></span>
@@ -2142,7 +2142,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-522"><a href="#cb53-522" aria-hidden="true" tabindex="-1"></a><span class="ss"> 4. </span>find the index of <span class="in">`'d'`</span> in <span class="in">`t`</span></span>
 <span id="cb53-523"><a href="#cb53-523" aria-hidden="true" tabindex="-1"></a><span class="ss"> 5. </span>count how many times <span class="in">`'a'`</span> appears in <span class="in">`t`</span></span>
 <span id="cb53-524"><a href="#cb53-524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-527"><a href="#cb53-527" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-527"><a href="#cb53-527" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-528"><a href="#cb53-528" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
 <span id="cb53-529"><a href="#cb53-529" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb53-530"><a href="#cb53-530" aria-hidden="true" tabindex="-1"></a></span>
@@ -2159,7 +2159,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb53-541"><a href="#cb53-541" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb53-542"><a href="#cb53-542" aria-hidden="true" tabindex="-1"></a>Using the collection types introduced in this notebook (lists, tuples, sets, dictionaries - no loops or user-defined functions), choose an appropriate way to represent the clinical-trial table. Write your code in the box below.</span>
 <span id="cb53-543"><a href="#cb53-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb53-546"><a href="#cb53-546" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb53-546"><a href="#cb53-546" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb53-547"><a href="#cb53-547" aria-hidden="true" tabindex="-1"></a>my_data <span class="op">=</span> <span class="co"># Write your code here...</span></span>
 <span id="cb53-548"><a href="#cb53-548" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>

@@ -201,75 +201,47 @@
 <section id="introduction-to-matplotlib" class="slide level2">
 <h2>Introduction to matplotlib</h2>
 <p><strong>matplotlib</strong> - Powerful Python library for creating visualizations</p>
-<div id="94e8bd26" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb1-2"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>import matplotlib.pyplot as plt</span>
+<span id="cb1-2"><a></a>import numpy as np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Key concepts:</strong> - <strong>Figure</strong>: The canvas - <strong>Axes</strong>: The x-y plotting area - <strong>Object-oriented</strong> approach (recommended)</p>
-<div id="b5658a1e" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a>fig, ax <span class="op">=</span> plt.subplots()  <span class="co"># Create figure and axes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-3-output-1.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>fig, ax = plt.subplots()  # Create figure and axes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="two-plotting-approaches" class="slide level2">
 <h2>Two Plotting Approaches</h2>
 <p><strong>Pyplot (MATLAB-style):</strong></p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a>plt.plot(x, y)  <span class="co"># Direct plotting</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Object-oriented (Recommended):</strong></p>
-<div id="b7732f9c" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb4-2"><a></a>ax.plot(x, y)  <span class="co"># Plot using axes object</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[3]</span><span class="ansi-green-fg">, line 2</span>
-<span class="ansi-green-fg">      1</span> fig, ax = plt.subplots()
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">2</span> ax.plot(<span class="ansi-yellow-bg">x</span>, y)  <span style="font-style:italic;color:rgb(95,135,135)"># Plot using axes object</span>
-
-<span class="ansi-red-fg">NameError</span>: name 'x' is not defined</pre>
-</div>
-</div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-4-output-2.png" class="r-stretch"><p><strong>Why object-oriented?</strong> - More explicit control - Better for complex plots - Modern best practice</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>fig, ax = plt.subplots()</span>
+<span id="cb4-2"><a></a>ax.plot(x, y)  # Plot using axes object</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why object-oriented?</strong> - More explicit control - Better for complex plots - Modern best practice</p>
 </section>
 <section id="basic-plot-types" class="slide level2">
 <h2>Basic Plot Types</h2>
-<div id="55e78a18" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="co"># Sample data</span></span>
-<span id="cb5-2"><a></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">124</span>)</span>
-<span id="cb5-3"><a></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">20</span>, <span class="dv">2</span>)</span>
-<span id="cb5-4"><a></a>y1 <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb5-5"><a></a>y2 <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> rng.normal(size<span class="op">=</span><span class="bu">len</span>(x))<span class="op">*</span><span class="dv">50</span></span>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a># Sample data</span>
+<span id="cb5-2"><a></a>rng = np.random.default_rng(seed=124)</span>
+<span id="cb5-3"><a></a>x = np.arange(1, 20, 2)</span>
+<span id="cb5-4"><a></a>y1 = x**2</span>
+<span id="cb5-5"><a></a>y2 = x**2 + rng.normal(size=len(x))*50</span>
 <span id="cb5-6"><a></a></span>
-<span id="cb5-7"><a></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb5-8"><a></a>ax.plot(x, y1, label<span class="op">=</span><span class="st">"Line plot"</span>)        <span class="co"># Line plot</span></span>
-<span id="cb5-9"><a></a>ax.scatter(x, y2, label<span class="op">=</span><span class="st">"Scatter plot"</span>)  <span class="co"># Scatter plot</span></span>
+<span id="cb5-7"><a></a>fig, ax = plt.subplots()</span>
+<span id="cb5-8"><a></a>ax.plot(x, y1, label="Line plot")        # Line plot</span>
+<span id="cb5-9"><a></a>ax.scatter(x, y2, label="Scatter plot")  # Scatter plot</span>
 <span id="cb5-10"><a></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-5-output-1.png" class="r-stretch"></section>
+</section>
 <section id="customizing-appearance" class="slide level2">
 <h2>Customizing Appearance</h2>
-<div id="eeb06a2d" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>fig, ax = plt.subplots(figsize=(8, 4))</span>
 <span id="cb6-2"><a></a></span>
-<span id="cb6-3"><a></a><span class="co"># Styling options</span></span>
-<span id="cb6-4"><a></a>ax.plot(x, y1, color<span class="op">=</span><span class="st">"slategrey"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb6-5"><a></a>ax.scatter(x, y2, color<span class="op">=</span><span class="st">"indianred"</span>, marker<span class="op">=</span><span class="st">'+'</span>, s<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb6-3"><a></a># Styling options</span>
+<span id="cb6-4"><a></a>ax.plot(x, y1, color="slategrey", linestyle="--", linewidth=2)</span>
+<span id="cb6-5"><a></a>ax.scatter(x, y2, color="indianred", marker='+', s=60)</span>
 <span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a><span class="co"># Labels and limits</span></span>
-<span id="cb6-8"><a></a>ax.set_xlabel(<span class="st">"X values"</span>)</span>
-<span id="cb6-9"><a></a>ax.set_ylabel(<span class="st">"Y values"</span>)</span>
-<span id="cb6-10"><a></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">20</span>)</span>
-<span id="cb6-11"><a></a>ax.set_title(<span class="st">"Customized Plot"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<pre><code>Text(0.5, 1.0, 'Customized Plot')</code></pre>
-</div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-6-output-2.png" class="r-stretch"></section>
+<span id="cb6-7"><a></a># Labels and limits</span>
+<span id="cb6-8"><a></a>ax.set_xlabel("X values")</span>
+<span id="cb6-9"><a></a>ax.set_ylabel("Y values")</span>
+<span id="cb6-10"><a></a>ax.set_xlim(0, 20)</span>
+<span id="cb6-11"><a></a>ax.set_title("Customized Plot")</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="common-style-options" class="slide level2">
 <h2>Common Style Options</h2>
 <p><strong>Colors:</strong> Named colors, hex codes, RGB - <code>color="red"</code>, <code>color="#FF0000"</code>, <code>color=(1,0,0)</code></p>
@@ -279,91 +251,60 @@
 </section>
 <section id="legends-and-annotations" class="slide level2">
 <h2>Legends and Annotations</h2>
-<div id="8973b47f" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb8-2"><a></a></span>
-<span id="cb8-3"><a></a>ax.plot(x, y1, label<span class="op">=</span><span class="st">"Fitted line"</span>, color<span class="op">=</span><span class="st">"blue"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb8-4"><a></a>ax.scatter(x, y2, label<span class="op">=</span><span class="st">"Measurements"</span>, color<span class="op">=</span><span class="st">"red"</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb8-5"><a></a></span>
-<span id="cb8-6"><a></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
-<span id="cb8-7"><a></a>ax.set_ylabel(<span class="st">"y"</span>) </span>
-<span id="cb8-8"><a></a>ax.legend()  <span class="co"># Uses the label parameters</span></span>
-<span id="cb8-9"><a></a>ax.set_title(<span class="st">"Plot with Legend"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<pre><code>Text(0.5, 1.0, 'Plot with Legend')</code></pre>
-</div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-7-output-2.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>fig, ax = plt.subplots()</span>
+<span id="cb7-2"><a></a></span>
+<span id="cb7-3"><a></a>ax.plot(x, y1, label="Fitted line", color="blue", linestyle="--")</span>
+<span id="cb7-4"><a></a>ax.scatter(x, y2, label="Measurements", color="red", marker='o')</span>
+<span id="cb7-5"><a></a></span>
+<span id="cb7-6"><a></a>ax.set_xlabel("x")</span>
+<span id="cb7-7"><a></a>ax.set_ylabel("y") </span>
+<span id="cb7-8"><a></a>ax.legend()  # Uses the label parameters</span>
+<span id="cb7-9"><a></a>ax.set_title("Plot with Legend")</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="histograms" class="slide level2">
 <h2>Histograms</h2>
-<div id="1d13db84" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a></a><span class="co"># Generate random data</span></span>
-<span id="cb10-2"><a></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">68</span>)</span>
-<span id="cb10-3"><a></a>data1 <span class="op">=</span> rng.normal(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5000</span>)</span>
-<span id="cb10-4"><a></a>data2 <span class="op">=</span> rng.normal(<span class="dv">1</span>, <span class="fl">1.5</span>, <span class="dv">1000</span>)</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb10-7"><a></a>bins <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">4</span>, <span class="dv">6</span>, <span class="fl">0.3</span>)</span>
-<span id="cb10-8"><a></a></span>
-<span id="cb10-9"><a></a>ax.hist(data1, bins<span class="op">=</span>bins, alpha<span class="op">=</span><span class="fl">0.7</span>, color<span class="op">=</span><span class="st">"skyblue"</span>, </span>
-<span id="cb10-10"><a></a>        density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">"Dataset 1"</span>)</span>
-<span id="cb10-11"><a></a>ax.hist(data2, bins<span class="op">=</span>bins, alpha<span class="op">=</span><span class="fl">0.7</span>, color<span class="op">=</span><span class="st">"orange"</span>, </span>
-<span id="cb10-12"><a></a>        density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">"Dataset 2"</span>)</span>
-<span id="cb10-13"><a></a></span>
-<span id="cb10-14"><a></a>ax.set_xlabel(<span class="st">"Value"</span>)</span>
-<span id="cb10-15"><a></a>ax.set_ylabel(<span class="st">"Density"</span>)</span>
-<span id="cb10-16"><a></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-8-output-1.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a># Generate random data</span>
+<span id="cb8-2"><a></a>rng = np.random.default_rng(seed=68)</span>
+<span id="cb8-3"><a></a>data1 = rng.normal(0, 1, 5000)</span>
+<span id="cb8-4"><a></a>data2 = rng.normal(1, 1.5, 1000)</span>
+<span id="cb8-5"><a></a></span>
+<span id="cb8-6"><a></a>fig, ax = plt.subplots()</span>
+<span id="cb8-7"><a></a>bins = np.arange(-4, 6, 0.3)</span>
+<span id="cb8-8"><a></a></span>
+<span id="cb8-9"><a></a>ax.hist(data1, bins=bins, alpha=0.7, color="skyblue", </span>
+<span id="cb8-10"><a></a>        density=True, label="Dataset 1")</span>
+<span id="cb8-11"><a></a>ax.hist(data2, bins=bins, alpha=0.7, color="orange", </span>
+<span id="cb8-12"><a></a>        density=True, label="Dataset 2")</span>
+<span id="cb8-13"><a></a></span>
+<span id="cb8-14"><a></a>ax.set_xlabel("Value")</span>
+<span id="cb8-15"><a></a>ax.set_ylabel("Density")</span>
+<span id="cb8-16"><a></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="histogram-options" class="slide level2">
 <h2>Histogram Options</h2>
 <p><strong>Key parameters:</strong> - <code>bins</code>: Number or explicit bin edges - <code>alpha</code>: Transparency (0-1) - <code>density</code>: Normalize to show probability density - <code>histtype</code>: ‘bar’, ‘step’, ‘stepfilled’</p>
-<div id="3f8a7ed9" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb11-2"><a></a>ax.hist(data1, bins<span class="op">=</span><span class="dv">30</span>, alpha<span class="op">=</span><span class="fl">0.6</span>, histtype<span class="op">=</span><span class="st">'step'</span>, </span>
-<span id="cb11-3"><a></a>        color<span class="op">=</span><span class="st">'purple'</span>, linewidth<span class="op">=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="8">
-<pre><code>(array([  1.,   0.,   1.,   5.,   6.,  24.,  38.,  56., 132., 135., 204.,
-        272., 376., 442., 452., 515., 502., 494., 393., 305., 229., 160.,
-        107.,  76.,  28.,  32.,   9.,   3.,   2.,   1.]),
- array([-4.01393721, -3.75715456, -3.50037191, -3.24358926, -2.9868066 ,
-        -2.73002395, -2.4732413 , -2.21645865, -1.95967599, -1.70289334,
-        -1.44611069, -1.18932804, -0.93254538, -0.67576273, -0.41898008,
-        -0.16219743,  0.09458523,  0.35136788,  0.60815053,  0.86493318,
-         1.12171584,  1.37849849,  1.63528114,  1.89206379,  2.14884645,
-         2.4056291 ,  2.66241175,  2.9191944 ,  3.17597706,  3.43275971,
-         3.68954236]),
- [&lt;matplotlib.patches.Polygon at 0x12ffb8e90&gt;])</code></pre>
-</div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-9-output-2.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>fig, ax = plt.subplots()</span>
+<span id="cb9-2"><a></a>ax.hist(data1, bins=30, alpha=0.6, histtype='step', </span>
+<span id="cb9-3"><a></a>        color='purple', linewidth=2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="multiple-plots-on-same-axes" class="slide level2">
 <h2>Multiple Plots on Same Axes</h2>
-<div id="28ced8ba" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">5</span>))</span>
-<span id="cb13-2"><a></a></span>
-<span id="cb13-3"><a></a><span class="co"># Multiple data series</span></span>
-<span id="cb13-4"><a></a>x_vals <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, <span class="dv">100</span>)</span>
-<span id="cb13-5"><a></a>y1 <span class="op">=</span> np.sin(x_vals)</span>
-<span id="cb13-6"><a></a>y2 <span class="op">=</span> np.cos(x_vals)</span>
-<span id="cb13-7"><a></a>y3 <span class="op">=</span> np.sin(<span class="dv">2</span><span class="op">*</span>x_vals)</span>
-<span id="cb13-8"><a></a></span>
-<span id="cb13-9"><a></a>ax.plot(x_vals, y1, label<span class="op">=</span><span class="st">"sin(x)"</span>)</span>
-<span id="cb13-10"><a></a>ax.plot(x_vals, y2, label<span class="op">=</span><span class="st">"cos(x)"</span>, linestyle<span class="op">=</span><span class="st">'--'</span>)</span>
-<span id="cb13-11"><a></a>ax.scatter(x_vals[::<span class="dv">10</span>], y3[::<span class="dv">10</span>], label<span class="op">=</span><span class="st">"sin(2x)"</span>, marker<span class="op">=</span><span class="st">'o'</span>)</span>
-<span id="cb13-12"><a></a></span>
-<span id="cb13-13"><a></a>ax.legend()</span>
-<span id="cb13-14"><a></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
-<span id="cb13-15"><a></a>ax.set_ylabel(<span class="st">"y"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<pre><code>Text(0, 0.5, 'y')</code></pre>
-</div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-10-output-2.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>fig, ax = plt.subplots(figsize=(10, 5))</span>
+<span id="cb10-2"><a></a></span>
+<span id="cb10-3"><a></a># Multiple data series</span>
+<span id="cb10-4"><a></a>x_vals = np.linspace(0, 2*np.pi, 100)</span>
+<span id="cb10-5"><a></a>y1 = np.sin(x_vals)</span>
+<span id="cb10-6"><a></a>y2 = np.cos(x_vals)</span>
+<span id="cb10-7"><a></a>y3 = np.sin(2*x_vals)</span>
+<span id="cb10-8"><a></a></span>
+<span id="cb10-9"><a></a>ax.plot(x_vals, y1, label="sin(x)")</span>
+<span id="cb10-10"><a></a>ax.plot(x_vals, y2, label="cos(x)", linestyle='--')</span>
+<span id="cb10-11"><a></a>ax.scatter(x_vals[::10], y3[::10], label="sin(2x)", marker='o')</span>
+<span id="cb10-12"><a></a></span>
+<span id="cb10-13"><a></a>ax.legend()</span>
+<span id="cb10-14"><a></a>ax.set_xlabel("x")</span>
+<span id="cb10-15"><a></a>ax.set_ylabel("y")</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="anatomy-of-a-figure" class="slide level2">
 <h2>Anatomy of a Figure</h2>
 
@@ -372,34 +313,15 @@
 </section>
 <section id="figure-size-and-layout" class="slide level2">
 <h2>Figure Size and Layout</h2>
-<div id="586e8fc8" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a><span class="co"># Control figure size</span></span>
-<span id="cb15-2"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a><span class="co"># Multiple subplots (brief example)</span></span>
-<span id="cb15-5"><a></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">5</span>))</span>
-<span id="cb15-6"><a></a>ax1.plot([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">2</span>])</span>
-<span id="cb15-7"><a></a>ax2.scatter([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">2</span>, <span class="dv">1</span>, <span class="dv">3</span>])</span>
-<span id="cb15-8"><a></a>ax1.set_title(<span class="st">"Plot 1"</span>)</span>
-<span id="cb15-9"><a></a>ax2.set_title(<span class="st">"Plot 2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<pre><code>Text(0.5, 1.0, 'Plot 2')</code></pre>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-11-output-2.png"></p>
-</figure>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<figure>
-<p><img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-11-output-3.png"></p>
-</figure>
-</div>
-</div>
-</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a># Control figure size</span>
+<span id="cb11-2"><a></a>fig, ax = plt.subplots(figsize=(12, 6))</span>
+<span id="cb11-3"><a></a></span>
+<span id="cb11-4"><a></a># Multiple subplots (brief example)</span>
+<span id="cb11-5"><a></a>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))</span>
+<span id="cb11-6"><a></a>ax1.plot([1, 2, 3], [1, 4, 2])</span>
+<span id="cb11-7"><a></a>ax2.scatter([1, 2, 3], [2, 1, 3])</span>
+<span id="cb11-8"><a></a>ax1.set_title("Plot 1")</span>
+<span id="cb11-9"><a></a>ax2.set_title("Plot 2")</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="best-practices" class="slide level2">
 <h2>Best Practices</h2>
@@ -411,57 +333,14 @@
 <li><strong>Use colors wisely</strong> - consider colorblind accessibility</li>
 <li><strong>Keep it simple</strong> - don’t over-decorate</li>
 </ul>
-<div id="c7f86e0b" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a><span class="co"># Good example</span></span>
-<span id="cb17-2"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb17-3"><a></a>ax.plot(x, y1, label<span class="op">=</span><span class="st">"Data"</span>)</span>
-<span id="cb17-4"><a></a>ax.set_xlabel(<span class="st">"Time (s)"</span>)</span>
-<span id="cb17-5"><a></a>ax.set_ylabel(<span class="st">"Amplitude (V)"</span>)</span>
-<span id="cb17-6"><a></a>ax.set_title(<span class="st">"Signal vs Time"</span>)</span>
-<span id="cb17-7"><a></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-error">
-<div class="ansi-escaped-output">
-<pre><span class="ansi-red-fg">---------------------------------------------------------------------------</span>
-<span class="ansi-red-fg">ValueError</span>                                Traceback (most recent call last)
-<span class="ansi-cyan-fg">Cell</span><span class="ansi-cyan-fg"> </span><span class="ansi-green-fg">In[11]</span><span class="ansi-green-fg">, line 3</span>
-<span class="ansi-green-fg">      1</span> <span style="font-style:italic;color:rgb(95,135,135)"># Good example</span>
-<span class="ansi-green-fg">      2</span> fig, ax = plt.subplots(figsize=(<span class="ansi-green-fg">8</span>, <span class="ansi-green-fg">5</span>))
-<span class="ansi-green-fg">----&gt; </span><span class="ansi-green-fg">3</span> <span class="ansi-yellow-bg">ax</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">plot</span><span class="ansi-yellow-bg">(</span><span class="ansi-yellow-bg">x</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">y1</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">label</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-fg ansi-yellow-bg">Data</span><span class="ansi-yellow-fg ansi-yellow-bg">"</span><span class="ansi-yellow-bg">)</span>
-<span class="ansi-green-fg">      4</span> ax.set_xlabel(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Time (s)</span><span class="ansi-yellow-fg">"</span>)
-<span class="ansi-green-fg">      5</span> ax.set_ylabel(<span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">Amplitude (V)</span><span class="ansi-yellow-fg">"</span>)
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/matplotlib/axes/_axes.py:1724</span>, in <span class="ansi-cyan-fg">Axes.plot</span><span class="ansi-blue-fg">(self, scalex, scaley, data, *args, **kwargs)</span>
-<span class="ansi-green-fg">   1481</span> <span style="font-style:italic" class="ansi-yellow-fg">"""</span>
-<span class="ansi-green-fg">   1482</span> <span style="font-style:italic" class="ansi-yellow-fg">Plot y versus x as lines and/or markers.</span>
-<span class="ansi-green-fg">   1483</span> 
-<span class="ansi-green-fg">   (...)</span><span class="ansi-green-fg">   1721</span> <span style="font-style:italic" class="ansi-yellow-fg">(``'green'``) or hex strings (``'#008000'``).</span>
-<span class="ansi-green-fg">   1722</span> <span style="font-style:italic" class="ansi-yellow-fg">"""</span>
-<span class="ansi-green-fg">   1723</span> kwargs = cbook.normalize_kwargs(kwargs, mlines.Line2D)
-<span class="ansi-green-fg">-&gt; </span><span class="ansi-green-fg">1724</span> lines = [*<span style="color:rgb(0,135,0)">self</span>._get_lines(<span style="color:rgb(0,135,0)">self</span>, *args, data=data, **kwargs)]
-<span class="ansi-green-fg">   1725</span> <span style="font-weight:bold;color:rgb(0,135,0)">for</span> line <span style="font-weight:bold;color:rgb(175,0,255)">in</span> lines:
-<span class="ansi-green-fg">   1726</span>     <span style="color:rgb(0,135,0)">self</span>.add_line(line)
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/matplotlib/axes/_base.py:303</span>, in <span class="ansi-cyan-fg">_process_plot_var_args.__call__</span><span class="ansi-blue-fg">(self, axes, data, *args, **kwargs)</span>
-<span class="ansi-green-fg">    301</span>     this += args[<span class="ansi-green-fg">0</span>],
-<span class="ansi-green-fg">    302</span>     args = args[<span class="ansi-green-fg">1</span>:]
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">303</span> <span style="font-weight:bold;color:rgb(0,135,0)">yield from</span> <span style="color:rgb(0,135,0)" class="ansi-yellow-bg">self</span><span class="ansi-yellow-bg">.</span><span class="ansi-yellow-bg">_plot_args</span><span class="ansi-yellow-bg">(</span>
-<span class="ansi-green-fg">    304</span> <span class="ansi-yellow-bg">    </span><span class="ansi-yellow-bg">axes</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">this</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">kwargs</span><span class="ansi-yellow-bg">,</span><span class="ansi-yellow-bg"> </span><span class="ansi-yellow-bg">ambiguous_fmt_datakey</span><span class="ansi-yellow-bg">=</span><span class="ansi-yellow-bg">ambiguous_fmt_datakey</span><span class="ansi-yellow-bg">)</span>
-
-<span class="ansi-cyan-fg">File </span><span class="ansi-green-fg">~/.pyenv/versions/3.11.1/lib/python3.11/site-packages/matplotlib/axes/_base.py:499</span>, in <span class="ansi-cyan-fg">_process_plot_var_args._plot_args</span><span class="ansi-blue-fg">(self, axes, tup, kwargs, return_kwargs, ambiguous_fmt_datakey)</span>
-<span class="ansi-green-fg">    496</span>     axes.yaxis.update_units(y)
-<span class="ansi-green-fg">    498</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> x.shape[<span class="ansi-green-fg">0</span>] != y.shape[<span class="ansi-green-fg">0</span>]:
-<span class="ansi-green-fg">--&gt; </span><span class="ansi-green-fg">499</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">x and y must have same first dimension, but </span><span class="ansi-yellow-fg">"</span>
-<span class="ansi-green-fg">    500</span>                      <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">have shapes </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>x.shape<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg"> and </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>y.shape<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg">"</span>)
-<span class="ansi-green-fg">    501</span> <span style="font-weight:bold;color:rgb(0,135,0)">if</span> x.ndim &gt; <span class="ansi-green-fg">2</span> <span style="font-weight:bold;color:rgb(175,0,255)">or</span> y.ndim &gt; <span class="ansi-green-fg">2</span>:
-<span class="ansi-green-fg">    502</span>     <span style="font-weight:bold;color:rgb(0,135,0)">raise</span> <span style="font-weight:bold;color:rgb(215,95,95)">ValueError</span>(<span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">x and y can be no greater than 2D, but have </span><span class="ansi-yellow-fg">"</span>
-<span class="ansi-green-fg">    503</span>                      <span class="ansi-yellow-fg">f</span><span class="ansi-yellow-fg">"</span><span class="ansi-yellow-fg">shapes </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>x.shape<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg"> and </span><span style="font-weight:bold;color:rgb(175,95,135)">{</span>y.shape<span style="font-weight:bold;color:rgb(175,95,135)">}</span><span class="ansi-yellow-fg">"</span>)
-
-<span class="ansi-red-fg">ValueError</span>: x and y must have same first dimension, but have shapes (10,) and (100,)</pre>
-</div>
-</div>
-
-</div>
-<img data-src="09_intro_matplotlib_slides_files/figure-revealjs/cell-12-output-2.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a># Good example</span>
+<span id="cb12-2"><a></a>fig, ax = plt.subplots(figsize=(8, 5))</span>
+<span id="cb12-3"><a></a>ax.plot(x, y1, label="Data")</span>
+<span id="cb12-4"><a></a>ax.set_xlabel("Time (s)")</span>
+<span id="cb12-5"><a></a>ax.set_ylabel("Amplitude (V)")</span>
+<span id="cb12-6"><a></a>ax.set_title("Signal vs Time")</span>
+<span id="cb12-7"><a></a>ax.legend()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="key-takeaways" class="slide level2">
 <h2>Key Takeaways</h2>
 <ul>

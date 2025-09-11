@@ -171,6 +171,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../01/week_01_home.html">
  <span class="dropdown-text">01 - Introduction to Data Types</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../02/week_02_home.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -181,6 +185,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../01/exercises_intro.html">
  <span class="dropdown-text">01 - Intro to Data Types Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02/exercises_bool.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals Exercises</span></a>
   </li>  
     </ul>
   </li>
@@ -249,25 +257,60 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01/week_01_home.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 1: Introduction to Data Types</span></a>
+ <span class="menu-text">Introduction to Data Types</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01/week_01_intro_to_data_types_beginner.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises - Beginner: Basic Data Types</span></a>
+ <span class="menu-text">Beginner: Basic Data Types</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01/week_01_intro_to_data_types_intermediate.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises - Intermediate: Collections</span></a>
+ <span class="menu-text">Intermediate: Collections</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../01/week_01_intro_to_data_types_advanced.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Exercises - Advanced: Copying and References</span></a>
+ <span class="menu-text">Advanced: Copying and References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">02 Booleans and Conditionals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Booleans and Conditionals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: If Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Match Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Conditional Expressions and Lazy Evaluation</span></a>
   </div>
 </li>
       </ul>
@@ -304,11 +347,11 @@ window.Quarto = {
 
 <p>Solve the following <code>numpy</code> riddles using <code>numpy</code> and its documentation.</p>
 <p>If possible, work in the <strong>pair programming</strong> paradigm: work in pairs, with one person taking the role of the <strong>driver</strong> (writing the code) and one taking the role of the <strong>navigator</strong> (reading and understanding the documentation). Alternate the roles. Try to find solutions that are <strong>short</strong> (i.e.&nbsp;few line sof code) but <strong>easy to understand</strong>.</p>
-<div id="151ab5a2" class="cell" data-execution_count="1">
+<div id="151ab5a2" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><strong>Diagonal Sum</strong>: - Riddle: Write a function that takes a square 2D NumPy array as input and returns the sum of the elements along the main diagonal. - Example: <code>diagonal_sum([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -&gt; 15</code></p>
-<div id="08323e34" class="cell" data-execution_count="2">
+<div id="08323e34" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> diagonal_sum(seq):</span>
@@ -321,7 +364,7 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Unique Elements Count</strong>: - Riddle: Write a function that takes a 1D NumPy array as input and returns the count of unique elements in the array. - Example: <code>unique_count([1, 2, 3, 2, 4, 1, 5]) -&gt; 5</code></p>
-<div id="cd0dd45d" class="cell" data-execution_count="3">
+<div id="cd0dd45d" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unique_count(sequence):</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.unique(sequence).size</span>
@@ -332,7 +375,7 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Random sample ands cumulative sum</strong>: - Riddle: A fair coin is tossed 20 times, and we win 1£ for every head and lose 1£ for every tail. Assuming that we start with no money at the beginning, and that the seed of teh default random number generator is <code>seed=1234</code>, how much money do we have at every succesive step?</p>
-<div id="5ee9083e" class="cell" data-execution_count="4">
+<div id="5ee9083e" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">20</span></span>
@@ -344,7 +387,7 @@ window.Quarto = {
 </div>
 <p><strong>Rolling Window</strong>: - Riddle: Write a function that takes a 1D NumPy array and a window size as input, and returns a 2D array where each row is a sliding window of the input array of a given size. - For example, a 1d array with a rolling window of size 3: <code>rolling_window([1, 2, 3, 4, 5], 3) -&gt; [[1, 2, 3], [2, 3, 4], [3, 4, 5]]</code></p>
 <p>Hint: you can use <strong>list comprehension</strong> and convert the final list to an array.</p>
-<div id="d8fb149b" class="cell" data-execution_count="5">
+<div id="d8fb149b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rolling_window(seq,window):</span>
@@ -361,7 +404,7 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Product of elements</strong>: - Riddle: The geometric mean of a number of observations <span class="math inline">\(x_1, x_2,\dots, x_n\)</span> is defined as <span class="math inline">\(M = \sqrt{x_1\times x_2\times \dots x_n }\)</span>. Define a custom function to calculate the geometric mean. - Example: <code>geometric_mean([1, 2, 3, 4, 5]) -&gt; 10.954451150103322</code></p>
-<div id="d974668b" class="cell" data-execution_count="6">
+<div id="d974668b" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -377,7 +420,7 @@ window.Quarto = {
 <p><strong>Vectorised calculations and visualisation</strong>: - Riddle: Draw 100 thousand points uniformly distributed inside a circle of radius 1 centered at (0,0). Plot them using <code>scatplotter()</code> from <code>matplotlib</code>acoording to their radial coordinate: - use the hexadecimal colour <code>"#76d6ff"</code> for points at a distance below 0.5 from the origin$. - use the hexadecimal colour <code>"ffe701"</code> for points furtehr away.</p>
 <p>Hint1: disk point picking is not trivial: https://mathworld.wolfram.com/DiskPointPicking.html</p>
 <p>Hint2: For matplotlib’s <code>plot</code>, use the pixel style <code>','</code>, and remmber to set the axis to be in the same units (<code>"equal"</code>)</p>
-<div id="0daf0bbf" class="cell" data-execution_count="7">
+<div id="0daf0bbf" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>npoints <span class="op">=</span> <span class="dv">100_000</span></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, npoints)</span>
@@ -904,7 +947,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>If possible, work in the **pair programming** paradigm: work in pairs, with one person taking the role of the **driver** (writing the code) and one taking the role of the **navigator** (reading and understanding the documentation). Alternate the roles. Try to find solutions that are **short** (i.e. few line sof code) but **easy to understand**.</span>
 <span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a></span>
@@ -913,7 +956,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Riddle: Write a function that takes a square 2D NumPy array as input and returns the sum of the elements along the main diagonal.</span>
 <span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Example: <span class="in">`diagonal_sum([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -&gt; 15`</span></span>
 <span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> diagonal_sum(seq):</span>
@@ -928,7 +971,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Riddle: Write a function that takes a 1D NumPy array as input and returns the count of unique elements in the array.</span>
 <span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Example: <span class="in">`unique_count([1, 2, 3, 2, 4, 1, 5]) -&gt; 5`</span></span>
 <span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> unique_count(sequence):</span>
 <span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.unique(sequence).size</span>
@@ -940,7 +983,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>**Random sample ands cumulative sum**:</span>
 <span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span>Riddle: A fair coin is tossed 20 times, and we win 1£ for every head and lose 1£ for every tail. Assuming that we start with no money at the beginning, and that the seed of teh default random number generator is <span class="in">`seed=1234`</span>, how much money do we have at every succesive step?</span>
 <span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>n_trials <span class="op">=</span> <span class="dv">20</span></span>
@@ -956,7 +999,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>Hint: you can use **list comprehension** and convert the final list to an array.</span>
 <span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> rolling_window(seq,window):</span>
@@ -972,7 +1015,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Riddle: The geometric mean of a number of observations $x_1, x_2,\dots, x_n$ is defined as  $M = \sqrt{x_1\times x_2\times \dots x_n }$. Define a custom function to calculate the geometric mean.</span>
 <span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>Example: <span class="in">`geometric_mean([1, 2, 3, 4, 5]) -&gt; 10.954451150103322`</span></span>
 <span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a></span>
@@ -994,7 +1037,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb14-112"><a href="#cb14-112" aria-hidden="true" tabindex="-1"></a>Hint2: For matplotlib's <span class="in">`plot`</span>, use the pixel style <span class="in">`','`</span>, and remmber to set the axis to be in the same units (<span class="in">`"equal"`</span>)</span>
 <span id="cb14-113"><a href="#cb14-113" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-114"><a href="#cb14-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb14-117"><a href="#cb14-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb14-118"><a href="#cb14-118" aria-hidden="true" tabindex="-1"></a><span class="co">## YOUR CODE HERE</span></span>
 <span id="cb14-119"><a href="#cb14-119" aria-hidden="true" tabindex="-1"></a>npoints <span class="op">=</span> <span class="dv">100_000</span></span>
 <span id="cb14-120"><a href="#cb14-120" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.random.uniform(<span class="dv">0</span>, <span class="dv">2</span><span class="op">*</span>np.pi, npoints)</span>

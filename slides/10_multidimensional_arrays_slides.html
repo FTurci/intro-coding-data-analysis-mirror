@@ -201,326 +201,194 @@
 <section id="numpy-arrays-beyond-1d" class="slide level2">
 <h2>NumPy Arrays Beyond 1D</h2>
 <p><strong>Multi-dimensional arrays</strong> enable representation of: - <strong>2D</strong>: Grid/Matrix (rows × columns) - <strong>3D</strong>: Cuboid/Tensor (depth × rows × columns) - <strong>nD</strong>: Higher dimensions</p>
-<div id="1d549275" class="cell" data-execution_count="1">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-2"><a></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
-<span id="cb1-3"><a></a>rng <span class="op">=</span> random.default_rng(seed<span class="op">=</span><span class="dv">24</span>)</span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>import numpy as np</span>
+<span id="cb1-2"><a></a>from numpy import random</span>
+<span id="cb1-3"><a></a>rng = random.default_rng(seed=24)</span>
 <span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a><span class="co"># 2D array (3×3 matrix)</span></span>
-<span id="cb1-6"><a></a>array_2d <span class="op">=</span> rng.random((<span class="dv">3</span>, <span class="dv">3</span>))</span>
-<span id="cb1-7"><a></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>array_2d<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-8"><a></a><span class="bu">print</span>(array_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Shape: (3, 3)
-[[0.33026884 0.40517732 0.57473782]
- [0.50639977 0.56421251 0.56968731]
- [0.87411653 0.08643046 0.74247527]]</code></pre>
-</div>
-</div>
+<span id="cb1-5"><a></a># 2D array (3×3 matrix)</span>
+<span id="cb1-6"><a></a>array_2d = rng.random((3, 3))</span>
+<span id="cb1-7"><a></a>print(f"Shape: {array_2d.shape}")</span>
+<span id="cb1-8"><a></a>print(array_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="indexing-multi-dimensional-arrays" class="slide level2">
 <h2>Indexing Multi-dimensional Arrays</h2>
 <p><strong>Row-major order</strong>: <code>[row, column]</code> (like <code>[y, x]</code>)</p>
-<div id="b1476cdc" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Access single element</span></span>
-<span id="cb3-2"><a></a><span class="bu">print</span>(<span class="st">"Element at [1,2]:"</span>, array_2d[<span class="dv">1</span>, <span class="dv">2</span>])</span>
-<span id="cb3-3"><a></a></span>
-<span id="cb3-4"><a></a><span class="co"># Access entire row</span></span>
-<span id="cb3-5"><a></a><span class="bu">print</span>(<span class="st">"First row:"</span>, array_2d[<span class="dv">0</span>, :])</span>
-<span id="cb3-6"><a></a></span>
-<span id="cb3-7"><a></a><span class="co"># Access entire column  </span></span>
-<span id="cb3-8"><a></a><span class="bu">print</span>(<span class="st">"First column:"</span>, array_2d[:, <span class="dv">0</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Element at [1,2]: 0.5696873105084019
-First row: [0.33026884 0.40517732 0.57473782]
-First column: [0.33026884 0.50639977 0.87411653]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a># Access single element</span>
+<span id="cb2-2"><a></a>print("Element at [1,2]:", array_2d[1, 2])</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a># Access entire row</span>
+<span id="cb2-5"><a></a>print("First row:", array_2d[0, :])</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a># Access entire column  </span>
+<span id="cb2-8"><a></a>print("First column:", array_2d[:, 0])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Slicing works with multiple dimensions:</strong></p>
-<div id="39a8e651" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="bu">print</span>(<span class="st">"First 2 rows:</span><span class="ch">\n</span><span class="st">"</span>, array_2d[:<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>First 2 rows:
- [[0.33026884 0.40517732 0.57473782]
- [0.50639977 0.56421251 0.56968731]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>print("First 2 rows:\n", array_2d[:2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="array-properties" class="slide level2">
 <h2>Array Properties</h2>
-<div id="d4ed08a5" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="co"># Creating arrays with different shapes</span></span>
-<span id="cb7-2"><a></a>zeros_2d <span class="op">=</span> np.zeros((<span class="dv">2</span>, <span class="dv">3</span>))  <span class="co"># 2 rows, 3 columns</span></span>
-<span id="cb7-3"><a></a>random_3d <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">3</span>, size<span class="op">=</span>(<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>))  <span class="co"># 2×3×4 tensor</span></span>
-<span id="cb7-4"><a></a></span>
-<span id="cb7-5"><a></a><span class="bu">print</span>(<span class="st">"2D shape:"</span>, zeros_2d.shape)</span>
-<span id="cb7-6"><a></a><span class="bu">print</span>(<span class="st">"3D shape:"</span>, random_3d.shape)</span>
-<span id="cb7-7"><a></a><span class="bu">print</span>(<span class="st">"3D rank/dimensions:"</span>, random_3d.ndim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>2D shape: (2, 3)
-3D shape: (2, 3, 4)
-3D rank/dimensions: 3</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a># Creating arrays with different shapes</span>
+<span id="cb4-2"><a></a>zeros_2d = np.zeros((2, 3))  # 2 rows, 3 columns</span>
+<span id="cb4-3"><a></a>random_3d = rng.integers(0, 3, size=(2, 3, 4))  # 2×3×4 tensor</span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a>print("2D shape:", zeros_2d.shape)</span>
+<span id="cb4-6"><a></a>print("3D shape:", random_3d.shape)</span>
+<span id="cb4-7"><a></a>print("3D rank/dimensions:", random_3d.ndim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Terminology:</strong> - <strong>Rank/ndim</strong>: Number of dimensions - <strong>Matrix</strong>: Rank 2 array - <strong>Tensor</strong>: Rank 3+ array</p>
 </section>
 <section id="operations-along-axes" class="slide level2">
 <h2>Operations Along Axes</h2>
 <p><strong>Axis-specific operations:</strong></p>
-<div id="05e9a32b" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a>matrix <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">5</span>, size<span class="op">=</span>(<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb9-2"><a></a><span class="bu">print</span>(<span class="st">"Original matrix:</span><span class="ch">\n</span><span class="st">"</span>, matrix)</span>
-<span id="cb9-3"><a></a></span>
-<span id="cb9-4"><a></a><span class="bu">print</span>(<span class="st">"Sum along axis 0 (columns):"</span>, matrix.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>))</span>
-<span id="cb9-5"><a></a><span class="bu">print</span>(<span class="st">"Sum along axis 1 (rows):"</span>, matrix.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">1</span>))</span>
-<span id="cb9-6"><a></a><span class="bu">print</span>(<span class="st">"Mean along axis 0:"</span>, np.mean(matrix, axis<span class="op">=</span><span class="dv">0</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Original matrix:
- [[0 2 4 3]
- [4 1 4 0]
- [2 3 4 3]]
-Sum along axis 0 (columns): [ 6  6 12  6]
-Sum along axis 1 (rows): [ 9  9 12]
-Mean along axis 0: [2. 2. 4. 2.]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>matrix = rng.integers(0, 5, size=(3, 4))</span>
+<span id="cb5-2"><a></a>print("Original matrix:\n", matrix)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>print("Sum along axis 0 (columns):", matrix.sum(axis=0))</span>
+<span id="cb5-5"><a></a>print("Sum along axis 1 (rows):", matrix.sum(axis=1))</span>
+<span id="cb5-6"><a></a>print("Mean along axis 0:", np.mean(matrix, axis=0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Axis 0</strong>: Operations across rows (result has column shape)<br>
 <strong>Axis 1</strong>: Operations across columns (result has row shape)</p>
 </section>
 <section id="reshaping-and-flattening" class="slide level2">
 <h2>Reshaping and Flattening</h2>
 <p><strong>Reshape without changing data:</strong></p>
-<div id="acc989d2" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a></a>arr_1d <span class="op">=</span> np.arange(<span class="dv">12</span>)</span>
-<span id="cb11-2"><a></a>arr_2d <span class="op">=</span> arr_1d.reshape((<span class="dv">3</span>, <span class="dv">4</span>))</span>
-<span id="cb11-3"><a></a>arr_3d <span class="op">=</span> arr_1d.reshape((<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb11-4"><a></a></span>
-<span id="cb11-5"><a></a><span class="bu">print</span>(<span class="st">"1D:"</span>, arr_1d)</span>
-<span id="cb11-6"><a></a><span class="bu">print</span>(<span class="st">"2D (3×4):</span><span class="ch">\n</span><span class="st">"</span>, arr_2d)</span>
-<span id="cb11-7"><a></a><span class="bu">print</span>(<span class="st">"3D shape:"</span>, arr_3d.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>1D: [ 0  1  2  3  4  5  6  7  8  9 10 11]
-2D (3×4):
- [[ 0  1  2  3]
- [ 4  5  6  7]
- [ 8  9 10 11]]
-3D shape: (2, 2, 3)</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>arr_1d = np.arange(12)</span>
+<span id="cb6-2"><a></a>arr_2d = arr_1d.reshape((3, 4))</span>
+<span id="cb6-3"><a></a>arr_3d = arr_1d.reshape((2, 2, 3))</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a>print("1D:", arr_1d)</span>
+<span id="cb6-6"><a></a>print("2D (3×4):\n", arr_2d)</span>
+<span id="cb6-7"><a></a>print("3D shape:", arr_3d.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Using <code>-1</code> for automatic dimension:</strong></p>
-<div id="895e26df" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a></a><span class="co"># -1 means "figure out this dimension"</span></span>
-<span id="cb13-2"><a></a>auto_reshape <span class="op">=</span> arr_1d.reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">4</span>)  <span class="co"># ? rows, 4 columns</span></span>
-<span id="cb13-3"><a></a><span class="bu">print</span>(<span class="st">"Auto-reshaped:</span><span class="ch">\n</span><span class="st">"</span>, auto_reshape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Auto-reshaped:
- [[ 0  1  2  3]
- [ 4  5  6  7]
- [ 8  9 10 11]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a># -1 means "figure out this dimension"</span>
+<span id="cb7-2"><a></a>auto_reshape = arr_1d.reshape(-1, 4)  # ? rows, 4 columns</span>
+<span id="cb7-3"><a></a>print("Auto-reshaped:\n", auto_reshape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="flattening-arrays" class="slide level2">
 <h2>Flattening Arrays</h2>
 <p><strong><code>ravel()</code> - returns view (shares data):</strong></p>
-<div id="32f323a0" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a></a>matrix <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb15-2"><a></a><span class="bu">print</span>(<span class="st">"Original:</span><span class="ch">\n</span><span class="st">"</span>, matrix)</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a>view <span class="op">=</span> matrix.ravel()</span>
-<span id="cb15-5"><a></a>view[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>  <span class="co"># Changes original!</span></span>
-<span id="cb15-6"><a></a><span class="bu">print</span>(<span class="st">"After modifying view:</span><span class="ch">\n</span><span class="st">"</span>, matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Original:
- [[7 0 4]
- [4 7 4]]
-After modifying view:
- [[99  0  4]
- [ 4  7  4]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>matrix = rng.integers(0, 10, (2, 3))</span>
+<span id="cb8-2"><a></a>print("Original:\n", matrix)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>view = matrix.ravel()</span>
+<span id="cb8-5"><a></a>view[0] = 99  # Changes original!</span>
+<span id="cb8-6"><a></a>print("After modifying view:\n", matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong><code>flatten()</code> - returns copy:</strong></p>
-<div id="dc622313" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a></a>matrix <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">10</span>, (<span class="dv">2</span>, <span class="dv">3</span>))</span>
-<span id="cb17-2"><a></a>copy <span class="op">=</span> matrix.flatten()</span>
-<span id="cb17-3"><a></a>copy[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>  <span class="co"># Original unchanged</span></span>
-<span id="cb17-4"><a></a><span class="bu">print</span>(<span class="st">"Original unchanged:</span><span class="ch">\n</span><span class="st">"</span>, matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Original unchanged:
- [[6 9 5]
- [5 5 3]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>matrix = rng.integers(0, 10, (2, 3))</span>
+<span id="cb9-2"><a></a>copy = matrix.flatten()</span>
+<span id="cb9-3"><a></a>copy[0] = 99  # Original unchanged</span>
+<span id="cb9-4"><a></a>print("Original unchanged:\n", matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="broadcasting" class="slide level2">
 <h2>Broadcasting</h2>
 <p><strong>Combine arrays of different shapes automatically:</strong></p>
-<div id="ac6a685d" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a></a>matrix <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>],</span>
-<span id="cb19-2"><a></a>                   [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]])</span>
-<span id="cb19-3"><a></a>vector <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>])</span>
-<span id="cb19-4"><a></a></span>
-<span id="cb19-5"><a></a><span class="co"># Vector is broadcast to each row</span></span>
-<span id="cb19-6"><a></a>result <span class="op">=</span> matrix <span class="op">+</span> vector</span>
-<span id="cb19-7"><a></a><span class="bu">print</span>(<span class="st">"Matrix + Vector:</span><span class="ch">\n</span><span class="st">"</span>, result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Matrix + Vector:
- [[11 22 33]
- [14 25 36]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>matrix = np.array([[1, 2, 3],</span>
+<span id="cb10-2"><a></a>                   [4, 5, 6]])</span>
+<span id="cb10-3"><a></a>vector = np.array([10, 20, 30])</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a># Vector is broadcast to each row</span>
+<span id="cb10-6"><a></a>result = matrix + vector</span>
+<span id="cb10-7"><a></a>print("Matrix + Vector:\n", result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Create grids with broadcasting:</strong></p>
-<div id="8d596a10" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a></a>row_vec <span class="op">=</span> np.arange(<span class="dv">3</span>).reshape(<span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>)    <span class="co"># Shape: (1, 3)</span></span>
-<span id="cb21-2"><a></a>col_vec <span class="op">=</span> np.arange(<span class="dv">3</span>).reshape(<span class="op">-</span><span class="dv">1</span>, <span class="dv">1</span>)    <span class="co"># Shape: (3, 1)</span></span>
-<span id="cb21-3"><a></a>grid <span class="op">=</span> row_vec <span class="op">+</span> col_vec                 <span class="co"># Shape: (3, 3)</span></span>
-<span id="cb21-4"><a></a><span class="bu">print</span>(<span class="st">"Broadcast grid:</span><span class="ch">\n</span><span class="st">"</span>, grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Broadcast grid:
- [[0 1 2]
- [1 2 3]
- [2 3 4]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>row_vec = np.arange(3).reshape(1, -1)    # Shape: (1, 3)</span>
+<span id="cb11-2"><a></a>col_vec = np.arange(3).reshape(-1, 1)    # Shape: (3, 1)</span>
+<span id="cb11-3"><a></a>grid = row_vec + col_vec                 # Shape: (3, 3)</span>
+<span id="cb11-4"><a></a>print("Broadcast grid:\n", grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="linear-algebra-with-numpy" class="slide level2">
 <h2>Linear Algebra with NumPy</h2>
 <p><strong>Matrix operations for solving systems:</strong> <span class="math display">\[A\mathbf{x} = \mathbf{b}\]</span></p>
-<div id="e4fd162a" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a></a><span class="co"># System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3</span></span>
-<span id="cb23-2"><a></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">1</span>], </span>
-<span id="cb23-3"><a></a>              [<span class="dv">4</span>, <span class="op">-</span><span class="dv">1</span>, <span class="dv">0</span>], </span>
-<span id="cb23-4"><a></a>              [<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">1</span>]])</span>
-<span id="cb23-5"><a></a>b <span class="op">=</span> np.array([[<span class="dv">5</span>], [<span class="dv">1</span>], [<span class="dv">3</span>]])</span>
-<span id="cb23-6"><a></a></span>
-<span id="cb23-7"><a></a><span class="co"># Solve the system</span></span>
-<span id="cb23-8"><a></a>x <span class="op">=</span> np.linalg.solve(A, b)</span>
-<span id="cb23-9"><a></a><span class="bu">print</span>(<span class="st">"Solution:"</span>, x.flatten())</span>
-<span id="cb23-10"><a></a></span>
-<span id="cb23-11"><a></a><span class="co"># Verify: A @ x should equal b</span></span>
-<span id="cb23-12"><a></a><span class="bu">print</span>(<span class="st">"Verification:</span><span class="ch">\n</span><span class="st">"</span>, A <span class="op">@</span> x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Solution: [0.5 1.  1. ]
-Verification:
- [[5.]
- [1.]
- [3.]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a># System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3</span>
+<span id="cb12-2"><a></a>A = np.array([[2, 3, 1], </span>
+<span id="cb12-3"><a></a>              [4, -1, 0], </span>
+<span id="cb12-4"><a></a>              [0, 2, 1]])</span>
+<span id="cb12-5"><a></a>b = np.array([[5], [1], [3]])</span>
+<span id="cb12-6"><a></a></span>
+<span id="cb12-7"><a></a># Solve the system</span>
+<span id="cb12-8"><a></a>x = np.linalg.solve(A, b)</span>
+<span id="cb12-9"><a></a>print("Solution:", x.flatten())</span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a># Verify: A @ x should equal b</span>
+<span id="cb12-12"><a></a>print("Verification:\n", A @ x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="linear-algebra-operations" class="slide level2">
 <h2>Linear Algebra Operations</h2>
-<div id="54b5ff51" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a></a><span class="co"># Matrix multiplication with @</span></span>
-<span id="cb25-2"><a></a>result <span class="op">=</span> A <span class="op">@</span> x</span>
-<span id="cb25-3"><a></a></span>
-<span id="cb25-4"><a></a><span class="co"># Transpose with .T</span></span>
-<span id="cb25-5"><a></a><span class="bu">print</span>(<span class="st">"b transpose:"</span>, b.T)</span>
-<span id="cb25-6"><a></a></span>
-<span id="cb25-7"><a></a><span class="co"># Dot product</span></span>
-<span id="cb25-8"><a></a>dot_product <span class="op">=</span> np.dot(b.T, b)</span>
-<span id="cb25-9"><a></a><span class="bu">print</span>(<span class="st">"Dot product:"</span>, dot_product)</span>
-<span id="cb25-10"><a></a></span>
-<span id="cb25-11"><a></a><span class="co"># Matrix inverse</span></span>
-<span id="cb25-12"><a></a>A_inv <span class="op">=</span> np.linalg.inv(A)</span>
-<span id="cb25-13"><a></a>x_alt <span class="op">=</span> A_inv <span class="op">@</span> b  <span class="co"># Alternative solution method</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>b transpose: [[5 1 3]]
-Dot product: [[35]]</code></pre>
-</div>
-</div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a># Matrix multiplication with @</span>
+<span id="cb13-2"><a></a>result = A @ x</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a># Transpose with .T</span>
+<span id="cb13-5"><a></a>print("b transpose:", b.T)</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a># Dot product</span>
+<span id="cb13-8"><a></a>dot_product = np.dot(b.T, b)</span>
+<span id="cb13-9"><a></a>print("Dot product:", dot_product)</span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a># Matrix inverse</span>
+<span id="cb13-12"><a></a>A_inv = np.linalg.inv(A)</span>
+<span id="cb13-13"><a></a>x_alt = A_inv @ b  # Alternative solution method</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>NumPy.linalg provides:</strong> inverse, solve, eigenvalues, SVD, etc.</p>
 </section>
 <section id="arrays-as-images" class="slide level2">
 <h2>Arrays as Images</h2>
 <p><strong>Visualize 2D arrays as images:</strong></p>
-<div id="1e542d43" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb27-2"><a></a></span>
-<span id="cb27-3"><a></a><span class="co"># Simple matrix visualization</span></span>
-<span id="cb27-4"><a></a>matrix <span class="op">=</span> np.array([[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>], [<span class="dv">7</span>, <span class="dv">8</span>, <span class="dv">9</span>]])</span>
-<span id="cb27-5"><a></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">4</span>))</span>
-<span id="cb27-6"><a></a></span>
-<span id="cb27-7"><a></a>ax1.matshow(matrix)</span>
-<span id="cb27-8"><a></a>ax1.set_title(<span class="st">'matshow'</span>)</span>
-<span id="cb27-9"><a></a></span>
-<span id="cb27-10"><a></a>ax2.imshow(matrix, origin<span class="op">=</span><span class="st">'lower'</span>)</span>
-<span id="cb27-11"><a></a>ax2.set_title(<span class="st">'imshow (origin=lower)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
-<pre><code>Text(0.5, 1.0, 'imshow (origin=lower)')</code></pre>
-</div>
-
-</div>
-<img data-src="10_multidimensional_arrays_slides_files/figure-revealjs/cell-15-output-2.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>import matplotlib.pyplot as plt</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a># Simple matrix visualization</span>
+<span id="cb14-4"><a></a>matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])</span>
+<span id="cb14-5"><a></a>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))</span>
+<span id="cb14-6"><a></a></span>
+<span id="cb14-7"><a></a>ax1.matshow(matrix)</span>
+<span id="cb14-8"><a></a>ax1.set_title('matshow')</span>
+<span id="cb14-9"><a></a></span>
+<span id="cb14-10"><a></a>ax2.imshow(matrix, origin='lower')</span>
+<span id="cb14-11"><a></a>ax2.set_title('imshow (origin=lower)')</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="working-with-real-images" class="slide level2">
 <h2>Working with Real Images</h2>
-<div id="3bf3b7e9" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a></a><span class="im">from</span> skimage <span class="im">import</span> data</span>
-<span id="cb29-2"><a></a></span>
-<span id="cb29-3"><a></a><span class="co"># Grayscale image</span></span>
-<span id="cb29-4"><a></a>gray_image <span class="op">=</span> data.camera()</span>
-<span id="cb29-5"><a></a><span class="bu">print</span>(<span class="st">"Image shape:"</span>, gray_image.shape)</span>
-<span id="cb29-6"><a></a></span>
-<span id="cb29-7"><a></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">6</span>, <span class="dv">6</span>))</span>
-<span id="cb29-8"><a></a>ax.imshow(gray_image, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb29-9"><a></a>ax.set_title(<span class="st">'Grayscale Image'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Image shape: (512, 512)</code></pre>
-</div>
-<div class="cell-output cell-output-display" data-execution_count="15">
-<pre><code>Text(0.5, 1.0, 'Grayscale Image')</code></pre>
-</div>
-
-</div>
-<img data-src="10_multidimensional_arrays_slides_files/figure-revealjs/cell-16-output-3.png" class="r-stretch"><p><strong>Images are arrays:</strong> Each pixel is a number (intensity)</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a></a>from skimage import data</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a># Grayscale image</span>
+<span id="cb15-4"><a></a>gray_image = data.camera()</span>
+<span id="cb15-5"><a></a>print("Image shape:", gray_image.shape)</span>
+<span id="cb15-6"><a></a></span>
+<span id="cb15-7"><a></a>fig, ax = plt.subplots(figsize=(6, 6))</span>
+<span id="cb15-8"><a></a>ax.imshow(gray_image, cmap='gray')</span>
+<span id="cb15-9"><a></a>ax.set_title('Grayscale Image')</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Images are arrays:</strong> Each pixel is a number (intensity)</p>
 </section>
 <section id="color-images-3d-arrays" class="slide level2">
 <h2>Color Images (3D Arrays)</h2>
-<div id="d519621a" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a></a><span class="co"># Color image has 3 channels: RGB</span></span>
-<span id="cb32-2"><a></a>color_image <span class="op">=</span> data.chelsea()</span>
-<span id="cb32-3"><a></a><span class="bu">print</span>(<span class="st">"Color image shape:"</span>, color_image.shape)</span>
-<span id="cb32-4"><a></a></span>
-<span id="cb32-5"><a></a>fig, axes <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">4</span>, figsize<span class="op">=</span>(<span class="dv">15</span>, <span class="dv">4</span>))</span>
-<span id="cb32-6"><a></a></span>
-<span id="cb32-7"><a></a>axes[<span class="dv">0</span>].imshow(color_image)</span>
-<span id="cb32-8"><a></a>axes[<span class="dv">0</span>].set_title(<span class="st">'Full Color'</span>)</span>
-<span id="cb32-9"><a></a></span>
-<span id="cb32-10"><a></a><span class="co"># Individual color channels</span></span>
-<span id="cb32-11"><a></a>channels <span class="op">=</span> [<span class="st">'Reds'</span>, <span class="st">'Greens'</span>, <span class="st">'Blues'</span>]</span>
-<span id="cb32-12"><a></a>titles <span class="op">=</span> [<span class="st">'Red Channel'</span>, <span class="st">'Green Channel'</span>, <span class="st">'Blue Channel'</span>]</span>
-<span id="cb32-13"><a></a></span>
-<span id="cb32-14"><a></a><span class="cf">for</span> i, (cmap, title) <span class="kw">in</span> <span class="bu">enumerate</span>(<span class="bu">zip</span>(channels, titles)):</span>
-<span id="cb32-15"><a></a>    axes[i<span class="op">+</span><span class="dv">1</span>].imshow(color_image[:, :, i], cmap<span class="op">=</span>cmap)</span>
-<span id="cb32-16"><a></a>    axes[i<span class="op">+</span><span class="dv">1</span>].set_title(title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Color image shape: (300, 451, 3)</code></pre>
-</div>
-
-</div>
-<img data-src="10_multidimensional_arrays_slides_files/figure-revealjs/cell-17-output-2.png" class="r-stretch"></section>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a># Color image has 3 channels: RGB</span>
+<span id="cb16-2"><a></a>color_image = data.chelsea()</span>
+<span id="cb16-3"><a></a>print("Color image shape:", color_image.shape)</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a>fig, axes = plt.subplots(1, 4, figsize=(15, 4))</span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a>axes[0].imshow(color_image)</span>
+<span id="cb16-8"><a></a>axes[0].set_title('Full Color')</span>
+<span id="cb16-9"><a></a></span>
+<span id="cb16-10"><a></a># Individual color channels</span>
+<span id="cb16-11"><a></a>channels = ['Reds', 'Greens', 'Blues']</span>
+<span id="cb16-12"><a></a>titles = ['Red Channel', 'Green Channel', 'Blue Channel']</span>
+<span id="cb16-13"><a></a></span>
+<span id="cb16-14"><a></a>for i, (cmap, title) in enumerate(zip(channels, titles)):</span>
+<span id="cb16-15"><a></a>    axes[i+1].imshow(color_image[:, :, i], cmap=cmap)</span>
+<span id="cb16-16"><a></a>    axes[i+1].set_title(title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
 <section id="boolean-operations-on-images" class="slide level2">
 <h2>Boolean Operations on Images</h2>
-<div id="d793a03b" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a></a><span class="co"># Extract green channel</span></span>
-<span id="cb34-2"><a></a>green <span class="op">=</span> color_image[:, :, <span class="dv">1</span>]</span>
-<span id="cb34-3"><a></a></span>
-<span id="cb34-4"><a></a><span class="co"># Create binary mask</span></span>
-<span id="cb34-5"><a></a>threshold_mask <span class="op">=</span> green <span class="op">&gt;</span> <span class="dv">120</span></span>
-<span id="cb34-6"><a></a></span>
-<span id="cb34-7"><a></a>fig, (ax1, ax2) <span class="op">=</span> plt.subplots(<span class="dv">1</span>, <span class="dv">2</span>, figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">4</span>))</span>
-<span id="cb34-8"><a></a></span>
-<span id="cb34-9"><a></a>ax1.imshow(green, cmap<span class="op">=</span><span class="st">'Greens'</span>)</span>
-<span id="cb34-10"><a></a>ax1.set_title(<span class="st">'Green Channel'</span>)</span>
-<span id="cb34-11"><a></a></span>
-<span id="cb34-12"><a></a>ax2.imshow(threshold_mask, cmap<span class="op">=</span><span class="st">'gray'</span>)</span>
-<span id="cb34-13"><a></a>ax2.set_title(<span class="st">'Thresholded (&gt;120)'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="17">
-<pre><code>Text(0.5, 1.0, 'Thresholded (&gt;120)')</code></pre>
-</div>
-
-</div>
-<img data-src="10_multidimensional_arrays_slides_files/figure-revealjs/cell-18-output-2.png" class="r-stretch"><p><strong>Logical operations:</strong> <code>&amp;</code> (AND), <code>|</code> (OR), <code>~</code> (NOT)</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a></a># Extract green channel</span>
+<span id="cb17-2"><a></a>green = color_image[:, :, 1]</span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a># Create binary mask</span>
+<span id="cb17-5"><a></a>threshold_mask = green &gt; 120</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))</span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a>ax1.imshow(green, cmap='Greens')</span>
+<span id="cb17-10"><a></a>ax1.set_title('Green Channel')</span>
+<span id="cb17-11"><a></a></span>
+<span id="cb17-12"><a></a>ax2.imshow(threshold_mask, cmap='gray')</span>
+<span id="cb17-13"><a></a>ax2.set_title('Thresholded (&gt;120)')</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Logical operations:</strong> <code>&amp;</code> (AND), <code>|</code> (OR), <code>~</code> (NOT)</p>
 </section>
 <section id="key-takeaways" class="slide level2">
 <h2>Key Takeaways</h2>
