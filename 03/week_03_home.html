@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Booleans and Conditionals – Introduction to Coding and Data Analysis</title>
+<title>Loops – Introduction to Coding and Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -174,7 +174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02/week_02_home.html">02 Booleans and Conditionals</a></li><li class="breadcrumb-item"><a href="../02/week_02_home.html">Booleans and Conditionals</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Loops</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -253,16 +253,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
  <span class="menu-text">02 Booleans and Conditionals</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../02/week_02_home.html" class="sidebar-item-text sidebar-link active">
+  <a href="../02/week_02_home.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Booleans and Conditionals</span></a>
   </div>
 </li>
@@ -304,9 +304,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../02/week_02_home.html">02 Booleans and Conditionals</a></li><li class="breadcrumb-item"><a href="../02/week_02_home.html">Booleans and Conditionals</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Booleans and Conditionals</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Loops</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -323,53 +323,53 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Welcome to the second week of the 2025 SCIF10002 Introduction to Coding and Data Analysis for Scientists course! This week we shall be looking at Booleans and conditional statements.</p>
+<p>Welcome to the third week of the 2025 SCIF10002 Introduction to Coding and Data Analysis for Scientists course! This week we shall be looking at <code>for</code> and <code>while</code> loops!</p>
 <ul>
-<li><a href="../02/week_02_home.html"><strong>Welcome Page</strong></a>
+<li><a href="../03/week_03_home.html"><strong>Welcome Page</strong></a>
 <ul>
 <li><a href="#Today's-Material">Today’s Material</a></li>
 <li><a href="#Getting-Help">Getting Help</a></li>
 </ul></li>
-<li><a href="../02/week_02_booleans_and_conditionals_beginner.html">Beginner: If Statements</a></li>
-<li><a href="../02/week_02_booleans_and_conditionals_intermediate.html">Intermediate: Match Statements</a></li>
-<li><a href="../02/week_02_booleans_and_conditionals_advanced.html">Advanced: Conditional Expressions and Lazy Evaluation</a></li>
-<li><a href="../02/week_02_slides.html">Slides</a> (<a href="./Lecture2_Booleans_and_Conditionals.pptx">Powerpoint</a>)</li>
+<li><a href="../03/week_03_loops_beginner.html">Beginner: For and While Loops</a></li>
+<li><a href="../03/week_03_loops_intermediate.html">Intermediate: Advanced Iteration</a></li>
+<li><a href="../03/week_03_loops_advanced.html">Advanced: Comprehensions</a></li>
+<li><a href="../03/week_03_slides.html">Slides</a> (<a href="./Lecture3_Loops.pptx">Powerpoint</a>)</li>
 </ul>
 <section id="todays-material" class="level2">
 <h2 class="anchored" data-anchor-id="todays-material">Today’s Material</h2>
-<p>In today’s class, we shall focus on the <code>if</code> statement. As in week 1, this week you have a choice of working through one of three notebooks.</p>
+<p>In today’s class, we shall focus on loops. As in the previous two classes, this week you have a choice of working through one of three notebooks.</p>
 <blockquote class="blockquote">
 <p><strong>Important:</strong> For today, please <strong>choose just one of the options below</strong>. You’ll have many opportunities to revisit the other concepts later in the course, so focus on building confidence with the Beginner material before tackling more advanced work.</p>
 </blockquote>
 <section id="option-1-beginner" class="level4">
 <h4 class="anchored" data-anchor-id="option-1-beginner">Option 1: Beginner</h4>
-<p>If you have not spent much time coding in Python prior to taking this course, today you should work through the <code>If Statements</code> notebook linked below:</p>
+<p>If you have not spent much time coding in Python prior to taking this course, today you should work through the <code>for</code> and <code>while</code> loops notebook linked below:</p>
 <ul>
-<li><a href="../02/week_02_booleans_and_conditionals_beginner.html">Beginner: If Statements</a></li>
+<li><a href="../03/week_03_loops_beginner.html">Beginner: For and While Loops</a></li>
 </ul>
-<p>This notebook will talk you through the basics of the <code>if</code> statement. Please read through the text carefully and attempt all exercises!</p>
+<p>This notebook will talk you through the basics of loops in Python. Please read through the text carefully and attempt all exercises!</p>
 </section>
 <section id="option-2-intermediate" class="level4">
 <h4 class="anchored" data-anchor-id="option-2-intermediate">Option 2: Intermediate</h4>
-<p>This weeks intermediate notebook should only be taken by those who are very comfortable with the material in the <a href="../02/week_02_booleans_and_conditionals_beginner.html">beginner</a> notebook. Please ensure that you are able to complete the exercises in the <a href="../02/week_02_booleans_and_conditionals_beginner.html">beginner</a> notebook before attempting this option. The intermediate material for this week is given below:</p>
+<p>This weeks intermediate notebook should only be taken by those who are very comfortable with the material in the <a href="../03/week_03_loops_beginner.html">beginner</a> notebook. Please ensure that you are able to complete the exercises in the <a href="../03/week_03_loops_beginner.html">beginner</a> notebook before attempting this option. The intermediate material for this week is given below:</p>
 <ul>
-<li><a href="../02/week_02_booleans_and_conditionals_intermediate.html">Intermediate: Match Statements</a></li>
+<li><a href="../03/week_03_loops_intermediate.html">Intermediate: Advanced Iteration</a></li>
 </ul>
-<p>This notebook will guide you through the recently introduced <code>Match</code> statement, which can serve as a convenient alternative to an <code>if</code>-<code>elif</code> statement in many settings. Ensure you read through the text and attempt all exercises.</p>
+<p>This notebook will guide you through more advanced loop syntax such as iteration over dictionaries and the <code>zip</code> function.</p>
 </section>
 <section id="option-3-advanced" class="level4">
 <h4 class="anchored" data-anchor-id="option-3-advanced">Option 3: Advanced</h4>
 <p>If you are an experienced programmer with a strong grasp of Python, begin by reviewing the exercises in the notebooks below to ensure you are fully comfortable with the material:</p>
 <ul>
-<li><a href="../02/week_02_booleans_and_conditionals_beginner.html">Beginner: If Statements</a><br>
+<li><a href="../03/week_03_loops_beginner.html">Beginner: For and While Loops</a><br>
 </li>
-<li><a href="../02/week_02_booleans_and_conditionals_intermediate.html">Intermediate: Match Statements</a></li>
+<li><a href="../03/week_03_loops_intermediate.html">Intermediate: Advanced Iteration</a></li>
 </ul>
 <p>Once you are confident in your understanding, move on to the following notebook:</p>
 <ul>
-<li><a href="../02/week_02_booleans_and_conditionals_advanced.html">Advanced: Conditional Expressions and Lazy Evaluation</a></li>
+<li><a href="../03/week_03_loops_advanced.html">Advanced: Comprehensions</a></li>
 </ul>
-<p>This notebook will talk you through some of the more complex nuances to boolean logic in Python, including lazy evaluation and in-line conditional evaluation. Please attempt this only if you have spent a lot of time developing code in Python already.</p>
+<p>This will introduce you to list, set, dict and generator comprehensions, and explain how they can be combined with conditional expressions. Please only attempt this notebook if you have a strong background in Python programming.</p>
 </section>
 </section>
 <section id="getting-help" class="level2">
@@ -413,7 +413,7 @@ eyJjb250ZW50cyI6W119
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../02";
+window._ojs.paths.runtimeToDoc = "../../03";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
 window._ojs.selfContained = false;
@@ -875,58 +875,58 @@ window._ojs.runtime.interpretFromScriptTags();
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Booleans and Conditionals</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Loops</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Welcome to the second week of the 2025 SCIF10002 Introduction to Coding and Data Analysis for Scientists course! This week we shall be looking at Booleans and conditional statements.</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Welcome to the third week of the 2025 SCIF10002 Introduction to Coding and Data Analysis for Scientists course! This week we shall be looking at <span class="in">`for`</span> and <span class="in">`while`</span> loops!</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">**Welcome Page**</span><span class="co">](./week_02_home.qmd)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">**Welcome Page**</span><span class="co">](./week_03_home.qmd)</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">Today's Material</span><span class="co">](#Today's-Material)</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">Getting Help</span><span class="co">](#Getting-Help)</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Beginner: If Statements</span><span class="co">](./week_02_booleans_and_conditionals_beginner.qmd)</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Intermediate: Match Statements</span><span class="co">](./week_02_booleans_and_conditionals_intermediate.qmd)</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Advanced: Conditional Expressions and Lazy Evaluation</span><span class="co">](./week_02_booleans_and_conditionals_advanced.qmd)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Slides</span><span class="co">](./week_02_slides.qmd)</span> (<span class="co">[</span><span class="ot">Powerpoint</span><span class="co">](./Lecture2_Booleans_and_Conditionals.pptx)</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Beginner: For and While Loops</span><span class="co">](./week_03_loops_beginner.qmd)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Intermediate: Advanced Iteration</span><span class="co">](./week_03_loops_intermediate.qmd)</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Advanced: Comprehensions</span><span class="co">](./week_03_loops_advanced.qmd)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Slides</span><span class="co">](./week_03_slides.qmd)</span> (<span class="co">[</span><span class="ot">Powerpoint</span><span class="co">](./Lecture3_Loops.pptx)</span>)</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Today's Material</span></span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>In today's class, we shall focus on the <span class="in">`if`</span> statement. As in week 1, this week you have a choice of working through one of three notebooks.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>In today's class, we shall focus on loops. As in the previous two classes, this week you have a choice of working through one of three notebooks.</span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Important:** For today, please **choose just one of the options below**. You’ll have many opportunities to revisit the other concepts later in the course, so focus on building confidence with the Beginner material before tackling more advanced work.</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Option 1: Beginner</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>If you have not spent much time coding in Python prior to taking this course, today you should work through the <span class="in">`If Statements`</span> notebook linked below:</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>If you have not spent much time coding in Python prior to taking this course, today you should work through the <span class="in">`for`</span> and <span class="in">`while`</span> loops notebook linked below:</span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Beginner: If Statements</span><span class="co">](./week_02_booleans_and_conditionals_beginner.qmd)</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Beginner: For and While Loops</span><span class="co">](./week_03_loops_beginner.qmd)</span></span>
 <span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>This notebook will talk you through the basics of the <span class="in">`if`</span> statement. Please read through the text carefully and attempt all exercises!</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>This notebook will talk you through the basics of loops in Python. Please read through the text carefully and attempt all exercises!</span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Option 2: Intermediate</span></span>
 <span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>This weeks intermediate notebook should only be taken by those who are very comfortable with the material in the <span class="co">[</span><span class="ot">beginner</span><span class="co">](./week_02_booleans_and_conditionals_beginner.qmd)</span> notebook. Please ensure that you are able to complete the exercises in the <span class="co">[</span><span class="ot">beginner</span><span class="co">](./week_02_booleans_and_conditionals_beginner.qmd)</span> notebook before attempting this option. The intermediate material for this week is given below:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>This weeks intermediate notebook should only be taken by those who are very comfortable with the material in the <span class="co">[</span><span class="ot">beginner</span><span class="co">](./week_03_loops_beginner.qmd)</span> notebook. Please ensure that you are able to complete the exercises in the <span class="co">[</span><span class="ot">beginner</span><span class="co">](./week_03_loops_beginner.qmd)</span> notebook before attempting this option. The intermediate material for this week is given below:</span>
 <span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Intermediate: Match Statements</span><span class="co">](./week_02_booleans_and_conditionals_intermediate.qmd)</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Intermediate: Advanced Iteration</span><span class="co">](./week_03_loops_intermediate.qmd)</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>This notebook will guide you through the recently introduced <span class="in">`Match`</span> statement, which can serve as a convenient alternative to an <span class="in">`if`</span>-<span class="in">`elif`</span> statement in many settings. Ensure you read through the text and attempt all exercises.</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>This notebook will guide you through more advanced loop syntax such as iteration over dictionaries and the <span class="in">`zip`</span> function.</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Option 3: Advanced</span></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>If you are an experienced programmer with a strong grasp of Python, begin by reviewing the exercises in the notebooks below to ensure you are fully comfortable with the material:</span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Beginner: If Statements</span><span class="co">](./week_02_booleans_and_conditionals_beginner.qmd)</span>  </span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Intermediate: Match Statements</span><span class="co">](./week_02_booleans_and_conditionals_intermediate.qmd)</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Beginner: For and While Loops</span><span class="co">](./week_03_loops_beginner.qmd)</span>  </span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Intermediate: Advanced Iteration</span><span class="co">](./week_03_loops_intermediate.qmd)</span></span>
 <span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>Once you are confident in your understanding, move on to the following notebook:</span>
 <span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Advanced: Conditional Expressions and Lazy Evaluation</span><span class="co">](./week_02_booleans_and_conditionals_advanced.qmd)</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Advanced: Comprehensions</span><span class="co">](./week_03_loops_advanced.qmd)</span></span>
 <span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>This notebook will talk you through some of the more complex nuances to boolean logic in Python, including lazy evaluation and in-line conditional evaluation. Please attempt this only if you have spent a lot of time developing code in Python already.</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>This will introduce you to list, set, dict and generator comprehensions, and explain how they can be combined with conditional expressions. Please only attempt this notebook if you have a strong background in Python programming.</span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Getting Help</span></span>
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
