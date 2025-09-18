@@ -325,7 +325,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGVmIHN1bV9kaWdpdHMobik6XG4gICAgcmV0dXJuIHN1bShpbnQoYykgZm9yIGMgaW4gc3RyKG4pKVxuXG5hc3NlcnQgc3VtX2RpZ2l0cygxMDIpPT0zXG5hc3NlcnQgc3VtX2RpZ2l0cygxNDUpPT0xMCJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJkZWYgc3VtX2RpZ2l0cyhuKTpcbiAgICByZXR1cm4gc3VtKGludChjKSBmb3IgYyBpbiBzdHIobikpXG5cbmFzc2VydCBzdW1fZGlnaXRzKDEwMik9PTNcbmFzc2VydCBzdW1fZGlnaXRzKDE0NSk9PTEwIn0=
 </script>
 </div>
 <p><strong>Palyndrome checker</strong></p>
@@ -339,7 +339,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGVmIHN1bV9kaWdpdHMobik6
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiI1lPVVIgQ09ERSBIRVJFXG5kZWYgaXNfcGFsaW5kcm9tZShzKTpcbiAgICBpZiB0eXBlKHMpID09IHN0cjpcbiAgICAgICAgcmV0dXJuIHMgPT0gc1s6Oi0xXVxuICAgIGVsc2U6XG4gICAgICAgIHByaW50KFwiRXJyb3I6IElucHV0IGlzIG5vdCBhIHN0cmluZy5cIilcbiAgICAgICAgcmV0dXJuXG5cbmFzc2VydCBpc19wYWxpbmRyb21lKFwicmFjZWNhclwiKT09VHJ1ZVxuYXNzZXJ0IGlzX3BhbGluZHJvbWUoXCJoZWxsb1wiKT09RmFsc2VcblxuaXNfcGFsaW5kcm9tZSgzKSJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjWU9VUiBDT0RFIEhFUkVcbmRlZiBpc19wYWxpbmRyb21lKHMpOlxuICAgIGlmIHR5cGUocykgPT0gc3RyOlxuICAgICAgICByZXR1cm4gcyA9PSBzWzo6LTFdXG4gICAgZWxzZTpcbiAgICAgICAgcHJpbnQoXCJFcnJvcjogSW5wdXQgaXMgbm90IGEgc3RyaW5nLlwiKVxuICAgICAgICByZXR1cm5cblxuYXNzZXJ0IGlzX3BhbGluZHJvbWUoXCJyYWNlY2FyXCIpPT1UcnVlXG5hc3NlcnQgaXNfcGFsaW5kcm9tZShcImhlbGxvXCIpPT1GYWxzZVxuXG5pc19wYWxpbmRyb21lKDMpIn0=
 </script>
 </div>
 
@@ -849,36 +849,38 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>Hint: remember that you can convert an integer to a string with <span class="in">`str(n)`</span> and a character <span class="in">`c`</span> to integer with <span class="in">`int(c)`</span>.</span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_digits(n):</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(<span class="bu">int</span>(c) <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">str</span>(n))</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> sum_digits(<span class="dv">102</span>)<span class="op">==</span><span class="dv">3</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> sum_digits(<span class="dv">145</span>)<span class="op">==</span><span class="dv">10</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>**Palyndrome checker**</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Riddle: A word is a palyndrome if it reads the same forwards and backwards. Write a function <span class="in">`is_palindrome(s)`</span> that takes an object <span class="in">`s`</span>, checks that it is a string and returns <span class="in">`True`</span> if <span class="in">`s`</span> is a palindrome and <span class="in">`False`</span> otherwise. </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Test it with the following test cases: <span class="in">`is_palindrome("racecar")--&gt;True`</span> , <span class="in">`is_palindrome("hello")--&gt;False`</span> and  <span class="in">`is_palindrome(3)--&gt;error`</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> sum_digits(n):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="bu">sum</span>(<span class="bu">int</span>(c) <span class="cf">for</span> c <span class="kw">in</span> <span class="bu">str</span>(n))</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> sum_digits(<span class="dv">102</span>)<span class="op">==</span><span class="dv">3</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> sum_digits(<span class="dv">145</span>)<span class="op">==</span><span class="dv">10</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>**Palyndrome checker**</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Riddle: A word is a palyndrome if it reads the same forwards and backwards. Write a function <span class="in">`is_palindrome(s)`</span> that takes an object <span class="in">`s`</span>, checks that it is a string and returns <span class="in">`True`</span> if <span class="in">`s`</span> is a palindrome and <span class="in">`False`</span> otherwise. </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Test it with the following test cases: <span class="in">`is_palindrome("racecar")--&gt;True`</span> , <span class="in">`is_palindrome("hello")--&gt;False`</span> and  <span class="in">`is_palindrome(3)--&gt;error`</span></span>
 <span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>Hint: an object is a string if <span class="in">`typ(s)`</span> returns <span class="in">`str`</span>.</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="co">#YOUR CODE HERE</span></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_palindrome(s):</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(s) <span class="op">==</span> <span class="bu">str</span>:</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> s <span class="op">==</span> s[::<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Error: Input is not a string."</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> is_palindrome(<span class="st">"racecar"</span>)<span class="op">==</span><span class="va">True</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> is_palindrome(<span class="st">"hello"</span>)<span class="op">==</span><span class="va">False</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>is_palindrome(<span class="dv">3</span>)</span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>Hint: an object is a string if <span class="in">`typ(s)`</span> returns <span class="in">`str`</span>.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">#YOUR CODE HERE</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> is_palindrome(s):</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">type</span>(s) <span class="op">==</span> <span class="bu">str</span>:</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> s <span class="op">==</span> s[::<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Error: Input is not a string."</span>)</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> is_palindrome(<span class="st">"racecar"</span>)<span class="op">==</span><span class="va">True</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="cf">assert</span> is_palindrome(<span class="st">"hello"</span>)<span class="op">==</span><span class="va">False</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>is_palindrome(<span class="dv">3</span>)</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
