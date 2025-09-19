@@ -333,11 +333,11 @@ window.Quarto = {
   <li><a href="#slicing-tuples-and-lists" id="toc-slicing-tuples-and-lists" class="nav-link" data-scroll-target="#slicing-tuples-and-lists">Slicing Tuples and Lists</a></li>
   <li><a href="#operations-on-lists-and-tuples" id="toc-operations-on-lists-and-tuples" class="nav-link" data-scroll-target="#operations-on-lists-and-tuples">Operations on Lists and Tuples</a></li>
   </ul></li>
-  <li><a href="#sets-and-dictionarys" id="toc-sets-and-dictionarys" class="nav-link" data-scroll-target="#sets-and-dictionarys">Sets and Dictionarys</a>
+  <li><a href="#sets-and-dictionaries" id="toc-sets-and-dictionaries" class="nav-link" data-scroll-target="#sets-and-dictionaries">Sets and Dictionaries</a>
   <ul class="collapse">
-  <li><a href="#adding-elements-to-and-retreiving-elements-from-dictionarys" id="toc-adding-elements-to-and-retreiving-elements-from-dictionarys" class="nav-link" data-scroll-target="#adding-elements-to-and-retreiving-elements-from-dictionarys">Adding elements to and retreiving elements from Dictionarys</a></li>
+  <li><a href="#adding-elements-to-and-retreiving-elements-from-dictionaries" id="toc-adding-elements-to-and-retreiving-elements-from-dictionaries" class="nav-link" data-scroll-target="#adding-elements-to-and-retreiving-elements-from-dictionaries">Adding elements to and retreiving elements from Dictionaries</a></li>
   <li><a href="#removing-elements-from-a-dictionary" id="toc-removing-elements-from-a-dictionary" class="nav-link" data-scroll-target="#removing-elements-from-a-dictionary">Removing elements from a dictionary</a></li>
-  <li><a href="#operations-on-dictionarys" id="toc-operations-on-dictionarys" class="nav-link" data-scroll-target="#operations-on-dictionarys">Operations on Dictionarys</a></li>
+  <li><a href="#operations-on-dictionaries" id="toc-operations-on-dictionaries" class="nav-link" data-scroll-target="#operations-on-dictionaries">Operations on Dictionaries</a></li>
   <li><a href="#adding-elements-to-a-set" id="toc-adding-elements-to-a-set" class="nav-link" data-scroll-target="#adding-elements-to-a-set">Adding elements to a set</a></li>
   <li><a href="#removing-elements-from-a-set" id="toc-removing-elements-from-a-set" class="nav-link" data-scroll-target="#removing-elements-from-a-set">Removing elements from a set</a></li>
   <li><a href="#operations-on-sets" id="toc-operations-on-sets" class="nav-link" data-scroll-target="#operations-on-sets">Operations on Sets</a></li>
@@ -383,7 +383,7 @@ window.Quarto = {
 <li><p><a href="../01/week_01_intro_to_data_types_intermediate.html"><strong>Intermediate: Collections</strong></a></p>
 <ul>
 <li><a href="#Tuples-and-lists">Tuples and lists</a></li>
-<li><a href="#Sets-and-Dictionarys">Sets and Dictionarys</a></li>
+<li><a href="#Sets-and-Dictionaries">Sets and Dictionaries</a></li>
 <li><a href="#Exercises">Exercises</a></li>
 </ul></li>
 <li><p><a href="../01/week_01_intro_to_data_types_advanced.html">Advanced: Copying and References</a></p></li>
@@ -548,15 +548,15 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 </div>
 </section>
 </section>
-<section id="sets-and-dictionarys" class="level2">
-<h2 class="anchored" data-anchor-id="sets-and-dictionarys">Sets and Dictionarys</h2>
-<p>In this section, we are going to look in more detail at Sets and Dictionarys.</p>
+<section id="sets-and-dictionaries" class="level2">
+<h2 class="anchored" data-anchor-id="sets-and-dictionaries">Sets and Dictionaries</h2>
+<p>In this section, we are going to look in more detail at Sets and Dictionaries.</p>
 <ul>
 <li>A set is a collection which is <strong>unordered</strong>, <strong>changeable</strong> and <strong>unindexed</strong>. In Python sets are written with <strong>curly</strong> brackets.</li>
-<li>A dictionary is a collection which is <strong>unordered</strong>, <strong>changeable</strong> and <strong>indexed</strong>. In Python dictionarys are also written with <strong>curly</strong> brackets but also with keys and values.</li>
+<li>A dictionary is a collection which is <strong>unordered</strong>, <strong>changeable</strong> and <strong>indexed</strong>. In Python dictionaries are also written with <strong>curly</strong> brackets but also with keys and values.</li>
 </ul>
-<p>Like tuples and lists, both sets and dictionarys are built-in python types and can hold elements of arbitrary data types. However, unlike tuples and lists they do not behave like vectors as they are unordered. In other programming languages, such as Java, you may have heard of dictionarys referred to as <code>hashmaps</code>.</p>
-<p>Below are some examples of sets and dictionarys.</p>
+<p>Like tuples and lists, both sets and dictionaries are built-in python types and can hold elements of arbitrary data types. However, unlike tuples and lists they do not behave like vectors as they are unordered. In other programming languages, such as Java, you may have heard of dictionaries referred to as <code>hashmaps</code>.</p>
+<p>Below are some examples of sets and dictionaries.</p>
 <div>
 <div id="pyodide-14" class="exercise-cell">
 
@@ -565,9 +565,9 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJleGFtcGxlX3NldCA9IHsxLCdzdHInLDN9XG5wcmludChleGFtcGxlX3NldClcblxuZXhhbXBsZV9kaWN0ID0geydBJzoxLCAnQic6J3N0cid9XG5wcmludChleGFtcGxlX2RpY3QpXG5cbiMgV2UgY2FuIGFsc28gY3JlYXRlIGRpY3Rpb25hcmllcyB1c2luZyB0aGUgZGljdCBmdW5jdGlvbiBpZiB1c2luZyBzdHJpbmdzIGZvciBrZXlzXG5leGFtcGxlX2RpY3QgPSBkaWN0KEE9MSwgQj0nc3RyJylcbnByaW50KGV4YW1wbGVfZGljdCkifQ==
 </script>
 </div>
-<section id="adding-elements-to-and-retreiving-elements-from-dictionarys" class="level3">
-<h3 class="anchored" data-anchor-id="adding-elements-to-and-retreiving-elements-from-dictionarys">Adding elements to and retreiving elements from Dictionarys</h3>
-<p>Elements can be added to dictionarys as <code>key</code>s and <code>value</code>s. For example; in the first line below the <code>key</code> is <code>a</code> and the <code>value</code> is <code>b</code>. Note that a key does not have to be a string; integers and floats work just as well. Values can be of any data type.</p>
+<section id="adding-elements-to-and-retreiving-elements-from-dictionaries" class="level3">
+<h3 class="anchored" data-anchor-id="adding-elements-to-and-retreiving-elements-from-dictionaries">Adding elements to and retreiving elements from Dictionaries</h3>
+<p>Elements can be added to dictionaries as <code>key</code>s and <code>value</code>s. For example; in the first line below the <code>key</code> is <code>a</code> and the <code>value</code> is <code>b</code>. Note that a key does not have to be a string; integers and floats work just as well. Values can be of any data type.</p>
 <div>
 <div id="pyodide-15" class="exercise-cell">
 
@@ -598,9 +598,9 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 </script>
 </div>
 </section>
-<section id="operations-on-dictionarys" class="level3">
-<h3 class="anchored" data-anchor-id="operations-on-dictionarys">Operations on Dictionarys</h3>
-<p>Other operations are also available for dictionarys. Some of the most useful of these are;</p>
+<section id="operations-on-dictionaries" class="level3">
+<h3 class="anchored" data-anchor-id="operations-on-dictionaries">Operations on Dictionaries</h3>
+<p>Other operations are also available for dictionaries. Some of the most useful of these are;</p>
 <ul>
 <li><code>keys</code>: This function returns a list containing the dictionary’s keys.</li>
 <li><code>values</code>: This function returns a list of all the values in the dictionary.</li>
@@ -629,7 +629,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJleGFtcGxlX3NldCA9IHsxLCdzdHInLDN9XG5wcmludChleGFtcGxlX3NldClcblxuIyBBZGQgYW4gZWxlbWVudFxuZXhhbXBsZV9zZXQuYWRkKDgpXG5wcmludChleGFtcGxlX3NldClcblxuIyBBZGQgYW5vdGhlciBlbGVtZW50OyBub3RlIHRoaXMgZWxlbWVudCBpcyBhbHJlYWR5IGluIHRoZSBzZXQgYW5kIHRoZXJlZm9yZSB0aGVcbiMgc2V0IGlzIGxlZnQgdW5jaGFuZ2VkXG5leGFtcGxlX3NldC5hZGQoMSlcbnByaW50KGV4YW1wbGVfc2V0KVxuXG4jIEFkZCB0d28gZWxlbWVudHMgdG8gdGhlIHNldFxuZXhhbXBsZV9zZXQudXBkYXRlKFsxMCwnYmxhaCddKVxucHJpbnQoZXhhbXBsZV9zZXQpIn0=
 </script>
 </div>
-<p>However, there is no notion of indexing for Python <code>set</code>s as sets are <strong>unordered</strong>. This means that individual elements cannot be accessed in the same manor as in dictionarys, lists and tuples. We can check if an element is in a set, however, using the <code>in</code> keyword.</p>
+<p>However, there is no notion of indexing for Python <code>set</code>s as sets are <strong>unordered</strong>. This means that individual elements cannot be accessed in the same manor as in dictionaries, lists and tuples. We can check if an element is in a set, however, using the <code>in</code> keyword.</p>
 <div>
 <div id="pyodide-20" class="exercise-cell">
 
@@ -1300,7 +1300,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">**Intermediate: Collections**</span><span class="co">](./week_01_intro_to_data_types_intermediate.qmd)</span></span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">Tuples and lists</span><span class="co">](#Tuples-and-lists)</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">Sets and Dictionarys</span><span class="co">](#Sets-and-Dictionarys)</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">Sets and Dictionaries</span><span class="co">](#Sets-and-Dictionaries)</span></span>
 <span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">Exercises</span><span class="co">](#Exercises)</span></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Advanced: Copying and References</span><span class="co">](./week_01_intro_to_data_types_advanced.qmd)</span></span>
 <span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Slides</span><span class="co">](./week_01_slides.qmd)</span> (<span class="co">[</span><span class="ot">Powerpoint</span><span class="co">](./Lecture1_Introduction_And_Data_Types.pptx)</span>)</span>
@@ -1524,16 +1524,16 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_tuple.index(<span class="dv">2</span>))</span>
 <span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sets and Dictionarys</span></span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sets and Dictionaries</span></span>
 <span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a>In this section, we are going to look in more detail at Sets and Dictionarys.</span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a>In this section, we are going to look in more detail at Sets and Dictionaries.</span>
 <span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>A set is a collection which is **unordered**, **changeable** and **unindexed**. In Python sets are written with **curly** brackets.</span>
-<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>A dictionary is a collection which is **unordered**, **changeable** and **indexed**. In Python dictionarys are also written with **curly** brackets but also with keys and values.</span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>A dictionary is a collection which is **unordered**, **changeable** and **indexed**. In Python dictionaries are also written with **curly** brackets but also with keys and values.</span>
 <span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>Like tuples and lists, both sets and dictionarys are built-in python types and can hold elements of arbitrary data types. However, unlike tuples and lists they do not behave like vectors as they are unordered. In other programming languages, such as Java, you may have heard of dictionarys referred to as <span class="in">`hashmaps`</span>.</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>Like tuples and lists, both sets and dictionaries are built-in python types and can hold elements of arbitrary data types. However, unlike tuples and lists they do not behave like vectors as they are unordered. In other programming languages, such as Java, you may have heard of dictionaries referred to as <span class="in">`hashmaps`</span>.</span>
 <span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a>Below are some examples of sets and dictionarys.</span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a>Below are some examples of sets and dictionaries.</span>
 <span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
@@ -1548,9 +1548,9 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_dict)</span>
 <span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### Adding elements to and retreiving elements from Dictionarys</span></span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a><span class="fu">### Adding elements to and retreiving elements from Dictionaries</span></span>
 <span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>Elements can be added to dictionarys as <span class="in">`key`</span>s and <span class="in">`value`</span>s. For example; in the first line below the <span class="in">`key`</span> is <span class="in">`a`</span> and the <span class="in">`value`</span> is <span class="in">`b`</span>. Note that a key does not have to be a string; integers and floats work just as well. Values can be of any data type.</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>Elements can be added to dictionaries as <span class="in">`key`</span>s and <span class="in">`value`</span>s. For example; in the first line below the <span class="in">`key`</span> is <span class="in">`a`</span> and the <span class="in">`value`</span> is <span class="in">`b`</span>. Note that a key does not have to be a string; integers and floats work just as well. Values can be of any data type.</span>
 <span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
@@ -1598,9 +1598,9 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_dict)</span>
 <span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a><span class="fu">### Operations on Dictionarys</span></span>
+<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a><span class="fu">### Operations on Dictionaries</span></span>
 <span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a>Other operations are also available for dictionarys. Some of the most useful of these are;</span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a>Other operations are also available for dictionaries. Some of the most useful of these are;</span>
 <span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`keys`</span>: This function returns a list containing the dictionary's keys.</span>
 <span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`values`</span>: This function returns a list of all the values in the dictionary.</span>
@@ -1643,7 +1643,7 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(example_set)</span>
 <span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>However, there is no notion of indexing for Python <span class="in">`set`</span>s as sets are **unordered**. This means that individual elements cannot be accessed in the same manor as in dictionarys, lists and tuples. We can check if an element is in a set, however, using the <span class="in">`in`</span> keyword.</span>
+<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>However, there is no notion of indexing for Python <span class="in">`set`</span>s as sets are **unordered**. This means that individual elements cannot be accessed in the same manor as in dictionaries, lists and tuples. We can check if an element is in a set, however, using the <span class="in">`in`</span> keyword.</span>
 <span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
 <span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
