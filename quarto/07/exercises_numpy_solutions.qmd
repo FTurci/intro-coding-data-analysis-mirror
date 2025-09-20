@@ -11,7 +11,8 @@ These exercises test your understanding of the NumPy concepts covered in the int
 
 **Task:** Import NumPy with the standard `import` command and create a NumPy array from the list `[2, 4, 6, 8, 10, 12]`. Print the array, its data type, and its shape.
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 arr = np.array([2, 4, 6, 8, 10, 12])
@@ -29,7 +30,8 @@ print("Shape:", arr.shape)
 - Print elements from index 2 to 4 (inclusive of 2, exclusive of 5)
 - Print every second element
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("First element:", arr[0])
 print("Last element:", arr[-1])
 print("Elements from index 2 to 4:", arr[2:5])
@@ -45,7 +47,8 @@ print("Every second element:", arr[::2])
 - Calculate the square root of each element
 - Apply the sine function to each element
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr = np.array([1, 4, 9, 16, 25])
 print("Original array:", arr)
 print("Multiply by 3:", arr * 3)
@@ -68,7 +71,8 @@ Perform element-wise operations and print the results:
 - Multiply the two arrays
 - Divide arr2 by arr1
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr1 = np.array([1, 2, 3, 4, 5])
 arr2 = np.array([10, 20, 30, 40, 50])
 
@@ -89,7 +93,8 @@ print("Division (arr2 / arr1):", arr2 / arr1)
 
 Try to add these arrays together. What happens? Write the code and explain the error in a comment.
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr_a = np.array([1, 2, 3, 4])
 arr_b = np.array([10, 20])
 
@@ -117,7 +122,8 @@ except ValueError as e:
 - The minimum value
 - The standard deviation
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 data = np.array([12, 8, 15, 3, 7, 20, 11, 9])
 
 print("Data:", data)
@@ -136,7 +142,8 @@ print("Standard deviation:", np.std(data))
 - Calculate the cumulative sum and print the result
 - Create a new array with duplicates: `with_duplicates = np.array([5, 2, 8, 1, 9, 3, 5, 2, 1])` and find the unique elements
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 numbers = np.array([5, 2, 8, 1, 9, 3])
 print("Original numbers:", numbers)
 print("Sorted array:", np.sort(numbers))
@@ -157,7 +164,8 @@ print("Unique elements:", np.unique(with_duplicates))
 4. Try to multiply the entire list by 2 using `num_list * 2`. What happens?
 5. Create a NumPy array from the same numbers and multiply by 2. Compare the results.
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Mixed data types
 mixed_list = [1, 'hello', 3.14, True]
 print("Mixed list:", mixed_list)
@@ -189,7 +197,8 @@ print("# NumPy multiplication is element-wise")
 4. Time how long it takes to square each number using NumPy operations
 5. Calculate and print how many times faster the NumPy operation is
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import time
 
 num_range = 50000
@@ -225,7 +234,8 @@ else:
 3. Verify that sin²(x) + cos²(x) = 1 for each angle (use `np.sin()` and `np.cos()`)
 4. Print all results
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 angles_deg = np.array([0, 30, 45, 60, 90, 120, 180])
 print("Angles in degrees:", angles_deg)
 
@@ -245,7 +255,8 @@ print("sin²(x) + cos²(x):", verification)
 print("All close to 1?", np.allclose(verification, 1))
 ```
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Additional verification - showing the identity holds for each angle
 for i, angle in enumerate(angles_deg):
     identity_value = sin_values[i]**2 + cos_values[i]**2
@@ -260,7 +271,8 @@ for i, angle in enumerate(angles_deg):
 2. Convert all temperatures to Kelvin using the formula: K = C + 273.15
 3. Calculate the temperature range (max - min) for each scale
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 celsius_temps = np.array([0, 10, 20, 25, 30, 35, 40])
 print("Celsius temperatures:", celsius_temps)
 
@@ -302,7 +314,8 @@ print(f"Kelvin: {kelvin_range}K")
     2. Calculate the total kinetic energy of the system (sum of all objects)
 
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 masses = np.array([2.0, 1.5, 3.0, 0.5])       # kg
@@ -333,7 +346,8 @@ Perform the following tasks:
 1. Find the top 3 hottest days and their temperatures.
 2. Calculate the day-to-day percentage change in temperature.
 
-```{python}
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 temperatures = np.array([23.5, 24.0, 21.2, 25.6, 22.8, 23.9, 26.1, 27.3, 21.7, 22.5,
