@@ -1,0 +1,437 @@
+---
+title: 'Intermediate: Advanced Iteration'
+jupyter: python3
+---
+
+
+
+Welcome to the *Week 3 Intermediate Python Notebook*. This notebook is designed for students who already have some experience with Python and are ready to build on the basics.  
+
+Your task today is to read through the material carefully and complete the exercises provided at the end. These exercises are an important part of the learning process and will help you check your understanding.  
+
+> **Important:** Before starting this notebook, make sure you are confident with everything in the [`Beginner`](./week_03_loops_beginner.qmd) notebook. This notebook builds directly on the concepts of `iterators`, `iterables`, `for` loops and `while` loops introduced in the [`Beginner`](./week_03_loops_beginner.qmd) notebook so you should attempt at least $4$ of the [`Beginner exercises`](./week_03_loops_beginner.qmd#Exercises) before moving onto this. 
+
+This notebook builds on basic `for` and `while` loops by exploring advanced iteration techniques in Python. It covers sequence unpacking in `for` loops, the `continue`, `break` and `pass` statements and the lesser-known `else` clause for `for` loops.
+
+Be sure to work through the examples and attempt all the exercises. They are designed to reinforce your learning and build your confidence.  
+
+### Table of Contents
+
+ - [Welcome Page](./week_03_home.qmd)
+
+ - [Beginner: For and While Loops](./week_03_loops_beginner.qmd)
+ - [**Intermediate: Advanced Iteration**](./week_03_loops_intermediate.qmd)
+     - [`dict`s as Iterables](#dicts-as-Iterables)
+     - [`enumerate` and `zip`](#enumerate-and-zip)
+     - [`continue`, `break` and `pass` Statements](#continue,-break-and-pass-Statements)
+     - [`for` and `else`](#for-and-else) 
+     - [Exercises](#Exercises)
+ - [Advanced: Comprehensions](./week_03_loops_advanced.qmd)
+ - [Slides](./week_03_slides.qmd) ([Powerpoint](./Lecture3_Loops.pptx))
+
+## `dict`s as iterables.
+
+The [`Beginner`](./week_03_loops_beginner.qmd) notebook for this weeks class introduces the notions of `iterator`s and `iterable`s, and shows how you can iterate over `list`s and `string`s. In this notebook, we will start by looking at a slightly more complex example; dictionaries.
+
+Dictionaries (`dict`s) are also iterable in Python, but what exactly does that mean? When you iterate over a dictionary directly, you get its *keys*:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Dictionary containing student's grades
+student_grades = {
+    "Alice": 85,
+    "Bob": 92,
+    "Charlie": 78,
+    "Diana": 96
+}
+
+for name in student_grades:
+    print(name)
+```
+
+ > **Note:** If you are unfamiliar with the `dict` datatype, take a look at the intermediate `collections` notebook for week 1 of this course.
+
+By default, iterating over a `dict` gives you its keys. However, you can also access values or key-value pairs using methods like `.keys()`, `.values()`, and `.items()`. Let's have a look at these, using the above dictionary:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Iterate over keys explicitly
+for name in student_grades.keys():
+    print(name)
+
+print('--------------------------------------')
+
+# Iterate over values
+for grade in student_grades.values():
+    print(grade)
+
+print('--------------------------------------')
+
+# Iterate over key-value pairs
+for name, grade in student_grades.items():
+    print(name, grade)
+```
+
+Let's take a closer look at this last example. In this case, the iterable `student_grades.items()` seems to be giving us two values, `name` and `grade`, rather than one. What is happening here? 
+
+Let's make `student_grades.items()` into an iterator using the `iter` keyword and print off it's items one-by-one using the `next` keyword (further detail on `iter` and `next` can be found in the beginner notebook).
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Create an iterator from student_grades.items()
+my_iterator = iter(student_grades.items())
+
+# Print the elements of the iterator one by one
+print(next(my_iterator))
+print(next(my_iterator))
+print(next(my_iterator))
+print(next(my_iterator))
+```
+
+We can now see what is happening, the `items()` iterable object is giving us a sequence of `tuple`s and when we write `for name, grade in student_grades.items()`, Python is treating the first element of each tuple as `name` and teh second element as `grade`. This is an example of *sequence unpacking* and is a bit like how you can write the following for `tuple`s. 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Here is a tuple containing two words
+my_tuple = ('example', 'tuple')
+
+# Assign the first and second word
+first_word, second_word = my_tuple             # Note the two variables named on the left hand side of the equals symbol
+
+print('The first word is', first_word)
+print('The second word is', second_word)
+```
+
+We'll see more examples of tuple unpacking in for loops in the next section when we look at the `zip` and `enumerate` functions.
+
+## `enumerate` and `zip`
+
+In the last section, we saw how unpacking items from a dictionary was an example of sequence unpacking in a `for` loop. In this section, we'll explore two more convenient tools that use sequence unpacking: the `enumerate` and `zip` functions. To understand why these are useful, let's start with a motivating example.
+
+Here we have three lists of equal length and we want to loop over them all at the same time.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Three lists of words
+list_a = ['Happy', 'Sad', 'Excited']
+list_b = ['dog', 'cat', 'bird']
+list_c = ['runs', 'sleeps', 'flies']
+
+# Loop over elements of the lists
+for i in range(len(list_a)):
+    
+    # Get item a
+    a = list_a[i]
+    
+    # Get item b
+    b = list_b[i]
+    
+    # Get item c
+    c = list_c[i]
+    
+    # Concatenate the words and print them
+    print(a + " " + b + " " + c)
+```
+
+While this works, it’s a bit cumbersome. We've we spent several lines just defining variables inside the for loop. This is where the zip function comes in handy. `zip` takes multiple iterables (like `list`s) and pairs their elements together, allowing you to iterate over them in a single loop:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Three lists of words
+list_a = ['Happy', 'Sad', 'Excited']
+list_b = ['dog', 'cat', 'bird']
+list_c = ['runs', 'sleeps', 'flies']
+
+# Loop over elements of the lists
+for a, b, c in zip(list_a, list_b, list_c):
+    
+    # Concatenate the words and print them
+    print(a + " " + b + " " + c)
+```
+
+This code achieves the same result but is much cleaner. Here, `zip(list_a, list_b, list_c)` creates an iterable that yields tuples like `('Happy', 'dog', 'runs')`, `('Sad', 'cat', 'sleeps')`, and so on. We're then using sequence unpacking inside the `for` loop to assign each part of the tuple to `a`, `b`, and `c`. This works for any number of lists (as long as they're iterable), and it automatically stops at the end of the shortest one if they're not all the same length.
+
+Now, let's look at another common situation where sequence unpacking is very useful: when you need both the value from a `list` and its index (position) during iteration. For example, suppose you have a list of exam scores and want to flag any that are below a passing mark, reporting the student’s position in the list (say, the `student_number`) in the process. One approach might be to write:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of exam scores
+exam_scores = [85, 92, 47, 78, 60]
+
+# Loop through the scores, flagging students who have a low mark
+for student_number in range(len(exam_scores)):
+
+    # Get the ith score
+    score = exam_scores[student_number]
+
+    # Check the score
+    if score < 50:
+        print(f'Student {student_number} has a failing score of {score}')
+```
+
+Again this is a little cumbersome; we have an extra line of code defining `score` inside the loop. It would be nice to use sequence unpacking to remove this. This is where we can use the `enumerate` function, like so:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of exam scores
+exam_scores = [85, 92, 47, 78, 60]
+
+# Loop through the scores, flagging students who have a low mark
+for student_number, score in enumerate(exam_scores):
+    
+    # Check the score
+    if score < 50:
+        print(f'Student {student_number} has a failing score of {score}')
+```
+
+In this case, `enumerate(scores)` yields tuples like `(0, 85)`, `(1, 92)`, etc and we unpack them directly into `student_number` and `score` in the `for` loop.
+
+**Summary:**
+ - `zip` lets you loop over several lists at once by pairing their elements into tuples
+ - `enumerate` gives you both the index and the value while you loop, so you don’t have to count manually
+
+## `continue`, `break` and `pass` Statements
+
+In the last few sections, we explored how you can use sequence unpacking to improve your loops readability. In this section, we're going to investigate a different set of Python tools, which can also give you finer control and improve readability when it comes to writing loops; these are the `continue`, `break`, and `pass` statements. We'll now look at each of these in turn.
+
+Let's start with `continue`. The `continue` statement allows you to skip the rest of the current loop's code block and immediately jump to the next iteration. For instance, in the below code, when `i==2` we skip over the `print` statement and move to the next iteration of the loop.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Loop through values of i
+for i in range(5):
+
+    # If i == 2 we end this iteration here
+    if i == 2:
+        continue
+
+    # If the loop hasn't ended we can carry on here.
+    print(i)
+```
+
+The above code is equivalent to running:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Loop through values of i
+for i in range(5):
+
+    # If i == 2 print i
+    if i != 2:
+        
+        # If the loop hasn't ended we can carry on here.
+        print(i)
+```
+
+Whether or not to use the `continue` statement often comes down to personal preference. In some cases, however, it can make code more readable by reducing indentation - for example, notice how `print(i)` is less indented in the version of the above code that uses `continue`.
+
+The `break` statement is similar to `continue` - both give you control over the flow of a loop. But while `continue` lets you skip ahead to the next iteration, `break` lets you end the whole thing right then and there.
+
+For example, the following loop will "break" when `i==2` and terminate completely:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Loop through values of i
+for i in range(5):
+
+    # If i == 2 we end the loop here
+    if i == 2:
+        break
+
+    # If the loop hasn't ended, we can carry on here.
+    print(i)
+```
+
+This prints only `0` and `1`, because as soon as `i` hits `2`, the `break` kicks in and the loop stops dead. There are no more iterations, and no more printing.
+
+This kind of early exit can be very useful when you know you might not need to go through the entire sequence. For instance, imagine you have a list of numbers and you’re just looking for the first duplicate - you don't care about any others after that. In such a case, you might want to use a `break` as shown below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Find the first duplicate in a list
+numbers = [3, 8, 2, 5, 6, 8, 1, 9]
+seen = set()
+
+# Loop through numbers
+for num in numbers:
+
+    # If we've already seen this number report a duplicate
+    if num in seen:
+        print(f'First duplicate found: {num}')
+        break  # Stop searching after the first duplicate
+
+    # Otherwise add this number to our set of numbers we've already seen
+    seen.add(num)
+```
+
+Finally, there's the `pass` statement. This statement doesn't change the flow of your loop at all. It's just there to keep Python happy when you need a statement syntactically but don't want to do anything yet. Think of it like a sticky note saying *"I'll fill this in later."* For example, the below code will throw an error if we try to run it.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# For loop
+for i in range(10):
+
+    # I'm not sure what I want to write in here yet
+```
+
+However, if we put a `pass` inside the loop, then the code will ignore the incomplete body, like so:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# For loop
+for i in range(10):
+
+    # I'm not sure what I want to write in here yet
+    pass
+```
+
+This is a handy statement to know when you are working on large complex coding projects with lots going on!
+
+## `for` and `else`
+
+You might be surprised to learn that Python's `for` loops can have an `else` clause!  It's a somewhat unusual feature, but can be very useful in specific situations.
+
+The `else` block associated with a `for` loop is executed *if and only if* the loop completes normally. In other words, the `else` is executed if the loop completes it's iteration without encountering a `break` statement.  If a `break` statement is executed inside the loop, the `else` block is skipped.
+
+Here's an example to illustrate:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Here's a list of numbers
+numbers = [1, 2, 3, 4, 5]
+
+# Loop through the numbers
+for number in numbers:
+
+    # If we find the number 6
+    if number == 6:
+
+        # Print that we found 6 and break
+        print("Found 6!")
+        break
+
+# If break was never executed we run the else
+else:
+    print("Did not find 6 in the list.")
+```
+
+In this case, the loop completes without finding the number `6`, so the `else` block is executed, printing `"Did not find 6 in the list."`.
+
+Now, let's change the list:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Here's a list of numbers
+numbers = [1, 2, 3, 6, 5]  # <---- 6 is now in the list
+
+# Loop through the numbers
+for number in numbers:
+
+    # If we find the number 6
+    if number == 6:
+
+        # Print that we found 6 and break
+        print("Found 6!")
+        break
+
+# If break was never executed we run the else
+else:
+    print("Did not find 6 in the list.")
+```
+
+This time, the loop encounters the number `6` and executes the `break` statement. As a result, the `else` block is not executed.
+
+You'll most often see `for...else` in search scenarios where you need to take action if an item isn't found. The `else` block serves as your "search failed" handler, making the code's logic more explicit and self-contained without requiring additional variables to whether the item was found or not.
+
+## Exercises
+
+**Question 1:** You are given two lists. One contains students' names, and the other contains their exam scores in the same order:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+names = ["Alice", "Bob", "Charlie"]
+scores = [85, 92, 78]
+```
+
+Write a for loop using the `zip()` function that prints each student's name along with their score in the following format:
+
+```
+Alice scored 85
+Bob scored 92
+Charlie scored 78
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+**Question 2:** Below is a list of strings. Using a `for` loop and the `enumerate` function create a list of indices of the strings containing the letter `"t"`. For instance if the list was `["bat", "dog", "rat"]` your code should return `[0, 2]`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+my_list = ["tent", "moon", "star", "guitar", "lamp", "tree", "ocean", "kite", "hat", 
+           "rain", "butter", "frog", "nest", "tiger", "apple", "water", "sun", "toast", 
+           "cloud", "ant"]
+
+# Write your code here...
+```
+
+**Question 3:** The following code was intended to print every odd number from the list `numbers`. However, in the example below it only prints the number `1`. Explain why the code does not work as intended, and then fix the error by changing *only one line* of code.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+numbers = [1, 2, 3, 4, 5, 6]
+
+for num in numbers:
+    if num % 2 == 0:
+        break  
+    print(num)
+```
+
+**Question 4:** You are given a dictionary where the keys are unique, but the values may repeat. Write a `for` loop that creates a new dictionary by swapping the keys and values from the original dictionary. This means that:
+
+ - The new keys should be the old values.
+ - The new values should be lists containing all the old keys that had that value.
+ 
+For instance, if the `original_dict` was given by:
+
+```
+original_dict = {
+    'a': 1,
+    'b': 2,
+    'c': 1,
+    'd': 3,
+    'e': 2
+}
+```
+
+Then your code should output:
+
+```
+inverted_dict = {
+    1: ['a', 'c'],
+    2: ['b', 'e'],
+    3: ['d']
+}
+```
+In your solution, you must use sequence unpacking in the `for` loop (i.e., unpack the key and value directly in the loop header).
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here..
+```
+
+**Question 5:** The following program is supposed to check each day in the list `days` and print whether it is a weekday or at the weekend. However, something has gone wrong! In the below code the day `Monday` is skipped entirely. Explain what has gone wrong here and fix the error.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+days = ["Monday", "Saturday", "Tuesday"]
+
+for day in days:
+    if day in ["Saturday", "Sunday"]:
+        print(day, "is at the weekend")
+else:
+    print(day, "is a weekday")
+```
+

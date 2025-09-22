@@ -1,0 +1,473 @@
+---
+jupyter: python3
+---
+
+
+
+# Advanced: Lambda Functions and Functional Programming
+
+
+
+Often you might think of a function as a sort of "black-box" which takes in inputs and spits out outputs. In this notebook, we will investigate a new way of thinking about functions - as objects themselves, just like integers and strings.
+
+### Table of Contents
+
+ - [Welcome Page](./week_04_home.qmd)
+
+ - [Beginner: Defining Functions](./week_04_functions_beginner.qmd)
+ - [Intermediate: Flexible Inputs and Outputs](./week_04_functions_intermediate.qmd)
+ - [**Advanced: Lambda Functions and Functional Programming**](./week_04_functions_advanced.qmd)
+    - [`lambda` Functions](#lambda-Functions)
+    - [Functions as Objects](#Functions-as-Objects)
+    - [`map`](#map)
+    - [`filter`](#filter)
+    - [`reduce`](#reduce)
+    - [Exercises](#Exercises)
+ - [Slides](./week_04_slides.qmd) ([Powerpoint](./Lecture4_Functions.pptx))
+
+## `lambda` Functions
+
+We'll begin today by considering a new kind of function: the `lambda` function. A lambda function is a way to create a function *"on the fly"* without using the def keyword. Because of this, they are sometimes called anonymous functions.
+
+The general syntax is:
+
+> ```lambda arguments: expression```
+
+For instance, consider the below function.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def my_function(x,y):
+    return(x*y)
+
+print(my_function(3,4))
+```
+
+We can write exactly the same code using a `lambda` function as follows:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+my_function = lambda x,y: x*y
+print(my_function(3,4))
+```
+
+Notice a few things:
+
+ - There is no `def` or `return` here.
+ - The `return` is implicit: the result of the expression is what gets returned.
+ - To use the function, we assigned it to a variable (here, `my_function`).
+ 
+Although we assigned the function to a variable here, we could have used it directly, like so:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+(lambda x,y: x*y)(3,4)
+```
+
+At first sight, this might not look very different from a normal function. The main reason to use lambda is when you want a small, throwaway function that you do not plan to reuse elsewhere.
+
+For example, instead of writing:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def add_one(x):
+    return x + 1
+
+print(add_one(10))
+```
+
+We can instead write:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+print((lambda x: x + 1)(10))
+```
+
+Here we created the function and used it immediately, all in one line.
+
+There are, of course, limitations to the `lambda` syntax.
+ - A `lambda` can only contain a single expression.
+ - You cannot put multiple lines of logic, loops, or assignments inside.
+
+As a result, for more complicated computations, it is often preferable to use normal `def` functions. Nevertheless, the `lambda` syntax, and more broadly [the Lambda calculus](https://en.wikipedia.org/wiki/Lambda_calculus) upon which it's based, is a useful tool for writing quick and interpretable code.
+
+## Functions as Objects
+
+In the previous section, we wrote:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+my_function = lambda x, y: x * y
+```
+
+At first this might seem unusual... we've taken a function and saved it into a variable! But in fact, behind the scenes, this is what we are always doing whenever we define a function. For example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def my_function(x):
+    return 22 * x + 1
+
+print(my_function)
+
+my_function = lambda x: 22 * x + 1
+print(my_function)
+```
+
+In both cases, we have created an *object* called `my_function`. That object happens to be a function, but it can still be treated like any other variable: it can be passed around, stored in data structures, or even overwritten.
+
+Because functions are objects, we can pass them into other functions. For instance, consider the below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def f(x):
+    return x ** 2
+
+def g(y):
+    return y + 2
+
+def run_on_input_of_five(my_func):
+    return "The result of calling the function with input 5 was " + str(my_func(5))
+
+print(run_on_input_of_five(f))
+print(run_on_input_of_five(g))
+```
+
+Here, we have defined two functions, `f` and `g`, but passed them into `run_on_input_of_five` as though they are variables.
+
+Note that `run_on_input_of_five` doesn't know in advance which function it will be given. It just accepts a function object as input and calls it with the argument `5`.
+
+ > **Test your Understanding:** Write a function `h` such that:
+ > 
+ >  - If it is given the input `5`, it returns the string `"example output"`.
+ >  - For any other input, it returns the string `"not 5"`.
+ > 
+ > What do you think will happen when you run `run_on_input_of_five(h)`? Verify your answer by running the command yourself.
+
+Sometimes it is useful to refer to a function that takes other functions as input as a [**higher-order function**](https://en.wikipedia.org/wiki/Higher-order_function) (if you study category theory later on in other modules, you may also hear these referred to as *functionals*). Higher-order functions are extremely powerful, because they let us build general tools that work with any function we choose to give them.
+
+In the following sections, we will look at some commonly used built-in higher-order functions in Python: `map`, `filter`, and `reduce`.
+
+## `map`
+
+In the previous section, we saw that functions are objects, which means we can pass them as inputs to other functions. One popular higher-order function in Python is `map`.
+
+`map` takes as input a function and an iterable object (like a list), and applies the function to every element of the iterable. Its general form is:
+
+> ```map(function, iterable)```
+
+For example, suppose we want to square every number in a list. Normally we might write a loop:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of numbers
+numbers = [1, 2, 3, 4]
+
+# For loop squaring numbers
+squares = []
+for n in numbers:
+    squares.append(n ** 2)
+
+# Print result
+print(squares)  
+```
+
+With `map`, we can do this more directly:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Function which squares numeric x
+def square(x):
+    return x ** 2
+
+# List of numbers
+numbers = [1, 2, 3, 4]
+
+# Apply square to each number
+squares = map(square, numbers)
+
+# Print the result
+print(list(squares))   
+```
+
+Note that `map` returns a special object, so we usually convert it into a `list` to see the results.
+
+Since `map` only needs a function once, it is common to use a `lambda` instead of defining a full function. For instance, we can rewrite our above code like so:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of numbers
+numbers = [1, 2, 3, 4]
+
+# Square each number in numbers
+squares = map(lambda x: x ** 2, numbers)
+
+# Print the result
+print(list(squares))  
+```
+
+This is much shorter than the `for` loop approach and avoids wastefully creating a named function `square`.
+
+## `filter`
+
+Another very common higher-order function in Python is filter. The filter function takes two inputs:
+
+ - a function that decides whether to *keep* an item,
+ - and an iterable (like a list).
+
+Its general form is:
+
+ > ```filter(function, iterable)```
+ 
+The function we pass to `filter` must return either `True` or `False` for each item. If it returns `True`, the item is kept. If it returns `False`, the item is removed.
+
+Let's look at an example. Suppose we want to keep only even numbers from a list. Using a loop, we might write:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of numbers
+numbers = [1, 2, 3, 4, 5, 6]
+
+# Loop through list recording only the even ones
+evens = []
+for n in numbers:
+    if n % 2 == 0:
+        evens.append(n)
+
+# Print the result
+print(evens)
+```
+
+With `filter`, we can do this more directly:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Function which checks if x is even
+def is_even(x):
+    return x % 2 == 0
+
+# List of numbers
+numbers = [1, 2, 3, 4, 5, 6]
+
+# Keep only the even numbers
+evens = filter(is_even, numbers)
+
+# Print the result
+print(list(evens))  
+```
+
+As with `map`, we can make this code even more concise by using a `lambda` function as follows:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of numbers
+numbers = [1, 2, 3, 4, 5, 6]
+
+# Keep only the even numbers
+evens = filter(lambda x: x % 2 == 0, numbers)
+
+# Print the result
+print(list(evens)) 
+```
+
+## `reduce`
+
+We have now seen two useful higher-order functions. `map` applied a function to every element of an iterable and returned the transformed results. `filter` applied a function to every element of an iterable and kept only those where the function returned `True`.
+
+The third higher-order function we will look at is `reduce`. Instead of working on elements one by one and producing a list, `reduce` applies a function over and over again to the elements of an iterable, each time using the previous result as one of the inputs. In this way, the entire iterable is "*reduced*" to a single value.
+
+Unlike `map` and `filter`, `reduce` is not an in-built Python function. To use `reduce`, we must import it from Python's `functools` module:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+from functools import reduce
+```
+
+ > **Note:** This is the first time in this course that we have used an `import` statement. Do not worry too much if you are not sure what this means yet. We will use this syntax a lot later on in the course.
+
+The general form of the `reduce` function is:
+
+ > ```reduce(function, iterable)```
+ 
+Here, the function must take two arguments. `reduce` will apply the function it step by step through the iterable. To understand this, let's look at an example.
+
+Suppose we have a list of words and we want to join them into a single string with spaces in between. Using a `for` loop we might write:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of words
+words = ["A", "list", "of", "some", "words"]
+
+# Create the sentence
+sentence = words[0]
+for w in words[1:]:
+    sentence = sentence + " " + w
+
+# Print the result
+print(sentence)
+```
+
+With `reduce`, we can write the same loop as follows:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of words
+words = ["A", "list", "of", "some", "words"]
+
+# Function to concatenate two inputs
+def my_concatenate(word1, word2):
+    return word1 + " " + word2
+
+# Create the sentence
+sentence = reduce(my_concatenate, words)
+
+# Print the result
+print(sentence)  
+```
+
+Behind the scenes, `reduce` is doing the following:
+
+ - It first takes the first two elements, `words[0]` and `words[1]`, and applies `my_concatenate` to produce a new string (let's call this `result1`).
+ - Next, it takes `result1` together with the third element, `words[2]`, and applies `my_concatenate` again to produce `result2`.
+ - It then repeats this process, each time combining the current result with the next element of the list, until there are no elements left.
+ - The final value produced is returned as the overall output of `reduce`.
+ 
+In other words, it is doing the following:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Repeatedly applying my_concatenate
+result1 = my_concatenate(words[0], words[1])
+result2 = my_concatenate(result1,  words[2])
+result3 = my_concatenate(result2,  words[3])
+result4 = my_concatenate(result3,  words[4])
+
+print(result4)
+```
+
+As with the previous examples, we can simplify the above code using `lambda` functions. In this case, the code would become:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of words
+words = ["A", "list", "of", "some", "words"]
+
+# Create the sentence
+sentence = reduce(lambda x,y: x + " " + y, words)
+
+# Print the result
+print(sentence)  
+```
+
+## Exercises
+
+**Question 1:** Below you are given a very long list of strings. Using the `filter` function and a `lambda` expression, print all of the strings that contain between three and eight characters (inclusive).
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of words
+words = ['footballs', 'Bilingual', 'computing', 'presentation', 'interconnect', 'to', 'be', 
+         'investigation', 'ya', 'university', 'keyboard,', 'hi', 'my', 'background', 
+         'be', 'no', 'in', 'up', 'sentenced', 'hi', 'an', 'Wireless!', 'painstaking', 
+         'walrusses', 'apartment', 'to', 'blueberry', 'television?', 'participation', 
+         'Us', 'phonebook', 'On', 'by', 'transformation!', 'it', 'announcement', 'You',
+         'determination', 'go', 'photography', 'of', 'if', 'independence', 'architecture', 
+         'interpretation', 'us', 'an', 'do', 'by', 'generation', 'butterfly', 'playground', 
+         'at', 'no', 'be', 'i', 'at', 'raincloud', 'found', 'an', 'identification', 'international', 
+         'of', 'application', 'as', 'celebration', 'newspaper', 'on', 'to', 'implementation', 
+         'basketball', 'on', 'documentation', 'yo', 'foundation', 'up', 'do', 'backpacks', 'as', 
+         'ok', 'blackboard', 'it', 'qualification', 'We', 'or', 'us', 'in', 'grandfather', 'do', 
+         'headphones', 'no', 'crosswalk', 'professional', 'the', 'snowflake.', 'consideration', 
+         'Basketball', 'everywhere', 'cumbersome', 'as', 'we', 'it', 'communication', 'telephone', 'my',
+         'electricity', 'ok', 'secret', 'transportation', 'me', 'go', 'so', 'in', 'me', 'if', 
+         'relationship', 'to', 'ok', 'happiness', 'adventure', 'chemistry', 'storybook',
+         'message.', 'accountability!', 'am', 'or', 'Well', 'availability', 'or', 'is', 
+         'motorcycle', 'we', 'unbelievable', 'technology', 'At', 'yo', 'i', 'experience', 
+         'Go',  'conversation?', 'no', 'watermelon', 'strawberry', 'done!', 'sunburned', 
+         'we', 'or', 'examination', 'representation,', 'sunflower', 'adjective', 
+         'a', 'in', 'me', 'of', 'so', 'establishment', 'magazines', 'knowledge']
+
+# Write your code here...
+```
+
+**Question 2:** Below, you are given a list of dictionaries representing demographic data for several individuals:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+people = [
+    {"name": "Alice",   "age": 25, "city": "New York"},
+    {"name": "Bob",     "age": 30, "city": "Los Angeles"},
+    {"name": "Charlie", "age": 35, "city": "Chicago"},
+    {"name": "Diana",   "age": 28, "city": "Houston"},
+    {"name": "Ethan",   "age": 22, "city": "Phoenix"},
+    {"name": "Fatima",  "age": 31, "city": "Philadelphia"},
+    {"name": "George",  "age": 27, "city": "San Antonio"},
+    {"name": "Hannah",  "age": 29, "city": "San Diego"},
+    {"name": "Ivan",    "age": 33, "city": "Dallas"},
+    {"name": "Jasmine", "age": 26, "city": "San Jose"},
+    {"name": "Liam",    "age": 32, "city": "Jacksonville"},
+    {"name": "Maya",    "age": 34, "city": "San Francisco"},
+    {"name": "Noah",    "age": 23, "city": "Columbus"},
+    {"name": "Olivia",  "age": 36, "city": "Fort Worth"},
+]
+```
+
+Using the `map` function and an appropriate choice of `lambda` function, extract the `"name"` from each dictionary and return the result as a `list`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+*Bonus: Using material from the recent advanced notebooks, can you think of an alternative way of extracting the same list of names from the `people` variable?*
+
+**Question 3:** Write a function `my_filter` that takes as input two functions, `f` and `g` and an iterable `my_iterable`. Your function must return a `list` of all values in `my_iterable` for which *exactly one* of the functions `f` or `g` returns `True`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+
+# Try testing your my_filter function using the below inputs
+f = lambda n: n % 2 == 0      # function checking if n is even
+g = lambda n: n > 0           # function checking if n is positive
+my_iterable = [-2, -1, 0, 1, 2, 3]
+
+print(my_filter(f, g, my_iterable))  # Should print [-2, 0, 1, 3]
+```
+
+**Question 4:** Suppose the variable `function_list` is a list of lambda expressions, each of which takes a float as input and produces a float as output. For example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+function_list = [
+    lambda x: x + 1,
+    lambda x: x * 2,
+    lambda x: x - 3
+]
+```
+
+You are given the following line of code. Run this code and explain mathematically how the `result` was generated from the functions in `function_list`
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+result = reduce(lambda f, g: lambda x: f(g(x)), function_list)(5)
+print(result) 
+```
+
+**Question 5:** `lambda` functions can also be combined with the `conditional` statement syntax we met in the [Week 2 advanced notebook](../02/week_02_booleans_and_conditionals_advanced.qmd). By performing your own research, see if you can understand what the below code is doing.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of numbers
+nums = [3, 1, 4, 1, 5, 9, 2]
+
+# Mystery output
+mystery_output = reduce(lambda x, y: x if x > y else y, nums)
+
+# Print result
+print(mystery_output)  
+```
+
+Once you understand what the code is outputting, try to explain how it works. 
+
+*Hint: Start by considering the `lambda` function `lambda x, y: x if x > y else y` - what does this return?*
+

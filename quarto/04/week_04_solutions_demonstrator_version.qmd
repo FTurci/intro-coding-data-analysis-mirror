@@ -1,0 +1,688 @@
+---
+title: 'Functions : Solutions'
+jupyter: python3
+---
+
+
+
+This notebook contains the solutions to the week 4 `Beginner`, `Intermediate` and `Advanced` exercises.
+
+### Table of Contents
+
+ - [Welcome Page](./week_04_home.qmd)
+
+ - [Beginner: Defining Functions](./week_04_functions_beginner.qmd)
+ - [Intermediate: Flexible Inputs and Outputs](./week_04_functions_intermediate.qmd)
+ - [Advanced: Lambda Functions and Functional Programming](./week_04_functions_advanced.qmd)
+
+ - [**Solutions**](./week_04_solutions_demonstrator_version.qmd)
+     - [Beginner: Defining Functions](#Beginner:-Defining-Functions)
+     - [Intermediate: Flexible Inputs and Outputs](#Intermediate:-Flexible-Inputs-and-Outputs)
+     - [Advanced: Lambda Functions and Functional Programming](#Advanced:-Lambda-Functions-and-Functional-Programming)
+ - [Slides](./week_04_slides.qmd) ([Powerpoint](./Lecture4_Functions.pptx))
+
+## Beginner: Defining Functions
+
+**Question 1:** Running the code gives the following output.
+
+```
+3 4
+4 3
+2 4
+2 1
+3 1
+```
+
+In the first line, the inputs are assigned according to the order they were read in, so that `x=3` and `y=4`. In the second line, they are assigned according to the keyword/variable names given, so that `x=4` and `y=3`. In the third line, `x` takes the default value of `2` whilst `y=4`. In the fourth line, both default values `x=2` and `y=1` are used. And in the final line, `y` takes the default value of `1` while `x=3`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def my_simple_function(x=2,y=1):
+    
+    print(x, y)
+    
+my_simple_function(3,4)
+my_simple_function(y=3,x=4)
+my_simple_function(y=4)
+my_simple_function()
+my_simple_function(x=3)
+```
+
+ > **Demonstrator Notes:** The aim of this question is to get students thinking about how inputs are entered into functions. Please try to prevent students from running the code before they have attempted to answer the question, as the goal is for them to reason it out first.
+
+**Question 2:** An answer to this question is provided below.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def count_uppercase(my_string):
+    count = 0
+    for ch in my_string:
+        if ch != ch.lower(): 
+            count += 1
+    return count
+
+# Example
+print(count_uppercase("this Is mY string"))
+```
+
+ > **Demonstrator Notes:** A useful sanity check for this question is to ask students whether their function works correctly on strings that include punctuation. An easy, and subtle, mistake to make here is to write `if ch == ch.upper():` instead of `if ch != ch.lower():`. The difference matters because for non-alphabetic characters (like punctuation), `ch.upper()` and `ch.lower()` are both equal to `ch` itself.
+
+**Question 3:** The functions for this question are given below.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def calculate_kinetic_energy(mass, velocity):
+    
+  """
+  Calculates the kinetic energy of an object.
+
+  Args:
+    mass: The mass of the object in kilograms (kg).
+    velocity: The velocity of the object in meters per second (m/s).
+
+  Returns:
+    The kinetic energy of the object in joules (J).
+  """
+  return 0.5 * mass * velocity**2
+
+
+def calculate_potential_energy(mass, height, gravity):
+    
+  """
+  Calculates the potential energy of an object.
+
+  Args:
+    mass: The mass of the object in kilograms (kg).
+    height: The height of the object in meters (m).
+    gravity: The acceleration due to gravity in meters per second squared (m/s^2).
+
+  Returns:
+    The potential energy of the object in joules (J).
+  """
+  return mass * gravity * height
+```
+
+ > **Demonstrator Notes:** Please be mindful that many students may not have studied Physics for several years, so might be uncomfortable with the terms *kinetic energy* and *potential energy*. Make sure the student is comfortable with the context of the question before moving into the coding explanation.
+
+**Question 4:** A sample answer for this question is given below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# ---------- Question 4 sample answer ----------
+g = 9.8          # m/s^2
+h0 = 100.0       # m
+dt = 0.1         # s
+t_max = 5.0      # s
+
+# 1.  Build the time axis
+times = []
+for i in range(int(t_max / dt) + 1):
+    times.append(i * dt)
+
+# 2.  Compute velocities and heights
+velocities = []
+for t in times:
+    velocities.append(g * t)
+
+heights = []
+for t in times:
+    heights.append(h0 - 0.5 * g * t**2)
+
+# 3.  Compute energies (assuming the functions from Q3 are available)
+kinetic_energy = []
+for v in velocities:
+    kinetic_energy.append(calculate_kinetic_energy(mass=1.0, velocity=v))
+
+potential_energy = []
+for h in heights:
+    potential_energy.append(calculate_potential_energy(mass=1.0, height=h, gravity=g))
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import os
+os.chdir('/home/jovyan/intro-coding-data-analysis.git/04/src')
+
+from plot import *
+
+plot_energy_over_time(times, kinetic_energy, potential_energy)
+```
+
+ > **Demonstrator Notes:** For many students, this may be their first exposure to the `import` and `from` keywords, as well as the `os` package. They also won't have encountered plotting yet. If students ask about these topics, you're welcome to give a brief explanation if you like, but it's also fine to tell them that these will be covered in detail later in the course if it is easier.
+
+**Question 5:** The `time()` function gives the number of seconds passed since epoch (the point where time begins, e.g. `January 1, 1970, 00:00:00 UTC` is epoch on unix systems). Some suggested code to show students for this question is given below.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# The time function can be imported like so
+from time import time
+
+# We can see it's documentation here
+help(time)
+
+# It can be used to time code in seconds e.g.
+t1 = time()
+for i in range(100):
+    print(i)
+t2 = time()
+
+print("Printing the numbers 1-100 took ", t2-t1, " seconds.")
+```
+
+ > **Demonstrator Notes:** See notes on Question 4.
+
+**Question 6:** An example answer for this question is given below.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def remove_filler(text):
+    fillers = ["um", "uh", "uhm", "er", "err"]
+    words = text.split()  # split the string into words
+    result_words = []
+
+    for word in words:
+        # Check if the word (lowercased) is a filler
+        if word.lower() not in fillers:
+            result_words.append(word)
+
+    # Join the words back into a string
+    return " ".join(result_words)
+
+
+# Example usage
+text = "Um I was, uh, going to the store but uhm I er forgot."
+print(remove_filler(text))
+```
+
+ > **Demonstrator Notes:** It is expected that many students will have forgotten the `split` function from week 1. Please encourage them to look up documentation where possible, rather than giving the answer directly.
+
+**Question 7:** If you write a function which redefines a global variable, then inside the function, Python makes a new local variable `x` when you assign `x = 20`. That local version is separate from the global version `x = 10`. So inside you see `20`, and outside you still see `10`.
+
+ > **Demonstrator Advice:** One way of explaining what is going on here is to show students the following code, where we have replaced the calls to `x` outside the function with `x_outer` and the code inside the function with `x_inner`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+x_outer = 10
+
+def my_function():
+    x_inner = 20
+    print(x_inner)
+    
+my_function()
+print(x_outer)
+```
+
+ > In this code it is pretty easy to predict what will be printed. Because the variables have different names, there is no ambiguity. Behind the scenes, this renaming is exactly what Python is doing when you redefine a global variable inside a function.  
+ >
+ > *However,* it must be stressed that this will only happen when you redefine the variable (e.g. write `x=...`) somewhere inside the function. For instance, if we comment out the `x=20` line from the original code, then the function will treat `x` as though it is `x_outer`, not `x_inner`!
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+x = 10
+
+def my_function():
+    # x = 20
+    print(x)
+    
+my_function()
+print(x)
+```
+
+**Question 8:** Here is an example answer for this question.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Here is some example input
+example_input = [3,1,2,7]
+
+# And it's expected output
+expected_output = [2,1,1,13]
+
+# Write your function here
+def Fibonnaci(input_list):
+    
+    # Initial output list
+    output_list = []
+    
+    for k in input_list:
+        
+        # If k is zero we add 0 to the list,
+        # and if k is one we add 1 to the list
+        if k==0 or k==1:
+            
+            output_list = output_list + [k]
+        
+        # Otherwise work out the fibonnaci numbers
+        # by summing the previous
+        else:
+            
+            # Fibonnaci two previous and one previous
+            fib_2prev = 0 
+            fib_1prev = 1
+            
+            # Current fibonnaci
+            fib_curr = 1
+            
+            # Initial j
+            j = 2
+            while j < k:
+                
+                # Update fib_curr and prevs
+                fib_2prev = fib_1prev
+                fib_1prev = fib_curr
+                fib_curr = fib_1prev + fib_2prev
+                
+                j = j + 1
+                
+            # Add the fibonnaci number output to the list
+            output_list = output_list + [fib_curr]
+    
+    return(output_list)
+
+
+# Check your answer against this expected output
+print(Fibonnaci(example_input))
+print(expected_output)
+```
+
+ > **Demonstrator Notes:** This question is hard, and will be fairly challenging for most students. Please feel free to give them a bit more guidance when answering this one - one good place to start might be to have them compute the $n^{th}$ Fibonnaci number from the $(n-1)^{th}$ and $(n-2)^{th}$ Fibonacci numbers.
+ >
+ > It probably isn't a good idea to discuss code efficiency/making the code faster at this stage of the course. This question will already pose a large conceptual challenge for many students, and showing them how to rewrite the code to improve it further might feel like an extra layer of complexity. (The above code certainly isn't the most efficient!).
+
+**Question 9:** Example code for this question is given below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def next_las(las_k):
+    
+    # It is useful to have the character as a string
+    # for this function
+    las_k_str = str(las_k)
+    
+    # We need a counter to see how many times an 
+    # element has occurred
+    counter = 0
+    
+    # We need a string for the (k+1)th las number
+    las_kplusone_str = ''
+    
+    # Initialize previous look and say digit we saw
+    # to first digit
+    prev_las_k_char = las_k_str[0]
+    
+    # We loop through each character counting how
+    # many times it occurs
+    for las_k_char in las_k_str:
+        
+        # If the last digit we saw is the same as this one
+        if las_k_char == prev_las_k_char:
+            
+            # Increment the counter
+            counter = counter + 1
+        
+        # If we have seen a new digit 
+        else:
+            
+            # We now need to add how many times we saw the
+            # last digit and the last digit itself to our 
+            las_kplusone_str = las_kplusone_str + str(counter) + prev_las_k_char
+            
+            # Update the previous look and say character to our new character
+            prev_las_k_char = las_k_char
+            
+            # Reset the counter
+            counter = 1
+    
+    # We still need to add the last counter and digit
+    las_kplusone_str = las_kplusone_str + str(counter) + prev_las_k_char
+    
+    # Convert our string back to an integer
+    las_kplusone = int(las_kplusone_str)
+    
+    return(las_kplusone)
+```
+
+ > **Demonstrator Notes:** This question is difficult and will need more guidance for many students. It is expected that many students will not think to use the `str` constructor to convert their numerical data into a string and many will not think to loop through the characters of string, treating it as an iterator (e.g. many may not think to write code of the form `for character in my_string:`). Beyond these syntax hints, try to encourage students who are struggling to first write how they would perform the computation by hand on paper, before they start coding. This is often a good starting point for explaining the logic and working out what they understand of the question.
+
+**Question 10:** Code for this question can be found below
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# This function must take in an integer k and return the
+# kth look and say number, l(k).
+def get_las_k(k):
+    
+    # initial values
+    las_k = 1
+    k_current = 1
+    
+    # Loop through the las numbers getting the
+    # next number each time
+    while k_current < k:
+        
+        # Get next las
+        las_k = next_las(las_k)
+        
+        # increment current k
+        k_current = k_current + 1
+        
+    return(las_k)
+
+# Test your function here:
+print(get_las_k(1)) # This should give 1
+print(get_las_k(2)) # This should give 11
+print(get_las_k(5)) # This should give 111221
+```
+
+ > **Demonstrator Notes:** This question should be a little easier than the previous, but please do check that students are actually using the function from the previous question, rather than rewriting the code from scratch, or copy-pasting large chunks.
+
+## Intermediate: Flexible Inputs and Outputs
+
+**Question 1:** The output of the function calls are as follows:
+
+
+```python
+a: 1
+b: 2
+args: ()
+kwargs: {}
+---------------
+a: 1
+b: 2
+args: (3, 4)
+kwargs: {}
+---------------
+a: 1
+b: 2
+args: ()
+kwargs: {'x': 10, 'y': 20}
+---------------
+a: 1
+b: 2
+args: (3, 4)
+kwargs: {'x': 10, 'y': 20}
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def printing_function(a, b, *args, **kwargs):
+    print("a:", a)
+    print("b:", b)
+    print("args:", args)
+    print("kwargs:", kwargs)
+    
+    
+printing_function(1, 2)
+print('---------------')
+printing_function(1, 2, 3, 4)
+print('---------------')
+printing_function(1, 2, x=10, y=20)
+print('---------------')
+printing_function(1, 2, 3, 4, x=10, y=20)
+```
+
+ > **Demonstrator Notes:** This question aims to build on the intuition students have built through the `Arbitrary Positional and Keyword Arguments` section of the notebook. Please encourage students to attempt the question before running the code to check their answer. If students are struggling with the conceptual aspects of this question, please do try to refer back to the notebook section where possible. 
+ > 
+ > When discussing the answers to this question, it is worth highlighting that, when we pass no arguments to `*args` and `**kwargs`, this is the same as passing in an empty list, `()`, or empty dictionary, `{}`, rather than passing no variables at all. This is a good discussion point - asking students why they think this is can help you to check their understanding of `*args` and `**kwargs`.
+
+**Question 2:** An example answer for this question is given below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def sumstrings(*args):
+    
+    # Work out the running sum
+    runningsum = 0
+    
+    for arg in args:
+        
+        if arg.lower()=="one":
+            
+            runningsum = runningsum+1
+            
+        elif arg.lower()=="two":  
+            
+            runningsum = runningsum+2
+        
+        elif arg.lower()=="three":
+            
+            runningsum = runningsum+3
+            
+        if arg.lower()=="four":
+            
+            runningsum = runningsum+4
+            
+        if arg.lower()=="five":
+            
+            runningsum = runningsum+5
+            
+        if arg.lower()=="six":
+            
+            runningsum = runningsum+6
+            
+        if arg.lower()=="seven":
+            
+            runningsum = runningsum+7
+            
+        if arg.lower()=="eight":
+            
+            runningsum = runningsum+8
+
+        if arg.lower()=="nine":
+            
+            runningsum = runningsum+9
+            
+        if arg.lower()=="ten":
+            
+            runningsum = runningsum+10
+            
+    return(runningsum)
+
+print(sumstrings('one', 'one', 'nine',)) # This should give 11
+print(sumstrings('one', 'two', 'seVen',)) # This should give 10
+```
+
+ > **Demonstrator Notes:** This question is fairly straightforward. We are not expecting answers that are any more complex/streamlined than the above (although students are certainly welcome to try). Given the week 2 intermediate notebook, some students may use a `match` statement instead of an `if-elif-else`. This is perfectly fine as well.
+
+**Question 3:** The expected output for this question is:
+
+```python
+Here is another print statement.
+----------------------------
+----------------------------
+Here is a print statement.
+----------------------------
+Here is a print statement.
+----------------------------
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def function_with_if(a=1):
+    
+    # If a is greater than zero, return 1
+    if a > 0:
+        print('Here is a print statement.')
+        return(1)
+    
+    # If a is equal to zero, return 0
+    elif a == 0:
+        return(0)
+    
+    # Return -1
+    print('Here is another print statement.')
+    return(-1)
+
+function_with_if(-1)
+print('----------------------------')
+function_with_if(0)
+print('----------------------------')
+function_with_if(1)
+print('----------------------------')
+function_with_if()
+print('----------------------------')
+```
+
+ > **Demonstrator Notes:** This question is mainly to test the students logic and understanding of how Python handles functions with multiple `return` statements. A good case to focus on is the case `a==0`. Useful questions to ask students here include:  
+ > - Why do you think nothing is printed when `a==0`? 
+ > - Will `print('Here is another print statement.')` be printed when `a==0`? 
+ > - Will `0` or `-1` be returned when `a==0`?
+
+**Question 4:** The code returns `True` if the integer is prime and `False` otherwise. The answers to the listed questions are as follows:
+
+
+ - What values of `i` will the loop check?
+ 
+It will check all values between `2` and `my_integer-1`, inclusive. Given no prior knowledge, these are the values which could possibly be factors of `my_integer`.
+ 
+ - What does the expression `my_integer % i` mean?
+
+This is the modulo operator, which we met in the Week 1 Beginner notebook. It gives the remainder obtained from dividing `my_integer` by `i`. If this expression equals zero, then `my_integer` is divisible by `i` (i.e. `i` is a factor of `my_integer`).
+
+ - Under what condition does the function return `False`?
+ 
+The function returns `False` whenever we find an integer `i` (lying between `2` and `my_integer-1`) that is a factor of `my_integer`. In other words, it returns `False` when `my_integer` has a factor, that is when `my_integer` is not prime.
+
+ > **Demonstrator Notes:** The aim of this question is to get students thinking about how `return` statements can be used to end loops prematurely, a bit like a `break` statement. They will have met the `break` statement in the Week 3 intermediate notebook, but might not realise the connection here. When explaining the logic of this question, feel free to reference `break` statements to highlight the similarity, but make sure to point out that `return` not only stops the loop but also exits the entire function immediately. 
+ >
+ > This question is also a good opportunity to get students to think about debugging code. It is expected that, when asked to work out what the code is doing, many students will try to dissect the code conceptually from first principles without running it. If you see students attempting to do this and struggling, encourage them to adopt a more pratical approach - e.g. suggest that they run the function for several different values of `my_integer` and see if they can guess the function's behaviour from the output. 
+
+**Question 5:** The `another_mystery_function` function takes in a string and reverses the order of the letters. The same thing can be done using, for example, the below loop:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def another_mystery_function_loop_version(word):
+    reversed_word = ""
+    for char in word:
+        reversed_word = char + reversed_word
+    return reversed_word
+```
+
+ > **Demonstrator Notes:** Recursive functions can be difficult to explain on the spot. If a student asks for help, then by all means, feel free to go through step-by-step explaining what the code is doing if you feel you are able. However, if you do not feel confident doing this, you can instead encourage the student to identify the code's function by looking at various inputs and outputs and "spotting the pattern". The latter is still a good exercise in debugging code and a worthwhile use of the student's time.
+
+## Advanced: Lambda Functions and Functional Programming
+
+**Question 1:** An answer to this question is given below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of words
+words = ['footballs', 'Bilingual', 'computing', 'presentation', 'interconnect', 'to', 'be', 
+         'investigation', 'ya', 'university', 'keyboard,', 'hi', 'my', 'background', 
+         'be', 'no', 'in', 'up', 'sentenced', 'hi', 'an', 'Wireless!', 'painstaking', 
+         'walrusses', 'apartment', 'to', 'blueberry', 'television?', 'participation', 
+         'Us', 'phonebook', 'On', 'by', 'transformation!', 'it', 'announcement', 'You',
+         'determination', 'go', 'photography', 'of', 'if', 'independence', 'architecture', 
+         'interpretation', 'us', 'an', 'do', 'by', 'generation', 'butterfly', 'playground', 
+         'at', 'no', 'be', 'i', 'at', 'raincloud', 'found', 'an', 'identification', 'international', 
+         'of', 'application', 'as', 'celebration', 'newspaper', 'on', 'to', 'implementation', 
+         'basketball', 'on', 'documentation', 'yo', 'foundation', 'up', 'do', 'backpacks', 'as', 
+         'ok', 'blackboard', 'it', 'qualification', 'We', 'or', 'us', 'in', 'grandfather', 'do', 
+         'headphones', 'no', 'crosswalk', 'professional', 'the', 'snowflake.', 'consideration', 
+         'Basketball', 'everywhere', 'cumbersome', 'as', 'we', 'it', 'communication', 'telephone', 'my',
+         'electricity', 'ok', 'secret', 'transportation', 'me', 'go', 'so', 'in', 'me', 'if', 
+         'relationship', 'to', 'ok', 'happiness', 'adventure', 'chemistry', 'storybook',
+         'message.', 'accountability!', 'am', 'or', 'Well', 'availability', 'or', 'is', 
+         'motorcycle', 'we', 'unbelievable', 'technology', 'At', 'yo', 'i', 'experience', 
+         'Go',  'conversation?', 'no', 'watermelon', 'strawberry', 'done!', 'sunburned', 
+         'we', 'or', 'examination', 'representation,', 'sunflower', 'adjective', 
+         'a', 'in', 'me', 'of', 'so', 'establishment', 'magazines', 'knowledge']
+
+list(filter(lambda x: len(x) > 2 and len(x) < 9, words))
+```
+
+ > **Demonstrator Notes:** It might be useful to break this question down into the following steps:
+ > 1. Write a (normal) function which checks if a string has between three and eight characters. If it does, the function should return `True`, otherwise it should return `False`.
+ > 1. Try to condense this function to only take up a few lines.
+ > 1. Convert this function to a `lambda` function.
+ > 1. Insert this `lambda` function into a `filter` expression.
+ >
+ > Note it is easy to forget that the end result must be converted back to a `list` - it is very likely that at least some students will forget to do this and be confused by the object returned by the `filter` function.
+
+**Question 2:** Example code for this question is given below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+people = [
+    {"name": "Alice",   "age": 25, "city": "New York"},
+    {"name": "Bob",     "age": 30, "city": "Los Angeles"},
+    {"name": "Charlie", "age": 35, "city": "Chicago"},
+    {"name": "Diana",   "age": 28, "city": "Houston"},
+    {"name": "Ethan",   "age": 22, "city": "Phoenix"},
+    {"name": "Fatima",  "age": 31, "city": "Philadelphia"},
+    {"name": "George",  "age": 27, "city": "San Antonio"},
+    {"name": "Hannah",  "age": 29, "city": "San Diego"},
+    {"name": "Ivan",    "age": 33, "city": "Dallas"},
+    {"name": "Jasmine", "age": 26, "city": "San Jose"},
+    {"name": "Liam",    "age": 32, "city": "Jacksonville"},
+    {"name": "Maya",    "age": 34, "city": "San Francisco"},
+    {"name": "Noah",    "age": 23, "city": "Columbus"},
+    {"name": "Olivia",  "age": 36, "city": "Fort Worth"},
+]
+
+names = list(map(lambda person: person["name"], people))
+print(names)
+```
+
+ > **Demonstrator Notes:** As with *Question 1*, it might be useful to break this question down into the following steps:
+ > 1. Write a (normal) function which returns the value of `"name"` from a dictionary.
+ > 1. Convert this function to a `lambda` function.
+ > 1. Insert this `lambda` function into a `map` expression.
+ >
+ > Again, it is easy to forget that the end result must be converted back to a `list` - it is very likely that at least some students will forget to do this and be confused by the object returned by the `map` function.
+
+**Question 3:** An example answer is provided below.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def my_filter(f, g, my_iterable):
+    result = []
+    for x in my_iterable:
+        if f(x) ^ g(x):  # XOR: exactly one is True
+            result.append(x)
+    return result
+
+# Try testing your my_filter function using the below inputs
+f = lambda n: n % 2 == 0      # function checking if n is even
+g = lambda n: n > 0           # function checking if n is positive
+my_iterable = [-2, -1, 0, 1, 2, 3]
+
+print(my_filter(f, g, my_iterable))  # Should print [-2, 0, 1, 3]
+```
+
+ > **Demonstrator Notes:** The aim of this question is to give students practice writing higher-order functions and treating functions themselves as objects. Student's will likely need reminding that they can write `^` for *exclusive or*, as they have only briefly seen this operation in the week 1 beginner notebook. It is perfectly fine, and also a good exercise, to have them instead write out `f(x) ^ g(x)` as `(f(x) and not g(x)) or (g(x) and not f(x))` (it may also help to draw a [Venn diagram](https://www.researchgate.net/publication/230822602/figure/fig4/AS:669427104231424@1536615267039/Four-Venn-Diagrams-of-Boolean-Logic.png) for students who want to adopt this approach).
+
+**Question 4:** The `reduce` expression here is performing [function composition](https://en.wikipedia.org/wiki/Function_composition) and the new function is being evaluated with `5` as input. In other words, if the expression is given a list of function $[f_1,...,f_n]$ then the output will be $(f_1 \circ f_2 \circ ... \circ f_n)(5)=f_1(f_2(...f_n(5)...))$.
+
+ > **Demonstrator Notes:** For less mathematical students, avoid the phrase "composition". Instead, explain the idea in plain English. For example: "*First, take the last function in the list and run it with the input `5`. Then take the result you get and plug it into the second-to-last function. Keep going like this, working backwards through the list.*"
+
+**Question 5:** This function computes the maximum value in a list. Behind the scenes, it is doing the following:
+
+ - It first takes the first two elements, `3` and `1`, and applies the `lambda` function which returns the maximum of the two.
+ - Next, it takes the result of the first step, in this case `3`, and the next element in the list `4`. Again it applies the `lambda` function which returns the maximum of the two.
+ - It then repeats this process, each time comparing the current result with the next element of the list, and choosing the maximum of the two, until there are no elements left.
+ - The final value produced is the largest value in the list.
+ 
+Another way of thinking about it is as doing the following:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# List of numbers
+nums = [3, 1, 4, 1, 5, 9, 2]
+
+# Give the lambda expression a name for clarity
+max_xy = lambda x, y: x if x > y else y
+
+# Repeatedly applying max_xy
+result1 = max_xy(nums[0],  nums[1])
+result2 = max_xy(result1,  nums[2])
+result3 = max_xy(result2,  nums[3])
+result4 = max_xy(result3,  nums[4])
+result5 = max_xy(result4,  nums[5])
+result6 = max_xy(result5,  nums[6])
+
+print(result6)
+```
+
+ > **Demonstrator Notes:** Although it might not seem like it on first viewing, this example is designed to be extremely similar to the example given in the `reduce` section of the notebook. If students are struggling with this, please direct them to this section first. 
+

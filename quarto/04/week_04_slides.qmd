@@ -1,0 +1,260 @@
+---
+title: Introduction to Coding and Data Analysis for Scientists
+jupyter: python3
+---
+
+
+## Week 4: Functions
+
+
+## Today's Lecture
+
+ - Lecture 4: Functions
+   - Recap: For and While Loops
+   - Functions
+   - Inputs and Outputs
+   - Practical
+
+## Important: Assessed Coursework 1
+
+ - The first assignment has been released!
+   - Released `Wednesday 8th October` at `12:00PM`
+   - Due `Wednesday 22nd October` at `12:00PM`
+ - This is assessed (`15%` of your grade!)
+ - Submission is via `Noteable`
+ - You can submit as many times as you like up until the submission date
+
+## Noteable Submission
+
+ - Download using the Assignments tab on `noteable`
+ - Press `Fetch` and click on the assignment
+ - Fill your answers in and `Validate`
+ - Once done, save your answers and `Submit`
+ - Feedback will be available when you see the `(view feedback)` option
+
+## Recap: `for` and `while` loops
+
+ - Loops can be used to simplify repetitive computation
+   - Last week, we saw an example where we wanted to print the square of each item in this list
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+my_list = [1,5,8,3,2,2,4]
+```
+
+ - We could write code like this...
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+number_squared = my_list[0]**2
+print(number_squared)
+
+number_squared = my_list[1]**2
+print(number_squared)
+
+number_squared = my_list[2]**2
+print(number_squared)
+
+number_squared = my_list[3]**2
+print(number_squared)
+
+number_squared = my_list[4]**2
+print(number_squared)
+
+number_squared = my_list[5]**2
+print(number_squared)
+
+number_squared = my_list[6]**2
+print(number_squared)
+```
+
+## Recap: `for` and `while` loops
+
+ - Loops let us do all this automatically!
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# For Loop
+for num in my_list:
+    number_squared = num ** 2
+    print(number_squared)
+
+
+print('--------------')
+
+# While Loop
+i=0
+while i < len(my_list):
+    number_squared = my_list[i] ** 2
+    print(number_squared)
+    i += 1
+```
+
+## Motivation
+
+ - Loops let you simplify code which repeats over and over again.
+ - However, sometimes you have code that repeats itself in a less straightforward manner...
+   - Do some computation
+   - Run some other code
+   - Do the same computation again
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+k = 3
+y = k * 2 + 1
+print(y)
+
+print("Doing something else here...")
+
+m = 10 + k
+z = m * 2 + 1
+print(z)
+
+print("Sum of numbers:", sum([1, 2, 3]))
+
+w = 2 * 2 + 1
+print(w)
+```
+
+ - In such cases, you might want to use a `function`
+ - You can think of a function as a block of pre-prepared code that you might want to run over and over again.
+
+## Functions
+
+ - Let's look at an example.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# This is a function:
+def print_double_and_add_one(x):
+    
+    # Double x and add 1
+    y = x * 2 + 1
+    print(y)
+```
+
+You can think of this as a black box
+
+ - You put a variable `x` in
+ - It doubles `x` and adds `1`
+ - Then prints the result
+
+## Functions
+
+ - Suppose we now run this code after the function.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# This is a function:
+def print_double_and_add_one(x):
+    
+    # Double x and add 1
+    y = x * 2 + 1
+    print(y)
+
+# This is not part of the function,
+# because the code is no longer indented
+k = 3
+print_double_and_add_one(k)
+```
+
+ - This will run the code inside the function, but with `x` replaced by `k`. 
+   - E.g. it will run:
+   
+```python
+y = k * 2 + 1
+print(y)
+```
+
+## Functions
+
+ - We can use this function to simplify the code from earlier!
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+k = 3
+y = k * 2 + 1
+print(y)
+
+print("Doing something else here...")
+
+m = 10 + k
+z = m * 2 + 1
+print(z)
+
+print("Sum of numbers:", sum([1, 2, 3]))
+
+w = 2 * 2 + 1
+print(w)
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: notes}
+# Should be replaced with:
+# --------------------------
+#
+# k = 3
+# print_double_and_add_one(k)
+#
+# print("Doing something else here...")
+#
+# m = 10 + k
+# print_double_and_add_one(m)
+#
+# print("Sum of numbers:", sum([1, 2, 3]))
+#
+# print_double_and_add_one(2)
+```
+
+## Motivation
+
+ - Functions are useful for a number of reasons
+   - Reduce repetitiveness in code
+   - Help organise code
+   - Easier to edit, maintain and debug
+   - Makes code easier to share
+   - Improve readability
+
+## Inputs and Outputs
+
+ - Instead of printing the result of our function, we can return it
+ - This means that the function will "spit out" the value of `y`, and we can save it using the `=` operator
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# This is a function:
+def print_double_and_add_one(x):
+    
+    # Double x and add 1
+    y = x * 2 + 1
+    return(y)                     # <-------------- Now returned!
+
+# This is not part of the function,
+# because the code is no longer indented
+k = 3
+z = print_double_and_add_one(k)
+print(z)
+```
+
+ - For this example:
+   - `x` is an `input`: A variable specified in the function definition
+   - `y` is an `output`: A variable given back using the `return` statement
+ - You can have multiple inputs and outputs (we'll cover this in the practical)
+
+## Practical
+
+ - We now move over to Python
+ - Please open [week_04_home.ipynb](./week_04_home.qmd)
+ - For the rest of today, you must work through a Python notebook
+ - You have a choice of one of three options
+   - [Option 1: Beginner - Defining Functions](week_04_functions_beginner.qmd)
+   - [Option 2: Intermediate - Flexible Inputs and Outputs](week_04_functions_intermediate.qmd)
+   - [Option 3: Advanced - Lambda Functions and Functional Programming](week_04_functions_advanced.qmd)
+

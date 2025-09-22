@@ -1,0 +1,305 @@
+---
+title: 'Intermediate: Match Statements'
+jupyter: python3
+---
+
+
+
+Welcome to the *Week 2 Intermediate Python Notebook*. This notebook is designed for students who already have some experience with Python and are ready to build on the basics.  
+
+Your task today is to read through the material carefully and complete the exercises provided at the end. These exercises are designed to deepen your understanding and give you practical experience with new concepts.  
+
+> **Important:** Before starting this notebook, make sure you are confident with everything in the [`Beginner`](./week_02_booleans_and_conditionals_beginner.qmd) notebook. You should be comfortable working with the `if` statement and attempt at least $4$ of the [`Beginner exercises`](./week_02_booleans_and_conditionals_beginner.qmd#Exercises). The material in this notebook builds directly on those foundations.  
+
+In this notebook, you will explore a recent addition to Python: the `match` statement; a powerful tool for handling multiple conditions, particularly useful when your programs need to deal with many different cases.
+
+Be sure to work through the examples and attempt all the exercises. They are designed to help you practice, reinforce your learning, and prepare you for the more advanced topics ahead.  
+
+### Table of Contents
+
+ - [Welcome Page](./week_02_home.qmd)
+
+ - [Beginner: If Statements](./week_02_booleans_and_conditionals_beginner.qmd)
+ - [**Intermediate: Match Statements**](./week_02_booleans_and_conditionals_intermediate.qmd)
+   - [What is a `match` Statement?](#What-is-a-match-Statement?)
+   - [Converting Long `elif` Statements to `match`](#Converting-Long-elif-Statements-to-match)
+   - [Combining `match` and `if`](#Combining-match-and-if)
+   - [Exercises](#Exercises)
+ - [Advanced: Conditional Expressions and Lazy Evaluation](./week_02_booleans_and_conditionals_advanced.qmd)
+ - [Slides](./week_02_slides.qmd) ([Powerpoint](./Lecture2_Booleans_and_Conditionals.pptx))
+
+**Important:** This notebook includes features that were added to the Python programming language in Version `3.10`. For this reason, if you want to run the code in this notebook you need to select `Standard Python 3` rather than `Jupyter Classic (Legacy)` when opening `Noteable`. This will result in a slightly different interface opening. If you are confused by the new interface, please ask the lecturer or one of the demonstrators to help you get to grips.
+
+![Alt text](./images/change_python.png)
+
+## What is a `match` Statement?
+
+The `match` statement is a relatively new addition to Python, having been added in Python 3.10 in 2021. This statement can be used to compare the value of a variable to different many different patterns. When it finds a match, the code inside the corresponding `case` block runs.
+
+This is similar to using lots of `if`/`elif` checks, but can be cleaner and easier to read.
+
+Here’s a simple example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Example 1: Traffic lights
+color = "red"
+
+match color:
+    case "red":
+        print("Stop! The light is red.")
+    case "green":
+        print("Go! The light is green.")
+    case "yellow":
+        print("Slow down! The light is yellow.")
+    case _:
+        print("Unknown color.")
+```
+
+The above code tells us what to do if we see a specific color at a traffic light. In the code, we provide the color we have seen as a string (which has been set to `"red"` in the above) and the `match` statement will consider a number of cases one at a time, checking whether the color variable matches the value for that case. When it finds a match, it runs the code inside that case block.
+
+Note that in the final case we have an underscore, `_`. This simply means "match anything that hasn't already matched." You can think of it like the `else` at the end of an `if`/`elif` statement. It serves as a "catch-all" to deal with any unexpected or unhandled values.
+
+ > **Test your understanding:** How might you modify the above code to allow case-sensitive examples such as `color="ReD"` or `color="GreEn"`? *Hint: recall the `lower()` function from the beginner notebook in Week 1.*
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+Sometimes, you may want several different inputs to trigger the same response. In such cases, instead of writing out separate `case` blocks for each value, we can group them together inside a single case using the pipe symbol, `|`. This lets us list several alternatives side by side, and if the variable matches any one of them, that case is chosen.
+
+For example, in the below code we group "Saturday" and "Sunday" together, since both are weekend days:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Grouping weekdays
+day = "Saturday"
+match day:
+    case "Saturday" | "Sunday":
+        print("It's the weekend!")
+    case "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday":
+        print("It's a weekday.")
+    case _:
+        print("Not a valid day.")
+```
+
+## Converting Long `elif`  Statements to `match`
+
+One of the biggest advantages of the `match` statement is how cleanly it handles data with complex structures.
+
+Suppose we want to represent different 3D solids using dictionaries. For example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+solid_data = {"type": "cylinder", "radius": 3, "height": 10}
+```
+
+> **Note:** If you are not yet comfortable with dictionaries, please review the week 1 intermediate notebook on `collections`. There you will find introductory material on the `dict` data type.
+
+Here, `solid_data` describes a cylinder with a given `radius` and `height`. We might also store information for other solids:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+solid_data = {"type": "sphere", "radius": 5}
+solid_data = {"type": "rectangular_prism", "width": 2, "height":9, "depth":10}
+```
+
+Each solid requires different keys: a `sphere` has only a radius, a `rectangular prism` has `width`, `height`, and `depth`, while a `cylinder` needs both `radius` and `height`.
+
+Now imagine we want to compute the volume automatically, regardless of which solid is described. A natural first attempt is a long chain of `if`-`elif`-`else` statements:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+if solid_data.get("type") == "sphere":
+    r = solid_data.get("radius")
+    if r:
+        volume = (4/3) * 3.14 * (r**3)
+elif solid_data.get("type") == "cube":
+    s = solid_data.get("side")
+    if s:
+        volume = s**3
+elif solid_data.get("type") == "rectangular_prism":
+    w = solid_data.get("width")
+    h = solid_data.get("height")
+    d = solid_data.get("depth")
+    if w and h and d:
+        volume = w * h * d
+elif solid_data.get("type") == "cylinder":
+    r = solid_data.get("radius")
+    h = solid_data.get("height")
+    if r and h:
+        volume = 3.14 * (r**2) * h
+elif solid_data.get("type") == "cone":
+    r = solid_data.get("radius")
+    h = solid_data.get("height")
+    if r and h:
+        volume = (1/3) * 3.14 * (r**2) * h
+else:
+    solid_data["type"] = "unknown"
+    volume = "unknown"
+
+print("The " + solid_data["type"] + " has  " + str(volume) + " volume")
+```
+
+While this works, it quickly becomes unwieldy. Each branch requires lots of repetition (`.get()`, nested `if`s), and adding new shapes means adding even more clutter.
+
+The `match` statement for this task is much simpler. This is in part due to some useful syntax; we can unpack the values inside the dictionary immediately, without using the `.get()` function as shown below:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+match data:
+    
+    case {"type": "sphere", "radius": r}:
+        volume = (4/3) * 3.14 * (r**3)
+    case {"type": "cube", "side": s}:
+        volume = s**3
+    case {"type": "rectangular_prism", "width": w, "height": h, "depth": d}:
+        volume = w * h * d
+    case {"type": "cylinder", "radius": r, "height": h}:
+        volume = 3.14 * (r**2) * h
+    case {"type": "cone", "radius": r, "height": h}:
+        volume = (1/3) * 3.14 * (r**2) * h
+    case _:
+        data["type"] = "unknown"
+        volume = "unknown"
+
+print("The " + data["type"] + " has  " + str(volume) + " volume")
+```
+
+This is much cleaner:
+
+ - No need for repeated `.get()` calls
+ - No nested `if` checks
+ - Simple, readable `case` syntax
+
+And adding a new solid is now as simple as writing one more two-line case.
+
+## Combining `match` and `if`
+
+Another helpful feature of the `match` statement is that it can be modified to include conditionals, using an `if` guard. This works a lot like an `if` statement and allows you greater control over when `case`s are executed. The general syntax is:
+
+```
+match variable:
+    case pattern if condition:
+        # code to run
+```
+
+Here the code will be run if and only if the `variable` matches the `pattern` *and* the `condition` is satisfied.
+
+For example, suppose we're working with points in 2D space, which we write as a `tuple` and wish to describe whether they lie on the cartesian axes. Then we could do the following:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Point in space
+point = (1, 5)
+
+# Match statement
+match point:
+    case (0, y) if y > 0:
+        location = "on the positive y-axis"
+    case (0, y) if y < 0:
+        location = "on the negative y-axis"
+    case (x, 0) if x > 0:
+        location = "on the positive x-axis"
+    case (x, 0) if x < 0:
+        location = "on the negative x-axis"
+    case (0, 0):
+        location = "at the origin"
+    case (x, y):
+        location = "not on the axes"
+
+# Describe where the point is
+print(f"The point {point} is {location}.")
+```
+
+## Exercises
+
+**Question 1:** Extend the match statement in the [Combining `match` and `if`](#Combining-match-and-if) section so that it not only handles points on the axes, but also describes points in each of the four quadrants (upper right, lower right, lower left, upper left).
+
+*Hint: A 2D point lies in a quadrant when both $x$ and $y$ are nonzero. Use `if` guards to distinguish whether each coordinate is positive or negative.*
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your answer here...
+```
+
+**Question 2:** Convert the below `if`-`elif`-`else` statement to a `match` statement:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+x = 2
+
+if x == 1:
+    print("one")
+elif x == 2:
+    print("two")
+elif x == 3:
+    print("three")
+else:
+    print("something else")
+```
+
+**Question 3:**  You are given two numeric variables, `a` and `b`, along with an operator stored as a string (`"+"`, `"-"`, `"*"`, `"/"`). Use a `match` statement to apply the correct operation and display the result.  
+
+For example, if `operator = "*"`, the program should calculate and store `my_result = a * b`.  If the operator is not one of the four listed above, your code should print `"Invalid operator"`.  
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Example input
+a = 10
+b = 5
+operator = "*"
+
+# Write your code here...
+```
+
+**Question 4:**  The variable `account` stores a tuple `(balance, currency)`, where `balance` is the amount of money a user has and `currency` is the unit of that balance. The unit will be one of `"USD"`, `"EUR"`, `"GBP"`, or `"JPY"`.  Your job is to convert this balance into another currency, stored in the variable `target_currency` (again, one of the four listed above).  
+
+Write a Python program using `match` statements to:  
+
+1. Convert `account` into the requested `target_currency` using the exchange rates provided below.  
+2. Print the resulting balance, formatted with the correct symbol:  
+   - `"USD"` → `"$"`  
+   - `"EUR"` → `"€"`  
+   - `"GBP"` → `"£"`  
+   - `"JPY"` → `"¥"`  
+
+If either `currency` (from `account`) or `target_currency` is not one of the four supported codes, print `"Unsupported currency"`.
+
+**Note:** You will have to look up the current exchange rates online (you need only use three significant figures for the conversion).
+
+*Hint: You may wish to use two match statements for this task; one converting to a single currency, say GBP, and another converting from GBP to the desired output currency.* 
+
+*If you are unsure what a `Tuple` is, please revisit the `week 01 intermediate` notebook on collections.* 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Example input
+account = (100, "USD")      # 100 dollars
+target_currency = "EUR"     # convert to euros
+
+# Write your answer here...
+```
+
+**Question 5:** In digital images, colors are represented using *RGB* values. An *RGB* value is a 3-tuple `(r, g, b)` that gives the intensity of the **r**ed, **g**reen, and **b**lue components of a color, each ranging from $0$ to $255$. For example, $(255, 0, 0)$ is bright red, $(0, 255, 0)$ is bright green, and $(0, 0, 0)$ is black.
+
+Write a program that takes an `(r, g, b)` tuple as input and uses a match statement to classify the tuple into one of the following color names:
+
+ - `Red` if `r` is greater than `200` and both `g` and `b` are less than `50`.
+ - `Green` if `g` is greater than `200` and both `r` and `b` are less than `50`.
+ - `Blue` if `b` is greater than `200` and both `r` and `g` are less than `50`.
+ - `Unknown` for any other combination.
+
+The color name should be saved as a string variable named `color_name`. Write your solution in the box below.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Example rgb values
+rgb_values = (20,3,220)
+
+# Write your code here...
+```
+
+*Hint: You may wish to use `if` guards for this question.*
+

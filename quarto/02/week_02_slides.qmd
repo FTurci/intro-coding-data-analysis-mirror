@@ -1,0 +1,227 @@
+---
+title: Introduction to Coding and Data Analysis for Scientists
+jupyter: python3
+---
+
+
+## Week 2: Booleans and Conditionals
+
+
+## Today's Lecture
+
+ - Lecture 2: Booleans and Conditionals
+   - Recap: Accessing Noteable
+   - Recap: Booleans
+   - If statements
+   - Practical
+
+## Why learn to code?
+
+Whichever course you are taking you will likely need to write code at some point
+ - Chemistry
+    - Analyse experimental data
+    - Automate repetitive calculations
+    - Model chemical reactions/simulations
+    
+
+<img src="./images/chem.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:60%"/>
+
+## Why learn to code?
+
+Whichever course you are taking you will likely need to write code at some point
+ - Physics
+    - Simulate physical systems
+    - Process experimental measurements
+    - Visualise complex phenomena
+    
+
+<img src="./images/physics.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:60%"/>
+
+## Why learn to code?
+
+Whichever course you are taking you will likely need to write code at some point
+ - Data Science
+    - Clean and organise datasets
+    - Apply statistical methods and machine learning
+    - Communicate insights with visualisations
+    
+
+<img src="./images/datsci.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:60%"/>
+
+## Recap: Accessing Noteable
+
+ - Open Blackboard
+ - Go to `Introduction to Coding and Data Analysis for Scientists 2025`
+ - Click `Unit Information and Resources`
+ - Open Noteable
+   - Make sure `Jupyter Classic (Legacy)` is selected.
+   - Click Start
+ - Click `+GitRepo`
+ - Paste into Git Repository URL: `git@github.com:TomMaullin/SCIF10002-2025.git`
+ - Press clone
+
+<img src="./images/noteable2.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:20%"/>
+
+## Recap: Last Time
+
+ - Last week, we started looking at the Python language
+ - We saw that variables can be assigned values using `=` 
+ - To display the values of variables we can use `print`
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+x = 5
+print(x)
+```
+
+## Recap: Last Time
+
+ - Variables have their own Data Types
+
+   - Strings are sequences of characters
+   - Floats are decimals, Ints are integers
+   - Booleans are `True/False` values
+   - Lists are ordered groups of items
+ - We spent some time looking at various things we could do with some of these data types
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# Int
+x = 5
+
+# String
+letters = "hello"
+
+# Booleans 
+cat_is_black = True
+
+# A list of strings
+shopping = ["milk", "bread", "eggs", "cheese"]
+```
+
+## Recap: Booleans
+
+ - A Boolean is  variable that can be either `True` or `False`
+ - Booleans represent logical statements. 
+ - For instance, we saw an example where:
+
+   - `cat_is_black` represented the sentence "The cat is black"
+   - `cat_has_four_legs` represented the sentence "The cat has four legs"
+ - We can use logical operators to combine Boolean statements
+   - `cat_is_black and cat_has_four_legs` represented the sentence "The cat is black and has four legs"
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+cat_is_black = True
+cat_has_four_legs = False
+print(cat_is_black and cat_has_four_legs)
+```
+
+## Recap: Booleans
+
+
+<img src="./images/truth_table.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:60%"/>
+
+## If Statements
+
+ - We should be starting to feel comfortable with giving a computer instructions via code
+ - But sometimes, we don’t want every line to run automatically
+ - Instead, we may want Python to act only when a specific condition is true
+ - This is where the `if` statement comes in...
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+print("Hello World")
+```
+
+## If Statements
+
+ - An if statement lets you run code when a Boolean statement is True
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# Integer value
+number = 5
+
+# Boolean value (true if number posiitve)
+my_boolean = number > 0
+
+# If the number is positive, print "Positive number"
+if my_boolean:
+    print("Positive number")
+```
+
+ - Indentation is important!
+    - Python tells what is in the body by looking at which code is indented!
+ - Often we don’t bother naming the boolean, and instead write it directly inside the if statement
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# Integer value
+number = 5
+
+# If the number is positive, print "Positive number"
+if number > 0:
+    print("Positive number")
+```
+
+## If Statements
+
+ - We can also tell the if statement what to do when the Boolean is False by using `else`!
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# Integer value
+number = 5
+
+# If the number is positive, print "Positive number"
+if number > 0:
+    print("Positive number")
+    
+# Otherwise, print "Non-positive number"
+else: 
+    print("Non-positive number")
+```
+
+## If Statements
+
+ - An `elif` (short for else if) can be added to check more extra conditions.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+# Integer value
+number = 5
+
+# If the number is positive, print "Positive number"
+if number > 0:
+    print("Positive number")
+    
+# Otherwise, if the number is zero, print "Zero"
+elif number == 0:
+    print("Zero")
+    
+# Otherwise, print "Negative number"
+else: 
+    print("Negative number")
+```
+
+ - Multiple `elif` can be added.
+
+## Practical
+
+ - We now move over to Python
+ - Please open [week_02_home.ipynb](./week_02_home.qmd)
+ - For the rest of today, you must work through a Python notebook
+ - You have a choice of one of three options
+   - [Option 1: Beginner - If Statements](week_02_booleans_and_conditionals_beginner.qmd)
+   - [Option 2: Intermediate - Match Statements](week_02_booleans_and_conditionals_intermediate.qmd)
+   - [Option 3: Advanced - Conditional Expressions and Lazy Evaluation](week_02_booleans_and_conditionals_advanced.qmd)
+

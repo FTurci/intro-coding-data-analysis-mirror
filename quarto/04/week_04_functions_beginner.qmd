@@ -1,0 +1,505 @@
+---
+jupyter: python3
+---
+
+
+
+# Beginner: Defining Functions
+
+### Table of Contents
+
+ - [Welcome Page](./week_04_home.qmd)
+
+ - [**Beginner: Defining Functions**](./week_04_functions_beginner.qmd)
+   - [What is a Function?](#What-is-a-Function?)
+   - [Anatomy of a Function](#Anatomy-of-a-Function)
+   - [Inputs and Outputs](#Inputs-and-Outputs)
+   - [Variable Scope](#Variable-Scope)
+   - [Exercises](#Exercises)
+ - [Intermediate: Flexible Inputs and Outputs](./week_04_functions_intermediate.qmd)
+ - [Advanced: Lambda Functions and Functional Programming](./week_04_functions_advanced.qmd)
+ - [Slides](./week_04_slides.qmd) ([Powerpoint](./Lecture4_Functions.pptx))
+
+## What is a Function?
+
+Functions are a handy way of parceling up your code, making it easier to reuse, share, and organize. You can think of a function as a block of "pre-prepared" code that you might want to run again and again.
+
+You've already used a lot of functions without realizing it - for instance:
+
+ - `print()` to display text
+
+ - `"hello".split()` to split strings
+
+ - `str()`, `int()`, and `float()` to convert between types
+
+Anything that looks like a name followed by round brackets `()` is usually a function in Python.
+
+To understand why functions are useful, suppose we were writing some code, and it ended up looking something like this:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+k = 3
+y = k * 2 + 1
+print(y)
+
+print("Doing something else here...")
+
+m = 10 + k
+z = m * 2 + 1
+print(z)
+
+print("Sum of numbers:", sum([1, 2, 3]))
+
+w = 2 * 2 + 1
+print(w)
+```
+
+In this program there are several places where we are doing the same operation: doubling a number, adding one, and then printing the result.
+
+We can't use a loop here, since the overall program is not simply repeating over and over, but it is clear that this calculation is repetitive. This is the kind of situation where functions are useful.
+
+We can put the repeated logic into a function and give it a name. In Python, functions are created using the `def` keyword, followed by the function name, a pair of parentheses, and a colon. The code inside the function is indented:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# This is a function:
+def print_double_and_add_one(x):
+    
+    # Double x and add 1
+    y = x * 2 + 1
+    print(y)
+
+# This is not part of the function,
+# because the code is no longer indented
+k = 3
+print_double_and_add_one(k)
+```
+
+ > **Note:** Much like `if` statements and loops, indentation is very important for functions. Whilst in other languages such as `Matlab` there are keywords signifying when a function ends (such as `end`); in Python the only way to tell which code is and is not inside a function is through indentation. In short, make sure your indentation is present and consistent! Also, don't forget the colon after the `def` expression!
+
+Now we can call our function whenever we need that same operation, without having to repeat the calculation each time:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+k = 3
+print_double_and_add_one(k)
+
+print("Doing something else here...")
+
+m = 10 + k
+print_double_and_add_one(m)
+
+print("Sum of numbers:", sum([1, 2, 3]))
+
+print_double_and_add_one(2)
+```
+
+This version of the program behaves exactly the same, but the repeated calculation is written only once, inside the function. If we ever needed to change the logic (for example, triple the number instead of double it), we would only have to update the function (instead of updating the three lines it was used on one by one).
+
+## Anatomy of a Function
+
+Let's break down the basic syntax of a function.
+
+The first line always begins with the `def` keyword and ends with a colon `:`. These tell Python where the function starts.
+
+
+ > <pre>
+ > <b>`def` keyword</b>        <b>colon</b>
+ >   ↓                    ↓
+ > <b>def</b> my_function(inputs)<b>:</b>
+ >     print("Code inside function")
+ >     
+ > print("Code outside function")
+ > </pre>
+
+After `def`, we choose a name for the function. In this case, it's `my_function`. This is the name we will later use to "call" (i.e. run) the function.
+
+ > <pre>
+ >       <b>name of function</b>
+ >            ↓
+ > def<b> my_function</b>(inputs):
+ >     print("Code inside function")
+ >     
+ > print("Code outside function")
+ > </pre>
+
+Next, inside the round brackets `()`, we specify the `inputs` to the function. These are the variables or values that the function will use when it runs.
+
+ > <pre>
+ >       <b>inputs to the function</b>
+ >                  ↓
+ > def my_function<b>(inputs)</b>:
+ >     print("Code inside function")
+ >     
+ > print("Code outside function")
+ > </pre>
+
+The indented block of code that follows is called the body of the function. This code does not run until the function is called.
+
+
+> <pre>
+> def my_function(inputs):
+>    <b>print("Code inside function") ← body of the function</b>
+>    
+> print("Code outside function")
+> </pre>
+
+
+Finally, any code that is not indented is *outside* the function and will run as normal when the program is executed.
+
+ > <pre>
+ > def my_function(inputs):
+ >     print("Code inside function")
+ >     
+ > <b>print("Code outside function") ← this code will run as normal</b>
+ > </pre>
+
+Don't worry if this seems a little confusing for now, we will see lots of examples in the next few sections.
+
+## Inputs and Outputs
+
+You can think of a function a bit like a *black box*: you put some inputs into it, the function runs some code, and it gives you a result.
+
+For example, the `print_double_and_add_one` function we saw earlier took in a number `x`, doubled it, added one, and printed the result.
+
+Up until now, our functions have only printed things. But often we want a function to return a result that we can use later in our program. This is done with the `return` keyword.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def double_and_add_one(x): 
+    # Double x and add 1
+    y = x * 2 + 1
+    
+    # Return y as an output
+    return y      # we could also write return(y)
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Test the function
+k = 3 
+m = double_and_add_one(k)
+print(m)
+```
+
+Notice how this function doesn't print the result directly. Instead, it returns it. We then stored the result in `m` and printed it afterwards.
+
+ > **Test your understanding:** Try changing the value of `k` above. What do you think will happen when you do this?
+ 
+  > **Note:** We can also write `return(y)` instead of `return y`. Both are valid and do exactly the same thing.
+
+Once a `return` statement is reached, the function ends immediately. Any code written after it will not be executed. For instance:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def add_one_to_x(x):
+
+    print("This will be printed when the function is called.")
+    
+    return x + 1
+
+    print("This will never be printed.")
+    
+# Run the function
+z = add_one_to_x(3)
+print(z)
+```
+
+A function doesn't just have to have one input. Multiple inputs to a function can be specified like so:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def add_together_and_square(x, y):
+    z = (x + y) ** 2
+    return z
+```
+
+ > **Test your understanding:** Write some code which *calls* this function on the values `x=3` and `y=2`. Predict what output your code will give, and check your answer by running the code.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+Multiple outputs can also be returned like so:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def double_and_add_one_and_two(x):
+    y = x * 2 + 1
+    z = x * 2 + 2
+    return y, z
+
+a, b = double_and_add_one_and_two(3)
+print(a, b)
+```
+
+If we don't want all the outputs, we can ignore one with the underscore `_`:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+m, _ = double_and_add_one_and_two(5)
+print(m)
+```
+
+Functions can also be written with no inputs or outputs at all. For example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def say_hello():
+    print("Hello there!")
+
+say_hello()
+```
+
+Input arguments are named, meaning you can call the function on inputs by using their names, rather than by using the order they were defined in. For example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def exponentiation(base, exponent):
+    return base ** exponent
+
+# These will give the same result
+print(exponentiation(2, 3))
+print(exponentiation(base=2, exponent=3))
+print(exponentiation(exponent=3, base=2))
+```
+
+You can also specify default values for inputs so that if an input is not entered, the function will assume it takes some predefined value. For example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def print_arguments(a=1, b=2, c=3):
+    print('First argument: ', a)
+    print('Second argument:', b)
+    print('Third argument: ', c)
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+print('---------------------------')
+print_arguments()
+print('---------------------------')
+print_arguments(3)
+print('---------------------------')
+print_arguments(3,4)
+print('---------------------------')
+print_arguments(3,4,5)
+print('---------------------------')
+```
+
+## Variable Scope
+
+When we create variables inside a function, those variables only exist *inside* the function. The region of the program where a variable can be used is called the *scope* of the variable.
+
+For example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def double_and_add_one(x):
+    output_variable = x * 2 + 1   # output_variable is created inside the function
+    return output_variable
+
+result = double_and_add_one(3)
+print(result)
+
+# This will give an error because output_variable does not exist 
+# outside the function
+print(output_variable)
+```
+
+The variable `output_variable` is created inside the function, so it only exists while the function is running. Once the function finishes, `output_variable` disappears.
+
+Variables created inside a function are called *local variables*. They can't be accessed outside of the function.
+
+On the other hand, variables created outside of a function are called *global variables*, and they can be used inside functions (though usually it's better practice to pass them in as inputs).
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+global_var = 10   # global variable
+
+def multiply_by_global_var(x):
+    return x * global_var
+
+print(multiply_by_global_var(3))   # This works because global_var is defined outside
+```
+
+In general, it's good practice to:
+
+ - Use function inputs and outputs rather than relying on global variables.
+ - Give your variables clear names so you don't accidentally confuse a local variable with a global one.
+
+## Exercises
+
+**Question 1:** Below is a simple function with two inputs.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+def my_simple_function(x=2,y=1):
+    
+    print(x, y)
+```
+
+What do you think will be printed when each of the following is run?
+
+ - `my_simple_function(3,4)`
+ - `my_simple_function(y=3,x=4)`
+ - `my_simple_function(y=4)`
+ - `my_simple_function()`
+ - `my_simple_function(x=3)`
+ 
+Explain your results and verify your answers by running the code.
+
+**Question 2:** Write a function that takes a string `my_string` as input and returns the number of uppercase letters it contains. For example, if the input is `"this Is mY string"`, the function should return `2`. 
+
+*Hint: Recall from [week 3](../03/week_03_loops_beginner.qmd) that a string is an iterable object. This means that you can iterate over the characters in a string using `for character in my_string:`. You may also wish to use the [`upper`](https://www.geeksforgeeks.org/python/python-string-upper/) function.*
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+**Question 3:**  In physics, energy can take different forms. In this question, you will write two functions to calculate kinetic and potential energy.
+
+ - The first, `calculate_kinetic_energy`, should take `mass` (in kg) and `velocity` (in m/s) as inputs and return the kinetic energy, `E_k`, computed using the formula $E_{K} = \frac{1}{2}mv^2$. For example, if the mass is `2` kg and velocity is `10` m/s, the function should return `100.0`.
+ - The second, `calculate_potential_energy`, should take `mass` (in kg), `height` (in m), and `gravity` (in m/s²) as inputs and return the gravitational potential energy, `E_p`, computed using the formula $E_{P} = mgh$. For example, if mass is `1` kg, height is `50` m, and gravity is `9.8` m/s², the function should return 490.0.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+**Question 4:** Your task in this question is to write code which models the behaviour of a ball falling from rest. 
+
+To begin, you must create a list of time points from `0` to `5` seconds in increments of `0.1` seconds. For every time point, you must then compute the velocity of the ball, using $v = gt$ ($g = 9.8$ m/s²), and the height of the ball using $h = h_0 - \frac12gt^2$ (where $h_0 = 100$ m is the initial height from which it is dropped). You must record the values in three lists named `times`, `velocities`, and `heights`. 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+Next, you must use the functions you wrote in *Question 3* to calculate the kinetic and potential energy at each time and store the results in lists called `kinetic_energy` and `potential_energy`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+Once you have created the lists named `times`, `kinetic_energy` and `potential_energy`, you can run the below code, which should create a plot of the two forms of energy against time. Try to describe what these plots are telling you. Are the energies increasing or decreasing over time? How do you explain their behaviour?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import os
+os.chdir('/home/jovyan/intro-coding-data-analysis.git/04/src')
+
+from plot import *
+
+plot_energy_over_time(times, kinetic_energy, potential_energy)
+```
+
+> **Note:** Don't worry if you are unsure what the `import` and `from` keywords are doing in the above code. For now, you can think of these as a way of loading in pre-written functions such as the `plot_energy_over_time` function. You'll have plenty of opportunities to practice and understand these features of Python as the course goes on.
+
+**Question 5:** The below code will load a function called `time` which you can run as `time()`. See if you can work out what this function does (you may have to look online).
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# This loads a function called time
+from time import time
+
+# Let's run the function
+time()
+```
+
+**Question 6:** Often in speech-to-text processing, spoken audio is transcribed as text. This can produce long strings of English sentences that have been automatically generated from speech. One common problem is that people often use filler words such as `"um"`, `"uh"`, `"uhm"`, `"er"`, and `"err"`. 
+
+Write a function `remove_filler` which takes in a string containing transcribed speech and returns a new string with the same speech but with the filler words listed above removed. For instance, given the text
+
+```"Um I was, uh, going to the store but uhm I er forgot."```
+
+your function should return
+
+```"I was, going to the store but I forgot."```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
+*Hint: You may want to consider the [`split`](https://www.w3schools.com/python/ref_string_split.asp) function for strings for this problem.*
+
+**Question 7:** Consider the following badly written code that uses both a global and a local variable with the same name, `x`. When you run the code, you'll notice that the two `print` statements output different values. By performing your own research online if necessary, see if you can explain why the value printed inside the function differs from the value printed outside the function.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+x = 10
+
+def my_function():
+    x = 20
+    print(x)
+    
+my_function()
+print(x)
+```
+
+**Question 8:** The $n$th Fibonnaci number, $F(n)$, is defined by the following recurrence relation;
+
+$F(0)=0, F(1)=1$ and $F(n)=F(n-1)+F(n-2)$ for $n>1$
+
+Write a function `Fibonnaci` which takes in a list of integers `[x1,x2,...,xk]` of arbitrary length and returns their corresponding fibonnaci numbers, i.e. `[F(x1),F(x2),...,F(xk)]`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Here is some example input
+example_input = [3,1,2,7]
+
+# And it's expected output
+expected_output = [2,1,1,13]
+
+# Write your function here
+def Fibonnaci(input_list):
+    
+    # ...
+    
+
+
+# Check your answer against this expected output
+print(Fibonnaci(example_input))
+print(expected_output)
+```
+
+**Question 9:** The ["Look and Say"](https://en.wikipedia.org/wiki/Look-and-say_sequence) sequence is a sequence of integers defined in the following way.
+
+ - The first member of the "Look and Say" sequence is 1, i.e. $l(1) = 1$.
+ - To generate a member of the sequence from the previous member, read the digits of the previous member, counting the number of digits in groups of the same digit. For example:
+   - 1 is read off as "one 1" or 11 ($l(2) = 11$).
+   - 11 is read off as "two 1s" or 21 ($l(3) = 21$).
+   - 21 is read off as "one 2, then one 1" or 1211 ($l(4) = 1211$).
+   - 1211 is read off as "one 1, one 2, then two 1s" or 111221 ($l(5) = 111221$).
+   - 111221 is read off as "three 1s, two 2s, then one 1" or 312211 ($l(6) = 312211$).
+
+Write a function which, given the kth integer from the look and say sequence, $l(k)$, computes the (k+1)th integer in the sequence, $l(k+1)$. *Hint: The `str` function may be helpful for this task!*
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# This function must take in a look and say number, l(k),
+# and return the next number in the sequence, l(k+1).
+def next_las(las_k):
+    
+    # Write your function here
+
+    
+# Test - to check your answer try it on the examples listed above
+print(next_las(1))
+print(next_las(11))
+print(next_las(21))
+print(next_las(1211))
+print(next_las(111221))
+```
+
+**Question 10:** Using your function from Question 9, now write a function `las_k` which given an integer, $k$, returns the kth look and say number, $l(k)$. Give 3 reasons why you think it may be useful to lay out your code in functions in this way. 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Write your code here...
+```
+
