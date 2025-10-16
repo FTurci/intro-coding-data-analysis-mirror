@@ -1,0 +1,368 @@
+---
+title: 'Week 3: Solutions'
+jupyter: python3
+---
+
+
+
+This notebook contains the solutions to the week 3 `Beginner`, `Intermediate` and `Advanced` exercises.
+
+### Table of Contents
+
+ - [Welcome Page](./week_03_home.qmd)
+
+ - [Beginner: For and While Loops](./week_03_loops_beginner.qmd)
+ - [Intermediate: Advanced Iteration](./week_03_loops_intermediate.qmd)
+ - [Advanced: Comprehensions](./week_03_loops_advanced.qmd)
+
+ - [**Solutions**](./week_03_solutions.qmd)
+     - [Beginner: For and While Loops](#Beginner:-For-and-While-Loops)
+     - [Intermediate: Advanced Iteration](#Intermediate:-Advanced-Iteration)
+     - [Advanced: Comprehensions](#Advanced:-Comprehensions)
+ - [Slides](./week_03_slides.qmd) ([Powerpoint](./Lecture3_Loops.pptx))
+
+## Beginner: For and While Loops
+
+**Question 1:** The below code box contains an answer to this question.
+
+```{pyodide}
+first_string = 'This seems have broken two strings. thats'
+second_string = 'sentence to been into seperate Well, annoying.'
+
+words_first_string = first_string.split()
+words_second_string = second_string.split()
+new_string = ''
+
+i = 0
+while i < len(words_first_string):
+    
+    new_string = new_string + words_first_string[i] + ' ' + words_second_string[i] + ' '
+    i = i + 1
+    
+print(new_string)
+```
+
+**Question 2:** A solution is given below.
+
+```{pyodide}
+for i in range(100, 0, -1):
+    print(i)
+```
+
+**Question 3:** The below code computes the factorial with a `while` loop.
+
+```{pyodide}
+n = 6
+
+factorial = 1
+i = n
+
+while i > 0:
+    factorial = factorial * i
+    i = i - 1
+
+print(factorial)
+```
+
+**Question 4:** An answer to this question is given below:
+
+```{pyodide}
+example_list = [1,-2.8,-2.1,-0.03,0.04,-1.9,1.0,20.8,1, -3,3.2]
+
+# First part
+output_list = []
+for i in example_list:
+    if i>2 or i <-2.5:
+        print(i**2)
+        
+# Second part
+output_list = []
+for i in example_list:
+    if i>2 or i <-2.5:
+        output_list.append(i**2)
+```
+
+**Question 5:** The code will print `"Python"` four times, one for each power of two.
+
+**Question 6:** The problem here is that the `position = position + 1` is incorrectly indented and thus the `position` only changes when we encounter vowels. Once we encounter a consonant, we get stuck at that position indefinitely, never updating. The solution is as follows:
+
+```{pyodide}
+# Word to count vowels in
+word = "education"
+
+# String of vowels
+vowels = "aeiou"
+
+# Variable to count the number of vowels we've seen so far
+vowel_count = 0
+
+# Variable to keep track of where we are looking in the code.
+position = 0
+
+# While the position is still within the word
+while position < len(word):
+    
+    # Get the letter at the position
+    letter = word[position]
+    
+    # Check if letter is a vowel
+    if letter.lower() in vowels:
+        vowel_count = vowel_count + 1
+
+    # Move the position one along                   #  <--------------------------- Unindented lines
+    position = position + 1                         #  <--------------------------- Unindented lines
+
+# print result
+print("Vowel count:", vowel_count)
+```
+
+**Question 7:** An example answer is given below.
+
+```{pyodide}
+# Dictionary of exam scores
+exam_results = {
+    'Liam Turner': 54,
+    'Sophie Grant': 91,
+    'Ethan Walsh': 62,
+    'Isabella Patel': 77,
+    'Noah Murphy': 38,
+    'Mia Douglas': 85,
+    'Lucas Reed': 43,
+    'Ava Brooks': 99,
+    'Mason Clarke': 71,
+    'Olivia Hayes': 58
+}
+
+# Initialize variables to track highest and lowest scores
+highest_score = -1  # Start with a very low value
+lowest_score = 101  # Start with a value higher than any possible score
+
+# Loop through the dictionary
+for student in exam_results.keys():
+    score = exam_results[student]
+    
+    # Check if this is the highest score so far
+    if score > highest_score:
+        highest_score = score
+        highest_student = student
+    
+    # Check if this is the lowest score so far
+    if score < lowest_score:
+        lowest_score = score
+        lowest_student = student
+
+# Calculate and print the difference
+difference = highest_score - lowest_score
+print("Difference between highest and lowest scores: " + str(difference))
+print("Highest score: " + str(highest_student) + " with " + str(highest_score))
+print("Lowest score: " + str(lowest_student) + " with " + str(lowest_score))
+```
+
+**Question 8:** A solution to this question is given below:
+
+```{pyodide}
+# Set the value of n
+n = 5
+
+# Loop through each row (from 0 to n)
+for row in range(n + 1):
+    
+    # First number in the row is always 1
+    value = 1       
+    
+    # Start with an empty string for this row
+    line = ""       
+
+    # Loop through each entry in the row
+    for col in range(row + 1):
+        
+        if col != row:
+            # Add the current number directly (no spaces this time)
+            line = line + str(value) + " "
+        else:
+            line = line + str(value) + " "
+
+        # Update 'value' for the next column using binomial relation
+        value = value * (row - col) // (col + 1)
+
+    # Print the row
+    print(line)
+```
+
+**Question 9:** One possible solution is provided below:
+
+```{pyodide}
+# Compute all palindromic numbers between 0 and 1000 
+palindromes = []
+for n in range(1001):
+    string_n = str(n)
+    if string_n == string_n[::-1]:
+        palindromes.append(n)
+
+# Output the list
+print(palindromes)
+```
+
+**Question 10:** Here is an example solution.
+
+```{pyodide}
+# Initialize the candidate number to start checking from 1
+candidate = 1
+
+# Initialize a flag to track if we've found the number (start as False)
+found = False
+
+# Continue looping while we haven't found the number yet
+while not found:
+    
+    # Assume it is divisible until proven otherwise
+    is_divisible = True
+    
+    # Check divisibility by each number from 1 to 8
+    for i in range(1, 9):
+        # If not divisible by i, mark as not divisible
+        if candidate % i != 0:
+            is_divisible = False
+    
+    # If it is divisible by all, we've found it
+    if is_divisible:
+        
+        # Set the flag to stop the loop
+        found = True
+        
+        # Output the result
+        print(candidate)
+        
+    else:
+        # Otherwise, try the next candidate
+        candidate += 1
+```
+
+## Intermediate: Advanced Iteration
+
+**Question 1:** Here is the solution:
+
+```{pyodide}
+names = ["Alice", "Bob", "Charlie"]
+scores = [85, 92, 78]
+
+for name, score in zip(names, scores):
+    print(name + " scored " + str(score))
+```
+
+**Question 2:** Below is a solution for this question.
+
+```{pyodide}
+my_list = ["tent", "moon", "star", "guitar", "lamp", "tree", "ocean", "kite", "hat", 
+           "rain", "butter", "frog", "nest", "tiger", "apple", "water", "sun", "toast", 
+           "cloud", "ant"]
+
+indices = []
+for i, word in enumerate(my_list):
+    if "t" in word:
+        indices.append(i)
+
+print(indices)  
+```
+
+**Question 3:** The answer to this question is to change the `break` to a `continue`. This is as the `break` ends the loop prematurely, whilst `continue` just skips to the next iteration. The current code gets to `num=1` and then executes the `break` statement, thus terminating the loop early.
+
+```{pyodide}
+numbers = [1, 2, 3, 4, 5, 6]
+
+for num in numbers:
+    if num % 2 == 0:
+        continue # <----- Fix implemented here.
+    print(num)
+```
+
+**Question 4:** Solution code is provided below:
+
+```{pyodide}
+original_dict = {
+    'a': 1,
+    'b': 2,
+    'c': 1,
+    'd': 3,
+    'e': 2
+}
+
+inverted_dict = {}
+
+# Loop through the original dictionary
+for key, value in original_dict.items():   # sequence unpacking here
+    
+    # Check if we've seen this value before
+    if value not in inverted_dict:
+        
+        # If we haven't add it as a new key
+        inverted_dict[value] = []
+        
+    # Save the old key under value
+    inverted_dict[value].append(key)
+
+# Print result
+print(inverted_dict)
+```
+
+**Question 5:** The error in this code is the indentation of the `else` block. Here `else` should be at the same level as the `if` to make an `if... else`. However, it is at the level of the `for` creating a `for...else`. This means that it will always be executed for the last `day` so long as a `break` is not encountered in the loop. To rectify this, we just indent like so:
+
+```{pyodide}
+days = ["Monday", "Saturday", "Tuesday"]
+
+for day in days:
+    if day in ["Saturday", "Sunday"]:
+        print(day, "is at the weekend")
+    else:                                            # <----- Line has been indented
+        print(day, "is a weekday")                   # <----- Line has been indented
+```
+
+## Advanced: Comprehensions
+
+**Question 1:** The solution is below:
+
+```{pyodide}
+my_comprehension = [x**2 for x in range(1, 21) if x % 2 ==0]
+print(my_comprehension)
+```
+
+**Question 2:** The answer to this question is as follows:
+
+```{pyodide}
+my_integer = 347892472349234
+
+# List comprehension for digit sum
+sum_of_digits = sum([int(digit) for digit in str(my_integer)])
+print(sum_of_digits)
+```
+
+**Question 3:** Below is list comprehension for this question.
+
+```{pyodide}
+# Compute all "pluriperfect" numbers between 0 and 999 using a list comprehension.
+
+pluriperfect_numbers = [
+    n
+    for n in range(0, 1000)  # Iterate through all 3-digit numbers
+    # Check if the number equals the sum of the cubes of its digits
+    if n == sum([int(str(n)[k])**3 for k in range(len(str(n)))])
+]
+
+print(pluriperfect_numbers)  
+```
+
+**Question 4:** The solution is given below:
+
+```{pyodide}
+my_string = "This is a lengthy string. It has many sentences. " + \
+            "MaNY LetteRs aRe UpPer caSe. It might " + \
+            "have these characters as well ?!,:-'... and numbers like " + \
+            "123456789"
+
+# Compute unique vowels using a set comprehension
+unique_vowels = {char for char in my_string.lower() if char in "aeiou"}
+print(unique_vowels)
+```
+
+**Question 5:** The correct answer to this question is to use a generator comprehension, so that the values inside the comprehension are computed lazily (only when needed). If we use a list comprehension for this task, we will end up trying to compute `10000000000` values instantly and crash the memory.
+

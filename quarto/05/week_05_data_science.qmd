@@ -1,0 +1,377 @@
+---
+jupyter: python3
+resources:
+    - src
+---
+
+
+
+## Data Science Challenge
+
+This week we are consolidating the skills we have learned over the past four weeks in order to tackle a practical challenge. In this notebook, you will find the data science challenge, in which you will have to write code that will navigate a small virtual robot around a maze.
+
+ > **Please Note:** These challenges are designed to difficult! Do not worry if you are unable to complete a challenge in the time given. The important thing is that you are building resilience and practicing problem-solving skills - everything else is secondary!
+
+### Table of Contents
+
+ - [Welcome Page](./week_05_home.qmd)
+ - [**Challenge 1: Data Science**](./week_05_data_science.qmd)
+  - [Preliminaries](#Preliminaries)
+  - [Tutorial: The Robot Maze](#Tutorial:-The-Robot-Maze)
+    - [Creating a Robot Maze](#Creating-a-Robot-Maze)
+    - [Moving the Robot](#Moving-the-Robot)
+    - [Resetting and Saving the Maze](#Resetting-and-Saving-the-Maze)
+    - [Aims and Limits](#Aims-and-Limits)
+  - [Challenges](#Warm-up-Challenges)
+    - [Task 1: Getting Started](#Task-1:-Getting-Started)
+    - [Task 2: Sensing Danger](#Task-2:-Sensing-Danger)
+    - [Task 3: End of the Road](#Task-3:-End-of-the-Road)
+    - [Task 4: Turning Back](#Task-4:-Turning-Back)
+    - [Task 5: Final Challenge](#Task-5:-Final-Challenge)
+ - [Challenge 2: Physics](./week_05_physics.qmd)
+ - [Challenge 3: Chemistry](./week_05_chemistry.qmd)
+ - [Slides](./week_05_slides.qmd) ([Powerpoint](./Lecture5_Consolidation.pptx))
+
+## Preliminaries
+
+This notebook draws on the knowledge you've built over the last four weeks. This challenge assumes knowledge of only the material from the `beginner` notebooks - however, you are welcome to draw upon material from the `intermediate` and `advanced` notebooks as well! The tasks are designed to be accessible to everyone.
+
+Before getting started, you'll need to know how to generate random numbers. Here's a quick primer.
+
+To load in a package (collection of functions) that will let you generate random numbers, you must run the below code:
+
+```{pyodide}
+import random
+```
+
+You only need to run the above line of code once (unless you restart the notebook, in which case you will have to run it again after restarting). Once you have run the `import` code you will be able to generate random numbers using the `random.random()` and `random.randint()` functions like so:
+
+```{pyodide}
+# Generate a (uniformly) random float between 0 and 1 
+x = random.random()
+
+# Print the random float
+print(x)
+
+# Generate a random integer between 1 and 10 (inclusive)
+y = random.randint(1, 10)
+
+# Print the random integer
+print(y)
+```
+
+Try running the above box a few times and observe how a new value is produced each time you call `random` or `randint`. For today's class, this is all the knowledge we will need concerning random numbers in Python. We'll explore random number generation in greater depth later on in the course.
+
+## Tutorial: The Robot Maze
+
+Today, you will be programming a robot to navigate a small maze. To get started, run the code box below. This will load in the `RobotMaze` function which we will be working with today.
+
+```{pyodide}
+from src.robot_maze import RobotMaze
+```
+
+### Creating a Robot Maze
+
+The `RobotMaze` function will create a new randomly generated maze with a robot inside it. Try running the below code to see what this looks like:
+
+```{pyodide}
+# Create a robot in a maze
+robot = RobotMaze()
+```
+
+Let's break down what we can see here. The maze contains:
+
+ - *White Squares:* Open spaces, which the robot has not yet visited.
+ - *Black squares:* Walls. The robot cannot walk into these.
+ - *Grey squares:* These are open spaces that the robot has visited previously.
+ - *A red circle with a white arrow:* This is the robot. The arrow tells us which way it is facing.
+ - *A green circle with a T:* This is the target. This is where the robot must move to.
+ 
+At the top of the maze, we see the title `Robot Maze - Run #1`. Here, the number `#1` refers to the number of times we have attempted to solve the maze.
+
+At the bottom of the maze, we see the `Robot Console`. This is a handy message box, which we shall use to display messages from the robot throughout this task.
+
+### Moving the Robot
+
+Here are some instructions you can give the robot:
+
+ - `robot.move()`: Running this will cause the robot to take one step forward in the direction it is currently facing.
+ - `robot.turn()`: This function takes a string as input. It will turn the robot to the left if the string is `"LEFT"`, right if the string is `"RIGHT"`, behind if the string is `"BEHIND"` and ahead if the string is `"AHEAD"`. The robot always turns relative to the direction it is currently facing (that is, where the white arrow is pointing).
+ 
+Run the below code to see how this works.
+
+```{pyodide}
+#| scrolled: false
+robot.move()
+robot.turn("RIGHT")
+robot.move()
+robot.move()
+robot.move()
+robot.turn("RIGHT")
+robot.move()
+robot.turn("BEHIND")
+robot.move()
+robot.move()
+robot.turn("LEFT")
+robot.move()
+```
+
+ > **Note:** If the robot bumps into a wall, it will not move forward. Instead, it will print a message to the `Robot Console` telling you it has bumped into a wall.
+
+If the robot is moving too fast or slow, you can change the speed at which it moves using the `robot.delay` parameter. For instance:
+
+```{pyodide}
+robot.delay = 2 # The robot will now take 2 seconds to perform each action (try changing this to 0.2!)
+
+robot.move()
+robot.turn("RIGHT")
+robot.move()
+robot.move()
+robot.move()
+robot.turn("RIGHT")
+robot.move()
+robot.turn("BEHIND")
+robot.move()
+robot.move()
+robot.turn("LEFT")
+robot.move()
+```
+
+ > **Note:** Due to limitations on how Jupyter notebooks are rendered, there is a limit to how fast the robot can move. That is, setting `robot.delay` to less than around `0.1` might not result in much of a speedup.
+
+### Resetting and Saving the Maze
+
+If you want to reset the maze, and send the robot back to the start, you can use the `robot.reset()` command like so. Notice that the title will now say `Robot Maze - Run #2`, but the `Robot Console` will keep the robot's message history.
+
+```{pyodide}
+robot.reset()
+```
+
+Every time you run the `robot = RobotMaze()`, a new random maze is generated. Sometimes you might want to save a particular maze to come back to later. You can do this by running `robot.get_maze_id()`. For instance, to save the maze you have above, you can run the following:
+
+```{pyodide}
+# Save the maze id
+my_maze_id = robot.get_maze_id()
+
+# This is a string ID representing the maze you randomly generated
+print(my_maze_id)
+```
+
+You can then load the same maze again later on using `my_maze_id`. Try commenting out and uncommenting the below lines of code to test your understanding.
+
+```{pyodide}
+#| scrolled: false
+# This will generate a new random maze
+robot = RobotMaze()
+
+# This will recall the maze you had above
+#robot = RobotMaze(maze_id=my_maze_id)      # <----- Try uncommenting this line and commenting out the above one.
+```
+
+ > **Recall:** You can clear the output of a cell in a Jupyter notebook by going to `Cell` on the toolbar, then `Current Outputs` and `Clear`.
+ 
+  > **Recall:** You can interrupt a cell that is running in Jupyter by pressing the stop button on the toolbar (which looks like a square) or by clicking `Kernel` and then `Interrupt`.
+
+### Aims and Limits
+
+Your aim in this challenge to write code that moves the robot to the target. However, there is a catch - the robot only has a finite amount of fuel!
+
+The robot begins with `1000` units of fuel. Each call to `robot.move()` and `robot.turn()` costs one unit of fuel. Once the robot has no fuel left, it will not be able to move.
+
+Here are some functions you can use to check on the robot's status:
+
+ - `robot.at_target()`: This will return `True` if the robot is on the target square and `False` otherwise.
+ - `robot.check_fuel()`: This will tell you how much fuel the robot has left. The amount will be returned as an integer between `0` and `1000`.
+ - `robot.print()`: This will print a message to the robot console.
+
+The below code uses the above commands. See if you can understand what it is doing.
+
+```{pyodide}
+# Load in a pre-computed maze
+robot = RobotMaze(maze_id='10-20-93037')
+
+# Slow the robot speed for visualisation
+robot.delay = 0.5
+
+# Check the remaining fuel of the robot
+robot.print('My remaining fuel is ' + str(robot.check_fuel()))
+
+# Make 9 steps forward
+for i in range(9):
+    robot.move()
+    
+# Check the remaining fuel of the robot
+robot.print('My remaining fuel is ' + str(robot.check_fuel()))
+    
+# Turn to the left
+robot.turn("LEFT")
+
+# Make 9 steps forward
+for i in range(9):              # <---------- Try changing this to range(8) - what happens to the console output
+    robot.move()
+
+# This code will check if the robot is at the target
+if robot.at_target():
+    
+    # Print to the robot console
+    robot.print("I made it!")
+    
+else:
+    
+    # Print to the robot console
+    robot.print("Gosh, darn. I wish I was at the target right now.")
+    
+# Check the remaining fuel of the robot
+robot.print('My remaining fuel is ' + str(robot.check_fuel()))
+```
+
+Finally, the robot is equipped with a sensor that can detect what type of square is in a given direction.
+
+To use the sensor, call the `robot.sense()` function with one of the following inputs: `"AHEAD"`, `"LEFT"`, `"RIGHT"`, or `"BEHIND"`. The function returns a string describing the square in that direction, returning either `"WALL"`, `"EMPTY"`, or `"BEEN_THERE"` if the robot has already visited it.
+
+Have a look at the below code for an example:
+
+```{pyodide}
+# Load in a pre-computed maze
+robot = RobotMaze(maze_id='10-20-93037')
+
+# Slow the robot speed for visualisation
+robot.delay = 0.5
+
+# Sense the squares around the starting position
+robot.print('The square in front of me is ' + str(robot.sense("AHEAD")))
+robot.print('The square to my left is ' + str(robot.sense("LEFT")))
+robot.print('The square to my right is ' + str(robot.sense("RIGHT")))
+robot.print('The square behind me is ' + str(robot.sense("BEHIND")))
+
+
+# Move forward
+robot.print("-----------------------------------")
+robot.print("I'm now taking a step forward.")
+robot.move()
+robot.print("-----------------------------------")
+
+# Sense the squares around the new position
+robot.print('The square in front of me is ' + str(robot.sense("AHEAD")))
+robot.print('The square to my left is ' + str(robot.sense("LEFT")))
+robot.print('The square to my right is ' + str(robot.sense("RIGHT")))
+robot.print('The square behind me is ' + str(robot.sense("BEHIND")))
+```
+
+ > **Note:** Using the sensor does not require fuel! That is, it may be better to sense before you move...
+
+## Challenges
+
+We're now ready to get to grips with the robot environment!
+
+### Task 1: Getting Started
+
+The below code will load a simple four by four `RobotMaze`. 
+
+```{pyodide}
+# Create a robot in a maze
+robot = RobotMaze(maze_id='4-60-15973')
+```
+
+In the below box, use the `robot.move()` and `robot.turn()` functions to navigate the robot to the target.
+
+```{pyodide}
+# Write your code here...
+```
+
+Try to write your code as concisely as possible. 
+
+*Hint: You may want to use for loops like we did in the example in the [Aims and Limits](#Aims-and-Limits) section.*
+
+### Task 2: Sensing Danger
+
+We're now going to look at a pre-written robot maze program. In the below code box, you will see there is a function named `my_controller`. See if you can determine what this controller does before reading ahead.
+
+```{pyodide}
+# Write your own controller
+def my_controller(robot):
+    
+    # While the robot is not at the target
+    while not robot.at_target() and robot.check_fuel() > 0:
+        
+        # Generate a random number between 0 and 1. 
+        my_random_number = random.random()
+        
+        # If the random number was less than 0.5
+        if my_random_number < 0.5:
+            
+            # Turn right
+            robot.turn("RIGHT")
+            
+        # Otherwise
+        else:
+            
+            # Turn left
+            robot.turn("LEFT")
+            
+        # Move in the given direction
+        robot.move()
+        
+        # Check the remaining fuel of the robot
+        robot.print('My remaining fuel is ' + str(robot.check_fuel()))
+```
+
+The nice thing about writing our commands for the robot inside a function is that we can now run the entire set of instructions simply by calling the function, like so:
+
+```{pyodide}
+#| scrolled: false
+# Create a maze
+robot = RobotMaze()
+
+# Setting speed
+robot.delay = 0.02
+
+# Run the controller
+my_controller(robot)
+```
+
+Try updating the `my_controller` function so that the robot first checks for a wall in front of it before attempting to move forward. If a wall is detected, the robot should stay in place and not move.
+
+```{pyodide}
+# Write your code here...
+```
+
+### Task 3: End of the Road
+
+Continuing with the `my_controller` function, modify your code to identify if the robot is:
+
+ - At a dead-end (a square surrounded by three walls), 
+ - At a corner (a square bordering two walls whose corners touch), 
+ - In a corridor (a square with two walls bordering it on opposing sides), 
+ - Next to a single wall (a square with only one wall bordering it),
+ - On an unbordered square (a square sharing no edges with a wall). 
+ 
+Use the `robot.print()` function to print a message to the console stating which type of square the robot is on.
+
+```{pyodide}
+# Write your code here...
+```
+
+### Task 4: Turning Back
+
+Write your own controller function which does the following:
+ - Senses the squares around the robot.
+ - If there at least one of the surrounding squares is `"EMPTY"`, the robot should choose an `"EMPTY"` square at random and move to it.
+ - If there are no `"EMPTY"` squares, the robot should choose at random from the `"BEEN_THERE"` squares surrounding it and move to the chosen square.
+
+```{pyodide}
+# Write your code here...
+```
+
+### Task 5: Final Challenge
+
+It is now up to you! 
+
+By doing your own research on [maze solving algorithms](https://en.wikipedia.org/wiki/Maze-solving_algorithm), choose a method to solve the maze and try writing it up as a controller function. Can you solve the maze faster than the `my_controller` robot, or your solution to `Task 4`? 
+
+Good luck!
+
+```{pyodide}
+# Write your code here...
+```
+

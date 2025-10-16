@@ -1,0 +1,441 @@
+---
+title: 'Week 2: Solutions'
+jupyter: python3
+---
+
+
+
+This notebook contains the solutions to the week 2 `Beginner`, `Intermediate` and `Advanced` exercises.
+
+### Table of Contents
+
+ - [Welcome Page](./week_02_home.qmd)
+
+ - [Beginner: If Statements](./week_02_booleans_and_conditionals_beginner.qmd)
+ - [Intermediate: Match Statements](./week_02_booleans_and_conditionals_intermediate.qmd)
+ - [Advanced: Conditional Expressions and Lazy Evaluation](./week_02_booleans_and_conditionals_advanced.qmd)
+
+ - [**Solutions**](./week_02_solutions.qmd)
+     - [Beginner: If Statements](#Beginner:-If-Statements)
+     - [Intermediate: Match Statements](#Intermediate:-Match-Statements)
+     - [Advanced: Conditional Expressions and Lazy Evaluation](#Advanced:-Conditional-Expressions-and-Lazy-Evaluation)
+ - [Slides](./week_02_slides.qmd) ([Powerpoint](./Lecture2_Booleans_and_Conditionals.pptx))
+
+## Beginner: If Statements
+
+**Question 1:** The answer to this question is given below:
+
+```{pyodide}
+# Create a string containing your last (or first) name
+name = "Anderson"
+
+# Check if the length of the string is greater than 8
+if len(name) > 8:
+    print("The name is long")
+```
+
+**Question 2:** The code for this question is below.
+
+```{pyodide}
+# The pH level
+ph_level = 6
+
+if ph_level < 0 or ph_level > 14:
+    liquid_type = "unknown"
+elif ph_level < 7:
+    liquid_type = "acid"
+elif ph_level == 7:
+    liquid_type = "neutral"
+else:
+    liquid_type = "alkali"
+
+print(liquid_type)
+```
+
+**Question 3:** The problem with this code is that the boolean for the `if` evaluates as `True` when the `temperature` exceeds 100, so the `elif` is never executed. A simple solution would be to switch the order of the clauses like so:
+
+```{pyodide}
+# Temperature in degrees celcius
+temperature = 120 
+
+if temperature > 100:
+    state = "gas"
+elif temperature > 0:
+    state = "liquid"
+else:
+    state = "solid"
+
+print("State of water:", state)
+```
+
+**Question 4:** The code for this question is below:
+
+```{pyodide}
+# Example input
+day_number = 32   # February 1st
+
+# Work out the month
+if day_number <= 31:
+    month = "January"
+elif day_number <= 59:   # 31 + 28
+    month = "February"
+elif day_number <= 90:   # 59 + 31
+    month = "March"
+elif day_number <= 120:  # 90 + 30
+    month = "April"
+elif day_number <= 151:  # 120 + 31
+    month = "May"
+elif day_number <= 181:  # 151 + 30
+    month = "June"
+elif day_number <= 212:  # 181 + 31
+    month = "July"
+elif day_number <= 243:  # 212 + 31
+    month = "August"
+elif day_number <= 273:  # 243 + 30
+    month = "September"
+elif day_number <= 304:  # 273 + 31
+    month = "October"
+elif day_number <= 334:  # 304 + 30
+    month = "November"
+else:                    # 334 + 31
+    month = "December"
+
+print(month)
+```
+
+**Question 5:** One potential solution to this question is given below:
+
+```{pyodide}
+# The number of days
+day_number = 399
+
+# Wrap the day_number so it always falls between 1 and 365
+day_number = day_number % 365
+if day_number == 0:
+    day_number = 365
+
+# Work out the month
+if day_number <= 31:
+    month = "January"
+elif day_number <= 59:   # 31 + 28
+    month = "February"
+elif day_number <= 90:   # 59 + 31
+    month = "March"
+elif day_number <= 120:  # 90 + 30
+    month = "April"
+elif day_number <= 151:  # 120 + 31
+    month = "May"
+elif day_number <= 181:  # 151 + 30
+    month = "June"
+elif day_number <= 212:  # 181 + 31
+    month = "July"
+elif day_number <= 243:  # 212 + 31
+    month = "August"
+elif day_number <= 273:  # 243 + 30
+    month = "September"
+elif day_number <= 304:  # 273 + 31
+    month = "October"
+elif day_number <= 334:  # 304 + 30
+    month = "November"
+else:                    # 334 + 31
+    month = "December"
+
+print(month)
+```
+
+**Question 6:** An answer to this question is given below.
+
+```{pyodide}
+# Distance in kilometres
+distance_km = 3.0
+
+# Convert to miles
+distance_in_miles = distance_km / 1.60934
+
+# Check conditions
+if distance_in_miles > 2:
+    print("Distance is more than 2 miles")
+else:
+    print("Distance is short")
+
+if distance_in_miles > 1:
+    print("Distance is more than 1 mile")
+```
+
+**Question 7:** A solution to this question is given below:
+
+```{pyodide}
+year = 1900
+
+if year % 400 == 0:                         # Added line
+    leap_year = "Yes"                       # Added line
+elif year % 4 == 0 and year % 100 == 0:    # if --> elif
+    leap_year = "No"
+elif year % 4 == 0:
+    leap_year = "Yes"
+else:
+    leap_year = "No"
+
+print(f"Is {year} a leap year? {leap_year}")
+```
+
+ > **Question 7:** This question may feel daunting to students at first. In reality, the solution only requires adding the first clause (`year % 400 == 0`). One way to help is to have students test a few example years on paper before coding so the logic becomes clearer. Only encourage them to start coding once you feel they have a strong conceptual grasp of the problem.
+
+**Question 8:** The `pass` statement is a placeholder which effectively does nothing. If it were not there, we would have a `SyntaxError` as the `if` statement must contain code.
+
+**Question 9:** An answer to this question is given below:
+
+```{pyodide}
+# The previous player's answer
+prev_answer = "Fizz"
+
+# The previous player's number
+prev_number = 6
+
+# Work out what the previous player's answer should have been
+if prev_number % 3 == 0 and prev_number % 5 == 0:
+    correct_prev = "FizzBuzz"
+elif prev_number % 3 == 0:
+    correct_prev = "Fizz"
+elif prev_number % 5 == 0:
+    correct_prev = "Buzz"
+else:
+    correct_prev = str(prev_number)
+
+# Check if their answer was correct
+if prev_answer != correct_prev:
+    print(f"Oops! The previous player should have said '{correct_prev}', not '{prev_answer}'.")
+
+# Work out and print your answer (for the next number)
+my_number = prev_number + 1
+
+if my_number % 3 == 0 and my_number % 5 == 0:
+    print("FizzBuzz")
+elif my_number % 3 == 0:
+    print("Fizz")
+elif my_number % 5 == 0:
+    print("Buzz")
+else:
+    print(str(my_number))
+```
+
+**Question 10:** The desired answer is below:
+
+```{pyodide}
+x = 30
+z = 4
+
+if z < 0 and (x < 20 or x > 30):
+    print("A")
+elif z < 0:
+    print("B")
+```
+
+An alternative is given by:
+
+```{pyodide}
+x = 30
+z = 4
+
+if z < 0 and (20 <= x <= 30):
+    print("B")
+elif z < 0:
+    print("A")
+```
+
+## Intermediate: Match Statements
+
+**Question 1:** The answer to this question is given below:
+
+```{pyodide}
+# Point in space
+point = (1, 5)
+
+# Match statement
+match point:
+    case (0, y) if y > 0:
+        location = "on the positive y-axis"
+    case (0, y) if y < 0:
+        location = "on the negative y-axis"
+    case (x, 0) if x > 0:
+        location = "on the positive x-axis"
+    case (x, 0) if x < 0:
+        location = "on the negative x-axis"
+    case (0, 0):
+        location = "at the origin"
+    case (x, y) if x > 0 and y > 0:
+        location = "in the upper right quadrant"
+    case (x, y) if x > 0 and y < 0:
+        location = "in the lower right quadrant"
+    case (x, y) if x < 0 and y < 0:
+        location = "in the lower left quadrant"
+    case (x, y) if x < 0 and y > 0:
+        location = "in the upper left quadrant"
+
+# Describe where the point is
+print(f"The point {point} is {location}.")
+```
+
+**Question 2:** The solution to this question is given below:
+
+```{pyodide}
+x = 2
+
+match x:
+    case 1:
+        print("one")
+    case 2:
+        print("two")
+    case 3:
+        print("three")
+    case _:
+        print("something else")
+```
+
+**Question 3:** A model answer is given below:
+
+```{pyodide}
+# Example input
+a = 10
+b = 5
+operator = "*"
+
+# Match statement to apply the operation
+match operator:
+    case "+":
+        my_result = a + b
+    case "-":
+        my_result = a - b
+    case "*":
+        my_result = a * b
+    case "/":
+        my_result = a / b
+    case _:
+        my_result = "Invalid operator"
+
+print(my_result)
+```
+
+**Question 4:** An example solution is provided below:
+
+```{pyodide}
+# Exchange rates as of Sept 6, 2025 (3 s.f.)
+GBP_TO_USD = 1.35
+GBP_TO_EUR = 1.15
+GBP_TO_JPY = 199
+
+# Example input
+account = (100, "USD")      # 100 dollars
+target_currency = "EUR"     # convert to euros
+
+# --- Step 1: convert original balance into GBP ---
+match account:
+    case (balance, "GBP"):
+        balance_gbp = balance
+    case (balance, "USD"):
+        balance_gbp = balance / GBP_TO_USD
+    case (balance, "EUR"):
+        balance_gbp = balance / GBP_TO_EUR
+    case (balance, "JPY"):
+        balance_gbp = balance / GBP_TO_JPY
+    case _:
+        balance_gbp = None
+
+# --- Step 2: convert GBP into target currency ---
+match target_currency:
+    case "GBP" if balance_gbp is not None:
+        print(f"Balance: £{balance_gbp:.2f}")
+    case "USD" if balance_gbp is not None:
+        print(f"Balance: ${balance_gbp * GBP_TO_USD:.2f}")
+    case "EUR" if balance_gbp is not None:
+        print(f"Balance: €{balance_gbp * GBP_TO_EUR:.2f}")
+    case "JPY" if balance_gbp is not None:
+        print(f"Balance: ¥{balance_gbp * GBP_TO_JPY:.0f}")
+    case _:
+        print("Unsupported currency")
+```
+
+**Question 5:** Below is a solution to this exercise:
+
+```{pyodide}
+# Example rgb values
+rgb_values = (10,223,20)
+
+match rgb_values:
+
+    case (r,g,b) if (r > 200) and (g < 50) and (b < 50):
+
+        color_name = "Red"
+
+    case (r,g,b) if (g > 200) and (b < 50) and (r < 50):
+
+        color_name = "Green"
+
+    case (r,g,b) if (b > 200) and (r < 50) and (g < 50):
+
+        color_name = "Blue"
+
+    case _:
+
+        color_name = "Unknown"
+
+print(color_name)
+```
+
+## Advanced: Conditional Expressions and Lazy Evaluation
+
+**Question 1:** An answer to this question is given below:
+
+```{pyodide}
+# Variables x and y
+x = 4
+y = 2
+
+# Compute the maximum using a conditional expression
+max_xy = x if x > y else y
+
+# print the result
+print(max_xy)
+```
+
+ > **Demonstrator Notes:** The logic in this question is very similar to the absolute value example in the `Conditional Expressions` section. If students are unsure what to do here, begin by referring them back to this example.
+
+**Question 2:** The answers to this question, alongside commented code are given below:
+
+```{pyodide}
+# my_variable = True and 1/0        # Division by zero error
+# my_variable = False and 1/0       # No error, False assigned to my_variable
+# my_variable = str(False and 1/0)  # No error, "False" assigned to my_variable
+# my_variable = str(False) and 1/0  # Division by zero error
+```
+
+**Question 3:** When Python evaluates an and expression, it checks the left-hand side first.
+
+ - If `my_boolean` is `True`, the right-hand side (`print(...)`) must also be evaluated, so the message is printed.
+
+ - If `my_boolean` is `False`, Python stops immediately, as it knows the `and` must be `False`, and the right-hand side is never run - so nothing is printed.
+
+**Question 4:** An answer to this question is given below:
+
+```{pyodide}
+my_boolean = True
+
+# Answer
+output = (my_boolean and print("This code is printing")) or (not my_boolean and print("This code is printing2"))
+```
+
+**Question 5:** The rule for evaluating `x or y` is:
+
+ - If `x` is `Truthy`, return `x`.
+ - If `x` is `Falsy`, return `y`.
+
+This is the mirror image of how `and` works. Some example code is given by:
+
+```{pyodide}
+x = 0
+y = "hello"
+
+result = x or y
+print(result)   # Output: hello
+```
+

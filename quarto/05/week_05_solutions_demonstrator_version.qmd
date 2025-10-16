@@ -1,0 +1,1020 @@
+---
+title: 'Week 5: Solutions'
+jupyter: python3
+resources:
+    - src/robot_maze.py
+---
+
+
+
+This notebook presents solutions to the Week 5 challenges in `Data Science`, `Physics` and `Chemistry`. Unlike previous weeks, these challenges are designed to be more open-ended, so the answers provided below are intended only as examples. There are many ways to approach these questions, and it is not our intention to suggest that the given answers are the "*best*" approaches, or that a "*best*" approach even exists.
+
+### Table of Contents
+
+ - [Welcome Page](./week_05_home.qmd)
+ - [Challenge 1: Data Science](./week_05_data_science.qmd)
+ - [Challenge 2: Physics](./week_05_physics.qmd)
+ - [Challenge 3: Chemistry](./week_05_chemistry.qmd)
+ 
+ - [**Solutions**](./week_04_solutions_demonstrator_version.qmd)
+     - [Challenge 1: Data Science](#Challenge-1:-Data-Science)
+     - [Challenge 2: Physics](#Challenge-2:-Physics)
+     - [Challenge 3: Chemistry](#Challenge-3:-Chemistry)
+ - [Slides](./week_05_slides.qmd) ([Powerpoint](./Lecture5_Consolidation.pptx))
+
+## Challenge 1: Data Science
+
+To run the solutions for this challenge, you will first need to run the below import statement.
+
+```{pyodide}
+import sys
+sys.path.append("./src")
+from src.robot_maze import RobotMaze
+```
+
+**Task 1: Getting Started.** Code for this task can be found below:
+
+```{pyodide}
+# Create a robot in a maze
+robot = RobotMaze(maze_id='4-60-15973')
+
+# Turn to the left
+robot.turn("LEFT")
+
+# Take 2 steps forward
+for i in range(2):
+    robot.move()
+    
+# Turn to the right
+robot.turn("RIGHT")
+
+# Take 3 steps forward
+for i in range(3):
+    robot.move()
+    
+# Turn to the left
+robot.turn("LEFT")
+
+# Take 1 step forward
+robot.move()
+```
+
+ > **Demonstrator Notes:** The aim of this task is two-fold: (i) to get students familiar with the robot environment and (ii) to get students thinking about how they can use loops to repeatedly move in a given direction. If you see students who are writing `"robot.move()"` repeatedly, please encourage them to think about how they can make their code shorter by using loops for this task.
+
+**Task 2: Sensing Danger.** Here is an answer to this problem:
+
+```{pyodide}
+import random
+
+# Write your own controller
+def my_controller(robot):
+    
+    # While the robot is not at the target
+    while not robot.at_target() and robot.check_fuel() > 0:
+        
+        # Generate a random number between 0 and 1. 
+        my_random_number = random.random()
+        
+        # If the random number was less than 0.5
+        if my_random_number < 0.5:
+            
+            # Turn right
+            robot.turn("RIGHT")
+            
+        # Otherwise
+        else:
+            
+            # Turn left
+            robot.turn("LEFT")
+        
+        # If the robot is not facing a wall, move
+        if robot.sense("AHEAD") != "WALL":
+
+            # Move in the given direction
+            robot.move()
+        
+        # Check the remaining fuel of the robot
+        robot.print('My remaining fuel is ' + str(robot.check_fuel()))
+        
+# Create a maze
+robot = RobotMaze()
+
+# Setting speed
+robot.delay = 0.02
+
+# Run the controller
+my_controller(robot)
+```
+
+ > **Demonstrator Notes:** This question aims to get students thinking about how they can use `if` statements to navigate the robot environment. It should be noted that students are **not asked** to stop the robot from turning if it senses a wall to the left or right. The reason that we do not ask for this is that the robot could be in a dead-end (e.g. there is a wall left, right and ahead). If we ask the students to prevent the robot from turning whenever it senses a wall, then in a dead-end the robot will get stuck and the while loop will execute indefinitely. If you see students with this issue, remind them that the question does not ask them to modify the turning behaviour of the robot - it only asks them to modify the call to `robot.move()`.
+
+**Task 3: End of the Road.** The below code provides a solution to this question.
+
+```{pyodide}
+#| scrolled: false
+import random
+
+# Write your own controller
+def my_controller(robot):
+    
+    # While the robot is not at the target
+    while not robot.at_target() and robot.check_fuel() > 0:
+        
+        # Generate a random number between 0 and 1. 
+        my_random_number = random.random()
+        
+        # If the random number was less than 0.5
+        if my_random_number < 0.5:
+            
+            # Turn right
+            robot.turn("RIGHT")
+            
+        # Otherwise
+        else:
+            
+            # Turn left
+            robot.turn("LEFT")
+        
+        # If the robot is not facing a wall, move
+        if robot.sense("AHEAD") != "WALL":
+
+            # Move in the given direction
+            robot.move()
+            
+        # Count the number of walls around the robot
+        num_walls = 0
+        
+        # Loop through directions
+        for direction in ["AHEAD", "LEFT", "RIGHT", "BEHIND"]:
+        
+            # Sense that direction
+            if robot.sense(direction) == "WALL":
+                
+                # Add 1 to the number of walls
+                num_walls = num_walls + 1
+                
+        # If the number of walls is 3, we must be in a dead-end
+        if num_walls == 3:
+            
+            # Print we are in a dead-end
+            robot.print("I'm in a dead-end.")
+            
+        # If the number of walls is 2, we are in a corner or corridor
+        if num_walls == 2:
+            
+            # Check if we are in a corridor to the left and right
+            if robot.sense("LEFT") == "WALL" and robot.sense("RIGHT") == "WALL":
+                
+                # Print we are in a corridor
+                robot.print("I'm in a corridor.")
+                
+            # Check if we are in a corridor to the left and right
+            elif robot.sense("BEHIND") == "WALL" and robot.sense("AHEAD") == "WALL":
+            
+                # Print we are in a corridor
+                robot.print("I'm in a corridor.")
+                
+            # Othewise we must be in a corner
+            else:
+                
+                # Print we are in a corner
+                robot.print("I'm in a corner.")
+        
+        # If number of walls is one we are next to a wall
+        elif num_walls == 1:
+            
+            # print we are next to a wall
+            robot.print("I'm next to a single wall.")
+
+        # Otherwise we're in an unbordered square
+        else:
+        
+            # print we are in an unbordered square
+            robot.print("I'm in an unbordered square.")
+        
+        # Check the remaining fuel of the robot
+        robot.print('My remaining fuel is ' + str(robot.check_fuel()))
+        
+# Create a maze
+robot = RobotMaze()
+
+# Setting speed
+robot.delay = 2
+
+# Run the controller
+my_controller(robot)
+```
+
+ > **Demonstrator Notes:** Some general advice for this question: 
+ > - Make sure students have their browser zoomed far enough out so that they can see both the `Robot Console` and the maze at the same time. 
+ > - If they haven't already, advise students to set the robot delay so that the robot moves slowly (e.g. `robot.delay = 2`). This will allow them to verify that what the robot is printing the correct response in real time.
+ > - There are many ways to approach this task; however, one of the most convenient is to count the number of walls around the robot, as counting the wall allows you to handle the `dead-end`, `single-wall` and `unbordered-square` cases immediately.
+ > - When students are trying to count the number of walls, let them first write out the `robot.sense("AHEAD")`, `robot.sense("LEFT")`,... etc calls one-at-a-time. Once they have done this, point out the repetitive nature of the code to them, and explain why this code might be cleaner using a loop. 
+ > - When distinguishing between `corner`s and `corridor`s it is easier to list the situations in which you are in a corridor (there is a wall to the left and right, or there is a wall behind and ahead) then the situations where you are in a corner (there is a wall ahead and left, ahead and right, behind and left, behind and right).
+
+**Task 4: Turning Back.** Below is an example solution for this question.
+
+```{pyodide}
+#| scrolled: false
+import random
+
+# Write your own controller
+def my_new_controller(robot):
+    
+    # While the robot is not at the target
+    while not robot.at_target() and robot.check_fuel() > 0:
+        
+        # Record the unexplored squares and been-before squares
+        unexplored_squares = []
+        explored_squares = []
+        
+        # Loop through directions
+        for direction in ["AHEAD", "LEFT", "RIGHT", "BEHIND"]:
+        
+            # Sense that direction
+            if robot.sense(direction) == "EMPTY":
+                
+                # Add to unexplored
+                unexplored_squares.append(direction)
+                
+            # Check if the robot has been here
+            elif robot.sense(direction) == "BEEN_THERE":
+                
+                # Add to explored
+                explored_squares.append(direction)
+                
+        # Work out how many explored and unexplored squares there are
+        num_unexplored = len(unexplored_squares)
+        num_explored = len(explored_squares)
+        
+        # If there are unexplored squares choose from among them
+        if num_unexplored > 0:
+            
+            # Generate a random integer
+            my_integer = random.randint(0,num_unexplored-1)
+            
+            # Get the direction
+            my_direction = unexplored_squares[my_integer]
+            
+        # Otherwise we choose from the explored squares
+        else:
+            
+            # Generate a random integer
+            my_integer = random.randint(0,num_explored-1)
+            
+            # Get the direction
+            my_direction = explored_squares[my_integer]
+            
+        # Turn to the direction
+        robot.turn(my_direction)
+        
+        # Make the move
+        robot.move()
+        
+# Create a maze
+robot = RobotMaze()
+
+# Setting speed
+robot.delay = 0.001
+
+# Run the controller
+my_new_controller(robot)
+```
+
+ > **Demonstrator Notes:** This challenge is difficult as it will be drawing on many concepts, some of which are relatively new to the students. It is expected that many students will struggle with (i) identifying the explored and unexplored squares and (ii) choosing randomly from these directions. Feel free to offer more guidance/hold-the-hands of those students that are struggling on this question and stress that it is okay to be struggling at this level. Solving this question should be satisfying, as the robot will move towards the target in a much more directed fashion than in the previous questions.
+
+**Task 5: Final Challenge.** There are plenty of solutions to this task. Here is just one example:
+
+```{pyodide}
+# Example usage
+def example_controller(robot):
+    
+    robot.print("Starting navigation...")
+    
+    # While the robot is not at the target
+    while not robot.at_target() and robot.check_fuel() > 0:
+        
+        # Try to turn right and move (wall follower)
+        if robot.sense("RIGHT") != "WALL":
+            robot.turn("RIGHT")
+            robot.move()
+        else:
+            # Can't go right, try straight
+            if robot.sense("AHEAD") != "WALL":
+                robot.move()
+            else:
+                # Can't go straight, try left
+                if robot.sense("LEFT") != "WALL":
+                    robot.turn("LEFT")
+                    robot.move()
+                else:
+                    # Can't go left, go back
+                    robot.turn("BEHIND")
+                    robot.move()
+                    
+                
+# Make a robot
+robot = RobotMaze()
+
+# Set delay
+robot.delay = 0.01
+
+# Run the controller
+example_controller(robot)
+```
+
+> **Demonstrator Notes:** Although there are lots of possible algorithms students could use here, the most sensible choice, both in terms of efficiency and implementability, given the setup we have, is the ["Hand on Wall Rule"](https://en.wikipedia.org/wiki/Maze-solving_algorithm#Hand_On_Wall_Rule). Encourage students who are unsure to try this rule; compared to part 4 of this challenge, this algorithm is surprisingly easy to implement.
+
+## Challenge 2: Physics
+
+This code will load in the challenge data.
+
+```{pyodide}
+# This code will load the data for you
+from src.photogate_data import read_photogate_data
+
+# read_photogate_data reads the data from a file
+data_dict = read_photogate_data()
+```
+
+**Task 1: Clean the Data.** Below is an example solution for part *(1)* of the Physics challenge.
+
+```{pyodide}
+# Create an empty dictionary for cleaned data
+cleaned_data_dict = {}
+
+# Loop through trials
+for trial_str in data_dict.keys():
+    
+    # Load in data for a trial
+    trial_data = data_dict[trial_str]
+    
+    # Initialise an empty string for the cleaned data
+    cleaned_trial_data = ''
+    
+    # Record the last character we have seen that isn't an error character
+    last_char_before_e = 'o'
+    
+    # Loop through the trial data
+    for i in range(len(trial_data)):
+        
+        # Get the current character
+        curr_char = trial_data[i]
+        
+        # Check if we have an error
+        if curr_char == 'e':
+            
+            # If it was in a block of 'e's next to an 'x',
+            # record 'x'
+            if last_char_before_e == 'x':
+
+                # Save new current character
+                new_curr_char = 'x'
+                
+            # Otherwise we need to look for the next non-e character
+            else:
+                
+                # Lets loop through characters after the e
+                next_char_to_check = curr_char
+                
+                # Counter j = 1
+                j = 1
+                
+                # Use while loop
+                while next_char_to_check == 'e' and i+j < len(trial_data):
+                    
+                    # Look onto the next one
+                    next_char_to_check = trial_data[i+j]
+                    
+                    # Update counter
+                    j = j + 1
+                    
+                # If the character was 'x', we save 'x' otherwise we save 'o'
+                new_curr_char = next_char_to_check
+                
+            # If the new_curr_char is still 'e' this means we got to the end of 
+            # the string in the while loop without seeing an 'x' or 'o'. The while
+            # loop executes only in the case that we saw an 'o' before the last error
+            # so this final 'e' can only be bordered by 'o' and the end of the loop
+            # (e.g. it must be set to 'o')
+            if new_curr_char == 'e':
+                new_curr_char = 'o'
+            
+             
+        # If we aren't looking at an error, save the character
+        else:
+            
+            # Last character seen before an e
+            last_char_before_e = curr_char
+            
+            # The new character to add to our running string is just curr_char
+            new_curr_char = curr_char
+            
+        # Add current character to string
+        cleaned_trial_data = cleaned_trial_data + new_curr_char
+            
+    # Save cleaned trial data
+    cleaned_data_dict[trial_str] = cleaned_trial_data
+```
+
+ > **Demonstrator Notes:** This is the hardest part of this challenge and it is expected that many of the students will struggle at first. Encourage students to try and break down this question into parts. e.g. useful advice could inclue:
+ > - Make sure you can describe the experiment/context in words before starting to code.
+ > - Start by considering a string for a single trial.
+ > - Write out some string examples on paper first. Make sure you understand the rules for replacing errors before starting to code.
+ > - If necessary, try working with some smaller example strings first, e.g. write out `test_string = 'ooexx'; test_string2 = 'ooxxe'; test_string3 = 'oeexx'` and try to "clean" these one by one. 
+ >
+ > Also, it is possible for students to get to this point in the course without having worked with dictionaries and lists very much. If a student seems unsure about dictionaries and lists please refer them to the week 1 and week 3 intermediate notebooks for further reading.
+
+**Task 2: Detect When Each Bar Begins to Block the Beam.** Solution code for part *(1)* of the Physics challenge is given below.
+
+```{pyodide}
+# Empty dictionary for times
+times_dict = {}
+
+# Delta t
+dt = 0.0005
+
+# Loop through trials
+for trial_str in data_dict.keys():
+    
+    # Empty list for 'ox' indices
+    ox_indices = []
+    
+    # Load in data for a trial
+    trial_data = cleaned_data_dict[trial_str]
+    
+    # Loop through characters
+    for i in range(len(trial_data)-1):
+        
+        # Check if current value equals 'x' and previous value equals 'o'
+        if trial_data[i] == 'o' and trial_data[i+1]=='x':
+            
+            # Add index to list
+            ox_indices = ox_indices + [(i+1)*dt,]
+            
+    # Add to dict
+    times_dict[trial_str] = ox_indices
+```
+
+ > **Demonstrator Notes:** It is expected that a large stumbling block for students will be figuring out how they are going to approach the question and, in particular, how they plan to store the results of their computations. Encourage them to think about how carefully about how many time values they will have to store before they start to code:
+ > 
+ > - In an invidiual trial, they will have to record the time in seconds every time a bar blocks the sensor. This means they will have one time recorded per bar. 
+ > - The dataset has been deliberately constructed so that different trials use a different number of bars. *This is mentioned in the section titled "The Data"*.
+ > - So for each trial, we have one time per bar and the number of bars may vary between trials.
+ >
+ > By first discussing the above, it should be easier to motivate potential approaches to storing the time values. For instance, in the above code, a dictionary of lists is used. This approach can be motivated by noting that we have many time values per trial, so it seems reasonable to store these as a list, and then noting that we wish to keep track of which trial each list of times came from, hence the dictionary.
+
+**Task 3: Estimate Average Velocities.** Example code for this question is given below.
+
+```{pyodide}
+# Record delta_d
+delta_d=0.05
+
+# Empty dictionary for velocities
+velo_dict = {}
+
+# Loop through trials
+for trial_str in data_dict.keys():
+    
+    # Empty list for velocities
+    velo_list = []
+    
+    # Load in data for a trial
+    times_data = times_dict[trial_str]
+    
+    # Loop through indices
+    for i in range(len(times_data)-1):
+        
+        # Compute velocity
+        velo = delta_d/(times_data[i+1]-times_data[i])
+    
+        # Save velocity
+        velo_list = velo_list + [velo,]
+
+    # Add velocity list to dictionary
+    velo_dict[trial_str] = velo_list
+```
+
+ > **Demonstrator Notes:** Compared to the previous, this question is much simpler. However, it is expected that many students may fail to notice that the number of recorded velocities (which are computed as finite differences in distance) will be one less than the number of recorded times (that is, in the above it should be the case that `len(times_data)==len(velo_list)+1`). If students are experiencing index out of bounds errors, it is worth checking their logic here and writing out on paper an example illustrating how $n$ datapoints leads to $n-1$ finite differences. E.g.
+ >
+ > $$(2,4,5) \rightarrow (4-2,5-4)=(2,1)$$
+
+**Task 4: Estimate Accelerations.** An answer to this question is provided below.
+
+```{pyodide}
+# Empty dictionary for accelerations
+accel_dict = {}
+
+# Loop through trials
+for trial_str in data_dict.keys():
+    
+    # Empty list for acceleration
+    accel_list = []
+    
+    # Load in data for a trial
+    times_data = times_dict[trial_str]
+    velo_data = velo_dict[trial_str]
+    
+    # Loop through indices
+    for i in range(len(velo_data)-1):
+        
+        # midpoint times
+        tau_curr = (times_data[i+1]+times_data[i])/2
+        tau_next = (times_data[i+2]+times_data[i+1])/2
+        
+        # Compute acceleration
+        accel = (velo_data[i+1]-velo_data[i])/(tau_next-tau_curr)
+    
+        # Save acceleration
+        accel_list = accel_list + [accel,]
+
+    # Add acceleration list to dictionary
+    accel_dict[trial_str] = accel_list
+```
+
+ > **Demonstrator Notes:** If students have got this far they are likely to complete this question and the next successfully. That said, if reading too fast, some students may confuse $\tau_k$ and $t_k$. If students are getting any strange values in their computation, it may be worth checking they have this notation correct.
+
+**Task 5: Estimate $g$.** The below code computes the within-trial averages of the acceleration.
+
+```{pyodide}
+# Get the means of the accelerations in each trial
+accel_means_dict = {}
+
+# Loop through trials
+for trial_str in data_dict.keys():
+    
+    # Get accelation data
+    accel_data = accel_dict[trial_str]
+    
+    # Sum the acceleration data
+    accel_mean_trial = 0
+    
+    # Sum all values
+    for i in range(len(accel_data)):
+        accel_mean_trial = accel_mean_trial + accel_data[i]
+        
+    # Divide by number of values
+    accel_mean_trial = accel_mean_trial/len(accel_data)
+    
+    # Add to dictionary
+    accel_means_dict[trial_str] = accel_mean_trial
+```
+
+The following code averages acceleration across trials.
+
+```{pyodide}
+overall_mean = 0
+
+# Loop through all trials
+for trial_str in data_dict.keys():
+    
+    # Read current value
+    overall_mean = overall_mean + accel_means_dict[trial_str]
+    
+# Divide by the number of trials
+overall_mean = overall_mean/100
+
+print(overall_mean)
+```
+
+ > **Demonstrator Notes:** The final value output should be `9.825957197907218` (up to python rounding errors). If a student has something wildly different to this, they have likely made a mistake somewhere.
+
+## Challenge 3: Chemistry
+
+To run the solutions for this challenge you must first run the below code.
+
+```{pyodide}
+import os
+os.chdir('/home/jovyan/intro-coding-data-analysis.git/05/src')
+
+from get_periodic_table import *
+
+periodic_table = get_periodic_table()
+```
+
+**Task 1: Verifying Elements.** Here is an example solution to this problem.
+
+```{pyodide}
+# Verify the element is correct
+def verify_element(isotope_string, periodic_table):
+    
+    # Split the string into N, P and E
+    split_isotope_string = isotope_string.split('_')
+    
+    # If we have N and E only this will have length 2
+    if len(split_isotope_string) == 2:
+        
+        # Get N
+        N = split_isotope_string[0]
+        E = split_isotope_string[1]
+        
+    
+    # If we have N, P and E only this will have length 2
+    elif len(split_isotope_string) == 3:
+        
+        # Get N
+        N = split_isotope_string[0]
+        P = split_isotope_string[1]
+        E = split_isotope_string[2]
+        
+    # Elements from the dictionary
+    elements = periodic_table.keys()
+    
+    # Check if E is a valid element
+    valid_element = False
+    for element in elements:
+        if element == E:
+            valid_element = True
+            
+    # Print the result
+    if valid_element:
+        print("The element is a real element.")
+    else:
+        print("The element is not a real element.")
+
+
+# Example inputs
+isotope_string1 = "22_10_Ne"
+isotope_string2 = "12_Cp"
+
+# Run check properties
+verify_element(isotope_string1, periodic_table)
+verify_element(isotope_string2, periodic_table)
+```
+
+ > **Demonstrator Notes:** Students will still be building confidence with dictionaries at this point. Try to provide simple examples where possible to help them get to grips with the idea of `keys` and `values`.
+
+**Task 2: Verifying the Atomic Number.** Here is an example answer to task 2.
+
+```{pyodide}
+# Check that the number of protons, if given, is correct.
+def check_protons(isotope_string, periodic_table):
+    
+    # Split the string into N, P and E
+    split_isotope_string = isotope_string.split('_')
+    
+    # If we have N, P and E only this will have length 2
+    if len(split_isotope_string) == 3:
+        
+        # Get N
+        N = int(split_isotope_string[0])
+        P = int(split_isotope_string[1])
+        E = split_isotope_string[2]
+        
+        # Check the dictionary
+        if periodic_table[E]['atomic_number'] == P:
+            
+            # Print correct
+            print('Correct number of protons.')
+            
+        # Otherwise its wrong
+        else:
+            
+            # Print incorrect
+            print('Incorrect number of protons.')
+            
+    # Otherwise we werent given the number of protons
+    else:
+        
+        # Report that we did not have the number of protons
+        print("Number of protons not given.")
+        
+
+# Example inputs
+isotope_string1 = "22_10_Ne"
+isotope_string2 = "22_12_Ne"
+isotope_string3 = "12_C"
+
+# Run check properties
+check_protons(isotope_string1, periodic_table)
+check_protons(isotope_string2, periodic_table)
+check_protons(isotope_string3, periodic_table)
+```
+
+ > **Demonstrator Notes:** Students who skim the text may miss that the number of protons is the *atomic number* in the periodic table. If they ask about this, encourage them to look back through the text for clarification.
+
+**Task 3: Counting Electrons, Protons and Neutrons.** Here is some example code for task 3:
+
+```{pyodide}
+# Check that the number of protons, if given, is correct.
+def check_protons(isotope_string):
+    
+    # Split the string into N, P and E
+    split_isotope_string = isotope_string.split('_')
+    
+    # If we have N, P and E only this will have length 2
+    if len(split_isotope_string) == 3:
+        
+        # Get N, P and E
+        num_neutrons = int(split_isotope_string[0])
+        num_protons = int(split_isotope_string[1])
+        E = split_isotope_string[2]
+        
+        # Check the dictionary
+        if periodic_table[E]['atomic_number'] != num_protons:
+            
+            # Print incorrect
+            print('Incorrect number of protons provided.')
+            
+        else:
+            
+            # Get number of electrons
+            num_electrons = num_protons
+
+            print("The number of protons is " + str(num_protons))
+            print("The number of electrons is " + str(num_electrons))
+            print("The number of neutrons is " + str(num_neutrons))
+            
+    # Otherwise we werent given the number of protons
+    else:
+        
+        # Get N and E
+        num_neutrons = int(split_isotope_string[0])
+        E = split_isotope_string[1]
+        
+        # Get number of protons
+        num_protons = periodic_table[E]['atomic_number']
+
+        # Get number of electrons
+        num_electrons = num_protons
+
+        print("The number of protons is " + str(num_protons))
+        print("The number of electrons is " + str(num_electrons))
+        print("The number of neutrons is " + str(num_neutrons))
+
+# Example inputs
+isotope_string1 = "22_10_Ne"
+isotope_string2 = "22_12_Ne"
+isotope_string3 = "12_C"
+
+# Run check properties
+check_protons(isotope_string1)
+print('--------------------------------------')
+check_protons(isotope_string2)
+print('--------------------------------------')
+check_protons(isotope_string3)
+```
+
+ > **Demonstrator Notes:** Students who skim the text may miss the fact that the number of protons is the same as the number of electrons. Encourage students who are unsure to `CTRL+F` for the word `electron`.
+
+**Task 4: Group and Period.** Example code for this task is given below.
+
+```{pyodide}
+def group_and_period(isotope_string, periodic_table):
+    
+    
+    # Split the string into N, P and E
+    split_isotope_string = isotope_string.split('_')
+    
+    # If we have N and E only this will have length 2
+    if len(split_isotope_string) == 2:
+        
+        # Get E
+        E = split_isotope_string[1]
+        
+    
+    # If we have N, P and E only this will have length 2
+    elif len(split_isotope_string) == 3:
+        
+        # Get E
+        E = split_isotope_string[2]
+        
+    # Get the proton number of E
+    num_protons = periodic_table[E]['atomic_number']
+    
+    # Work out the period
+    if num_protons <= 2: # First row
+        period = 1
+    elif num_protons <= 10: # Second row
+        period = 2
+    elif num_protons <= 18: # Third row
+        period = 3
+    elif num_protons <= 36: # Fourth row
+        period = 4
+    elif num_protons <= 54: # Fifth row
+        period = 5
+    elif num_protons <= 86: # Sixth row
+        period = 6
+    else: # Fourth row
+        period = 7
+        
+    # Work out the group
+    if num_protons == 1: # Case handling first row
+        group = 1
+        
+    elif num_protons == 2: # Case handling first row
+        group = 18
+        
+    elif 3 <= num_protons <= 4: # Case handling second row
+        group = num_protons - 2
+        
+    elif 5 <= num_protons <= 10: # Case handling second row
+        group = num_protons + 8
+        
+    elif 11 <= num_protons <= 12: # Case handling third row
+        group = num_protons - 10
+        
+    elif 13 <= num_protons <= 18: # Case handling third row
+        group = num_protons
+        
+    elif 19 <= num_protons <= 36: # Case handling fourth row
+        group = num_protons - 18
+        
+    elif 37 <= num_protons <= 54: # Case handling fifth row
+        group = num_protons - 36
+        
+    elif 55 <= num_protons <= 56: # Case handling sixth row
+        group = num_protons - 54
+    
+    elif 72 <= num_protons <= 86: # Case handling sixth row
+        group = num_protons - 68
+    
+    elif 87 <= num_protons <= 88: # Case handling seventh row
+        group = num_protons - 86
+    
+    elif 104 <= num_protons <= 118: # Case handling seventh row
+        group = num_protons - 100
+        
+    else: # Case handling lanthanides and actinides
+        group = 3
+        
+    print("The period is " + str(period) + " and the group is " + str(group) + ".")
+            
+    return(group, period)
+        
+# Example inputs
+isotope_string1 = "22_Au"
+isotope_string2 = "22_12_Ne"
+isotope_string3 = "12_C"
+
+# Run check properties
+group_and_period(isotope_string1, periodic_table)
+print('--------------------------------------')
+group_and_period(isotope_string2, periodic_table)
+print('--------------------------------------')
+group_and_period(isotope_string3, periodic_table) 
+```
+
+ > **Demonstrator Notes:** This question is laborious but not difficult once you understand the logic. The basic idea is to break the table down into chunks for which the atomic number can be used to predict the group and period. For instance, along the fourth row, the period is `4` and the group is `num_protons - 18`. If students are struggling with this question, encourage them to narrow their focus to a smaller segment of the table and work with that.
+
+**Task 5: Isotope Names.** An example solution for this is given below:
+
+```{pyodide}
+# Get element string
+def get_element_string(isotope_string, periodic_table):
+    
+    # Split the string into N, P and E
+    split_isotope_string = isotope_string.split('_')
+    
+    # If we have N and E only this will have length 2
+    if len(split_isotope_string) == 2:
+        
+        # Get N and E
+        N = int(split_isotope_string[0])
+        E = split_isotope_string[1]
+        
+    
+    # If we have N, P and E only this will have length 2
+    elif len(split_isotope_string) == 3:
+        
+        # Get N and E
+        N = int(split_isotope_string[0])
+        E = split_isotope_string[2]
+        
+    # Construct the string
+    if periodic_table[E]['name'] != "Hydrogen" or N > 3:
+        my_string = periodic_table[E]['name'] + "-" + str(N)
+    elif N == 1:
+        my_string = "Hydrogen"
+    elif N == 2:
+        my_string = "Deuterium"
+    elif N == 3:
+        my_string = "Tritium"
+        
+    return(my_string)
+        
+# Example inputs
+isotope_string1 = "2_H"
+isotope_string2 = "3_12_H"
+isotope_string3 = "12_C"
+        
+# Run check properties
+print(get_element_string(isotope_string1, periodic_table))
+print('--------------------------------------')
+print(get_element_string(isotope_string2, periodic_table))
+print('--------------------------------------')
+print(get_element_string(isotope_string3, periodic_table)) 
+```
+
+> **Demonstrator Notes:** Compared to the previous questions, this is a little easier. Try not to give too much direct assistance on this question, as most students should be able to complete it. The main errors expected on this question are `TypeError`s due to students forgetting to cast the string values to integers.
+
+**Task 6: Categorizing Isotopes.** Here is an example solution to this task.
+
+```{pyodide}
+def get_category(isotope_string, periodic_table):
+    
+        
+    # Split the string into N, P and E
+    split_isotope_string = isotope_string.split('_')
+    
+    # If we have N and E only this will have length 2
+    if len(split_isotope_string) == 2:
+        
+        # Get E
+        E = split_isotope_string[1]
+        
+    
+    # If we have N, P and E only this will have length 2
+    elif len(split_isotope_string) == 3:
+        
+        # Get E
+        E = split_isotope_string[2]
+        
+    # Get the proton number of E
+    num_protons = periodic_table[E]['atomic_number']
+    
+    # Get group and period
+    group, period = group_and_period(isotope_string, periodic_table)
+    
+    # Classify chunks using row and column indices
+    if group == 1: # First column
+        
+        if period == 1: # Hydrogen
+            category = "Halogens and other non-metals"
+            
+        else: # Rest of the first column
+            category = "Alkali metals"
+            
+    elif group == 2: # Second column
+        category = "Alkaline earth metals"
+        
+    elif group == 3: # Third column
+        
+        if period < 6: # Transiition metals
+            category = "Transition Metals"
+            
+        elif period == 6: # Lanthanides
+            category = "Lanthanides" 
+            
+        else: # Actinides
+            category = "Actinides"
+            
+    elif 4 <= group <= 12: # Middle "chunk" of the table
+        category = "Transition Metals"
+        
+    # Final column of the table (working backwards now)
+    elif group == 18:
+        category = "Noble Gases"
+        
+    # One column in
+    elif group == 17:
+        category = "Halogens and other non-metals"
+        
+    # We just have columns 13-16 left - let's handle the bottom row first
+    elif period == 7:
+        category = "Post-transition metals"
+        
+    # Remainder of column 16
+    elif group == 16:
+        if period <= 4:
+            category = "Halogens and other non-metals" 
+        else:
+            category = "Metalloids" 
+            
+    # Onto row 6
+    elif period == 6:
+        category = "Post-transition metals"
+        
+    # Remainder of column 15
+    elif group == 15:
+        if period <= 3:
+            category = "Halogens and other non-metals" 
+        else:
+            category = "Metalloids" 
+            
+    # Remainder of column 14
+    elif group == 14:
+        if period == 2:
+            category = "Halogens and other non-metals" 
+        else:
+            category = "Metalloids" 
+            
+    # Top of column 13
+    elif period == 2:
+        category = "Metalloids"
+        
+    # Bottom of column 13
+    else:
+        category = "Post-transition metals"
+        
+    return(category)
+
+# Loop through the elements printing their categories
+for element in periodic_table.keys():
+    
+    # Print category
+    print(element + ' is in the category: ' + get_category('1_' + element, periodic_table))
+```
+
+ > **Demonstrator Notes:** This question is much easier if you use the `group` and `period` computed in task 4. If students are stuck, encourage them to think about which of the previous tasks might help them here, and highlight that they can use the functions they have already written. To understand the logic of the solution, it helps to draw out a rough periodic table on paper and shade each section covered by successive clauses of the if statement. 
+
