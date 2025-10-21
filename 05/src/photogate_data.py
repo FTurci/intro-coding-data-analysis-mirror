@@ -2,7 +2,7 @@ import random
 import pickle
 
 # This function reads the photogate data
-def read_photogate_data(filename='/home/jovyan/intro-coding-data-analysis.git/05/src/photogate_data.pkl'):
+def read_photogate_data(filename='./src/photogate_data.pkl'):
     with open(filename, 'rb') as f:
         return pickle.load(f)
 
