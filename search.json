@@ -322,133 +322,228 @@
     "href": "07/lecture_intro_numpy.html",
     "title": "The numpy module",
     "section": "",
-    "text": "A collection of many functions is called a module. One of the most useful modules in Python is called numpy (numerical Python) – it contains many functions to deal with numerical programming. This is technically an extension to the Core Python functionality we’ve been focussing on so far but now comes as standard in most Python installations.\nThe numpy module builds on the core functionality but also adds additional features including:\n\nIt is performant which means it is well optimised\nIt offers additional numerical computing tools\nIt adds an additional object called an n-dimensional array\n\n\n\nOne thing we can use the numpy module for is to create a new object called a numpy array. This is another data structure, in addition to the in-built Python types we’ve been learning about, and is similiar to a list.\n\n\n\nNumpy arrays\n\nNumpy module (and arrays) are a Python extension (but often come as standard)  Ordered  Mutable  Less flexible - One data type per array  Allows implicit element-wise operations  Generally quicker (optimised) More memory efficient\n\nLists\n\nLists are part of Python in-built functionality  Ordered  Mutable  Very flexible - All types in any list  Needs explicit element-wise operations  Generally slower performance Less memory efficient\n\n\nWhen using these objects, list objects are highly flexible, in both content and shape whereas numpy.array objects are much more strict and require every item to be the same type and often work best when they have a consistent shape (e.g. 2x3 grid).\n\n\n\nnumpy.array objects are mutable, ordered container objects but must contain a specific object type and have n-dimensional shape.\nTo use the numpy module we first need to import it.\n\n\n\n\n\n\nThe as part of this import statement gives us a shorthand to use in the code when we want to access numpy, in this case np. This is the convention most often used for the numpy module. import statements themselves are the way we access additional Python modules such as numpy or matplotlib.\nOne way to create a numpy.array is from a list:\n\n\n\n\n\n\nwhere we need the np. at the start of the function to tell python to access the numpy module.\nWe can also index and slice numpy.arrays in a similar way to other iterable objects (i.e. objects with length like lists):\n\n\n\n\n\n\nAnd a numpy.array has an additional properties (attributes) called dtype which tells us what is contained within the array and shape which tells us the dimensions of the array.\n\n\n\n\n\n\n\n\n\nThe numpy module itself also provides some additional tools and syntax to complete simple operations more succinctly. For instance, we’ve shown before one way to act on every item in a list using a for loop:\n\n\n\n\n\n\nThere is actually a short hand for creating a new list using a for loop for very simple operations called a list comprehension.\n\n\n\n\n\n\nBut this is still more complex than using a numpy.array, where the same operation can be performed using an operator directly on the whole array:\n\n\n\n\n\n\n\n\n\nFor large numbers of elements the time difference between operations using lists and numpy.arrays can start to be measurable. We can quickly check this my importing the time module:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComparing the two operations we can see that performing this operation with the list takes longer than within a numpy.array (this is highly variable though):\n\n\n\n\n\n\nYou may recall, when we first introduced list and dict objects, we also mentioned other Python objects which were similar but with some differences in functionality (tuple and set objects). In Python, as in many languages, there are often many tools which can be used to complete a task and it’s up to you to choose the correct tool for the job. Overall, list objects may be more appropriate when you need to store a set of strings or if you don’t know the number of elements in advance (appending to a list is faster than appending to an numpy.array due to the way the data is stored in memory). Whereas numpy.array objects would be more appropriate when performance is a factor or for simpler numerical operations."
+    "text": "A collection of many functions is called a module. One of the most useful modules in Python is called numpy (numerical Python) – it contains many functions to deal with numerical programming. This is technically an extension to the Core Python functionality we’ve been focussing on so far but now comes as standard in most Python installations.\nThe numpy module builds on the core functionality but also adds additional features including:\n\nIt is performant which means it is well optimised\nIt offers additional numerical computing tools\nIt adds an additional object called an n-dimensional array\n\n\n\nOne thing we can use the numpy module for is to create a new object called a numpy array. This is another data structure, in addition to the in-built Python types we’ve been learning about, and is similiar to a list.\n\n\n\nNumpy arrays\n\nNumpy module (and arrays) are a Python extension (but often come as standard)  Ordered  Mutable  Less flexible - One data type per array  Allows implicit element-wise operations  Generally quicker (optimised) More memory efficient\n\nLists\n\nLists are part of Python in-built functionality  Ordered  Mutable  Very flexible - All types in any list  Needs explicit element-wise operations  Generally slower performance Less memory efficient\n\n\nWhen using these objects, list objects are highly flexible, in both content and shape whereas numpy.array objects are much more strict and require every item to be the same type and often work best when they have a consistent shape (e.g. 2x3 grid).\n\n\n\nnumpy.array objects are mutable, ordered container objects but must contain a specific object type and have n-dimensional shape.\nTo use the numpy module we first need to import it.\n\n\n\n\n\n\nThe as part of this import statement gives us a shorthand to use in the code when we want to access numpy, in this case np. This is the convention most often used for the numpy module. import statements themselves are the way we access additional Python modules such as numpy or matplotlib.\nOne way to create a numpy.array is from a list:\n\n\n\n\n\n\nwhere we need the np. at the start of the function to tell python to access the numpy module.\nWe can also index and slice numpy.arrays in a similar way to other iterable objects (i.e. objects with length like lists):\n\n\n\n\n\n\nAnd a numpy.array has an additional properties (attributes) called dtype which tells us what is contained within the array and shape which tells us the dimensions of the array.\n\n\n\n\n\n\n\n\n\nThe numpy module itself also provides some additional tools and syntax to complete simple operations more succinctly. For instance, we’ve shown before one way to act on every item in a list using a for loop:\n\n\n\n\n\n\nThere is actually a short hand for creating a new list using a for loop for very simple operations called a list comprehension.\n\n\n\n\n\n\nBut this is still more complex than using a numpy.array, where the same operation can be performed using an operator directly on the whole array:\n\n\n\n\n\n\n\n\n\nFor large numbers of elements the time difference between operations using lists and numpy.arrays can start to be measurable. We can quickly check this my importing the time module:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComparing the two operations we can see that performing this operation with the list takes longer than within a numpy.array (this is highly variable though):\n\n\n\n\n\n\nYou may recall, when we first introduced list and dict objects, we also mentioned other Python objects which were similar but with some differences in functionality (tuple and set objects). In Python, as in many languages, there are often many tools which can be used to complete a task and it’s up to you to choose the correct tool for the job. Overall, list objects may be more appropriate when you need to store a set of strings or if you don’t know the number of elements in advance (appending to a list is faster than appending to an numpy.array due to the way the data is stored in memory). Whereas numpy.array objects would be more appropriate when performance is a factor or for simpler numerical operations.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "The `numpy` module"
+    ]
   },
   {
     "objectID": "07/lecture_intro_numpy.html#what-is-the-numpy-module",
     "href": "07/lecture_intro_numpy.html#what-is-the-numpy-module",
     "title": "The numpy module",
     "section": "",
-    "text": "A collection of many functions is called a module. One of the most useful modules in Python is called numpy (numerical Python) – it contains many functions to deal with numerical programming. This is technically an extension to the Core Python functionality we’ve been focussing on so far but now comes as standard in most Python installations.\nThe numpy module builds on the core functionality but also adds additional features including:\n\nIt is performant which means it is well optimised\nIt offers additional numerical computing tools\nIt adds an additional object called an n-dimensional array\n\n\n\nOne thing we can use the numpy module for is to create a new object called a numpy array. This is another data structure, in addition to the in-built Python types we’ve been learning about, and is similiar to a list.\n\n\n\nNumpy arrays\n\nNumpy module (and arrays) are a Python extension (but often come as standard)  Ordered  Mutable  Less flexible - One data type per array  Allows implicit element-wise operations  Generally quicker (optimised) More memory efficient\n\nLists\n\nLists are part of Python in-built functionality  Ordered  Mutable  Very flexible - All types in any list  Needs explicit element-wise operations  Generally slower performance Less memory efficient\n\n\nWhen using these objects, list objects are highly flexible, in both content and shape whereas numpy.array objects are much more strict and require every item to be the same type and often work best when they have a consistent shape (e.g. 2x3 grid).\n\n\n\nnumpy.array objects are mutable, ordered container objects but must contain a specific object type and have n-dimensional shape.\nTo use the numpy module we first need to import it.\n\n\n\n\n\n\nThe as part of this import statement gives us a shorthand to use in the code when we want to access numpy, in this case np. This is the convention most often used for the numpy module. import statements themselves are the way we access additional Python modules such as numpy or matplotlib.\nOne way to create a numpy.array is from a list:\n\n\n\n\n\n\nwhere we need the np. at the start of the function to tell python to access the numpy module.\nWe can also index and slice numpy.arrays in a similar way to other iterable objects (i.e. objects with length like lists):\n\n\n\n\n\n\nAnd a numpy.array has an additional properties (attributes) called dtype which tells us what is contained within the array and shape which tells us the dimensions of the array.\n\n\n\n\n\n\n\n\n\nThe numpy module itself also provides some additional tools and syntax to complete simple operations more succinctly. For instance, we’ve shown before one way to act on every item in a list using a for loop:\n\n\n\n\n\n\nThere is actually a short hand for creating a new list using a for loop for very simple operations called a list comprehension.\n\n\n\n\n\n\nBut this is still more complex than using a numpy.array, where the same operation can be performed using an operator directly on the whole array:\n\n\n\n\n\n\n\n\n\nFor large numbers of elements the time difference between operations using lists and numpy.arrays can start to be measurable. We can quickly check this my importing the time module:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComparing the two operations we can see that performing this operation with the list takes longer than within a numpy.array (this is highly variable though):\n\n\n\n\n\n\nYou may recall, when we first introduced list and dict objects, we also mentioned other Python objects which were similar but with some differences in functionality (tuple and set objects). In Python, as in many languages, there are often many tools which can be used to complete a task and it’s up to you to choose the correct tool for the job. Overall, list objects may be more appropriate when you need to store a set of strings or if you don’t know the number of elements in advance (appending to a list is faster than appending to an numpy.array due to the way the data is stored in memory). Whereas numpy.array objects would be more appropriate when performance is a factor or for simpler numerical operations."
+    "text": "A collection of many functions is called a module. One of the most useful modules in Python is called numpy (numerical Python) – it contains many functions to deal with numerical programming. This is technically an extension to the Core Python functionality we’ve been focussing on so far but now comes as standard in most Python installations.\nThe numpy module builds on the core functionality but also adds additional features including:\n\nIt is performant which means it is well optimised\nIt offers additional numerical computing tools\nIt adds an additional object called an n-dimensional array\n\n\n\nOne thing we can use the numpy module for is to create a new object called a numpy array. This is another data structure, in addition to the in-built Python types we’ve been learning about, and is similiar to a list.\n\n\n\nNumpy arrays\n\nNumpy module (and arrays) are a Python extension (but often come as standard)  Ordered  Mutable  Less flexible - One data type per array  Allows implicit element-wise operations  Generally quicker (optimised) More memory efficient\n\nLists\n\nLists are part of Python in-built functionality  Ordered  Mutable  Very flexible - All types in any list  Needs explicit element-wise operations  Generally slower performance Less memory efficient\n\n\nWhen using these objects, list objects are highly flexible, in both content and shape whereas numpy.array objects are much more strict and require every item to be the same type and often work best when they have a consistent shape (e.g. 2x3 grid).\n\n\n\nnumpy.array objects are mutable, ordered container objects but must contain a specific object type and have n-dimensional shape.\nTo use the numpy module we first need to import it.\n\n\n\n\n\n\nThe as part of this import statement gives us a shorthand to use in the code when we want to access numpy, in this case np. This is the convention most often used for the numpy module. import statements themselves are the way we access additional Python modules such as numpy or matplotlib.\nOne way to create a numpy.array is from a list:\n\n\n\n\n\n\nwhere we need the np. at the start of the function to tell python to access the numpy module.\nWe can also index and slice numpy.arrays in a similar way to other iterable objects (i.e. objects with length like lists):\n\n\n\n\n\n\nAnd a numpy.array has an additional properties (attributes) called dtype which tells us what is contained within the array and shape which tells us the dimensions of the array.\n\n\n\n\n\n\n\n\n\nThe numpy module itself also provides some additional tools and syntax to complete simple operations more succinctly. For instance, we’ve shown before one way to act on every item in a list using a for loop:\n\n\n\n\n\n\nThere is actually a short hand for creating a new list using a for loop for very simple operations called a list comprehension.\n\n\n\n\n\n\nBut this is still more complex than using a numpy.array, where the same operation can be performed using an operator directly on the whole array:\n\n\n\n\n\n\n\n\n\nFor large numbers of elements the time difference between operations using lists and numpy.arrays can start to be measurable. We can quickly check this my importing the time module:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nComparing the two operations we can see that performing this operation with the list takes longer than within a numpy.array (this is highly variable though):\n\n\n\n\n\n\nYou may recall, when we first introduced list and dict objects, we also mentioned other Python objects which were similar but with some differences in functionality (tuple and set objects). In Python, as in many languages, there are often many tools which can be used to complete a task and it’s up to you to choose the correct tool for the job. Overall, list objects may be more appropriate when you need to store a set of strings or if you don’t know the number of elements in advance (appending to a list is faster than appending to an numpy.array due to the way the data is stored in memory). Whereas numpy.array objects would be more appropriate when performance is a factor or for simpler numerical operations.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "The `numpy` module"
+    ]
   },
   {
     "objectID": "07/lecture_intro_numpy.html#working-with-numpy",
     "href": "07/lecture_intro_numpy.html#working-with-numpy",
     "title": "The numpy module",
     "section": "Working with numpy",
-    "text": "Working with numpy\nTo use the numpy module we always need to start by using an import statement. In this case we import the numpy module and use the shorthand np:\n\n\n\n\n\n\n\n\n\n\n\n\nWe’ve seen that we can apply operators directly to a numpy.array:\n\n\n\n\n\n\nSimilarly you can use additional functions provided by the numpy module to do something to each element in the array. For example you can apply a square root:\n\n\n\n\n\n\nOr perform a reductive operation such as calculating the mean of all the elements:\n\n\n\n\n\n\nWe can also apply mathematical operations over the whole array. For instance we can look at the np.cos function which produces applies the cosine function element-wise:\n\n\n\n\n\n\nThe help states that this wants an array-like object and wants the input in radians. We can write this as:\n\n\n\n\n\n\nIf we look at arr1 we can see that this has not been updated by the application of these operations - when using this functionality a copy of the array is returned which you can choose to re-assign to the original variable name or create a new variable:"
+    "text": "Working with numpy\nTo use the numpy module we always need to start by using an import statement. In this case we import the numpy module and use the shorthand np:\n\n\n\n\n\n\n\n\n\n\n\n\nWe’ve seen that we can apply operators directly to a numpy.array:\n\n\n\n\n\n\nSimilarly you can use additional functions provided by the numpy module to do something to each element in the array. For example you can apply a square root:\n\n\n\n\n\n\nOr perform a reductive operation such as calculating the mean of all the elements:\n\n\n\n\n\n\nWe can also apply mathematical operations over the whole array. For instance we can look at the np.cos function which produces applies the cosine function element-wise:\n\n\n\n\n\n\nThe help states that this wants an array-like object and wants the input in radians. We can write this as:\n\n\n\n\n\n\nIf we look at arr1 we can see that this has not been updated by the application of these operations - when using this functionality a copy of the array is returned which you can choose to re-assign to the original variable name or create a new variable:",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "The `numpy` module"
+    ]
   },
   {
     "objectID": "07/lecture_intro_numpy.html#element-wise-operations-on-1d-arrays",
     "href": "07/lecture_intro_numpy.html#element-wise-operations-on-1d-arrays",
     "title": "The numpy module",
     "section": "Element-wise operations on 1D arrays",
-    "text": "Element-wise operations on 1D arrays\nElement-wise operations in numpy allow you to perform arithmetic or mathematical functions on each corresponding element of arrays. For example, if you have two arrays of the same length, arr1 and arr2, you can add them directly: arr1 + arr2. This will produce a new array where each element is the sum of the elements at the same position in the original arrays. Similarly, you can use other operators (-, *, /) or numpy functions (np.sqrt(arr1), np.cos(arr1)) to apply operations to each element individually. The arrays must have compatible shapes for these operations.\n\n\n\n\n\n\n\n\n\n\n\n\nWhen 1D arrays have different lengths, you need to be careful about the operations you perform. Element-wise operations: Operations such as arr1 + arr3 or arr1 * arr3 require arrays to have the same length or compatible shapes. If the lengths differ, numpy will raise a ValueError due to shape mismatch."
+    "text": "Element-wise operations on 1D arrays\nElement-wise operations in numpy allow you to perform arithmetic or mathematical functions on each corresponding element of arrays. For example, if you have two arrays of the same length, arr1 and arr2, you can add them directly: arr1 + arr2. This will produce a new array where each element is the sum of the elements at the same position in the original arrays. Similarly, you can use other operators (-, *, /) or numpy functions (np.sqrt(arr1), np.cos(arr1)) to apply operations to each element individually. The arrays must have compatible shapes for these operations.\n\n\n\n\n\n\n\n\n\n\n\n\nWhen 1D arrays have different lengths, you need to be careful about the operations you perform. Element-wise operations: Operations such as arr1 + arr3 or arr1 * arr3 require arrays to have the same length or compatible shapes. If the lengths differ, numpy will raise a ValueError due to shape mismatch.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "The `numpy` module"
+    ]
   },
   {
     "objectID": "07/lecture_intro_numpy.html#basic-operations-on-1d-arrays",
     "href": "07/lecture_intro_numpy.html#basic-operations-on-1d-arrays",
     "title": "The numpy module",
     "section": "Basic operations on 1D arrays",
-    "text": "Basic operations on 1D arrays\nSumming all elements in a 1D numpy array can be done with np.sum(arr1).\nFor cumulative summing, use np.cumsum(arr1), which returns an array where each element is the sum of all previous elements.\nSorting is performed with np.sort(arr1), which returns a sorted copy of the array.\nTo concatenate two arrays, use np.concatenate([arr1, arr2]). This joins the arrays end-to-end, creating a new array containing all elements from both arrays in order. Concatenation is useful for combining datasets or extending arrays.\nTo find unique elements, use np.unique(arr1), which returns an array of the distinct values in arr1. These operations are efficient and commonly used for data analysis."
+    "text": "Basic operations on 1D arrays\nSumming all elements in a 1D numpy array can be done with np.sum(arr1).\nFor cumulative summing, use np.cumsum(arr1), which returns an array where each element is the sum of all previous elements.\nSorting is performed with np.sort(arr1), which returns a sorted copy of the array.\nTo concatenate two arrays, use np.concatenate([arr1, arr2]). This joins the arrays end-to-end, creating a new array containing all elements from both arrays in order. Concatenation is useful for combining datasets or extending arrays.\nTo find unique elements, use np.unique(arr1), which returns an array of the distinct values in arr1. These operations are efficient and commonly used for data analysis.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "The `numpy` module"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html",
     "href": "07/exercises_numpy.html",
     "title": "numpy Exercises",
     "section": "",
-    "text": "These exercises test your understanding of the NumPy concepts covered in the introduction notebook."
+    "text": "These exercises test your understanding of the NumPy concepts covered in the introduction notebook.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-1-import-and-basic-array-creation",
     "href": "07/exercises_numpy.html#exercise-1-import-and-basic-array-creation",
     "title": "numpy Exercises",
     "section": "Exercise 1: Import and Basic Array Creation",
-    "text": "Exercise 1: Import and Basic Array Creation\nTask: Import NumPy with the standard import command and create a NumPy array from the list [2, 4, 6, 8, 10, 12]. Print the array, its data type, and its shape."
+    "text": "Exercise 1: Import and Basic Array Creation\nTask: Import NumPy with the standard import command and create a NumPy array from the list [2, 4, 6, 8, 10, 12]. Print the array, its data type, and its shape.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-2-array-indexing-and-slicing",
     "href": "07/exercises_numpy.html#exercise-2-array-indexing-and-slicing",
     "title": "numpy Exercises",
     "section": "Exercise 2: Array Indexing and Slicing",
-    "text": "Exercise 2: Array Indexing and Slicing\nTask: Using the array you created in Exercise 1:\n\nPrint the first element\nPrint the last element\nPrint elements from index 2 to 4 (inclusive of 2, exclusive of 5)\nPrint every second element"
+    "text": "Exercise 2: Array Indexing and Slicing\nTask: Using the array you created in Exercise 1:\n\nPrint the first element\nPrint the last element\nPrint elements from index 2 to 4 (inclusive of 2, exclusive of 5)\nPrint every second element",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-3-element-wise-operations",
     "href": "07/exercises_numpy.html#exercise-3-element-wise-operations",
     "title": "numpy Exercises",
     "section": "Exercise 3: Element-wise Operations",
-    "text": "Exercise 3: Element-wise Operations\nTask: Create a NumPy array arr = np.array([1, 4, 9, 16, 25]). Perform the following operations and print the results:\n\nMultiply each element by 3\nAdd 10 to each element\nCalculate the square root of each element\nApply the sine function to each element"
+    "text": "Exercise 3: Element-wise Operations\nTask: Create a NumPy array arr = np.array([1, 4, 9, 16, 25]). Perform the following operations and print the results:\n\nMultiply each element by 3\nAdd 10 to each element\nCalculate the square root of each element\nApply the sine function to each element",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-4-array-operations-with-two-arrays",
     "href": "07/exercises_numpy.html#exercise-4-array-operations-with-two-arrays",
     "title": "numpy Exercises",
     "section": "Exercise 4: Array Operations with Two Arrays",
-    "text": "Exercise 4: Array Operations with Two Arrays\nTask: Create two NumPy arrays:\n\narr1 = np.array([1, 2, 3, 4, 5])\narr2 = np.array([10, 20, 30, 40, 50])\n\nPerform element-wise operations and print the results:\n\nAdd the two arrays\nSubtract arr1 from arr2\nMultiply the two arrays\nDivide arr2 by arr1"
+    "text": "Exercise 4: Array Operations with Two Arrays\nTask: Create two NumPy arrays:\n\narr1 = np.array([1, 2, 3, 4, 5])\narr2 = np.array([10, 20, 30, 40, 50])\n\nPerform element-wise operations and print the results:\n\nAdd the two arrays\nSubtract arr1 from arr2\nMultiply the two arrays\nDivide arr2 by arr1",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-5-shape-mismatch-error",
     "href": "07/exercises_numpy.html#exercise-5-shape-mismatch-error",
     "title": "numpy Exercises",
     "section": "Exercise 5: Shape Mismatch Error",
-    "text": "Exercise 5: Shape Mismatch Error\nTask: Create two arrays with different lengths:\n\narr_a = np.array([1, 2, 3, 4])\narr_b = np.array([10, 20])\n\nTry to add these arrays together. What happens? Write the code and explain the error in a comment."
+    "text": "Exercise 5: Shape Mismatch Error\nTask: Create two arrays with different lengths:\n\narr_a = np.array([1, 2, 3, 4])\narr_b = np.array([10, 20])\n\nTry to add these arrays together. What happens? Write the code and explain the error in a comment.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-6-reductive-operations",
     "href": "07/exercises_numpy.html#exercise-6-reductive-operations",
     "title": "numpy Exercises",
     "section": "Exercise 6: Reductive Operations",
-    "text": "Exercise 6: Reductive Operations\nTask: Create a NumPy array data = np.array([12, 8, 15, 3, 7, 20, 11, 9]). Calculate and print:\n\nThe sum of all elements\nThe mean (average) of all elements\nThe maximum value\nThe minimum value\nThe standard deviation"
+    "text": "Exercise 6: Reductive Operations\nTask: Create a NumPy array data = np.array([12, 8, 15, 3, 7, 20, 11, 9]). Calculate and print:\n\nThe sum of all elements\nThe mean (average) of all elements\nThe maximum value\nThe minimum value\nThe standard deviation",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-7-array-manipulation",
     "href": "07/exercises_numpy.html#exercise-7-array-manipulation",
     "title": "numpy Exercises",
     "section": "Exercise 7: Array Manipulation",
-    "text": "Exercise 7: Array Manipulation\nTask: Create a NumPy array numbers = np.array([5, 2, 8, 1, 9, 3]). Perform the following operations:\n\nSort the array and print the result\nCalculate the cumulative sum and print the result\nCreate a new array with duplicates: with_duplicates = np.array([5, 2, 8, 1, 9, 3, 5, 2, 1]) and find the unique elements"
+    "text": "Exercise 7: Array Manipulation\nTask: Create a NumPy array numbers = np.array([5, 2, 8, 1, 9, 3]). Perform the following operations:\n\nSort the array and print the result\nCalculate the cumulative sum and print the result\nCreate a new array with duplicates: with_duplicates = np.array([5, 2, 8, 1, 9, 3, 5, 2, 1]) and find the unique elements",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-8-list-vs-numpy-comparison",
     "href": "07/exercises_numpy.html#exercise-8-list-vs-numpy-comparison",
     "title": "numpy Exercises",
     "section": "Exercise 8: List vs NumPy Comparison",
-    "text": "Exercise 8: List vs NumPy Comparison\nTask: Compare the flexibility of lists vs NumPy arrays:\n\nCreate a Python list containing mixed data types: mixed_list = [1, 'hello', 3.14, True]\nTry to create a NumPy array from this list. What happens to the data types?\nCreate a list of numbers: num_list = [1, 2, 3, 4, 5]\nTry to multiply the entire list by 2 using num_list * 2. What happens?\nCreate a NumPy array from the same numbers and multiply by 2. Compare the results."
+    "text": "Exercise 8: List vs NumPy Comparison\nTask: Compare the flexibility of lists vs NumPy arrays:\n\nCreate a Python list containing mixed data types: mixed_list = [1, 'hello', 3.14, True]\nTry to create a NumPy array from this list. What happens to the data types?\nCreate a list of numbers: num_list = [1, 2, 3, 4, 5]\nTry to multiply the entire list by 2 using num_list * 2. What happens?\nCreate a NumPy array from the same numbers and multiply by 2. Compare the results.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-9-performance-comparison",
     "href": "07/exercises_numpy.html#exercise-9-performance-comparison",
     "title": "numpy Exercises",
     "section": "Exercise 9: Performance Comparison",
-    "text": "Exercise 9: Performance Comparison\nTask: Compare the performance of list comprehension vs NumPy operations:\n\nImport the time module\nCreate a range of 50,000 numbers using numpy np.arange()\nTime how long it takes to square each number using a list comprehension, i.e. the syntax [x**2 for x in myarray]\nTime how long it takes to square each number using NumPy operations\nCalculate and print how many times faster the NumPy operation is"
+    "text": "Exercise 9: Performance Comparison\nTask: Compare the performance of list comprehension vs NumPy operations:\n\nImport the time module\nCreate a range of 50,000 numbers using numpy np.arange()\nTime how long it takes to square each number using a list comprehension, i.e. the syntax [x**2 for x in myarray]\nTime how long it takes to square each number using NumPy operations\nCalculate and print how many times faster the NumPy operation is",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#exercise-10-complex-operations",
     "href": "07/exercises_numpy.html#exercise-10-complex-operations",
     "title": "numpy Exercises",
     "section": "Exercise 10: Complex Operations",
-    "text": "Exercise 10: Complex Operations\nTask: Create a NumPy array representing angles in degrees: angles_deg = np.array([0, 30, 45, 60, 90, 120, 180]) 1. Convert these angles to radians (hint: multiply by π/180, use np.pi) 2. Calculate the sine and cosine of each angle 3. Verify that sin²(x) + cos²(x) = 1 for each angle (use np.sin() and np.cos()) 4. Print all results"
+    "text": "Exercise 10: Complex Operations\nTask: Create a NumPy array representing angles in degrees: angles_deg = np.array([0, 30, 45, 60, 90, 120, 180]) 1. Convert these angles to radians (hint: multiply by π/180, use np.pi) 2. Calculate the sine and cosine of each angle 3. Verify that sin²(x) + cos²(x) = 1 for each angle (use np.sin() and np.cos()) 4. Print all results",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#challenge-1-temperature-conversion",
     "href": "07/exercises_numpy.html#challenge-1-temperature-conversion",
     "title": "numpy Exercises",
     "section": "Challenge 1: Temperature Conversion",
-    "text": "Challenge 1: Temperature Conversion\nTask: You have temperature readings in Celsius: celsius_temps = np.array([0, 10, 20, 25, 30, 35, 40])\n\nConvert all temperatures to Fahrenheit using the formula: F = (C × 9/5) + 32\nConvert all temperatures to Kelvin using the formula: K = C + 273.15\nCalculate the temperature range (max - min) for each scale"
+    "text": "Challenge 1: Temperature Conversion\nTask: You have temperature readings in Celsius: celsius_temps = np.array([0, 10, 20, 25, 30, 35, 40])\n\nConvert all temperatures to Fahrenheit using the formula: F = (C × 9/5) + 32\nConvert all temperatures to Kelvin using the formula: K = C + 273.15\nCalculate the temperature range (max - min) for each scale",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#challenge-2-kinetic-energy",
     "href": "07/exercises_numpy.html#challenge-2-kinetic-energy",
     "title": "numpy Exercises",
     "section": "Challenge 2: Kinetic energy",
-    "text": "Challenge 2: Kinetic energy\nTask Given arrays of mass (kg) and velocity (m/s) for several objects:\n# copy and paste this code below\nmasses = np.array([2.0, 1.5, 3.0, 0.5])      # in kilograms\nvelocities = np.array([10.0, 20.0, 15.0, 5.0]) # in meters per second\n\nCalculate the kinetic energy \\(K\\) for each object using the formula:\n\n\\[K =  \\dfrac{1}{2}m v^2\\]\n\nCalculate the total kinetic energy of the system (sum of all objects)"
+    "text": "Challenge 2: Kinetic energy\nTask Given arrays of mass (kg) and velocity (m/s) for several objects:\n# copy and paste this code below\nmasses = np.array([2.0, 1.5, 3.0, 0.5])      # in kilograms\nvelocities = np.array([10.0, 20.0, 15.0, 5.0]) # in meters per second\n\nCalculate the kinetic energy \\(K\\) for each object using the formula:\n\n\\[K =  \\dfrac{1}{2}m v^2\\]\n\nCalculate the total kinetic energy of the system (sum of all objects)",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "07/exercises_numpy.html#challenge-3-temperature-analysis",
     "href": "07/exercises_numpy.html#challenge-3-temperature-analysis",
     "title": "numpy Exercises",
     "section": "Challenge 3: Temperature Analysis",
-    "text": "Challenge 3: Temperature Analysis\nTask: Given a NumPy array of daily temperatures for 30 days:\ntemperatures = np.array([23.5, 24.0, 21.2, 25.6, 22.8, 23.9, 26.1, 27.3, 21.7, 22.5,\n                         24.6, 25.8, 20.9, 22.3, 24.7, 26.0, 27.5, 21.0, 22.9, 24.8,\n                         25.9, 27.6, 20.8, 22.7, 24.5, 26.2, 27.7, 20.5, 22.6, 24.9])\nPerform the following tasks:\n\nFind the top 3 hottest days and their temperatures.\nCalculate the day-to-day percentage change in temperature."
+    "text": "Challenge 3: Temperature Analysis\nTask: Given a NumPy array of daily temperatures for 30 days:\ntemperatures = np.array([23.5, 24.0, 21.2, 25.6, 22.8, 23.9, 26.1, 27.3, 21.7, 22.5,\n                         24.6, 25.8, 20.9, 22.3, 24.7, 26.0, 27.5, 21.0, 22.9, 24.8,\n                         25.9, 27.6, 20.8, 22.7, 24.5, 26.2, 27.7, 20.5, 22.6, 24.9])\nPerform the following tasks:\n\nFind the top 3 hottest days and their temperatures.\nCalculate the day-to-day percentage change in temperature.",
+    "crumbs": [
+      "Home",
+      "07 Introduction to NumPy",
+      "`numpy` Exercises"
+    ]
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#introduction-to-matplotlib",
