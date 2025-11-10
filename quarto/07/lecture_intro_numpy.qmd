@@ -64,7 +64,6 @@ When using these objects, `list` objects are highly flexible, in both content an
 To use the `numpy` module we first need to *import* it.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 ```
 
@@ -73,7 +72,6 @@ The `as` part of this import statement gives us a shorthand to use in the code w
 One way to create a `numpy.array` is from a `list`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 list1 = [1.,1.,2.,3.,5.,8.]
 arr1 = np.array(list1)
 ```
@@ -83,7 +81,6 @@ where we need the `np.` at the start of the function to tell python to access th
 We can also index and slice `numpy.arrays` in a similar way to other iterable objects (i.e. objects with length like `lists`):
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(arr1[0])
 print(arr1[2:-1])
 ```
@@ -91,7 +88,6 @@ print(arr1[2:-1])
 And a `numpy.array` has an additional properties (*attributes*) called *dtype* which tells us what is contained within the array and *shape* which tells us the dimensions of the array.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(arr1.dtype)
 print(arr1.shape)
 ```
@@ -101,7 +97,6 @@ print(arr1.shape)
 The `numpy` module itself also provides some additional tools and syntax to complete simple operations more succinctly. For instance, we've shown before one way to act on every item in a `list` using a `for` loop:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 list2 = []
 for item in list1:
     list2.append(item*4)
@@ -111,7 +106,6 @@ print(list2)
 There is actually a short hand for creating a new list using a `for` loop for very simple operations called a *list comprehension*.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 list2 = [item*4 for item in list1]
 print(list2)
 ```
@@ -119,7 +113,6 @@ print(list2)
 But this is still more complex than using a `numpy.array`, where the same operation can be performed using an operator directly on the whole array:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr2 = arr1*4
 print(arr2)
 ```
@@ -129,13 +122,11 @@ print(arr2)
 For large numbers of elements the time difference between operations using `lists` and `numpy.arrays` can start to be measurable. We can quickly check this my importing the `time` module:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import time
 num_range = 100000
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 time1 = time.time()
 list_out = [item*4 for item in range(num_range)]
 time2 = time.time()
@@ -144,7 +135,6 @@ list_time = time2-time1
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 time1 = time.time()
 arr_out = np.arange(num_range)*4
 time2 = time.time()
@@ -155,7 +145,6 @@ arr_time = time2-time1
 Comparing the two operations we can see that performing this operation with the `list` takes longer than within a `numpy.array` (this is highly variable though):
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(f"Array operation is {list_time/arr_time:.0f} times faster for {num_range:,} numbers")
 ```
 
@@ -166,54 +155,46 @@ You may recall, when we first introduced `list` and `dict` objects, we also ment
 To use the `numpy` module we always need to start by using an import statement. In this case we import the `numpy` module and use the shorthand `np`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr1 = np.array([1.,1.,2.,3.,5.,8.])
 ```
 
 We've seen that we can apply operators directly to a `numpy.array`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr1*3/2 + 5
 ```
 
 Similarly you can use additional functions provided by the `numpy` module to do something to each element in the array. For example you can apply a square root:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(np.sqrt(arr1))
 ```
 
 Or perform a reductive operation such as calculating the mean of all the elements:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(np.mean(arr1))
 ```
 
 We can also apply mathematical operations over the whole array. For instance we can look at the `np.cos` function which produces applies the cosine function element-wise:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 np.cos?
 ```
 
 The help states that this wants an *array-like* object and wants the input in radians. We can write this as:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(np.cos(arr1))
 ```
 
 If we look at `arr1` we can see that this has not been updated by the application of these operations - when using this functionality a copy of the array is returned which you can choose to re-assign to the original variable name or create a new variable:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(arr1)
 arr2 = arr1*3/2 + 5
 print(arr2)
@@ -224,7 +205,6 @@ print(arr2)
 Element-wise operations in numpy allow you to perform arithmetic or mathematical functions on each corresponding element of arrays. For example, if you have two arrays of the same length, `arr1` and `arr2`, you can add them directly: `arr1 + arr2`. This will produce a new array where each element is the sum of the elements at the same position in the original arrays. Similarly, you can use other operators (`-`, `*`, `/`) or numpy functions (`np.sqrt(arr1)`, `np.cos(arr1)`) to apply operations to each element individually. The arrays must have compatible shapes for these operations.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Element-wise addition of arr1 and arr2
 added = arr1 + arr2
 print(added)
@@ -234,7 +214,6 @@ print(subtracted)
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Element-wise multiplication and division of arr1 and arr2
 multiplied = arr1 * arr2
 divided = arr1 / arr2
@@ -246,7 +225,6 @@ print("Element-wise division:", divided)
 When 1D arrays have different lengths, you need to be careful about the operations you perform. **Element-wise operations**: Operations such as `arr1 + arr3` or `arr1 * arr3` require arrays to have the same length or compatible shapes. If the lengths differ, numpy will raise a `ValueError` due to shape mismatch.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # This will raise a ValueError because arr1 and arr3 have different lengths
 result = arr1 + arr3
 ```
@@ -265,7 +243,6 @@ To concatenate two arrays, use `np.concatenate([arr1, arr2])`. This joins the ar
 To find unique elements, use `np.unique(arr1)`, which returns an array of the distinct values in `arr1`. These operations are efficient and commonly used for data analysis.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Summing all elements in arr1
 total_sum = np.sum(arr1)
 print("Sum of arr1:", total_sum)

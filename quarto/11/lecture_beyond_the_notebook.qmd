@@ -16,7 +16,6 @@ These are not python commands, but are in fact specific to the file system itsel
 First, let's check where we are right now in the file system. To do so, we query the **p**athway to the **w**orking ***d***irectory with the `pwd` command.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! pwd
 ```
 
@@ -27,7 +26,6 @@ This shows where we currently are, and each of you should have a different path,
 The `ls` command lists the files and directories in the current directory. The current directory is represented by a `.` (dot).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! ls 
 ```
 
@@ -36,14 +34,12 @@ The `ls` command lists the files and directories in the current directory. The c
 The `mkdir` command creates a new directory in the specified path. For example, to create a new directory in the current directory we can write
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! mkdir new_directory 
 ```
 
 We can check its existence with `ls`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! ls
 ```
 
@@ -54,14 +50,12 @@ Equally, we can go back to the `jupyter` interface and see the new directory in 
 It is easy to change the current directory with the `cd` command. For example, to go to the `new_directory` with
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! cd new_directory
 ```
 
 And we we can go back to the previous directory with the `cd` command again using `..`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! cd ..
 ```
 
@@ -70,7 +64,6 @@ And we we can go back to the previous directory with the `cd` command again usin
 The `touch` command creates a new file in the specified path. For example, to create a new file in the current directory we can write
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! touch new_directory/new_file.txt
 ```
 
@@ -78,7 +71,6 @@ The `touch` command creates a new file in the specified path. For example, to cr
 We can check its existence with `ls`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! ls new_directory
 ```
 
@@ -92,7 +84,6 @@ We can open this file in the graphical user interface and edit the contents
 The `cat` command prints the content of a file. For example, to view the content of `new_file.txt` we can write
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ! cat new_directory/new_file.txt 
 ```
 
@@ -135,7 +126,6 @@ Can we execute such instructions? Yes, we **run** a script in various way. A sim
 [check that you are in the correct path and the script exist]
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 run src/naive_script.py
 ```
 
@@ -196,7 +186,6 @@ Do the following:
 - then go back to the Terminal and run the `parabola.py` script using the `python` command followed by the path to the script: e.g.  `python src/parabola.py`. Where is the output?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 run src/parabola.py
 ```
 
@@ -211,21 +200,18 @@ What allows us to do this is the  special `python` keywork `import`, that we hav
 Let's move our working directory to `src` and try importing our `parabola.py` script
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 cd src
 ```
 
 In `python` we can only import `.py` files, so we drop the `.py` extension when importing.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import parabola
 ```
 
 Now the variables defined in `parabola.py` are available in our current notebook.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(parabola.xhi)
 ```
 
@@ -255,7 +241,6 @@ The module above is not very useful. A better way to reuse code is to encapsulat
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ##YOUR CODE HERE
 ```
 
@@ -263,14 +248,12 @@ The module above is not very useful. A better way to reuse code is to encapsulat
 2. Find a way to rename your `parabola.py` script to `geometry.py`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ##YOUR CODE HERE
 ```
 
 Most commands in `bash` support options, using the dash `-` sytax. For example, `ls -l` will list the files in a long format. Can you use  `ls --help` to find out what the `-l` option does
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ls --help
 ```
 
@@ -278,7 +261,6 @@ ls --help
 - Can you find an additional option for `ls -l` to fils files in reverse time order?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ##YOUR CODE HERE
 ```
 

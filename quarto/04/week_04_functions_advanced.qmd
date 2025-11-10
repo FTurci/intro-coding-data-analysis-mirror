@@ -36,6 +36,7 @@ The general syntax is:
 For instance, consider the below function.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def my_function(x,y):
     return(x*y)
 
@@ -45,6 +46,7 @@ print(my_function(3,4))
 We can write exactly the same code using a `lambda` function as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_function = lambda x,y: x*y
 print(my_function(3,4))
 ```
@@ -58,6 +60,7 @@ Notice a few things:
 Although we assigned the function to a variable here, we could have used it directly, like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 (lambda x,y: x*y)(3,4)
 ```
 
@@ -66,6 +69,7 @@ At first sight, this might not look very different from a normal function. The m
 For example, instead of writing:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def add_one(x):
     return x + 1
 
@@ -75,6 +79,7 @@ print(add_one(10))
 We can instead write:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print((lambda x: x + 1)(10))
 ```
 
@@ -91,12 +96,14 @@ As a result, for more complicated computations, it is often preferable to use no
 In the previous section, we wrote:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_function = lambda x, y: x * y
 ```
 
 At first this might seem unusual... we've taken a function and saved it into a variable! But in fact, behind the scenes, this is what we are always doing whenever we define a function. For example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def my_function(x):
     return 22 * x + 1
 
@@ -111,6 +118,7 @@ In both cases, we have created an *object* called `my_function`. That object hap
 Because functions are objects, we can pass them into other functions. For instance, consider the below:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def f(x):
     return x ** 2
 
@@ -150,6 +158,7 @@ In the previous section, we saw that functions are objects, which means we can p
 For example, suppose we want to square every number in a list. Normally we might write a loop:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 numbers = [1, 2, 3, 4]
 
@@ -165,6 +174,7 @@ print(squares)
 With `map`, we can do this more directly:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Function which squares numeric x
 def square(x):
     return x ** 2
@@ -184,6 +194,7 @@ Note that `map` returns a special object, so we usually convert it into a `list`
 Since `map` only needs a function once, it is common to use a `lambda` instead of defining a full function. For instance, we can rewrite our above code like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 numbers = [1, 2, 3, 4]
 
@@ -212,6 +223,7 @@ The function we pass to `filter` must return either `True` or `False` for each i
 Let's look at an example. Suppose we want to keep only even numbers from a list. Using a loop, we might write:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 numbers = [1, 2, 3, 4, 5, 6]
 
@@ -228,6 +240,7 @@ print(evens)
 With `filter`, we can do this more directly:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Function which checks if x is even
 def is_even(x):
     return x % 2 == 0
@@ -245,6 +258,7 @@ print(list(evens))
 As with `map`, we can make this code even more concise by using a `lambda` function as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 numbers = [1, 2, 3, 4, 5, 6]
 
@@ -264,6 +278,7 @@ The third higher-order function we will look at is `reduce`. Instead of working 
 Unlike `map` and `filter`, `reduce` is not an in-built Python function. To use `reduce`, we must import it from Python's `functools` module:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from functools import reduce
 ```
 
@@ -278,6 +293,7 @@ Here, the function must take two arguments. `reduce` will apply the function it 
 Suppose we have a list of words and we want to join them into a single string with spaces in between. Using a `for` loop we might write:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of words
 words = ["A", "list", "of", "some", "words"]
 
@@ -293,6 +309,7 @@ print(sentence)
 With `reduce`, we can write the same loop as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of words
 words = ["A", "list", "of", "some", "words"]
 
@@ -317,6 +334,7 @@ Behind the scenes, `reduce` is doing the following:
 In other words, it is doing the following:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Repeatedly applying my_concatenate
 result1 = my_concatenate(words[0], words[1])
 result2 = my_concatenate(result1,  words[2])
@@ -329,6 +347,7 @@ print(result4)
 As with the previous examples, we can simplify the above code using `lambda` functions. In this case, the code would become:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of words
 words = ["A", "list", "of", "some", "words"]
 
@@ -344,6 +363,7 @@ print(sentence)
 **Question 1:** Below you are given a very long list of strings. Using the `filter` function and a `lambda` expression, print all of the strings that contain between three and eight characters (inclusive).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of words
 words = ['footballs', 'Bilingual', 'computing', 'presentation', 'interconnect', 'to', 'be', 
          'investigation', 'ya', 'university', 'keyboard,', 'hi', 'my', 'background', 
@@ -372,6 +392,7 @@ words = ['footballs', 'Bilingual', 'computing', 'presentation', 'interconnect', 
 **Question 2:** Below, you are given a list of dictionaries representing demographic data for several individuals:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 people = [
     {"name": "Alice",   "age": 25, "city": "New York"},
     {"name": "Bob",     "age": 30, "city": "Los Angeles"},
@@ -393,6 +414,7 @@ people = [
 Using the `map` function and an appropriate choice of `lambda` function, extract the `"name"` from each dictionary and return the result as a `list`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -401,6 +423,7 @@ Using the `map` function and an appropriate choice of `lambda` function, extract
 **Question 3:** Write a function `my_filter` that takes as input two functions, `f` and `g` and an iterable `my_iterable`. Your function must return a `list` of all values in `my_iterable` for which *exactly one* of the functions `f` or `g` returns `True`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 
 # Try testing your my_filter function using the below inputs
@@ -414,6 +437,7 @@ print(my_filter(f, g, my_iterable))  # Should print [-2, 0, 1, 3]
 **Question 4:** Suppose the variable `function_list` is a list of lambda expressions, each of which takes a float as input and produces a float as output. For example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 function_list = [
     lambda x: x + 1,
     lambda x: x * 2,
@@ -424,6 +448,7 @@ function_list = [
 You are given the following line of code. Run this code and explain mathematically how the `result` was generated from the functions in `function_list`
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 result = reduce(lambda f, g: lambda x: f(g(x)), function_list)(5)
 print(result) 
 ```
@@ -431,6 +456,7 @@ print(result)
 **Question 5:** `lambda` functions can also be combined with the `conditional` statement syntax we met in the [Week 2 advanced notebook](../02/week_02_booleans_and_conditionals_advanced.qmd). By performing your own research, see if you can understand what the below code is doing.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 nums = [3, 1, 4, 1, 5, 9, 2]
 

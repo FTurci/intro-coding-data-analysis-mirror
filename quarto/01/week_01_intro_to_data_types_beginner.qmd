@@ -57,6 +57,7 @@ In Python there are many different data types with some of the most commonly use
 The "type" of a variable can be found using the `type()` function in python. Try changing and running the below code to see how this function is used. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 1
 b = 1.1e-6
 c = True
@@ -75,6 +76,7 @@ In the above code, `a`, `b`, ..., `g` are variables. A variable is a named refer
 Values of variables can also be displayed with the `print()` function. If given many arguments, the print statement will print all of them. Try this below:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 0.01
 b = 'strrring'
 c = [1,2,3]
@@ -87,6 +89,7 @@ print(a,c)
 By default, a Jupyter notebook will treat the last line of a code box as a print statement if it can.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Here is some arbitrary code
 d = 'another string'
 
@@ -101,6 +104,7 @@ When first getting to grips with python, you can think of integers as "whole num
  > **Warning:** A common mistake made by new users of Python is to use `^` for exponentiation (e.g. $2^5$). In fact, in Python `^` represents the logical `XOR` operator and the `**` operator represents exponentiation. By performing your own research online, see if you can work out what the `XOR` function is doing here.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 3
 b = 2
 
@@ -132,12 +136,14 @@ print(a % b)
 You can combine operations using round brackets, `(` and `)`, much in the same way you would in everyday math. For example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print((a+b)/(b**2)+1/(3*a))
 ```
 
 Often, you may hear it mentioned that Python allows for *arbitrary precision* integers. This means that Python can accurately manipulate very large numbers stored as `int`s. For example;
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 174129409583938905209834890385935802
 b = 417873297348327895798237589723987598
 
@@ -152,6 +158,7 @@ print(a+b)
  > **Warning:** Although `int`s can store arbitrary precision whole numbers in Python, `float`s cannot!! Failure to realize this can result in all sorts of strange errors. For example, consider the below;
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Very big float
 a = 1e30
 
@@ -177,6 +184,7 @@ In this section we are going to look more at strings.
 A string is a finite sequence of characters (e.g., letters, numbers, symbols and punctuation marks). In python, strings can be specified with either double of single quotes like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 string1 = 'This is a string'
 string2 = "This is also a string"
 string3 = ""
@@ -191,6 +199,7 @@ print(string4)
 An important characteristic of each string is its length, which is the number of characters in it. The length can be any natural number (i.e., zero or any positive integer). In python we can see the length of a string by using the `len()` function. In fact, this function can be used to assess the length of many different variable types such as lists, tuples, sets and so on (more on those later).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 string1 = 'loooooong string'
 string2 = 'shor'
 string3 = ''
@@ -204,6 +213,7 @@ print(len(string3))
  > **Brief interlude:** In Python, you can add comments to your code using the `#` symbol. Comments are lines of text that are ignored when the code runs, but they play an important role in explaining what your code is doing. Writing clear and meaningful comments as you code is considered best practice. It helps others (and your future self) understand your logic and what you are trying to do. Below is a simple example that shows how to use comments in Python. Make sure you are comfortable with this, as commenting is a crucial habit for anyone working with code.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The below line prints a string, this line is a comment
 print('This statement is printed') # This is another comment
 
@@ -215,6 +225,7 @@ print(text)
 > **Check your understanding:** What is the difference between `print(2 + 3)` and `print("2" + "3")`? What happens if you try `x = "hello" + 5`? Using the below box, write some code to answer these questions.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -223,6 +234,7 @@ print(text)
 Python has many useful tools for manipulating strings. One such function is the `format` function, which allows you to insert variables of different types into strings. Note that `x` in the below example does not need to be a string.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = 8
 y = 'John'
 s = "{} is {} feet tall".format(y, x)
@@ -232,6 +244,7 @@ print(s)
 Another useful tool is the concatenation operater; `+`. Concatenation in programming is another way for saying "join together". See the below for an example of how this is done.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 'string1'
 b = 'string2'
 c = a + ' ' + b
@@ -242,6 +255,7 @@ print(c)
 In fact, the previous example could be done using concatenation instead of the `format` funtion. Note though that we must be careful and convert `x` from an integer to a string, using `str()`, in this case.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = 8
 y = 'John'
 
@@ -265,6 +279,7 @@ Several examples are given below. Please make sure you understand what each of t
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Demonstration of the strip function
 print("Demonstration of strip function\n")
 
@@ -312,6 +327,7 @@ print(x.upper())
 A boolean in python is a variable that can be either `True` or `False`. For instance:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a boolean variable 
 my_boolean = True
 print(my_boolean)
@@ -320,6 +336,7 @@ print(my_boolean)
 Booleans arise in all sorts of situations. For example, consider the below code:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(128 > 100)
 ```
 
@@ -328,6 +345,7 @@ You should see it print `True`, which makes sense as `128` is indeed larger than
 In this code, the expression `128 > 100` is a boolean statement. We can make this clearer like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_boolean = 128 > 100
 print(my_boolean)
 ```
@@ -346,6 +364,7 @@ Some common boolean operators include:
 Boolean operators in Python are designed to be intuitive and as close to natural language as possible. The below code demonstrates how the boolean operations `and`, `or`, `==` and `!=` and `not` are used. Try changing the values of `a` and `b` to ensure you understand how these operations work.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = True
 b = False
 
@@ -365,6 +384,7 @@ print("b==c: ", b==c)
 Other common relational expressions which give `True/False` output include `<=`, `>=`, `<` and `>` for numeric datatypes (e.g. `int`s and `float`s) and `in` for collection datatypes (such as `list`s or `tuple`s, which we shall look at next). 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 1
 b = 1.1
 
@@ -390,6 +410,7 @@ print("f in g: ", f in g)
 In Python the data type of a variable is dynamic. This means that you do not need to specify the data type beforehand and that it can easily be changed. For example, try moving the type statement before and after the sum in the below block and see how the output is changed. Why does the output change?
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 1
 b = 1.1
 
@@ -401,6 +422,7 @@ a = a+b
 Several inbuilt functions are available for converting between types. The most commonly used of these are the `int`, `float` and `str` functions. Try these out below. **Caution**: Note how converting `z` back to a float does not give the original value `x`. Why do you think this is?
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = 1.1
 y = str(x)
 z = int(x)
@@ -421,6 +443,7 @@ The act of converting one data type to another is often referred to as **casting
  > **Check your Understanding:** What happens if you try `int("10.5")`? Why might you convert a number to a string using `str()`? Use the below code box to answer these questions.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your answers here...
 ```
 
@@ -429,6 +452,7 @@ The act of converting one data type to another is often referred to as **casting
 **Question 1:** Below are three variables `x`, `y` and `z`. By using the operators introduced in the `Booleans` section of this notebook, construct a boolean variable, `my_boolean` which is true if and only if $y$ lies strictly between $x^2$ and $z^3$. That is, `my_boolean` should be true if and only if either $x^2<y<z^3$ or $z^3<y<x^2$.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Variables x, y and z
 x = 1
 y = 2
@@ -440,6 +464,7 @@ my_boolean = # Write your code here...
 **Question 2:** In the below code, we have two boolean variables; `is_raining` and `have_umbrella`. We will assume that these represent the sentences "It is raining outside" and "I have my umbrella with me", respectively. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Boolean variables
 is_raining = True
 have_umbrella = False
@@ -448,6 +473,7 @@ have_umbrella = False
 We will assume that you are going to get wet if and only if it is raining outside and you do not have your umbrella. Using logical operators (e.g. `and`, `or`, `not`...), make a new boolean variable that tells you if you are going to get wet.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Boolean telling you if you are going to get rained on
 got_soaked = # Write your code here...
 
@@ -472,6 +498,7 @@ print('Answer: ' + str(got_soaked))
 In the following box, write some code which computes  `(A and B) or (not C)`. By changing the values of `A`, `B` and `C` check the correctness of your truth table.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Boolean variables
 A = True
 B = False
@@ -484,6 +511,7 @@ my_boolean = # Write your code here...
 **Question 4:** Below are two variables representing the `width` and `height` of a rectangle. Write some code that computes the `area`, `perimeter` and length of the `diagonal` of the rectangle. Your code should print the results.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Height and width variables
 height = 10
 width = 3
@@ -504,6 +532,7 @@ where
 Given the object is at rest initially and it's final velocity is $10$ meters per second, write code to compute the distance it has fallen.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Known variables
 v = 10
 u = # You must choose an appropriate value for this variable...
@@ -516,6 +545,7 @@ s = # Write your code here.
 **Question 6:** Building on your answer to Question 5, by researching the SUVAT equations and writing code below, compute the time in seconds that the object spends in freefall.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Compute time using variables from Question 5
 t = # Write your answer here...
 ```
@@ -529,12 +559,14 @@ t = # Write your answer here...
  - `(True and not True) and (False or not False)`
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
 **Question 8:**  The below code takes two numbers, `x` and `y` and computes $z=\frac{x+y}{y^2}$. For instance, when we set $x=1$ and $y=5$ we get $z=0.24$.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set the values of x and y
 x = 1
 y = 5
@@ -551,6 +583,7 @@ Suppose you were change the inputs, `x` and `y`, to 2 and 5. Work out by hand wh
 The below code is the same as the above but the values of `x` and `y` have been changed. This time, something has gone wrong! `z` does not give the expected value. Explain what has happened and how you would fix it.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set the values of x and y
 x = '2'
 y = '5'
@@ -565,16 +598,19 @@ print(z)
 **Question 9:** Explain why the first code box below prints nothing but the second prints `True`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 three = 2 + 1
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 3 == 2 + 1
 ```
 
 *Hint: Consider the below variable `z`. What is it's datatype?*
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set the vairable z.
 z = (3 == 2 + 1)
 
@@ -585,6 +621,7 @@ z = (3 == 2 + 1)
 Given your answer to the above, you may expect the below code to also print `True`. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 0.3 == 0.1 + 0.2
 ```
 
@@ -609,6 +646,7 @@ A complete solution can be given in **5 replacement steps**. We’ve given you t
 *Hint: You might not need all ten helper strings.*
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The string we want to transform
 start_string = 'Thas as te arang we want!'
 print('Start:  ', start_string)

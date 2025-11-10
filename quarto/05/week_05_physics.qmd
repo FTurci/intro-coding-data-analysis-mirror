@@ -1,8 +1,6 @@
 ---
+title: 'Week 5: Consolidation'
 jupyter: python3
-resources:
-    - src
-    - src/photogate_data.pkl
 ---
 
 
@@ -79,11 +77,9 @@ This string represents the sensor readings for the first trial. Each character c
 **Note:** Across the $100$ trials, several different picket fences were used. Some had the same number of bars, while others did not. Consequently, the number of black and white bars varied between trials.
 
 ```{pyodide}
-
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # This code will load the data for you
-import sys
-sys.path.append("./src")
-from photogate_data import read_photogate_data
+from src.photogate_data import read_photogate_data
 
 # read_photogate_data reads the data from a file
 data_dict = read_photogate_data()
@@ -106,6 +102,7 @@ Many trials contain one or more `'e'` (error) characters due to sensor glitches.
 For example, `'ooxexoeoxeeo'` would become `'ooxxxoooxxxo'`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -119,7 +116,7 @@ To detect these moments:
 
 - Loop through the cleaned string from left to right.
 - Look for every index `i` where the character is `'x'`, and the character just before it (at index `i-1`) is `'o'`.
-- For each such index, compute the time $t = i × Δt$, where $\Delta t =$ *5 milliseconds*.
+- For each such index, compute the time $t = i × Δt$, where $\Delta t =$ *0.5 milliseconds*.
 
 For each trial, you must save a list of timestamps (in seconds) showing when each bar *starts to block the beam*. For instance, given this cleaned string:
 
@@ -134,6 +131,7 @@ You should detect transitions at indices: `3`, `9`, and `16` (remember, Python s
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -166,6 +164,7 @@ Then you must compute the velocities:
 $$v_0= \frac{0.05}{0.0045-0.0015} = 16.66...\quad\text{and}\quad v_1= \frac{0.05}{0.0080-0.0045} = 14.28...$$
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -191,6 +190,7 @@ $$\overline{a}^{(j)} = \frac{1}{M_j} \sum_{k=1}^{M_j} a_k$$
 where $M_j$ is the number of acceleration values in trial $j$ (which is one less than the number of velocities).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -207,6 +207,7 @@ $$
 This value, $\hat{g}$, represents your best overall estimate of the acceleration due to gravity based on the experimental data. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 

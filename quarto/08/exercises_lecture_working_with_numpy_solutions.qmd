@@ -1,5 +1,5 @@
 ---
-title: Exercises - Working with NumPy
+title: Working with NumPy
 jupyter: python3
 ---
 
@@ -70,6 +70,54 @@ Generate a NumPy sequence of 100 integers from 0 to 99. Use Boolean indexing to 
 arr = np.arange(0, 100)
 even_numbers = arr[arr % 2 == 0]
 even_numbers
+```
+
+### Exercise 7: Random Number Generation and Comparison
+
+Start by creating a random number generator `rng` with a seed of 42.
+
+Generate an array `sample1` of size $n=5$ random floating point numbers normally distributed with mean 0 and standard deviation 1. Generate another array `sample2` of equal size with mean 0.5 and standard deviation 0.7. 
+
+On the two arrays, perform a **statistical test** to check if the means are compatible:
+
+
+1. Compute the means of both samples: `mean1` and `mean2`.
+2. Compute the variances of both samples: `var1` and `var2`.
+3. Compute now
+
+$$
+\mathrm{SE}=\sqrt{\frac{\text{var1}}{n}+\frac{\text{var2}}{n}}, \quad z=\frac{\text{mean1}-\text{mean2}}{\mathrm{SE}} .
+$$
+
+4. Check if $|z|>1.96$ : if true, reject the null hypothesis that the two samples come from the same distribution at a 95% confidence level.
+
+Change the sample size $n$ and see how the result changes. You may want to organise your code in a function that takes `n` as input and returns whether the null hypothesis is rejected or not.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Create random number generator with seed 42
+import numpy as np
+rng = np.random.default_rng(42)
+
+# Generate samples
+n = 5
+sample1 = rng.normal(0, 1, n)
+sample2 = rng.normal(0.5, 0.7, n)
+
+# Compute means and variances
+mean1, mean2 = sample1.mean(), sample2.mean()
+var1, var2 = sample1.var(), sample2.var()
+
+# Compute tests
+SE = np.sqrt(var1/n + var2/n)
+z  = (mean1 - mean2) / SE
+
+print(f"z-score: {z}")
+if abs(z) > 1.96:
+    print("Reject null hypothesis: samples come from different distributions.")
+else:
+    print("Fail to reject null hypothesis: samples may come from the same distribution.")
+
 ```
 
 ### Exercise 8: Random Array Generation

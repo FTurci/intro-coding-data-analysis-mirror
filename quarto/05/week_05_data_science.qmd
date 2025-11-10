@@ -41,12 +41,14 @@ Before getting started, you'll need to know how to generate random numbers. Here
 To load in a package (collection of functions) that will let you generate random numbers, you must run the below code:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import random
 ```
 
 You only need to run the above line of code once (unless you restart the notebook, in which case you will have to run it again after restarting). Once you have run the `import` code you will be able to generate random numbers using the `random.random()` and `random.randint()` functions like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Generate a (uniformly) random float between 0 and 1 
 x = random.random()
 
@@ -67,6 +69,7 @@ Try running the above box a few times and observe how a new value is produced ea
 Today, you will be programming a robot to navigate a small maze. To get started, run the code box below. This will load in the `RobotMaze` function which we will be working with today.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from src.robot_maze import RobotMaze
 ```
 
@@ -75,6 +78,7 @@ from src.robot_maze import RobotMaze
 The `RobotMaze` function will create a new randomly generated maze with a robot inside it. Try running the below code to see what this looks like:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a robot in a maze
 robot = RobotMaze()
 ```
@@ -101,6 +105,7 @@ Here are some instructions you can give the robot:
 Run the below code to see how this works.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| scrolled: false
 robot.move()
 robot.turn("RIGHT")
@@ -121,6 +126,7 @@ robot.move()
 If the robot is moving too fast or slow, you can change the speed at which it moves using the `robot.delay` parameter. For instance:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 robot.delay = 2 # The robot will now take 2 seconds to perform each action (try changing this to 0.2!)
 
 robot.move()
@@ -144,12 +150,14 @@ robot.move()
 If you want to reset the maze, and send the robot back to the start, you can use the `robot.reset()` command like so. Notice that the title will now say `Robot Maze - Run #2`, but the `Robot Console` will keep the robot's message history.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 robot.reset()
 ```
 
 Every time you run the `robot = RobotMaze()`, a new random maze is generated. Sometimes you might want to save a particular maze to come back to later. You can do this by running `robot.get_maze_id()`. For instance, to save the maze you have above, you can run the following:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Save the maze id
 my_maze_id = robot.get_maze_id()
 
@@ -160,6 +168,7 @@ print(my_maze_id)
 You can then load the same maze again later on using `my_maze_id`. Try commenting out and uncommenting the below lines of code to test your understanding.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| scrolled: false
 # This will generate a new random maze
 robot = RobotMaze()
@@ -187,6 +196,7 @@ Here are some functions you can use to check on the robot's status:
 The below code uses the above commands. See if you can understand what it is doing.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load in a pre-computed maze
 robot = RobotMaze(maze_id='10-20-93037')
 
@@ -232,6 +242,7 @@ To use the sensor, call the `robot.sense()` function with one of the following i
 Have a look at the below code for an example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load in a pre-computed maze
 robot = RobotMaze(maze_id='10-20-93037')
 
@@ -269,6 +280,7 @@ We're now ready to get to grips with the robot environment!
 The below code will load a simple four by four `RobotMaze`. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a robot in a maze
 robot = RobotMaze(maze_id='4-60-15973')
 ```
@@ -276,6 +288,7 @@ robot = RobotMaze(maze_id='4-60-15973')
 In the below box, use the `robot.move()` and `robot.turn()` functions to navigate the robot to the target.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -288,6 +301,7 @@ Try to write your code as concisely as possible.
 We're now going to look at a pre-written robot maze program. In the below code box, you will see there is a function named `my_controller`. See if you can determine what this controller does before reading ahead.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your own controller
 def my_controller(robot):
     
@@ -319,6 +333,7 @@ def my_controller(robot):
 The nice thing about writing our commands for the robot inside a function is that we can now run the entire set of instructions simply by calling the function, like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| scrolled: false
 # Create a maze
 robot = RobotMaze()
@@ -333,6 +348,7 @@ my_controller(robot)
 Try updating the `my_controller` function so that the robot first checks for a wall in front of it before attempting to move forward. If a wall is detected, the robot should stay in place and not move.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -349,6 +365,7 @@ Continuing with the `my_controller` function, modify your code to identify if th
 Use the `robot.print()` function to print a message to the console stating which type of square the robot is on.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -360,6 +377,7 @@ Write your own controller function which does the following:
  - If there are no `"EMPTY"` squares, the robot should choose at random from the `"BEEN_THERE"` squares surrounding it and move to the chosen square.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -372,6 +390,7 @@ By doing your own research on [maze solving algorithms](https://en.wikipedia.org
 Good luck!
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
