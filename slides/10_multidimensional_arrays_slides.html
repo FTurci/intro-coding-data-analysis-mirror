@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>Introduction to Coding and Data Analysis – Multi-dimensional Arrays</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a877479387196f0a51385a0845e77ea0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bbddfaabaaccfd8a5ddbf403c6be5566.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -201,210 +201,193 @@
 <section id="numpy-arrays-beyond-1d" class="slide level2">
 <h2>NumPy Arrays Beyond 1D</h2>
 <p><strong>Multi-dimensional arrays</strong> enable representation of: - <strong>2D</strong>: Grid/Matrix (rows × columns) - <strong>3D</strong>: Cuboid/Tensor (depth × rows × columns) - <strong>nD</strong>: Higher dimensions</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb1-2"><a></a>import numpy as np</span>
-<span id="cb1-3"><a></a>from numpy import random</span>
-<span id="cb1-4"><a></a>rng = random.default_rng(seed=24)</span>
-<span id="cb1-5"><a></a></span>
-<span id="cb1-6"><a></a># 2D array (3×3 matrix)</span>
-<span id="cb1-7"><a></a>array_2d = rng.random((3, 3))</span>
-<span id="cb1-8"><a></a>print(f"Shape: {array_2d.shape}")</span>
-<span id="cb1-9"><a></a>print(array_2d)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>import numpy as np</span>
+<span id="cb1-2"><a></a>from numpy import random</span>
+<span id="cb1-3"><a></a>rng = random.default_rng(seed=24)</span>
+<span id="cb1-4"><a></a></span>
+<span id="cb1-5"><a></a># 2D array (3×3 matrix)</span>
+<span id="cb1-6"><a></a>array_2d = rng.random((3, 3))</span>
+<span id="cb1-7"><a></a>print(f"Shape: {array_2d.shape}")</span>
+<span id="cb1-8"><a></a>print(array_2d)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="indexing-multi-dimensional-arrays" class="slide level2">
 <h2>Indexing Multi-dimensional Arrays</h2>
 <p><strong>Row-major order</strong>: <code>[row, column]</code> (like <code>[y, x]</code>)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb2-2"><a></a># Access single element</span>
-<span id="cb2-3"><a></a>print("Element at [1,2]:", array_2d[1, 2])</span>
-<span id="cb2-4"><a></a></span>
-<span id="cb2-5"><a></a># Access entire row</span>
-<span id="cb2-6"><a></a>print("First row:", array_2d[0, :])</span>
-<span id="cb2-7"><a></a></span>
-<span id="cb2-8"><a></a># Access entire column  </span>
-<span id="cb2-9"><a></a>print("First column:", array_2d[:, 0])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a># Access single element</span>
+<span id="cb2-2"><a></a>print("Element at [1,2]:", array_2d[1, 2])</span>
+<span id="cb2-3"><a></a></span>
+<span id="cb2-4"><a></a># Access entire row</span>
+<span id="cb2-5"><a></a>print("First row:", array_2d[0, :])</span>
+<span id="cb2-6"><a></a></span>
+<span id="cb2-7"><a></a># Access entire column  </span>
+<span id="cb2-8"><a></a>print("First column:", array_2d[:, 0])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Slicing works with multiple dimensions:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb3-2"><a></a>print("First 2 rows:\n", array_2d[:2])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>print("First 2 rows:\n", array_2d[:2])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="array-properties" class="slide level2">
 <h2>Array Properties</h2>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb4-2"><a></a># Creating arrays with different shapes</span>
-<span id="cb4-3"><a></a>zeros_2d = np.zeros((2, 3))  # 2 rows, 3 columns</span>
-<span id="cb4-4"><a></a>random_3d = rng.integers(0, 3, size=(2, 3, 4))  # 2×3×4 tensor</span>
-<span id="cb4-5"><a></a></span>
-<span id="cb4-6"><a></a>print("2D shape:", zeros_2d.shape)</span>
-<span id="cb4-7"><a></a>print("3D shape:", random_3d.shape)</span>
-<span id="cb4-8"><a></a>print("3D rank/dimensions:", random_3d.ndim)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a># Creating arrays with different shapes</span>
+<span id="cb4-2"><a></a>zeros_2d = np.zeros((2, 3))  # 2 rows, 3 columns</span>
+<span id="cb4-3"><a></a>random_3d = rng.integers(0, 3, size=(2, 3, 4))  # 2×3×4 tensor</span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a>print("2D shape:", zeros_2d.shape)</span>
+<span id="cb4-6"><a></a>print("3D shape:", random_3d.shape)</span>
+<span id="cb4-7"><a></a>print("3D rank/dimensions:", random_3d.ndim)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Terminology:</strong> - <strong>Rank/ndim</strong>: Number of dimensions - <strong>Matrix</strong>: Rank 2 array - <strong>Tensor</strong>: Rank 3+ array</p>
 </section>
 <section id="operations-along-axes" class="slide level2">
 <h2>Operations Along Axes</h2>
 <p><strong>Axis-specific operations:</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb5-2"><a></a>matrix = rng.integers(0, 5, size=(3, 4))</span>
-<span id="cb5-3"><a></a>print("Original matrix:\n", matrix)</span>
-<span id="cb5-4"><a></a></span>
-<span id="cb5-5"><a></a>print("Sum along axis 0 (columns):", matrix.sum(axis=0))</span>
-<span id="cb5-6"><a></a>print("Sum along axis 1 (rows):", matrix.sum(axis=1))</span>
-<span id="cb5-7"><a></a>print("Mean along axis 0:", np.mean(matrix, axis=0))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>matrix = rng.integers(0, 5, size=(3, 4))</span>
+<span id="cb5-2"><a></a>print("Original matrix:\n", matrix)</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>print("Sum along axis 0 (columns):", matrix.sum(axis=0))</span>
+<span id="cb5-5"><a></a>print("Sum along axis 1 (rows):", matrix.sum(axis=1))</span>
+<span id="cb5-6"><a></a>print("Mean along axis 0:", np.mean(matrix, axis=0))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Axis 0</strong>: Operations across rows (result has column shape)<br>
 <strong>Axis 1</strong>: Operations across columns (result has row shape)</p>
 </section>
 <section id="reshaping-and-flattening" class="slide level2">
 <h2>Reshaping and Flattening</h2>
 <p><strong>Reshape without changing data:</strong></p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb6-2"><a></a>arr_1d = np.arange(12)</span>
-<span id="cb6-3"><a></a>arr_2d = arr_1d.reshape((3, 4))</span>
-<span id="cb6-4"><a></a>arr_3d = arr_1d.reshape((2, 2, 3))</span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a>print("1D:", arr_1d)</span>
-<span id="cb6-7"><a></a>print("2D (3×4):\n", arr_2d)</span>
-<span id="cb6-8"><a></a>print("3D shape:", arr_3d.shape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>arr_1d = np.arange(12)</span>
+<span id="cb6-2"><a></a>arr_2d = arr_1d.reshape((3, 4))</span>
+<span id="cb6-3"><a></a>arr_3d = arr_1d.reshape((2, 2, 3))</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a>print("1D:", arr_1d)</span>
+<span id="cb6-6"><a></a>print("2D (3×4):\n", arr_2d)</span>
+<span id="cb6-7"><a></a>print("3D shape:", arr_3d.shape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Using <code>-1</code> for automatic dimension:</strong></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb7-2"><a></a># -1 means "figure out this dimension"</span>
-<span id="cb7-3"><a></a>auto_reshape = arr_1d.reshape(-1, 4)  # ? rows, 4 columns</span>
-<span id="cb7-4"><a></a>print("Auto-reshaped:\n", auto_reshape)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a># -1 means "figure out this dimension"</span>
+<span id="cb7-2"><a></a>auto_reshape = arr_1d.reshape(-1, 4)  # ? rows, 4 columns</span>
+<span id="cb7-3"><a></a>print("Auto-reshaped:\n", auto_reshape)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="flattening-arrays" class="slide level2">
 <h2>Flattening Arrays</h2>
 <p><strong><code>ravel()</code> - returns view (shares data):</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb8-2"><a></a>matrix = rng.integers(0, 10, (2, 3))</span>
-<span id="cb8-3"><a></a>print("Original:\n", matrix)</span>
-<span id="cb8-4"><a></a></span>
-<span id="cb8-5"><a></a>view = matrix.ravel()</span>
-<span id="cb8-6"><a></a>view[0] = 99  # Changes original!</span>
-<span id="cb8-7"><a></a>print("After modifying view:\n", matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>matrix = rng.integers(0, 10, (2, 3))</span>
+<span id="cb8-2"><a></a>print("Original:\n", matrix)</span>
+<span id="cb8-3"><a></a></span>
+<span id="cb8-4"><a></a>view = matrix.ravel()</span>
+<span id="cb8-5"><a></a>view[0] = 99  # Changes original!</span>
+<span id="cb8-6"><a></a>print("After modifying view:\n", matrix)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong><code>flatten()</code> - returns copy:</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb9-2"><a></a>matrix = rng.integers(0, 10, (2, 3))</span>
-<span id="cb9-3"><a></a>copy = matrix.flatten()</span>
-<span id="cb9-4"><a></a>copy[0] = 99  # Original unchanged</span>
-<span id="cb9-5"><a></a>print("Original unchanged:\n", matrix)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>matrix = rng.integers(0, 10, (2, 3))</span>
+<span id="cb9-2"><a></a>copy = matrix.flatten()</span>
+<span id="cb9-3"><a></a>copy[0] = 99  # Original unchanged</span>
+<span id="cb9-4"><a></a>print("Original unchanged:\n", matrix)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="broadcasting" class="slide level2">
 <h2>Broadcasting</h2>
 <p><strong>Combine arrays of different shapes automatically:</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb10-2"><a></a>matrix = np.array([[1, 2, 3],</span>
-<span id="cb10-3"><a></a>                   [4, 5, 6]])</span>
-<span id="cb10-4"><a></a>vector = np.array([10, 20, 30])</span>
-<span id="cb10-5"><a></a></span>
-<span id="cb10-6"><a></a># Vector is broadcast to each row</span>
-<span id="cb10-7"><a></a>result = matrix + vector</span>
-<span id="cb10-8"><a></a>print("Matrix + Vector:\n", result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>matrix = np.array([[1, 2, 3],</span>
+<span id="cb10-2"><a></a>                   [4, 5, 6]])</span>
+<span id="cb10-3"><a></a>vector = np.array([10, 20, 30])</span>
+<span id="cb10-4"><a></a></span>
+<span id="cb10-5"><a></a># Vector is broadcast to each row</span>
+<span id="cb10-6"><a></a>result = matrix + vector</span>
+<span id="cb10-7"><a></a>print("Matrix + Vector:\n", result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Create grids with broadcasting:</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb11-2"><a></a>row_vec = np.arange(3).reshape(1, -1)    # Shape: (1, 3)</span>
-<span id="cb11-3"><a></a>col_vec = np.arange(3).reshape(-1, 1)    # Shape: (3, 1)</span>
-<span id="cb11-4"><a></a>grid = row_vec + col_vec                 # Shape: (3, 3)</span>
-<span id="cb11-5"><a></a>print("Broadcast grid:\n", grid)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>row_vec = np.arange(3).reshape(1, -1)    # Shape: (1, 3)</span>
+<span id="cb11-2"><a></a>col_vec = np.arange(3).reshape(-1, 1)    # Shape: (3, 1)</span>
+<span id="cb11-3"><a></a>grid = row_vec + col_vec                 # Shape: (3, 3)</span>
+<span id="cb11-4"><a></a>print("Broadcast grid:\n", grid)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="linear-algebra-with-numpy" class="slide level2">
 <h2>Linear Algebra with NumPy</h2>
 <p><strong>Matrix operations for solving systems:</strong> <span class="math display">\[A\mathbf{x} = \mathbf{b}\]</span></p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb12-2"><a></a># System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3</span>
-<span id="cb12-3"><a></a>A = np.array([[2, 3, 1], </span>
-<span id="cb12-4"><a></a>              [4, -1, 0], </span>
-<span id="cb12-5"><a></a>              [0, 2, 1]])</span>
-<span id="cb12-6"><a></a>b = np.array([[5], [1], [3]])</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a># Solve the system</span>
-<span id="cb12-9"><a></a>x = np.linalg.solve(A, b)</span>
-<span id="cb12-10"><a></a>print("Solution:", x.flatten())</span>
-<span id="cb12-11"><a></a></span>
-<span id="cb12-12"><a></a># Verify: A @ x should equal b</span>
-<span id="cb12-13"><a></a>print("Verification:\n", A @ x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a># System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3</span>
+<span id="cb12-2"><a></a>A = np.array([[2, 3, 1], </span>
+<span id="cb12-3"><a></a>              [4, -1, 0], </span>
+<span id="cb12-4"><a></a>              [0, 2, 1]])</span>
+<span id="cb12-5"><a></a>b = np.array([[5], [1], [3]])</span>
+<span id="cb12-6"><a></a></span>
+<span id="cb12-7"><a></a># Solve the system</span>
+<span id="cb12-8"><a></a>x = np.linalg.solve(A, b)</span>
+<span id="cb12-9"><a></a>print("Solution:", x.flatten())</span>
+<span id="cb12-10"><a></a></span>
+<span id="cb12-11"><a></a># Verify: A @ x should equal b</span>
+<span id="cb12-12"><a></a>print("Verification:\n", A @ x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="linear-algebra-operations" class="slide level2">
 <h2>Linear Algebra Operations</h2>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb13-2"><a></a># Matrix multiplication with @</span>
-<span id="cb13-3"><a></a>result = A @ x</span>
-<span id="cb13-4"><a></a></span>
-<span id="cb13-5"><a></a># Transpose with .T</span>
-<span id="cb13-6"><a></a>print("b transpose:", b.T)</span>
-<span id="cb13-7"><a></a></span>
-<span id="cb13-8"><a></a># Dot product</span>
-<span id="cb13-9"><a></a>dot_product = np.dot(b.T, b)</span>
-<span id="cb13-10"><a></a>print("Dot product:", dot_product)</span>
-<span id="cb13-11"><a></a></span>
-<span id="cb13-12"><a></a># Matrix inverse</span>
-<span id="cb13-13"><a></a>A_inv = np.linalg.inv(A)</span>
-<span id="cb13-14"><a></a>x_alt = A_inv @ b  # Alternative solution method</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a># Matrix multiplication with @</span>
+<span id="cb13-2"><a></a>result = A @ x</span>
+<span id="cb13-3"><a></a></span>
+<span id="cb13-4"><a></a># Transpose with .T</span>
+<span id="cb13-5"><a></a>print("b transpose:", b.T)</span>
+<span id="cb13-6"><a></a></span>
+<span id="cb13-7"><a></a># Dot product</span>
+<span id="cb13-8"><a></a>dot_product = np.dot(b.T, b)</span>
+<span id="cb13-9"><a></a>print("Dot product:", dot_product)</span>
+<span id="cb13-10"><a></a></span>
+<span id="cb13-11"><a></a># Matrix inverse</span>
+<span id="cb13-12"><a></a>A_inv = np.linalg.inv(A)</span>
+<span id="cb13-13"><a></a>x_alt = A_inv @ b  # Alternative solution method</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>NumPy.linalg provides:</strong> inverse, solve, eigenvalues, SVD, etc.</p>
 </section>
 <section id="arrays-as-images" class="slide level2">
 <h2>Arrays as Images</h2>
 <p><strong>Visualize 2D arrays as images:</strong></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb14-2"><a></a>import matplotlib.pyplot as plt</span>
-<span id="cb14-3"><a></a></span>
-<span id="cb14-4"><a></a># Simple matrix visualization</span>
-<span id="cb14-5"><a></a>matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])</span>
-<span id="cb14-6"><a></a>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))</span>
-<span id="cb14-7"><a></a></span>
-<span id="cb14-8"><a></a>ax1.matshow(matrix)</span>
-<span id="cb14-9"><a></a>ax1.set_title('matshow')</span>
-<span id="cb14-10"><a></a></span>
-<span id="cb14-11"><a></a>ax2.imshow(matrix, origin='lower')</span>
-<span id="cb14-12"><a></a>ax2.set_title('imshow (origin=lower)')</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>import matplotlib.pyplot as plt</span>
+<span id="cb14-2"><a></a></span>
+<span id="cb14-3"><a></a># Simple matrix visualization</span>
+<span id="cb14-4"><a></a>matrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])</span>
+<span id="cb14-5"><a></a>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))</span>
+<span id="cb14-6"><a></a></span>
+<span id="cb14-7"><a></a>ax1.matshow(matrix)</span>
+<span id="cb14-8"><a></a>ax1.set_title('matshow')</span>
+<span id="cb14-9"><a></a></span>
+<span id="cb14-10"><a></a>ax2.imshow(matrix, origin='lower')</span>
+<span id="cb14-11"><a></a>ax2.set_title('imshow (origin=lower)')</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="working-with-real-images" class="slide level2">
 <h2>Working with Real Images</h2>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb15-2"><a></a>from skimage import data</span>
-<span id="cb15-3"><a></a></span>
-<span id="cb15-4"><a></a># Grayscale image</span>
-<span id="cb15-5"><a></a>gray_image = data.camera()</span>
-<span id="cb15-6"><a></a>print("Image shape:", gray_image.shape)</span>
-<span id="cb15-7"><a></a></span>
-<span id="cb15-8"><a></a>fig, ax = plt.subplots(figsize=(6, 6))</span>
-<span id="cb15-9"><a></a>ax.imshow(gray_image, cmap='gray')</span>
-<span id="cb15-10"><a></a>ax.set_title('Grayscale Image')</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb15-1"><a></a>from skimage import data</span>
+<span id="cb15-2"><a></a></span>
+<span id="cb15-3"><a></a># Grayscale image</span>
+<span id="cb15-4"><a></a>gray_image = data.camera()</span>
+<span id="cb15-5"><a></a>print("Image shape:", gray_image.shape)</span>
+<span id="cb15-6"><a></a></span>
+<span id="cb15-7"><a></a>fig, ax = plt.subplots(figsize=(6, 6))</span>
+<span id="cb15-8"><a></a>ax.imshow(gray_image, cmap='gray')</span>
+<span id="cb15-9"><a></a>ax.set_title('Grayscale Image')</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Images are arrays:</strong> Each pixel is a number (intensity)</p>
 </section>
 <section id="color-images-3d-arrays" class="slide level2">
 <h2>Color Images (3D Arrays)</h2>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb16-2"><a></a># Color image has 3 channels: RGB</span>
-<span id="cb16-3"><a></a>color_image = data.chelsea()</span>
-<span id="cb16-4"><a></a>print("Color image shape:", color_image.shape)</span>
-<span id="cb16-5"><a></a></span>
-<span id="cb16-6"><a></a>fig, axes = plt.subplots(1, 4, figsize=(15, 4))</span>
-<span id="cb16-7"><a></a></span>
-<span id="cb16-8"><a></a>axes[0].imshow(color_image)</span>
-<span id="cb16-9"><a></a>axes[0].set_title('Full Color')</span>
-<span id="cb16-10"><a></a></span>
-<span id="cb16-11"><a></a># Individual color channels</span>
-<span id="cb16-12"><a></a>channels = ['Reds', 'Greens', 'Blues']</span>
-<span id="cb16-13"><a></a>titles = ['Red Channel', 'Green Channel', 'Blue Channel']</span>
-<span id="cb16-14"><a></a></span>
-<span id="cb16-15"><a></a>for i, (cmap, title) in enumerate(zip(channels, titles)):</span>
-<span id="cb16-16"><a></a>    axes[i+1].imshow(color_image[:, :, i], cmap=cmap)</span>
-<span id="cb16-17"><a></a>    axes[i+1].set_title(title)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb16-1"><a></a># Color image has 3 channels: RGB</span>
+<span id="cb16-2"><a></a>color_image = data.chelsea()</span>
+<span id="cb16-3"><a></a>print("Color image shape:", color_image.shape)</span>
+<span id="cb16-4"><a></a></span>
+<span id="cb16-5"><a></a>fig, axes = plt.subplots(1, 4, figsize=(15, 4))</span>
+<span id="cb16-6"><a></a></span>
+<span id="cb16-7"><a></a>axes[0].imshow(color_image)</span>
+<span id="cb16-8"><a></a>axes[0].set_title('Full Color')</span>
+<span id="cb16-9"><a></a></span>
+<span id="cb16-10"><a></a># Individual color channels</span>
+<span id="cb16-11"><a></a>channels = ['Reds', 'Greens', 'Blues']</span>
+<span id="cb16-12"><a></a>titles = ['Red Channel', 'Green Channel', 'Blue Channel']</span>
+<span id="cb16-13"><a></a></span>
+<span id="cb16-14"><a></a>for i, (cmap, title) in enumerate(zip(channels, titles)):</span>
+<span id="cb16-15"><a></a>    axes[i+1].imshow(color_image[:, :, i], cmap=cmap)</span>
+<span id="cb16-16"><a></a>    axes[i+1].set_title(title)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="boolean-operations-on-images" class="slide level2">
 <h2>Boolean Operations on Images</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb17-2"><a></a># Extract green channel</span>
-<span id="cb17-3"><a></a>green = color_image[:, :, 1]</span>
-<span id="cb17-4"><a></a></span>
-<span id="cb17-5"><a></a># Create binary mask</span>
-<span id="cb17-6"><a></a>threshold_mask = green &gt; 120</span>
-<span id="cb17-7"><a></a></span>
-<span id="cb17-8"><a></a>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))</span>
-<span id="cb17-9"><a></a></span>
-<span id="cb17-10"><a></a>ax1.imshow(green, cmap='Greens')</span>
-<span id="cb17-11"><a></a>ax1.set_title('Green Channel')</span>
-<span id="cb17-12"><a></a></span>
-<span id="cb17-13"><a></a>ax2.imshow(threshold_mask, cmap='gray')</span>
-<span id="cb17-14"><a></a>ax2.set_title('Thresholded (&gt;120)')</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb17-1"><a></a># Extract green channel</span>
+<span id="cb17-2"><a></a>green = color_image[:, :, 1]</span>
+<span id="cb17-3"><a></a></span>
+<span id="cb17-4"><a></a># Create binary mask</span>
+<span id="cb17-5"><a></a>threshold_mask = green &gt; 120</span>
+<span id="cb17-6"><a></a></span>
+<span id="cb17-7"><a></a>fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))</span>
+<span id="cb17-8"><a></a></span>
+<span id="cb17-9"><a></a>ax1.imshow(green, cmap='Greens')</span>
+<span id="cb17-10"><a></a>ax1.set_title('Green Channel')</span>
+<span id="cb17-11"><a></a></span>
+<span id="cb17-12"><a></a>ax2.imshow(threshold_mask, cmap='gray')</span>
+<span id="cb17-13"><a></a>ax2.set_title('Thresholded (&gt;120)')</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Logical operations:</strong> <code>&amp;</code> (AND), <code>|</code> (OR), <code>~</code> (NOT)</p>
 </section>
 <section id="key-takeaways" class="slide level2">
@@ -611,7 +594,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -685,13 +668,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

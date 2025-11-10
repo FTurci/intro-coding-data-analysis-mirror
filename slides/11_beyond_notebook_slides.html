@@ -6,8 +6,8 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.31">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.8.25">
 
   <title>Introduction to Coding and Data Analysis – Beyond the Notebook</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -94,7 +94,7 @@
     code span.vs { color: #032f62; } /* VerbatimString */
     code span.wa { color: #ff5555; } /* Warning */
   </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-a877479387196f0a51385a0845e77ea0.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-bbddfaabaaccfd8a5ddbf403c6be5566.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -202,7 +202,7 @@
 <h2>File System Navigation</h2>
 <p><strong>Notebooks exist in directories</strong> - we can navigate using bash commands</p>
 <p><strong>Key commands (use <code>!</code> prefix in notebooks):</strong></p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Current directory location</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a></a><span class="co"># Current directory location</span></span>
 <span id="cb1-2"><a></a><span class="op">!</span> pwd</span>
 <span id="cb1-3"><a></a></span>
 <span id="cb1-4"><a></a><span class="co"># List files and directories</span></span>
@@ -213,12 +213,12 @@
 <span id="cb1-9"><a></a></span>
 <span id="cb1-10"><a></a><span class="co"># Change directory</span></span>
 <span id="cb1-11"><a></a><span class="op">!</span> cd new_folder</span>
-<span id="cb1-12"><a></a><span class="op">!</span> cd ..  <span class="co"># Go back to parent directory</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a></a><span class="op">!</span> cd ..  <span class="co"># Go back to parent directory</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="working-with-files" class="slide level2">
 <h2>Working with Files</h2>
 <p><strong>Creating and viewing files:</strong></p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Create empty file</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a></a><span class="co"># Create empty file</span></span>
 <span id="cb2-2"><a></a><span class="op">!</span> touch filename.txt</span>
 <span id="cb2-3"><a></a></span>
 <span id="cb2-4"><a></a><span class="co"># View file contents</span></span>
@@ -226,7 +226,7 @@
 <span id="cb2-6"><a></a></span>
 <span id="cb2-7"><a></a><span class="co"># View first/last lines</span></span>
 <span id="cb2-8"><a></a><span class="op">!</span> head filename.txt</span>
-<span id="cb2-9"><a></a><span class="op">!</span> tail filename.txt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-9"><a></a><span class="op">!</span> tail filename.txt</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>File system navigation:</strong> - <code>.</code> = current directory - <code>..</code> = parent directory - Paths can be absolute (<code>/full/path</code>) or relative (<code>folder/file</code>)</p>
 </section>
 <section id="python-scripts-vs-notebooks" class="slide level2">
@@ -237,15 +237,15 @@
 <section id="running-scripts" class="slide level2">
 <h2>Running Scripts</h2>
 <p><strong>From notebook:</strong></p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Using the 'run' magic command</span></span>
-<span id="cb3-2"><a></a>run path<span class="op">/</span>to<span class="op">/</span>script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a></a><span class="co"># Using the 'run' magic command</span></span>
+<span id="cb3-2"><a></a>run path<span class="op">/</span>to<span class="op">/</span>script.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>From terminal:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="co"># Using python command</span></span>
-<span id="cb4-2"><a></a><span class="ex">python</span> path/to/script.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a></a><span class="co"># Using python command</span></span>
+<span id="cb4-2"><a></a><span class="ex">python</span> path/to/script.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Example script (<code>hello.py</code>):</strong></p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a></a><span class="bu">print</span>(<span class="st">"Hello, World!"</span>)</span>
 <span id="cb5-2"><a></a>x <span class="op">=</span> <span class="dv">42</span></span>
-<span id="cb5-3"><a></a><span class="bu">print</span>(<span class="ss">f"The answer is </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-3"><a></a><span class="bu">print</span>(<span class="ss">f"The answer is </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="the-terminal" class="slide level2">
 <h2>The Terminal</h2>
@@ -257,23 +257,23 @@
 <h2>Creating Python Modules</h2>
 <p><strong>Scripts can be imported as modules:</strong></p>
 <p><strong>Step 1:</strong> Create <code>math_utils.py</code>:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> add_numbers(a, b):</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a></a><span class="kw">def</span> add_numbers(a, b):</span>
 <span id="cb6-2"><a></a>    <span class="cf">return</span> a <span class="op">+</span> b</span>
 <span id="cb6-3"><a></a></span>
 <span id="cb6-4"><a></a><span class="kw">def</span> square(x):</span>
 <span id="cb6-5"><a></a>    <span class="cf">return</span> x <span class="op">**</span> <span class="dv">2</span></span>
 <span id="cb6-6"><a></a></span>
-<span id="cb6-7"><a></a>PI <span class="op">=</span> <span class="fl">3.14159</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb6-7"><a></a>PI <span class="op">=</span> <span class="fl">3.14159</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Step 2:</strong> Import and use:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> math_utils <span class="im">as</span> mu</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a></a><span class="im">import</span> math_utils <span class="im">as</span> mu</span>
 <span id="cb7-2"><a></a></span>
 <span id="cb7-3"><a></a>result <span class="op">=</span> mu.add_numbers(<span class="dv">5</span>, <span class="dv">3</span>)</span>
-<span id="cb7-4"><a></a>area <span class="op">=</span> mu.PI <span class="op">*</span> mu.square(radius)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb7-4"><a></a>area <span class="op">=</span> mu.PI <span class="op">*</span> mu.square(radius)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="practical-example-plotting-module" class="slide level2">
 <h2>Practical Example: Plotting Module</h2>
 <p><strong>Create <code>plotting.py</code>:</strong></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb8-2"><a></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb8-3"><a></a></span>
 <span id="cb8-4"><a></a><span class="kw">def</span> plot_parabola(a, b, c, xlo<span class="op">=</span><span class="dv">0</span>, xhi<span class="op">=</span><span class="dv">10</span>, npoints<span class="op">=</span><span class="dv">100</span>):</span>
@@ -286,37 +286,37 @@
 <span id="cb8-11"><a></a>    plt.ylabel(<span class="st">'y'</span>)</span>
 <span id="cb8-12"><a></a>    plt.title(<span class="ss">f'Parabola: y = </span><span class="sc">{</span>a<span class="sc">}</span><span class="ss">x² + </span><span class="sc">{</span>b<span class="sc">}</span><span class="ss">x + </span><span class="sc">{</span>c<span class="sc">}</span><span class="ss">'</span>)</span>
 <span id="cb8-13"><a></a>    plt.grid(<span class="va">True</span>)</span>
-<span id="cb8-14"><a></a>    plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-14"><a></a>    plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="using-custom-modules" class="slide level2">
 <h2>Using Custom Modules</h2>
 <p><strong>Import your module:</strong></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> plotting <span class="im">as</span> plt_mod</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a></a><span class="im">import</span> plotting <span class="im">as</span> plt_mod</span>
 <span id="cb9-2"><a></a></span>
 <span id="cb9-3"><a></a><span class="co"># Use your custom function</span></span>
-<span id="cb9-4"><a></a>plt_mod.plot_parabola(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=-</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-4"><a></a>plt_mod.plot_parabola(a<span class="op">=</span><span class="dv">1</span>, b<span class="op">=-</span><span class="dv">2</span>, c<span class="op">=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Benefits of modules:</strong> - <strong>Reusability:</strong> Use same code across projects - <strong>Organization:</strong> Separate concerns - <strong>Maintainability:</strong> Update code in one place - <strong>Collaboration:</strong> Share functionality</p>
 </section>
 <section id="bash-command-options" class="slide level2">
 <h2>Bash Command Options</h2>
 <p><strong>Commands often have options using <code>-</code> syntax:</strong></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="co"># List files in long format</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a></a><span class="co"># List files in long format</span></span>
 <span id="cb10-2"><a></a><span class="fu">ls</span> <span class="at">-l</span></span>
 <span id="cb10-3"><a></a></span>
 <span id="cb10-4"><a></a><span class="co"># List files in reverse time order</span></span>
 <span id="cb10-5"><a></a><span class="fu">ls</span> <span class="at">-lt</span></span>
 <span id="cb10-6"><a></a></span>
 <span id="cb10-7"><a></a><span class="co"># Get help for any command</span></span>
-<span id="cb10-8"><a></a><span class="ex">command_name</span> <span class="at">--help</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-8"><a></a><span class="ex">command_name</span> <span class="at">--help</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Common file operations:</strong></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a></a><span class="co"># Move/rename files</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a></a><span class="co"># Move/rename files</span></span>
 <span id="cb11-2"><a></a><span class="fu">mv</span> old_name.py new_name.py</span>
 <span id="cb11-3"><a></a></span>
 <span id="cb11-4"><a></a><span class="co"># Copy files</span></span>
 <span id="cb11-5"><a></a><span class="fu">cp</span> source.py destination.py</span>
 <span id="cb11-6"><a></a></span>
 <span id="cb11-7"><a></a><span class="co"># Remove files (careful!)</span></span>
-<span id="cb11-8"><a></a><span class="fu">rm</span> filename.py</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-8"><a></a><span class="fu">rm</span> filename.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="script-vs.-notebook-output" class="slide level2">
 <h2>Script vs.&nbsp;Notebook Output</h2>
@@ -532,7 +532,7 @@
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -606,13 +606,14 @@
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

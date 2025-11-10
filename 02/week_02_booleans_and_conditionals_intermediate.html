@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -67,14 +67,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-4a990d8dcb58f517c7c86712b8f2ac7c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-748393fd2cb2ea724105813453792ea0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-d69ecb9bfb3452960edd708ecf92c3b3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -122,7 +123,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -148,6 +149,8 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Intro to Coding &amp; Data Analysis</span>
     </a>
@@ -191,6 +194,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../07/lecture_intro_numpy.html">
  <span class="dropdown-text">07 - Introduction to NumPy</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../08/lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - Working with NumPy</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -222,6 +229,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../07/exercises_numpy.html">
  <span class="dropdown-text">07 - NumPy Exercises</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../08/exercises_lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - Working with Numpy Exercises</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -248,6 +259,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../05/week_05_solutions_demonstrator_version.html">
  <span class="dropdown-text">05 - Python in the Field Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/exercises_numpy_solutions.html">
+ <span class="dropdown-text">07 - NumPy Solutions</span></a>
   </li>  
     </ul>
   </li>
@@ -288,7 +303,8 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
       <a href="../index.html" class="sidebar-logo-link">
-      <img src="../figs/banner.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      <img src="../figs/banner.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../figs/banner.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
       </a>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -473,13 +489,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../05/week_05_chemistry.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Chemistry Challenge</span></a>
+ <span class="menu-text">Week 5: Consolidation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../05/week_05_physics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Physics Challenge</span></a>
+ <span class="menu-text">Week 5: Consolidation</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -513,6 +529,29 @@ window.Quarto = {
   <div class="sidebar-item-container"> 
   <a href="../07/exercises_numpy.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><code>numpy</code> Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">08 Working with NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with Arrays in NumPy: Indexing and Random Data Generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/exercises_lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with NumPy</span></a>
   </div>
 </li>
       </ul>
@@ -597,7 +636,7 @@ window.Quarto = {
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEV4YW1wbGUgMTogVHJhZmZpYyBsaWdodHNcbmNvbG9yID0gXCJyZWRcIlxuXG5tYXRjaCBjb2xvcjpcbiAgICBjYXNlIFwicmVkXCI6XG4gICAgICAgIHByaW50KFwiU3RvcCEgVGhlIGxpZ2h0IGlzIHJlZC5cIilcbiAgICBjYXNlIFwiZ3JlZW5cIjpcbiAgICAgICAgcHJpbnQoXCJHbyEgVGhlIGxpZ2h0IGlzIGdyZWVuLlwiKVxuICAgIGNhc2UgXCJ5ZWxsb3dcIjpcbiAgICAgICAgcHJpbnQoXCJTbG93IGRvd24hIFRoZSBsaWdodCBpcyB5ZWxsb3cuXCIpXG4gICAgY2FzZSBfOlxuICAgICAgICBwcmludChcIlVua25vd24gY29sb3IuXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeGFtcGxlIDE6IFRyYWZmaWMgbGlnaHRzXG5jb2xvciA9IFwicmVkXCJcblxubWF0Y2ggY29sb3I6XG4gICAgY2FzZSBcInJlZFwiOlxuICAgICAgICBwcmludChcIlN0b3AhIFRoZSBsaWdodCBpcyByZWQuXCIpXG4gICAgY2FzZSBcImdyZWVuXCI6XG4gICAgICAgIHByaW50KFwiR28hIFRoZSBsaWdodCBpcyBncmVlbi5cIilcbiAgICBjYXNlIFwieWVsbG93XCI6XG4gICAgICAgIHByaW50KFwiU2xvdyBkb3duISBUaGUgbGlnaHQgaXMgeWVsbG93LlwiKVxuICAgIGNhc2UgXzpcbiAgICAgICAgcHJpbnQoXCJVbmtub3duIGNvbG9yLlwiKSJ9
 </script>
 </div>
 <p>The above code tells us what to do if we see a specific color at a traffic light. In the code, we provide the color we have seen as a string (which has been set to <code>"red"</code> in the above) and the <code>match</code> statement will consider a number of cases one at a time, checking whether the color variable matches the value for that case. When it finds a match, it runs the code inside that case block.</p>
@@ -610,7 +649,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlLi4uIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBXcml0ZSB5b3VyIGNvZGUgaGVyZS4uLiJ9
 </script>
 </div>
 <p>Sometimes, you may want several different inputs to trigger the same response. In such cases, instead of writing out separate <code>case</code> blocks for each value, we can group them together inside a single case using the pipe symbol, <code>|</code>. This lets us list several alternatives side by side, and if the variable matches any one of them, that case is chosen.</p>
@@ -620,7 +659,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEdyb3VwaW5nIHdlZWtkYXlzXG5kYXkgPSBcIlNhdHVyZGF5XCJcbm1hdGNoIGRheTpcbiAgICBjYXNlIFwiU2F0dXJkYXlcIiB8IFwiU3VuZGF5XCI6XG4gICAgICAgIHByaW50KFwiSXQncyB0aGUgd2Vla2VuZCFcIilcbiAgICBjYXNlIFwiTW9uZGF5XCIgfCBcIlR1ZXNkYXlcIiB8IFwiV2VkbmVzZGF5XCIgfCBcIlRodXJzZGF5XCIgfCBcIkZyaWRheVwiOlxuICAgICAgICBwcmludChcIkl0J3MgYSB3ZWVrZGF5LlwiKVxuICAgIGNhc2UgXzpcbiAgICAgICAgcHJpbnQoXCJOb3QgYSB2YWxpZCBkYXkuXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBHcm91cGluZyB3ZWVrZGF5c1xuZGF5ID0gXCJTYXR1cmRheVwiXG5tYXRjaCBkYXk6XG4gICAgY2FzZSBcIlNhdHVyZGF5XCIgfCBcIlN1bmRheVwiOlxuICAgICAgICBwcmludChcIkl0J3MgdGhlIHdlZWtlbmQhXCIpXG4gICAgY2FzZSBcIk1vbmRheVwiIHwgXCJUdWVzZGF5XCIgfCBcIldlZG5lc2RheVwiIHwgXCJUaHVyc2RheVwiIHwgXCJGcmlkYXlcIjpcbiAgICAgICAgcHJpbnQoXCJJdCdzIGEgd2Vla2RheS5cIilcbiAgICBjYXNlIF86XG4gICAgICAgIHByaW50KFwiTm90IGEgdmFsaWQgZGF5LlwiKSJ9
 </script>
 </div>
 </section>
@@ -633,7 +672,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJzb2xpZF9kYXRhID0ge1widHlwZVwiOiBcImN5bGluZGVyXCIsIFwicmFkaXVzXCI6IDMsIFwiaGVpZ2h0XCI6IDEwfSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic29saWRfZGF0YSA9IHtcInR5cGVcIjogXCJjeWxpbmRlclwiLCBcInJhZGl1c1wiOiAzLCBcImhlaWdodFwiOiAxMH0ifQ==
 </script>
 </div>
 <blockquote class="blockquote">
@@ -645,7 +684,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJzb2xpZF9kYXRhID0ge1widHlwZVwiOiBcInNwaGVyZVwiLCBcInJhZGl1c1wiOiA1fVxuc29saWRfZGF0YSA9IHtcInR5cGVcIjogXCJyZWN0YW5ndWxhcl9wcmlzbVwiLCBcIndpZHRoXCI6IDIsIFwiaGVpZ2h0XCI6OSwgXCJkZXB0aFwiOjEwfSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic29saWRfZGF0YSA9IHtcInR5cGVcIjogXCJzcGhlcmVcIiwgXCJyYWRpdXNcIjogNX1cbnNvbGlkX2RhdGEgPSB7XCJ0eXBlXCI6IFwicmVjdGFuZ3VsYXJfcHJpc21cIiwgXCJ3aWR0aFwiOiAyLCBcImhlaWdodFwiOjksIFwiZGVwdGhcIjoxMH0ifQ==
 </script>
 </div>
 <p>Each solid requires different keys: a <code>sphere</code> has only a radius, a <code>rectangular prism</code> has <code>width</code>, <code>height</code>, and <code>depth</code>, while a <code>cylinder</code> needs both <code>radius</code> and <code>height</code>.</p>
@@ -655,7 +694,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpZiBzb2xpZF9kYXRhLmdldChcInR5cGVcIikgPT0gXCJzcGhlcmVcIjpcbiAgICByID0gc29saWRfZGF0YS5nZXQoXCJyYWRpdXNcIilcbiAgICBpZiByOlxuICAgICAgICB2b2x1bWUgPSAoNC8zKSAqIDMuMTQgKiAocioqMylcbmVsaWYgc29saWRfZGF0YS5nZXQoXCJ0eXBlXCIpID09IFwiY3ViZVwiOlxuICAgIHMgPSBzb2xpZF9kYXRhLmdldChcInNpZGVcIilcbiAgICBpZiBzOlxuICAgICAgICB2b2x1bWUgPSBzKiozXG5lbGlmIHNvbGlkX2RhdGEuZ2V0KFwidHlwZVwiKSA9PSBcInJlY3Rhbmd1bGFyX3ByaXNtXCI6XG4gICAgdyA9IHNvbGlkX2RhdGEuZ2V0KFwid2lkdGhcIilcbiAgICBoID0gc29saWRfZGF0YS5nZXQoXCJoZWlnaHRcIilcbiAgICBkID0gc29saWRfZGF0YS5nZXQoXCJkZXB0aFwiKVxuICAgIGlmIHcgYW5kIGggYW5kIGQ6XG4gICAgICAgIHZvbHVtZSA9IHcgKiBoICogZFxuZWxpZiBzb2xpZF9kYXRhLmdldChcInR5cGVcIikgPT0gXCJjeWxpbmRlclwiOlxuICAgIHIgPSBzb2xpZF9kYXRhLmdldChcInJhZGl1c1wiKVxuICAgIGggPSBzb2xpZF9kYXRhLmdldChcImhlaWdodFwiKVxuICAgIGlmIHIgYW5kIGg6XG4gICAgICAgIHZvbHVtZSA9IDMuMTQgKiAocioqMikgKiBoXG5lbGlmIHNvbGlkX2RhdGEuZ2V0KFwidHlwZVwiKSA9PSBcImNvbmVcIjpcbiAgICByID0gc29saWRfZGF0YS5nZXQoXCJyYWRpdXNcIilcbiAgICBoID0gc29saWRfZGF0YS5nZXQoXCJoZWlnaHRcIilcbiAgICBpZiByIGFuZCBoOlxuICAgICAgICB2b2x1bWUgPSAoMS8zKSAqIDMuMTQgKiAocioqMikgKiBoXG5lbHNlOlxuICAgIHNvbGlkX2RhdGFbXCJ0eXBlXCJdID0gXCJ1bmtub3duXCJcbiAgICB2b2x1bWUgPSBcInVua25vd25cIlxuXG5wcmludChcIlRoZSBcIiArIHNvbGlkX2RhdGFbXCJ0eXBlXCJdICsgXCIgaGFzICBcIiArIHN0cih2b2x1bWUpICsgXCIgdm9sdW1lXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaWYgc29saWRfZGF0YS5nZXQoXCJ0eXBlXCIpID09IFwic3BoZXJlXCI6XG4gICAgciA9IHNvbGlkX2RhdGEuZ2V0KFwicmFkaXVzXCIpXG4gICAgaWYgcjpcbiAgICAgICAgdm9sdW1lID0gKDQvMykgKiAzLjE0ICogKHIqKjMpXG5lbGlmIHNvbGlkX2RhdGEuZ2V0KFwidHlwZVwiKSA9PSBcImN1YmVcIjpcbiAgICBzID0gc29saWRfZGF0YS5nZXQoXCJzaWRlXCIpXG4gICAgaWYgczpcbiAgICAgICAgdm9sdW1lID0gcyoqM1xuZWxpZiBzb2xpZF9kYXRhLmdldChcInR5cGVcIikgPT0gXCJyZWN0YW5ndWxhcl9wcmlzbVwiOlxuICAgIHcgPSBzb2xpZF9kYXRhLmdldChcIndpZHRoXCIpXG4gICAgaCA9IHNvbGlkX2RhdGEuZ2V0KFwiaGVpZ2h0XCIpXG4gICAgZCA9IHNvbGlkX2RhdGEuZ2V0KFwiZGVwdGhcIilcbiAgICBpZiB3IGFuZCBoIGFuZCBkOlxuICAgICAgICB2b2x1bWUgPSB3ICogaCAqIGRcbmVsaWYgc29saWRfZGF0YS5nZXQoXCJ0eXBlXCIpID09IFwiY3lsaW5kZXJcIjpcbiAgICByID0gc29saWRfZGF0YS5nZXQoXCJyYWRpdXNcIilcbiAgICBoID0gc29saWRfZGF0YS5nZXQoXCJoZWlnaHRcIilcbiAgICBpZiByIGFuZCBoOlxuICAgICAgICB2b2x1bWUgPSAzLjE0ICogKHIqKjIpICogaFxuZWxpZiBzb2xpZF9kYXRhLmdldChcInR5cGVcIikgPT0gXCJjb25lXCI6XG4gICAgciA9IHNvbGlkX2RhdGEuZ2V0KFwicmFkaXVzXCIpXG4gICAgaCA9IHNvbGlkX2RhdGEuZ2V0KFwiaGVpZ2h0XCIpXG4gICAgaWYgciBhbmQgaDpcbiAgICAgICAgdm9sdW1lID0gKDEvMykgKiAzLjE0ICogKHIqKjIpICogaFxuZWxzZTpcbiAgICBzb2xpZF9kYXRhW1widHlwZVwiXSA9IFwidW5rbm93blwiXG4gICAgdm9sdW1lID0gXCJ1bmtub3duXCJcblxucHJpbnQoXCJUaGUgXCIgKyBzb2xpZF9kYXRhW1widHlwZVwiXSArIFwiIGhhcyAgXCIgKyBzdHIodm9sdW1lKSArIFwiIHZvbHVtZVwiKSJ9
 </script>
 </div>
 <p>While this works, it quickly becomes unwieldy. Each branch requires lots of repetition (<code>.get()</code>, nested <code>if</code>s), and adding new shapes means adding even more clutter.</p>
@@ -665,7 +704,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJtYXRjaCBkYXRhOlxuICAgIFxuICAgIGNhc2Uge1widHlwZVwiOiBcInNwaGVyZVwiLCBcInJhZGl1c1wiOiByfTpcbiAgICAgICAgdm9sdW1lID0gKDQvMykgKiAzLjE0ICogKHIqKjMpXG4gICAgY2FzZSB7XCJ0eXBlXCI6IFwiY3ViZVwiLCBcInNpZGVcIjogc306XG4gICAgICAgIHZvbHVtZSA9IHMqKjNcbiAgICBjYXNlIHtcInR5cGVcIjogXCJyZWN0YW5ndWxhcl9wcmlzbVwiLCBcIndpZHRoXCI6IHcsIFwiaGVpZ2h0XCI6IGgsIFwiZGVwdGhcIjogZH06XG4gICAgICAgIHZvbHVtZSA9IHcgKiBoICogZFxuICAgIGNhc2Uge1widHlwZVwiOiBcImN5bGluZGVyXCIsIFwicmFkaXVzXCI6IHIsIFwiaGVpZ2h0XCI6IGh9OlxuICAgICAgICB2b2x1bWUgPSAzLjE0ICogKHIqKjIpICogaFxuICAgIGNhc2Uge1widHlwZVwiOiBcImNvbmVcIiwgXCJyYWRpdXNcIjogciwgXCJoZWlnaHRcIjogaH06XG4gICAgICAgIHZvbHVtZSA9ICgxLzMpICogMy4xNCAqIChyKioyKSAqIGhcbiAgICBjYXNlIF86XG4gICAgICAgIGRhdGFbXCJ0eXBlXCJdID0gXCJ1bmtub3duXCJcbiAgICAgICAgdm9sdW1lID0gXCJ1bmtub3duXCJcblxucHJpbnQoXCJUaGUgXCIgKyBkYXRhW1widHlwZVwiXSArIFwiIGhhcyAgXCIgKyBzdHIodm9sdW1lKSArIFwiIHZvbHVtZVwiKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoibWF0Y2ggZGF0YTpcbiAgICBcbiAgICBjYXNlIHtcInR5cGVcIjogXCJzcGhlcmVcIiwgXCJyYWRpdXNcIjogcn06XG4gICAgICAgIHZvbHVtZSA9ICg0LzMpICogMy4xNCAqIChyKiozKVxuICAgIGNhc2Uge1widHlwZVwiOiBcImN1YmVcIiwgXCJzaWRlXCI6IHN9OlxuICAgICAgICB2b2x1bWUgPSBzKiozXG4gICAgY2FzZSB7XCJ0eXBlXCI6IFwicmVjdGFuZ3VsYXJfcHJpc21cIiwgXCJ3aWR0aFwiOiB3LCBcImhlaWdodFwiOiBoLCBcImRlcHRoXCI6IGR9OlxuICAgICAgICB2b2x1bWUgPSB3ICogaCAqIGRcbiAgICBjYXNlIHtcInR5cGVcIjogXCJjeWxpbmRlclwiLCBcInJhZGl1c1wiOiByLCBcImhlaWdodFwiOiBofTpcbiAgICAgICAgdm9sdW1lID0gMy4xNCAqIChyKioyKSAqIGhcbiAgICBjYXNlIHtcInR5cGVcIjogXCJjb25lXCIsIFwicmFkaXVzXCI6IHIsIFwiaGVpZ2h0XCI6IGh9OlxuICAgICAgICB2b2x1bWUgPSAoMS8zKSAqIDMuMTQgKiAocioqMikgKiBoXG4gICAgY2FzZSBfOlxuICAgICAgICBkYXRhW1widHlwZVwiXSA9IFwidW5rbm93blwiXG4gICAgICAgIHZvbHVtZSA9IFwidW5rbm93blwiXG5cbnByaW50KFwiVGhlIFwiICsgZGF0YVtcInR5cGVcIl0gKyBcIiBoYXMgIFwiICsgc3RyKHZvbHVtZSkgKyBcIiB2b2x1bWVcIikifQ==
 </script>
 </div>
 <p>This is much cleaner:</p>
@@ -689,7 +728,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFBvaW50IGluIHNwYWNlXG5wb2ludCA9ICgxLCA1KVxuXG4jIE1hdGNoIHN0YXRlbWVudFxubWF0Y2ggcG9pbnQ6XG4gICAgY2FzZSAoMCwgeSkgaWYgeSA+IDA6XG4gICAgICAgIGxvY2F0aW9uID0gXCJvbiB0aGUgcG9zaXRpdmUgeS1heGlzXCJcbiAgICBjYXNlICgwLCB5KSBpZiB5IDwgMDpcbiAgICAgICAgbG9jYXRpb24gPSBcIm9uIHRoZSBuZWdhdGl2ZSB5LWF4aXNcIlxuICAgIGNhc2UgKHgsIDApIGlmIHggPiAwOlxuICAgICAgICBsb2NhdGlvbiA9IFwib24gdGhlIHBvc2l0aXZlIHgtYXhpc1wiXG4gICAgY2FzZSAoeCwgMCkgaWYgeCA8IDA6XG4gICAgICAgIGxvY2F0aW9uID0gXCJvbiB0aGUgbmVnYXRpdmUgeC1heGlzXCJcbiAgICBjYXNlICgwLCAwKTpcbiAgICAgICAgbG9jYXRpb24gPSBcImF0IHRoZSBvcmlnaW5cIlxuICAgIGNhc2UgKHgsIHkpOlxuICAgICAgICBsb2NhdGlvbiA9IFwibm90IG9uIHRoZSBheGVzXCJcblxuIyBEZXNjcmliZSB3aGVyZSB0aGUgcG9pbnQgaXNcbnByaW50KGZcIlRoZSBwb2ludCB7cG9pbnR9IGlzIHtsb2NhdGlvbn0uXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBQb2ludCBpbiBzcGFjZVxucG9pbnQgPSAoMSwgNSlcblxuIyBNYXRjaCBzdGF0ZW1lbnRcbm1hdGNoIHBvaW50OlxuICAgIGNhc2UgKDAsIHkpIGlmIHkgPiAwOlxuICAgICAgICBsb2NhdGlvbiA9IFwib24gdGhlIHBvc2l0aXZlIHktYXhpc1wiXG4gICAgY2FzZSAoMCwgeSkgaWYgeSA8IDA6XG4gICAgICAgIGxvY2F0aW9uID0gXCJvbiB0aGUgbmVnYXRpdmUgeS1heGlzXCJcbiAgICBjYXNlICh4LCAwKSBpZiB4ID4gMDpcbiAgICAgICAgbG9jYXRpb24gPSBcIm9uIHRoZSBwb3NpdGl2ZSB4LWF4aXNcIlxuICAgIGNhc2UgKHgsIDApIGlmIHggPCAwOlxuICAgICAgICBsb2NhdGlvbiA9IFwib24gdGhlIG5lZ2F0aXZlIHgtYXhpc1wiXG4gICAgY2FzZSAoMCwgMCk6XG4gICAgICAgIGxvY2F0aW9uID0gXCJhdCB0aGUgb3JpZ2luXCJcbiAgICBjYXNlICh4LCB5KTpcbiAgICAgICAgbG9jYXRpb24gPSBcIm5vdCBvbiB0aGUgYXhlc1wiXG5cbiMgRGVzY3JpYmUgd2hlcmUgdGhlIHBvaW50IGlzXG5wcmludChmXCJUaGUgcG9pbnQge3BvaW50fSBpcyB7bG9jYXRpb259LlwiKSJ9
 </script>
 </div>
 </section>
@@ -702,7 +741,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgYW5zd2VyIGhlcmUuLi4ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBXcml0ZSB5b3VyIGFuc3dlciBoZXJlLi4uIn0=
 </script>
 </div>
 <p><strong>Question 2:</strong> Convert the below <code>if</code>-<code>elif</code>-<code>else</code> statement to a <code>match</code> statement:</p>
@@ -711,7 +750,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-10-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJ4ID0gMlxuXG5pZiB4ID09IDE6XG4gICAgcHJpbnQoXCJvbmVcIilcbmVsaWYgeCA9PSAyOlxuICAgIHByaW50KFwidHdvXCIpXG5lbGlmIHggPT0gMzpcbiAgICBwcmludChcInRocmVlXCIpXG5lbHNlOlxuICAgIHByaW50KFwic29tZXRoaW5nIGVsc2VcIikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoieCA9IDJcblxuaWYgeCA9PSAxOlxuICAgIHByaW50KFwib25lXCIpXG5lbGlmIHggPT0gMjpcbiAgICBwcmludChcInR3b1wiKVxuZWxpZiB4ID09IDM6XG4gICAgcHJpbnQoXCJ0aHJlZVwiKVxuZWxzZTpcbiAgICBwcmludChcInNvbWV0aGluZyBlbHNlXCIpIn0=
 </script>
 </div>
 <p><strong>Question 3:</strong> You are given two numeric variables, <code>a</code> and <code>b</code>, along with an operator stored as a string (<code>"+"</code>, <code>"-"</code>, <code>"*"</code>, <code>"/"</code>). Use a <code>match</code> statement to apply the correct operation and display the result.</p>
@@ -721,7 +760,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-11-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEV4YW1wbGUgaW5wdXRcbmEgPSAxMFxuYiA9IDVcbm9wZXJhdG9yID0gXCIqXCJcblxuIyBXcml0ZSB5b3VyIGNvZGUgaGVyZS4uLiJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeGFtcGxlIGlucHV0XG5hID0gMTBcbmIgPSA1XG5vcGVyYXRvciA9IFwiKlwiXG5cbiMgV3JpdGUgeW91ciBjb2RlIGhlcmUuLi4ifQ==
 </script>
 </div>
 <p><strong>Question 4:</strong> The variable <code>account</code> stores a tuple <code>(balance, currency)</code>, where <code>balance</code> is the amount of money a user has and <code>currency</code> is the unit of that balance. The unit will be one of <code>"USD"</code>, <code>"EUR"</code>, <code>"GBP"</code>, or <code>"JPY"</code>. Your job is to convert this balance into another currency, stored in the variable <code>target_currency</code> (again, one of the four listed above).</p>
@@ -749,7 +788,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-12-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEV4YW1wbGUgaW5wdXRcbmFjY291bnQgPSAoMTAwLCBcIlVTRFwiKSAgICAgICMgMTAwIGRvbGxhcnNcbnRhcmdldF9jdXJyZW5jeSA9IFwiRVVSXCIgICAgICMgY29udmVydCB0byBldXJvc1xuXG4jIFdyaXRlIHlvdXIgYW5zd2VyIGhlcmUuLi4ifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeGFtcGxlIGlucHV0XG5hY2NvdW50ID0gKDEwMCwgXCJVU0RcIikgICAgICAjIDEwMCBkb2xsYXJzXG50YXJnZXRfY3VycmVuY3kgPSBcIkVVUlwiICAgICAjIGNvbnZlcnQgdG8gZXVyb3NcblxuIyBXcml0ZSB5b3VyIGFuc3dlciBoZXJlLi4uIn0=
 </script>
 </div>
 <p><strong>Question 5:</strong> In digital images, colors are represented using <em>RGB</em> values. An <em>RGB</em> value is a 3-tuple <code>(r, g, b)</code> that gives the intensity of the <strong>r</strong>ed, <strong>g</strong>reen, and <strong>b</strong>lue components of a color, each ranging from <span class="math inline">\(0\)</span> to <span class="math inline">\(255\)</span>. For example, <span class="math inline">\((255, 0, 0)\)</span> is bright red, <span class="math inline">\((0, 255, 0)\)</span> is bright green, and <span class="math inline">\((0, 0, 0)\)</span> is black.</p>
@@ -766,7 +805,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-13-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEV4YW1wbGUgcmdiIHZhbHVlc1xucmdiX3ZhbHVlcyA9ICgyMCwzLDIyMClcblxuIyBXcml0ZSB5b3VyIGNvZGUgaGVyZS4uLiJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeGFtcGxlIHJnYiB2YWx1ZXNcbnJnYl92YWx1ZXMgPSAoMjAsMywyMjApXG5cbiMgV3JpdGUgeW91ciBjb2RlIGhlcmUuLi4ifQ==
 </script>
 </div>
 <p><em>Hint: You may wish to use <code>if</code> guards for this question.</em></p>
@@ -856,13 +895,14 @@ window._ojs.runtime.interpretFromScriptTags();
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -1260,7 +1300,7 @@ window._ojs.runtime.interpretFromScriptTags();
     }
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
-<div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 'Intermediate: Match Statements'</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
@@ -1303,268 +1343,255 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>Here’s a simple example:</span>
 <span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Traffic lights</span></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">"red"</span></span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> color:</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"red"</span>:</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Stop! The light is red."</span>)</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"green"</span>:</span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Go! The light is green."</span>)</span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"yellow"</span>:</span>
-<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Slow down! The light is yellow."</span>)</span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _:</span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Unknown color."</span>)</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>The above code tells us what to do <span class="cf">if</span> we see a specific color at a traffic light. In the code, we provide the color we have seen <span class="im">as</span> a string (which has been <span class="bu">set</span> to `<span class="st">"red"</span>` <span class="kw">in</span> the above) <span class="kw">and</span> the `match` statement will consider a number of cases one at a time, checking whether the color variable matches the value <span class="cf">for</span> that case. When it finds a match, it runs the code inside that case block.</span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>Note that <span class="kw">in</span> the final case we have an underscore, `_`. This simply means <span class="st">"match anything that hasn't already matched."</span> You can think of it like the `else` at the end of an `if`<span class="op">/</span>`elif` statement. It serves <span class="im">as</span> a <span class="st">"catch-all"</span> to deal <span class="cf">with</span> <span class="bu">any</span> unexpected <span class="kw">or</span> unhandled values.</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a> <span class="op">&gt;</span> <span class="op">**</span>Test your understanding:<span class="op">**</span> How might you modify the above code to allow case<span class="op">-</span>sensitive examples such <span class="im">as</span> `color<span class="op">=</span><span class="st">"ReD"</span>` <span class="kw">or</span> `color<span class="op">=</span><span class="st">"GreEn"</span>`? <span class="op">*</span>Hint: recall the `lower()` function <span class="im">from</span> the beginner notebook <span class="kw">in</span> Week <span class="fl">1.</span><span class="op">*</span></span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Example 1: Traffic lights</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>color <span class="op">=</span> <span class="st">"red"</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> color:</span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"red"</span>:</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Stop! The light is red."</span>)</span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"green"</span>:</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Go! The light is green."</span>)</span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"yellow"</span>:</span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Slow down! The light is yellow."</span>)</span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _:</span>
+<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Unknown color."</span>)</span>
+<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>The above code tells us what to do <span class="cf">if</span> we see a specific color at a traffic light. In the code, we provide the color we have seen <span class="im">as</span> a string (which has been <span class="bu">set</span> to `<span class="st">"red"</span>` <span class="kw">in</span> the above) <span class="kw">and</span> the `match` statement will consider a number of cases one at a time, checking whether the color variable matches the value <span class="cf">for</span> that case. When it finds a match, it runs the code inside that case block.</span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>Note that <span class="kw">in</span> the final case we have an underscore, `_`. This simply means <span class="st">"match anything that hasn't already matched."</span> You can think of it like the `else` at the end of an `if`<span class="op">/</span>`elif` statement. It serves <span class="im">as</span> a <span class="st">"catch-all"</span> to deal <span class="cf">with</span> <span class="bu">any</span> unexpected <span class="kw">or</span> unhandled values.</span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a> <span class="op">&gt;</span> <span class="op">**</span>Test your understanding:<span class="op">**</span> How might you modify the above code to allow case<span class="op">-</span>sensitive examples such <span class="im">as</span> `color<span class="op">=</span><span class="st">"ReD"</span>` <span class="kw">or</span> `color<span class="op">=</span><span class="st">"GreEn"</span>`? <span class="op">*</span>Hint: recall the `lower()` function <span class="im">from</span> the beginner notebook <span class="kw">in</span> Week <span class="fl">1.</span><span class="op">*</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a>Sometimes, you may want several different inputs to trigger the same response. In such cases, instead of writing out separate `case` blocks <span class="cf">for</span> each value, we can group them together inside a single case using the pipe symbol, `<span class="op">|</span>`. This lets us <span class="bu">list</span> several alternatives side by side, <span class="kw">and</span> <span class="cf">if</span> the variable matches <span class="bu">any</span> one of them, that case <span class="kw">is</span> chosen.</span>
 <span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>Sometimes, you may want several different inputs to trigger the same response. In such cases, instead of writing out separate `case` blocks <span class="cf">for</span> each value, we can group them together inside a single case using the pipe symbol, `<span class="op">|</span>`. This lets us <span class="bu">list</span> several alternatives side by side, <span class="kw">and</span> <span class="cf">if</span> the variable matches <span class="bu">any</span> one of them, that case <span class="kw">is</span> chosen.</span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>For example, <span class="kw">in</span> the below code we group <span class="st">"Saturday"</span> <span class="kw">and</span> <span class="st">"Sunday"</span> together, since both are weekend days:</span>
 <span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>For example, <span class="kw">in</span> the below code we group <span class="st">"Saturday"</span> <span class="kw">and</span> <span class="st">"Sunday"</span> together, since both are weekend days:</span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping weekdays</span></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>day <span class="op">=</span> <span class="st">"Saturday"</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> day:</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"Saturday"</span> <span class="op">|</span> <span class="st">"Sunday"</span>:</span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"It's the weekend!"</span>)</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"Monday"</span> <span class="op">|</span> <span class="st">"Tuesday"</span> <span class="op">|</span> <span class="st">"Wednesday"</span> <span class="op">|</span> <span class="st">"Thursday"</span> <span class="op">|</span> <span class="st">"Friday"</span>:</span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"It's a weekday."</span>)</span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _:</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Not a valid day."</span>)</span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="co">## Converting Long `elif`  Statements to `match`</span></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>One of the biggest advantages of the `match` statement <span class="kw">is</span> how cleanly it handles data <span class="cf">with</span> <span class="bu">complex</span> structures.</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a>Suppose we want to represent different <span class="dv">3</span><span class="er">D</span> solids using dictionaries. For example:</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a>solid_data <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"cylinder"</span>, <span class="st">"radius"</span>: <span class="dv">3</span>, <span class="st">"height"</span>: <span class="dv">10</span>}</span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a><span class="co"># Grouping weekdays</span></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a>day <span class="op">=</span> <span class="st">"Saturday"</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> day:</span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"Saturday"</span> <span class="op">|</span> <span class="st">"Sunday"</span>:</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"It's the weekend!"</span>)</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> <span class="st">"Monday"</span> <span class="op">|</span> <span class="st">"Tuesday"</span> <span class="op">|</span> <span class="st">"Wednesday"</span> <span class="op">|</span> <span class="st">"Thursday"</span> <span class="op">|</span> <span class="st">"Friday"</span>:</span>
+<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"It's a weekday."</span>)</span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _:</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">"Not a valid day."</span>)</span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a><span class="co">## Converting Long `elif`  Statements to `match`</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>One of the biggest advantages of the `match` statement <span class="kw">is</span> how cleanly it handles data <span class="cf">with</span> <span class="bu">complex</span> structures.</span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a>Suppose we want to represent different <span class="dv">3</span><span class="er">D</span> solids using dictionaries. For example:</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a>solid_data <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"cylinder"</span>, <span class="st">"radius"</span>: <span class="dv">3</span>, <span class="st">"height"</span>: <span class="dv">10</span>}</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="op">**</span>Note:<span class="op">**</span> If you are <span class="kw">not</span> yet comfortable <span class="cf">with</span> dictionaries, please review the week <span class="dv">1</span> intermediate notebook on `collections`. There you will find introductory material on the `dict` data <span class="bu">type</span>.</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>Here, `solid_data` describes a cylinder <span class="cf">with</span> a given `radius` <span class="kw">and</span> `height`. We might also store information <span class="cf">for</span> other solids:</span>
 <span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="op">&gt;</span> <span class="op">**</span>Note:<span class="op">**</span> If you are <span class="kw">not</span> yet comfortable <span class="cf">with</span> dictionaries, please review the week <span class="dv">1</span> intermediate notebook on `collections`. There you will find introductory material on the `dict` data <span class="bu">type</span>.</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>Here, `solid_data` describes a cylinder <span class="cf">with</span> a given `radius` <span class="kw">and</span> `height`. We might also store information <span class="cf">for</span> other solids:</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>solid_data <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"sphere"</span>, <span class="st">"radius"</span>: <span class="dv">5</span>}</span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>solid_data <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"rectangular_prism"</span>, <span class="st">"width"</span>: <span class="dv">2</span>, <span class="st">"height"</span>:<span class="dv">9</span>, <span class="st">"depth"</span>:<span class="dv">10</span>}</span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>Each solid requires different keys: a `sphere` has only a radius, a `rectangular prism` has `width`, `height`, <span class="kw">and</span> `depth`, <span class="cf">while</span> a `cylinder` needs both `radius` <span class="kw">and</span> `height`.</span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>Now imagine we want to compute the volume automatically, regardless of which solid <span class="kw">is</span> described. A natural first attempt <span class="kw">is</span> a <span class="bu">long</span> chain of `if`<span class="op">-</span>`elif`<span class="op">-</span>`else` statements:</span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"sphere"</span>:</span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> solid_data.get(<span class="st">"radius"</span>)</span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r:</span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">4</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">3</span>)</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"cube"</span>:</span>
-<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> solid_data.get(<span class="st">"side"</span>)</span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s:</span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> s<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"rectangular_prism"</span>:</span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> solid_data.get(<span class="st">"width"</span>)</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a>solid_data <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"sphere"</span>, <span class="st">"radius"</span>: <span class="dv">5</span>}</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>solid_data <span class="op">=</span> {<span class="st">"type"</span>: <span class="st">"rectangular_prism"</span>, <span class="st">"width"</span>: <span class="dv">2</span>, <span class="st">"height"</span>:<span class="dv">9</span>, <span class="st">"depth"</span>:<span class="dv">10</span>}</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a>Each solid requires different keys: a `sphere` has only a radius, a `rectangular prism` has `width`, `height`, <span class="kw">and</span> `depth`, <span class="cf">while</span> a `cylinder` needs both `radius` <span class="kw">and</span> `height`.</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a>Now imagine we want to compute the volume automatically, regardless of which solid <span class="kw">is</span> described. A natural first attempt <span class="kw">is</span> a <span class="bu">long</span> chain of `if`<span class="op">-</span>`elif`<span class="op">-</span>`else` statements:</span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"sphere"</span>:</span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> solid_data.get(<span class="st">"radius"</span>)</span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r:</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">4</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">3</span>)</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"cube"</span>:</span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a>    s <span class="op">=</span> solid_data.get(<span class="st">"side"</span>)</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> s:</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> s<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"rectangular_prism"</span>:</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>    w <span class="op">=</span> solid_data.get(<span class="st">"width"</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> solid_data.get(<span class="st">"height"</span>)</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> solid_data.get(<span class="st">"depth"</span>)</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w <span class="kw">and</span> h <span class="kw">and</span> d:</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> w <span class="op">*</span> h <span class="op">*</span> d</span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"cylinder"</span>:</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> solid_data.get(<span class="st">"radius"</span>)</span>
 <span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> solid_data.get(<span class="st">"height"</span>)</span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>    d <span class="op">=</span> solid_data.get(<span class="st">"depth"</span>)</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> w <span class="kw">and</span> h <span class="kw">and</span> d:</span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> w <span class="op">*</span> h <span class="op">*</span> d</span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"cylinder"</span>:</span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> solid_data.get(<span class="st">"radius"</span>)</span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> solid_data.get(<span class="st">"height"</span>)</span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="kw">and</span> h:</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"cone"</span>:</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> solid_data.get(<span class="st">"radius"</span>)</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> solid_data.get(<span class="st">"height"</span>)</span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="kw">and</span> h:</span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>    solid_data[<span class="st">"type"</span>] <span class="op">=</span> <span class="st">"unknown"</span></span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a>    volume <span class="op">=</span> <span class="st">"unknown"</span></span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The "</span> <span class="op">+</span> solid_data[<span class="st">"type"</span>] <span class="op">+</span> <span class="st">" has  "</span> <span class="op">+</span> <span class="bu">str</span>(volume) <span class="op">+</span> <span class="st">" volume"</span>)</span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a>While this works, it quickly becomes unwieldy. Each branch requires lots of repetition (`.get()`, nested `if`s), <span class="kw">and</span> adding new shapes means adding even more clutter.</span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>The `match` statement <span class="cf">for</span> this task <span class="kw">is</span> much simpler. This <span class="kw">is</span> <span class="kw">in</span> part due to some useful syntax<span class="op">;</span> we can unpack the values inside the dictionary immediately, without using the `.get()` function <span class="im">as</span> shown below:</span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> data:</span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"sphere"</span>, <span class="st">"radius"</span>: r}:</span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">4</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">3</span>)</span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"cube"</span>, <span class="st">"side"</span>: s}:</span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> s<span class="op">**</span><span class="dv">3</span></span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"rectangular_prism"</span>, <span class="st">"width"</span>: w, <span class="st">"height"</span>: h, <span class="st">"depth"</span>: d}:</span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> w <span class="op">*</span> h <span class="op">*</span> d</span>
-<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"cylinder"</span>, <span class="st">"radius"</span>: r, <span class="st">"height"</span>: h}:</span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
-<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"cone"</span>, <span class="st">"radius"</span>: r, <span class="st">"height"</span>: h}:</span>
-<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
-<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _:</span>
-<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"type"</span>] <span class="op">=</span> <span class="st">"unknown"</span></span>
-<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> <span class="st">"unknown"</span></span>
-<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The "</span> <span class="op">+</span> data[<span class="st">"type"</span>] <span class="op">+</span> <span class="st">" has  "</span> <span class="op">+</span> <span class="bu">str</span>(volume) <span class="op">+</span> <span class="st">" volume"</span>)</span>
-<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a>This <span class="kw">is</span> much cleaner:</span>
-<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> No need <span class="cf">for</span> repeated `.get()` calls</span>
-<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> No nested `if` checks</span>
-<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> Simple, readable `case` syntax</span>
-<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>And adding a new solid <span class="kw">is</span> now <span class="im">as</span> simple <span class="im">as</span> writing one more two<span class="op">-</span>line case.</span>
-<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a><span class="co">## Combining `match` and `if`</span></span>
-<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>Another helpful feature of the `match` statement <span class="kw">is</span> that it can be modified to include conditionals, using an `if` guard. This works a lot like an `if` statement <span class="kw">and</span> allows you greater control over when `case`s are executed. The general syntax <span class="kw">is</span>:</span>
-<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> variable:</span>
-<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> pattern <span class="cf">if</span> condition:</span>
-<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>        <span class="co"># code to run</span></span>
-<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a>Here the code will be run <span class="cf">if</span> <span class="kw">and</span> only <span class="cf">if</span> the `variable` matches the `pattern` <span class="op">*</span><span class="kw">and</span><span class="op">*</span> the `condition` <span class="kw">is</span> satisfied.</span>
-<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>For example, suppose we<span class="st">'re working with points in 2D space, which we write as a `tuple` and wish to describe whether they lie on the cartesian axes. Then we could do the following:</span></span>
-<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Point in space</span></span>
-<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">5</span>)</span>
-<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a><span class="co"># Match statement</span></span>
-<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> point:</span>
-<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a>    case (<span class="dv">0</span>, y) <span class="cf">if</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the positive y-axis"</span></span>
-<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a>    case (<span class="dv">0</span>, y) <span class="cf">if</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the negative y-axis"</span></span>
-<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a>    case (x, <span class="dv">0</span>) <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
-<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the positive x-axis"</span></span>
-<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a>    case (x, <span class="dv">0</span>) <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
-<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the negative x-axis"</span></span>
-<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a>    case (<span class="dv">0</span>, <span class="dv">0</span>):</span>
-<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"at the origin"</span></span>
-<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a>    case (x, y):</span>
-<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"not on the axes"</span></span>
+<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="kw">and</span> h:</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> solid_data.get(<span class="st">"type"</span>) <span class="op">==</span> <span class="st">"cone"</span>:</span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>    r <span class="op">=</span> solid_data.get(<span class="st">"radius"</span>)</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> solid_data.get(<span class="st">"height"</span>)</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> r <span class="kw">and</span> h:</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>    solid_data[<span class="st">"type"</span>] <span class="op">=</span> <span class="st">"unknown"</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>    volume <span class="op">=</span> <span class="st">"unknown"</span></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The "</span> <span class="op">+</span> solid_data[<span class="st">"type"</span>] <span class="op">+</span> <span class="st">" has  "</span> <span class="op">+</span> <span class="bu">str</span>(volume) <span class="op">+</span> <span class="st">" volume"</span>)</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>While this works, it quickly becomes unwieldy. Each branch requires lots of repetition (`.get()`, nested `if`s), <span class="kw">and</span> adding new shapes means adding even more clutter.</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>The `match` statement <span class="cf">for</span> this task <span class="kw">is</span> much simpler. This <span class="kw">is</span> <span class="kw">in</span> part due to some useful syntax<span class="op">;</span> we can unpack the values inside the dictionary immediately, without using the `.get()` function <span class="im">as</span> shown below:</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> data:</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"sphere"</span>, <span class="st">"radius"</span>: r}:</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">4</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">3</span>)</span>
+<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"cube"</span>, <span class="st">"side"</span>: s}:</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> s<span class="op">**</span><span class="dv">3</span></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"rectangular_prism"</span>, <span class="st">"width"</span>: w, <span class="st">"height"</span>: h, <span class="st">"depth"</span>: d}:</span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> w <span class="op">*</span> h <span class="op">*</span> d</span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"cylinder"</span>, <span class="st">"radius"</span>: r, <span class="st">"height"</span>: h}:</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> {<span class="st">"type"</span>: <span class="st">"cone"</span>, <span class="st">"radius"</span>: r, <span class="st">"height"</span>: h}:</span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> (<span class="dv">1</span><span class="op">/</span><span class="dv">3</span>) <span class="op">*</span> <span class="fl">3.14</span> <span class="op">*</span> (r<span class="op">**</span><span class="dv">2</span>) <span class="op">*</span> h</span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> _:</span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>        data[<span class="st">"type"</span>] <span class="op">=</span> <span class="st">"unknown"</span></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>        volume <span class="op">=</span> <span class="st">"unknown"</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"The "</span> <span class="op">+</span> data[<span class="st">"type"</span>] <span class="op">+</span> <span class="st">" has  "</span> <span class="op">+</span> <span class="bu">str</span>(volume) <span class="op">+</span> <span class="st">" volume"</span>)</span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>This <span class="kw">is</span> much cleaner:</span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> No need <span class="cf">for</span> repeated `.get()` calls</span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> No nested `if` checks</span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> Simple, readable `case` syntax</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>And adding a new solid <span class="kw">is</span> now <span class="im">as</span> simple <span class="im">as</span> writing one more two<span class="op">-</span>line case.</span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a><span class="co">## Combining `match` and `if`</span></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>Another helpful feature of the `match` statement <span class="kw">is</span> that it can be modified to include conditionals, using an `if` guard. This works a lot like an `if` statement <span class="kw">and</span> allows you greater control over when `case`s are executed. The general syntax <span class="kw">is</span>:</span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> variable:</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>    <span class="cf">case</span> pattern <span class="cf">if</span> condition:</span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>        <span class="co"># code to run</span></span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>Here the code will be run <span class="cf">if</span> <span class="kw">and</span> only <span class="cf">if</span> the `variable` matches the `pattern` <span class="op">*</span><span class="kw">and</span><span class="op">*</span> the `condition` <span class="kw">is</span> satisfied.</span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>For example, suppose we<span class="st">'re working with points in 2D space, which we write as a `tuple` and wish to describe whether they lie on the cartesian axes. Then we could do the following:</span></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a><span class="co"># Point in space</span></span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>point <span class="op">=</span> (<span class="dv">1</span>, <span class="dv">5</span>)</span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a><span class="co"># Match statement</span></span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a><span class="cf">match</span> point:</span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>    case (<span class="dv">0</span>, y) <span class="cf">if</span> y <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the positive y-axis"</span></span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a>    case (<span class="dv">0</span>, y) <span class="cf">if</span> y <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the negative y-axis"</span></span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a>    case (x, <span class="dv">0</span>) <span class="cf">if</span> x <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the positive x-axis"</span></span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>    case (x, <span class="dv">0</span>) <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">0</span>:</span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"on the negative x-axis"</span></span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a>    case (<span class="dv">0</span>, <span class="dv">0</span>):</span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"at the origin"</span></span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a>    case (x, y):</span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a>        location <span class="op">=</span> <span class="st">"not on the axes"</span></span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a><span class="co"># Describe where the point is</span></span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The point </span><span class="sc">{</span>point<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>location<span class="sc">}</span><span class="ss">."</span>)</span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="co">## Exercises</span></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">1</span>:<span class="op">**</span> Extend the match statement <span class="kw">in</span> the [Combining `match` <span class="kw">and</span> `if`](<span class="co">#Combining-match-and-if) section so that it not only handles points on the axes, but also describes points in each of the four quadrants (upper right, lower right, lower left, upper left).</span></span>
 <span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a><span class="co"># Describe where the point is</span></span>
-<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"The point </span><span class="sc">{</span>point<span class="sc">}</span><span class="ss"> is </span><span class="sc">{</span>location<span class="sc">}</span><span class="ss">."</span>)</span>
-<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a><span class="co">## Exercises</span></span>
-<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">1</span>:<span class="op">**</span> Extend the match statement <span class="kw">in</span> the [Combining `match` <span class="kw">and</span> `if`](<span class="co">#Combining-match-and-if) section so that it not only handles points on the axes, but also describes points in each of the four quadrants (upper right, lower right, lower left, upper left).</span></span>
+<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>Hint: A <span class="dv">2</span><span class="er">D</span> point lies <span class="kw">in</span> a quadrant when both $x$ <span class="kw">and</span> $y$ are nonzero. Use `if` guards to distinguish whether each coordinate <span class="kw">is</span> positive <span class="kw">or</span> negative.<span class="op">*</span></span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your answer here...</span></span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a>```</span>
 <span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>Hint: A <span class="dv">2</span><span class="er">D</span> point lies <span class="kw">in</span> a quadrant when both $x$ <span class="kw">and</span> $y$ are nonzero. Use `if` guards to distinguish whether each coordinate <span class="kw">is</span> positive <span class="kw">or</span> negative.<span class="op">*</span></span>
+<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">2</span>:<span class="op">**</span> Convert the below `if`<span class="op">-</span>`elif`<span class="op">-</span>`else` statement to a `match` statement:</span>
 <span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your answer here...</span></span>
-<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">2</span>:<span class="op">**</span> Convert the below `if`<span class="op">-</span>`elif`<span class="op">-</span>`else` statement to a `match` statement:</span>
-<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">1</span>:</span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"one"</span>)</span>
+<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">2</span>:</span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"two"</span>)</span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">3</span>:</span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"three"</span>)</span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"something else"</span>)</span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a>```</span>
 <span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> x <span class="op">==</span> <span class="dv">1</span>:</span>
-<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"one"</span>)</span>
-<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">2</span>:</span>
-<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"two"</span>)</span>
-<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a><span class="cf">elif</span> x <span class="op">==</span> <span class="dv">3</span>:</span>
-<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"three"</span>)</span>
-<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
-<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">"something else"</span>)</span>
-<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">3</span>:<span class="op">**</span>  You are given two numeric variables, `a` <span class="kw">and</span> `b`, along <span class="cf">with</span> an operator stored <span class="im">as</span> a string (`<span class="st">"+"</span>`, `<span class="st">"-"</span>`, `<span class="st">"*"</span>`, `<span class="st">"/"</span>`). Use a `match` statement to <span class="bu">apply</span> the correct operation <span class="kw">and</span> display the result.  </span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">3</span>:<span class="op">**</span>  You are given two numeric variables, `a` <span class="kw">and</span> `b`, along <span class="cf">with</span> an operator stored <span class="im">as</span> a string (`<span class="st">"+"</span>`, `<span class="st">"-"</span>`, `<span class="st">"*"</span>`, `<span class="st">"/"</span>`). Use a `match` statement to <span class="bu">apply</span> the correct operation <span class="kw">and</span> display the result.  </span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>For example, <span class="cf">if</span> `operator <span class="op">=</span> <span class="st">"*"</span>`, the program should calculate <span class="kw">and</span> store `my_result <span class="op">=</span> a <span class="op">*</span> b`.  If the operator <span class="kw">is</span> <span class="kw">not</span> one of the four listed above, your code should <span class="bu">print</span> `<span class="st">"Invalid operator"</span>`.  </span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a><span class="co"># Example input</span></span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a>operator <span class="op">=</span> <span class="st">"*"</span></span>
 <span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a>For example, <span class="cf">if</span> `operator <span class="op">=</span> <span class="st">"*"</span>`, the program should calculate <span class="kw">and</span> store `my_result <span class="op">=</span> a <span class="op">*</span> b`.  If the operator <span class="kw">is</span> <span class="kw">not</span> one of the four listed above, your code should <span class="bu">print</span> `<span class="st">"Invalid operator"</span>`.  </span>
-<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a><span class="co"># Example input</span></span>
-<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a>operator <span class="op">=</span> <span class="st">"*"</span></span>
-<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">4</span>:<span class="op">**</span>  The variable `account` stores a <span class="bu">tuple</span> `(balance, currency)`, where `balance` <span class="kw">is</span> the amount of money a user has <span class="kw">and</span> `currency` <span class="kw">is</span> the unit of that balance. The unit will be one of `<span class="st">"USD"</span>`, `<span class="st">"EUR"</span>`, `<span class="st">"GBP"</span>`, <span class="kw">or</span> `<span class="st">"JPY"</span>`.  Your job <span class="kw">is</span> to convert this balance into another currency, stored <span class="kw">in</span> the variable `target_currency` (again, one of the four listed above).  </span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a>Write a Python program using `match` statements to:  </span>
+<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span> Convert `account` into the requested `target_currency` using the exchange rates provided below.  </span>
+<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a><span class="fl">2.</span> Print the resulting balance, formatted <span class="cf">with</span> the correct symbol:  </span>
+<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"USD"</span>` → `<span class="st">"$"</span>`  </span>
+<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"EUR"</span>` → `<span class="st">"€"</span>`  </span>
+<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"GBP"</span>` → `<span class="st">"£"</span>`  </span>
+<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"JPY"</span>` → `<span class="st">"¥"</span>`  </span>
 <span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">4</span>:<span class="op">**</span>  The variable `account` stores a <span class="bu">tuple</span> `(balance, currency)`, where `balance` <span class="kw">is</span> the amount of money a user has <span class="kw">and</span> `currency` <span class="kw">is</span> the unit of that balance. The unit will be one of `<span class="st">"USD"</span>`, `<span class="st">"EUR"</span>`, `<span class="st">"GBP"</span>`, <span class="kw">or</span> `<span class="st">"JPY"</span>`.  Your job <span class="kw">is</span> to convert this balance into another currency, stored <span class="kw">in</span> the variable `target_currency` (again, one of the four listed above).  </span>
+<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a>If either `currency` (<span class="im">from</span> `account`) <span class="kw">or</span> `target_currency` <span class="kw">is</span> <span class="kw">not</span> one of the four supported codes, <span class="bu">print</span> `<span class="st">"Unsupported currency"</span>`.</span>
 <span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a>Write a Python program using `match` statements to:  </span>
+<span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Note:<span class="op">**</span> You will have to look up the current exchange rates online (you need only use three significant figures <span class="cf">for</span> the conversion).</span>
 <span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a><span class="fl">1.</span> Convert `account` into the requested `target_currency` using the exchange rates provided below.  </span>
-<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a><span class="fl">2.</span> Print the resulting balance, formatted <span class="cf">with</span> the correct symbol:  </span>
-<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"USD"</span>` → `<span class="st">"$"</span>`  </span>
-<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"EUR"</span>` → `<span class="st">"€"</span>`  </span>
-<span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"GBP"</span>` → `<span class="st">"£"</span>`  </span>
-<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a>   <span class="op">-</span> `<span class="st">"JPY"</span>` → `<span class="st">"¥"</span>`  </span>
-<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a>If either `currency` (<span class="im">from</span> `account`) <span class="kw">or</span> `target_currency` <span class="kw">is</span> <span class="kw">not</span> one of the four supported codes, <span class="bu">print</span> `<span class="st">"Unsupported currency"</span>`.</span>
-<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Note:<span class="op">**</span> You will have to look up the current exchange rates online (you need only use three significant figures <span class="cf">for</span> the conversion).</span>
+<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>Hint: You may wish to use two match statements <span class="cf">for</span> this task<span class="op">;</span> one converting to a single currency, say GBP, <span class="kw">and</span> another converting <span class="im">from</span> GBP to the desired output currency.<span class="op">*</span> </span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>If you are unsure what a `Tuple` <span class="kw">is</span>, please revisit the `week <span class="dv">0</span><span class="er">1</span> intermediate` notebook on collections.<span class="op">*</span> </span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="co"># Example input</span></span>
+<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a>account <span class="op">=</span> (<span class="dv">100</span>, <span class="st">"USD"</span>)      <span class="co"># 100 dollars</span></span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a>target_currency <span class="op">=</span> <span class="st">"EUR"</span>     <span class="co"># convert to euros</span></span>
 <span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>Hint: You may wish to use two match statements <span class="cf">for</span> this task<span class="op">;</span> one converting to a single currency, say GBP, <span class="kw">and</span> another converting <span class="im">from</span> GBP to the desired output currency.<span class="op">*</span> </span>
-<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>If you are unsure what a `Tuple` <span class="kw">is</span>, please revisit the `week <span class="dv">0</span><span class="er">1</span> intermediate` notebook on collections.<span class="op">*</span> </span>
-<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a><span class="co"># Example input</span></span>
-<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a>account <span class="op">=</span> (<span class="dv">100</span>, <span class="st">"USD"</span>)      <span class="co"># 100 dollars</span></span>
-<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a>target_currency <span class="op">=</span> <span class="st">"EUR"</span>     <span class="co"># convert to euros</span></span>
+<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your answer here...</span></span>
+<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">5</span>:<span class="op">**</span> In digital images, colors are represented using <span class="op">*</span>RGB<span class="op">*</span> values. An <span class="op">*</span>RGB<span class="op">*</span> value <span class="kw">is</span> a <span class="dv">3</span><span class="op">-</span><span class="bu">tuple</span> `(r, g, b)` that gives the intensity of the <span class="op">**</span>r<span class="op">**</span>ed, <span class="op">**</span>g<span class="op">**</span>reen, <span class="kw">and</span> <span class="op">**</span>b<span class="op">**</span>lue components of a color, each ranging <span class="im">from</span> $<span class="dv">0</span>$ to $<span class="dv">255</span>$. For example, $(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">0</span>)$ <span class="kw">is</span> bright red, $(<span class="dv">0</span>, <span class="dv">255</span>, <span class="dv">0</span>)$ <span class="kw">is</span> bright green, <span class="kw">and</span> $(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)$ <span class="kw">is</span> black.</span>
+<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a>Write a program that takes an `(r, g, b)` <span class="bu">tuple</span> <span class="im">as</span> <span class="bu">input</span> <span class="kw">and</span> uses a match statement to classify the <span class="bu">tuple</span> into one of the following color names:</span>
+<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Red` <span class="cf">if</span> `r` <span class="kw">is</span> greater than `<span class="dv">200</span>` <span class="kw">and</span> both `g` <span class="kw">and</span> `b` are less than `<span class="dv">50</span>`.</span>
+<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Green` <span class="cf">if</span> `g` <span class="kw">is</span> greater than `<span class="dv">200</span>` <span class="kw">and</span> both `r` <span class="kw">and</span> `b` are less than `<span class="dv">50</span>`.</span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Blue` <span class="cf">if</span> `b` <span class="kw">is</span> greater than `<span class="dv">200</span>` <span class="kw">and</span> both `r` <span class="kw">and</span> `g` are less than `<span class="dv">50</span>`.</span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Unknown` <span class="cf">for</span> <span class="bu">any</span> other combination.</span>
 <span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your answer here...</span></span>
-<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="op">**</span>Question <span class="dv">5</span>:<span class="op">**</span> In digital images, colors are represented using <span class="op">*</span>RGB<span class="op">*</span> values. An <span class="op">*</span>RGB<span class="op">*</span> value <span class="kw">is</span> a <span class="dv">3</span><span class="op">-</span><span class="bu">tuple</span> `(r, g, b)` that gives the intensity of the <span class="op">**</span>r<span class="op">**</span>ed, <span class="op">**</span>g<span class="op">**</span>reen, <span class="kw">and</span> <span class="op">**</span>b<span class="op">**</span>lue components of a color, each ranging <span class="im">from</span> $<span class="dv">0</span>$ to $<span class="dv">255</span>$. For example, $(<span class="dv">255</span>, <span class="dv">0</span>, <span class="dv">0</span>)$ <span class="kw">is</span> bright red, $(<span class="dv">0</span>, <span class="dv">255</span>, <span class="dv">0</span>)$ <span class="kw">is</span> bright green, <span class="kw">and</span> $(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>)$ <span class="kw">is</span> black.</span>
-<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a>Write a program that takes an `(r, g, b)` <span class="bu">tuple</span> <span class="im">as</span> <span class="bu">input</span> <span class="kw">and</span> uses a match statement to classify the <span class="bu">tuple</span> into one of the following color names:</span>
-<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Red` <span class="cf">if</span> `r` <span class="kw">is</span> greater than `<span class="dv">200</span>` <span class="kw">and</span> both `g` <span class="kw">and</span> `b` are less than `<span class="dv">50</span>`.</span>
-<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Green` <span class="cf">if</span> `g` <span class="kw">is</span> greater than `<span class="dv">200</span>` <span class="kw">and</span> both `r` <span class="kw">and</span> `b` are less than `<span class="dv">50</span>`.</span>
-<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Blue` <span class="cf">if</span> `b` <span class="kw">is</span> greater than `<span class="dv">200</span>` <span class="kw">and</span> both `r` <span class="kw">and</span> `g` are less than `<span class="dv">50</span>`.</span>
-<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a> <span class="op">-</span> `Unknown` <span class="cf">for</span> <span class="bu">any</span> other combination.</span>
-<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a>The color name should be saved <span class="im">as</span> a string variable named `color_name`. Write your solution <span class="kw">in</span> the box below.</span>
-<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a><span class="co"># Example rgb values</span></span>
-<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a>rgb_values <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">3</span>,<span class="dv">220</span>)</span>
-<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a>```</span>
-<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>Hint: You may wish to use `if` guards <span class="cf">for</span> this question.<span class="op">*</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a>The color name should be saved <span class="im">as</span> a string variable named `color_name`. Write your solution <span class="kw">in</span> the box below.</span>
+<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a><span class="co"># Example rgb values</span></span>
+<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a>rgb_values <span class="op">=</span> (<span class="dv">20</span>,<span class="dv">3</span>,<span class="dv">220</span>)</span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a>```</span>
+<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a><span class="op">*</span>Hint: You may wish to use `if` guards <span class="cf">for</span> this question.<span class="op">*</span></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 5: Consolidation – Introduction to Coding and Data Analysis</title>
+<title>Working with NumPy Arrays – Introduction to Coding and Data Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -109,35 +109,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 <meta name="robots" content="noindex, nofollow">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
@@ -288,7 +259,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../05/week_05_home.html">05 Consolidation: Python in the field</a></li><li class="breadcrumb-item"><a href="../05/week_05_chemistry.html">Week 5: Consolidation</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Working with NumPy Arrays</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -473,13 +444,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
  <span class="menu-text">05 Consolidation: Python in the field</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../05/week_05_home.html" class="sidebar-item-text sidebar-link">
@@ -488,7 +459,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../05/week_05_chemistry.html" class="sidebar-item-text sidebar-link active">
+  <a href="../05/week_05_chemistry.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Week 5: Consolidation</span></a>
   </div>
 </li>
@@ -566,23 +537,19 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#chemistry-challenge" id="toc-chemistry-challenge" class="nav-link active" data-scroll-target="#chemistry-challenge">Chemistry Challenge</a>
+  <li><a href="#indexing-and-random-data-generation" id="toc-indexing-and-random-data-generation" class="nav-link active" data-scroll-target="#indexing-and-random-data-generation">Indexing and Random Data Generation</a></li>
+  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#basic-indexing" id="toc-basic-indexing" class="nav-link" data-scroll-target="#basic-indexing">Basic Indexing</a></li>
+  <li><a href="#views-vs-copies" id="toc-views-vs-copies" class="nav-link" data-scroll-target="#views-vs-copies">Views vs Copies</a></li>
+  <li><a href="#boolean-indexing-filtering-with-conditions" id="toc-boolean-indexing-filtering-with-conditions" class="nav-link" data-scroll-target="#boolean-indexing-filtering-with-conditions">Boolean Indexing: Filtering with Conditions</a></li>
+  <li><a href="#np.where-function" id="toc-np.where-function" class="nav-link" data-scroll-target="#np.where-function">np.where Function</a></li>
+  <li><a href="#array-generation-sequences" id="toc-array-generation-sequences" class="nav-link" data-scroll-target="#array-generation-sequences">Array Generation: Sequences</a>
   <ul class="collapse">
-  <li><a href="#table-of-contents" id="toc-table-of-contents" class="nav-link" data-scroll-target="#table-of-contents">Table of Contents</a></li>
-  </ul></li>
-  <li><a href="#background" id="toc-background" class="nav-link" data-scroll-target="#background">Background</a>
-  <ul class="collapse">
-  <li><a href="#the-periodic-table" id="toc-the-periodic-table" class="nav-link" data-scroll-target="#the-periodic-table">The Periodic Table</a></li>
-  <li><a href="#isotopes" id="toc-isotopes" class="nav-link" data-scroll-target="#isotopes">Isotopes</a></li>
-  </ul></li>
-  <li><a href="#the-challenge" id="toc-the-challenge" class="nav-link" data-scroll-target="#the-challenge">The Challenge</a>
-  <ul class="collapse">
-  <li><a href="#task-1-verifying-elements" id="toc-task-1-verifying-elements" class="nav-link" data-scroll-target="#task-1-verifying-elements">Task 1: Verifying Elements</a></li>
-  <li><a href="#task-2-verifying-the-atomic-number" id="toc-task-2-verifying-the-atomic-number" class="nav-link" data-scroll-target="#task-2-verifying-the-atomic-number">Task 2: Verifying the Atomic Number</a></li>
-  <li><a href="#task-3-counting-electrons-protons-and-neutrons" id="toc-task-3-counting-electrons-protons-and-neutrons" class="nav-link" data-scroll-target="#task-3-counting-electrons-protons-and-neutrons">Task 3: Counting Electrons, Protons and Neutrons</a></li>
-  <li><a href="#task-4-group-and-period" id="toc-task-4-group-and-period" class="nav-link" data-scroll-target="#task-4-group-and-period">Task 4: Group and Period</a></li>
-  <li><a href="#task-5-isotope-names" id="toc-task-5-isotope-names" class="nav-link" data-scroll-target="#task-5-isotope-names">Task 5: Isotope Names</a></li>
-  <li><a href="#task-6-categorizing-isotopes" id="toc-task-6-categorizing-isotopes" class="nav-link" data-scroll-target="#task-6-categorizing-isotopes">Task 6: Categorizing Isotopes</a></li>
+  <li><a href="#filled-arrays" id="toc-filled-arrays" class="nav-link" data-scroll-target="#filled-arrays">Filled Arrays</a></li>
+  <li><a href="#pseudo-random-numbers" id="toc-pseudo-random-numbers" class="nav-link" data-scroll-target="#pseudo-random-numbers">Pseudo-Random Numbers</a></li>
+  <li><a href="#random-sampling" id="toc-random-sampling" class="nav-link" data-scroll-target="#random-sampling">Random Sampling</a></li>
+  <li><a href="#performance-tip" id="toc-performance-tip" class="nav-link" data-scroll-target="#performance-tip">Performance Tip</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -590,9 +557,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../05/week_05_home.html">05 Consolidation: Python in the field</a></li><li class="breadcrumb-item"><a href="../05/week_05_chemistry.html">Week 5: Consolidation</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Week 5: Consolidation</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Working with NumPy Arrays</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -609,198 +576,180 @@ window.Quarto = {
 </header>
 
 
-<section id="chemistry-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="chemistry-challenge">Chemistry Challenge</h2>
-<p>This week, we’ll bring together the skills you’ve developed over the past four weeks to tackle a practical challenge. Specifically, for the Chemistry challenge in this notebook, you will use data from the periodic table to determine various properties of isotopes. This task is designed to give you practice working with strings, conditional logic, and dictionaries in a familiar Chemistry setting.</p>
-<blockquote class="blockquote">
-<p><strong>Please Note:</strong> This week’s challenges are designed to difficult! Do not worry if you are unable to complete a challenge in the time given. The important thing is that you are building resilience and practicing problem-solving skills - everything else is secondary!</p>
-</blockquote>
-<section id="table-of-contents" class="level3">
-<h3 class="anchored" data-anchor-id="table-of-contents">Table of Contents</h3>
+<section id="indexing-and-random-data-generation" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-and-random-data-generation">Indexing and Random Data Generation</h2>
+</section>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
 <ul>
-<li><a href="../05/week_05_home.html">Welcome Page</a></li>
-<li><a href="../05/week_05_data_science.html">Challenge 1: Data Science</a></li>
-<li><a href="../05/week_05_physics.html">Challenge 2: Physics</a></li>
-<li><a href="../05/week_05_chemistry.html"><strong>Challenge 3: Chemistry</strong></a>
-<ul>
-<li><a href="#Background">Background</a>
-<ul>
-<li><a href="#The-Periodic-Table">The Periodic Table</a></li>
-<li><a href="#Isotopes">Isotopes</a></li>
-</ul></li>
-<li><a href="#The-Challenge">The Challenge</a>
-<ul>
-<li><a href="#Task-1:-Verifying-Elements">Task 1: Verifying Elements</a></li>
-<li><a href="#Task-2:-Verifying-the-Atomic-Number">Task 2: Verifying the Atomic Number</a></li>
-<li><a href="#Task-3:-Counting-Electrons,-Protons-and-Neutrons">Task 3: Counting Electrons, Protons and Neutrons</a></li>
-<li><a href="#Task-4:-Group-and-Period">Task 4: Group and Period</a></li>
-<li><a href="#Task-5:-Isotope-Names">Task 5: Isotope Names</a></li>
-<li><a href="#Task-6:-Categorizing-Isotopes">Task 6: Categorizing Isotopes</a></li>
-</ul></li>
-</ul></li>
-<li><a href="../05/week_05_slides.html">Slides</a> (<a href="./Lecture5_Consolidation.pptx">Powerpoint</a>)</li>
+<li>Array indexing and slicing</li>
+<li>Boolean indexing</li>
+<li>Array generation functions</li>
+<li>Random data generation</li>
 </ul>
 </section>
-</section>
-<section id="background" class="level2">
-<h2 class="anchored" data-anchor-id="background">Background</h2>
-<section id="the-periodic-table" class="level3">
-<h3 class="anchored" data-anchor-id="the-periodic-table">The Periodic Table</h3>
-<p>In your previous studies, you have likely encountered the <a href="https://en.wikipedia.org/wiki/Periodic_table">periodic table of elements</a>. In this challenge, you will use the periodic table to explore and derive various properties of isotopes.</p>
-<p><img src="./images/Periodic_Table_of_Elements.png" alt="" style="display:block;margin-left:auto;margin-right:auto;width:100%"></p>
-<p>The periodic table organizes <em>chemical elements</em> (substances whose atoms contain a fixed number of protons) into rows (<em>periods</em>) and columns (<em>groups</em>). In addition to ordering the elements, the periodic table is also a powerful tool for categorization. It groups together elements that share similar properties.</p>
-<p>For instance, in the image above, the colors highlight the following categories of elements:</p>
+<section id="basic-indexing" class="level2">
+<h2 class="anchored" data-anchor-id="basic-indexing">Basic Indexing</h2>
+<p>Access array elements using integer indices and slicing:</p>
 <ul>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#ffc4c4;margin-right:8px;"></span><em>Alkali metals:</em> very reactive metals that readily form compounds with nonmetals.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#d4d4ff;margin-right:8px;"></span><em>Alkaline earth metals:</em> reactive metals that form basic solutions when they react with water.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#acffff;margin-right:8px;"></span><em>Lanthanides:</em> rare earth elements often used in magnets and electronics.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#c1ffea;margin-right:8px;"></span><em>Actinides:</em> heavy elements, many of which are radioactive.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#c5e2ff;margin-right:8px;"></span><em>Transition metals:</em> versatile metals widely used in alloys and catalysts.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#c4ffc4;margin-right:8px;"></span><em>Post-transition metals:</em> softer metals with lower melting points than transition metals.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#dfedb9;margin-right:8px;"></span><em>Metalloids:</em> elements with properties of both metals and nonmetals.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#ffffb9;margin-right:8px;"></span><em>Halogens and other nonmetals:</em> generally poor conductors; many are gases or brittle solids, and halogens in particular are very reactive.
-</li>
-<li>
-<span style="display:inline-block;width:15px;height:15px;background-color:#ffe3ba;margin-right:8px;"></span><em>Noble gases:</em> very stable gases that rarely react with other elements.
-</li>
+<li><strong>Single element</strong>: <code>arr[1]</code> gets element at position 1</li>
+<li><strong>Slice range</strong>: <code>arr[1:4]</code> extracts elements 1 to 3 (end exclusive)</li>
+<li><strong>Step size</strong>: <code>arr[::2]</code> takes every 2nd element</li>
+<li><strong>Reverse</strong>: <code>arr[::-1]</code> reverses the entire array</li>
 </ul>
-<p>By convention, we assume that all lathanides have period 6 and group 3, and all actinides have period 7 and group 3 (see periodic table above).</p>
-<p>In each box of the periodic table, you can see the <em>name</em>, <em>chemical symbol</em>, and <em>category</em> of the element. The <em>atomic number</em> is shown in the top left. This tells you how many protons are in the nucleus of the atom, and it also determines the element’s position in the table. An atom has the same number of protons and electrons, so the atomic number also represents the number of electrons in the atom. The <em>relative atomic mass</em> is shown in the top right. This value represents the average mass of all the naturally occurring isotopes of that element, taking into account how common each isotope is.</p>
-<p>For example, the box for <code>carbon</code> (<code>C</code>) shows the atomic number <code>6</code> in the top left, which means every carbon atom has <code>6</code> protons. In the top right, the relative atomic mass is shown as about <code>12.01</code>, reflecting the natural mixture of mostly <code>carbon-12</code> and a small amount of <code>carbon-13</code>.</p>
-</section>
-<section id="isotopes" class="level3">
-<h3 class="anchored" data-anchor-id="isotopes">Isotopes</h3>
-<p>As noted above, not all of the atoms of the same element have the same mass. This is because, although atoms of the same element must have, by definition, the same number of protons, they can have different numbers of neutrons. An atom with a fixed number of neutrons is known as an <em>isotope</em> and we usually denote isotopes by the element name followed by the <em>mass number</em>: that is, the total number of protons and neutrons in the atom. For instance, <code>carbon-12</code> is an isotope of carbon with a mass number of <code>12</code>. You might also see this written as <span class="math inline">\(^{12}C\)</span> or <span class="math inline">\(^{12}_6C\)</span>, if we want to highlight that the atom possesses <span class="math inline">\(6\)</span> protons.</p>
-</section>
-</section>
-<section id="the-challenge" class="level2">
-<h2 class="anchored" data-anchor-id="the-challenge">The Challenge</h2>
-<p>You are given a string of one of the following forms: <code>N_P_E</code> or <code>N_E</code>, where: - <span class="math inline">\(N\)</span> is an integer representing the number of mass number of the isotope, - <span class="math inline">\(P\)</span> is an integer representing the number of protons in an isotope, - <span class="math inline">\(E\)</span> is the chemical symbol of the element.</p>
-<p>For instance, <code>12_6_C</code> represents <span class="math inline">\(^{12}_6C\)</span> and <code>12_C</code> represents <span class="math inline">\(^{12}C\)</span>.</p>
 <div>
 <div id="pyodide-1" class="exercise-cell">
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEEgc3RyaW5nIHJlcHJlc2VudGluZyB0aGUgaXNvdG9wZSBvZiBOZW9uIHdpdGggMTIgbmV1dHJvbnMgYW5kIDEwIHByb3RvbnMuXG5leGFtcGxlX2lzb3RvcGUgPSBcIjIyXzEwX05lXCIifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcblxuYXJyID0gbnAuYXJyYXkoWzEwLCAyMCwgMzAsIDQwLCA1MF0pXG5wcmludChhcnJbMV0pICAgICAgICAjIDIwXG5wcmludChhcnJbMTo0XSkgICAgICAjIFsyMCAzMCA0MF1cbnByaW50KGFycls6OjJdKSAgICAgICMgWzEwIDMwIDUwXVxucHJpbnQoYXJyWzo6LTFdKSAgICAgIyBbNTAgNDAgMzAgMjAgMTBdIn0=
 </script>
 </div>
-<p>You are also given the variable named <code>periodic_table</code>, loaded in by the below code. This includes <em>some of</em> the data displayed in the periodic table, saved as a dictionary of dictionaries.</p>
+</section>
+<section id="views-vs-copies" class="level2">
+<h2 class="anchored" data-anchor-id="views-vs-copies">Views vs Copies</h2>
+<p><strong>Important memory concept:</strong></p>
+<ul>
+<li><strong>Slicing creates views</strong> that share the same underlying data</li>
+<li>Modifying a view changes the original array</li>
+<li><strong>Use <code>.copy()</code></strong> to create independent arrays when needed</li>
+</ul>
+<p>This behavior is efficient but can cause unexpected side effects!</p>
 <div>
 <div id="pyodide-2" class="exercise-cell">
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgb3Ncbm9zLmNoZGlyKCcvaG9tZS9qb3Z5YW4vU0NJRjEwMDAyLTIwMjUuZ2l0LzA1L3NyYycpXG5cbmZyb20gZ2V0X3BlcmlvZGljX3RhYmxlIGltcG9ydCAqXG5cbnBlcmlvZGljX3RhYmxlID0gZ2V0X3BlcmlvZGljX3RhYmxlKCkifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJzbGljZV92aWV3ID0gYXJyWzI6NV1cbnNsaWNlX3ZpZXdbMF0gPSA5OSAgICAjIE1vZGlmaWVzIG9yaWdpbmFsIVxuXG5hcnJfY29weSA9IGFyclsyOjVdLmNvcHkoKVxuYXJyX2NvcHlbMF0gPSAxMDAgICAgICMgT3JpZ2luYWwgdW5jaGFuZ2VkIn0=
 </script>
 </div>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> Don’t worry if you are unsure what the <code>import</code> and <code>from</code> keywords are doing in the above code. For now, you can think of these as a way of loading in pre-written functions such as the <code>get_periodic_table</code> function. You’ll have plenty of opportunities to practice and understand these features of Python as the course goes on.</p>
-</blockquote>
-<p>Try running the following commands to see if you can understand how to use this variable:</p>
+</section>
+<section id="boolean-indexing-filtering-with-conditions" class="level2">
+<h2 class="anchored" data-anchor-id="boolean-indexing-filtering-with-conditions">Boolean Indexing: Filtering with Conditions</h2>
+<p><strong>Boolean indexing</strong> allows data filtering based on conditions:</p>
+<ol type="1">
+<li>Apply a condition to create a <strong>boolean mask</strong> (True/False array)</li>
+<li>Use the mask to select only elements that meet the condition</li>
+<li>This is powerful for data analysis and filtering operations</li>
+</ol>
 <div>
 <div id="pyodide-3" class="exercise-cell">
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJwcmludChwZXJpb2RpY190YWJsZVtcIkhcIl0pXG5wcmludChwZXJpb2RpY190YWJsZVtcIkhcIl1bXCJyZWxhdGl2ZV9hdG9taWNfbWFzc1wiXSlcbnByaW50KHBlcmlvZGljX3RhYmxlW1wiRmVcIl1bXCJhdG9taWNfbnVtYmVyXCJdKVxucHJpbnQocGVyaW9kaWNfdGFibGVbXCJDXCJdW1wibmFtZVwiXSkifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJhcnIgPSBucC5hcnJheShbMSwgMiwgMywgNCwgNSwgNl0pXG50aHJlc2hvbGQgPSAzXG5cbiMgQ3JlYXRlIGJvb2xlYW4gbWFza1xuYm9vbF9tYXNrID0gYXJyID4gdGhyZXNob2xkICAjIFtGYWxzZSBGYWxzZSBGYWxzZSBUcnVlIFRydWUgVHJ1ZV1cblxuIyBGaWx0ZXIgYXJyYXlcbmZpbHRlcmVkID0gYXJyW2Jvb2xfbWFza10gICAgIyBbNCA1IDZdIn0=
 </script>
 </div>
-<blockquote class="blockquote">
-<p><strong>Note:</strong> Before proceeding, if you are unsure about dictionaries please see the <a href="../01/week_01_intro_to_data_types_intermediate.html">week 1 intermediate notebook</a> for further detail.</p>
-</blockquote>
-<p>For an arbitrary isotope represented as described above, the challenge is to solve the following tasks.</p>
-<p><em>Note: If you are not sure how to get started, have a look at the guidance section on <a href="../05/week_05_home.html">this week’s home page</a>.</em></p>
-<blockquote class="blockquote">
-<p><strong>Important:</strong> For this task, you may only use material covered in the previous 4 week’s classes. To solve the challenge problems, you may use any content from the <code>beginner</code>, <code>intermediate</code>, or <code>advanced notebooks</code>. However, every challenge can be completed using only the material in the <code>beginner</code> notebooks, so don’t worry if you haven’t looked at the others. The tasks are designed to be accessible to everyone!</p>
-</blockquote>
-<section id="task-1-verifying-elements" class="level3">
-<h3 class="anchored" data-anchor-id="task-1-verifying-elements">Task 1: Verifying Elements</h3>
-<p>Write a function that takes two inputs; a string representing an isotope and the <code>periodic_table</code> dictionary. The function should verify whether the chemical symbol in the isotope string corresponds to a valid element in the periodic table and print a message indicating the result.</p>
+</section>
+<section id="np.where-function" class="level2">
+<h2 class="anchored" data-anchor-id="np.where-function">np.where Function</h2>
+<p><strong>Advanced conditional operations:</strong></p>
+<ul>
+<li><code>np.where(condition)</code> returns <strong>indices</strong> where condition is True</li>
+<li><code>np.where(condition, x, y)</code> creates new array: elements from <code>x</code> where True, from <code>y</code> where False</li>
+<li>Powerful for element-wise conditional logic without loops</li>
+</ul>
 <div>
 <div id="pyodide-4" class="exercise-cell">
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlLi4uIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEdldCBpbmRpY2VzXG5pbmRpY2VzID0gbnAud2hlcmUoYXJyID4gdGhyZXNob2xkKVswXSAgIyBbMyA0IDVdXG5cbiMgQ29uZGl0aW9uYWwgc2VsZWN0aW9uXG5hID0gbnAuYXJyYXkoWzEsIDIsIDMsIDQsIDVdKVxuYiA9IG5wLmFycmF5KFstMSwgLTIsIC0zLCAtNCwgLTVdKVxuXG5yZXN1bHQgPSBucC53aGVyZShhID4gMiwgYSwgYikgICMgW+KIkjEg4oiSMiAgMyAgNCAgNV0ifQ==
 </script>
 </div>
-<p><em>Hint: You can convert the keys in dictionary to a list using <code>list(dict_name.keys())</code>.</em></p>
 </section>
-<section id="task-2-verifying-the-atomic-number" class="level3">
-<h3 class="anchored" data-anchor-id="task-2-verifying-the-atomic-number">Task 2: Verifying the Atomic Number</h3>
-<p>Write a function that takes two inputs; a string representing an isotope and the <code>periodic_table</code> dictionary. The function must check whether the number of protons, if provided, matches that in the periodic table.</p>
+<section id="array-generation-sequences" class="level1">
+<h1>Array Generation: Sequences</h1>
+<p><strong>Creating ordered numerical sequences:</strong></p>
+<ul>
+<li><code>np.arange(start, stop, step)</code> - like {Python}’s <code>range()</code> but for arrays</li>
+<li><code>np.linspace(start, stop, num)</code> - exactly <code>num</code> evenly spaced points</li>
+<li>Choose <code>arange</code> when you know the step size, <code>linspace</code> when you know the number of points</li>
+</ul>
 <div>
 <div id="pyodide-5" class="exercise-cell">
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlLi4uIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEV2ZW5seSBzcGFjZWQgdmFsdWVzIHdpdGggc3RlcFxubnAuYXJhbmdlKDAsIDEwLCAyKSAgICAgICAgICAgIyBbMCAyIDQgNiA4XVxuXG4jIEZpeGVkIG51bWJlciBvZiBwb2ludHNcbm5wLmxpbnNwYWNlKDAsIDEsIDUpICAgICAgICAgICMgWzAuICAgMC4yNSAwLjUgIDAuNzUgMS4gIF1cblxuIyBEaWZmZXJlbnQgZGF0YSB0eXBlc1xubnAuYXJhbmdlKDAuMCwgMS4wLCAwLjIpICAgICAgIyBmbG9hdHNcbm5wLmFyYW5nZSgwLCAxMCwgMiwgZHR5cGU9Y29tcGxleCkgICMgY29tcGxleCJ9
 </script>
 </div>
-</section>
-<section id="task-3-counting-electrons-protons-and-neutrons" class="level3">
-<h3 class="anchored" data-anchor-id="task-3-counting-electrons-protons-and-neutrons">Task 3: Counting Electrons, Protons and Neutrons</h3>
-<p>Update your code from Task 2 so that, unless an incorrect number of protons is provided, it prints the number of protons, neutrons, and electrons in the isotope. Make sure your code outputs these values even if the number of protons is not explicitly included in the isotope string.</p>
+<section id="filled-arrays" class="level2">
+<h2 class="anchored" data-anchor-id="filled-arrays">Filled Arrays</h2>
+<p><strong>Initialize arrays with specific values:</strong></p>
+<p>Useful for creating placeholders before computations or initializing data structures.</p>
+<ul>
+<li><code>*_like()</code> functions preserve shape and data type of existing arrays</li>
+<li><code>np.empty()</code> is fastest but contains arbitrary values</li>
+</ul>
 <div>
 <div id="pyodide-6" class="exercise-cell">
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlLi4uIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIENyZWF0ZSBhcnJheXMgZmlsbGVkIHdpdGggdmFsdWVzXG5ucC56ZXJvcyg1KSAgICAgICAgICAgICAgIyBbMC4gMC4gMC4gMC4gMC5dXG5ucC5vbmVzKDMpICAgICAgICAgICAgICAgIyBbMS4gMS4gMS5dXG5ucC5mdWxsKDQsIDcpICAgICAgICAgICAgIyBbNyA3IDcgN11cblxuIyBNYXRjaCBleGlzdGluZyBhcnJheSBzaGFwZVxubnAuemVyb3NfbGlrZShhcnIpXG5ucC5vbmVzX2xpa2UoYXJyKVxubnAuZnVsbF9saWtlKGFyciwgOTkpIn0=
 </script>
 </div>
 </section>
-<section id="task-4-group-and-period" class="level3">
-<h3 class="anchored" data-anchor-id="task-4-group-and-period">Task 4: Group and Period</h3>
-<p>Write a function that takes two inputs; a string representing an isotope and the <code>periodic_table</code> dictionary. The function must print the group and period of the element in the periodic table.</p>
+<section id="pseudo-random-numbers" class="level2">
+<h2 class="anchored" data-anchor-id="pseudo-random-numbers">Pseudo-Random Numbers</h2>
+<p><strong>Why computers need algorithms for randomness:</strong></p>
+<ul>
+<li>Computers are deterministic machines (same input → same output)</li>
+<li><strong>Pseudo-random number generators (PRNGs)</strong> use mathematical algorithms</li>
+<li><strong>Seed</strong> value determines the starting point of the sequence</li>
+<li>Same seed = same sequence (crucial for reproducible research!)</li>
+</ul>
 <div>
 <div id="pyodide-7" class="exercise-cell">
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlLi4uIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEluaXRpYWxpemUgcmFuZG9tIG51bWJlciBnZW5lcmF0b3JcbnJuZyA9IG5wLnJhbmRvbS5kZWZhdWx0X3JuZyhzZWVkPTEyMykifQ==
 </script>
 </div>
 </section>
-<section id="task-5-isotope-names" class="level3">
-<h3 class="anchored" data-anchor-id="task-5-isotope-names">Task 5: Isotope Names</h3>
-<p>Write a function which return a string representing the name of the isotope. For instance, <code>12_C</code> should return <code>"Carbon-12"</code>. Note that <span class="math inline">\(^1H\)</span>,<span class="math inline">\(^2H\)</span> and <span class="math inline">\(^3H\)</span> do not follow the standard convention and are usually referred to as <code>"Hydrogen"</code>, <code>"Deuterium"</code> and <code>"Tritium"</code> rather than <code>"Hydrogen-1"</code>, <code>"Hydrogen-2"</code> and <code>"Hydrogen-3"</code>, respectively.</p>
+<section id="random-sampling" class="level2">
+<h2 class="anchored" data-anchor-id="random-sampling">Random Sampling</h2>
+<p><strong>Generate samples from different distributions:</strong></p>
+<ul>
+<li><strong>Integers</strong>: Uniform distribution over a range</li>
+<li><strong>Floats</strong>: Uniform distribution [0,1) or custom range<br>
+</li>
+<li><strong>Normal</strong>: Gaussian distribution with specified mean and standard deviation</li>
+<li>Control sample size with <code>size</code> parameter</li>
+</ul>
 <div>
 <div id="pyodide-8" class="exercise-cell">
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlLi4uIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEludGVnZXJzXG5ybmcuaW50ZWdlcnMoMCwgMTAwLCBzaXplPTUpICAgICAjIDUgcmFuZG9tIGludHMgWzAsMTAwKVxuXG4jIFVuaWZvcm0gZmxvYXRzIFswLDEpXG5ybmcucmFuZG9tKDEwMDApICAgICAgICAgICAgICAgICAjIDEwMDAgcmFuZG9tIGZsb2F0c1xuXG4jIE5vcm1hbCBkaXN0cmlidXRpb25cbnJuZy5ub3JtYWwobG9jPTAsIHNjYWxlPTEsIHNpemU9MTAwMDApXG5cbiMgU2luZ2xlIHZhbHVlc1xucm5nLmludGVnZXJzKDAsIDEwMCkgICAgICAgICAgICAgIyBTaW5nbGUgcmFuZG9tIGludCJ9
 </script>
 </div>
 </section>
-<section id="task-6-categorizing-isotopes" class="level3">
-<h3 class="anchored" data-anchor-id="task-6-categorizing-isotopes">Task 6: Categorizing Isotopes</h3>
-<p>Write a function which returns a string representing the category the isotope belongs to (e.g.&nbsp;<code>"Alkali Metals"</code>, <code>"Actinides"</code>,…, etc).</p>
+<section id="performance-tip" class="level2">
+<h2 class="anchored" data-anchor-id="performance-tip">Performance Tip</h2>
+<p><strong>Memory vs.&nbsp;Speed tradeoff:</strong></p>
+<p>Generating random numbers one-by-one in loops is slow due to function call overhead. Pre-allocating larger arrays is much faster!</p>
+<p><strong>Rule of thumb</strong>: Start with 100,000 elements for most tasks.</p>
 <div>
 <div id="pyodide-9" class="exercise-cell">
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFdyaXRlIHlvdXIgY29kZSBoZXJlLi4uIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFNsb3c6IGdlbmVyYXRlIG9uZSBhdCBhIHRpbWVcbmZvciBfIGluIHJhbmdlKDEwMDApOlxuICAgIHZhbCA9IHJuZy5pbnRlZ2VycygwLCAxMDApXG5cbiMgRmFzdDogcHJlLWFsbG9jYXRlXG5yYW5kb21fdmFsdWVzID0gcm5nLmludGVnZXJzKDAsIDEwMCwgc2l6ZT0xMDAwKVxuZm9yIHZhbCBpbiByYW5kb21fdmFsdWVzOlxuICAgICMgdXNlIHZhbCJ9
 </script>
 </div>
+</section>
+<section id="summary" class="level2">
+<h2 class="anchored" data-anchor-id="summary">Summary</h2>
+<ul>
+<li><strong>Indexing</strong>: Integer, slicing, boolean</li>
+<li><strong>Views vs Copies</strong>: Slicing creates views</li>
+<li><strong>Generation</strong>: <code>arange</code>, <code>linspace</code>, filled arrays</li>
+<li><strong>Random</strong>: Seed for reproducibility, pre-allocate for speed</li>
+</ul>
 
 
 <!-- -->
@@ -831,7 +780,7 @@ eyJjb250ZW50cyI6W119
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
-window._ojs.paths.runtimeToDoc = "../../05";
+window._ojs.paths.runtimeToDoc = "../../08";
 window._ojs.paths.runtimeToRoot = "../..";
 window._ojs.paths.docToRoot = "..";
 window._ojs.selfContained = false;
@@ -1294,176 +1243,214 @@ window._ojs.runtime.interpretFromScriptTags();
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> 'Week 5: Consolidation'</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Working with NumPy Arrays</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">## Indexing and Random Data Generation</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## Chemistry Challenge</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>This week, we'll bring together the skills you've developed over the past four weeks to tackle a practical challenge. Specifically, for the Chemistry challenge in this notebook, you will use data from the periodic table to determine various properties of isotopes. This task is designed to give you practice working with strings, conditional logic, and dictionaries in a familiar Chemistry setting. </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">## Overview</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a> <span class="at">&gt; **Please Note:** This week's challenges are designed to difficult! Do not worry if you are unable to complete a challenge in the time given. The important thing is that you are building resilience and practicing problem-solving skills - everything else is secondary!</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">### Table of Contents</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Welcome Page</span><span class="co">](./week_05_home.qmd)</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Challenge 1: Data Science</span><span class="co">](./week_05_data_science.qmd)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Challenge 2: Physics</span><span class="co">](./week_05_physics.qmd)</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">**Challenge 3: Chemistry**</span><span class="co">](./week_05_chemistry.qmd)</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">Background</span><span class="co">](#Background)</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">The Periodic Table</span><span class="co">](#The-Periodic-Table)</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">Isotopes</span><span class="co">](#Isotopes)</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">   - </span><span class="co">[</span><span class="ot">The Challenge</span><span class="co">](#The-Challenge)</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">Task 1: Verifying Elements</span><span class="co">](#Task-1:-Verifying-Elements)</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">Task 2: Verifying the Atomic Number</span><span class="co">](#Task-2:-Verifying-the-Atomic-Number)</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">Task 3: Counting Electrons, Protons and Neutrons</span><span class="co">](#Task-3:-Counting-Electrons,-Protons-and-Neutrons)</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">Task 4: Group and Period</span><span class="co">](#Task-4:-Group-and-Period)</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">Task 5: Isotope Names</span><span class="co">](#Task-5:-Isotope-Names)</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="ss">     - </span><span class="co">[</span><span class="ot">Task 6: Categorizing Isotopes</span><span class="co">](#Task-6:-Categorizing-Isotopes)</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="co">[</span><span class="ot">Slides</span><span class="co">](./week_05_slides.qmd)</span> (<span class="co">[</span><span class="ot">Powerpoint</span><span class="co">](./Lecture5_Consolidation.pptx)</span>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">## Background</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">### The Periodic Table</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>In your previous studies, you have likely encountered the <span class="co">[</span><span class="ot">periodic table of elements</span><span class="co">](https://en.wikipedia.org/wiki/Periodic_table)</span>. In this challenge, you will use the periodic table to explore and derive various properties of isotopes.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Array indexing and slicing</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Boolean indexing</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Array generation functions</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Random data generation</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">## Basic Indexing</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>Access array elements using integer indices and slicing:</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Single element**: <span class="in">`arr[1]`</span> gets element at position 1</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Slice range**: <span class="in">`arr[1:4]`</span> extracts elements 1 to 3 (end exclusive)</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Step size**: <span class="in">`arr[::2]`</span> takes every 2nd element</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Reverse**: <span class="in">`arr[::-1]`</span> reverses the entire array</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>])</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr[<span class="dv">1</span>])        <span class="co"># 20</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr[<span class="dv">1</span>:<span class="dv">4</span>])      <span class="co"># [20 30 40]</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr[::<span class="dv">2</span>])      <span class="co"># [10 30 50]</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(arr[::<span class="op">-</span><span class="dv">1</span>])     <span class="co"># [50 40 30 20 10]</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"./images/Periodic_Table_of_Elements.png"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">""</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:block;margin-left:auto;margin-right:auto;width:100%"</span><span class="dt">/&gt;</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>The periodic table organizes *chemical elements* (substances whose atoms contain a fixed number of protons) into rows (*periods*) and columns (*groups*). In addition to ordering the elements, the periodic table is also a powerful tool for categorization. It groups together elements that share similar properties.</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Views vs Copies</span></span>
 <span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>For instance, in the image above, the colors highlight the following categories of elements:</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>**Important memory concept:**</span>
 <span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#ffc4c4;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Alkali metals:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> very reactive metals that readily form compounds with nonmetals.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#d4d4ff;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Alkaline earth metals:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> reactive metals that form basic solutions when they react with water.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#acffff;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Lanthanides:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> rare earth elements often used in magnets and electronics.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#c1ffea;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Actinides:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> heavy elements, many of which are radioactive.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#c5e2ff;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Transition metals:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> versatile metals widely used in alloys and catalysts.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#c4ffc4;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Post-transition metals:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> softer metals with lower melting points than transition metals.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#dfedb9;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Metalloids:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> elements with properties of both metals and nonmetals.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#ffffb9;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Halogens and other nonmetals:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> generally poor conductors; many are gases or brittle solids, and halogens in particular are very reactive.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>  <span class="dt">&lt;</span><span class="kw">li</span><span class="dt">&gt;&lt;</span><span class="kw">span</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:inline-block;width:15px;height:15px;background-color:#ffe3ba;margin-right:8px;"</span><span class="dt">&gt;&lt;/</span><span class="kw">span</span><span class="dt">&gt;&lt;</span><span class="kw">em</span><span class="dt">&gt;</span>Noble gases:<span class="dt">&lt;/</span><span class="kw">em</span><span class="dt">&gt;</span> very stable gases that rarely react with other elements.<span class="dt">&lt;/</span><span class="kw">li</span><span class="dt">&gt;</span></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">ul</span><span class="dt">&gt;</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Slicing creates views** that share the same underlying data</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Modifying a view changes the original array</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Use `.copy()`** to create independent arrays when needed</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>This behavior is efficient but can cause unexpected side effects!</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>slice_view <span class="op">=</span> arr[<span class="dv">2</span>:<span class="dv">5</span>]</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>slice_view[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">99</span>    <span class="co"># Modifies original!</span></span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>By convention, we assume that all lathanides have period 6 and group 3, and all actinides have period 7 and group 3 (see periodic table above).</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>In each box of the periodic table, you can see the *name*, *chemical symbol*, and *category* of the element. The *atomic number* is shown in the top left. This tells you how many protons are in the nucleus of the atom, and it also determines the element’s position in the table. An atom has the same number of protons and electrons, so the atomic number also represents the number of electrons in the atom. The *relative atomic mass* is shown in the top right. This value represents the average mass of all the naturally occurring isotopes of that element, taking into account how common each isotope is.</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>arr_copy <span class="op">=</span> arr[<span class="dv">2</span>:<span class="dv">5</span>].copy()</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>arr_copy[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">100</span>     <span class="co"># Original unchanged</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>For example, the box for <span class="in">`carbon`</span> (<span class="in">`C`</span>) shows the atomic number <span class="in">`6`</span> in the top left, which means every carbon atom has <span class="in">`6`</span> protons. In the top right, the relative atomic mass is shown as about <span class="in">`12.01`</span>, reflecting the natural mixture of mostly <span class="in">`carbon-12`</span> and a small amount of <span class="in">`carbon-13`</span>.</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="fu">## Boolean Indexing: Filtering with Conditions</span></span>
 <span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="fu">### Isotopes</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>**Boolean indexing** allows data filtering based on conditions:</span>
 <span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>As noted above, not all of the atoms of the same element have the same mass. This is because, although atoms of the same element must have, by definition, the same number of protons, they can have different numbers of neutrons. An atom with a fixed number of neutrons is known as an *isotope* and we usually denote isotopes by the element name followed by the *mass number*: that is, the total number of protons and neutrons in the atom. For instance, <span class="in">`carbon-12`</span> is an isotope of carbon with a mass number of <span class="in">`12`</span>. You might also see this written as $^{12}C$ or $^{12}_6C$, if we want to highlight that the atom possesses $6$ protons.</span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## The Challenge</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Apply a condition to create a **boolean mask** (True/False array)</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Use the mask to select only elements that meet the condition</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>This is powerful for data analysis and filtering operations</span>
 <span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>You are given a string of one of the following forms: <span class="in">`N_P_E`</span> or <span class="in">`N_E`</span>, where: </span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>$N$ is an integer representing the number of mass number of the isotope,</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>$P$ is an integer representing the number of protons in an isotope,</span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>$E$ is the chemical symbol of the element. </span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>For instance, <span class="in">`12_6_C`</span> represents $^{12}_6C$ and <span class="in">`12_C`</span> represents $^{12}C$.</span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>arr <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>])</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>threshold <span class="op">=</span> <span class="dv">3</span></span>
 <span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co"># A string representing the isotope of Neon with 12 neutrons and 10 protons.</span></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>example_isotope <span class="op">=</span> <span class="st">"22_10_Ne"</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>You are also given the variable named <span class="in">`periodic_table`</span>, loaded in by the below code. This includes *some of* the data displayed in the periodic table, saved as a dictionary of dictionaries.</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> os</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>os.chdir(<span class="st">'/home/jovyan/SCIF10002-2025.git/05/src'</span>)</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> get_periodic_table <span class="im">import</span> <span class="op">*</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>periodic_table <span class="op">=</span> get_periodic_table()</span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Create boolean mask</span></span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>bool_mask <span class="op">=</span> arr <span class="op">&gt;</span> threshold  <span class="co"># [False False False True True True]</span></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter array</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>filtered <span class="op">=</span> arr[bool_mask]    <span class="co"># [4 5 6]</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## np.where Function</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>**Advanced conditional operations:**</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.where(condition)`</span> returns **indices** where condition is True</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.where(condition, x, y)`</span> creates new array: elements from <span class="in">`x`</span> where True, from <span class="in">`y`</span> where False</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Powerful for element-wise conditional logic without loops</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Get indices</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>indices <span class="op">=</span> np.where(arr <span class="op">&gt;</span> threshold)[<span class="dv">0</span>]  <span class="co"># [3 4 5]</span></span>
 <span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; **Note:** Don't worry if you are unsure what the </span><span class="in">`import`</span><span class="at"> and </span><span class="in">`from`</span><span class="at"> keywords are doing in the above code. For now, you can think of these as a way of loading in pre-written functions such as the </span><span class="in">`get_periodic_table`</span><span class="at"> function. You'll have plenty of opportunities to practice and understand these features of Python as the course goes on.</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>Try running the following commands to see if you can understand how to use this variable:</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Conditional selection</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>])</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="op">-</span><span class="dv">1</span>, <span class="op">-</span><span class="dv">2</span>, <span class="op">-</span><span class="dv">3</span>, <span class="op">-</span><span class="dv">4</span>, <span class="op">-</span><span class="dv">5</span>])</span>
 <span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(periodic_table[<span class="st">"H"</span>])</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(periodic_table[<span class="st">"H"</span>][<span class="st">"relative_atomic_mass"</span>])</span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(periodic_table[<span class="st">"Fe"</span>][<span class="st">"atomic_number"</span>])</span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(periodic_table[<span class="st">"C"</span>][<span class="st">"name"</span>])</span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a> <span class="at">&gt; **Note:** Before proceeding, if you are unsure about dictionaries please see the </span><span class="co">[</span><span class="ot">week 1 intermediate notebook</span><span class="co">](../01/week_01_intro_to_data_types_intermediate.qmd)</span><span class="at"> for further detail.</span></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>For an arbitrary isotope represented as described above, the challenge is to solve the following tasks.</span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>*Note: If you are not sure how to get started, have a look at the guidance section on [this week's home page](./week_05_home.qmd).*</span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a> <span class="at">&gt; **Important:** For this task, you may only use material covered in the previous 4 week's classes. To solve the challenge problems, you may use any content from the </span><span class="in">`beginner`</span><span class="at">, </span><span class="in">`intermediate`</span><span class="at">, or </span><span class="in">`advanced notebooks`</span><span class="at">. However, every challenge can be completed using only the material in the </span><span class="in">`beginner`</span><span class="at"> notebooks, so don't worry if you haven't looked at the others. The tasks are designed to be accessible to everyone!</span></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 1: Verifying Elements</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> np.where(a <span class="op">&gt;</span> <span class="dv">2</span>, a, b)  <span class="co"># [−1 −2  3  4  5]</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="fu"># Array Generation: Sequences</span></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>**Creating ordered numerical sequences:**</span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.arange(start, stop, step)`</span> - like {Python}'s <span class="in">`range()`</span> but for arrays</span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.linspace(start, stop, num)`</span> - exactly <span class="in">`num`</span> evenly spaced points</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Choose <span class="in">`arange`</span> when you know the step size, <span class="in">`linspace`</span> when you know the number of points</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Evenly spaced values with step</span></span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>)           <span class="co"># [0 2 4 6 8]</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Fixed number of points</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>np.linspace(<span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">5</span>)          <span class="co"># [0.   0.25 0.5  0.75 1.  ]</span></span>
 <span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>Write a function that takes two inputs; a string representing an isotope and the <span class="in">`periodic_table`</span> dictionary. The function should verify whether the chemical symbol in the isotope string corresponds to a valid element in the periodic table and print a message indicating the result.</span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="co"># Different data types</span></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="fl">0.0</span>, <span class="fl">1.0</span>, <span class="fl">0.2</span>)      <span class="co"># floats</span></span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a>np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">2</span>, dtype<span class="op">=</span><span class="bu">complex</span>)  <span class="co"># complex</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## Filled Arrays</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>**Initialize arrays with specific values:**</span>
 <span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>*Hint: You can convert the keys in dictionary to a list using `list(dict_name.keys())`.*</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>Useful for creating placeholders before computations or initializing data structures.</span>
 <span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 2: Verifying the Atomic Number</span></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>Write a function that takes two inputs; a string representing an isotope and the <span class="in">`periodic_table`</span> dictionary. The function must check whether the number of protons, if provided, matches that in the periodic table.</span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 3: Counting Electrons, Protons and Neutrons</span></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>Update your code from Task 2 so that, unless an incorrect number of protons is provided, it prints the number of protons, neutrons, and electrons in the isotope. Make sure your code outputs these values even if the number of protons is not explicitly included in the isotope string.</span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`*_like()`</span> functions preserve shape and data type of existing arrays</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.empty()`</span> is fastest but contains arbitrary values</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="co"># Create arrays filled with values</span></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>np.zeros(<span class="dv">5</span>)              <span class="co"># [0. 0. 0. 0. 0.]</span></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>np.ones(<span class="dv">3</span>)               <span class="co"># [1. 1. 1.]</span></span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a>np.full(<span class="dv">4</span>, <span class="dv">7</span>)            <span class="co"># [7 7 7 7]</span></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="co"># Match existing array shape</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>np.zeros_like(arr)</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>np.ones_like(arr)</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>np.full_like(arr, <span class="dv">99</span>)</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="fu">## Pseudo-Random Numbers</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>**Why computers need algorithms for randomness:**</span>
 <span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 4: Group and Period</span></span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>Write a function that takes two inputs; a string representing an isotope and the <span class="in">`periodic_table`</span> dictionary. The function must print the group and period of the element in the periodic table.</span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 5: Isotope Names</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Computers are deterministic machines (same input → same output)</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Pseudo-random number generators (PRNGs)** use mathematical algorithms</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Seed** value determines the starting point of the sequence</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Same seed = same sequence (crucial for reproducible research!)</span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize random number generator</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">123</span>)</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>Write a function which return a string representing the name of the isotope. For instance, <span class="in">`12_C`</span> should return <span class="in">`"Carbon-12"`</span>. Note that $^1H$,$^2H$ and $^3H$ do not follow the standard convention and are usually referred to as <span class="in">`"Hydrogen"`</span>, <span class="in">`"Deuterium"`</span> and <span class="in">`"Tritium"`</span> rather than <span class="in">`"Hydrogen-1"`</span>, <span class="in">`"Hydrogen-2"`</span> and <span class="in">`"Hydrogen-3"`</span>, respectively.</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="fu">## Random Sampling</span></span>
 <span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>**Generate samples from different distributions:**</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Integers**: Uniform distribution over a range</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Floats**: Uniform distribution [0,1) or custom range  </span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Normal**: Gaussian distribution with specified mean and standard deviation</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Control sample size with <span class="in">`size`</span> parameter</span>
 <span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="fu">### Task 6: Categorizing Isotopes</span></span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>Write a function which returns a string representing the category the isotope belongs to (e.g. <span class="in">`"Alkali Metals"`</span>, <span class="in">`"Actinides"`</span>,..., etc).</span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Write your code here...</span></span>
-<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="co"># Integers</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>rng.integers(<span class="dv">0</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">5</span>)     <span class="co"># 5 random ints [0,100)</span></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Uniform floats [0,1)</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>rng.random(<span class="dv">1000</span>)                 <span class="co"># 1000 random floats</span></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Normal distribution</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>rng.normal(loc<span class="op">=</span><span class="dv">0</span>, scale<span class="op">=</span><span class="dv">1</span>, size<span class="op">=</span><span class="dv">10000</span>)</span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="co"># Single values</span></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>rng.integers(<span class="dv">0</span>, <span class="dv">100</span>)             <span class="co"># Single random int</span></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="fu">## Performance Tip</span></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>**Memory vs. Speed tradeoff:**</span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>Generating random numbers one-by-one in loops is slow due to function call overhead. </span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>Pre-allocating larger arrays is much faster!</span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a>**Rule of thumb**: Start with 100,000 elements for most tasks.</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="co"># Slow: generate one at a time</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _ <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1000</span>):</span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>    val <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">100</span>)</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="co"># Fast: pre-allocate</span></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>random_values <span class="op">=</span> rng.integers(<span class="dv">0</span>, <span class="dv">100</span>, size<span class="op">=</span><span class="dv">1000</span>)</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> val <span class="kw">in</span> random_values:</span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>    <span class="co"># use val</span></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="fu">## Summary</span></span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Indexing**: Integer, slicing, boolean</span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Views vs Copies**: Slicing creates views</span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Generation**: <span class="in">`arange`</span>, <span class="in">`linspace`</span>, filled arrays</span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Random**: Seed for reproducibility, pre-allocate for speed</span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
