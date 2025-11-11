@@ -28,6 +28,7 @@ In this week's [beginner notebook](./week_04_functions_beginner.qmd), we introdu
 For instance, consider the simple function below:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def greet(name):      # here, `name` is a parameter
     print("Hello,", name)
 
@@ -44,6 +45,7 @@ There are two main ways to pass arguments to a function in Python:
 To see what we mean here, consider the following example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def make_greeting(greeting, name):
     print(f"{greeting}, {name}!")
 
@@ -67,6 +69,7 @@ Sometimes when coding you may want a function to allow an arbitrary number of in
 For example, consider the following repetitive code:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def add_two_numbers(x, y):
     return x + y
 
@@ -84,6 +87,7 @@ print(add_four_numbers(4, 5, 6, 7))    # 22
 This is not very efficient. It would be much easier if we could just write one function that sums *any* number of values. One way to do this is to pass a tuple:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def add_tuple_of_numbers(my_tuple):
     total = 0
     for number in my_tuple:
@@ -100,6 +104,7 @@ This works, but notice that the function calls require two sets of round bracket
 Python provides a cleaner way of writing the above code using the `*` operator. This collects all positional arguments into a single tuple inside the function like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def add_numbers(*my_tuple):
     total = 0
     for number in my_tuple:
@@ -116,6 +121,7 @@ The code inside the function is essentially the same, but now the function calls
 By convention, when using the `*` operator to pass arbitrary positional arguments into a function, we name the tuple we pass in `args`, which stands for "arguments".
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def add_numbers(*args):
     total = 0
     for number in args:
@@ -132,6 +138,7 @@ So far we have seen how to accept an arbitrary number of *positional* arguments.
 Imagine we tried to write separate functions for describing a person:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def describe_person_by_name(name):
     print("This person's name is " + str(name) + ".")
     print("")
@@ -160,6 +167,7 @@ describe_person_by_name_and_age_and_job("Elliot", 27, "doctor")
 This code is pretty repetitive and messy. One way we could imagine simplifying this code is by using `if` statements and a dictionary, like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def describe_person_by_dict(my_dict):
     
     if "name" in my_dict:
@@ -186,6 +194,7 @@ This works, but again the code feel awkward because we now have to write out a d
 Python provides a cleaner way of writing the above code the `**` operator. This gathers all keyword arguments into a dictionary inside the function:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def describe_person(**my_dict):
     
     if "name" in my_dict:
@@ -209,6 +218,7 @@ describe_person(name="Elliot", age=27, job="doctor")
 Instead of naming the dictionary `my_dict` like in the above code, by convention we use tend to use the name `kwargs`, which is short for "*keyword arguments*".
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def describe_person(**kwargs):
     
     if "name" in kwargs:
@@ -232,6 +242,7 @@ describe_person(name="Elliot", age=27, job="doctor")
 In the same way that we can write a function which takes as input both a tuple and a dictionary, such as below:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def demo_function_with_tuple_and_dict(my_tuple, my_dict):
     print("Tuple:", my_tuple)
     print("Dictionary:", my_dict)
@@ -242,6 +253,7 @@ demo_function_with_tuple_and_dict((1, 2, 3), {"name":"Alice", "age":30})
 We can instead write a function that takes both arbitrary positional arguments and arbitrary keyword arguments, using `*args` and `**kwargs`:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def demo_function(*args, **kwargs):
     print("Positional arguments:", args)
     print("Keyword arguments:", kwargs)
@@ -254,6 +266,7 @@ demo_function(1, 2, 3, name="Alice", age=30)
 So far, we have seen that function arguments in Python can normally be passed either by position or by keyword:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def multiply(x, y):
     return x * y
 
@@ -279,6 +292,7 @@ Here, we have that:
 Let's, look at some examples. The below function will take positional arguments only:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def power(x, y, /):
     return x ** y
 
@@ -291,6 +305,7 @@ Here, `x` and `y` are to the left of `/`, so they can only be given by position.
 Similarly, this example will accept keyword arguments only:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def introduce(*, name, age):
     print(f"My name is {name} and I am {age} years old.")
 
@@ -303,6 +318,7 @@ Here, `name` and `age` are to the right of `*`, so they must be given as keyword
 We can allow a function to have a mix of all three types of parameters (positional-only, keyword or positional, or keyword-only) as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def demo(a, b, /, c, d, *, e, f):
     print(a, b, c, d, e, f)
 
@@ -327,6 +343,7 @@ Normally, a function ends when it reaches a `return` statement. But functions ca
 Here's a simple example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def classify_score(score):
     
     if score < 50:
@@ -345,6 +362,7 @@ print(classify_score(85))   # "Distinction"
 The function stops running the moment it hits a `return`. To understand why this feature might be useful, consider the below code which computes the length of each string in a list.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def get_string_lengths(my_list):
     
     # Empty variables to store results
@@ -384,6 +402,7 @@ print(get_string_lengths(["not", "all", 3, "words"]))
 This works, but it's a bit cumbersome as we are keeping track of the `result` variable throughout. We can simplify this code substantially using multiple `return` statements:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def get_string_lengths(my_list):
     
     # Empty variables to store results
@@ -427,6 +446,7 @@ This often makes your functions shorter, easier to read, and can help spot error
 Another useful feature of the Python programming language is that it allows *recursion*. A *recursive function* is a function that calls itself. For example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def countdown(n):
     if n == 0:
         print("Blast off!")
@@ -452,6 +472,7 @@ Recursion can be useful for problems that can be broken down into smaller versio
 **Question 1:** Consider the below function.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def printing_function(a, b, *args, **kwargs):
     print("a:", a)
     print("b:", b)
@@ -475,12 +496,14 @@ Do you think the function will error for any of the above inputs? If so, which? 
 *Make it so that your function inputs are not case sensitive. I.e. an input of 'ten' should be treated the same as 'tEn', 'TEn', 'TEN', etc.*
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your answer here...
 ```
 
 **Question 3:** Below is a function containing an `if` statement. The function has one input and one output.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def function_with_if(a=1):
     
     # If a is greater than zero, return 1
@@ -509,6 +532,7 @@ Explain your answers and verify them by running the code.
 **Question 4:** Consider the following function, which takes in a positive integer:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def mystery_function(my_integer):
     
     for i in range(2, my_integer):
@@ -530,6 +554,7 @@ Test the function on several inputs, such as `2`, `7`, `9`, `15`, `17`. Based on
 **Question 5:** Consider the following recursive function:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def another_mystery_function(word):
     if word == "":
         return ""
