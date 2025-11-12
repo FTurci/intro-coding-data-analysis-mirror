@@ -25,7 +25,6 @@ Create a 100 x 100 square grid containing a circle. The centre of the circle sho
 When completed, you can use the plotting code below to show your mask. This uses a `matplotlib` function called `imshow` ([documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html); [example from image gallery](https://matplotlib.org/stable/gallery/images_contours_and_fields/image_demo.html)) which can plot your 2D data on a grid.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # ADD CODE HERE
 import numpy as np
 
@@ -40,7 +39,6 @@ circular_mask = ((rows-y0)**2+(cols-x0)**2)<=radius**2
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### UNCOMMENT THIS CODE TO PLOT YOUR MASK WHEN COMPLETED
 
 import matplotlib.pyplot as plt
@@ -58,7 +56,6 @@ ax.imshow(circular_mask,cmap="bone",origin="lower") # Setting colourmap (cmap) a
 1. Consider how you could create a mask for a rectangle rather than a circle (or a square)
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # 10 by 20 rectangle from x0,y0
 Lx = 10
 Ly= 20

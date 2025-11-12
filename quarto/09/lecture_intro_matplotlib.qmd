@@ -15,7 +15,6 @@ We start by importing the `pyplot` sub-module from `matplotlib`.
 The most widespread convention is to use the shorthand `plt` to refer to this package with the `as` syntax and so we can import this in the following way:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 ```
 
@@ -39,7 +38,6 @@ We can plot using the `ax` object directly using whichever type of graph we want
 You can also add multiple graphs to the same set of Axes to plot sets of data on top of each other:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 from numpy import random
 
@@ -51,7 +49,6 @@ y2 = x**2 + rng.normal(size=len(x))*100 # Add random noise to our scatter points
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig, ax = plt.subplots()
 ax.plot(x, y1)      # Plot line plot
 ax.scatter(x, y2)   # Plot scatter plot as well
@@ -76,7 +73,6 @@ We won't explore this further, but for more details on how this is done have a l
 For this exercise, we have created some random sample data which we can plot. Here we have created several numpy arrays each 100 elements long (based on `num_points`).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from numpy import random
 
 rng = random.default_rng(seed=68)
@@ -94,7 +90,6 @@ random_sample2 = rng.random(num_points)
  - *Use the scatter method to plot your data using your Axes object*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### ADD CODE HERE
 ```
 
@@ -104,7 +99,6 @@ random_sample2 = rng.random(num_points)
  - *Use the plot method to plot your data using your Axes object*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### ADD CODE HERE
 ```
 
@@ -123,7 +117,6 @@ The code below demonstrates how we could customise the plot above using these in
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig, ax = plt.subplots(figsize=(8, 4))
 
 ax.plot(x, y1, color="slategrey", linestyle="--")
@@ -149,7 +142,6 @@ For in-built options see:
 ### 2. Setting properties on the plot
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig, ax = plt.subplots(figsize=(8, 4))
 
 ax.plot(x, y1, color="slategrey", linestyle="--")
@@ -170,7 +162,6 @@ For some examples of different `Axes` functions of this type see:
 ### 3. Additional labelling - legend
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig, ax = plt.subplots(figsize=(8, 4))
 
 ### Added labels for each of the plots
@@ -195,7 +186,6 @@ See:
 We can also apply similiar principles to other plot types. We can generate some more random data to look at this. Here we have created two normal distributions containing different numbers of points.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create random numbers (normal distribution) to plot
 from numpy import random
 
@@ -210,7 +200,6 @@ x_rand2 = rng.normal(size=number_of_points_2)
 We could create a simple plot using the `subplots` function and the [`hist()` function](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html):
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig, ax = plt.subplots()
 
 ax.hist(x_rand1)
@@ -220,7 +209,6 @@ ax.hist(x_rand2)
 Using the exact same data we could update our plot using relevant inputs for our `hist` function and setting values on our axis:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig, ax = plt.subplots()
 
 # Create an explicit range to use for our histogram bins
@@ -268,7 +256,6 @@ Becoming familiar with this terminology when applied to a matplotlib figure allo
 *Remember, you always need to recreate your fig and ax objects using the subplots function to create a new plot using Jupyter notebooks*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### ADD CODE HERE (copy code from Exercise A1 to start)
 ```
 
@@ -278,7 +265,6 @@ Becoming familiar with this terminology when applied to a matplotlib figure allo
  - *You can also look at the [`hist()` function documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html) for more inputs to try e.g. `histtype`.*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### ADD CODE HERE
 ```
 
@@ -289,7 +275,6 @@ Becoming familiar with this terminology when applied to a matplotlib figure allo
 *Hint: Look at "set_" commands within https://matplotlib.org/stable/api/axes_api.html#axis-labels-title-and-legend*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### ADD CODE HERE
 ```
 

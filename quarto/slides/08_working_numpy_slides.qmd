@@ -17,7 +17,6 @@ execute:
 ## Array Indexing & Slicing
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 arr = np.array([10, 20, 30, 40, 50])
 
@@ -30,7 +29,6 @@ print("Slice [1:4]:", arr[1:4])
 
 **Advanced slicing:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("Every other element:", arr[::2])
 print("Last three elements:", arr[-3:])
 print("Reversed array:", arr[::-1])
@@ -42,7 +40,6 @@ print("Reversed array:", arr[::-1])
 
 **Slicing creates views (shared data):**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 slice_view = arr[2:5]
 slice_view[0] = 99
 print("Original after view modification:", arr)
@@ -50,7 +47,6 @@ print("Original after view modification:", arr)
 
 **Creating independent copies:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr = np.array([10, 20, 30, 40, 50])  # Reset
 arr_copy = arr[2:5].copy()
 arr_copy[0] = 100
@@ -64,7 +60,6 @@ print("Original unchanged:", arr)
 
 **Filter data with conditions:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr = np.array([1, 2, 3, 4, 5, 6])
 threshold = 3
 
@@ -75,7 +70,6 @@ print("Filtered values:", arr[bool_mask])
 
 **Using `np.where`:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Get indices where condition is True
 indices = np.where(arr > threshold)[0]
 print("Indices:", indices)
@@ -91,14 +85,12 @@ print("Conditional result:", result)
 
 **`np.arange` - step-based:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("Integers:", np.arange(0, 10, 2))
 print("Floats:", np.arange(0.0, 1.0, 0.2))
 ```
 
 **`np.linspace` - count-based:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("5 points from 0 to 1:", np.linspace(0, 1, 5))
 ```
 
@@ -110,7 +102,6 @@ print("5 points from 0 to 1:", np.linspace(0, 1, 5))
 ## Filled Arrays
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create arrays with specific values
 zeros_arr = np.zeros(5)
 ones_arr = np.ones(4)
@@ -123,7 +114,6 @@ print("Full:", full_arr)
 
 **Same shape as existing array:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 template = np.array([1, 2, 3])
 print("Zeros like:", np.zeros_like(template))
 print("Ones like:", np.ones_like(template))
@@ -136,13 +126,11 @@ print("Full like:", np.full_like(template, 9))
 
 **Initialize generator (for reproducibility):**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 rng = np.random.default_rng(seed=123)
 ```
 
 **Different distributions:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Random integers
 print("Random integers:", rng.integers(0, 100, size=5))
 
@@ -165,7 +153,6 @@ $$x_{n+1} = (a \times x_n + c) \bmod m$$
 
 **Key concept: Seeds enable reproducibility**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Same seed = same sequence
 rng1 = np.random.default_rng(seed=42)
 rng2 = np.random.default_rng(seed=42)
@@ -180,7 +167,6 @@ print("RNG2:", rng2.integers(0, 10, size=3))  # Same output!
 
 **Preallocate for efficiency:**
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Less efficient: generate one at a time
 # for _ in range(1000):
 #     val = rng.integers(0, 100)

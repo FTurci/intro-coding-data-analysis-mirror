@@ -35,7 +35,6 @@ Be sure to work through the examples and attempt all the exercises. They are des
 Last week, we met `Boolean` variables. These were variables which can take the values `True` or `False`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_boolean = True
 print(my_boolean)
 ```
@@ -43,7 +42,6 @@ print(my_boolean)
 We often create booleans by comparing other variables to one another:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(334 < 98)  # Less than
 
 print(76 == 70 + 6)  # Are they equal to each other?
@@ -56,7 +54,6 @@ print(type(123) is str)  # Compare type of object - is 123 a string
 We can save the value of a boolean comparison like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_check = (334 < 98)
 print(my_check)   # True
 ```
@@ -64,7 +61,6 @@ print(my_check)   # True
 Python has several operators to combine or modify booleans:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = True
 b = False
 
@@ -87,7 +83,6 @@ Today, we shall look at using Booleans to perform *conditional operations*. That
 An `if` statement allows you to run a block of code if and only if a boolean expression is `True`. Take the example in the following block, for instance. In this example, "Positive" is printed if the variable `my_number` is greater than $100$. 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set the value of the variable my_number
 my_number = 101
 
@@ -153,7 +148,6 @@ if my_number > 100<b>:</b>
 Here are some more examples of `if` statements.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 1: Check if a number is positive
 x = 5
 if x > 0:
@@ -192,7 +186,6 @@ if y > 0:
 Note that, in the above examples, we have always defined our boolean variable directly between the `if` and colon `:`. We didn't have to do this; we could have instead defined the variable first like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 1: Check if a number is positive
 x = 5
 
@@ -210,7 +203,6 @@ In practice, it’s often simpler not to define a separate boolean variable expl
 We've just seen that the body of an `if` statement will only run if the boolean is `True`. But what if we want to do one thing if it's true, but another if it's false? We can do this by attaching an `else` statement to the `if` statement, like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_number = 128
 
 if my_number > 100:
@@ -222,7 +214,6 @@ else:
 > **Warning:** The `else` statement must be at the same level of indentation as the `if` keyword. If not the code will throw an error, like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_number = 128
 
 if my_number > 100:
@@ -238,7 +229,6 @@ Sometimes an `if-else` statement isn't enough, because you want to check more th
 `elif` stands for ''else if''. It lets you add extra conditions to your decision-making. For instance:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_number = 128
 
 if my_number > 100:
@@ -258,7 +248,6 @@ There are a few rules to keep in mind here:
 Here are some more examples of this concept in action.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 1: Checking temperatures
 temperature = 72
 
@@ -273,7 +262,6 @@ else:
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 2: Determining earthquake classification based on richter scale
 richter = 6.2
 
@@ -285,7 +273,6 @@ elif richter >= 5.0:
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 3: Bus ticket based on age and student discount
 age = 19
 is_student = True
@@ -310,7 +297,6 @@ Say we wanted to determine whether a year is a leap year (a year with 366 days r
 The first thing we know is that a leap year generally happens every 4 years. So to start off we could impose the following condition:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Variable representing the year to check
 year = 2012
 
@@ -331,7 +317,6 @@ The rules for determining leap years in the Gregorian calendar are a bit more nu
 We need to add this new condition to our `if` statement. This can be done by combining `year % 4 == 0` and `year % 100 == 0` using an `and` clause:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 year = 1900
 print(year % 4 == 0)
 print(year % 100 == 0)
@@ -341,7 +326,6 @@ print(year % 4 == 0 and year % 100 == 0)
 Let's try adding a new block to account for the situation where even if the year is divisible by $4$, if it is also divisible by $100$ it is *not* a leap year.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 year = 1900
 
 if year % 4 == 0:
@@ -361,7 +345,6 @@ But this isn't right - we saw above that $1900$ is *not* a leap year so this sho
 Let's go through this line by line. Python checks the first criteria in the `if` block `year % 4 == 0`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 1900 % 4 == 0
 ```
 
@@ -370,7 +353,6 @@ As this boolean is true, the `if` statement stops when it is evaluated and exits
 So how do we make sure Python checks the correct set of conditions first? To do this we have to think about the ordering of the clauses:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 year = 1900
 
 if year % 4 == 0 and year % 100 == 0:
@@ -386,7 +368,6 @@ print(f"Is {year} a leap year? {leap_year}")
 Now Python checks the more strict clause first and then exits when the condition `year % 100 == 0 and year % 4 == 0` is true:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 1900 % 100 == 0 and 1900 % 4 == 0
 ```
 
@@ -399,14 +380,12 @@ This updated `if` statement now gives us the behaviour we desired.
 *Hint: Recall the `len()` function can be used to check the length of strings.*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
 **Question 2:** The [pH value of a liquid](https://www.bbc.co.uk/bitesize/guides/zf73382/revision/1) can be used to determine whether it is acidic, alkaline, or neutral. Write some code which uses the variable `ph_level` to assign the correct `liquid_type` (`"acid"`, `"alkali"`, or `"neutral"`). 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The pH level
 ph_level = 6
 
@@ -421,7 +400,6 @@ Now, modify your code to set `liquid_type="unknown"` if `ph_level` does not lie 
 **Question 3:** The following code is intended to classify the state of water based on its temperature in °C:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Temperature in degrees celcius
 temperature = 120 
 
@@ -444,7 +422,6 @@ But at 120 °C, water should be a gas, not a liquid! Explain why this program gi
 **Question 4:** In the code box below, the variable `day_number` represents the day of the year. For example, if `day_number = 8`, the date is January 8th, and if `day_number = 32`, the date is February 1st. Write an `if` statement that determines the current month based on the value of `day_number`. *You may assume the year is not a leap year and that `day_number` is an integer strictly greater than `0` and strictly less than `366`.*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The number of days so far this year
 day_number = 87
 
@@ -454,7 +431,6 @@ day_number = 87
 **Question 5:** Now suppose you want to adapt your code from Question 4 so that `day_number` can fall outside the usual range of `1` to `365`. For example, `day_number = 366` should "wrap around" to January 1st, while day_number = 0 should correspond to December 31st. How would you modify your if statement to handle this? Write your code below. *For simplicity, you may continue to ignore leap years.*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The number of days
 day_number = 399
 
@@ -470,7 +446,6 @@ day_number = 399
    - Add an additional check if `distance_in_miles` is > 1 mile and print "Distance is more than 1 mile" if true.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Initial distance in km
 distance_in_km = 3.0
 
@@ -488,14 +463,12 @@ Unless...
 Modify the example of the [worked example section](#Worked-Example:-Determining-a-Leap-Year) to incorporate this final bullet point.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
 **Question 8:** By performing your own research online, explain what the keyword `pass` does in the code below and why you might use it.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set a boolean
 my_boolean = True
 
@@ -518,7 +491,6 @@ What do you think would happen if you removed the line with `pass` from the code
 It's now your turn. You are given the previous player's answer, `prev_answer`, along with the number they just counted, `prev_num`. Using an `if`–`elif`–`else` statement, print the correct response for your turn.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The previous player's answer
 prev_answer = "Fizz"
 
@@ -533,7 +505,6 @@ Modify your code so that if the previous player's answer was incorrect, your pro
 **Question 10:** The code below contains a horrendous nested `if` statement. By combining cases using the `and` and `or` operators, reduce the long nested `if` statement to a single `if`–`elif` statement.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = 30
 z = 4
 

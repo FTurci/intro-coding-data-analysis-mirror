@@ -12,14 +12,12 @@ One way to then plot this data would be to extract the index and/or multiple col
 As an example, we'll look at a new data file. This contains a simulation of the (fractional) concentration change for two species in a reaction, "A" and "B" where $A \rightarrow B$.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 data_filename = "data/FIRST ORDER_k=0.0005.txt"
 ```
 
 If we open this file more directly in Python when we looked at a text file) we can take quick look at the contents to see what this looks like:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 open_file = open(data_filename)
 data_from_file = open_file.read()
 print(data_from_file[0:200])
@@ -30,7 +28,6 @@ From printing out the first 200 characters, we can see this looks like a table o
 We will see in the next year that there are dedicate packages to manipulate large tabulated files. However, for now we can exploit `numpy` as a quick and effective way to read such input.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 data_kinetic_k0005 = np.genfromtxt("data/FIRST ORDER_k=0.0005.txt", names=True)
@@ -39,28 +36,24 @@ data_kinetic_k0005 = np.genfromtxt("data/FIRST ORDER_k=0.0005.txt", names=True)
 This is a special kind of array called a **structured** array, because it has **named fields**. You can check this by querying the subproperties of the array:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 data_kinetic_k0005.dtype.names
 ```
 
 These various **names are the fields** of the array, corresponding to the columns in the file. This syntax is reminiscent of what we have seen in the case of **dictionaries**, where **keys** are used to specific other objects stored in the dictionary.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 data_kinetic_k0005['A']
 ```
 
 This data also has a column for "Time" as the number of seconds elapsed.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 data_kinetic_k0005 ['Time']
 ```
 
 To create a plot for **time** vs **concentration of A**, we can extract this data from our array
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Extract time and concentration of A from our array
 time = data_kinetic_k0005['Time']
 concentration_A = data_kinetic_k0005["A"]
@@ -69,7 +62,6 @@ concentration_A = data_kinetic_k0005["A"]
 We could then use matplotlib to plot this:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 # Create our Figure and Axes objects for plotting
@@ -88,7 +80,6 @@ This simulation shows a clean relationship as concentration decreases over time 
 Suppose we want to filter our data and plot only concentrations less than 0.5. We can simply create a **boolean** array that masks the invalid data.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 mask = concentration_A <= 0.5
 concentration_A_low = concentration_A[mask]
 # Make sure to match the time values (index) to our filtered data
@@ -98,7 +89,6 @@ time_low = time[mask]
 Here we have filtered our data to include all fractional concentrations less than (or equal to) 0.5. Notice we have also matched our time values to plot to these concentrations by extracting the index from our new array `concentration_A_low`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create our Figure and Axes objects for plotting
 fig, ax = plt.subplots()
 
@@ -119,7 +109,6 @@ You can also see the slope is similiar (in fact it is the same) between our unfi
   - Can you include a label for A and B?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 ### ADD CODE HERE (copy code from above and add to this)
 
@@ -136,7 +125,6 @@ ax.legend()
 2. Calculate the the sum of the concentrations for these two columns (A and B).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 ### ADD CODE HERE
 
@@ -149,7 +137,6 @@ print(sum_concentration)
  - Consider: What does this sum tell us about "A" is decaying into "B"?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 ### ADD CODE HERE (copy code from previous question and add to this)
 

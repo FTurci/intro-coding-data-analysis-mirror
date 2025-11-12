@@ -11,7 +11,6 @@ Solve the following `numpy` riddles using `numpy` and its documentation.
 If possible, work in the **pair programming** paradigm: work in pairs, with one person taking the role of the **driver** (writing the code) and one taking the role of the **navigator** (reading and understanding the documentation). Alternate the roles. Try to find solutions that are **short** (i.e. few line sof code) but **easy to understand**.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 ```
 
@@ -21,7 +20,6 @@ import numpy as np
    - Example: `diagonal_sum([[1, 2, 3], [4, 5, 6], [7, 8, 9]]) -> 15`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR CODE HERE
 
 def diagonal_sum(seq):
@@ -37,7 +35,6 @@ diagonal_sum([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
    - Example: `unique_count([1, 2, 3, 2, 4, 1, 5]) -> 5`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR CODE HERE
 def unique_count(sequence):
     return np.unique(sequence).size
@@ -50,7 +47,6 @@ unique_count([1, 2, 3, 2, 4, 1, 5])
    - Riddle: A fair coin is tossed 20 times, and we win 1£ for every head and lose 1£ for every tail. Assuming that we start with no money at the beginning, and that the seed of teh default random number generator is `seed=1234`, how much money do we have at every succesive step?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR CODE HERE
 
 n_trials = 20
@@ -67,7 +63,6 @@ print("The amount we have after every coin tossing is", rng.choice([-1,1],n_tria
 Hint: you can use **list comprehension** and convert the final list to an array.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR CODE HERE
 
 def rolling_window(seq,window):
@@ -84,7 +79,6 @@ rolling_window([1, 2, 3, 4, 5], 3)
     - Example: `geometric_mean([1, 2, 3, 4, 5]) -> 10.954451150103322`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR CODE HERE
 
 
@@ -107,7 +101,6 @@ Hint2: For matplotlib's `plot`, use the pixel style `','`, and remmber to set th
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR CODE HERE
 npoints = 100_000
 theta = np.random.uniform(0, 2*np.pi, npoints)

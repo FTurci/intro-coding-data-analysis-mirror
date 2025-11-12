@@ -77,6 +77,7 @@ This string represents the sensor readings for the first trial. Each character c
 **Note:** Across the $100$ trials, several different picket fences were used. Some had the same number of bars, while others did not. Consequently, the number of black and white bars varied between trials.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # This code will load the data for you
 from src.photogate_data import read_photogate_data
 
@@ -101,6 +102,7 @@ Many trials contain one or more `'e'` (error) characters due to sensor glitches.
 For example, `'ooxexoeoxeeo'` would become `'ooxxxoooxxxo'`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -129,6 +131,7 @@ You should detect transitions at indices: `3`, `9`, and `16` (remember, Python s
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -161,6 +164,7 @@ Then you must compute the velocities:
 $$v_0= \frac{0.05}{0.0045-0.0015} = 16.66...\quad\text{and}\quad v_1= \frac{0.05}{0.0080-0.0045} = 14.28...$$
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -186,6 +190,7 @@ $$\overline{a}^{(j)} = \frac{1}{M_j} \sum_{k=1}^{M_j} a_k$$
 where $M_j$ is the number of acceleration values in trial $j$ (which is one less than the number of velocities).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -202,6 +207,7 @@ $$
 This value, $\hat{g}$, represents your best overall estimate of the acceleration due to gravity based on the experimental data. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
