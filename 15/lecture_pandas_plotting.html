@@ -1,0 +1,2077 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Plotting with pandas – Introduction to Coding and Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d69ecb9bfb3452960edd708ecf92c3b3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Intro to Coding &amp; Data Analysis</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lessons" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lessons</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lessons">    
+        <li>
+    <a class="dropdown-item" href="../01/week_01_home.html">
+ <span class="dropdown-text">01 - Introduction to Data Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02/week_02_home.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03/week_03_home.html">
+ <span class="dropdown-text">03 - Loops</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04/week_04_home.html">
+ <span class="dropdown-text">04 - Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05/week_05_home.html">
+ <span class="dropdown-text">05 - Consolidation: Python on the field</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/lecture_intro_numpy.html">
+ <span class="dropdown-text">07 - Introduction to NumPy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - Working with NumPy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/lecture_intro_matplotlib.html">
+ <span class="dropdown-text">09 - Introduction to Matplotlib</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/lecture_multidimensionalArrays.html">
+ <span class="dropdown-text">10 - Multidimensional Arrays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/lecture_beyond_the_notebook.html">
+ <span class="dropdown-text">11 - Beyond the Notebook</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../13/lecture_pandas.html">
+ <span class="dropdown-text">13 - <code>pandas</code> series and data frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../14/lecture_pandas_preprocessing.html">
+ <span class="dropdown-text">14 - Pre-processing data frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../15/lecture_pandas_plotting.html">
+ <span class="dropdown-text">15 - Plotting with <code>pandas</code></span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exercises">    
+        <li>
+    <a class="dropdown-item" href="../01/exercises_intro.html">
+ <span class="dropdown-text">01 - Intro to Data Types Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02/exercises_bool.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03/exercises_loop.html">
+ <span class="dropdown-text">03 - Loops Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04/exercises_function.html">
+ <span class="dropdown-text">04 - Functions Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05/exercises_python_on_the_field.html">
+ <span class="dropdown-text">05 - Python in the Field Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/exercises_numpy.html">
+ <span class="dropdown-text">07 - NumPy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/exercises_lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - Working with Numpy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/exercises_plotting_data_from_file.html">
+ <span class="dropdown-text">09 - Plotting Data Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_multid.html">
+ <span class="dropdown-text">10 - Working with multidimensional arrays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_riddles.html">
+ <span class="dropdown-text">11 - Riddles</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../13/exercises_pandas_basics.html">
+ <span class="dropdown-text">13 - Pandas Basics Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../14/exercises_pandas_preprocessing.html">
+ <span class="dropdown-text">14 - Pandas Preprocessing Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../15/exercises_pandas_plotting.html">
+ <span class="dropdown-text">15 - Pandas Plotting Exercises</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-solutions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Solutions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-solutions">    
+        <li>
+    <a class="dropdown-item" href="../01/week_01_solutions_demonstrator_version.html">
+ <span class="dropdown-text">01 - Intro to Data Types Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02/week_02_solutions_demonstrator_version.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03/week_03_solutions_demonstrator_version.html">
+ <span class="dropdown-text">03 - Loops Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04/week_04_solutions_demonstrator_version.html">
+ <span class="dropdown-text">04 - Functions Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05/week_05_solutions_demonstrator_version.html">
+ <span class="dropdown-text">05 - Python in the Field Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/exercises_numpy_solutions.html">
+ <span class="dropdown-text">07 - NumPy Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/exercises_lecture_working_with_numpy_solutions.html">
+ <span class="dropdown-text">08 - NumPy Working Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/exercises_plotting_data_from_file_solutions.html">
+ <span class="dropdown-text">09 - Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part1_solutions.html">
+ <span class="dropdown-text">10 - Part 1 Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part2_solutions.html">
+ <span class="dropdown-text">10 - Part 2 Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_numpy_riddles_solutions.html">
+ <span class="dropdown-text">11 - NumPy Riddles Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_python_riddles_solutions.html">
+ <span class="dropdown-text">11 - Python Riddles Solutions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-formative-tests" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Formative tests</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-formative-tests">    
+        <li>
+    <a class="dropdown-item" href="../formative/basic_structures.html">
+ <span class="dropdown-text">Variables, lists, dictionaries and branches</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../formative/numpy_basics.html">
+ <span class="dropdown-text">Basic numpy structures</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../15/lecture_pandas_plotting.html">15 Plotting with <code>pandas</code></a></li><li class="breadcrumb-item"><a href="../15/lecture_pandas_plotting.html">Plotting with <code>pandas</code></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../figs/banner.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../figs/banner.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Overview</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Coding and Data Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">01 Introduction to Data Types</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Data Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: Basic Data Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Collections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Copying and References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">02 Booleans and Conditionals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Booleans and Conditionals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: If Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Match Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Conditional Expressions and Lazy Evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">03 Loops</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_loops_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: For and While Loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_loops_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Advanced Iteration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_loops_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Comprehensions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">04 Functions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_functions_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: Defining Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_functions_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Flexible Inputs and Outputs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_functions_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Lambda Functions and Functional Programming</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">05 Consolidation: Python in the field</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consolidation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_chemistry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Consolidation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_physics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Week 5: Consolidation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_data_science_quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Science Challenge</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">06 Consolidation week</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">07 Introduction to NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07/lecture_intro_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The <code>numpy</code> module</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07/exercises_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>numpy</code> Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">08 Working with NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Indexing and Random Data Generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/exercises_lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with <code>numpy</code>: Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">09 Introduction to Matplotlib</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/lecture_intro_matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>matplotlib</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/exercises_plotting_data_from_file.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting data from file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/fun_matplotlib_decoration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Add some decoration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">10 Multidimensional Arrays</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/lecture_multidimensionalArrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-dimensional arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating a mask containing a circle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using a mask</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">11 Beyond the Notebook</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/lecture_beyond_the_notebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beyond the notebook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/exercises_riddles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Riddles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">12 Winter break</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">13 <code>pandas</code> series and data frames</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13/lecture_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13/exercises_pandas_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Basics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">14 Pre-processing data frames</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14/lecture_pandas_preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Pre-processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14/exercises_pandas_preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Data Preprocessing - Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true">
+ <span class="menu-text">15 Plotting with <code>pandas</code></span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15/lecture_pandas_plotting.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Plotting with <code>pandas</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15/exercises_pandas_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deforestation Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#plotting-with-series" id="toc-plotting-with-series" class="nav-link active" data-scroll-target="#plotting-with-series">Plotting with Series</a></li>
+  <li><a href="#plotting-with-dataframes" id="toc-plotting-with-dataframes" class="nav-link" data-scroll-target="#plotting-with-dataframes">Plotting with DataFrames</a></li>
+  <li><a href="#subplots" id="toc-subplots" class="nav-link" data-scroll-target="#subplots">Subplots</a></li>
+  <li><a href="#working-with-time-series-data" id="toc-working-with-time-series-data" class="nav-link" data-scroll-target="#working-with-time-series-data">Working with time series data</a>
+  <ul class="collapse">
+  <li><a href="#world-population-over-time" id="toc-world-population-over-time" class="nav-link" data-scroll-target="#world-population-over-time">World population over time</a></li>
+  <li><a href="#temperature-anomalies---monthly-data" id="toc-temperature-anomalies---monthly-data" class="nav-link" data-scroll-target="#temperature-anomalies---monthly-data">Temperature anomalies - monthly data</a></li>
+  </ul></li>
+  <li><a href="#smoothing-the-data" id="toc-smoothing-the-data" class="nav-link" data-scroll-target="#smoothing-the-data">Smoothing the data</a></li>
+  <li><a href="#saving-the-results" id="toc-saving-the-results" class="nav-link" data-scroll-target="#saving-the-results">Saving the results</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../15/lecture_pandas_plotting.html">15 Plotting with <code>pandas</code></a></li><li class="breadcrumb-item"><a href="../15/lecture_pandas_plotting.html">Plotting with <code>pandas</code></a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Plotting with <code>pandas</code></h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Pandas provides built-in plotting capabilities that make it easy to visualize data stored in DataFrames and Series. It leverages the <code>matplotlib</code> library under the hood, allowing users to create a variety of plots with minimal code.</p>
+<p>The framework for plotting is data-centric, meaning that plots are generated directly from the data structures in pandas. This allows for quick and efficient visualization of data without needing to manually extract and format data for plotting.</p>
+<p>Compared to what you have already seen in <code>matplotlib</code>, pandas plotting is often more straightforward and requires less boilerplate code. It means, however, that fine tuning is sometimes less flexible than using <code>matplotlib</code> directly.</p>
+<section id="plotting-with-series" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-with-series">Plotting with Series</h2>
+<p>The basic <code>pandas</code> object is the Series. Series have a <code>.plot()</code> method that can be used to create various types of plots.</p>
+<div>
+<div id="pyodide-1" class="exercise-cell">
+
+</div>
+<script type="pyodide-1-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IHBhbmRhcyBhcyBwZFxuXG5cbiMgQ3JlYXRlIGFuIGV4YW1wbGUgc2VyaWVzXG5zZXJpZXMgPSBwZC5TZXJpZXMoWzEwLCAyNSwgMTUsIDMwLCAyMF0sIGluZGV4PVsnQScsICdCJywgJ0MnLCAnRCcsICdFJ10pXG5wcmludChzZXJpZXMpXG5cbnNlcmllcy5wbG90KCkifQ==
+</script>
+</div>
+<p>We notice a few features:</p>
+<ul>
+<li>the <code>plot()</code> method is called directly on the pandas object (in this case, a Series).</li>
+<li>without any additional arguments, it defaults to a line plot and it uses:
+<ul>
+<li>the index of the Series for the x-axis,</li>
+<li>the values of the Series for the y-axis.</li>
+</ul></li>
+<li>labels are inferred automatically for the axes (in this case the categorical names of the x-axis)</li>
+</ul>
+<p>The <code>.plot()</code> method has various parameters. The most important one is <code>kind</code>, which specifies the type of plot to create. Some common plot types include: - <code>'line'</code>: Line plot (default) - <code>'bar'</code>: Vertical bar plot - <code>'barh'</code>: Horizontal bar plot - <code>'hist'</code>: Histogram - <code>'box'</code>: Box plot - <code>'scatter'</code>: Scatter plot (requires <code>x</code> and <code>y</code> parameters) - <code>'pie'</code>: Pie chart</p>
+<p>Other parameters allow customization of the plot, such as titles, labels, colors, and more.</p>
+<p>Let’s see some examples:</p>
+<div>
+<div id="pyodide-2" class="exercise-cell">
+
+</div>
+<script type="pyodide-2-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2VyaWVzLnBsb3Qoa2luZD0nYmFyJywgdGl0bGU9J0JhciBQbG90IG9mIFNlcmllcycsIGNvbG9yPSdza3libHVlJywgeGxhYmVsPSdDYXRlZ29yaWVzJywgeWxhYmVsPSdWYWx1ZXMnKSJ9
+</script>
+</div>
+<div>
+<div id="pyodide-3" class="exercise-cell">
+
+</div>
+<script type="pyodide-3-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2VyaWVzLnBsb3Qoa2luZD0ncGllJywgdGl0bGU9J1BpZSBDaGFydCBvZiBTZXJpZXMnLCBhdXRvcGN0PSclMS4xZiUlJywgc3RhcnRhbmdsZT05MCkifQ==
+</script>
+</div>
+<p>A <strong>box</strong> plot is diffeeent is it allows one to view the distribution of the data in a simplified form: it shows the median, quartiles, and potential outliers of the data i a single plot.</p>
+<div>
+<div id="pyodide-4" class="exercise-cell">
+
+</div>
+<script type="pyodide-4-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2VyaWVzLnBsb3Qoa2luZD0nYm94JywgdGl0bGU9J0JveCBQbG90IG9mIFNlcmllcycpIn0=
+</script>
+</div>
+</section>
+<section id="plotting-with-dataframes" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-with-dataframes">Plotting with DataFrames</h2>
+<p>As we have seen earlier, when working with <code>pandas</code> we typically use Dataframes (i.e.&nbsp;collections of Series). DataFrames also have a <code>.plot()</code> method that can be used to create various types of plots.</p>
+<p>When plotting a DataFrame, the default behavior is to plot each column as a separate line (or bar, etc.) on the same axes. The index of the DataFrame is used for the x-axis.</p>
+<div>
+<div id="pyodide-5" class="exercise-cell">
+
+</div>
+<script type="pyodide-5-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDcmVhdGUgYSBEYXRhRnJhbWUgd2l0aCBjcm9wIHlpZWxkIGRhdGEgYWNyb3NzIGRpZmZlcmVudCBtb250aHNcbmRmID0gcGQuRGF0YUZyYW1lKHtcbiAgICAnTW9udGgnOiBbJ0phbicsICdGZWInLCAnTWFyJywgJ0FwcicsICdNYXknLCAnSnVuJ10sXG4gICAgJ1doZWF0X1lpZWxkJzogWzIuNSwgMi44LCAzLjIsIDMuOCwgNC4yLCA0LjVdLFxuICAgICdDb3JuX1lpZWxkJzogWzEuOCwgMi4xLCAyLjYsIDMuNCwgNC4xLCA0LjhdLFxuICAgICdSaWNlX1lpZWxkJzogWzIuMiwgMi40LCAyLjksIDMuMywgMy45LCA0LjNdLFxuICAgICdTb3liZWFuX1lpZWxkJzogWzEuNSwgMS45LCAyLjMsIDIuOCwgMy41LCA0LjBdXG59KVxuXG5cbiMgUGxvdCB0aGUgRGF0YUZyYW1lXG5kZi5wbG90KHg9J01vbnRoJywga2luZD0nbGluZScsIFxuICAgICAgICB0aXRsZT0nQ3JvcCBZaWVsZHMgT3ZlciBHcm93aW5nIFNlYXNvbicsIFxuICAgICAgICB4bGFiZWw9J01vbnRoJywgeWxhYmVsPSdZaWVsZCAodG9ucyBwZXIgaGVjdGFyZSknKSJ9
+</script>
+</div>
+<p>Notice that we obly had to specify the variable on the x-axis and pandas inferred the res, consructing a legend automatically.</p>
+<p>You can have more control and specify which columns to plot on the x and y axes using the <code>x</code> and <code>y</code> parameters.</p>
+<div>
+<div id="pyodide-6" class="exercise-cell">
+
+</div>
+<script type="pyodide-6-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGYucGxvdCgga2luZD0nbGluZScsXG4gICAgICAgIHg9J01vbnRoJyxcbiAgICAgICAgeT1bJ1doZWF0X1lpZWxkJywgJ0Nvcm5fWWllbGQnXSxcbiAgICAgICAgdGl0bGU9J0Nyb3AgWWllbGRzIE92ZXIgR3Jvd2luZyBTZWFzb24nLCBcbiAgICAgICAgeGxhYmVsPSdNb250aCcsIHlsYWJlbD0nWWllbGQgKHRvbnMgcGVyIGhlY3RhcmUpJykifQ==
+</script>
+</div>
+<p>Suppose we also wanted the data points to be marked with circles, we could use the <code>style</code> parameter:</p>
+<div>
+<div id="pyodide-7" class="exercise-cell">
+
+</div>
+<script type="pyodide-7-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGYucGxvdCgga2luZD0nbGluZScsXG4gICAgICAgIHN0eWxlPSctLW8nLFxuICAgICAgICB4PSdNb250aCcsXG4gICAgICAgIHk9WydXaGVhdF9ZaWVsZCcsICdDb3JuX1lpZWxkJ10sXG4gICAgICAgIHRpdGxlPSdDcm9wIFlpZWxkcyBPdmVyIEdyb3dpbmcgU2Vhc29uJywgXG4gICAgICAgIHhsYWJlbD0nTW9udGgnLCB5bGFiZWw9J1lpZWxkICh0b25zIHBlciBoZWN0YXJlKScpIn0=
+</script>
+</div>
+<p>Additional parameters can be used to tune the figure property, e.g.&nbsp;the figure size:</p>
+<div>
+<div id="pyodide-8" class="exercise-cell">
+
+</div>
+<script type="pyodide-8-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGYucGxvdCgga2luZD0nbGluZScsXG4gICAgICAgIHN0eWxlPSctLW8nLFxuICAgICAgICB4PSdNb250aCcsXG4gICAgICAgIHk9WydXaGVhdF9ZaWVsZCcsICdDb3JuX1lpZWxkJ10sXG4gICAgICAgIHRpdGxlPSdDcm9wIFlpZWxkcyBPdmVyIEdyb3dpbmcgU2Vhc29uJywgXG4gICAgICAgIHhsYWJlbD0nTW9udGgnLCB5bGFiZWw9J1lpZWxkICh0b25zIHBlciBoZWN0YXJlKScsXG4gICAgICAgIGZpZ3NpemU9KDUsMykpIn0=
+</script>
+</div>
+</section>
+<section id="subplots" class="level2">
+<h2 class="anchored" data-anchor-id="subplots">Subplots</h2>
+<p>In <code>matplotlib</code>, one can create multiple axes in a single figure using subplots. Pandas also supports this functionality through the <code>subplots</code> parameter in the <code>.plot()</code> method.</p>
+<p>When <code>subplots=True</code> is specified, each column of the DataFrame is plotted in its own subplot.</p>
+<div>
+<div id="pyodide-9" class="exercise-cell">
+
+</div>
+<script type="pyodide-9-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGYucGxvdCgga2luZD0nbGluZScsXG4gICAgICAgIHN0eWxlPSctLW8nLFxuICAgICAgICB4PSdNb250aCcsXG4gICAgICAgIHhsYWJlbD0nTW9udGgnLCBcbiAgICAgICAgeWxhYmVsPSdZaWVsZFxcbih0b25zIHBlciBoZWN0YXJlKScsXG4gICAgICAgIHN1YnBsb3RzPVRydWUsXG4gICAgICAgIGZpZ3NpemU9KDUsOClcbiAgICAgICAgXG4gICAgICAgICkifQ==
+</script>
+</div>
+<p>We can specify the structure of the subplot grid using the <code>layout</code> parameter, which takes a tuple indicating the number of rows and columns.</p>
+<div>
+<div id="pyodide-10" class="exercise-cell">
+
+</div>
+<script type="pyodide-10-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGYucGxvdCgga2luZD0nbGluZScsXG4gICAgICAgIHN0eWxlPSctLW8nLFxuICAgICAgICB4PSdNb250aCcsXG4gICAgICAgIHhsYWJlbD0nTW9udGgnLCBcbiAgICAgICAgeWxhYmVsPSdZaWVsZFxcbih0b25zIHBlciBoZWN0YXJlKScsXG4gICAgICAgIHN1YnBsb3RzPVRydWUsXG4gICAgICAgIGxheW91dCA9KDIsMiksXG4gICAgICAgIGZpZ3NpemU9KDUsNSlcbiAgICAgICAgXG4gICAgICAgICk7In0=
+</script>
+</div>
+<p>But what if we want to refine the individual subplots? For example, we may be unhappy with the labels of the various plots here. We need to store the results of the plotting operation and then modify each axis individually.</p>
+<p>The result of the <code>.plot()</code> method when <code>subplots=True</code> is an array of <code>matplotlib</code> Axes objects, which can be further customized.</p>
+<div>
+<div id="pyodide-11" class="exercise-cell">
+
+</div>
+<script type="pyodide-11-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBjYXB0dXJpbmcgdGhlIEF4ZXMgb2JqZWN0XG5heGVzID0gZGYucGxvdCgga2luZD0nbGluZScsXG4gICAgICAgIHN0eWxlPSctLW8nLFxuICAgICAgICB4PSdNb250aCcsXG4gICAgICAgIHhsYWJlbD0nTW9udGgnLCBcbiAgICAgICAgeWxhYmVsPSdZaWVsZFxcbih0b25zIHBlciBoZWN0YXJlKScsXG4gICAgICAgIHN1YnBsb3RzPVRydWUsXG4gICAgICAgIGxheW91dCA9KDIsMiksXG4gICAgICAgIGZpZ3NpemU9KDUsNSlcbiAgICAgICAgKVxuXG4jIG1vZGlmeSB0aGUgbGFiZWwgaW4gdGhlIGZpcnN0IHN1YnBsb3RcbmF4ZXNbMCwwXS5nZXRfbGluZXMoKVswXS5zZXRfbGFiZWwoJ1doZWF0JykgICMgd2UgdXNlIGdldF9saW5lcygpIHRvIGFjY2VzcyB0aGUgbGluZSBvYmplY3RzLCBwaWNrIHRoZSBmaXJzdCAoYW5kIG9ubHkgKSBvbmUsIGFuZCBzZXQgaXRzIGxhYmVsXG5cbmF4ZXNbMCwwXS5sZWdlbmQoKSAgIyB0aGVuIHdlIG5lZWQgdG8gY2FsbCBsZWdlbmQoKSB0byB1cGRhdGUgdGhlIGxlZ2VuZCB3aXRoIHRoZSBuZXcgbGFiZWwifQ==
+</script>
+</div>
+<p>It is clear that in this sense, it may be useful to think of <strong>good column names</strong> when planning to plot data from a DataFrame.</p>
+</section>
+<section id="working-with-time-series-data" class="level2">
+<h2 class="anchored" data-anchor-id="working-with-time-series-data">Working with time series data</h2>
+<section id="world-population-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="world-population-over-time">World population over time</h3>
+<p>As mentioned in the previous chapter, <code>pandas</code> has an exceptional support for time series data. This extends to plotting as well.</p>
+<p>When plotting time series data, <code>pandas</code> automatically handles the date formatting on the x-axis, making it easy to visualize trends over time.</p>
+<p>We are going to see this by using datsets from <a href="https://ourworldindata.org/">Our World in Data</a>, an excellent resource for open data on a variety of topics. These are provided as downloadable CSV files that can be easily loaded into pandas DataFrames.</p>
+<p>For EXAMPLE, let us take the world population data.</p>
+<div>
+<div id="pyodide-12" class="exercise-cell">
+
+</div>
+<script type="pyodide-12-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IHBhbmRhcyBhcyBwZFxuXG5kZl9wb3B1bGF0aW9uID0gcGQucmVhZF9jc3YoXCJodHRwczovL291cndvcmxkaW5kYXRhLm9yZy9ncmFwaGVyL3BvcHVsYXRpb24uY3N2P3Y9MSZjc3ZUeXBlPWZ1bGwmdXNlQ29sdW1uU2hvcnROYW1lcz10cnVlXCIpXG5kZl9wb3B1bGF0aW9uIn0=
+</script>
+</div>
+<p>The dataset contains population estimates for various countries over time (from 10000 BCE to today!). , By default it is simply indexed by row number, so all countries are jumbled together.</p>
+<p>A simple operation we could do would be to filter the data for a specific country, say India, and then plot its population over time.</p>
+<div>
+<div id="pyodide-13" class="exercise-cell">
+
+</div>
+<script type="pyodide-13-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfaW5kaWEgPSBkZl9wb3B1bGF0aW9uW2RmX3BvcHVsYXRpb25bJ0VudGl0eSddID09ICdJbmRpYSddXG5kZl9pbmRpYS5wbG90KHg9J1llYXInLCB5PSdwb3B1bGF0aW9uX2hpc3RvcmljYWwnLCB0aXRsZT0nUG9wdWxhdGlvbiBvZiBJbmRpYSBPdmVyIFRpbWUnLCB4bGFiZWw9J1llYXInLCB5bGFiZWw9J1BvcHVsYXRpb24nKSJ9
+</script>
+</div>
+<p>We can also select multiple countries to compare their population growth over time.</p>
+<p>Notice however that we do not have distinct columns for each country, so we cannot use the DataFrame plotting capabilities directly.</p>
+<p>A somewhat cumbersome way is to loop over the countries and plot each one individually on the same axes. for this, we need to store the axes object returned by the first plot call, and then pass it to the subsequent calls.)</p>
+<div>
+<div id="pyodide-14" class="exercise-cell">
+
+</div>
+<script type="pyodide-14-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2VsZWN0aW9uID0gWydGcmFuY2UnLCAnU3lyaWEnLCAnTWV4aWNvJywnRXRoaW9waWEnLCAnQ2hpbmEnLCAnSW5kaWEnXVxuIyBzZXQgdGltZSByYW5nZVxudGltZV9yYW5nZSA9ICgxMDAwLCAyMDI1KVxuXG5mb3IgaSxjb3VudHJ5IGluIGVudW1lcmF0ZShzZWxlY3Rpb24pOiAjdXNlIGVudW1lcmF0ZSB0byBnZXQgYm90aCBpbmRleCBhbmQgY291bnRyeVxuICAgIGRmX2NvdW50cnkgPSBkZl9wb3B1bGF0aW9uW2RmX3BvcHVsYXRpb25bJ0VudGl0eSddID09IGNvdW50cnldXG4gICAgaWYgaSA9PSAwIDpcbiAgICAgICAgIyBzdG9yZSB0aGUgYXhpc1xuICAgICAgICBheGlzID0gIGRmX2NvdW50cnkucGxvdCh4PSdZZWFyJywgeT0ncG9wdWxhdGlvbl9oaXN0b3JpY2FsJyx4bGFiZWw9J1llYXInLCB5bGFiZWw9J1BvcHVsYXRpb24nLGxhYmVsPWNvdW50cnksIHhsaW09dGltZV9yYW5nZSxsb2d5PVRydWUpXG4gICAgZWxzZTpcbiAgICAgICAgZGZfY291bnRyeS5wbG90KHg9J1llYXInLCB5PSdwb3B1bGF0aW9uX2hpc3RvcmljYWwnLCBheD1heGlzLCBsYWJlbD1jb3VudHJ5LHhsaW09dGltZV9yYW5nZSxsb2d5PVRydWUpICAjIHBhc3MgdGhlIGF4aXMgdG8gcGxvdCBvbiB0aGUgZXhpc3RpbmcgYXhpcyJ9
+</script>
+</div>
+<p>The plot above is rich: it provides a lot of information, it is tuned to plot only a specific time range and subset of data, it adapts the y-axis to a logarithmic scale to better visualize growth rates, and it includes labels and a legend for clarity.</p>
+<p>However, it is a bit complex, withe explicit loops and multiple plot calls.</p>
+<p>There is a simpler way to achieve the same result by reshaping the DataFrame using the <code>pivot</code> method. This creates a new DataFrame where each country becomes a separate column, making it easier to plot multiple countries at once.</p>
+<div>
+<div id="pyodide-15" class="exercise-cell">
+
+</div>
+<script type="pyodide-15-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfcG9wdWxhdGlvbl9waXZvdCA9IGRmX3BvcHVsYXRpb24ucGl2b3QoaW5kZXg9J1llYXInLCBjb2x1bW5zPSdFbnRpdHknLCB2YWx1ZXM9J3BvcHVsYXRpb25faGlzdG9yaWNhbCcpXG5cbmRmX3BvcHVsYXRpb25fcGl2b3QifQ==
+</script>
+</div>
+<p>Now, plotting is straightforward, as we can directly use the DataFrame’s <code>.plot()</code> method to visualize the population of multiple countries over time.</p>
+<div>
+<div id="pyodide-16" class="exercise-cell">
+
+</div>
+<script type="pyodide-16-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfcG9wdWxhdGlvbl9waXZvdC5wbG90KHk9c2VsZWN0aW9uLCB4bGFiZWw9J1llYXInLCB5bGFiZWw9J1BvcHVsYXRpb24nLCB0aXRsZT0nUG9wdWxhdGlvbiBPdmVyIFRpbWUnLCB4bGltPXRpbWVfcmFuZ2UsIGxvZ3k9VHJ1ZSwgc3R5bGU9Jy0tbycpOyJ9
+</script>
+</div>
+<p>Notice, however, that we get some broken lines in the data. This is because the pivoting is producing NaN values for years where a country does not have data. By default, pandas does not plot these points, resulting in breaks in the lines.</p>
+<p>The easy fix is to fill the NaN values, for example via <strong>interpolation</strong> (which we mentioned <a href="../14/lecture_pandas_preprocessing.html">previously</a>). This can be done <em>one the fly</em>.</p>
+<div>
+<div id="pyodide-17" class="exercise-cell">
+
+</div>
+<script type="pyodide-17-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfcG9wdWxhdGlvbl9waXZvdC5pbnRlcnBvbGF0ZShraW5kPVwibGluZWFyXCIpLnBsb3QoeT1zZWxlY3Rpb24sIHhsYWJlbD0nWWVhcicsIHlsYWJlbD0nUG9wdWxhdGlvbicsIHRpdGxlPSdQb3B1bGF0aW9uIE92ZXIgVGltZScsIHhsaW09dGltZV9yYW5nZSwgbG9neT1UcnVlLCApIn0=
+</script>
+</div>
+<p>Notice the structure of the pivoted dataframe</p>
+<div>
+<div id="pyodide-18" class="exercise-cell">
+
+</div>
+<script type="pyodide-18-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfcG9wdWxhdGlvbl9waXZvdCJ9
+</script>
+</div>
+<p>The index is now the year, and each column corresponds to a country. This structure is ideal for plotting time series data for multiple entities.</p>
+<p>However, at this stage, we are not truly leveraging the datetime capabilties of pandas since the index is still just integers representing years, as it can be easily verified</p>
+<div>
+<div id="pyodide-19" class="exercise-cell">
+
+</div>
+<script type="pyodide-19-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfcG9wdWxhdGlvbl9waXZvdC5pbmRleC5kdHlwZSJ9
+</script>
+</div>
+</section>
+<section id="temperature-anomalies---monthly-data" class="level3">
+<h3 class="anchored" data-anchor-id="temperature-anomalies---monthly-data">Temperature anomalies - monthly data</h3>
+<p>Let us consider a more complex data set where data are provided on a monthly basis.</p>
+<div>
+<div id="pyodide-20" class="exercise-cell">
+
+</div>
+<script type="pyodide-20-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzID0gcGQucmVhZF9jc3YoXCJodHRwczovL291cndvcmxkaW5kYXRhLm9yZy9ncmFwaGVyL2dsb2JhbC10ZW1wZXJhdHVyZS1hbm9tYWxpZXMtYnktbW9udGguY3N2P3Y9MSZjc3ZUeXBlPWZ1bGwmdXNlQ29sdW1uU2hvcnROYW1lcz1mYWxzZVwiKVxuZGZfYW5vbWFsaWVzIn0=
+</script>
+</div>
+<p>Here the data is organised in a very different way: each row corresponds to a specific month and year for a country, and the date information is split across two columns (<code>year</code> and <code>month</code>).</p>
+<p>What if we want to plot the time series directly? This seems a bit complicated. Here <code>pandas</code> can come to the rescue.</p>
+<p>What we want to do is to create a new dataframe that has a proper datetime index. We can do this by combining the <code>year</code> and <code>month</code> columns into a single datetime column using the <code>pd.to_datetime()</code> function.</p>
+<p>The startegy is as follows:</p>
+<ul>
+<li>We aim to construct a time stamp in the format <code>YYYY-MM-DD</code> (year-month-day).</li>
+<li>we extract the year and month columns from the DataFrame, casting them to strings. we assume the day to be the first of each month (<code>'01'</code>).</li>
+<li>We concatenate these strings with hyphens to form a complete date string.</li>
+<li>We then convert this string to a datetime object using <code>pd.to_datetime()</code>.</li>
+</ul>
+<div>
+<div id="pyodide-21" class="exercise-cell">
+
+</div>
+<script type="pyodide-21-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzWydUaW1lJ10gPSBwZC50b19kYXRldGltZShkZl9hbm9tYWxpZXNbJ1llYXInXS5hc3R5cGUoc3RyKSArICctJyArIGRmX2Fub21hbGllc1snRW50aXR5J10gKyAnLTAxJywgZm9ybWF0PSclWS0lQi0lZCcpICMgY29uc3RydWN0aW5nIGEgZGF0ZXRpbWUgY29sdW1uXG5cbmRmX2Fub21hbGllcyJ9
+</script>
+</div>
+<p>We can now set this new datetime column as the index of the DataFrame.</p>
+<div>
+<div id="pyodide-22" class="exercise-cell">
+
+</div>
+<script type="pyodide-22-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzLnNldF9pbmRleCgnVGltZScsIGlucGxhY2U9VHJ1ZSkifQ==
+</script>
+</div>
+<p>Plotting should be trivial, shouldn’t it?</p>
+<div>
+<div id="pyodide-23" class="exercise-cell">
+
+</div>
+<script type="pyodide-23-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzLnBsb3QoeT0nVGVtcGVyYXR1cmUgYW5vbWFseScsIHRpdGxlPSdHbG9iYWwgVGVtcGVyYXR1cmUgQW5vbWFsaWVzIE92ZXIgVGltZScsIHhsYWJlbD0nWWVhcicsIHlsYWJlbD0nVGVtcGVyYXR1cmUgQW5vbWFseSAowrBDKScpOyJ9
+</script>
+</div>
+<p>What happened? The data is still sorted in the original order (alphabetically by month) we artificially connects the points produce the appearance of multiple jagged lines.</p>
+<p>The solution is the simply sort the index before plotting.</p>
+<div>
+<div id="pyodide-24" class="exercise-cell">
+
+</div>
+<script type="pyodide-24-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzLnNvcnRfaW5kZXgoaW5wbGFjZT1UcnVlKSJ9
+</script>
+</div>
+<div>
+<div id="pyodide-25" class="exercise-cell">
+
+</div>
+<script type="pyodide-25-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzLnBsb3QoeT0nVGVtcGVyYXR1cmUgYW5vbWFseScsIHRpdGxlPSdHbG9iYWwgVGVtcGVyYXR1cmUgQW5vbWFsaWVzIE92ZXIgVGltZScsIHhsYWJlbD0nWWVhcicsIHlsYWJlbD0nVGVtcGVyYXR1cmUgQW5vbWFseSAowrBDKScpOyJ9
+</script>
+</div>
+</section>
+</section>
+<section id="smoothing-the-data" class="level2">
+<h2 class="anchored" data-anchor-id="smoothing-the-data">Smoothing the data</h2>
+<p>The signal from the temperature anomalies is quite noisy. One way to better visualize trends in such data is to apply a smoothing technique, such as a <strong>rolling mean</strong>.</p>
+<p>A <strong>rolling mean</strong> (or <em>moving average</em>) computes the average of a specified number of data points (the window) as it moves along the time series. This helps to smooth out short-term fluctuations and highlight longer-term trends.</p>
+<p>Pandas focuses our attention on the overall workflow, so operations like smoothing are already built-in and easy to apply.</p>
+<p>The idea in <code>pandas</code> is that moving averages are a particular case of the more general concept of <strong>rolling windows</strong>. A rolling window allows us to perform operations on a sliding window of data points.</p>
+<p>For this, any dataframe or series has a <code>.rolling()</code> method that creates a rolling window object. We can then apply various aggregation functions to this object, such as <code>mean()</code>, <code>sum()</code>, etc.</p>
+<p>Let’see how this works with out temperature anomalies data.</p>
+<p>We can invoke the <code>.rolling()</code> method on the DataFrame, specifying the window size (e.g., 12 for a 12-month rolling mean). This produces a <code>Rolling</code> object, which, per se, does not contain any data yet.</p>
+<div>
+<div id="pyodide-26" class="exercise-cell">
+
+</div>
+<script type="pyodide-26-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzLnJvbGxpbmcod2luZG93PTEyKSJ9
+</script>
+</div>
+<p>To actually perform a calculation we need to instruct the rolling object to compute something over the selected window. For example, we can call the <code>mean()</code> method to compute the rolling mean. We do this via <strong>chaining</strong>: we call <code>.mean()</code> directly after <code>.rolling()</code>.</p>
+<p>We do it only on the numerical data we care about (i.e.&nbsp;the temperature anomalies), excluding the non-numerical columns like the <code>Entity</code> (which is the month)</p>
+<p>(Try and change the selection to include the <code>Entity</code> column and see what happens!)</p>
+<div>
+<div id="pyodide-27" class="exercise-cell">
+
+</div>
+<script type="pyodide-27-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzWydUZW1wZXJhdHVyZSBhbm9tYWx5J10ucm9sbGluZyh3aW5kb3c9MTIpLm1lYW4oKSJ9
+</script>
+</div>
+<p>Plotting can also be chained directly to the rolling mean calculation!</p>
+<div>
+<div id="pyodide-28" class="exercise-cell">
+
+</div>
+<script type="pyodide-28-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfYW5vbWFsaWVzWydUZW1wZXJhdHVyZSBhbm9tYWx5J10ucm9sbGluZyh3aW5kb3c9MTIpLm1lYW4oKS5wbG90KCkifQ==
+</script>
+</div>
+<p>We can now produce a richer plot by combining several ideas we have seen in this lecture:</p>
+<ul>
+<li>we can plot the original noisy data on a fustom figure with specific size and labels</li>
+<li>we can overlay the smoothed data (rolling mean) on top of the original data for comparison at different levels of smoothing</li>
+</ul>
+<div>
+<div id="pyodide-29" class="exercise-cell">
+
+</div>
+<script type="pyodide-29-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYXggPSBkZl9hbm9tYWxpZXMucGxvdCh5PSdUZW1wZXJhdHVyZSBhbm9tYWx5JywgdGl0bGU9J0dsb2JhbCBUZW1wZXJhdHVyZSBBbm9tYWxpZXMgT3ZlciBUaW1lJywgeGxhYmVsPSdZZWFyJywgeWxhYmVsPSdUZW1wZXJhdHVyZSBBbm9tYWx5ICjCsEMpJywgYWxwaGE9MC41KVxuZGZfYW5vbWFsaWVzWydUZW1wZXJhdHVyZSBhbm9tYWx5J10ucm9sbGluZyh3aW5kb3c9MTIpLm1lYW4oKS5wbG90KGF4PWF4LCBjb2xvcj0ncmVkJywgbGluZXdpZHRoPTIsIGxhYmVsPScxMi1Nb250aCBNb3ZpbmcgQXZlcmFnZScpXG5kZl9hbm9tYWxpZXNbJ1RlbXBlcmF0dXJlIGFub21hbHknXS5yb2xsaW5nKHdpbmRvdz0yNCkubWVhbigpLnBsb3QoYXg9YXgsIGNvbG9yPVwiI0E1RTU4OVwiLCBsaW5ld2lkdGg9MiwgbGFiZWw9JzI0LU1vbnRoIE1vdmluZyBBdmVyYWdlJylcbmRmX2Fub21hbGllc1snVGVtcGVyYXR1cmUgYW5vbWFseSddLnJvbGxpbmcod2luZG93PTEyMCxjZW50ZXI9VHJ1ZSkubWVhbigpLnBsb3QoYXg9YXgsIGNvbG9yPVwiIzRENTE0MlwiLCBsaW5ld2lkdGg9MiwgbGFiZWw9JzEwIFllYXJzIE1vdmluZyBBdmVyYWdlJykgIyBub3RpY2Ugd2UgY2VudHJlZCB0ZWggd2luZG93IGhlcmUhXG5heC5sZWdlbmQoKSJ9
+</script>
+</div>
+</section>
+<section id="saving-the-results" class="level2">
+<h2 class="anchored" data-anchor-id="saving-the-results">Saving the results</h2>
+<p>Finally, once we are happy with our plots, we may want to save them to files for later use or sharing. Pandas plotting returns a <code>matplotlib</code> Axes object, which can be used to save the figure using <code>matplotlib</code>’s <code>savefig()</code> function.</p>
+<p>There are a couple of ways.</p>
+<p>A first way is to use solely the axis object returned by the plot call. From the axis, we can get the figure using the <code>.figure</code> attribute, and then call <code>.savefig()</code> on it. In this case, we only use <code>pandas</code>.</p>
+<div>
+<div id="pyodide-30" class="exercise-cell">
+
+</div>
+<script type="pyodide-30-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYXggPSBkZl9hbm9tYWxpZXMucGxvdCh5PSdUZW1wZXJhdHVyZSBhbm9tYWx5JywgdGl0bGU9J0dsb2JhbCBUZW1wZXJhdHVyZSBBbm9tYWxpZXMgT3ZlciBUaW1lJywgeGxhYmVsPSdZZWFyJywgeWxhYmVsPSdUZW1wZXJhdHVyZSBBbm9tYWx5ICjCsEMpJywgYWxwaGE9MC41KVxuZGZfYW5vbWFsaWVzWydUZW1wZXJhdHVyZSBhbm9tYWx5J10ucm9sbGluZyh3aW5kb3c9MTIpLm1lYW4oKS5wbG90KGF4PWF4LCBjb2xvcj0ncmVkJywgbGluZXdpZHRoPTIsIGxhYmVsPScxMi1Nb250aCBNb3ZpbmcgQXZlcmFnZScpXG5kZl9hbm9tYWxpZXNbJ1RlbXBlcmF0dXJlIGFub21hbHknXS5yb2xsaW5nKHdpbmRvdz0yNCkubWVhbigpLnBsb3QoYXg9YXgsIGNvbG9yPVwiI0E1RTU4OVwiLCBsaW5ld2lkdGg9MiwgbGFiZWw9JzI0LU1vbnRoIE1vdmluZyBBdmVyYWdlJylcbmRmX2Fub21hbGllc1snVGVtcGVyYXR1cmUgYW5vbWFseSddLnJvbGxpbmcod2luZG93PTEyMCxjZW50ZXI9VHJ1ZSkubWVhbigpLnBsb3QoYXg9YXgsIGNvbG9yPVwiIzRENTE0MlwiLCBsaW5ld2lkdGg9MiwgbGFiZWw9JzEwIFllYXJzIE1vdmluZyBBdmVyYWdlJykgIyBub3RpY2Ugd2UgY2VudHJlZCB0ZWggd2luZG93IGhlcmUhXG5heC5sZWdlbmQoKVxuYXguZmlndXJlLnNhdmVmaWcoJ3RlbXBlcmF0dXJlX2Fub21hbGllcy5wbmcnLCBkcGk9MzAwKSJ9
+</script>
+</div>
+<p>Alternatively, we can import <code>matplotlib.pyplot</code> and use its <code>savefig()</code> function directly, passing the figure obtained from the axis object. This approach combines both <code>pandas</code> and <code>matplotlib</code>.</p>
+<div>
+<div id="pyodide-31" class="exercise-cell">
+
+</div>
+<script type="pyodide-31-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuYXggPSBkZl9hbm9tYWxpZXMucGxvdCh5PSdUZW1wZXJhdHVyZSBhbm9tYWx5JywgdGl0bGU9J0dsb2JhbCBUZW1wZXJhdHVyZSBBbm9tYWxpZXMgT3ZlciBUaW1lJywgeGxhYmVsPSdZZWFyJywgeWxhYmVsPSdUZW1wZXJhdHVyZSBBbm9tYWx5ICjCsEMpJywgYWxwaGE9MC41KVxuZGZfYW5vbWFsaWVzWydUZW1wZXJhdHVyZSBhbm9tYWx5J10ucm9sbGluZyh3aW5kb3c9MTIpLm1lYW4oKS5wbG90KGF4PWF4LCBjb2xvcj0ncmVkJywgbGluZXdpZHRoPTIsIGxhYmVsPScxMi1Nb250aCBNb3ZpbmcgQXZlcmFnZScpXG5kZl9hbm9tYWxpZXNbJ1RlbXBlcmF0dXJlIGFub21hbHknXS5yb2xsaW5nKHdpbmRvdz0yNCkubWVhbigpLnBsb3QoYXg9YXgsIGNvbG9yPVwiI0E1RTU4OVwiLCBsaW5ld2lkdGg9MiwgbGFiZWw9JzI0LU1vbnRoIE1vdmluZyBBdmVyYWdlJylcbmRmX2Fub21hbGllc1snVGVtcGVyYXR1cmUgYW5vbWFseSddLnJvbGxpbmcod2luZG93PTEyMCxjZW50ZXI9VHJ1ZSkubWVhbigpLnBsb3QoYXg9YXgsIGNvbG9yPVwiIzRENTE0MlwiLCBsaW5ld2lkdGg9MiwgbGFiZWw9JzEwIFllYXJzIE1vdmluZyBBdmVyYWdlJykgIyBub3RpY2Ugd2UgY2VudHJlZCB0ZWggd2luZG93IGhlcmUhXG5heC5sZWdlbmQoKVxucGx0LnNhdmVmaWcoJ3RlbXBlcmF0dXJlX2Fub21hbGllcy1tYXRwbG90bGliLnBuZycsIGRwaT0zMDApIn0=
+</script>
+</div>
+<p>This is a hint to a more general principle: since <code>pandas</code> plotting is built on top of <code>matplotlib</code>, any plot created with <code>pandas</code> can be further customized and manipulated using <code>matplotlib</code> functions and methods. This allows for greater flexibility and control over the final appearance of the plots.</p>
+
+
+<!-- -->
+
+<script type="pyodide-data">
+eyJvcHRpb25zIjp7ImVudiI6eyJQTE9UTFlfUkVOREVSRVIiOiJwbG90bHlfbWltZXR5cGUifSwiaW5kZXhVUkwiOiJodHRwczovL2Nkbi5qc2RlbGl2ci5uZXQvcHlvZGlkZS92MC4yOC4xL2Z1bGwvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsicHlvZGlkZV9odHRwIiwibWljcm9waXAiLCJpcHl0aG9uIl19fQ==
+</script>
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJweW9kaWRlLTMxIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMzEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTMxLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMzEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8zMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMzAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTMwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMzAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8zMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMzAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTI5IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjkgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTI5LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjktY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yOSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTI4IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjggPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTI4LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yOCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTI3IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjcgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTI3LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjctY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yNyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTI2IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjYgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTI2LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjYtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yNiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTI1IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjUgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTI1LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yNSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTI0IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjQgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTI0LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjQtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yNCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIzIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjMgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTIzLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjMtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yMyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjIgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTIyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIxIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTIxLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMjAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTIwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMjAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8yMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMjAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE5IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTkgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE5LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTktY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xOSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE4IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTggPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE4LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTgtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xOCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE3IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTcgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE3LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTctY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE2IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTYgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE2LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTYtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE1IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTUgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE1LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTUtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTE0IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTQgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTE0LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTQtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xNCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEzIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTMgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEzLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTMtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMyA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEyIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTIgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEyLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTItY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMiA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTExIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTEgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTExLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTEtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMSA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEwIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfcHlvZGlkZV9lZGl0b3JfMTAgPSB7XG4gIGNvbnN0IHsgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG5cbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLTEwLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMTAtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgUHlvZGlkZUV4ZXJjaXNlRWRpdG9yKFxuICAgIHB5b2RpZGVPanMucHlvZGlkZVByb21pc2UsXG4gICAgYmxvY2suY29kZSxcbiAgICBvcHRpb25zXG4gICk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fcHlvZGlkZV92YWx1ZV8xMCA9IHB5b2RpZGVPanMucHJvY2VzcyhfcHlvZGlkZV9lZGl0b3JfMTAsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTkiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl85ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS05LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzkgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzksIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTgiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl84ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS04LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtOC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzggPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzgsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTciLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl83ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS03LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzcgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzcsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTYiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl82ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS02LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzYgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzYsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl81ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS01LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzUgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzUsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTQiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl80ID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzQgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzQsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0zLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMy1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzMgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzMsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8yID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0yLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMi1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzIgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLTEiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF9weW9kaWRlX2VkaXRvcl8xID0ge1xuICBjb25zdCB7IFB5b2RpZGVFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwicHlvZGlkZS0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHB5b2RpZGUtMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBQeW9kaWRlRXhlcmNpc2VFZGl0b3IoXG4gICAgcHlvZGlkZU9qcy5weW9kaWRlUHJvbWlzZSxcbiAgICBibG9jay5jb2RlLFxuICAgIG9wdGlvbnNcbiAgKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl9weW9kaWRlX3ZhbHVlXzEgPSBweW9kaWRlT2pzLnByb2Nlc3MoX3B5b2RpZGVfZWRpdG9yXzEsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJweW9kaWRlLXByZWx1ZGUiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJweW9kaWRlT2pzID0ge1xuICBjb25zdCB7XG4gICAgUHlvZGlkZUV2YWx1YXRvcixcbiAgICBQeW9kaWRlRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUHl0aG9uLFxuICAgIHN0YXJ0UHlvZGlkZVdvcmtlcixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoLFxuICB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcblxuICBjb25zdCBzdGF0dXNDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctc3RhdHVzXCIpO1xuICBjb25zdCBpbmRpY2F0b3JDb250YWluZXIgPSBkb2N1bWVudC5nZXRFbGVtZW50QnlJZChcImV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpbmRpY2F0b3JDb250YWluZXIuY2xhc3NMaXN0LnJlbW92ZShcImQtbm9uZVwiKTtcblxuICBsZXQgc3RhdHVzVGV4dCA9IGRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoXCJkaXZcIilcbiAgc3RhdHVzVGV4dC5jbGFzc0xpc3QgPSBcImV4ZXJjaXNlLWxvYWRpbmctZGV0YWlsc1wiO1xuICBzdGF0dXNUZXh0ID0gc3RhdHVzQ29udGFpbmVyLmFwcGVuZENoaWxkKHN0YXR1c1RleHQpO1xuICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluaXRpYWxpc2VgO1xuXG4gIC8vIEhvaXN0IGluZGljYXRvciBvdXQgZnJvbSBmaW5hbCBzbGlkZSB3aGVuIHJ1bm5pbmcgdW5kZXIgcmV2ZWFsXG4gIGNvbnN0IHJldmVhbFN0YXR1cyA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsIC5leGVyY2lzZS1sb2FkaW5nLWluZGljYXRvclwiKTtcbiAgaWYgKHJldmVhbFN0YXR1cykge1xuICAgIHJldmVhbFN0YXR1cy5yZW1vdmUoKTtcbiAgICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKFwiLnJldmVhbCA+IC5zbGlkZXNcIikuYXBwZW5kQ2hpbGQocmV2ZWFsU3RhdHVzKTtcbiAgfVxuXG4gIC8vIE1ha2UgYW55IHJldmVhbCBzbGlkZXMgd2l0aCBsaXZlIGNlbGxzIHNjcm9sbGFibGVcbiAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbChcIi5yZXZlYWwgLmV4ZXJjaXNlLWNlbGxcIikuZm9yRWFjaCgoZWwpID0+IHtcbiAgICBlbC5jbG9zZXN0KCdzZWN0aW9uLnNsaWRlJykuY2xhc3NMaXN0LmFkZChcInNjcm9sbGFibGVcIik7XG4gIH0pXG5cbiAgLy8gUHlvZGlkZSBzdXBwbGVtZW50YWwgZGF0YSBhbmQgb3B0aW9uc1xuICBjb25zdCBkYXRhQ29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJweW9kaWRlLWRhdGFcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBkYXRhID0gSlNPTi5wYXJzZShiNjREZWNvZGUoZGF0YUNvbnRlbnQpKTtcblxuICAvLyBHcmFiIGxpc3Qgb2YgcmVzb3VyY2VzIHRvIGJlIGRvd25sb2FkZWRcbiAgY29uc3QgZmlsZXNDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcInZmcy1maWxlXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgZmlsZXMgPSBKU09OLnBhcnNlKGI2NERlY29kZShmaWxlc0NvbnRlbnQpKTtcblxuICBsZXQgcHlvZGlkZVByb21pc2UgPSAoYXN5bmMgKCkgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgUHlvZGlkZWA7XG4gICAgY29uc3QgcHlvZGlkZSA9IGF3YWl0IHN0YXJ0UHlvZGlkZVdvcmtlcihkYXRhLm9wdGlvbnMpO1xuXG4gICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiBtaWNyb3BpcGA7XG4gICAgYXdhaXQgcHlvZGlkZS5sb2FkUGFja2FnZShcIm1pY3JvcGlwXCIpO1xuICAgIGNvbnN0IG1pY3JvcGlwID0gYXdhaXQgcHlvZGlkZS5weWltcG9ydChcIm1pY3JvcGlwXCIpO1xuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIG1pY3JvcGlwLmluc3RhbGwocGtnKTtcbiAgICB9KS5yZWR1Y2UoKGN1ciwgbmV4dCkgPT4gY3VyLnRoZW4obmV4dCksIFByb21pc2UucmVzb2x2ZSgpKTtcbiAgICBhd2FpdCBtaWNyb3BpcC5kZXN0cm95KCk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgdHJ5IHtcbiAgICAgICAgICBhd2FpdCBweW9kaWRlLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgICAgaWYgKGUubmFtZSAhPT0gXCJFcnJub0Vycm9yXCIpIHRocm93IGU7XG4gICAgICAgICAgaWYgKGUuZXJybm8gIT09IDIwKSB7XG4gICAgICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICAgICAgY29uc3QgZXJyb3JUZXh0ID0gYXdhaXQgcHlvZGlkZS5fbW9kdWxlLlVURjhUb1N0cmluZyhlcnJvclRleHRQdHIpO1xuICAgICAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBGaWxlc3lzdGVtIEVycm9yICR7ZS5lcnJub30gXCIke2Vycm9yVGV4dH1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHRyeSB7XG4gICAgICAgIHJldHVybiBhd2FpdCBweW9kaWRlLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgICB9IGNhdGNoIChlKSB7XG4gICAgICAgIGlmIChlLm5hbWUgIT09IFwiRXJybm9FcnJvclwiKSB0aHJvdyBlO1xuICAgICAgICBjb25zdCBlcnJvclRleHRQdHIgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuX3N0cmVycm9yKGUuZXJybm8pO1xuICAgICAgICBjb25zdCBlcnJvclRleHQgPSBhd2FpdCBweW9kaWRlLl9tb2R1bGUuVVRGOFRvU3RyaW5nKGVycm9yVGV4dFB0cik7XG4gICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvciAke2UuZXJybm99IFwiJHtlcnJvclRleHR9XCIuYCk7XG4gICAgICB9XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFB5b2RpZGUgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUHl0aG9uKHB5b2RpZGUpO1xuXG4gICAgc3RhdHVzVGV4dC5yZW1vdmUoKTtcbiAgICBpZiAoc3RhdHVzQ29udGFpbmVyLmNoaWxkcmVuLmxlbmd0aCA9PSAwKSB7XG4gICAgICBzdGF0dXNDb250YWluZXIucGFyZW50Tm9kZS5yZW1vdmUoKTtcbiAgICB9XG4gICAgcmV0dXJuIHB5b2RpZGU7XG4gIH0pKCkuY2F0Y2goKGVycikgPT4ge1xuICAgIHN0YXR1c1RleHQuc3R5bGUuY29sb3IgPSBcInZhcigtLWV4ZXJjaXNlLWVkaXRvci1obC1lciwgI0FEMDAwMClcIjtcbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gZXJyLm1lc3NhZ2U7XG4gICAgLy9pbmRpY2F0b3JDb250YWluZXIucXVlcnlTZWxlY3RvcihcIi5zcGlubmVyLWdyb3dcIikuY2xhc3NMaXN0LmFkZChcImQtbm9uZVwiKTtcbiAgICB0aHJvdyBlcnI7XG4gIH0pO1xuXG4gIC8vIEtlZXAgdHJhY2sgb2YgaW5pdGlhbCBPSlMgYmxvY2sgcmVuZGVyXG4gIGNvbnN0IHJlbmRlcmVkT2pzID0ge307XG5cbiAgY29uc3QgcHJvY2VzcyA9IGFzeW5jIChjb250ZXh0LCBpbnB1dHMpID0+IHtcbiAgICBjb25zdCBweW9kaWRlID0gYXdhaXQgcHlvZGlkZVByb21pc2U7XG4gICAgY29uc3QgZXZhbHVhdG9yID0gbmV3IFB5b2RpZGVFdmFsdWF0b3IocHlvZGlkZSwgY29udGV4dCk7XG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHlvZGlkZVByb21pc2UsXG4gICAgcmVuZGVyZWRPanMsXG4gICAgcHJvY2VzcyxcbiAgfTtcbn1cbiJ9XX0=
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../15";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/FTurci\.github\.io\/intro-coding-data-analysis-mirror\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> Plotting with `pandas`</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">jupyter:</span><span class="co"> python3</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Pandas provides built-in plotting capabilities that make it easy to visualize data stored in DataFrames and Series. It leverages the <span class="in">`matplotlib`</span> library under the hood, allowing users to create a variety of plots with minimal code.</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>The framework for plotting is data-centric, meaning that plots are generated directly from the data structures in pandas. This allows for quick and efficient visualization of data without needing to manually extract and format data for plotting. </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>Compared to what you have already seen in <span class="in">`matplotlib`</span>, pandas plotting is often more straightforward and requires less boilerplate code. It means, however, that fine tuning is sometimes less flexible than using <span class="in">`matplotlib`</span> directly.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plotting with Series</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>The basic <span class="in">`pandas`</span> object is the Series. Series have a <span class="in">`.plot()`</span> method that can be used to create various types of plots.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an example series</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>series <span class="op">=</span> pd.Series([<span class="dv">10</span>, <span class="dv">25</span>, <span class="dv">15</span>, <span class="dv">30</span>, <span class="dv">20</span>], index<span class="op">=</span>[<span class="st">'A'</span>, <span class="st">'B'</span>, <span class="st">'C'</span>, <span class="st">'D'</span>, <span class="st">'E'</span>])</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(series)</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>series.plot()</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>We notice a few features:</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the <span class="in">`plot()`</span> method is called directly on the pandas object (in this case, a Series).</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>without any additional arguments, it defaults to a line plot and it uses:</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>the index of the Series for the x-axis,</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">    - </span>the values of the Series for the y-axis.</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>labels are inferred automatically for the axes (in this case the categorical names of the x-axis)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>The <span class="in">`.plot()`</span> method has various parameters. The most important one is <span class="in">`kind`</span>, which specifies the type of plot to create. Some common plot types include: </span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`'line'`</span>: Line plot (default)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`'bar'`</span>: Vertical bar plot</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`'barh'`</span>: Horizontal bar plot</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`'hist'`</span>: Histogram</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`'box'`</span>: Box plot</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`'scatter'`</span>: Scatter plot (requires <span class="in">`x`</span> and <span class="in">`y`</span> parameters)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`'pie'`</span>: Pie chart</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>Other parameters allow customization of the plot, such as titles, labels, colors, and more.</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>Let's see some examples:</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>series.plot(kind<span class="op">=</span><span class="st">'bar'</span>, title<span class="op">=</span><span class="st">'Bar Plot of Series'</span>, color<span class="op">=</span><span class="st">'skyblue'</span>, xlabel<span class="op">=</span><span class="st">'Categories'</span>, ylabel<span class="op">=</span><span class="st">'Values'</span>)</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>series.plot(kind<span class="op">=</span><span class="st">'pie'</span>, title<span class="op">=</span><span class="st">'Pie Chart of Series'</span>, autopct<span class="op">=</span><span class="st">'</span><span class="sc">%1.1f%%</span><span class="st">'</span>, startangle<span class="op">=</span><span class="dv">90</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>A **box** plot is diffeeent is it allows one to view the distribution of the data in a simplified form: it shows the median, quartiles, and potential outliers of the data i a single plot.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>series.plot(kind<span class="op">=</span><span class="st">'box'</span>, title<span class="op">=</span><span class="st">'Box Plot of Series'</span>)</span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Plotting with DataFrames</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>As we have seen earlier, when working with <span class="in">`pandas`</span> we typically use Dataframes (i.e. collections of Series). DataFrames also have a <span class="in">`.plot()`</span> method that can be used to create various types of plots.</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>When plotting a DataFrame, the default behavior is to plot each column as a separate line (or bar, etc.) on the same axes. The index of the DataFrame is used for the x-axis.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a DataFrame with crop yield data across different months</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Month'</span>: [<span class="st">'Jan'</span>, <span class="st">'Feb'</span>, <span class="st">'Mar'</span>, <span class="st">'Apr'</span>, <span class="st">'May'</span>, <span class="st">'Jun'</span>],</span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Wheat_Yield'</span>: [<span class="fl">2.5</span>, <span class="fl">2.8</span>, <span class="fl">3.2</span>, <span class="fl">3.8</span>, <span class="fl">4.2</span>, <span class="fl">4.5</span>],</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Corn_Yield'</span>: [<span class="fl">1.8</span>, <span class="fl">2.1</span>, <span class="fl">2.6</span>, <span class="fl">3.4</span>, <span class="fl">4.1</span>, <span class="fl">4.8</span>],</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Rice_Yield'</span>: [<span class="fl">2.2</span>, <span class="fl">2.4</span>, <span class="fl">2.9</span>, <span class="fl">3.3</span>, <span class="fl">3.9</span>, <span class="fl">4.3</span>],</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Soybean_Yield'</span>: [<span class="fl">1.5</span>, <span class="fl">1.9</span>, <span class="fl">2.3</span>, <span class="fl">2.8</span>, <span class="fl">3.5</span>, <span class="fl">4.0</span>]</span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the DataFrame</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>df.plot(x<span class="op">=</span><span class="st">'Month'</span>, kind<span class="op">=</span><span class="st">'line'</span>, </span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">'Crop Yields Over Growing Season'</span>, </span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'Month'</span>, ylabel<span class="op">=</span><span class="st">'Yield (tons per hectare)'</span>)</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>Notice that we obly had to specify the variable on the x-axis and pandas inferred the res, consructing a legend automatically.</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a>You can have more control and specify which columns to plot on the x and y axes using the <span class="in">`x`</span> and <span class="in">`y`</span> parameters.</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>df.plot( kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">'Month'</span>,</span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>[<span class="st">'Wheat_Yield'</span>, <span class="st">'Corn_Yield'</span>],</span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">'Crop Yields Over Growing Season'</span>, </span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'Month'</span>, ylabel<span class="op">=</span><span class="st">'Yield (tons per hectare)'</span>)</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>Suppose we also wanted the data points to be marked with circles, we could use the <span class="in">`style`</span> parameter:</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>df.plot( kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">'--o'</span>,</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">'Month'</span>,</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>[<span class="st">'Wheat_Yield'</span>, <span class="st">'Corn_Yield'</span>],</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">'Crop Yields Over Growing Season'</span>, </span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'Month'</span>, ylabel<span class="op">=</span><span class="st">'Yield (tons per hectare)'</span>)</span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a>Additional parameters can be used to tune the figure property, e.g. the figure size:</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>df.plot( kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">'--o'</span>,</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">'Month'</span>,</span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>[<span class="st">'Wheat_Yield'</span>, <span class="st">'Corn_Yield'</span>],</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>        title<span class="op">=</span><span class="st">'Crop Yields Over Growing Season'</span>, </span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'Month'</span>, ylabel<span class="op">=</span><span class="st">'Yield (tons per hectare)'</span>,</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>        figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">3</span>))</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subplots</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a>In <span class="in">`matplotlib`</span>, one can create multiple axes in a single figure using subplots. Pandas also supports this functionality through the <span class="in">`subplots`</span> parameter in the <span class="in">`.plot()`</span> method.</span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>When <span class="in">`subplots=True`</span> is specified, each column of the DataFrame is plotted in its own subplot.</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>df.plot( kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">'--o'</span>,</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">'Month'</span>,</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'Month'</span>, </span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="st">'Yield</span><span class="ch">\n</span><span class="st">(tons per hectare)'</span>,</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>        subplots<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a>        figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">8</span>)</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>We can specify the structure of the subplot grid using the <span class="in">`layout`</span> parameter, which takes a tuple indicating the number of rows and columns.</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>df.plot( kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">'--o'</span>,</span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">'Month'</span>,</span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'Month'</span>, </span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="st">'Yield</span><span class="ch">\n</span><span class="st">(tons per hectare)'</span>,</span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>        subplots<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>        layout <span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>),</span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>        figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>        )<span class="op">;</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>But what if we want to refine the individual subplots? For example, we may be unhappy with the labels of the various plots here. We need to store the results of the plotting operation and then modify each axis individually.</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>The result of the <span class="in">`.plot()`</span> method when <span class="in">`subplots=True`</span> is an array of <span class="in">`matplotlib`</span> Axes objects, which can be further customized.</span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="co"># capturing the Axes object</span></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a>axes <span class="op">=</span> df.plot( kind<span class="op">=</span><span class="st">'line'</span>,</span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a>        style<span class="op">=</span><span class="st">'--o'</span>,</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span><span class="st">'Month'</span>,</span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a>        xlabel<span class="op">=</span><span class="st">'Month'</span>, </span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a>        ylabel<span class="op">=</span><span class="st">'Yield</span><span class="ch">\n</span><span class="st">(tons per hectare)'</span>,</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>        subplots<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>        layout <span class="op">=</span>(<span class="dv">2</span>,<span class="dv">2</span>),</span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>        figsize<span class="op">=</span>(<span class="dv">5</span>,<span class="dv">5</span>)</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="co"># modify the label in the first subplot</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>,<span class="dv">0</span>].get_lines()[<span class="dv">0</span>].set_label(<span class="st">'Wheat'</span>)  <span class="co"># we use get_lines() to access the line objects, pick the first (and only ) one, and set its label</span></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a>axes[<span class="dv">0</span>,<span class="dv">0</span>].legend()  <span class="co"># then we need to call legend() to update the legend with the new label</span></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>It is clear that in this sense, it may be useful to think of **good column names** when planning to plot data from a DataFrame.</span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="fu">## Working with time series data</span></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="fu">### World population over time</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>As mentioned in the previous chapter, <span class="in">`pandas`</span> has an exceptional support for time series data. This extends to plotting as well.</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>When plotting time series data, <span class="in">`pandas`</span> automatically handles the date formatting on the x-axis, making it easy to visualize trends over time.</span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>We are going to see this by using datsets from <span class="co">[</span><span class="ot">Our World in Data</span><span class="co">](https://ourworldindata.org/)</span>, an excellent resource for open data on a variety of topics. These are provided as downloadable CSV files that can be easily loaded into pandas DataFrames.</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>For EXAMPLE, let us take the world population data.</span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a>df_population <span class="op">=</span> pd.read_csv(<span class="st">"https://ourworldindata.org/grapher/population.csv?v=1&amp;csvType=full&amp;useColumnShortNames=true"</span>)</span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a>df_population</span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a>The dataset contains population estimates for various countries over time (from 10000 BCE to today!). , By default it is simply indexed by row number, so all countries are jumbled together. </span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>A simple operation we could do would be to filter the data for a specific country, say India, and then plot its population over time.</span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a>df_india <span class="op">=</span> df_population[df_population[<span class="st">'Entity'</span>] <span class="op">==</span> <span class="st">'India'</span>]</span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a>df_india.plot(x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'population_historical'</span>, title<span class="op">=</span><span class="st">'Population of India Over Time'</span>, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Population'</span>)</span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>We can also select multiple countries to compare their population growth over time.</span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>Notice however that we do not have distinct columns for each country, so we cannot use the DataFrame plotting capabilities directly.</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a>A somewhat cumbersome way is to loop over the countries and plot each one individually on the same axes. for this, we need to store the axes object returned by the first plot call, and then pass it to the subsequent calls.)</span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>selection <span class="op">=</span> [<span class="st">'France'</span>, <span class="st">'Syria'</span>, <span class="st">'Mexico'</span>,<span class="st">'Ethiopia'</span>, <span class="st">'China'</span>, <span class="st">'India'</span>]</span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="co"># set time range</span></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>time_range <span class="op">=</span> (<span class="dv">1000</span>, <span class="dv">2025</span>)</span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i,country <span class="kw">in</span> <span class="bu">enumerate</span>(selection): <span class="co">#use enumerate to get both index and country</span></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a>    df_country <span class="op">=</span> df_population[df_population[<span class="st">'Entity'</span>] <span class="op">==</span> country]</span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="op">==</span> <span class="dv">0</span> :</span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a>        <span class="co"># store the axis</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a>        axis <span class="op">=</span>  df_country.plot(x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'population_historical'</span>,xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Population'</span>,label<span class="op">=</span>country, xlim<span class="op">=</span>time_range,logy<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a>        df_country.plot(x<span class="op">=</span><span class="st">'Year'</span>, y<span class="op">=</span><span class="st">'population_historical'</span>, ax<span class="op">=</span>axis, label<span class="op">=</span>country,xlim<span class="op">=</span>time_range,logy<span class="op">=</span><span class="va">True</span>)  <span class="co"># pass the axis to plot on the existing axis</span></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>The plot above is rich: it provides a lot of information, it is tuned to plot only a specific time range and subset of data, it adapts the y-axis to a logarithmic scale to better visualize growth rates, and it includes labels and a legend for clarity.</span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>However, it is a bit complex, withe explicit loops and multiple plot calls. </span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>There is a simpler way to achieve the same result by reshaping the DataFrame using the <span class="in">`pivot`</span> method. This creates a new DataFrame where each country becomes a separate column, making it easier to plot multiple countries at once.</span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>df_population_pivot <span class="op">=</span> df_population.pivot(index<span class="op">=</span><span class="st">'Year'</span>, columns<span class="op">=</span><span class="st">'Entity'</span>, values<span class="op">=</span><span class="st">'population_historical'</span>)</span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>df_population_pivot</span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>Now, plotting is straightforward, as we can directly use the DataFrame's <span class="in">`.plot()`</span> method to visualize the population of multiple countries over time.</span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a>df_population_pivot.plot(y<span class="op">=</span>selection, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Population'</span>, title<span class="op">=</span><span class="st">'Population Over Time'</span>, xlim<span class="op">=</span>time_range, logy<span class="op">=</span><span class="va">True</span>, style<span class="op">=</span><span class="st">'--o'</span>)<span class="op">;</span></span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>Notice, however, that we get some broken lines in the data. This is because the pivoting is producing NaN values for years where a country does not have data. By default, pandas does not plot these points, resulting in breaks in the lines.</span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a>The easy fix is to fill the NaN values, for example via **interpolation** (which we mentioned <span class="co">[</span><span class="ot">previously</span><span class="co">](../14/lecture_pandas_preprocessing.qmd)</span>). This can be done *one the fly*.</span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>df_population_pivot.interpolate(kind<span class="op">=</span><span class="st">"linear"</span>).plot(y<span class="op">=</span>selection, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Population'</span>, title<span class="op">=</span><span class="st">'Population Over Time'</span>, xlim<span class="op">=</span>time_range, logy<span class="op">=</span><span class="va">True</span>, )</span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a>Notice the structure of the pivoted dataframe</span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a>df_population_pivot</span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a>The index is now the year, and each column corresponds to a country. This structure is ideal for plotting time series data for multiple entities.</span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>However, at this stage, we are not truly leveraging the datetime capabilties of pandas since the index is still just integers representing years, as it can be easily verified</span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a>df_population_pivot.index.dtype</span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a><span class="fu">### Temperature anomalies - monthly data</span></span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a>Let us consider a more complex data set where data are provided on a monthly basis.</span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a>df_anomalies <span class="op">=</span> pd.read_csv(<span class="st">"https://ourworldindata.org/grapher/global-temperature-anomalies-by-month.csv?v=1&amp;csvType=full&amp;useColumnShortNames=false"</span>)</span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>df_anomalies</span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a>Here the data is organised in a very different way: each row corresponds to a specific month and year for a country, and the date information is split across two columns (<span class="in">`year`</span> and <span class="in">`month`</span>).</span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a>What if we want to plot the time series directly? This seems a bit complicated. Here <span class="in">`pandas`</span> can come to the rescue.</span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a>What we want to do is to create a new dataframe that has a proper datetime index. We can do this by combining the <span class="in">`year`</span> and <span class="in">`month`</span> columns into a single datetime column using the <span class="in">`pd.to_datetime()`</span> function.</span>
+<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-327"><a href="#cb1-327" aria-hidden="true" tabindex="-1"></a>The startegy is as follows:</span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We aim to construct a time stamp in the format <span class="in">`YYYY-MM-DD`</span> (year-month-day).</span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we extract the year and month columns from the DataFrame, casting them to strings. we assume the day to be the first of each month (<span class="in">`'01'`</span>).</span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We concatenate these strings with hyphens to form a complete date string.</span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>We then convert this string to a datetime object using <span class="in">`pd.to_datetime()`</span>.</span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Time'</span>] <span class="op">=</span> pd.to_datetime(df_anomalies[<span class="st">'Year'</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">'-'</span> <span class="op">+</span> df_anomalies[<span class="st">'Entity'</span>] <span class="op">+</span> <span class="st">'-01'</span>, <span class="bu">format</span><span class="op">=</span><span class="st">'%Y-%B-</span><span class="sc">%d</span><span class="st">'</span>) <span class="co"># constructing a datetime column</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a>df_anomalies</span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a>We can now set this new datetime column as the index of the DataFrame.</span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a>df_anomalies.set_index(<span class="st">'Time'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>Plotting should be trivial, shouldn't it?</span>
+<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a>df_anomalies.plot(y<span class="op">=</span><span class="st">'Temperature anomaly'</span>, title<span class="op">=</span><span class="st">'Global Temperature Anomalies Over Time'</span>, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Temperature Anomaly (°C)'</span>)<span class="op">;</span></span>
+<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a>What happened? The data is still sorted in the original order (alphabetically by month) we artificially connects the points produce the appearance of multiple jagged lines.</span>
+<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a>The solution is the simply sort the index before plotting.</span>
+<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a>df_anomalies.sort_index(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a>df_anomalies.plot(y<span class="op">=</span><span class="st">'Temperature anomaly'</span>, title<span class="op">=</span><span class="st">'Global Temperature Anomalies Over Time'</span>, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Temperature Anomaly (°C)'</span>)<span class="op">;</span></span>
+<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a><span class="fu">## Smoothing the data </span></span>
+<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a>The signal from the temperature anomalies is quite noisy. One way to better visualize trends in such data is to apply a smoothing technique, such as a **rolling mean**.</span>
+<span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a>A **rolling mean** (or *moving average*) computes the average of a specified number of data points (the window) as it moves along the time series. This helps to smooth out short-term fluctuations and highlight longer-term trends.</span>
+<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a>Pandas focuses our attention on the overall workflow, so operations like smoothing are already built-in and easy to apply.</span>
+<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a>The idea in <span class="in">`pandas`</span> is that moving averages are a particular case of the more general concept of **rolling windows**. A rolling window allows us to perform operations on a sliding window of data points.</span>
+<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a>For this, any dataframe or series has a <span class="in">`.rolling()`</span> method that creates a rolling window object. We can then apply various aggregation functions to this object, such as <span class="in">`mean()`</span>, <span class="in">`sum()`</span>, etc.</span>
+<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a>Let'see how this works with out temperature anomalies data.</span>
+<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-390"><a href="#cb1-390" aria-hidden="true" tabindex="-1"></a>We can invoke the <span class="in">`.rolling()`</span> method on the DataFrame, specifying the window size (e.g., 12 for a 12-month rolling mean). This produces a <span class="in">`Rolling`</span> object, which, per se, does not contain any data yet.</span>
+<span id="cb1-391"><a href="#cb1-391" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-395"><a href="#cb1-395" aria-hidden="true" tabindex="-1"></a>df_anomalies.rolling(window<span class="op">=</span><span class="dv">12</span>)</span>
+<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a>To actually perform a calculation we need to instruct the rolling object to compute something over the selected  window. For example, we can call the <span class="in">`mean()`</span> method to compute the rolling mean. We do this via **chaining**: we call <span class="in">`.mean()`</span> directly after <span class="in">`.rolling()`</span>.</span>
+<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a>We do it only on the numerical data we care about (i.e. the temperature anomalies), excluding the non-numerical columns like the <span class="in">`Entity`</span> (which is the month)</span>
+<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a>(Try and change the selection to include the <span class="in">`Entity`</span> column and see what happens!)</span>
+<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">12</span>).mean()</span>
+<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a>Plotting can also be chained directly to the rolling mean calculation!</span>
+<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-414"><a href="#cb1-414" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-415"><a href="#cb1-415" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">12</span>).mean().plot()</span>
+<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a>We can now produce a richer plot by combining several ideas we have seen in this lecture:</span>
+<span id="cb1-419"><a href="#cb1-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we can plot the original noisy data on a fustom figure with specific size and labels</span>
+<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we can overlay the smoothed data (rolling mean) on top of the original data for comparison at different levels of smoothing</span>
+<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-426"><a href="#cb1-426" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df_anomalies.plot(y<span class="op">=</span><span class="st">'Temperature anomaly'</span>, title<span class="op">=</span><span class="st">'Global Temperature Anomalies Over Time'</span>, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Temperature Anomaly (°C)'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">12</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'12-Month Moving Average'</span>)</span>
+<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">24</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"#A5E589"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'24-Month Moving Average'</span>)</span>
+<span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">120</span>,center<span class="op">=</span><span class="va">True</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"#4D5142"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'10 Years Moving Average'</span>) <span class="co"># notice we centred teh window here!</span></span>
+<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a><span class="fu">## Saving the results</span></span>
+<span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a>Finally, once we are happy with our plots, we may want to save them to files for later use or sharing. Pandas plotting returns a <span class="in">`matplotlib`</span> Axes object, which can be used to save the figure using <span class="in">`matplotlib`</span>'s <span class="in">`savefig()`</span> function.</span>
+<span id="cb1-436"><a href="#cb1-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a>There are a couple of ways.</span>
+<span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a>A first way is to use solely the axis object returned by the plot call. From the axis, we can get the figure using the <span class="in">`.figure`</span> attribute, and then call <span class="in">`.savefig()`</span> on it. In this case, we only use <span class="in">`pandas`</span>.</span>
+<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df_anomalies.plot(y<span class="op">=</span><span class="st">'Temperature anomaly'</span>, title<span class="op">=</span><span class="st">'Global Temperature Anomalies Over Time'</span>, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Temperature Anomaly (°C)'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">12</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'12-Month Moving Average'</span>)</span>
+<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">24</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"#A5E589"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'24-Month Moving Average'</span>)</span>
+<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">120</span>,center<span class="op">=</span><span class="va">True</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"#4D5142"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'10 Years Moving Average'</span>) <span class="co"># notice we centred teh window here!</span></span>
+<span id="cb1-449"><a href="#cb1-449" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb1-450"><a href="#cb1-450" aria-hidden="true" tabindex="-1"></a>ax.figure.savefig(<span class="st">'temperature_anomalies.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb1-451"><a href="#cb1-451" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a>Alternatively, we can import <span class="in">`matplotlib.pyplot`</span> and use its <span class="in">`savefig()`</span> function directly, passing the figure obtained from the axis object. This approach combines both <span class="in">`pandas`</span> and <span class="in">`matplotlib`</span>.</span>
+<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a>ax <span class="op">=</span> df_anomalies.plot(y<span class="op">=</span><span class="st">'Temperature anomaly'</span>, title<span class="op">=</span><span class="st">'Global Temperature Anomalies Over Time'</span>, xlabel<span class="op">=</span><span class="st">'Year'</span>, ylabel<span class="op">=</span><span class="st">'Temperature Anomaly (°C)'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">12</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">'red'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'12-Month Moving Average'</span>)</span>
+<span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">24</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"#A5E589"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'24-Month Moving Average'</span>)</span>
+<span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a>df_anomalies[<span class="st">'Temperature anomaly'</span>].rolling(window<span class="op">=</span><span class="dv">120</span>,center<span class="op">=</span><span class="va">True</span>).mean().plot(ax<span class="op">=</span>ax, color<span class="op">=</span><span class="st">"#4D5142"</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'10 Years Moving Average'</span>) <span class="co"># notice we centred teh window here!</span></span>
+<span id="cb1-463"><a href="#cb1-463" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a>plt.savefig(<span class="st">'temperature_anomalies-matplotlib.png'</span>, dpi<span class="op">=</span><span class="dv">300</span>)</span>
+<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a>This is a hint to a more general principle: since <span class="in">`pandas`</span> plotting is built on top of <span class="in">`matplotlib`</span>, any plot created with <span class="in">`pandas`</span> can be further customized and manipulated using <span class="in">`matplotlib`</span> functions and methods. This allows for greater flexibility and control over the final appearance of the plots.</span>
+<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a></span>
+</code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Introduction to Coding and Data Analysis</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
