@@ -35,6 +35,7 @@ Work through the examples carefully, and take your time with the exercises. They
 In Python, the syntax of an `if` statement appears as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Assign a boolean variable
 my_boolean = True
 
@@ -48,6 +49,7 @@ if my_boolean:
 Python actually allows the `if` statement above to be condensed to a single line, like so:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # If the boolean is true, execute this code
 if my_boolean: print("Code executed.")
 ```
@@ -55,6 +57,7 @@ if my_boolean: print("Code executed.")
 If the `if` statement contains multiple lines of code, we can combine them onto a single line using semicolons `;`. For instance, the below code:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # If statement with multiple lines
 if my_boolean:
     
@@ -66,6 +69,7 @@ if my_boolean:
 is equivalent to:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # If statement with multiple lines
 if my_boolean: print("Code executed."); print("More code executed.")
 ```
@@ -73,6 +77,7 @@ if my_boolean: print("Code executed."); print("More code executed.")
 We can also place `elif` and `else` statements on a single line in a similar way. For instance, the below code:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Numeric variable x
 x = 5
 
@@ -88,6 +93,7 @@ else:
 can be converted to:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Numeric variable x
 x = 5
 
@@ -103,6 +109,7 @@ In general, this sort of syntax is frowned upon, as it isn't very easy to read. 
 When you’re writing code, you'll often want a variable to take on one value in some situations and a different value in others. A straightforward way to do this is with an `if`–`else` statement, like this:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Compute the absolute value of x, |x|
 x = -3
 
@@ -118,6 +125,7 @@ print("The absolute value of x is", abs_x)
 However, the above code is quite verbose for quite a simple operation. Sometimes, it is more convenient to represent conditional definitions of this form using a *conditional expression*.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Compute the absolute value of x
 abs_x = -x if x <= 0 else x
 
@@ -133,6 +141,7 @@ When you run this, the `<conditional_expr>` expression in the center is evaluate
 Note that this means it is possible that one of `<expr1>` or `<expr2>` are never evaluated. For instance, in the below code the first expression should give a division by zero, but because it is never evaluated, no error is thrown.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Non-zero y
 y = 3
 
@@ -146,6 +155,7 @@ y = 3
 We can incorporate conditional expressions into larger expressions using round brackets `()`. For instance, the below code computes $x+|x|$ for an input `x`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Variable x
 x = -2
 
@@ -165,6 +175,7 @@ A conditional expression is a good example of *lazy evaluation*. In general, an 
 The `and` and `or` operations we met last week are actually examples of *lazy operations*. We've already seen them used with Booleans, but in Python they can be applied to many other data types as well. Let’s start with a few quick examples:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(True and False)      # False
 print(5 and 10)            # 10
 print(0 and 99)            # 0
@@ -174,6 +185,7 @@ print("hi" and "bye")      # 'bye'
 In the first line, both operands are Booleans, so the result is `False`. But in the later examples, the result is not a Boolean - it's one of the operands themselves. For instance, `5` and `10` returns `10`, while `0` and `99` returns `0`. To explain what's going on here, lets consider what happens when `x` and `y` are Booleans and we compute `x and y`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = True
 y = False
 
@@ -198,6 +210,7 @@ The same evaluation rules apply even when the operands are numbers, strings, or 
 You can check whether a variable is `Truthy` or `Falsy` by casting it too a Boolean. For example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(bool(0))        # False ---> 0 is falsy
 print(bool(42))       # True  ---> non-zero numbers are truthy
 print(bool(""))       # False ---> empty string is falsy
@@ -209,6 +222,7 @@ print(bool("hello"))  # True  ---> non-empty string is truthy
 **Question 1:** Below are two variables `x` and `y`. Use a conditional expression to compute the maximum of `x` and `y`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Variables x and y
 x = 4
 y = 2
@@ -230,6 +244,7 @@ Explain your answers.
 **Question 3:** The below code prints the statement "This code is printed if my boolean is True." if `my_boolean` is `True`, but doesn't print anything otherwise. Explain why.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_boolean = True
 output = my_boolean and print("This code is printed if my boolean is True.")
 ```
@@ -237,6 +252,7 @@ output = my_boolean and print("This code is printed if my boolean is True.")
 **Question 4:** Based on your answer to *Question 2*, use the `and` and `or` operators to write code which prints `"A"` if `my_boolean` is `True` and `"B"` otherwise. *Do not use `if` statements for this question*.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_boolean = True
 
 # Write your code here...
@@ -251,6 +267,7 @@ my_boolean = True
 Using the same line of reasoning, derive the corresponding rule for the `or` operator. Write code in the box below to test your result.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 

@@ -21,6 +21,7 @@ where
 This code will show one way to create a mask which contains a square. This will take the most direct approach and evaluate every index in the 2D array one at a time.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 shape = (100, 100)
@@ -29,6 +30,7 @@ shape = (100, 100)
 Start by creating an array of zeros for our overall grid:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 square_mask = np.zeros(shape)
 print(square_mask)
 ```
@@ -36,6 +38,7 @@ print(square_mask)
 Next we can define the parameters we need for the square:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 centre = (80, 40) # Centre (x, y)
 width = 30 # Width of square
 ```
@@ -45,6 +48,7 @@ So, to check whether a given position is within our mask (the square we are defi
 We've created a grid of size of 100 x 100 so, as an example, let's use the position (50, 50) for our grid:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = 50
 y = 50
 
@@ -69,6 +73,7 @@ else:
 Now we can build this up to look at every element in the 2D array we have created and check whether this is inside the square (we will leave the value as 0) or outside the square (we will set the value to 1). To do this we can loop through every column and every row and check the result of our conditions:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x0 = centre[0]
 y0 = centre[1]
 
@@ -93,6 +98,7 @@ We could check where our mask has been set to 1 using the `np.where` function. F
 Each pair of values (one in the first array and one the second) represents a 2D position in our array:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Where have we created our mask in our overall grid
 np.where(square_mask == 1)
 ```
@@ -100,6 +106,7 @@ np.where(square_mask == 1)
 We can look at this mask using `matplotlib` and a plotting option called `imshow` ([documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.imshow.html); [example from image gallery](https://matplotlib.org/stable/gallery/images_contours_and_fields/image_demo.html)):
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize=(6, 3.2))
@@ -119,6 +126,7 @@ An alternative and more efficient way to do this would be to leverage the proper
 We can start in the same way and create our array of zeros of the right shape
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 square_mask_2 = np.zeros(shape)
 ```
 
@@ -127,6 +135,7 @@ We can represent the pixel position for our x and y dimensions using numbers for
 We can then create a pair of 2D grids, `X` and `Y`, to match to the shape of our mask using a [function called `np.meshgrid()`](https://numpy.org/doc/stable/reference/generated/numpy.meshgrid.html). This stretches our x and y coordinate values to create our 2D numpy arrays.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create arrays matching to our size along our x and y axes
 x = np.arange(shape[1])
 y = np.arange(shape[0])
@@ -142,6 +151,7 @@ print(Y)
 We can find the positions where our conditions are met within our grid using the [`np.where()` function](https://numpy.org/doc/stable/reference/generated/numpy.where.html). From here we can filter our mask using [integer array indexing](https://numpy.org/doc/stable/user/basics.indexing.html#integer-array-indexing) and change these values from 0 to 1 within our mask.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # We can calculate the x and y distances for each value in our 2D grids
 distance_x = np.abs(X - x0) # Magnitude of distance
 distance_y = np.abs(Y - y0) # Magnitude of distance
@@ -155,6 +165,7 @@ square_mask_2[indices] = 1
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize=(6, 3.2))

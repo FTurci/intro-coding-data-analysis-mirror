@@ -9,7 +9,6 @@ jupyter: python3
 Create a 1D NumPy array `arr` of integers from 10 to 19. Access the element at index 3.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 import numpy as np
 arr = np.arange(10, 20)
@@ -20,7 +19,6 @@ arr[3]
 Slice the array `arr` to get elements from index 2 to 6 included.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 arr = np.arange(10, 20)
 arr[2:7]
@@ -30,7 +28,6 @@ arr[2:7]
 Use slicing with a step to get every second element from index 1 to 9.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 arr = np.arange(10, 20)
 arr[1:10:2]
@@ -40,7 +37,6 @@ arr[1:10:2]
 Demonstrate that slicing creates a view, not a copy, by modifying a slice and showing the original array changes.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 arr = np.arange(10, 20)
 slice_view = arr[2:5]
@@ -52,7 +48,6 @@ arr
 Use `.copy()` to create a slice that doesn't affect the original array. In particular, select only the elements from index 2 to 5 and assign 99 to all of them. Show that the original array remains unchanged.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 arr = np.arange(10, 20)
 slice_copy = arr[2:5].copy()
@@ -65,7 +60,6 @@ arr
 Generate a NumPy sequence of 100 integers from 0 to 99. Use Boolean indexing to select only the even numbers from this array.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 arr = np.arange(0, 100)
 even_numbers = arr[arr % 2 == 0]
@@ -94,7 +88,6 @@ $$
 Change the sample size $n$ and see how the result changes. You may want to organise your code in a function that takes `n` as input and returns whether the null hypothesis is rejected or not.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create random number generator with seed 42
 import numpy as np
 rng = np.random.default_rng(42)
@@ -155,7 +148,6 @@ So in the following cell:
 - compare this with the results obtained using `rng.exponential`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 # Define random number generator with fixed seed
 rng = np.random.default_rng(10)
@@ -213,7 +205,6 @@ So, we have all the theoretical knowledge that we need to solve the problem. How
 The first approach is via using vanilla Python
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import math
 R = 10.0 #in metres
 omega = 2.0*2*math.pi/60. # in radians per second
@@ -239,7 +230,6 @@ plt.show()
 The question now is: can you simpify this code by using NumPy? Your focus should be on **avoiding for loops** and using NumPy's array operations instead.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| tags: [sol]
 # solution
 import numpy as np
