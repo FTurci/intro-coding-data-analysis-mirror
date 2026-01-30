@@ -859,7 +859,15 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBJbXBvcnQgcmVxdWlyZWQg
 <li><strong><code>sun</code></strong>: Total monthly sunshine duration (hours)</li>
 </ul>
 <p><strong>Goal</strong>: Load the weather data, skipping metadata, and display the first rows to verify.</p>
-<p><strong>Hints:</strong> - <code>pd.read_csv(url, ...)</code>: Reads data from a URL or file path - the option <code>skiprows=[0,1,2,3]</code> can skip specific lines (in this case line 0,1,2,3) - The option <code>sep='\s+'</code> uses whitespace as separator (regex for “one or more spaces/tabs”) - The option <code>on_bad_lines='skip'</code> skips malformed lines - <code>.head()</code> Display first 5 rows to confirm data loaded correctly - <code>.shape</code> Returns <code>(rows, columns)</code> showing DataFrame dimensions</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><code>pd.read_csv(url, ...)</code>: Reads data from a URL or file path</li>
+<li>the option <code>skiprows=[0,1,2,3]</code> can skip specific lines (in this case line 0,1,2,3)</li>
+<li>The option <code>sep='\s+'</code> uses whitespace as separator (regex for “one or more spaces/tabs”)</li>
+<li>The option <code>on_bad_lines='skip'</code> skips malformed lines</li>
+<li><code>.head()</code> Display first 5 rows to confirm data loaded correctly</li>
+<li><code>.shape</code> Returns <code>(rows, columns)</code> showing DataFrame dimensions</li>
+</ul>
 <div>
 <div id="pyodide-2" class="exercise-cell">
 
@@ -889,7 +897,14 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDaGVjayBpbml0aWFsIGRh
 <p>Historical weather records often have gaps due to equipment failures or missing measurements. Your approach should depend on the nature of each measurement.</p>
 <p><strong>Goal</strong>: Analyze missing value patterns and apply appropriate filling strategies. Check that no missing values remain.</p>
 <p><strong>Data characteristics</strong>: - <strong>Temperature</strong>: Changes gradually (good for interpolation) - <strong>Rainfall</strong>: Variable; 0mm vs missing are different - <strong>Sunshine/frost</strong>: Could be 0 (none) or missing (not recorded)</p>
-<p><strong>Hints:</strong> - <strong><code>df.isnull().sum()</code></strong>: Counts missing (NaN) values per column - <strong><code>.interpolate(method='linear')</code></strong>: Estimates missing values from surrounding values (good for gradual changes) - <strong><code>.fillna(0)</code></strong>: Replaces NaN with 0 (use carefully—only when 0 is plausible or to mark a period where data is missing) - <strong><code>.fillna(method='ffill')</code></strong>: Forward fill—propagates last valid value forward - <strong><code>.fillna(method='bfill')</code></strong>: Backward fill—propagates next valid value backward</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><strong><code>df.isnull().sum()</code></strong>: Counts missing (NaN) values per column</li>
+<li><strong><code>.interpolate(method='linear')</code></strong>: Estimates missing values from surrounding values (good for gradual changes)</li>
+<li><strong><code>.fillna(0)</code></strong>: Replaces NaN with 0 (use carefully—only when 0 is plausible or to mark a period where data is missing)</li>
+<li><strong><code>.fillna(method='ffill')</code></strong>: Forward fill—propagates last valid value forward</li>
+<li><strong><code>.fillna(method='bfill')</code></strong>: Backward fill—propagates next valid value backward</li>
+</ul>
 <p><strong>Reflect</strong>: Why is interpolation better for temperature than rainfall?</p>
 <div>
 <div id="pyodide-4" class="exercise-cell">
@@ -927,7 +942,11 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBQYXJ0IEE6IERhdGUgY29t
 <p>The <code>groupby()</code> operation splits data into groups, applies functions (like mean), then combines results.</p>
 <p>You can group by month, season, year, or decade to analyze climate patterns.</p>
 <p><strong>Goal</strong>: Calculate the typical (mean) monthly temperature, rainfall, and sunshine for each month and season.</p>
-<p><strong>Hints:</strong> - <strong><code>df.groupby('column')['measurement1'].mean()</code></strong>: Groups and calculates mean for one column - <strong><code>df.groupby('column')[['col1', 'col2']].mean()</code></strong>: Groups and calculates means for multiple columns</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><strong><code>df.groupby('column')['measurement1'].mean()</code></strong>: Groups and calculates mean for one column</li>
+<li><strong><code>df.groupby('column')[['col1', 'col2']].mean()</code></strong>: Groups and calculates means for multiple columns</li>
+</ul>
 <p><strong>More advanced question</strong>: Can you define decades and analyze trends over decades?</p>
 <div>
 <div id="pyodide-6" class="exercise-cell">
@@ -964,13 +983,37 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfd2VhdGhlclsnZGVjYWRl
 <h2 class="anchored" data-anchor-id="exercise-6-load-and-explore-wine-quality-data">Exercise 6: Load and Explore Wine Quality Data</h2>
 <p>Shift from time series to cross-sectional data. This UCI dataset contains physicochemical measurements of Portuguese red wines with quality ratings from experts.</p>
 <p><strong>Dataset</strong>: 11 chemical properties + 1 quality score (0-10).</p>
-<p><strong>Features</strong> (chemical properties, units in parentheses): - <code>fixed acidity</code> (g/L tartaric acid) - <code>volatile acidity</code> (g/L acetic acid) - <code>citric acid</code> (g/L) - <code>residual sugar</code> (g/L) - <code>chlorides</code> (g/L sodium chloride) - <code>free sulfur dioxide</code> (mg/L) - <code>total sulfur dioxide</code> (mg/L) - <code>density</code> (g/cm³) - <code>pH</code> (0-14 scale) - <code>sulphates</code> (g/L potassium sulphate) - <code>alcohol</code> (% vol)</p>
-<p><strong>Target</strong>: - <code>quality</code> (score 0-10, median expert ratings)</p>
+<p><strong>Features</strong> (chemical properties, units in parentheses):</p>
+<ul>
+<li><code>fixed acidity</code> (g/L tartaric acid)</li>
+<li><code>volatile acidity</code> (g/L acetic acid)</li>
+<li><code>citric acid</code> (g/L)</li>
+<li><code>residual sugar</code> (g/L)</li>
+<li><code>chlorides</code> (g/L sodium chloride)</li>
+<li><code>free sulfur dioxide</code> (mg/L)</li>
+<li><code>total sulfur dioxide</code> (mg/L)</li>
+<li><code>density</code> (g/cm³)</li>
+<li><code>pH</code> (0-14 scale)</li>
+<li><code>sulphates</code> (g/L potassium sulphate)</li>
+<li><code>alcohol</code> (% vol)</li>
+</ul>
+<p><strong>Target</strong>:</p>
+<ul>
+<li><code>quality</code> (score 0-10, median expert ratings)</li>
+</ul>
 <p>Each row = different wine sample.</p>
 <p><strong>Important</strong>: File uses <strong>semicolons</strong> as delimiter, not commas.</p>
 <p><strong>Data Source</strong>: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv</p>
 <p><strong>Goal</strong>: Load data correctly and look at its shape and summary statistics.</p>
-<p><strong>Hints:</strong> - <strong><code>pd.read_csv(url, sep=';')</code></strong>: Specify semicolon delimiter - <strong><code>.head()</code></strong>, <strong><code>.tail()</code></strong>: Show first/last rows - <strong><code>.shape</code></strong>: Returns <code>(n_rows, n_columns)</code> - <strong><code>.info()</code></strong>: Summary of columns, types, non-null counts - <strong><code>.describe()</code></strong>: Statistics (mean, std, min, max, quartiles) for numeric columns - <strong><code>.isnull().sum()</code></strong>: Count missing values per column</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><strong><code>pd.read_csv(url, sep=';')</code></strong>: Specify semicolon delimiter</li>
+<li><strong><code>.head()</code></strong>, <strong><code>.tail()</code></strong>: Show first/last rows</li>
+<li><strong><code>.shape</code></strong>: Returns <code>(n_rows, n_columns)</code></li>
+<li><strong><code>.info()</code></strong>: Summary of columns, types, non-null counts</li>
+<li><strong><code>.describe()</code></strong>: Statistics (mean, std, min, max, quartiles) for numeric columns</li>
+<li><strong><code>.isnull().sum()</code></strong>: Count missing values per column</li>
+</ul>
 <div>
 <div id="pyodide-9" class="exercise-cell">
 
@@ -999,9 +1042,19 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZGZfd2luZS5pc251bGwoKS5z
 <section id="exercise-7-create-wine-quality-categories-and-clean-data" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-7-create-wine-quality-categories-and-clean-data">Exercise 7: Create Wine Quality Categories and Clean Data</h2>
 <p>Convert continuous variables into categorical groupings for easier pattern recognition. This is called <strong>binning</strong> or <strong>discretization</strong>.</p>
-<p><strong>Goal</strong>: We will create three categorical columns: - <code>quality_cat</code>: ‘Poor’ (0-4), ‘Average’ (5-6), ‘Good’ (7-10) - <code>sugar_level</code>: which is ‘Dry’ (&lt;9g/L), ‘Medium-Dry’ (9-18g/L), ‘Sweet’ (&gt;18g/L)</p>
+<p><strong>Goal</strong>: We will create three categorical columns:</p>
+<ul>
+<li><code>quality_cat</code>: ‘Poor’ (0-4), ‘Average’ (5-6), ‘Good’ (7-10)</li>
+<li><code>sugar_level</code>: which is ‘Dry’ (&lt;9g/L), ‘Medium-Dry’ (9-18g/L), ‘Sweet’ (&gt;18g/L)</li>
+</ul>
 <p>We then construct a table showing counts of wines in each quality category by sugar level. This is called a contingency table. and can be produced with <code>pd.crosstab()</code>.</p>
-<p><strong>Hints:</strong> - <strong><code>pd.cut(series, bins=[...], labels=[...])</code></strong>: Bins continuous data into categories - <code>bins=[0, 4, 6, 10]</code> creates bins: 0-4, 4-6, 6-10 - <strong><code>.value_counts()</code></strong>: Shows how many items in each category - <strong><code>pd.crosstab(df['cat1'], df['cat2'])</code></strong>: Contingency table showing counts for category combinations</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li><strong><code>pd.cut(series, bins=[...], labels=[...])</code></strong>: Bins continuous data into categories</li>
+<li><code>bins=[0, 4, 6, 10]</code> creates bins: 0-4, 4-6, 6-10</li>
+<li><strong><code>.value_counts()</code></strong>: Shows how many items in each category</li>
+<li><strong><code>pd.crosstab(df['cat1'], df['cat2'])</code></strong>: Contingency table showing counts for category combinations</li>
+</ul>
 <div>
 <div id="pyodide-12" class="exercise-cell">
 
@@ -1014,9 +1067,19 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDcmVhdGUgcXVhbGl0eSBj
 <section id="exercise-8-create-derived-features" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-8-create-derived-features">Exercise 8: Create Derived Features</h2>
 <p>Combine existing variables to create more informative features.</p>
-<p><strong>Goal</strong>: Engineer new features by combining chemical measurements: 1. <strong>Total Acidity</strong>: Sum fixed + volatile acidity for total acidity 2. <strong>Acidity ratio</strong>: fixed divided by volatile acidity 3. <strong>Balance ratios</strong>: Create sweetness-to-total-acidity ratio to measure wine balance 5. <strong>Standardized scores</strong>: Calculate z-scores for alcohol to normalize its scale. This is defined for a value in a popluation of given mean and standard deviation as <code>(value - mean) / std deviation</code>.</p>
+<p><strong>Goal</strong>: Engineer new features by combining chemical measurements:</p>
+<ol type="1">
+<li><strong>Total Acidity</strong>: Sum fixed + volatile acidity for total acidity</li>
+<li><strong>Acidity ratio</strong>: fixed divided by volatile acidity</li>
+<li><strong>Balance ratios</strong>: Create sweetness-to-total-acidity ratio to measure wine balance</li>
+<li><strong>Standardized scores</strong>: Calculate z-scores for alcohol to normalize its scale. This is defined for a value in a popluation of given mean and standard deviation as <code>(value - mean) / std deviation</code>.</li>
+</ol>
 <p>Then analyze which derived features correlate most strongly with wine quality.</p>
-<p><strong>Hints:</strong> - The <code>df[selected_cols].corr()</code> method can help identify strong relationships between selected columns - The <code>.describe()</code> method allows you to check derived features have reasonable values</p>
+<p><strong>Hints:</strong></p>
+<ul>
+<li>The <code>df[selected_cols].corr()</code> method can help identify strong relationships between selected columns</li>
+<li>The <code>.describe()</code> method allows you to check derived features have reasonable values</li>
+</ul>
 <div>
 <div id="pyodide-13" class="exercise-cell">
 
@@ -1035,7 +1098,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBZb3VyIGNvZGUgaGVyZVxu
 <li><strong>Fresh &amp; balanced</strong>: Wines with low volatile acidity (&lt; 0.4) and good citric acid (&gt;0.3)</li>
 </ol>
 <p>Print the top 5 results for each query, sorted by quality descending. In particular, print out the following columns: <code>citric acid</code>, <code>total sulfur dioxide</code>, <code>sulphates</code>,<code>alcohol</code>, <code>acidity ratio</code>, <code>quality</code>.</p>
-<p><strong>Hints</strong>: - <code>df[df['column'] &gt; value]</code> filters rows where condition is true - Combine conditions: <code>df[(condition1) &amp; (condition2)]</code> (AND), <code>df[(condition1) | (condition2)]</code> (OR) - <code>.sort_values('column', ascending=False)</code> sorts by a column - <code>.head(n)</code> shows top n results</p>
+<p><strong>Hints</strong>:</p>
+<ul>
+<li><code>df[df['column'] &gt; value]</code> filters rows where condition is true</li>
+<li>Combine conditions: <code>df[(condition1) &amp; (condition2)]</code> (AND), <code>df[(condition1) | (condition2)]</code> (OR)</li>
+<li><code>.sort_values('column', ascending=False)</code> sorts by a column</li>
+<li><code>.head(n)</code> shows top n results</li>
+</ul>
 <div>
 <div id="pyodide-14" class="exercise-cell">
 
@@ -1614,426 +1683,437 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>**Goal**: Load the weather data, skipping metadata, and display the first rows to verify.</span>
 <span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`pd.read_csv(url, ...)`</span>: Reads data from a URL or file path</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the option <span class="in">`skiprows=[0,1,2,3]`</span> can skip specific lines (in this case line 0,1,2,3)</span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The option <span class="in">`sep='\s+'`</span> uses whitespace as separator (regex for "one or more spaces/tabs")</span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The option <span class="in">`on_bad_lines='skip'`</span> skips malformed lines</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.head()`</span> Display first 5 rows to confirm data loaded correctly</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.shape`</span> Returns <span class="in">`(rows, columns)`</span> showing DataFrame dimensions </span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co"># Load weather data</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/yeoviltondata.txt"</span></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a>df_weather <span class="op">=</span> pd.read_csv(url, skiprows<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>],sep<span class="op">=</span><span class="vs">r'</span><span class="dv">\s</span><span class="op">+</span><span class="vs">'</span>, on_bad_lines<span class="op">=</span><span class="st">'skip'</span>)</span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Display first rows</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First 5 rows of weather data:"</span>)</span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.head())</span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Dataset shape: </span><span class="sc">{</span>df_weather<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Years of data: </span><span class="sc">{</span>df_weather[<span class="st">'yyyy'</span>]<span class="sc">.</span><span class="bu">max</span>() <span class="op">-</span> df_weather[<span class="st">'yyyy'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> years"</span>)</span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2: Clean and Prepare Weather Data</span></span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a>Raw data requires transformation before analysis. The Met Office data uses separate year and month columns, has '---' for missing values, and some numeric columns may be stored as strings.</span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>**Goal**: Create a clean DataFrame with datetime index, proper numeric types, and NaN for missing values. We will remove the NaN afterwards.</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>**Expected columns**: <span class="in">`yyyy`</span> (year), <span class="in">`mm`</span> (month), <span class="in">`tmax`</span> (max temp °C), <span class="in">`tmin`</span> (min temp °C), <span class="in">`af`</span> (air frost days), <span class="in">`rain`</span> (mm), <span class="in">`sun`</span> (hours)</span>
-<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use <span class="in">`.dtypes`</span> to check tha data type</span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.info()`**: Shows columns, data types, and non-null counts</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.to_datetime({'year': df['yyyy'], 'month': df['mm'], 'day': 1})`**: Creates datetime from a dictionary with data from multiple columns</span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.set_index('column', inplace=True)`**: Sets a column as the DataFrame index</span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.replace('---', np.nan)`**: Replaces '---' strings with NaN</span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.to_numeric(series, errors='coerce')`**: Converts to numeric, replacing failures with NaN</span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.sort_index(inplace=True)`**: Sorts by index to ensure chronological order</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Check initial data types</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Initial data types:"</span>)</span>
-<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.dtypes)</span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="co"># Create datetime index</span></span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime({<span class="st">'year'</span>: df_weather[<span class="st">'yyyy'</span>], </span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'month'</span>: df_weather[<span class="st">'mm'</span>], </span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'day'</span>: <span class="dv">1</span>})</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`pd.read_csv(url, ...)`</span>: Reads data from a URL or file path</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the option <span class="in">`skiprows=[0,1,2,3]`</span> can skip specific lines (in this case line 0,1,2,3)</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The option <span class="in">`sep='\s+'`</span> uses whitespace as separator (regex for "one or more spaces/tabs")</span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The option <span class="in">`on_bad_lines='skip'`</span> skips malformed lines</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.head()`</span> Display first 5 rows to confirm data loaded correctly</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.shape`</span> Returns <span class="in">`(rows, columns)`</span> showing DataFrame dimensions </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="co"># Load weather data</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/yeoviltondata.txt"</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>df_weather <span class="op">=</span> pd.read_csv(url, skiprows<span class="op">=</span>[<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">6</span>],sep<span class="op">=</span><span class="vs">r'</span><span class="dv">\s</span><span class="op">+</span><span class="vs">'</span>, on_bad_lines<span class="op">=</span><span class="st">'skip'</span>)</span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Display first rows</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First 5 rows of weather data:"</span>)</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.head())</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Dataset shape: </span><span class="sc">{</span>df_weather<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Years of data: </span><span class="sc">{</span>df_weather[<span class="st">'yyyy'</span>]<span class="sc">.</span><span class="bu">max</span>() <span class="op">-</span> df_weather[<span class="st">'yyyy'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> years"</span>)</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2: Clean and Prepare Weather Data</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>Raw data requires transformation before analysis. The Met Office data uses separate year and month columns, has '---' for missing values, and some numeric columns may be stored as strings.</span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>**Goal**: Create a clean DataFrame with datetime index, proper numeric types, and NaN for missing values. We will remove the NaN afterwards.</span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>**Expected columns**: <span class="in">`yyyy`</span> (year), <span class="in">`mm`</span> (month), <span class="in">`tmax`</span> (max temp °C), <span class="in">`tmin`</span> (min temp °C), <span class="in">`af`</span> (air frost days), <span class="in">`rain`</span> (mm), <span class="in">`sun`</span> (hours)</span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use <span class="in">`.dtypes`</span> to check tha data type</span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.info()`**: Shows columns, data types, and non-null counts</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.to_datetime({'year': df['yyyy'], 'month': df['mm'], 'day': 1})`**: Creates datetime from a dictionary with data from multiple columns</span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.set_index('column', inplace=True)`**: Sets a column as the DataFrame index</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.replace('---', np.nan)`**: Replaces '---' strings with NaN</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.to_numeric(series, errors='coerce')`**: Converts to numeric, replacing failures with NaN</span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.sort_index(inplace=True)`**: Sorts by index to ensure chronological order</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="co"># Check initial data types</span></span>
+<span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Initial data types:"</span>)</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.dtypes)</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Create datetime index</span></span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime({<span class="st">'year'</span>: df_weather[<span class="st">'yyyy'</span>], </span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'month'</span>: df_weather[<span class="st">'mm'</span>], </span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a>                                      <span class="st">'day'</span>: <span class="dv">1</span>})</span>
 <span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>df_weather.set_index(<span class="st">'date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>df_weather.sort_index(inplace<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace '---' with NaN</span></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>df_weather <span class="op">=</span> df_weather.replace(<span class="st">'---'</span>, np.nan)</span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert all measurement columns to numeric</span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="op">=</span> [<span class="st">'tmax'</span>, <span class="st">'tmin'</span>, <span class="st">'af'</span>, <span class="st">'rain'</span>, <span class="st">'sun'</span>]</span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> numeric_columns:</span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>    df_weather[col] <span class="op">=</span> pd.to_numeric(df_weather[col], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify data types</span></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Cleaned data types:"</span>)</span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.dtypes)</span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">First few rows with datetime index:"</span>)</span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.head())</span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3: Handle Missing Values in Weather Data</span></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>Historical weather records often have gaps due to equipment failures or missing measurements. Your approach should depend on the nature of each measurement.</span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a>**Goal**: Analyze missing value patterns and apply appropriate filling strategies. Check that no missing values remain.</span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>**Data characteristics**:</span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Temperature**: Changes gradually (good for interpolation)</span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Rainfall**: Variable; 0mm vs missing are different</span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sunshine/frost**: Could be 0 (none) or missing (not recorded)</span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.isnull().sum()`**: Counts missing (NaN) values per column</span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.interpolate(method='linear')`**: Estimates missing values from surrounding values (good for gradual changes)</span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.fillna(0)`**: Replaces NaN with 0 (use carefully—only when 0 is plausible or to mark a period where data is missing)</span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.fillna(method='ffill')`**: Forward fill—propagates last valid value forward</span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.fillna(method='bfill')`**: Backward fill—propagates next valid value backward</span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>**Reflect**: Why is interpolation better for temperature than rainfall?</span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>df_weather.set_index(<span class="st">'date'</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>df_weather.sort_index(inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="co"># Replace '---' with NaN</span></span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>df_weather <span class="op">=</span> df_weather.replace(<span class="st">'---'</span>, np.nan)</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert all measurement columns to numeric</span></span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>numeric_columns <span class="op">=</span> [<span class="st">'tmax'</span>, <span class="st">'tmin'</span>, <span class="st">'af'</span>, <span class="st">'rain'</span>, <span class="st">'sun'</span>]</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> numeric_columns:</span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a>    df_weather[col] <span class="op">=</span> pd.to_numeric(df_weather[col], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify data types</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Cleaned data types:"</span>)</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.dtypes)</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">First few rows with datetime index:"</span>)</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.head())</span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3: Handle Missing Values in Weather Data</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a>Historical weather records often have gaps due to equipment failures or missing measurements. Your approach should depend on the nature of each measurement.</span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>**Goal**: Analyze missing value patterns and apply appropriate filling strategies. Check that no missing values remain.</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a>**Data characteristics**:</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Temperature**: Changes gradually (good for interpolation)</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Rainfall**: Variable; 0mm vs missing are different</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sunshine/frost**: Could be 0 (none) or missing (not recorded)</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.isnull().sum()`**: Counts missing (NaN) values per column</span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.interpolate(method='linear')`**: Estimates missing values from surrounding values (good for gradual changes)</span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.fillna(0)`**: Replaces NaN with 0 (use carefully—only when 0 is plausible or to mark a period where data is missing)</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.fillna(method='ffill')`**: Forward fill—propagates last valid value forward</span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.fillna(method='bfill')`**: Backward fill—propagates next valid value backward</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a><span class="co"># Count missing values</span></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values per column:"</span>)</span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.isnull().<span class="bu">sum</span>())</span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Percentage missing:"</span>)</span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((df_weather.isnull().<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(df_weather) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>))</span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply interpolation for temperature </span></span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'tmax'</span>] <span class="op">=</span> df_weather[<span class="st">'tmax'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'tmin'</span>] <span class="op">=</span> df_weather[<span class="st">'tmin'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="co"># For rainfall and frost, use forward fill (more conservative)</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="co"># Could also use 0, but ffill is safer as missing doesn't necessarily mean zero</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'rain'</span>] <span class="op">=</span> df_weather[<span class="st">'rain'</span>].fillna(method<span class="op">=</span><span class="st">'ffill'</span>)</span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'af'</span>] <span class="op">=</span> df_weather[<span class="st">'af'</span>].fillna(method<span class="op">=</span><span class="st">'ffill'</span>)</span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="co"># for sunshine, we have missing data before a certain year, so we fill with  0</span></span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'sun'</span>] <span class="op">=</span> df_weather[<span class="st">'sun'</span>].fillna(<span class="dv">0</span>)</span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify</span></span>
-<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Remaining missing values after handling:"</span>)</span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.isnull().<span class="bu">sum</span>())</span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4: Extract Date Components and Create Weather Features</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>**Reflect**: Why is interpolation better for temperature than rainfall?</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="co"># Count missing values</span></span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values per column:"</span>)</span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.isnull().<span class="bu">sum</span>())</span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Percentage missing:"</span>)</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((df_weather.isnull().<span class="bu">sum</span>() <span class="op">/</span> <span class="bu">len</span>(df_weather) <span class="op">*</span> <span class="dv">100</span>).<span class="bu">round</span>(<span class="dv">2</span>))</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply interpolation for temperature </span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'tmax'</span>] <span class="op">=</span> df_weather[<span class="st">'tmax'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'tmin'</span>] <span class="op">=</span> df_weather[<span class="st">'tmin'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="co"># For rainfall and frost, use forward fill (more conservative)</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="co"># Could also use 0, but ffill is safer as missing doesn't necessarily mean zero</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'rain'</span>] <span class="op">=</span> df_weather[<span class="st">'rain'</span>].fillna(method<span class="op">=</span><span class="st">'ffill'</span>)</span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'af'</span>] <span class="op">=</span> df_weather[<span class="st">'af'</span>].fillna(method<span class="op">=</span><span class="st">'ffill'</span>)</span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="co"># for sunshine, we have missing data before a certain year, so we fill with  0</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'sun'</span>] <span class="op">=</span> df_weather[<span class="st">'sun'</span>].fillna(<span class="dv">0</span>)</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Remaining missing values after handling:"</span>)</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df_weather.isnull().<span class="bu">sum</span>())</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>Feature engineering creates new variables to reveal patterns. Extract date components (month, season) and create derived measurements (temperature range, extremes).</span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4: Extract Date Components and Create Weather Features</span></span>
 <span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>**Goal**: Add columns for </span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>Feature engineering creates new variables to reveal patterns. Extract date components (month, season) and create derived measurements (temperature range, extremes).</span>
 <span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>year</span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>month name</span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>season</span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>temperature range </span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>mean temp</span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>hot months (the maximum temp &gt; 25)</span>
-<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.index.year`**, **`df.index.month`**, **`df.index.quarter`**: Extract year, month (1-12), or quarter (1-4)</span>
-<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.index.month_name()`**: Returns full month name ('January', etc.)</span>
-<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Custom function + `.apply()`**: Create season mapper: <span class="in">`def get_season(month): ...`</span> then <span class="in">`df['season'] = df['month'].apply(get_season)`</span></span>
-<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Part A: Date components</span></span>
-<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'year'</span>] <span class="op">=</span> df_weather.index.year</span>
-<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'month'</span>] <span class="op">=</span> df_weather.index.month</span>
-<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'month_name'</span>] <span class="op">=</span> df_weather.index.month_name()</span>
-<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'quarter'</span>] <span class="op">=</span> df_weather.index.quarter</span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="co"># Season function</span></span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_season(month):</span>
-<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> month <span class="kw">in</span> [<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>]:</span>
-<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Winter'</span></span>
-<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]:</span>
-<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Spring'</span></span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]:</span>
-<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Summer'</span></span>
-<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Autumn'</span></span>
-<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'season'</span>] <span class="op">=</span> df_weather[<span class="st">'month'</span>].<span class="bu">apply</span>(get_season)</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>**Goal**: Add columns for </span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>year</span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>month name</span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>season</span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>temperature range </span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>mean temp</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>hot months (the maximum temp &gt; 25)</span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.index.year`**, **`df.index.month`**, **`df.index.quarter`**: Extract year, month (1-12), or quarter (1-4)</span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.index.month_name()`**: Returns full month name ('January', etc.)</span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Custom function + `.apply()`**: Create season mapper: <span class="in">`def get_season(month): ...`</span> then <span class="in">`df['season'] = df['month'].apply(get_season)`</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="co"># Part A: Date components</span></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'year'</span>] <span class="op">=</span> df_weather.index.year</span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'month'</span>] <span class="op">=</span> df_weather.index.month</span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'month_name'</span>] <span class="op">=</span> df_weather.index.month_name()</span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'quarter'</span>] <span class="op">=</span> df_weather.index.quarter</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="co"># Season function</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_season(month):</span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> month <span class="kw">in</span> [<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>]:</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Winter'</span></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]:</span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Spring'</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]:</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Summer'</span></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Autumn'</span></span>
 <span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="co"># Part B: Derived features</span></span>
-<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'temp_range'</span>] <span class="op">=</span> df_weather[<span class="st">'tmax'</span>] <span class="op">-</span> df_weather[<span class="st">'tmin'</span>]</span>
-<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'temp_mean'</span>] <span class="op">=</span> (df_weather[<span class="st">'tmax'</span>] <span class="op">+</span> df_weather[<span class="st">'tmin'</span>]) <span class="op">/</span> <span class="dv">2</span></span>
-<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'hot'</span>] <span class="op">=</span> df_weather[<span class="st">'tmax'</span>] <span class="op">&gt;</span> <span class="dv">26</span></span>
-<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'season'</span>] <span class="op">=</span> df_weather[<span class="st">'month'</span>].<span class="bu">apply</span>(get_season)</span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="co"># Part B: Derived features</span></span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'temp_range'</span>] <span class="op">=</span> df_weather[<span class="st">'tmax'</span>] <span class="op">-</span> df_weather[<span class="st">'tmin'</span>]</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'temp_mean'</span>] <span class="op">=</span> (df_weather[<span class="st">'tmax'</span>] <span class="op">+</span> df_weather[<span class="st">'tmin'</span>]) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'hot'</span>] <span class="op">=</span> df_weather[<span class="st">'tmax'</span>] <span class="op">&gt;</span> <span class="dv">26</span></span>
 <span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 5: Analyze Weather Patterns with GroupBy</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a>The <span class="in">`groupby()`</span> operation splits data into groups, applies functions (like mean), then combines results. </span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 5: Analyze Weather Patterns with GroupBy</span></span>
 <span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>You can group by month, season, year, or decade to analyze climate patterns.</span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>The <span class="in">`groupby()`</span> operation splits data into groups, applies functions (like mean), then combines results. </span>
 <span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>**Goal**: Calculate the typical (mean) monthly temperature, rainfall, and sunshine for each month and season.</span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a>You can group by month, season, year, or decade to analyze climate patterns.</span>
 <span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.groupby('column')['measurement1'].mean()`**: Groups and calculates mean for one column</span>
-<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.groupby('column')[['col1', 'col2']].mean()`**: Groups and calculates means for multiple columns</span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>**Goal**: Calculate the typical (mean) monthly temperature, rainfall, and sunshine for each month and season.</span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
 <span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>**More advanced question**: Can you define decades and analyze trends over decades?</span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.groupby('column')['measurement1'].mean()`**: Groups and calculates mean for one column</span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`df.groupby('column')[['col1', 'col2']].mean()`**: Groups and calculates means for multiple columns</span>
 <span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'temp_mean'</span>, <span class="st">'rain'</span>, <span class="st">'sun'</span>]</span>
-<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>monthly_stats <span class="op">=</span> df_weather.groupby(<span class="st">'month_name'</span>)[cols].mean()</span>
-<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a>monthly_stats</span>
-<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a>season_stats <span class="op">=</span> df_weather.groupby(<span class="st">'season'</span>)[cols].mean()</span>
-<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a>season_stats</span>
-<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>To analyse over decades, we need a new column for the 1960s, 1970s, etc etc. We can create this by integer division of the year by 10, then multiplying back by 10. For example, for year 1964:<span class="in">`(1964 // 10) * 10 = 1960`</span>.</span>
-<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'decade'</span>] <span class="op">=</span> (df_weather.index.year <span class="op">//</span> <span class="dv">10</span>) <span class="op">*</span> <span class="dv">10</span></span>
-<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a>decade_stats <span class="op">=</span> df_weather.groupby(<span class="st">'decade'</span>)[cols].mean()</span>
-<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a>decade_stats</span>
-<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a><span class="fu"># Part 2: Wine Quality Data Analysis (UCI Wine Quality Dataset)</span></span>
-<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>The next five exercises focus on analyzing wine quality data with chemical properties.</span>
-<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 6: Load and Explore Wine Quality Data</span></span>
-<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>Shift from time series to cross-sectional data. This UCI dataset contains physicochemical measurements of Portuguese red wines with quality ratings from experts.</span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a>**Dataset**: 11 chemical properties + 1 quality score (0-10). </span>
-<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>**Features** (chemical properties, units in parentheses):</span>
-<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`fixed acidity`</span> (g/L tartaric acid)</span>
-<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`volatile acidity`</span> (g/L acetic acid) </span>
-<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`citric acid`</span> (g/L)</span>
-<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`residual sugar`</span> (g/L)</span>
-<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`chlorides`</span> (g/L sodium chloride)</span>
-<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`free sulfur dioxide`</span> (mg/L)</span>
-<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`total sulfur dioxide`</span> (mg/L)</span>
-<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`density`</span> (g/cm³)</span>
-<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`pH`</span> (0-14 scale)</span>
-<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`sulphates`</span> (g/L potassium sulphate)</span>
-<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`alcohol`</span> (% vol)</span>
-<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a>**Target**: </span>
-<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`quality`</span> (score 0-10, median expert ratings)</span>
-<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a>Each row = different wine sample.</span>
-<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a>**More advanced question**: Can you define decades and analyze trends over decades?</span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>cols <span class="op">=</span> [<span class="st">'temp_mean'</span>, <span class="st">'rain'</span>, <span class="st">'sun'</span>]</span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a>monthly_stats <span class="op">=</span> df_weather.groupby(<span class="st">'month_name'</span>)[cols].mean()</span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a>monthly_stats</span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a>season_stats <span class="op">=</span> df_weather.groupby(<span class="st">'season'</span>)[cols].mean()</span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a>season_stats</span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a>To analyse over decades, we need a new column for the 1960s, 1970s, etc etc. We can create this by integer division of the year by 10, then multiplying back by 10. For example, for year 1964:<span class="in">`(1964 // 10) * 10 = 1960`</span>.</span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a>df_weather[<span class="st">'decade'</span>] <span class="op">=</span> (df_weather.index.year <span class="op">//</span> <span class="dv">10</span>) <span class="op">*</span> <span class="dv">10</span></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>decade_stats <span class="op">=</span> df_weather.groupby(<span class="st">'decade'</span>)[cols].mean()</span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>decade_stats</span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="fu"># Part 2: Wine Quality Data Analysis (UCI Wine Quality Dataset)</span></span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a>The next five exercises focus on analyzing wine quality data with chemical properties.</span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 6: Load and Explore Wine Quality Data</span></span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>Shift from time series to cross-sectional data. This UCI dataset contains physicochemical measurements of Portuguese red wines with quality ratings from experts.</span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a>**Dataset**: 11 chemical properties + 1 quality score (0-10). </span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a>**Features** (chemical properties, units in parentheses):</span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`fixed acidity`</span> (g/L tartaric acid)</span>
+<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`volatile acidity`</span> (g/L acetic acid) </span>
+<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`citric acid`</span> (g/L)</span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`residual sugar`</span> (g/L)</span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`chlorides`</span> (g/L sodium chloride)</span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`free sulfur dioxide`</span> (mg/L)</span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`total sulfur dioxide`</span> (mg/L)</span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`density`</span> (g/cm³)</span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`pH`</span> (0-14 scale)</span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`sulphates`</span> (g/L potassium sulphate)</span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`alcohol`</span> (% vol)</span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a>**Target**: </span>
 <span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a>**Important**: File uses **semicolons** as delimiter, not commas.</span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`quality`</span> (score 0-10, median expert ratings)</span>
 <span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a>**Data Source**: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv</span>
+<span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a>Each row = different wine sample.</span>
 <span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a>**Goal**: Load data correctly and look at its shape and summary statistics.</span>
-<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.read_csv(url, sep=';')`**: Specify semicolon delimiter</span>
-<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.head()`**, **`.tail()`**: Show first/last rows</span>
-<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.shape`**: Returns <span class="in">`(n_rows, n_columns)`</span></span>
-<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.info()`**: Summary of columns, types, non-null counts</span>
-<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.describe()`**: Statistics (mean, std, min, max, quartiles) for numeric columns</span>
-<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.isnull().sum()`**: Count missing values per column</span>
-<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>wine_url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"</span></span>
-<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a>df_wine <span class="op">=</span> pd.read_csv(wine_url, sep<span class="op">=</span><span class="st">';'</span>)</span>
-<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>df_wine</span>
-<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a>**Important**: File uses **semicolons** as delimiter, not commas.</span>
+<span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>**Data Source**: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a>**Goal**: Load data correctly and look at its shape and summary statistics.</span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.read_csv(url, sep=';')`**: Specify semicolon delimiter</span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.head()`**, **`.tail()`**: Show first/last rows</span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.shape`**: Returns <span class="in">`(n_rows, n_columns)`</span></span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.info()`**: Summary of columns, types, non-null counts</span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.describe()`**: Statistics (mean, std, min, max, quartiles) for numeric columns</span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.isnull().sum()`**: Count missing values per column</span>
+<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a>df_wine.describe()</span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a>wine_url <span class="op">=</span> <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"</span></span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a>df_wine <span class="op">=</span> pd.read_csv(wine_url, sep<span class="op">=</span><span class="st">';'</span>)</span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a>df_wine</span>
 <span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a>df_wine.isnull().<span class="bu">sum</span>()</span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a>df_wine.describe()</span>
 <span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 7: Create Wine Quality Categories and Clean Data</span></span>
-<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a>Convert continuous variables into categorical groupings for easier pattern recognition. This is called **binning** or **discretization**.</span>
-<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>**Goal**: We will create three categorical columns:</span>
-<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`quality_cat`</span>: 'Poor' (0-4), 'Average' (5-6), 'Good' (7-10)</span>
-<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`sugar_level`</span>: which is 'Dry' (&lt;9g/L), 'Medium-Dry' (9-18g/L), 'Sweet' (&gt;18g/L)</span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a>df_wine.isnull().<span class="bu">sum</span>()</span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 7: Create Wine Quality Categories and Clean Data</span></span>
 <span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a>We then construct a table showing counts of wines in each quality category by sugar level. This is called a contingency table. and can be produced with <span class="in">`pd.crosstab()`</span>.</span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a>Convert continuous variables into categorical groupings for easier pattern recognition. This is called **binning** or **discretization**.</span>
 <span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.cut(series, bins=[...], labels=[...])`**: Bins continuous data into categories</span>
-<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`bins=[0, 4, 6, 10]`</span> creates bins: 0-4, 4-6, 6-10</span>
-<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.value_counts()`**: Shows how many items in each category</span>
-<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.crosstab(df['cat1'], df['cat2'])`**: Contingency table showing counts for category combinations</span>
-<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a>**Goal**: We will create three categorical columns:</span>
+<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`quality_cat`</span>: 'Poor' (0-4), 'Average' (5-6), 'Good' (7-10)</span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`sugar_level`</span>: which is 'Dry' (&lt;9g/L), 'Medium-Dry' (9-18g/L), 'Sweet' (&gt;18g/L)</span>
+<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a>We then construct a table showing counts of wines in each quality category by sugar level. This is called a contingency table. and can be produced with <span class="in">`pd.crosstab()`</span>.</span>
 <span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a><span class="co"># Create quality categories</span></span>
-<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'quality_cat'</span>] <span class="op">=</span> pd.cut(df_wine[<span class="st">'quality'</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">10</span>], labels<span class="op">=</span>[<span class="st">'Poor'</span>, <span class="st">'Average'</span>, <span class="st">'Good'</span>])</span>
-<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sugar level categories</span></span>
-<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'sugar_level'</span>] <span class="op">=</span> pd.cut(df_wine[<span class="st">'residual sugar'</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">18</span>, <span class="bu">float</span>(<span class="st">'inf'</span>)], labels<span class="op">=</span>[<span class="st">'Dry'</span>, <span class="st">'Medium-Dry'</span>, <span class="st">'Sweet'</span>])</span>
-<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a><span class="co"># Create contingency table</span></span>
-<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Wine Quality by Sugar Level:"</span>)</span>
-<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(df_wine[<span class="st">'quality_cat'</span>], df_wine[<span class="st">'sugar_level'</span>]))</span>
-<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 8: Create Derived Features</span></span>
+<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
+<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.cut(series, bins=[...], labels=[...])`**: Bins continuous data into categories</span>
+<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`bins=[0, 4, 6, 10]`</span> creates bins: 0-4, 4-6, 6-10</span>
+<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.value_counts()`**: Shows how many items in each category</span>
+<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.crosstab(df['cat1'], df['cat2'])`**: Contingency table showing counts for category combinations</span>
+<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a><span class="co"># Create quality categories</span></span>
+<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'quality_cat'</span>] <span class="op">=</span> pd.cut(df_wine[<span class="st">'quality'</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">6</span>, <span class="dv">10</span>], labels<span class="op">=</span>[<span class="st">'Poor'</span>, <span class="st">'Average'</span>, <span class="st">'Good'</span>])</span>
+<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sugar level categories</span></span>
+<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'sugar_level'</span>] <span class="op">=</span> pd.cut(df_wine[<span class="st">'residual sugar'</span>], bins<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">9</span>, <span class="dv">18</span>, <span class="bu">float</span>(<span class="st">'inf'</span>)], labels<span class="op">=</span>[<span class="st">'Dry'</span>, <span class="st">'Medium-Dry'</span>, <span class="st">'Sweet'</span>])</span>
 <span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a>Combine existing variables to create more informative features.</span>
-<span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a>**Goal**: Engineer new features by combining chemical measurements:</span>
-<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Total Acidity**: Sum fixed + volatile acidity for total acidity</span>
-<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Acidity ratio**: fixed divided by volatile acidity</span>
-<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Balance ratios**: Create sweetness-to-total-acidity ratio to measure wine balance</span>
-<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Standardized scores**: Calculate z-scores for alcohol to normalize its scale. This is defined for a value in a popluation of given mean and standard deviation as <span class="in">`(value - mean) / std deviation`</span>.</span>
+<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a><span class="co"># Create contingency table</span></span>
+<span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Wine Quality by Sugar Level:"</span>)</span>
+<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(pd.crosstab(df_wine[<span class="st">'quality_cat'</span>], df_wine[<span class="st">'sugar_level'</span>]))</span>
+<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 8: Create Derived Features</span></span>
 <span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a>Then analyze which derived features correlate most strongly with wine quality.</span>
+<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a>Combine existing variables to create more informative features.</span>
 <span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The <span class="in">`df[selected_cols].corr()`</span> method can help identify strong relationships between selected columns</span>
-<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The <span class="in">`.describe()`</span> method allows you to check derived features have reasonable values</span>
-<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a>**Goal**: Engineer new features by combining chemical measurements:</span>
+<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Total Acidity**: Sum fixed + volatile acidity for total acidity</span>
+<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**Acidity ratio**: fixed divided by volatile acidity</span>
+<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Balance ratios**: Create sweetness-to-total-acidity ratio to measure wine balance</span>
+<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>**Standardized scores**: Calculate z-scores for alcohol to normalize its scale. This is defined for a value in a popluation of given mean and standard deviation as <span class="in">`(value - mean) / std deviation`</span>.</span>
+<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a>Then analyze which derived features correlate most strongly with wine quality.</span>
 <span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'total acidity'</span>] <span class="op">=</span> df_wine[<span class="st">'fixed acidity'</span>] <span class="op">+</span> df_wine[<span class="st">'volatile acidity'</span>]</span>
-<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'acidity ratio'</span>] <span class="op">=</span> df_wine[<span class="st">'fixed acidity'</span>] <span class="op">/</span> df_wine[<span class="st">'volatile acidity'</span>]</span>
-<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'balance'</span>] <span class="op">=</span> df_wine[<span class="st">'residual sugar'</span>]<span class="op">/</span>df_wine[<span class="st">'total acidity'</span>]</span>
-<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'alcohol zscore'</span>] <span class="op">=</span> (df_wine[<span class="st">'alcohol'</span>] <span class="op">-</span> df_wine[<span class="st">'alcohol'</span>].mean()) <span class="op">/</span> df_wine[<span class="st">'alcohol'</span>].std()</span>
+<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
+<span id="cb1-387"><a href="#cb1-387" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-388"><a href="#cb1-388" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The <span class="in">`df[selected_cols].corr()`</span> method can help identify strong relationships between selected columns</span>
+<span id="cb1-389"><a href="#cb1-389" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The <span class="in">`.describe()`</span> method allows you to check derived features have reasonable values</span>
 <span id="cb1-390"><a href="#cb1-390" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-391"><a href="#cb1-391" aria-hidden="true" tabindex="-1"></a>numerical_cols <span class="op">=</span> df_wine.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
-<span id="cb1-392"><a href="#cb1-392" aria-hidden="true" tabindex="-1"></a><span class="co"># df_wine.corr(numerical_cols)</span></span>
-<span id="cb1-393"><a href="#cb1-393" aria-hidden="true" tabindex="-1"></a>df_wine[numerical_cols].corr()[<span class="st">'quality'</span>]</span>
-<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-393"><a href="#cb1-393" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-394"><a href="#cb1-394" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
 <span id="cb1-395"><a href="#cb1-395" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 9: Wine Discovery Through Filtering</span></span>
-<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a>Let's use filtering to discover interesting wines in the dataset! Think of this as being a wine explorer—you'll use boolean conditions to find wines that match specific criteria.</span>
-<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a>**Goal**: Use pandas filtering to discover</span>
-<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Hidden gems**: Good wines that don't rely on high alcohol (less than 11%)</span>
-<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Fresh &amp; balanced**: Wines with low volatile acidity (&lt; 0.4) and good citric acid (&gt;0.3)</span>
-<span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a>Print the top 5 results for each query, sorted by quality descending. In particular, print out the following columns: <span class="in">`citric acid`</span>, <span class="in">`total sulfur dioxide `</span>, <span class="in">`sulphates`</span>,<span class="in">`alcohol`</span>, <span class="in">`acidity ratio`</span>, <span class="in">`quality`</span>.</span>
-<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-396"><a href="#cb1-396" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'total acidity'</span>] <span class="op">=</span> df_wine[<span class="st">'fixed acidity'</span>] <span class="op">+</span> df_wine[<span class="st">'volatile acidity'</span>]</span>
+<span id="cb1-397"><a href="#cb1-397" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'acidity ratio'</span>] <span class="op">=</span> df_wine[<span class="st">'fixed acidity'</span>] <span class="op">/</span> df_wine[<span class="st">'volatile acidity'</span>]</span>
+<span id="cb1-398"><a href="#cb1-398" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'balance'</span>] <span class="op">=</span> df_wine[<span class="st">'residual sugar'</span>]<span class="op">/</span>df_wine[<span class="st">'total acidity'</span>]</span>
+<span id="cb1-399"><a href="#cb1-399" aria-hidden="true" tabindex="-1"></a>df_wine[<span class="st">'alcohol zscore'</span>] <span class="op">=</span> (df_wine[<span class="st">'alcohol'</span>] <span class="op">-</span> df_wine[<span class="st">'alcohol'</span>].mean()) <span class="op">/</span> df_wine[<span class="st">'alcohol'</span>].std()</span>
+<span id="cb1-400"><a href="#cb1-400" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-401"><a href="#cb1-401" aria-hidden="true" tabindex="-1"></a>numerical_cols <span class="op">=</span> df_wine.select_dtypes(include<span class="op">=</span>[np.number]).columns.tolist()</span>
+<span id="cb1-402"><a href="#cb1-402" aria-hidden="true" tabindex="-1"></a><span class="co"># df_wine.corr(numerical_cols)</span></span>
+<span id="cb1-403"><a href="#cb1-403" aria-hidden="true" tabindex="-1"></a>df_wine[numerical_cols].corr()[<span class="st">'quality'</span>]</span>
+<span id="cb1-404"><a href="#cb1-404" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-405"><a href="#cb1-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-406"><a href="#cb1-406" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 9: Wine Discovery Through Filtering</span></span>
 <span id="cb1-407"><a href="#cb1-407" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a>**Hints**:</span>
-<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`df[df['column'] &gt; value]`</span> filters rows where condition is true</span>
-<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Combine conditions: <span class="in">`df[(condition1) &amp; (condition2)]`</span> (AND), <span class="in">`df[(condition1) | (condition2)]`</span> (OR)</span>
-<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.sort_values('column', ascending=False)`</span> sorts by a column</span>
-<span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.head(n)`</span> shows top n results</span>
-<span id="cb1-413"><a href="#cb1-413" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a>selection <span class="op">=</span> [<span class="st">"citric acid"</span>, <span class="st">"total sulfur dioxide"</span>, <span class="st">"sulphates"</span>,<span class="st">"alcohol"</span>, <span class="st">"acidity ratio"</span>, <span class="st">"quality"</span>]</span>
-<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a><span class="co"># Hidden Gems (good quality but moderate alcohol)</span></span>
-<span id="cb1-419"><a href="#cb1-419" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">=== HIDDEN GEMS (Quality 6+, Alcohol &lt; 11%) ==="</span>)</span>
-<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a>hidden_gems <span class="op">=</span> df_wine[(df_wine[<span class="st">'quality'</span>] <span class="op">&gt;=</span> <span class="dv">6</span>) <span class="op">&amp;</span> (df_wine[<span class="st">'alcohol'</span>] <span class="op">&lt;</span> <span class="dv">11</span>)]</span>
-<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(hidden_gems)<span class="sc">}</span><span class="ss"> hidden gems"</span>)</span>
-<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Top 5 by quality:"</span>)</span>
-<span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a>hidden_gems[selection].sort_values(<span class="st">'quality'</span>, ascending<span class="op">=</span><span class="va">False</span>).head()</span>
-<span id="cb1-424"><a href="#cb1-424" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-425"><a href="#cb1-425" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">=== FRESH &amp; BALANCED (Vol. Acidity &lt; 0.4, Citric Acid &gt; 0.3) ==="</span>)</span>
-<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a>fresh <span class="op">=</span> df_wine[(df_wine[<span class="st">'volatile acidity'</span>] <span class="op">&lt;</span> <span class="fl">0.4</span>) <span class="op">&amp;</span> (df_wine[<span class="st">'citric acid'</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>)]</span>
-<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(fresh)<span class="sc">}</span><span class="ss"> fresh wines"</span>)</span>
-<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average quality: </span><span class="sc">{</span>fresh[<span class="st">'quality'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-408"><a href="#cb1-408" aria-hidden="true" tabindex="-1"></a>Let's use filtering to discover interesting wines in the dataset! Think of this as being a wine explorer—you'll use boolean conditions to find wines that match specific criteria.</span>
+<span id="cb1-409"><a href="#cb1-409" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-410"><a href="#cb1-410" aria-hidden="true" tabindex="-1"></a>**Goal**: Use pandas filtering to discover</span>
+<span id="cb1-411"><a href="#cb1-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-412"><a href="#cb1-412" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**Hidden gems**: Good wines that don't rely on high alcohol (less than 11%)</span>
+<span id="cb1-413"><a href="#cb1-413" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>**Fresh &amp; balanced**: Wines with low volatile acidity (&lt; 0.4) and good citric acid (&gt;0.3)</span>
+<span id="cb1-414"><a href="#cb1-414" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-415"><a href="#cb1-415" aria-hidden="true" tabindex="-1"></a>Print the top 5 results for each query, sorted by quality descending. In particular, print out the following columns: <span class="in">`citric acid`</span>, <span class="in">`total sulfur dioxide `</span>, <span class="in">`sulphates`</span>,<span class="in">`alcohol`</span>, <span class="in">`acidity ratio`</span>, <span class="in">`quality`</span>.</span>
+<span id="cb1-416"><a href="#cb1-416" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-417"><a href="#cb1-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-418"><a href="#cb1-418" aria-hidden="true" tabindex="-1"></a>**Hints**:</span>
+<span id="cb1-419"><a href="#cb1-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-420"><a href="#cb1-420" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`df[df['column'] &gt; value]`</span> filters rows where condition is true</span>
+<span id="cb1-421"><a href="#cb1-421" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Combine conditions: <span class="in">`df[(condition1) &amp; (condition2)]`</span> (AND), <span class="in">`df[(condition1) | (condition2)]`</span> (OR)</span>
+<span id="cb1-422"><a href="#cb1-422" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.sort_values('column', ascending=False)`</span> sorts by a column</span>
+<span id="cb1-423"><a href="#cb1-423" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`.head(n)`</span> shows top n results</span>
+<span id="cb1-424"><a href="#cb1-424" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-427"><a href="#cb1-427" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-428"><a href="#cb1-428" aria-hidden="true" tabindex="-1"></a>selection <span class="op">=</span> [<span class="st">"citric acid"</span>, <span class="st">"total sulfur dioxide"</span>, <span class="st">"sulphates"</span>,<span class="st">"alcohol"</span>, <span class="st">"acidity ratio"</span>, <span class="st">"quality"</span>]</span>
+<span id="cb1-429"><a href="#cb1-429" aria-hidden="true" tabindex="-1"></a><span class="co"># Hidden Gems (good quality but moderate alcohol)</span></span>
+<span id="cb1-430"><a href="#cb1-430" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">=== HIDDEN GEMS (Quality 6+, Alcohol &lt; 11%) ==="</span>)</span>
+<span id="cb1-431"><a href="#cb1-431" aria-hidden="true" tabindex="-1"></a>hidden_gems <span class="op">=</span> df_wine[(df_wine[<span class="st">'quality'</span>] <span class="op">&gt;=</span> <span class="dv">6</span>) <span class="op">&amp;</span> (df_wine[<span class="st">'alcohol'</span>] <span class="op">&lt;</span> <span class="dv">11</span>)]</span>
+<span id="cb1-432"><a href="#cb1-432" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(hidden_gems)<span class="sc">}</span><span class="ss"> hidden gems"</span>)</span>
 <span id="cb1-433"><a href="#cb1-433" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Top 5 by quality:"</span>)</span>
-<span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a>fresh[selection].sort_values(<span class="st">'quality'</span>, ascending<span class="op">=</span><span class="va">False</span>).head()</span>
+<span id="cb1-434"><a href="#cb1-434" aria-hidden="true" tabindex="-1"></a>hidden_gems[selection].sort_values(<span class="st">'quality'</span>, ascending<span class="op">=</span><span class="va">False</span>).head()</span>
 <span id="cb1-435"><a href="#cb1-435" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-436"><a href="#cb1-436" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-437"><a href="#cb1-437" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 10: Export and Document Your Analysis</span></span>
-<span id="cb1-438"><a href="#cb1-438" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a>(this can only work on *Noteable*)</span>
-<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a>Preserve your work by exporting cleaned data and documenting your process. Specifically, export your data in at least **two different formats**.</span>
-<span id="cb1-442"><a href="#cb1-442" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-443"><a href="#cb1-443" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
-<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.to_csv('file.csv')`**: Exports to CSV. Use <span class="in">`index=False`</span> to exclude index (wine) or <span class="in">`index=True`</span> to include it (weather)</span>
-<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.to_excel('file.xlsx')`**: Exports to Excel (requires <span class="in">`openpyxl`</span>)</span>
-<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.to_json('file.json', orient='index')`**: Exports to JSON (<span class="in">`orient='records'`</span> or <span class="in">`orient='index'`</span>)</span>
-<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.read_csv('file.csv')`**: Read back to verify export</span>
-<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.DataFrame(dict)`**: Create documentation tables from dictionaries</span>
+<span id="cb1-439"><a href="#cb1-439" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-440"><a href="#cb1-440" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">=== FRESH &amp; BALANCED (Vol. Acidity &lt; 0.4, Citric Acid &gt; 0.3) ==="</span>)</span>
+<span id="cb1-441"><a href="#cb1-441" aria-hidden="true" tabindex="-1"></a>fresh <span class="op">=</span> df_wine[(df_wine[<span class="st">'volatile acidity'</span>] <span class="op">&lt;</span> <span class="fl">0.4</span>) <span class="op">&amp;</span> (df_wine[<span class="st">'citric acid'</span>] <span class="op">&gt;</span> <span class="fl">0.3</span>)]</span>
+<span id="cb1-442"><a href="#cb1-442" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Found </span><span class="sc">{</span><span class="bu">len</span>(fresh)<span class="sc">}</span><span class="ss"> fresh wines"</span>)</span>
+<span id="cb1-443"><a href="#cb1-443" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average quality: </span><span class="sc">{</span>fresh[<span class="st">'quality'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-444"><a href="#cb1-444" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Top 5 by quality:"</span>)</span>
+<span id="cb1-445"><a href="#cb1-445" aria-hidden="true" tabindex="-1"></a>fresh[selection].sort_values(<span class="st">'quality'</span>, ascending<span class="op">=</span><span class="va">False</span>).head()</span>
+<span id="cb1-446"><a href="#cb1-446" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-447"><a href="#cb1-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-448"><a href="#cb1-448" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 10: Export and Document Your Analysis</span></span>
 <span id="cb1-449"><a href="#cb1-449" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
-<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-455"><a href="#cb1-455" aria-hidden="true" tabindex="-1"></a><span class="co"># Part A: Export weather data</span></span>
-<span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a>weather_export_cols <span class="op">=</span> [<span class="st">'tmax'</span>, <span class="st">'tmin'</span>, <span class="st">'rain'</span>, <span class="st">'sun'</span>, <span class="st">'af'</span>, </span>
-<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'temp_mean'</span>, <span class="st">'temp_range'</span>, <span class="st">'season'</span>, <span class="st">'year'</span>, <span class="st">'month_name'</span>]</span>
-<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a><span class="co"># df_weather[weather_export_cols].to_csv('weather_cleaned.csv')</span></span>
-<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a><span class="co"># Weather summary statistics</span></span>
-<span id="cb1-461"><a href="#cb1-461" aria-hidden="true" tabindex="-1"></a><span class="co"># weather_summary = df_weather.groupby('season')[['tmax', 'tmin', 'rain']].describe()</span></span>
-<span id="cb1-462"><a href="#cb1-462" aria-hidden="true" tabindex="-1"></a><span class="co"># weather_summary.to_csv('weather_summary.csv')</span></span>
-<span id="cb1-463"><a href="#cb1-463" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a><span class="co"># Part B: Export wine data</span></span>
-<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a>wine_export_cols <span class="op">=</span> [<span class="st">'fixed acidity'</span>, <span class="st">'volatile acidity'</span>, <span class="st">'citric acid'</span>, </span>
-<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'residual sugar'</span>, <span class="st">'chlorides'</span>, <span class="st">'pH'</span>, <span class="st">'sulphates'</span>, <span class="st">'alcohol'</span>,</span>
-<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'quality'</span>, <span class="st">'quality_category'</span>, <span class="st">'alcohol_category'</span>,</span>
-<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'total_acidity'</span>, <span class="st">'so2_ratio'</span>]</span>
-<span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a><span class="co"># df_wine[wine_export_cols].to_csv('wine_cleaned.csv', index=False)</span></span>
+<span id="cb1-450"><a href="#cb1-450" aria-hidden="true" tabindex="-1"></a>(this can only work on *Noteable*)</span>
+<span id="cb1-451"><a href="#cb1-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-452"><a href="#cb1-452" aria-hidden="true" tabindex="-1"></a>Preserve your work by exporting cleaned data and documenting your process. Specifically, export your data in at least **two different formats**.</span>
+<span id="cb1-453"><a href="#cb1-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-454"><a href="#cb1-454" aria-hidden="true" tabindex="-1"></a>**Hints:**</span>
+<span id="cb1-455"><a href="#cb1-455" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.to_csv('file.csv')`**: Exports to CSV. Use <span class="in">`index=False`</span> to exclude index (wine) or <span class="in">`index=True`</span> to include it (weather)</span>
+<span id="cb1-456"><a href="#cb1-456" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.to_excel('file.xlsx')`**: Exports to Excel (requires <span class="in">`openpyxl`</span>)</span>
+<span id="cb1-457"><a href="#cb1-457" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`.to_json('file.json', orient='index')`**: Exports to JSON (<span class="in">`orient='records'`</span> or <span class="in">`orient='index'`</span>)</span>
+<span id="cb1-458"><a href="#cb1-458" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.read_csv('file.csv')`**: Read back to verify export</span>
+<span id="cb1-459"><a href="#cb1-459" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**`pd.DataFrame(dict)`**: Create documentation tables from dictionaries</span>
+<span id="cb1-460"><a href="#cb1-460" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-463"><a href="#cb1-463" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-464"><a href="#cb1-464" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb1-465"><a href="#cb1-465" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-466"><a href="#cb1-466" aria-hidden="true" tabindex="-1"></a><span class="co"># Part A: Export weather data</span></span>
+<span id="cb1-467"><a href="#cb1-467" aria-hidden="true" tabindex="-1"></a>weather_export_cols <span class="op">=</span> [<span class="st">'tmax'</span>, <span class="st">'tmin'</span>, <span class="st">'rain'</span>, <span class="st">'sun'</span>, <span class="st">'af'</span>, </span>
+<span id="cb1-468"><a href="#cb1-468" aria-hidden="true" tabindex="-1"></a>                        <span class="st">'temp_mean'</span>, <span class="st">'temp_range'</span>, <span class="st">'season'</span>, <span class="st">'year'</span>, <span class="st">'month_name'</span>]</span>
+<span id="cb1-469"><a href="#cb1-469" aria-hidden="true" tabindex="-1"></a><span class="co"># df_weather[weather_export_cols].to_csv('weather_cleaned.csv')</span></span>
 <span id="cb1-470"><a href="#cb1-470" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-471"><a href="#cb1-471" aria-hidden="true" tabindex="-1"></a><span class="co"># Wine quality analysis</span></span>
-<span id="cb1-472"><a href="#cb1-472" aria-hidden="true" tabindex="-1"></a><span class="co"># quality_summary = df_wine.groupby('quality')[numeric_cols].mean()</span></span>
-<span id="cb1-473"><a href="#cb1-473" aria-hidden="true" tabindex="-1"></a><span class="co"># quality_summary.to_csv('wine_quality_analysis.csv')</span></span>
+<span id="cb1-471"><a href="#cb1-471" aria-hidden="true" tabindex="-1"></a><span class="co"># Weather summary statistics</span></span>
+<span id="cb1-472"><a href="#cb1-472" aria-hidden="true" tabindex="-1"></a><span class="co"># weather_summary = df_weather.groupby('season')[['tmax', 'tmin', 'rain']].describe()</span></span>
+<span id="cb1-473"><a href="#cb1-473" aria-hidden="true" tabindex="-1"></a><span class="co"># weather_summary.to_csv('weather_summary.csv')</span></span>
 <span id="cb1-474"><a href="#cb1-474" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a><span class="co"># Part C: Data Dictionary</span></span>
-<span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DATA ANALYSIS SUMMARY"</span>)</span>
-<span id="cb1-478"><a href="#cb1-478" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">WEATHER DATASET:"</span>)</span>
-<span id="cb1-481"><a href="#cb1-481" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Records: </span><span class="sc">{</span><span class="bu">len</span>(df_weather)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-482"><a href="#cb1-482" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Date range: </span><span class="sc">{</span>df_weather<span class="sc">.</span>index<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>df_weather<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-483"><a href="#cb1-483" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Years covered: </span><span class="sc">{</span>df_weather[<span class="st">'year'</span>]<span class="sc">.</span><span class="bu">max</span>() <span class="op">-</span> df_weather[<span class="st">'year'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-484"><a href="#cb1-484" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Key finding: [Add your finding here]"</span>)</span>
+<span id="cb1-475"><a href="#cb1-475" aria-hidden="true" tabindex="-1"></a><span class="co"># Part B: Export wine data</span></span>
+<span id="cb1-476"><a href="#cb1-476" aria-hidden="true" tabindex="-1"></a>wine_export_cols <span class="op">=</span> [<span class="st">'fixed acidity'</span>, <span class="st">'volatile acidity'</span>, <span class="st">'citric acid'</span>, </span>
+<span id="cb1-477"><a href="#cb1-477" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'residual sugar'</span>, <span class="st">'chlorides'</span>, <span class="st">'pH'</span>, <span class="st">'sulphates'</span>, <span class="st">'alcohol'</span>,</span>
+<span id="cb1-478"><a href="#cb1-478" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'quality'</span>, <span class="st">'quality_category'</span>, <span class="st">'alcohol_category'</span>,</span>
+<span id="cb1-479"><a href="#cb1-479" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'total_acidity'</span>, <span class="st">'so2_ratio'</span>]</span>
+<span id="cb1-480"><a href="#cb1-480" aria-hidden="true" tabindex="-1"></a><span class="co"># df_wine[wine_export_cols].to_csv('wine_cleaned.csv', index=False)</span></span>
+<span id="cb1-481"><a href="#cb1-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-482"><a href="#cb1-482" aria-hidden="true" tabindex="-1"></a><span class="co"># Wine quality analysis</span></span>
+<span id="cb1-483"><a href="#cb1-483" aria-hidden="true" tabindex="-1"></a><span class="co"># quality_summary = df_wine.groupby('quality')[numeric_cols].mean()</span></span>
+<span id="cb1-484"><a href="#cb1-484" aria-hidden="true" tabindex="-1"></a><span class="co"># quality_summary.to_csv('wine_quality_analysis.csv')</span></span>
 <span id="cb1-485"><a href="#cb1-485" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-486"><a href="#cb1-486" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">WINE DATASET:"</span>)</span>
-<span id="cb1-487"><a href="#cb1-487" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Records: </span><span class="sc">{</span><span class="bu">len</span>(df_wine)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-488"><a href="#cb1-488" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Quality range: </span><span class="sc">{</span>df_wine[<span class="st">'quality'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>df_wine[<span class="st">'quality'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-489"><a href="#cb1-489" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Average quality: </span><span class="sc">{</span>df_wine[<span class="st">'quality'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
-<span id="cb1-490"><a href="#cb1-490" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Key finding: [Add your finding here]"</span>)</span>
-<span id="cb1-491"><a href="#cb1-491" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a><span class="co"># Part D: Comparison</span></span>
-<span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a>comparison_data <span class="op">=</span> {</span>
-<span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Characteristic'</span>: [<span class="st">'Data Type'</span>, <span class="st">'Records'</span>, <span class="st">'Missing Data'</span>, <span class="st">'Main Challenge'</span>],</span>
-<span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Weather'</span>: [<span class="st">'Time series'</span>, <span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(df_weather)<span class="sc">}</span><span class="ss">'</span>, <span class="st">'Yes'</span>, <span class="st">'Temporal patterns'</span>],</span>
-<span id="cb1-496"><a href="#cb1-496" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Wine'</span>: [<span class="st">'Cross-sectional'</span>, <span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(df_wine)<span class="sc">}</span><span class="ss">'</span>, <span class="st">'None'</span>, <span class="st">'Quality prediction'</span>]</span>
-<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a>comparison_df <span class="op">=</span> pd.DataFrame(comparison_data)</span>
-<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">DATASET COMPARISON:"</span>)</span>
-<span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(comparison_df.to_string(index<span class="op">=</span><span class="va">False</span>))</span>
-<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a><span class="co"># Verification</span></span>
-<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Export complete! Verify by reading files:"</span>)</span>
-<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - weather_cleaned.csv"</span>)</span>
-<span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - wine_cleaned.csv"</span>)</span>
-<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
-<span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-486"><a href="#cb1-486" aria-hidden="true" tabindex="-1"></a><span class="co"># Part C: Data Dictionary</span></span>
+<span id="cb1-487"><a href="#cb1-487" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-488"><a href="#cb1-488" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"DATA ANALYSIS SUMMARY"</span>)</span>
+<span id="cb1-489"><a href="#cb1-489" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-490"><a href="#cb1-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-491"><a href="#cb1-491" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">WEATHER DATASET:"</span>)</span>
+<span id="cb1-492"><a href="#cb1-492" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Records: </span><span class="sc">{</span><span class="bu">len</span>(df_weather)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-493"><a href="#cb1-493" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Date range: </span><span class="sc">{</span>df_weather<span class="sc">.</span>index<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>df_weather<span class="sc">.</span>index<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-494"><a href="#cb1-494" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Years covered: </span><span class="sc">{</span>df_weather[<span class="st">'year'</span>]<span class="sc">.</span><span class="bu">max</span>() <span class="op">-</span> df_weather[<span class="st">'year'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-495"><a href="#cb1-495" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Key finding: [Add your finding here]"</span>)</span>
+<span id="cb1-496"><a href="#cb1-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-497"><a href="#cb1-497" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">WINE DATASET:"</span>)</span>
+<span id="cb1-498"><a href="#cb1-498" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Records: </span><span class="sc">{</span><span class="bu">len</span>(df_wine)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-499"><a href="#cb1-499" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Quality range: </span><span class="sc">{</span>df_wine[<span class="st">'quality'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>df_wine[<span class="st">'quality'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-500"><a href="#cb1-500" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Average quality: </span><span class="sc">{</span>df_wine[<span class="st">'quality'</span>]<span class="sc">.</span>mean()<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb1-501"><a href="#cb1-501" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"  Key finding: [Add your finding here]"</span>)</span>
+<span id="cb1-502"><a href="#cb1-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-503"><a href="#cb1-503" aria-hidden="true" tabindex="-1"></a><span class="co"># Part D: Comparison</span></span>
+<span id="cb1-504"><a href="#cb1-504" aria-hidden="true" tabindex="-1"></a>comparison_data <span class="op">=</span> {</span>
+<span id="cb1-505"><a href="#cb1-505" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Characteristic'</span>: [<span class="st">'Data Type'</span>, <span class="st">'Records'</span>, <span class="st">'Missing Data'</span>, <span class="st">'Main Challenge'</span>],</span>
+<span id="cb1-506"><a href="#cb1-506" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Weather'</span>: [<span class="st">'Time series'</span>, <span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(df_weather)<span class="sc">}</span><span class="ss">'</span>, <span class="st">'Yes'</span>, <span class="st">'Temporal patterns'</span>],</span>
+<span id="cb1-507"><a href="#cb1-507" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Wine'</span>: [<span class="st">'Cross-sectional'</span>, <span class="ss">f'</span><span class="sc">{</span><span class="bu">len</span>(df_wine)<span class="sc">}</span><span class="ss">'</span>, <span class="st">'None'</span>, <span class="st">'Quality prediction'</span>]</span>
+<span id="cb1-508"><a href="#cb1-508" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-509"><a href="#cb1-509" aria-hidden="true" tabindex="-1"></a>comparison_df <span class="op">=</span> pd.DataFrame(comparison_data)</span>
+<span id="cb1-510"><a href="#cb1-510" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">DATASET COMPARISON:"</span>)</span>
+<span id="cb1-511"><a href="#cb1-511" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(comparison_df.to_string(index<span class="op">=</span><span class="va">False</span>))</span>
+<span id="cb1-512"><a href="#cb1-512" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-513"><a href="#cb1-513" aria-hidden="true" tabindex="-1"></a><span class="co"># Verification</span></span>
+<span id="cb1-514"><a href="#cb1-514" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-515"><a href="#cb1-515" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Export complete! Verify by reading files:"</span>)</span>
+<span id="cb1-516"><a href="#cb1-516" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - weather_cleaned.csv"</span>)</span>
+<span id="cb1-517"><a href="#cb1-517" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"  - wine_cleaned.csv"</span>)</span>
+<span id="cb1-518"><a href="#cb1-518" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"="</span> <span class="op">*</span> <span class="dv">60</span>)</span>
+<span id="cb1-519"><a href="#cb1-519" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
