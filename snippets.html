@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -158,6 +193,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="dropdown-item" href="./15/lecture_pandas_plotting.html">
  <span class="dropdown-text">15 - Plotting with <code>pandas</code></span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="./16/lecture_pandas_vs_numpy.html">
+ <span class="dropdown-text">16 - Pandas vs Numpy</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -216,6 +255,10 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./15/exercises_pandas_plotting.html">
  <span class="dropdown-text">15 - Pandas Plotting Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./16/exercises_pandas_vs_numpy.html">
+ <span class="dropdown-text">16 - Pandas vs Numpy Exercises</span></a>
   </li>  
     </ul>
   </li>
@@ -279,6 +322,10 @@ ul.task-list li input[type="checkbox"] {
         <li>
     <a class="dropdown-item" href="./14/exercises_pandas_preprocessing-solutions.html">
  <span class="dropdown-text">14 - Pandas Preprocessing Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="./15/exercises_pandas_plotting_solutions.html">
+ <span class="dropdown-text">15 - Pandas Plotting Solutions</span></a>
   </li>  
     </ul>
   </li>
@@ -509,13 +556,13 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05/week_05_chemistry.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5: Consolidation</span></a>
+ <span class="menu-text">Chemistry Challenge</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05/week_05_physics.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Week 5: Consolidation</span></a>
+ <span class="menu-text">Physics Challenge</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -730,6 +777,29 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false">
+ <span class="menu-text">16 Pandas vs Numpy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16/lecture_pandas_vs_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas vs Numpy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16/exercises_pandas_vs_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numpy vs Pandas: Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -760,7 +830,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Ass the following to quarto</p>
+<p>Add the following to quarto</p>
 <div>
 <div id="pyodide-1" class="exercise-cell">
 
@@ -768,6 +838,11 @@ ul.task-list li input[type="checkbox"] {
 <script type="pyodide-1-contents">
 eyJhdHRyIjp7ImVjaG8iOmZhbHNlLCJlZGl0IjpmYWxzZSwiZXZhbCI6dHJ1ZSwibWVzc2FnZSI6ZmFsc2UsIndhcm5pbmciOmZhbHNlfSwiY29kZSI6IlxuaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuZnJvbSBwYW5kYXMucGxvdHRpbmcuX2NvcmUgaW1wb3J0IFBsb3RBY2Nlc3NvclxuXG5fb2xkX2NhbGwgPSBQbG90QWNjZXNzb3IuX19jYWxsX19cblxuZGVmIF9wYXRjaGVkX2NhbGwoc2VsZiwgKmFyZ3MsICoqa3dhcmdzKTpcbiAgICBheCA9IF9vbGRfY2FsbChzZWxmLCAqYXJncywgKiprd2FyZ3MpXG4gICAgcGx0LnNob3coKVxuICAgIHJldHVybiBheFxuXG5QbG90QWNjZXNzb3IuX19jYWxsX18gPSBfcGF0Y2hlZF9jYWxsIn0=
 </script>
+</div>
+<p>remember to add</p>
+<div id="3830cf54" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;vscode&quot;,&quot;value&quot;:{&quot;languageId&quot;:&quot;plaintext&quot;}}">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>resources:</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="op">-</span> src</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
