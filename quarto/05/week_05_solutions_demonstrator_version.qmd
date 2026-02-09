@@ -25,12 +25,14 @@ This notebook presents solutions to the Week 5 challenges in `Data Science`, `Ph
 To run the solutions for this challenge, you will first need to run the below import statement.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from src.robot_maze import RobotMaze
 ```
 
 **Task 1: Getting Started.** Code for this task can be found below:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a robot in a maze
 robot = RobotMaze(maze_id='4-60-15973')
 
@@ -60,6 +62,7 @@ robot.move()
 **Task 2: Sensing Danger.** Here is an answer to this problem:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import random
 
 # Write your own controller
@@ -107,6 +110,7 @@ my_controller(robot)
 **Task 3: End of the Road.** The below code provides a solution to this question.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| scrolled: false
 import random
 
@@ -211,6 +215,7 @@ my_controller(robot)
 **Task 4: Turning Back.** Below is an example solution for this question.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| scrolled: false
 import random
 
@@ -282,6 +287,7 @@ my_new_controller(robot)
 **Task 5: Final Challenge.** There are plenty of solutions to this task. Here is just one example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example usage
 def example_controller(robot):
     
@@ -326,6 +332,7 @@ example_controller(robot)
 This code will load in the challenge data.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # This code will load the data for you
 from src.photogate_data import read_photogate_data
 
@@ -336,6 +343,7 @@ data_dict = read_photogate_data()
 **Task 1: Clean the Data.** Below is an example solution for part *(1)* of the Physics challenge.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create an empty dictionary for cleaned data
 cleaned_data_dict = {}
 
@@ -424,6 +432,7 @@ for trial_str in data_dict.keys():
 **Task 2: Detect When Each Bar Begins to Block the Beam.** Solution code for part *(1)* of the Physics challenge is given below.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Empty dictionary for times
 times_dict = {}
 
@@ -463,6 +472,7 @@ for trial_str in data_dict.keys():
 **Task 3: Estimate Average Velocities.** Example code for this question is given below.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Record delta_d
 delta_d=0.05
 
@@ -498,6 +508,7 @@ for trial_str in data_dict.keys():
 **Task 4: Estimate Accelerations.** An answer to this question is provided below.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Empty dictionary for accelerations
 accel_dict = {}
 
@@ -533,6 +544,7 @@ for trial_str in data_dict.keys():
 **Task 5: Estimate $g$.** The below code computes the within-trial averages of the acceleration.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Get the means of the accelerations in each trial
 accel_means_dict = {}
 
@@ -559,6 +571,7 @@ for trial_str in data_dict.keys():
 The following code averages acceleration across trials.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 overall_mean = 0
 
 # Loop through all trials
@@ -580,6 +593,7 @@ print(overall_mean)
 To run the solutions for this challenge you must first run the below code.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import os
 os.chdir('/home/jovyan/SCIF10002-2025.git/05/src')
 
@@ -591,6 +605,7 @@ periodic_table = get_periodic_table()
 **Task 1: Verifying Elements.** Here is an example solution to this problem.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Verify the element is correct
 def verify_element(isotope_string, periodic_table):
     
@@ -643,6 +658,7 @@ verify_element(isotope_string2, periodic_table)
 **Task 2: Verifying the Atomic Number.** Here is an example answer to task 2.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check that the number of protons, if given, is correct.
 def check_protons(isotope_string, periodic_table):
     
@@ -692,6 +708,7 @@ check_protons(isotope_string3, periodic_table)
 **Task 3: Counting Electrons, Protons and Neutrons.** Here is some example code for task 3:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check that the number of protons, if given, is correct.
 def check_protons(isotope_string):
     
@@ -756,6 +773,7 @@ check_protons(isotope_string3)
 **Task 4: Group and Period.** Example code for this task is given below.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def group_and_period(isotope_string, periodic_table):
     
     
@@ -856,6 +874,7 @@ group_and_period(isotope_string3, periodic_table)
 **Task 5: Isotope Names.** An example solution for this is given below:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Get element string
 def get_element_string(isotope_string, periodic_table):
     
@@ -907,6 +926,7 @@ print(get_element_string(isotope_string3, periodic_table))
 **Task 6: Categorizing Isotopes.** Here is an example solution to this task.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def get_category(isotope_string, periodic_table):
     
         

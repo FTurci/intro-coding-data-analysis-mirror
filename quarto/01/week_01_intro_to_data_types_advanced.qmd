@@ -42,7 +42,6 @@ The distinction between a data type being "mutable" or "immutable" may seem dull
 For example, in the below code we may expect `a` and `b` to have different values:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = 7
 b = a # a and b are now both looking in the same place in memory
 a = 10 # Here we have changed the reference
@@ -53,7 +52,6 @@ print(b) # Changing a has not changed b
 And they do! However, if we change `a` from being `7` to a list containing `7`, perhaps surprisingly, changing the value of `a` also changes the value `b`!
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = [7]
 b = a # a and b are now both looking in the same place in memory
 a[0] = 10 # Here we have changed the data itself!
@@ -71,7 +69,6 @@ In the second example, however, when we assign `a[0]=10`, we are telling Python 
 It is worth noting though that if an operation is performed then a copy might be made:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = [7]
 b = a*2 # In this case b is a reference to a new object.
 a[0] = 10
@@ -84,7 +81,6 @@ In this case, to ensure we are working with a copy of `a` and not just a referen
  > **Note:** In this case `a` is a `list` so we use the `list` constructor. For other datatypes similar constructors exist and would be used in this situation (e.g. `set`, `dict`, etc...).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = [7]
 b = list(a) # This time, a and b are not both looking in the same place in memory!
 a[0] = 10
@@ -99,7 +95,6 @@ print(b) # Changing a has not changed b
  > If you are not familiar with functions, do not worry; these will be covered in depth later in the course and, for now, move past this example.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def function1(x):
     x.append(10)
     return(x)
@@ -127,7 +122,6 @@ Now that we understand the difference between mutable and immutable types, let's
 The `id()` function returns the unique identifier (memory address) of an object. This identifier tells us exactly where some data lives physically on a machine - essentially showing us the reference that a variable is pointing to.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Basic usage of id()
 x = 42
 print("ID of x:", id(x))
@@ -137,7 +131,6 @@ print("ID of the literal 42:", id(42))
 With immutable data types, when you reassign a variable, you are changing the reference (the variable now points to a different location in memory). Let's see this with our integer example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("---------------")
 print("Before a = 10:")
 print("---------------")
@@ -165,7 +158,6 @@ print("This is why changing a did not change b!")
 With mutable data types, when you modify the data, you are changing the data itself (the reference stays the same - the variable is still "looking" at the same location in memory). Let's reproduce our list example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("---------------")
 print("Before a[0] = 10:")
 print("---------------")
@@ -199,7 +191,6 @@ If the `is` operator returns `True` then the equality is definitely `True`, but 
  > **Warning:** Avoid using the `is` operator for "immutable" types such as strings and numbers; the result is unpredictable and in most cases the `==` is more appropriate for purpose. 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # a and b are set to both represent the same object in memory.
 a = b = [1,2,3]
 
@@ -233,7 +224,6 @@ print(list_b)
 Run the code in the box below to verify your answer.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -262,7 +252,6 @@ print(b)
 Run the code above to verify your answers.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -276,7 +265,6 @@ The below code should give us $20$ as an answer... but it doesn't - something ha
     
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 xyz = [1,2,3]
 
 # Make a list of x squared, y squared, z squared
@@ -302,7 +290,6 @@ print(x + y + z + xsquared + ysquared + zsquared)
 **Question 4:** You have a list of lists representing a grid. You want to create a backup copy before making changes, but the following approach doesn't work correctly. Explain what has gone wrong here.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 grid = [[1, 2], [3, 4], [5, 6]]
 backup = list(grid)
 
@@ -316,7 +303,6 @@ print("backup =", backup)  # This should be unchanged, but it isn't!
 **Question 5:** The following code creates a 3x3 grid filled with zeros, but when you try to modify one cell, unexpected behavior occurs. Identify the problem and provide a solution:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # This code has a problem!
 grid = [[0] * 3] * 3
 print("Initial grid:", grid)
@@ -328,7 +314,6 @@ print("After setting grid[0][0] = 1:", grid)
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your solution code here...
 ```
 
