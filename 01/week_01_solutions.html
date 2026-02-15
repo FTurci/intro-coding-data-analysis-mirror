@@ -197,6 +197,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../16/lecture_pandas_vs_numpy.html">
  <span class="dropdown-text">16 - Pandas vs Numpy</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../17/lecture_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting with Python</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -259,6 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy.html">
  <span class="dropdown-text">16 - Pandas vs Numpy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../17/exercises_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting Exercises</span></a>
   </li>  
     </ul>
   </li>
@@ -326,6 +334,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../15/exercises_pandas_plotting_solutions.html">
  <span class="dropdown-text">15 - Pandas Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy_solutions.qmd">
+ <span class="dropdown-text">16 - Pandas vs Numpy Solutions</span></a>
   </li>  
     </ul>
   </li>
@@ -800,6 +812,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false">
+ <span class="menu-text">17 Advanced Plotting with Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/lecture_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/exercises_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting Exercises: Building Dashboards with Seaborn and Plotly</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -863,7 +898,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFZhcmlhYmxlcyB4LCB5IGFuZCB6XG54ID0gMVxueSA9IDJcbnogPSAxLjI2XG5cbm15X2Jvb2xlYW4gPSAoKHgqKjIgPCB5KSBhbmQgKHkgPCB6KiozKSkgb3IgKCh6KiozIDwgeSkgYW5kICh5IDwgeCoqMikpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBWYXJpYWJsZXMgeCwgeSBhbmQgelxueCA9IDFcbnkgPSAyXG56ID0gMS4yNlxuXG5teV9ib29sZWFuID0gKCh4KioyIDwgeSkgYW5kICh5IDwgeioqMykpIG9yICgoeioqMyA8IHkpIGFuZCAoeSA8IHgqKjIpKSJ9
 </script>
 </div>
 <p><strong>Question 2:</strong> The solution to the question is given below:</p>
@@ -872,7 +907,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEJvb2xlYW4gdmFyaWFibGVzXG5pc19yYWluaW5nID0gVHJ1ZVxuaGF2ZV91bWJyZWxsYSA9IEZhbHNlXG5cbiMgQm9vbGVhbiB0ZWxsaW5nIHlvdSBpZiB5b3UgYXJlIGdvaW5nIHRvIGdldCByYWluZWQgb25cbmdvdF9zb2FrZWQgPSBpc19yYWluaW5nIGFuZCAobm90IGhhdmVfdW1icmVsbGEpXG5cbnByaW50KCdRdWVzdGlvbjogV2lsbCBJIGdldCByYWluZWQgb24/JylcbnByaW50KCdBbnN3ZXI6ICcgKyBzdHIoZ290X3NvYWtlZCkpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBCb29sZWFuIHZhcmlhYmxlc1xuaXNfcmFpbmluZyA9IFRydWVcbmhhdmVfdW1icmVsbGEgPSBGYWxzZVxuXG4jIEJvb2xlYW4gdGVsbGluZyB5b3UgaWYgeW91IGFyZSBnb2luZyB0byBnZXQgcmFpbmVkIG9uXG5nb3Rfc29ha2VkID0gaXNfcmFpbmluZyBhbmQgKG5vdCBoYXZlX3VtYnJlbGxhKVxuXG5wcmludCgnUXVlc3Rpb246IFdpbGwgSSBnZXQgcmFpbmVkIG9uPycpXG5wcmludCgnQW5zd2VyOiAnICsgc3RyKGdvdF9zb2FrZWQpKSJ9
 </script>
 </div>
 <p><strong>Question 3:</strong> The completed truth table for this question is:</p>
@@ -968,7 +1003,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEJvb2xlYW4gdmFyaWFibGVzXG5BID0gVHJ1ZVxuQiA9IEZhbHNlXG5DID0gVHJ1ZVxuXG4jIENvbXB1dGUgbmV3IGJvb2xlYW5cbm15X2Jvb2xlYW4gPSAoQSBhbmQgQikgb3IgKG5vdCBDKVxucHJpbnQobXlfYm9vbGVhbikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBCb29sZWFuIHZhcmlhYmxlc1xuQSA9IFRydWVcbkIgPSBGYWxzZVxuQyA9IFRydWVcblxuIyBDb21wdXRlIG5ldyBib29sZWFuXG5teV9ib29sZWFuID0gKEEgYW5kIEIpIG9yIChub3QgQylcbnByaW50KG15X2Jvb2xlYW4pIn0=
 </script>
 </div>
 <p><strong>Question 4:</strong> The solution to this question is given below:</p>
@@ -977,7 +1012,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEhlaWdodCBhbmQgd2lkdGggdmFyaWFibGVzXG5oZWlnaHQgPSAxMFxud2lkdGggPSAzXG5cbiMgUGVyaW1ldGVyXG5wZXJpbWV0ZXIgPSAyKihoZWlnaHQrd2lkdGgpXG5cbiMgQXJlYVxuYXJlYSA9IGhlaWdodCp3aWR0aFxuXG4jIERpYWdvbmFsXG5kaWFnID0gKGhlaWdodCoqMiArIHdpZHRoKioyKSoqKDEvMilcblxuIyBQcmludCByZXN1bHRzXG5wcmludChwZXJpbWV0ZXIsIGFyZWEsIGRpYWcpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBIZWlnaHQgYW5kIHdpZHRoIHZhcmlhYmxlc1xuaGVpZ2h0ID0gMTBcbndpZHRoID0gM1xuXG4jIFBlcmltZXRlclxucGVyaW1ldGVyID0gMiooaGVpZ2h0K3dpZHRoKVxuXG4jIEFyZWFcbmFyZWEgPSBoZWlnaHQqd2lkdGhcblxuIyBEaWFnb25hbFxuZGlhZyA9IChoZWlnaHQqKjIgKyB3aWR0aCoqMikqKigxLzIpXG5cbiMgUHJpbnQgcmVzdWx0c1xucHJpbnQocGVyaW1ldGVyLCBhcmVhLCBkaWFnKSJ9
 </script>
 </div>
 <p><strong>Question 5:</strong> The solution to this question is given by:</p>
@@ -986,7 +1021,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEtub3duIHZhcmlhYmxlc1xudiA9IDEwXG51ID0gMFxuYSA9IDkuODFcblxuIyBDb21wdXRlIHNcbnMgPSAodioqMi11KioyKS8oMiphKVxucHJpbnQocykifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBLbm93biB2YXJpYWJsZXNcbnYgPSAxMFxudSA9IDBcbmEgPSA5LjgxXG5cbiMgQ29tcHV0ZSBzXG5zID0gKHYqKjItdSoqMikvKDIqYSlcbnByaW50KHMpIn0=
 </script>
 </div>
 <p><strong>Question 6:</strong> The solution to this question is given by:</p>
@@ -995,7 +1030,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIENvbXB1dGUgdGltZSB1c2luZyB2YXJpYWJsZXMgZnJvbSBRdWVzdGlvbiA1XG50ID0gMipzLyh1K3YpXG5wcmludCh0KSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDb21wdXRlIHRpbWUgdXNpbmcgdmFyaWFibGVzIGZyb20gUXVlc3Rpb24gNVxudCA9IDIqcy8odSt2KVxucHJpbnQodCkifQ==
 </script>
 </div>
 <p><strong>Question 7:</strong> A code block containing the examples from the question is given below:</p>
@@ -1004,7 +1039,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJwcmludCgoVHJ1ZSBhbmQgRmFsc2UpIG9yIFRydWUpXG5wcmludChub3QgKEZhbHNlIG9yIEZhbHNlKSlcbnByaW50KFRydWUgb3IgRmFsc2UgYW5kIEZhbHNlKVxucHJpbnQoRmFsc2UgXiBUcnVlKVxucHJpbnQoKFRydWUgYW5kIG5vdCBUcnVlKSBhbmQgKEZhbHNlIG9yIG5vdCBGYWxzZSkpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoicHJpbnQoKFRydWUgYW5kIEZhbHNlKSBvciBUcnVlKVxucHJpbnQobm90IChGYWxzZSBvciBGYWxzZSkpXG5wcmludChUcnVlIG9yIEZhbHNlIGFuZCBGYWxzZSlcbnByaW50KEZhbHNlIF4gVHJ1ZSlcbnByaW50KChUcnVlIGFuZCBub3QgVHJ1ZSkgYW5kIChGYWxzZSBvciBub3QgRmFsc2UpKSJ9
 </script>
 </div>
 <p>The answers follow by standard boolean logic. The only difficult parts are determining the order of operations for the third example (python will interpret this as <code>True or (False and False)</code> rather than <code>(True or False) and False</code>) and the xor (<code>^</code>) on the fourth line.</p>
@@ -1019,7 +1054,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFRoZSBzdHJpbmcgd2Ugd2FudCB0byB0cmFuc2Zvcm1cbnN0YXJ0X3N0cmluZyA9ICdUaGFzIGFzIHRlIGFyYW5nIHdlIHdhbnQhJ1xucHJpbnQoJ1N0YXJ0OiAgJywgc3RhcnRfc3RyaW5nKVxuXG4jIEhlbHBlciBzdHJpbmdzIHlvdSBjYW4gdXNlIGZvciByZXBsYWNlbWVudHNcbnN0cmluZzEgPSAnYSdcbnN0cmluZzIgPSAnc3QnXG5zdHJpbmczID0gJ2hlIGEnXG5zdHJpbmc0ID0gJyBnZSdcbnN0cmluZzUgPSAnc3RyaSdcbnN0cmluZzYgPSAnc3RzJ1xuc3RyaW5nNyA9ICdpcydcbnN0cmluZzggPSAnYXJhJ1xuc3RyaW5nOSA9ICdnZW4nXG5zdHJpbmcxMCA9ICdlIGEnXG5cbiMgU3RlcCAxXG5zdGVwMSA9IHN0YXJ0X3N0cmluZy5yZXBsYWNlKHN0cmluZzEsc3RyaW5nMilcbnByaW50KCdTdGVwIDE6ICcsIHN0ZXAxKVxuXG4jIFN0ZXAgMlxuc3RlcDIgPSBzdGVwMS5yZXBsYWNlKHN0cmluZzYsc3RyaW5nNylcbnByaW50KCdTdGVwIDI6ICcsIHN0ZXAyKVxuXG4jIFN0ZXAgM1xuc3RlcDMgPSBzdGVwMi5yZXBsYWNlKHN0cmluZzIsIHN0cmluZzEpXG5wcmludCgnU3RlcCAzOiAnLCBzdGVwMylcblxuIyBTdGVwIDRcbnN0ZXA0ID0gc3RlcDMucmVwbGFjZShzdHJpbmcxMCwgc3RyaW5nMylcbnByaW50KCdTdGVwIDQ6ICcsIHN0ZXA0KVxuXG4jIFN0ZXAgNVxuc3RlcDUgPSBzdGVwNC5yZXBsYWNlKHN0cmluZzgsIHN0cmluZzUpXG5wcmludCgnU3RlcCA1OiAnLCBzdGVwNSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBUaGUgc3RyaW5nIHdlIHdhbnQgdG8gdHJhbnNmb3JtXG5zdGFydF9zdHJpbmcgPSAnVGhhcyBhcyB0ZSBhcmFuZyB3ZSB3YW50ISdcbnByaW50KCdTdGFydDogICcsIHN0YXJ0X3N0cmluZylcblxuIyBIZWxwZXIgc3RyaW5ncyB5b3UgY2FuIHVzZSBmb3IgcmVwbGFjZW1lbnRzXG5zdHJpbmcxID0gJ2EnXG5zdHJpbmcyID0gJ3N0J1xuc3RyaW5nMyA9ICdoZSBhJ1xuc3RyaW5nNCA9ICcgZ2UnXG5zdHJpbmc1ID0gJ3N0cmknXG5zdHJpbmc2ID0gJ3N0cydcbnN0cmluZzcgPSAnaXMnXG5zdHJpbmc4ID0gJ2FyYSdcbnN0cmluZzkgPSAnZ2VuJ1xuc3RyaW5nMTAgPSAnZSBhJ1xuXG4jIFN0ZXAgMVxuc3RlcDEgPSBzdGFydF9zdHJpbmcucmVwbGFjZShzdHJpbmcxLHN0cmluZzIpXG5wcmludCgnU3RlcCAxOiAnLCBzdGVwMSlcblxuIyBTdGVwIDJcbnN0ZXAyID0gc3RlcDEucmVwbGFjZShzdHJpbmc2LHN0cmluZzcpXG5wcmludCgnU3RlcCAyOiAnLCBzdGVwMilcblxuIyBTdGVwIDNcbnN0ZXAzID0gc3RlcDIucmVwbGFjZShzdHJpbmcyLCBzdHJpbmcxKVxucHJpbnQoJ1N0ZXAgMzogJywgc3RlcDMpXG5cbiMgU3RlcCA0XG5zdGVwNCA9IHN0ZXAzLnJlcGxhY2Uoc3RyaW5nMTAsIHN0cmluZzMpXG5wcmludCgnU3RlcCA0OiAnLCBzdGVwNClcblxuIyBTdGVwIDVcbnN0ZXA1ID0gc3RlcDQucmVwbGFjZShzdHJpbmc4LCBzdHJpbmc1KVxucHJpbnQoJ1N0ZXAgNTogJywgc3RlcDUpIn0=
 </script>
 </div>
 </section>
@@ -1031,7 +1066,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIE9yaWdpbmFsIGxpc3Rcbm51bXMgPSBbNSwgMiwgOCwgMiwgOV1cbnByaW50KFwiT3JpZ2luYWwgbGlzdDpcIiwgbnVtcylcblxuIyAxLiBSZXRyaWV2ZSB0aGUgdGhpcmQgZWxlbWVudCAoaW5kZXggMiBiZWNhdXNlIGluZGV4aW5nIHN0YXJ0cyBhdCAwKVxudGhpcmRfZWxlbWVudCA9IG51bXNbMl1cbnByaW50KFwiVGhpcmQgZWxlbWVudDpcIiwgdGhpcmRfZWxlbWVudClcblxuIyAyLiBTbGljZSB0aGUgZmlyc3QgdGhyZWUgZWxlbWVudHNcbmZpcnN0X3RocmVlID0gbnVtc1s6M11cbnByaW50KFwiRmlyc3QgdGhyZWUgZWxlbWVudHM6XCIsIGZpcnN0X3RocmVlKVxuXG4jIDMuIFJlcGxhY2UgdGhlIGxhc3QgZWxlbWVudCB3aXRoIDEwXG5udW1zWy0xXSA9IDEwXG5wcmludChcIkFmdGVyIHJlcGxhY2luZyBsYXN0IGVsZW1lbnQgd2l0aCAxMDpcIiwgbnVtcylcblxuIyA0LiBBcHBlbmQgNyB0byB0aGUgZW5kIG9mIHRoZSBsaXN0XG5udW1zLmFwcGVuZCg3KVxucHJpbnQoXCJBZnRlciBhcHBlbmRpbmcgNzpcIiwgbnVtcylcblxuIyA1LiBSZW1vdmUgdGhlIGZpcnN0IG9jY3VycmVuY2Ugb2YgMlxubnVtcy5yZW1vdmUoMilcbnByaW50KFwiQWZ0ZXIgcmVtb3ZpbmcgZmlyc3Qgb2NjdXJyZW5jZSBvZiAyOlwiLCBudW1zKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBPcmlnaW5hbCBsaXN0XG5udW1zID0gWzUsIDIsIDgsIDIsIDldXG5wcmludChcIk9yaWdpbmFsIGxpc3Q6XCIsIG51bXMpXG5cbiMgMS4gUmV0cmlldmUgdGhlIHRoaXJkIGVsZW1lbnQgKGluZGV4IDIgYmVjYXVzZSBpbmRleGluZyBzdGFydHMgYXQgMClcbnRoaXJkX2VsZW1lbnQgPSBudW1zWzJdXG5wcmludChcIlRoaXJkIGVsZW1lbnQ6XCIsIHRoaXJkX2VsZW1lbnQpXG5cbiMgMi4gU2xpY2UgdGhlIGZpcnN0IHRocmVlIGVsZW1lbnRzXG5maXJzdF90aHJlZSA9IG51bXNbOjNdXG5wcmludChcIkZpcnN0IHRocmVlIGVsZW1lbnRzOlwiLCBmaXJzdF90aHJlZSlcblxuIyAzLiBSZXBsYWNlIHRoZSBsYXN0IGVsZW1lbnQgd2l0aCAxMFxubnVtc1stMV0gPSAxMFxucHJpbnQoXCJBZnRlciByZXBsYWNpbmcgbGFzdCBlbGVtZW50IHdpdGggMTA6XCIsIG51bXMpXG5cbiMgNC4gQXBwZW5kIDcgdG8gdGhlIGVuZCBvZiB0aGUgbGlzdFxubnVtcy5hcHBlbmQoNylcbnByaW50KFwiQWZ0ZXIgYXBwZW5kaW5nIDc6XCIsIG51bXMpXG5cbiMgNS4gUmVtb3ZlIHRoZSBmaXJzdCBvY2N1cnJlbmNlIG9mIDJcbm51bXMucmVtb3ZlKDIpXG5wcmludChcIkFmdGVyIHJlbW92aW5nIGZpcnN0IG9jY3VycmVuY2Ugb2YgMjpcIiwgbnVtcykifQ==
 </script>
 </div>
 <p><strong>Question 2:</strong> The key to this question is that a list is <em>ordered</em> whilst a set is <em>unordered</em>. When the list is converted to a set, it’s ordering is lost, and when converted back to a list it is now given in increasing (numerical) order by default.</p>
@@ -1041,7 +1076,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-10-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEhlcmUgYXJlIHR3byBzdHJpbmdzXG5zdHJpbmcxID0gXCJUaGlzIGlzIGEgbG9uZyByYW5kb20gc2VudGVuY2UgLSBJIHdvbmRlciB3aGljaCBsZXR0ZXJzIGl0IGNvbnRhaW5zIGFuZCB3aGljaCBsZXR0ZXJzIGl0IGRvZXNuJ3QuXCJcbnN0cmluZzIgPSBcIlRoaXMgdGFzayBtYWtlcyBhIGNsZWFyIGFuZCBjb2hlcmVudCBzdHJpbmcgd2l0aCB3b3JkcyB0YWtlbiBpbnNpZGUgYSBzbWFsbCBzZXRcIlxuXG4jIE1ha2Ugc3RyaW5ncyBsb3dlcmNhc2VcbnN0cmluZzEgPSBzdHJpbmcxLmxvd2VyKClcbnN0cmluZzIgPSBzdHJpbmcyLmxvd2VyKClcblxuIyBDb252ZXJ0IHN0cmluZ3MgdG8gc2V0c1xuc3RyaW5nMSA9IHNldChzdHJpbmcxKVxuc3RyaW5nMiA9IHNldChzdHJpbmcyKVxuXG4jIENvbXB1dGUgdGhlIHNldCBkaWZmZXJlbmNlXG5wcmludChzdHJpbmcyLmRpZmZlcmVuY2Uoc3RyaW5nMSkpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBIZXJlIGFyZSB0d28gc3RyaW5nc1xuc3RyaW5nMSA9IFwiVGhpcyBpcyBhIGxvbmcgcmFuZG9tIHNlbnRlbmNlIC0gSSB3b25kZXIgd2hpY2ggbGV0dGVycyBpdCBjb250YWlucyBhbmQgd2hpY2ggbGV0dGVycyBpdCBkb2Vzbid0LlwiXG5zdHJpbmcyID0gXCJUaGlzIHRhc2sgbWFrZXMgYSBjbGVhciBhbmQgY29oZXJlbnQgc3RyaW5nIHdpdGggd29yZHMgdGFrZW4gaW5zaWRlIGEgc21hbGwgc2V0XCJcblxuIyBNYWtlIHN0cmluZ3MgbG93ZXJjYXNlXG5zdHJpbmcxID0gc3RyaW5nMS5sb3dlcigpXG5zdHJpbmcyID0gc3RyaW5nMi5sb3dlcigpXG5cbiMgQ29udmVydCBzdHJpbmdzIHRvIHNldHNcbnN0cmluZzEgPSBzZXQoc3RyaW5nMSlcbnN0cmluZzIgPSBzZXQoc3RyaW5nMilcblxuIyBDb21wdXRlIHRoZSBzZXQgZGlmZmVyZW5jZVxucHJpbnQoc3RyaW5nMi5kaWZmZXJlbmNlKHN0cmluZzEpKSJ9
 </script>
 </div>
 <p><strong>Question 4:</strong> The code for this question is provided below.</p>
@@ -1050,7 +1085,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-11-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIGdpdmVuIHR1cGxlXG50ID0gKCdhJywgJ2InLCAnYycsICdkJywgJ2UnKVxuXG4jIDEuIGFjY2VzcyB0aGUgZmlyc3QgYW5kIGxhc3QgZWxlbWVudHMgb2YgdFxuZmlyc3QgPSB0WzBdXG5sYXN0ID0gdFstMV1cbnByaW50KFwiRmlyc3QgZWxlbWVudDpcIiwgZmlyc3QpXG5wcmludChcIkxhc3QgZWxlbWVudDpcIiwgbGFzdClcblxuIyAyLiBzbGljZSBvdXQgKCdiJywgJ2MnLCAnZCcpXG5zbGljZV9wYXJ0ID0gdFsxOjRdXG5wcmludChcIlNsaWNlICgnYicsICdjJywgJ2QnKTpcIiwgc2xpY2VfcGFydClcblxuIyAzLiBjaGVjayB3aGV0aGVyICdjJyBpcyBpbiB0XG5pc19jX3ByZXNlbnQgPSAnYycgaW4gdFxucHJpbnQoXCInYycgaW4gdD9cIiwgaXNfY19wcmVzZW50KVxuXG4jIDQuIGZpbmQgdGhlIGluZGV4IG9mICdkJyBpbiB0XG5pbmRleF9kID0gdC5pbmRleCgnZCcpXG5wcmludChcIkluZGV4IG9mICdkJzpcIiwgaW5kZXhfZClcblxuIyA1LiBjb3VudCBob3cgbWFueSB0aW1lcyAnYScgYXBwZWFycyBpbiB0XG5jb3VudF9hID0gdC5jb3VudCgnYScpXG5wcmludChcIkNvdW50IG9mICdhJzpcIiwgY291bnRfYSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBnaXZlbiB0dXBsZVxudCA9ICgnYScsICdiJywgJ2MnLCAnZCcsICdlJylcblxuIyAxLiBhY2Nlc3MgdGhlIGZpcnN0IGFuZCBsYXN0IGVsZW1lbnRzIG9mIHRcbmZpcnN0ID0gdFswXVxubGFzdCA9IHRbLTFdXG5wcmludChcIkZpcnN0IGVsZW1lbnQ6XCIsIGZpcnN0KVxucHJpbnQoXCJMYXN0IGVsZW1lbnQ6XCIsIGxhc3QpXG5cbiMgMi4gc2xpY2Ugb3V0ICgnYicsICdjJywgJ2QnKVxuc2xpY2VfcGFydCA9IHRbMTo0XVxucHJpbnQoXCJTbGljZSAoJ2InLCAnYycsICdkJyk6XCIsIHNsaWNlX3BhcnQpXG5cbiMgMy4gY2hlY2sgd2hldGhlciAnYycgaXMgaW4gdFxuaXNfY19wcmVzZW50ID0gJ2MnIGluIHRcbnByaW50KFwiJ2MnIGluIHQ/XCIsIGlzX2NfcHJlc2VudClcblxuIyA0LiBmaW5kIHRoZSBpbmRleCBvZiAnZCcgaW4gdFxuaW5kZXhfZCA9IHQuaW5kZXgoJ2QnKVxucHJpbnQoXCJJbmRleCBvZiAnZCc6XCIsIGluZGV4X2QpXG5cbiMgNS4gY291bnQgaG93IG1hbnkgdGltZXMgJ2EnIGFwcGVhcnMgaW4gdFxuY291bnRfYSA9IHQuY291bnQoJ2EnKVxucHJpbnQoXCJDb3VudCBvZiAnYSc6XCIsIGNvdW50X2EpIn0=
 </script>
 </div>
 <p><strong>Question 5:</strong> There are many ways to approach this question. Two examples are given below:</p>
@@ -1059,7 +1094,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-12-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbiMgT3B0aW9uIDE6XG4jIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbiMgY2xpbmljYWwgdHJpYWwgZGF0YXNldCByZXByZXNlbnRlZCBhcyBhIGRpY3Rpb25hcnkgb2YgbGlzdHNcbmNsaW5pY2FsX2RhdGEgPSB7XG4gICAgXCJOYW1lXCI6IFtcIkpvaG5cIiwgXCJBbGljZVwiLCBcIk1hcmlhXCIsIFwiRGF2aWRcIiwgXCJTYXJhaFwiXSxcbiAgICBcIldlaWdodCAoa2cpXCI6IFs4MiwgNjgsIDc0LCA5MCwgNjBdLFxuICAgIFwiSGVpZ2h0IChjbSlcIjogWzE3OCwgMTY1LCAxNzAsIDE4NSwgMTYwXVxufVxuXG5wcmludChjbGluaWNhbF9kYXRhKVxuXG4jIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbiMgT3B0aW9uIDI6XG4jIC0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbiMgY2xpbmljYWwgdHJpYWwgZGF0YXNldCByZXByZXNlbnRlZCBhcyBhIGRpY3Rpb25hcnkgb2YgZGljdGlvbmFyaWVzXG5jbGluaWNhbF9kYXRhID0ge1xuICAgIFwiSm9oblwiOiB7XCJXZWlnaHQgKGtnKVwiOiA4MiwgXCJIZWlnaHQgKGNtKVwiOiAxNzh9LFxuICAgIFwiQWxpY2VcIjoge1wiV2VpZ2h0IChrZylcIjogNjgsIFwiSGVpZ2h0IChjbSlcIjogMTY1fSxcbiAgICBcIk1hcmlhXCI6IHtcIldlaWdodCAoa2cpXCI6IDc0LCBcIkhlaWdodCAoY20pXCI6IDE3MH0sXG4gICAgXCJEYXZpZFwiOiB7XCJXZWlnaHQgKGtnKVwiOiA5MCwgXCJIZWlnaHQgKGNtKVwiOiAxODV9LFxuICAgIFwiU2FyYWhcIjoge1wiV2VpZ2h0IChrZylcIjogNjAsIFwiSGVpZ2h0IChjbSlcIjogMTYwfVxufSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIE9wdGlvbiAxOlxuIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIGNsaW5pY2FsIHRyaWFsIGRhdGFzZXQgcmVwcmVzZW50ZWQgYXMgYSBkaWN0aW9uYXJ5IG9mIGxpc3RzXG5jbGluaWNhbF9kYXRhID0ge1xuICAgIFwiTmFtZVwiOiBbXCJKb2huXCIsIFwiQWxpY2VcIiwgXCJNYXJpYVwiLCBcIkRhdmlkXCIsIFwiU2FyYWhcIl0sXG4gICAgXCJXZWlnaHQgKGtnKVwiOiBbODIsIDY4LCA3NCwgOTAsIDYwXSxcbiAgICBcIkhlaWdodCAoY20pXCI6IFsxNzgsIDE2NSwgMTcwLCAxODUsIDE2MF1cbn1cblxucHJpbnQoY2xpbmljYWxfZGF0YSlcblxuIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIE9wdGlvbiAyOlxuIyAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4jIGNsaW5pY2FsIHRyaWFsIGRhdGFzZXQgcmVwcmVzZW50ZWQgYXMgYSBkaWN0aW9uYXJ5IG9mIGRpY3Rpb25hcmllc1xuY2xpbmljYWxfZGF0YSA9IHtcbiAgICBcIkpvaG5cIjoge1wiV2VpZ2h0IChrZylcIjogODIsIFwiSGVpZ2h0IChjbSlcIjogMTc4fSxcbiAgICBcIkFsaWNlXCI6IHtcIldlaWdodCAoa2cpXCI6IDY4LCBcIkhlaWdodCAoY20pXCI6IDE2NX0sXG4gICAgXCJNYXJpYVwiOiB7XCJXZWlnaHQgKGtnKVwiOiA3NCwgXCJIZWlnaHQgKGNtKVwiOiAxNzB9LFxuICAgIFwiRGF2aWRcIjoge1wiV2VpZ2h0IChrZylcIjogOTAsIFwiSGVpZ2h0IChjbSlcIjogMTg1fSxcbiAgICBcIlNhcmFoXCI6IHtcIldlaWdodCAoa2cpXCI6IDYwLCBcIkhlaWdodCAoY20pXCI6IDE2MH1cbn0ifQ==
 </script>
 </div>
 </section>
@@ -1071,7 +1106,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-13-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJsaXN0X2EgPSBbMSwgMiwgM11cbmxpc3RfYiA9IGxpc3RfYVxubGlzdF9hLmFwcGVuZCg0KVxucHJpbnQobGlzdF9iKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoibGlzdF9hID0gWzEsIDIsIDNdXG5saXN0X2IgPSBsaXN0X2Fcbmxpc3RfYS5hcHBlbmQoNClcbnByaW50KGxpc3RfYikifQ==
 </script>
 </div>
 <p><strong>Question 2:</strong> Code A will print <code>[1,2,3]</code> whilst Code B will print <code>[4,5,6]</code>. This is because, when we replace <code>a</code> with <code>[4,5,6]</code> we change the reference to point to a new location in memory, breaking the connection between <code>a</code> and <code>b</code>. However, when we change the elements in <code>a</code> individually, both <code>a</code> and <code>b</code> remain pointing to the same location in memory. Thus, when we print <code>b</code>, we get <code>[4,5,6]</code>.</p>
@@ -1080,7 +1115,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-14-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJhID0gWzEsIDIsIDNdXG5iID0gYVxuYSA9IFs0LCA1LCA2XVxucHJpbnQoYilcblxuYSA9IFsxLCAyLCAzXVxuYiA9IGFcbmFbMF0gPSA0XG5hWzFdID0gNVxuYVsyXSA9IDZcbnByaW50KGIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiYSA9IFsxLCAyLCAzXVxuYiA9IGFcbmEgPSBbNCwgNSwgNl1cbnByaW50KGIpXG5cbmEgPSBbMSwgMiwgM11cbmIgPSBhXG5hWzBdID0gNFxuYVsxXSA9IDVcbmFbMl0gPSA2XG5wcmludChiKSJ9
 </script>
 </div>
 <p><strong>Question 3:</strong> The variable names <code>xyz</code> and <code>xyzsquared</code> are pointing to the same array. When we squared <code>xyzsquared</code> we also squared <code>xyz</code>. We could have avoided this by making <code>xyzsquared</code> a seperate copy of <code>xyz</code> using the <code>list</code> constructor like so:</p>
@@ -1089,7 +1124,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-15-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJ4eXogPSBbMSwyLDNdXG5cbiMgTWFrZSBhIGxpc3Qgb2YgeCBzcXVhcmVkLCB5IHNxdWFyZWQsIHogc3F1YXJlZFxueHl6c3F1YXJlZCA9IGxpc3QoeHl6KSAjIFRoZSBjaGFuZ2Ugd2FzIGltcGxlbWVudGVkIGhlcmUhXG54eXpzcXVhcmVkWzBdID0geHl6c3F1YXJlZFswXSoqMlxueHl6c3F1YXJlZFsxXSA9IHh5enNxdWFyZWRbMV0qKjJcbnh5enNxdWFyZWRbMl0gPSB4eXpzcXVhcmVkWzJdKioyXG5cbiMgR2V0IHgsIHkgYW5kIHogZnJvbSB4eXogbGlzdFxueCA9IHh5elswXVxueSA9IHh5elsxXVxueiA9IHh5elsyXVxuXG4jIEdldCB4IHNxdWFyZWQsIHkgc3F1YXJlZCBhbmQgeiBzcXVhcmVkIGZyb21cbiMgeHl6c3F1YXJlZCBsaXN0XG54c3F1YXJlZCA9IHh5enNxdWFyZWRbMF1cbnlzcXVhcmVkID0geHl6c3F1YXJlZFsxXVxuenNxdWFyZWQgPSB4eXpzcXVhcmVkWzJdXG5cbnByaW50KHggKyB5ICsgeiArIHhzcXVhcmVkICsgeXNxdWFyZWQgKyB6c3F1YXJlZCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoieHl6ID0gWzEsMiwzXVxuXG4jIE1ha2UgYSBsaXN0IG9mIHggc3F1YXJlZCwgeSBzcXVhcmVkLCB6IHNxdWFyZWRcbnh5enNxdWFyZWQgPSBsaXN0KHh5eikgIyBUaGUgY2hhbmdlIHdhcyBpbXBsZW1lbnRlZCBoZXJlIVxueHl6c3F1YXJlZFswXSA9IHh5enNxdWFyZWRbMF0qKjJcbnh5enNxdWFyZWRbMV0gPSB4eXpzcXVhcmVkWzFdKioyXG54eXpzcXVhcmVkWzJdID0geHl6c3F1YXJlZFsyXSoqMlxuXG4jIEdldCB4LCB5IGFuZCB6IGZyb20geHl6IGxpc3RcbnggPSB4eXpbMF1cbnkgPSB4eXpbMV1cbnogPSB4eXpbMl1cblxuIyBHZXQgeCBzcXVhcmVkLCB5IHNxdWFyZWQgYW5kIHogc3F1YXJlZCBmcm9tXG4jIHh5enNxdWFyZWQgbGlzdFxueHNxdWFyZWQgPSB4eXpzcXVhcmVkWzBdXG55c3F1YXJlZCA9IHh5enNxdWFyZWRbMV1cbnpzcXVhcmVkID0geHl6c3F1YXJlZFsyXVxuXG5wcmludCh4ICsgeSArIHogKyB4c3F1YXJlZCArIHlzcXVhcmVkICsgenNxdWFyZWQpIn0=
 </script>
 </div>
 <p><strong>Question 4:</strong> When you do <code>backup = list(grid)</code>, Python only makes a new outer list. The smaller lists inside <code>([1, 2], [3, 4], [5, 6])</code> are still the exact same objects that grid is using. Because of that, if you change one of the inner lists, the same change shows up <code>backup</code>.</p>
@@ -1611,336 +1646,321 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>**Question 1:** The solution to the question is given below:</span>
 <span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables x, y and z</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="fl">1.26</span></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>my_boolean <span class="op">=</span> ((x<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;</span> y) <span class="kw">and</span> (y <span class="op">&lt;</span> z<span class="op">**</span><span class="dv">3</span>)) <span class="kw">or</span> ((z<span class="op">**</span><span class="dv">3</span> <span class="op">&lt;</span> y) <span class="kw">and</span> (y <span class="op">&lt;</span> x<span class="op">**</span><span class="dv">2</span>))</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**Question 2:** The solution to the question is given below:</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean variables</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>is_raining <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>have_umbrella <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean telling you if you are going to get rained on</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>got_soaked <span class="op">=</span> is_raining <span class="kw">and</span> (<span class="kw">not</span> have_umbrella)</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Question: Will I get rained on?'</span>)</span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Answer: '</span> <span class="op">+</span> <span class="bu">str</span>(got_soaked))</span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Variables x, y and z</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> <span class="fl">1.26</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>my_boolean <span class="op">=</span> ((x<span class="op">**</span><span class="dv">2</span> <span class="op">&lt;</span> y) <span class="kw">and</span> (y <span class="op">&lt;</span> z<span class="op">**</span><span class="dv">3</span>)) <span class="kw">or</span> ((z<span class="op">**</span><span class="dv">3</span> <span class="op">&lt;</span> y) <span class="kw">and</span> (y <span class="op">&lt;</span> x<span class="op">**</span><span class="dv">2</span>))</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>**Question 2:** The solution to the question is given below:</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean variables</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>is_raining <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>have_umbrella <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean telling you if you are going to get rained on</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>got_soaked <span class="op">=</span> is_raining <span class="kw">and</span> (<span class="kw">not</span> have_umbrella)</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Question: Will I get rained on?'</span>)</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Answer: '</span> <span class="op">+</span> <span class="bu">str</span>(got_soaked))</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>**Question 3:** The completed truth table for this question is:</span>
 <span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>**Question 3:** The completed truth table for this question is:</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`A`</span>     <span class="pp">|</span> <span class="in">`B`</span>     <span class="pp">|</span> <span class="in">`C`</span>     <span class="pp">|</span> <span class="in">`A and B`</span> <span class="pp">|</span> <span class="in">`not C`</span> <span class="pp">|</span> <span class="in">`(A and B) or (not C)`</span> <span class="pp">|</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------|---------|---------|-----------|---------|------------------------|</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>    <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>    <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>                <span class="pp">|</span> </span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>                <span class="pp">|</span> </span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>                <span class="pp">|</span> </span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`A`</span>     <span class="pp">|</span> <span class="in">`B`</span>     <span class="pp">|</span> <span class="in">`C`</span>     <span class="pp">|</span> <span class="in">`A and B`</span> <span class="pp">|</span> <span class="in">`not C`</span> <span class="pp">|</span> <span class="in">`(A and B) or (not C)`</span> <span class="pp">|</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="pp">|---------|---------|---------|-----------|---------|------------------------|</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>    <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>    <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>                <span class="pp">|</span> </span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>                <span class="pp">|</span> </span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>                <span class="pp">|</span> </span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span> <span class="pp">|</span> <span class="in">`False`</span>   <span class="pp">|</span> <span class="in">`True`</span>  <span class="pp">|</span> <span class="in">`True`</span>                 <span class="pp">|</span> </span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>And the code for this question is:</span>
 <span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a>And the code for this question is:</span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean variables</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="va">False</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="va">True</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute new boolean</span></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>my_boolean <span class="op">=</span> (A <span class="kw">and</span> B) <span class="kw">or</span> (<span class="kw">not</span> C)</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_boolean)</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>**Question 4:** The solution to this question is given below:</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Height and width variables</span></span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">3</span></span>
-<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="co"># Perimeter</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a>perimeter <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(height<span class="op">+</span>width)</span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Area</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>area <span class="op">=</span> height<span class="op">*</span>width</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagonal</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>diag <span class="op">=</span> (height<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> width<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean variables</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>B <span class="op">=</span> <span class="va">False</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>C <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute new boolean</span></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>my_boolean <span class="op">=</span> (A <span class="kw">and</span> B) <span class="kw">or</span> (<span class="kw">not</span> C)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(my_boolean)</span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a>**Question 4:** The solution to this question is given below:</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Height and width variables</span></span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a>width <span class="op">=</span> <span class="dv">3</span></span>
+<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="co"># Perimeter</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a>perimeter <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>(height<span class="op">+</span>width)</span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a><span class="co"># Area</span></span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a>area <span class="op">=</span> height<span class="op">*</span>width</span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagonal</span></span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a>diag <span class="op">=</span> (height<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> width<span class="op">**</span><span class="dv">2</span>)<span class="op">**</span>(<span class="dv">1</span><span class="op">/</span><span class="dv">2</span>)</span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perimeter, area, diag)</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(perimeter, area, diag)</span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a>**Question 5:** The solution to this question is given by:</span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Known variables</span></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a>**Question 5:** The solution to this question is given by:</span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Known variables</span></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a>v <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>u <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> <span class="fl">9.81</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute s</span></span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> (v<span class="op">**</span><span class="dv">2</span><span class="op">-</span>u<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>a)</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute s</span></span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> (v<span class="op">**</span><span class="dv">2</span><span class="op">-</span>u<span class="op">**</span><span class="dv">2</span>)<span class="op">/</span>(<span class="dv">2</span><span class="op">*</span>a)</span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(s)</span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>**Question 6:** The solution to this question is given by:</span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute time using variables from Question 5</span></span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>s<span class="op">/</span>(u<span class="op">+</span>v)</span>
-<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t)</span>
-<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a>**Question 7:** A code block containing the examples from the question is given below:</span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="va">True</span> <span class="kw">and</span> <span class="va">False</span>) <span class="kw">or</span> <span class="va">True</span>)</span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> (<span class="va">False</span> <span class="kw">or</span> <span class="va">False</span>))</span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="va">True</span> <span class="kw">or</span> <span class="va">False</span> <span class="kw">and</span> <span class="va">False</span>)</span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="va">False</span> <span class="op">^</span> <span class="va">True</span>)</span>
-<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="va">True</span> <span class="kw">and</span> <span class="kw">not</span> <span class="va">True</span>) <span class="kw">and</span> (<span class="va">False</span> <span class="kw">or</span> <span class="kw">not</span> <span class="va">False</span>))</span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a>The answers follow by standard boolean logic. The only difficult parts are determining the order of operations for the third example (python will interpret this as <span class="in">`True or (False and False)`</span> rather than <span class="in">`(True or False) and False`</span>) and the xor (<span class="in">`^`</span>) on the fourth line.</span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a>**Question 8:** The error in the code occurs when <span class="in">`float(x + y)`</span> is run. </span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a>When <span class="in">`x`</span> and <span class="in">`y`</span> are numeric, the <span class="in">`+`</span> symbol is interpreted as addition and the result is cast to a float (e.g. if <span class="in">`x=1`</span> and <span class="in">`y=5`</span> as in the first example then <span class="in">`x+y`</span> yeilds <span class="in">`6`</span>). However, if they are instead strings (as in the second example), then the <span class="in">`+`</span> symbol is interpreted as concatenation rather than addition. Therefore, when <span class="in">`x='2'`</span> and <span class="in">`y='5'`</span>, we get that <span class="in">`2+5`</span> yeilds <span class="in">`25`</span>, not <span class="in">`7`</span>.</span>
-<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a>There are two approaches to resolving the issue. The first is to replace <span class="in">`x='2'`</span> and <span class="in">`y='5'`</span> with  <span class="in">`x=2`</span> and <span class="in">`y=5`</span>. The second, and preferred option, is to replace <span class="in">`float(x + y)`</span> with <span class="in">`float(x)+float(y)`</span> so there is no possibility that the <span class="in">`+`</span> symbol is interpreted as concatenation here.</span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a>**Question 9:** The first box is an assignment of the value <span class="in">`2 + 1`</span> to a variable named <span class="in">`three`</span>, so does not print anything. The second box prints <span class="in">`true`</span> as the variable <span class="in">`z = (1 + 2 == 3)`</span> is interpreted as a Boolean variable, and in Jupyter notebooks, if the last line of a box is simply a variable, with no assignment, then that variable is printed out. <span class="in">`z`</span> is evaluated as <span class="in">`True`</span> (as <span class="in">`1 + 2`</span> does equal <span class="in">`3`</span> in Python), so <span class="in">`True`</span> is printed.</span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>For the third box, <span class="in">`False`</span> is printed as due to rounding errors <span class="in">`0.1 + 0.2`</span> is evaluated to <span class="in">`0.30000000000000004`</span> rather than <span class="in">`0.3`</span>. This is a cautionary note that floating point math is not perfect.</span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a>**Question 10:** The final solution is given below:</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>**Question 6:** The solution to this question is given by:</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute time using variables from Question 5</span></span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> <span class="dv">2</span><span class="op">*</span>s<span class="op">/</span>(u<span class="op">+</span>v)</span>
+<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(t)</span>
+<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a>**Question 7:** A code block containing the examples from the question is given below:</span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="va">True</span> <span class="kw">and</span> <span class="va">False</span>) <span class="kw">or</span> <span class="va">True</span>)</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="kw">not</span> (<span class="va">False</span> <span class="kw">or</span> <span class="va">False</span>))</span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="va">True</span> <span class="kw">or</span> <span class="va">False</span> <span class="kw">and</span> <span class="va">False</span>)</span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="va">False</span> <span class="op">^</span> <span class="va">True</span>)</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>((<span class="va">True</span> <span class="kw">and</span> <span class="kw">not</span> <span class="va">True</span>) <span class="kw">and</span> (<span class="va">False</span> <span class="kw">or</span> <span class="kw">not</span> <span class="va">False</span>))</span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>The answers follow by standard boolean logic. The only difficult parts are determining the order of operations for the third example (python will interpret this as <span class="in">`True or (False and False)`</span> rather than <span class="in">`(True or False) and False`</span>) and the xor (<span class="in">`^`</span>) on the fourth line.</span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a>**Question 8:** The error in the code occurs when <span class="in">`float(x + y)`</span> is run. </span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a>When <span class="in">`x`</span> and <span class="in">`y`</span> are numeric, the <span class="in">`+`</span> symbol is interpreted as addition and the result is cast to a float (e.g. if <span class="in">`x=1`</span> and <span class="in">`y=5`</span> as in the first example then <span class="in">`x+y`</span> yeilds <span class="in">`6`</span>). However, if they are instead strings (as in the second example), then the <span class="in">`+`</span> symbol is interpreted as concatenation rather than addition. Therefore, when <span class="in">`x='2'`</span> and <span class="in">`y='5'`</span>, we get that <span class="in">`2+5`</span> yeilds <span class="in">`25`</span>, not <span class="in">`7`</span>.</span>
+<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a>There are two approaches to resolving the issue. The first is to replace <span class="in">`x='2'`</span> and <span class="in">`y='5'`</span> with  <span class="in">`x=2`</span> and <span class="in">`y=5`</span>. The second, and preferred option, is to replace <span class="in">`float(x + y)`</span> with <span class="in">`float(x)+float(y)`</span> so there is no possibility that the <span class="in">`+`</span> symbol is interpreted as concatenation here.</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a>**Question 9:** The first box is an assignment of the value <span class="in">`2 + 1`</span> to a variable named <span class="in">`three`</span>, so does not print anything. The second box prints <span class="in">`true`</span> as the variable <span class="in">`z = (1 + 2 == 3)`</span> is interpreted as a Boolean variable, and in Jupyter notebooks, if the last line of a box is simply a variable, with no assignment, then that variable is printed out. <span class="in">`z`</span> is evaluated as <span class="in">`True`</span> (as <span class="in">`1 + 2`</span> does equal <span class="in">`3`</span> in Python), so <span class="in">`True`</span> is printed.</span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>For the third box, <span class="in">`False`</span> is printed as due to rounding errors <span class="in">`0.1 + 0.2`</span> is evaluated to <span class="in">`0.30000000000000004`</span> rather than <span class="in">`0.3`</span>. This is a cautionary note that floating point math is not perfect.</span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>**Question 10:** The final solution is given below:</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="co"># The string we want to transform</span></span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a>start_string <span class="op">=</span> <span class="st">'Thas as te arang we want!'</span></span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Start:  '</span>, start_string)</span>
 <span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a><span class="co"># The string we want to transform</span></span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>start_string <span class="op">=</span> <span class="st">'Thas as te arang we want!'</span></span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Start:  '</span>, start_string)</span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper strings you can use for replacements</span></span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">'a'</span></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">'st'</span></span>
-<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>string3 <span class="op">=</span> <span class="st">'he a'</span></span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>string4 <span class="op">=</span> <span class="st">' ge'</span></span>
-<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>string5 <span class="op">=</span> <span class="st">'stri'</span></span>
-<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a>string6 <span class="op">=</span> <span class="st">'sts'</span></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a>string7 <span class="op">=</span> <span class="st">'is'</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a>string8 <span class="op">=</span> <span class="st">'ara'</span></span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>string9 <span class="op">=</span> <span class="st">'gen'</span></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a>string10 <span class="op">=</span> <span class="st">'e a'</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="co"># Helper strings you can use for replacements</span></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">'a'</span></span>
+<span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">'st'</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>string3 <span class="op">=</span> <span class="st">'he a'</span></span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>string4 <span class="op">=</span> <span class="st">' ge'</span></span>
+<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a>string5 <span class="op">=</span> <span class="st">'stri'</span></span>
+<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a>string6 <span class="op">=</span> <span class="st">'sts'</span></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a>string7 <span class="op">=</span> <span class="st">'is'</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a>string8 <span class="op">=</span> <span class="st">'ara'</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a>string9 <span class="op">=</span> <span class="st">'gen'</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>string10 <span class="op">=</span> <span class="st">'e a'</span></span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1</span></span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>step1 <span class="op">=</span> start_string.replace(string1,string2)</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 1: '</span>, step1)</span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a>step2 <span class="op">=</span> step1.replace(string6,string7)</span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 2: '</span>, step2)</span>
 <span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 1</span></span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>step1 <span class="op">=</span> start_string.replace(string1,string2)</span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 1: '</span>, step1)</span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3</span></span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>step3 <span class="op">=</span> step2.replace(string2, string1)</span>
+<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 3: '</span>, step3)</span>
 <span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 2</span></span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>step2 <span class="op">=</span> step1.replace(string6,string7)</span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 2: '</span>, step2)</span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a>step4 <span class="op">=</span> step3.replace(string10, string3)</span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 4: '</span>, step4)</span>
 <span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 3</span></span>
-<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>step3 <span class="op">=</span> step2.replace(string2, string1)</span>
-<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 3: '</span>, step3)</span>
-<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 4</span></span>
-<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>step4 <span class="op">=</span> step3.replace(string10, string3)</span>
-<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 4: '</span>, step4)</span>
-<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5</span></span>
-<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a>step5 <span class="op">=</span> step4.replace(string8, string5)</span>
-<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 5: '</span>, step5)</span>
-<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a><span class="fu">## Intermediate: Collections</span></span>
-<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>**Question 1:** The code for this question is given below:</span>
-<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="co"># Original list</span></span>
-<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">9</span>]</span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original list:"</span>, nums)</span>
-<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Retrieve the third element (index 2 because indexing starts at 0)</span></span>
-<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>third_element <span class="op">=</span> nums[<span class="dv">2</span>]</span>
-<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Third element:"</span>, third_element)</span>
-<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Slice the first three elements</span></span>
-<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a>first_three <span class="op">=</span> nums[:<span class="dv">3</span>]</span>
-<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First three elements:"</span>, first_three)</span>
-<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Replace the last element with 10</span></span>
-<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>nums[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">10</span></span>
-<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After replacing last element with 10:"</span>, nums)</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a><span class="co"># Step 5</span></span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>step5 <span class="op">=</span> step4.replace(string8, string5)</span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">'Step 5: '</span>, step5)</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="fu">## Intermediate: Collections</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>**Question 1:** The code for this question is given below:</span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="co"># Original list</span></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>nums <span class="op">=</span> [<span class="dv">5</span>, <span class="dv">2</span>, <span class="dv">8</span>, <span class="dv">2</span>, <span class="dv">9</span>]</span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Original list:"</span>, nums)</span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Retrieve the third element (index 2 because indexing starts at 0)</span></span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>third_element <span class="op">=</span> nums[<span class="dv">2</span>]</span>
+<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Third element:"</span>, third_element)</span>
+<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Slice the first three elements</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a>first_three <span class="op">=</span> nums[:<span class="dv">3</span>]</span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First three elements:"</span>, first_three)</span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Replace the last element with 10</span></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a>nums[<span class="op">-</span><span class="dv">1</span>] <span class="op">=</span> <span class="dv">10</span></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After replacing last element with 10:"</span>, nums)</span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Append 7 to the end of the list</span></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a>nums.append(<span class="dv">7</span>)</span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After appending 7:"</span>, nums)</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Remove the first occurrence of 2</span></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a>nums.remove(<span class="dv">2</span>)</span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After removing first occurrence of 2:"</span>, nums)</span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. Append 7 to the end of the list</span></span>
-<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>nums.append(<span class="dv">7</span>)</span>
-<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After appending 7:"</span>, nums)</span>
+<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>**Question 2:** The key to this question is that a list is *ordered* whilst a set is *unordered*. When the list is converted to a set, it's ordering is lost, and when converted back to a list it is now given in increasing (numerical) order by default.</span>
+<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a>**Question 3:** The answer to this question is the letter <span class="in">`k`</span>. To see this, the below code can be used:</span>
 <span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. Remove the first occurrence of 2</span></span>
-<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>nums.remove(<span class="dv">2</span>)</span>
-<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"After removing first occurrence of 2:"</span>, nums)</span>
-<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>**Question 2:** The key to this question is that a list is *ordered* whilst a set is *unordered*. When the list is converted to a set, it's ordering is lost, and when converted back to a list it is now given in increasing (numerical) order by default.</span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="co"># Here are two strings</span></span>
+<span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"This is a long random sentence - I wonder which letters it contains and which letters it doesn't."</span></span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"This task makes a clear and coherent string with words taken inside a small set"</span></span>
 <span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a>**Question 3:** The answer to this question is the letter <span class="in">`k`</span>. To see this, the below code can be used:</span>
-<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a><span class="co"># Here are two strings</span></span>
-<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="st">"This is a long random sentence - I wonder which letters it contains and which letters it doesn't."</span></span>
-<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="st">"This task makes a clear and coherent string with words taken inside a small set"</span></span>
-<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Make strings lowercase</span></span>
-<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> string1.lower()</span>
-<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> string2.lower()</span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a><span class="co"># Make strings lowercase</span></span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> string1.lower()</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> string2.lower()</span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert strings to sets</span></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="bu">set</span>(string1)</span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="bu">set</span>(string2)</span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the set difference</span></span>
+<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string2.difference(string1))</span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a>**Question 4:** The code for this question is provided below.</span>
 <span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert strings to sets</span></span>
-<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a>string1 <span class="op">=</span> <span class="bu">set</span>(string1)</span>
-<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a>string2 <span class="op">=</span> <span class="bu">set</span>(string2)</span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the set difference</span></span>
-<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(string2.difference(string1))</span>
-<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a>**Question 4:** The code for this question is provided below.</span>
-<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="co"># given tuple</span></span>
-<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>)</span>
-<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. access the first and last elements of t</span></span>
-<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> t[<span class="dv">0</span>]</span>
-<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a>last <span class="op">=</span> t[<span class="op">-</span><span class="dv">1</span>]</span>
-<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First element:"</span>, first)</span>
-<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Last element:"</span>, last)</span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. slice out ('b', 'c', 'd')</span></span>
-<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a>slice_part <span class="op">=</span> t[<span class="dv">1</span>:<span class="dv">4</span>]</span>
-<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Slice ('b', 'c', 'd'):"</span>, slice_part)</span>
-<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. check whether 'c' is in t</span></span>
-<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a>is_c_present <span class="op">=</span> <span class="st">'c'</span> <span class="kw">in</span> t</span>
-<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"'c' in t?"</span>, is_c_present)</span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="co"># given tuple</span></span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> (<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>, <span class="st">'d'</span>, <span class="st">'e'</span>)</span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. access the first and last elements of t</span></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> t[<span class="dv">0</span>]</span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a>last <span class="op">=</span> t[<span class="op">-</span><span class="dv">1</span>]</span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"First element:"</span>, first)</span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Last element:"</span>, last)</span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. slice out ('b', 'c', 'd')</span></span>
+<span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a>slice_part <span class="op">=</span> t[<span class="dv">1</span>:<span class="dv">4</span>]</span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Slice ('b', 'c', 'd'):"</span>, slice_part)</span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. check whether 'c' is in t</span></span>
+<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a>is_c_present <span class="op">=</span> <span class="st">'c'</span> <span class="kw">in</span> t</span>
+<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"'c' in t?"</span>, is_c_present)</span>
+<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. find the index of 'd' in t</span></span>
+<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a>index_d <span class="op">=</span> t.index(<span class="st">'d'</span>)</span>
+<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Index of 'd':"</span>, index_d)</span>
+<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. count how many times 'a' appears in t</span></span>
+<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a>count_a <span class="op">=</span> t.count(<span class="st">'a'</span>)</span>
+<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Count of 'a':"</span>, count_a)</span>
+<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a>**Question 5:** There are many ways to approach this question. Two examples are given below:</span>
 <span id="cb1-282"><a href="#cb1-282" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-283"><a href="#cb1-283" aria-hidden="true" tabindex="-1"></a><span class="co"># 4. find the index of 'd' in t</span></span>
-<span id="cb1-284"><a href="#cb1-284" aria-hidden="true" tabindex="-1"></a>index_d <span class="op">=</span> t.index(<span class="st">'d'</span>)</span>
-<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Index of 'd':"</span>, index_d)</span>
-<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="co"># 5. count how many times 'a' appears in t</span></span>
-<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a>count_a <span class="op">=</span> t.count(<span class="st">'a'</span>)</span>
-<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Count of 'a':"</span>, count_a)</span>
-<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a>**Question 5:** There are many ways to approach this question. Two examples are given below:</span>
-<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb1-285"><a href="#cb1-285" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-286"><a href="#cb1-286" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------------------------------------</span></span>
+<span id="cb1-287"><a href="#cb1-287" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1:</span></span>
+<span id="cb1-288"><a href="#cb1-288" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------------------------------------</span></span>
+<span id="cb1-289"><a href="#cb1-289" aria-hidden="true" tabindex="-1"></a><span class="co"># clinical trial dataset represented as a dictionary of lists</span></span>
+<span id="cb1-290"><a href="#cb1-290" aria-hidden="true" tabindex="-1"></a>clinical_data <span class="op">=</span> {</span>
+<span id="cb1-291"><a href="#cb1-291" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"John"</span>, <span class="st">"Alice"</span>, <span class="st">"Maria"</span>, <span class="st">"David"</span>, <span class="st">"Sarah"</span>],</span>
+<span id="cb1-292"><a href="#cb1-292" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Weight (kg)"</span>: [<span class="dv">82</span>, <span class="dv">68</span>, <span class="dv">74</span>, <span class="dv">90</span>, <span class="dv">60</span>],</span>
+<span id="cb1-293"><a href="#cb1-293" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Height (cm)"</span>: [<span class="dv">178</span>, <span class="dv">165</span>, <span class="dv">170</span>, <span class="dv">185</span>, <span class="dv">160</span>]</span>
+<span id="cb1-294"><a href="#cb1-294" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-295"><a href="#cb1-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-296"><a href="#cb1-296" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clinical_data)</span>
+<span id="cb1-297"><a href="#cb1-297" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-298"><a href="#cb1-298" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------------------------------------</span></span>
-<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 1:</span></span>
+<span id="cb1-299"><a href="#cb1-299" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2:</span></span>
 <span id="cb1-300"><a href="#cb1-300" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------------------------------------</span></span>
-<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a><span class="co"># clinical trial dataset represented as a dictionary of lists</span></span>
+<span id="cb1-301"><a href="#cb1-301" aria-hidden="true" tabindex="-1"></a><span class="co"># clinical trial dataset represented as a dictionary of dictionaries</span></span>
 <span id="cb1-302"><a href="#cb1-302" aria-hidden="true" tabindex="-1"></a>clinical_data <span class="op">=</span> {</span>
-<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Name"</span>: [<span class="st">"John"</span>, <span class="st">"Alice"</span>, <span class="st">"Maria"</span>, <span class="st">"David"</span>, <span class="st">"Sarah"</span>],</span>
-<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Weight (kg)"</span>: [<span class="dv">82</span>, <span class="dv">68</span>, <span class="dv">74</span>, <span class="dv">90</span>, <span class="dv">60</span>],</span>
-<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Height (cm)"</span>: [<span class="dv">178</span>, <span class="dv">165</span>, <span class="dv">170</span>, <span class="dv">185</span>, <span class="dv">160</span>]</span>
-<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(clinical_data)</span>
-<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------------------------------------</span></span>
-<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a><span class="co"># Option 2:</span></span>
-<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a><span class="co"># ----------------------------------------------------------------</span></span>
-<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a><span class="co"># clinical trial dataset represented as a dictionary of dictionaries</span></span>
-<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a>clinical_data <span class="op">=</span> {</span>
-<span id="cb1-315"><a href="#cb1-315" aria-hidden="true" tabindex="-1"></a>    <span class="st">"John"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">82</span>, <span class="st">"Height (cm)"</span>: <span class="dv">178</span>},</span>
-<span id="cb1-316"><a href="#cb1-316" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alice"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">68</span>, <span class="st">"Height (cm)"</span>: <span class="dv">165</span>},</span>
-<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Maria"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">74</span>, <span class="st">"Height (cm)"</span>: <span class="dv">170</span>},</span>
-<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>    <span class="st">"David"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">90</span>, <span class="st">"Height (cm)"</span>: <span class="dv">185</span>},</span>
-<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sarah"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">60</span>, <span class="st">"Height (cm)"</span>: <span class="dv">160</span>}</span>
-<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advanced: Copying and References</span></span>
-<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a>**Question 1:** The expected output is <span class="in">`[1,2,3,4]`</span>. This is because <span class="in">`list_a`</span> and <span class="in">`list_b`</span> reference the same location in memory.</span>
-<span id="cb1-326"><a href="#cb1-326" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a>list_a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a>list_b <span class="op">=</span> list_a</span>
-<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a>list_a.append(<span class="dv">4</span>)</span>
-<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list_b)</span>
-<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>**Question 2:** Code A will print <span class="in">`[1,2,3]`</span> whilst Code B will print <span class="in">`[4,5,6]`</span>. This is because, when we replace <span class="in">`a`</span> with <span class="in">`[4,5,6]`</span> we change the reference to point to a new location in memory, breaking the connection between <span class="in">`a`</span> and <span class="in">`b`</span>. However, when we change the elements in <span class="in">`a`</span> individually, both <span class="in">`a`</span> and <span class="in">`b`</span> remain pointing to the same location in memory. Thus, when we print <span class="in">`b`</span>, we get <span class="in">`[4,5,6]`</span>.</span>
-<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb1-344"><a href="#cb1-344" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
-<span id="cb1-345"><a href="#cb1-345" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
-<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span>
-<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
-<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
-<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span></span>
-<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></span>
-<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">6</span></span>
-<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span>
-<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a>**Question 3:** The variable names <span class="in">`xyz`</span> and <span class="in">`xyzsquared`</span> are pointing to the same array. When we squared <span class="in">`xyzsquared`</span> we also squared <span class="in">`xyz`</span>. We could have avoided this by making <span class="in">`xyzsquared`</span> a seperate copy of <span class="in">`xyz`</span> using the <span class="in">`list`</span> constructor like so:</span>
-<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a>xyz <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
-<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a list of x squared, y squared, z squared</span></span>
-<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a>xyzsquared <span class="op">=</span> <span class="bu">list</span>(xyz) <span class="co"># The change was implemented here!</span></span>
-<span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a>xyzsquared[<span class="dv">0</span>] <span class="op">=</span> xyzsquared[<span class="dv">0</span>]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a>xyzsquared[<span class="dv">1</span>] <span class="op">=</span> xyzsquared[<span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a>xyzsquared[<span class="dv">2</span>] <span class="op">=</span> xyzsquared[<span class="dv">2</span>]<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a><span class="co"># Get x, y and z from xyz list</span></span>
-<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> xyz[<span class="dv">0</span>]</span>
-<span id="cb1-372"><a href="#cb1-372" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> xyz[<span class="dv">1</span>]</span>
-<span id="cb1-373"><a href="#cb1-373" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> xyz[<span class="dv">2</span>]</span>
-<span id="cb1-374"><a href="#cb1-374" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-375"><a href="#cb1-375" aria-hidden="true" tabindex="-1"></a><span class="co"># Get x squared, y squared and z squared from</span></span>
-<span id="cb1-376"><a href="#cb1-376" aria-hidden="true" tabindex="-1"></a><span class="co"># xyzsquared list</span></span>
-<span id="cb1-377"><a href="#cb1-377" aria-hidden="true" tabindex="-1"></a>xsquared <span class="op">=</span> xyzsquared[<span class="dv">0</span>]</span>
-<span id="cb1-378"><a href="#cb1-378" aria-hidden="true" tabindex="-1"></a>ysquared <span class="op">=</span> xyzsquared[<span class="dv">1</span>]</span>
-<span id="cb1-379"><a href="#cb1-379" aria-hidden="true" tabindex="-1"></a>zsquared <span class="op">=</span> xyzsquared[<span class="dv">2</span>]</span>
-<span id="cb1-380"><a href="#cb1-380" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-381"><a href="#cb1-381" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">+</span> y <span class="op">+</span> z <span class="op">+</span> xsquared <span class="op">+</span> ysquared <span class="op">+</span> zsquared)</span>
-<span id="cb1-382"><a href="#cb1-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-383"><a href="#cb1-383" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-384"><a href="#cb1-384" aria-hidden="true" tabindex="-1"></a>**Question 4:** When you do <span class="in">`backup = list(grid)`</span>, Python only makes a new outer list. The smaller lists inside <span class="in">`([1, 2], [3, 4], [5, 6])`</span> are still the exact same objects that grid is using. Because of that, if you change one of the inner lists, the same change shows up <span class="in">`backup`</span>.</span>
-<span id="cb1-385"><a href="#cb1-385" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-386"><a href="#cb1-386" aria-hidden="true" tabindex="-1"></a>**Question 5:** The reasoning for this question is similar to that of Question 4, but noting that the three inner lists are all pointing to the same place in memory.</span>
+<span id="cb1-303"><a href="#cb1-303" aria-hidden="true" tabindex="-1"></a>    <span class="st">"John"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">82</span>, <span class="st">"Height (cm)"</span>: <span class="dv">178</span>},</span>
+<span id="cb1-304"><a href="#cb1-304" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Alice"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">68</span>, <span class="st">"Height (cm)"</span>: <span class="dv">165</span>},</span>
+<span id="cb1-305"><a href="#cb1-305" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Maria"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">74</span>, <span class="st">"Height (cm)"</span>: <span class="dv">170</span>},</span>
+<span id="cb1-306"><a href="#cb1-306" aria-hidden="true" tabindex="-1"></a>    <span class="st">"David"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">90</span>, <span class="st">"Height (cm)"</span>: <span class="dv">185</span>},</span>
+<span id="cb1-307"><a href="#cb1-307" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Sarah"</span>: {<span class="st">"Weight (kg)"</span>: <span class="dv">60</span>, <span class="st">"Height (cm)"</span>: <span class="dv">160</span>}</span>
+<span id="cb1-308"><a href="#cb1-308" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-309"><a href="#cb1-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-310"><a href="#cb1-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-311"><a href="#cb1-311" aria-hidden="true" tabindex="-1"></a><span class="fu">## Advanced: Copying and References</span></span>
+<span id="cb1-312"><a href="#cb1-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-313"><a href="#cb1-313" aria-hidden="true" tabindex="-1"></a>**Question 1:** The expected output is <span class="in">`[1,2,3,4]`</span>. This is because <span class="in">`list_a`</span> and <span class="in">`list_b`</span> reference the same location in memory.</span>
+<span id="cb1-314"><a href="#cb1-314" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-317"><a href="#cb1-317" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-318"><a href="#cb1-318" aria-hidden="true" tabindex="-1"></a>list_a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb1-319"><a href="#cb1-319" aria-hidden="true" tabindex="-1"></a>list_b <span class="op">=</span> list_a</span>
+<span id="cb1-320"><a href="#cb1-320" aria-hidden="true" tabindex="-1"></a>list_a.append(<span class="dv">4</span>)</span>
+<span id="cb1-321"><a href="#cb1-321" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(list_b)</span>
+<span id="cb1-322"><a href="#cb1-322" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-323"><a href="#cb1-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-324"><a href="#cb1-324" aria-hidden="true" tabindex="-1"></a>**Question 2:** Code A will print <span class="in">`[1,2,3]`</span> whilst Code B will print <span class="in">`[4,5,6]`</span>. This is because, when we replace <span class="in">`a`</span> with <span class="in">`[4,5,6]`</span> we change the reference to point to a new location in memory, breaking the connection between <span class="in">`a`</span> and <span class="in">`b`</span>. However, when we change the elements in <span class="in">`a`</span> individually, both <span class="in">`a`</span> and <span class="in">`b`</span> remain pointing to the same location in memory. Thus, when we print <span class="in">`b`</span>, we get <span class="in">`[4,5,6]`</span>.</span>
+<span id="cb1-325"><a href="#cb1-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-328"><a href="#cb1-328" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-329"><a href="#cb1-329" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb1-330"><a href="#cb1-330" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
+<span id="cb1-331"><a href="#cb1-331" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">5</span>, <span class="dv">6</span>]</span>
+<span id="cb1-332"><a href="#cb1-332" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span>
+<span id="cb1-333"><a href="#cb1-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-334"><a href="#cb1-334" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb1-335"><a href="#cb1-335" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> a</span>
+<span id="cb1-336"><a href="#cb1-336" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">0</span>] <span class="op">=</span> <span class="dv">4</span></span>
+<span id="cb1-337"><a href="#cb1-337" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">1</span>] <span class="op">=</span> <span class="dv">5</span></span>
+<span id="cb1-338"><a href="#cb1-338" aria-hidden="true" tabindex="-1"></a>a[<span class="dv">2</span>] <span class="op">=</span> <span class="dv">6</span></span>
+<span id="cb1-339"><a href="#cb1-339" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(b)</span>
+<span id="cb1-340"><a href="#cb1-340" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-341"><a href="#cb1-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-342"><a href="#cb1-342" aria-hidden="true" tabindex="-1"></a>**Question 3:** The variable names <span class="in">`xyz`</span> and <span class="in">`xyzsquared`</span> are pointing to the same array. When we squared <span class="in">`xyzsquared`</span> we also squared <span class="in">`xyz`</span>. We could have avoided this by making <span class="in">`xyzsquared`</span> a seperate copy of <span class="in">`xyz`</span> using the <span class="in">`list`</span> constructor like so:</span>
+<span id="cb1-343"><a href="#cb1-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-346"><a href="#cb1-346" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-347"><a href="#cb1-347" aria-hidden="true" tabindex="-1"></a>xyz <span class="op">=</span> [<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>]</span>
+<span id="cb1-348"><a href="#cb1-348" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-349"><a href="#cb1-349" aria-hidden="true" tabindex="-1"></a><span class="co"># Make a list of x squared, y squared, z squared</span></span>
+<span id="cb1-350"><a href="#cb1-350" aria-hidden="true" tabindex="-1"></a>xyzsquared <span class="op">=</span> <span class="bu">list</span>(xyz) <span class="co"># The change was implemented here!</span></span>
+<span id="cb1-351"><a href="#cb1-351" aria-hidden="true" tabindex="-1"></a>xyzsquared[<span class="dv">0</span>] <span class="op">=</span> xyzsquared[<span class="dv">0</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-352"><a href="#cb1-352" aria-hidden="true" tabindex="-1"></a>xyzsquared[<span class="dv">1</span>] <span class="op">=</span> xyzsquared[<span class="dv">1</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-353"><a href="#cb1-353" aria-hidden="true" tabindex="-1"></a>xyzsquared[<span class="dv">2</span>] <span class="op">=</span> xyzsquared[<span class="dv">2</span>]<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb1-354"><a href="#cb1-354" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-355"><a href="#cb1-355" aria-hidden="true" tabindex="-1"></a><span class="co"># Get x, y and z from xyz list</span></span>
+<span id="cb1-356"><a href="#cb1-356" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> xyz[<span class="dv">0</span>]</span>
+<span id="cb1-357"><a href="#cb1-357" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> xyz[<span class="dv">1</span>]</span>
+<span id="cb1-358"><a href="#cb1-358" aria-hidden="true" tabindex="-1"></a>z <span class="op">=</span> xyz[<span class="dv">2</span>]</span>
+<span id="cb1-359"><a href="#cb1-359" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-360"><a href="#cb1-360" aria-hidden="true" tabindex="-1"></a><span class="co"># Get x squared, y squared and z squared from</span></span>
+<span id="cb1-361"><a href="#cb1-361" aria-hidden="true" tabindex="-1"></a><span class="co"># xyzsquared list</span></span>
+<span id="cb1-362"><a href="#cb1-362" aria-hidden="true" tabindex="-1"></a>xsquared <span class="op">=</span> xyzsquared[<span class="dv">0</span>]</span>
+<span id="cb1-363"><a href="#cb1-363" aria-hidden="true" tabindex="-1"></a>ysquared <span class="op">=</span> xyzsquared[<span class="dv">1</span>]</span>
+<span id="cb1-364"><a href="#cb1-364" aria-hidden="true" tabindex="-1"></a>zsquared <span class="op">=</span> xyzsquared[<span class="dv">2</span>]</span>
+<span id="cb1-365"><a href="#cb1-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-366"><a href="#cb1-366" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x <span class="op">+</span> y <span class="op">+</span> z <span class="op">+</span> xsquared <span class="op">+</span> ysquared <span class="op">+</span> zsquared)</span>
+<span id="cb1-367"><a href="#cb1-367" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-368"><a href="#cb1-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-369"><a href="#cb1-369" aria-hidden="true" tabindex="-1"></a>**Question 4:** When you do <span class="in">`backup = list(grid)`</span>, Python only makes a new outer list. The smaller lists inside <span class="in">`([1, 2], [3, 4], [5, 6])`</span> are still the exact same objects that grid is using. Because of that, if you change one of the inner lists, the same change shows up <span class="in">`backup`</span>.</span>
+<span id="cb1-370"><a href="#cb1-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-371"><a href="#cb1-371" aria-hidden="true" tabindex="-1"></a>**Question 5:** The reasoning for this question is similar to that of Question 4, but noting that the three inner lists are all pointing to the same place in memory.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

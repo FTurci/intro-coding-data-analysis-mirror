@@ -197,6 +197,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../16/lecture_pandas_vs_numpy.html">
  <span class="dropdown-text">16 - Pandas vs Numpy</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../17/lecture_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting with Python</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -259,6 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy.html">
  <span class="dropdown-text">16 - Pandas vs Numpy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../17/exercises_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting Exercises</span></a>
   </li>  
     </ul>
   </li>
@@ -326,6 +334,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../15/exercises_pandas_plotting_solutions.html">
  <span class="dropdown-text">15 - Pandas Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy_solutions.qmd">
+ <span class="dropdown-text">16 - Pandas vs Numpy Solutions</span></a>
   </li>  
     </ul>
   </li>
@@ -800,6 +812,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false">
+ <span class="menu-text">17 Advanced Plotting with Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/lecture_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/exercises_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting Exercises: Building Dashboards with Seaborn and Plotly</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -859,7 +894,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdCJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0In0=
 </script>
 </div>
 <section id="figure-and-axes" class="level2">
@@ -877,7 +912,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIu
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5mcm9tIG51bXB5IGltcG9ydCByYW5kb21cblxucm5nID0gcmFuZG9tLmRlZmF1bHRfcm5nKHNlZWQ9MTI0KVxuXG54ID0gbnAuYXJhbmdlKDEsIDU2LCA1KVxueTEgPSB4KioyXG55MiA9IHgqKjIgKyBybmcubm9ybWFsKHNpemU9bGVuKHgpKSoxMDAgIyBBZGQgcmFuZG9tIG5vaXNlIHRvIG91ciBzY2F0dGVyIHBvaW50cyJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcbmZyb20gbnVtcHkgaW1wb3J0IHJhbmRvbVxuXG5ybmcgPSByYW5kb20uZGVmYXVsdF9ybmcoc2VlZD0xMjQpXG5cbnggPSBucC5hcmFuZ2UoMSwgNTYsIDUpXG55MSA9IHgqKjJcbnkyID0geCoqMiArIHJuZy5ub3JtYWwoc2l6ZT1sZW4oeCkpKjEwMCAjIEFkZCByYW5kb20gbm9pc2UgdG8gb3VyIHNjYXR0ZXIgcG9pbnRzIn0=
 </script>
 </div>
 <div>
@@ -885,7 +920,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5w
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJwbG90cygpXG5heC5wbG90KHgsIHkxKSAgICAgICMgUGxvdCBsaW5lIHBsb3RcbmF4LnNjYXR0ZXIoeCwgeTIpICAgIyBQbG90IHNjYXR0ZXIgcGxvdCBhcyB3ZWxsIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcbmF4LnBsb3QoeCwgeTEpICAgICAgIyBQbG90IGxpbmUgcGxvdFxuYXguc2NhdHRlcih4LCB5MikgICAjIFBsb3Qgc2NhdHRlciBwbG90IGFzIHdlbGwifQ==
 </script>
 </div>
 <p>You may notice that unlike other Python you have been writing, in Jupyter notebooks you should keep your plotting code together in one code cell as this will immediately be displayed when the code cell is run.</p>
@@ -905,7 +940,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJw
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZnJvbSBudW1weSBpbXBvcnQgcmFuZG9tXG5cbnJuZyA9IHJhbmRvbS5kZWZhdWx0X3JuZyhzZWVkPTY4KVxubnVtX3BvaW50cyA9IDEwMFxuXG54X3JhbmdlID0gbnAubGluc3BhY2UoMC4wLCAxLjAsIG51bV9wb2ludHMpXG5cbnJhbmRvbV9zYW1wbGUxID0gcm5nLm5vcm1hbCgwLjEsIDAuNSwgc2l6ZT1udW1fcG9pbnRzKVxucmFuZG9tX3NhbXBsZTIgPSBybmcucmFuZG9tKG51bV9wb2ludHMpIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJmcm9tIG51bXB5IGltcG9ydCByYW5kb21cblxucm5nID0gcmFuZG9tLmRlZmF1bHRfcm5nKHNlZWQ9NjgpXG5udW1fcG9pbnRzID0gMTAwXG5cbnhfcmFuZ2UgPSBucC5saW5zcGFjZSgwLjAsIDEuMCwgbnVtX3BvaW50cylcblxucmFuZG9tX3NhbXBsZTEgPSBybmcubm9ybWFsKDAuMSwgMC41LCBzaXplPW51bV9wb2ludHMpXG5yYW5kb21fc2FtcGxlMiA9IHJuZy5yYW5kb20obnVtX3BvaW50cykifQ==
 </script>
 </div>
 <ol type="1">
@@ -920,7 +955,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZnJvbSBudW1weSBpbXBvcnQg
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIyMgQUREIENPREUgSEVSRSJ9
 </script>
 </div>
 <ol start="2" type="1">
@@ -935,7 +970,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUi
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIyMgQUREIENPREUgSEVSRSJ9
 </script>
 </div>
 <hr>
@@ -956,7 +991,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUi
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJwbG90cyhmaWdzaXplPSg4LCA0KSlcblxuYXgucGxvdCh4LCB5MSwgY29sb3I9XCJzbGF0ZWdyZXlcIiwgbGluZXN0eWxlPVwiLS1cIilcbmF4LnNjYXR0ZXIoeCwgeTIsIGNvbG9yPVwiaW5kaWFucmVkXCIsIG1hcmtlcj0nKycsIHM9NjApIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKGZpZ3NpemU9KDgsIDQpKVxuXG5heC5wbG90KHgsIHkxLCBjb2xvcj1cInNsYXRlZ3JleVwiLCBsaW5lc3R5bGU9XCItLVwiKVxuYXguc2NhdHRlcih4LCB5MiwgY29sb3I9XCJpbmRpYW5yZWRcIiwgbWFya2VyPScrJywgcz02MCkifQ==
 </script>
 </div>
 <p>We can include more inputs for both our <code>subplots</code> function and our plotting functions such as <code>plot()</code> and <code>scatter()</code>:</p>
@@ -983,7 +1018,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJw
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJwbG90cyhmaWdzaXplPSg4LCA0KSlcblxuYXgucGxvdCh4LCB5MSwgY29sb3I9XCJzbGF0ZWdyZXlcIiwgbGluZXN0eWxlPVwiLS1cIilcbmF4LnNjYXR0ZXIoeCwgeTIsIGNvbG9yPVwiaW5kaWFucmVkXCIsIG1hcmtlcj0nKycsIHM9NjApXG5cbiMjIyBBRERFRCB4IGFuZCB5IGxhYmVscyBhbmQgYW4geCBsaW1pdFxuYXguc2V0X3hsYWJlbChcInhcIilcbmF4LnNldF95bGFiZWwoXCJ5XCIpXG5heC5zZXRfeGxpbSgwLCA1MikifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKGZpZ3NpemU9KDgsIDQpKVxuXG5heC5wbG90KHgsIHkxLCBjb2xvcj1cInNsYXRlZ3JleVwiLCBsaW5lc3R5bGU9XCItLVwiKVxuYXguc2NhdHRlcih4LCB5MiwgY29sb3I9XCJpbmRpYW5yZWRcIiwgbWFya2VyPScrJywgcz02MClcblxuIyMjIEFEREVEIHggYW5kIHkgbGFiZWxzIGFuZCBhbiB4IGxpbWl0XG5heC5zZXRfeGxhYmVsKFwieFwiKVxuYXguc2V0X3lsYWJlbChcInlcIilcbmF4LnNldF94bGltKDAsIDUyKSJ9
 </script>
 </div>
 <p>Here we set additional parameters for the plot - the x and y labels and an x limit. We have done this by calling the relevant functions (e.g.&nbsp;<code>set_xlabel</code>, <code>set_ylim</code>) on our <code>ax</code> variable.</p>
@@ -996,7 +1031,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJw
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJwbG90cyhmaWdzaXplPSg4LCA0KSlcblxuIyMjIEFkZGVkIGxhYmVscyBmb3IgZWFjaCBvZiB0aGUgcGxvdHNcbmF4LnBsb3QoeCwgeTEsIGNvbG9yPVwic2xhdGVncmV5XCIsIGxpbmVzdHlsZT1cIi0tXCIsIGxhYmVsPVwiRml0dGVkIGxpbmVcIikgICMgbGFiZWwgaW5wdXQgYWRkZWQgd2hlbiBwbG90dGluZ1xuYXguc2NhdHRlcih4LCB5MiwgY29sb3I9XCJpbmRpYW5yZWRcIiwgbWFya2VyPScrJywgcz02MCwgbGFiZWw9XCJNZWFzdXJlbWVudHNcIikgICMgbGFiZWwgaW5wdXQgYWRkZWQgd2hlbiBwbG90dGluZ1xuXG5heC5zZXRfeGxhYmVsKFwieFwiKVxuYXguc2V0X3lsYWJlbChcInlcIilcbmF4LnNldF94bGltKDAsIDUyKVxuXG4jIyMgQXNrZWQgZm9yIGEgbGVnZW5kIHRvIGJlIGRpc3BsYXllZFxuYXgubGVnZW5kKCkifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKGZpZ3NpemU9KDgsIDQpKVxuXG4jIyMgQWRkZWQgbGFiZWxzIGZvciBlYWNoIG9mIHRoZSBwbG90c1xuYXgucGxvdCh4LCB5MSwgY29sb3I9XCJzbGF0ZWdyZXlcIiwgbGluZXN0eWxlPVwiLS1cIiwgbGFiZWw9XCJGaXR0ZWQgbGluZVwiKSAgIyBsYWJlbCBpbnB1dCBhZGRlZCB3aGVuIHBsb3R0aW5nXG5heC5zY2F0dGVyKHgsIHkyLCBjb2xvcj1cImluZGlhbnJlZFwiLCBtYXJrZXI9JysnLCBzPTYwLCBsYWJlbD1cIk1lYXN1cmVtZW50c1wiKSAgIyBsYWJlbCBpbnB1dCBhZGRlZCB3aGVuIHBsb3R0aW5nXG5cbmF4LnNldF94bGFiZWwoXCJ4XCIpXG5heC5zZXRfeWxhYmVsKFwieVwiKVxuYXguc2V0X3hsaW0oMCwgNTIpXG5cbiMjIyBBc2tlZCBmb3IgYSBsZWdlbmQgdG8gYmUgZGlzcGxheWVkXG5heC5sZWdlbmQoKSJ9
 </script>
 </div>
 <p>A legend can be created using the <code>.legend()</code> function (method) and this will use the <code>label</code> value supplied when creating each plot. If <code>ax.legend()</code> is not included then, even if a <code>label</code> variable is specified, no legend will be added to the plot.</p>
@@ -1011,7 +1046,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJw
 
 </div>
 <script type="pyodide-10-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDcmVhdGUgcmFuZG9tIG51bWJlcnMgKG5vcm1hbCBkaXN0cmlidXRpb24pIHRvIHBsb3RcbmZyb20gbnVtcHkgaW1wb3J0IHJhbmRvbVxuXG5ybmcgPSByYW5kb20uZGVmYXVsdF9ybmcoc2VlZD02OClcbm51bWJlcl9vZl9wb2ludHNfMSA9IDUwMDBcbm51bWJlcl9vZl9wb2ludHNfMiA9IDUwMFxuXG54X3JhbmQxID0gcm5nLm5vcm1hbChzaXplPW51bWJlcl9vZl9wb2ludHNfMSlcbnhfcmFuZDIgPSBybmcubm9ybWFsKHNpemU9bnVtYmVyX29mX3BvaW50c18yKSJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIENyZWF0ZSByYW5kb20gbnVtYmVycyAobm9ybWFsIGRpc3RyaWJ1dGlvbikgdG8gcGxvdFxuZnJvbSBudW1weSBpbXBvcnQgcmFuZG9tXG5cbnJuZyA9IHJhbmRvbS5kZWZhdWx0X3JuZyhzZWVkPTY4KVxubnVtYmVyX29mX3BvaW50c18xID0gNTAwMFxubnVtYmVyX29mX3BvaW50c18yID0gNTAwXG5cbnhfcmFuZDEgPSBybmcubm9ybWFsKHNpemU9bnVtYmVyX29mX3BvaW50c18xKVxueF9yYW5kMiA9IHJuZy5ub3JtYWwoc2l6ZT1udW1iZXJfb2ZfcG9pbnRzXzIpIn0=
 </script>
 </div>
 <p>We could create a simple plot using the <code>subplots</code> function and the <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html"><code>hist()</code> function</a>:</p>
@@ -1020,7 +1055,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDcmVhdGUgcmFuZG9tIG51
 
 </div>
 <script type="pyodide-11-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJwbG90cygpXG5cbmF4Lmhpc3QoeF9yYW5kMSlcbmF4Lmhpc3QoeF9yYW5kMikifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcblxuYXguaGlzdCh4X3JhbmQxKVxuYXguaGlzdCh4X3JhbmQyKSJ9
 </script>
 </div>
 <p>Using the exact same data we could update our plot using relevant inputs for our <code>hist</code> function and setting values on our axis:</p>
@@ -1029,7 +1064,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJw
 
 </div>
 <script type="pyodide-12-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJwbG90cygpXG5cbiMgQ3JlYXRlIGFuIGV4cGxpY2l0IHJhbmdlIHRvIHVzZSBmb3Igb3VyIGhpc3RvZ3JhbSBiaW5zXG5iaW5zID0gbnAuYXJhbmdlKC0zLCAzLCAwLjIpXG5cbiMgSW5jbHVkZSBjb2xvdXIsIHRyYW5zcGFyZW5jeSAoYWxwaGEpLCBwbG90IHR5cGUgKGRlbnNpdHkpIGlucHV0cyBhcyB3ZWxsIGFzIGEgbGFiZWxcbmF4Lmhpc3QoeF9yYW5kMSwgY29sb3I9XCJza3libHVlXCIsIGFscGhhPTAuNywgYmlucz1iaW5zLCBkZW5zaXR5PVRydWUsIGxhYmVsPVwiU2FtcGxlIDFcIilcbmF4Lmhpc3QoeF9yYW5kMiwgY29sb3I9XCJ0YW5cIiwgYWxwaGE9MC43LCBiaW5zPWJpbnMsIGRlbnNpdHk9VHJ1ZSwgbGFiZWw9XCJTYW1wbGUgMlwiKVxuXG4jIFVwZGF0ZSBwbG90dGluZyBhcmVhIHRvIGxhYmVsIGFuZCBzZXQgYXhlcyBsaW1pdHNcbmF4LnNldF94bGFiZWwoXCJ5XCIpXG5heC5zZXRfeWxhYmVsKFwiTnVtYmVyIGluIHhcIilcbmF4LnNldF94bGltKC0zLCAzKVxuYXguc2V0X3lsaW0oMCwgMC41KVxuXG4jIEFkZCBsZWdlbmQgdG8gdGhlIHBsb3QgKHVzZXMgbGFiZWxzIGRlZmluZWQgYWJvdmUpXG5heC5sZWdlbmQoKSJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcblxuIyBDcmVhdGUgYW4gZXhwbGljaXQgcmFuZ2UgdG8gdXNlIGZvciBvdXIgaGlzdG9ncmFtIGJpbnNcbmJpbnMgPSBucC5hcmFuZ2UoLTMsIDMsIDAuMilcblxuIyBJbmNsdWRlIGNvbG91ciwgdHJhbnNwYXJlbmN5IChhbHBoYSksIHBsb3QgdHlwZSAoZGVuc2l0eSkgaW5wdXRzIGFzIHdlbGwgYXMgYSBsYWJlbFxuYXguaGlzdCh4X3JhbmQxLCBjb2xvcj1cInNreWJsdWVcIiwgYWxwaGE9MC43LCBiaW5zPWJpbnMsIGRlbnNpdHk9VHJ1ZSwgbGFiZWw9XCJTYW1wbGUgMVwiKVxuYXguaGlzdCh4X3JhbmQyLCBjb2xvcj1cInRhblwiLCBhbHBoYT0wLjcsIGJpbnM9YmlucywgZGVuc2l0eT1UcnVlLCBsYWJlbD1cIlNhbXBsZSAyXCIpXG5cbiMgVXBkYXRlIHBsb3R0aW5nIGFyZWEgdG8gbGFiZWwgYW5kIHNldCBheGVzIGxpbWl0c1xuYXguc2V0X3hsYWJlbChcInlcIilcbmF4LnNldF95bGFiZWwoXCJOdW1iZXIgaW4geFwiKVxuYXguc2V0X3hsaW0oLTMsIDMpXG5heC5zZXRfeWxpbSgwLCAwLjUpXG5cbiMgQWRkIGxlZ2VuZCB0byB0aGUgcGxvdCAodXNlcyBsYWJlbHMgZGVmaW5lZCBhYm92ZSlcbmF4LmxlZ2VuZCgpIn0=
 </script>
 </div>
 <p>For our histogram, in addition to options we used for our scatter and line plot, we have set more options available to us: - <code>alpha</code> - This allows us to make our data partially transparent to better view overlapping data - <code>bins</code> - We defined and included an input for the bin sizes rather than using the default - <code>density</code> - This is a plot type we can set which normalised our data for the different datasets. This can be useful if you are comparing datasets which have different sample sizes.</p>
@@ -1057,7 +1092,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZmlnLCBheCA9IHBsdC5zdWJw
 
 </div>
 <script type="pyodide-13-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUgKGNvcHkgY29kZSBmcm9tIEV4ZXJjaXNlIEExIHRvIHN0YXJ0KSJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIyMgQUREIENPREUgSEVSRSAoY29weSBjb2RlIGZyb20gRXhlcmNpc2UgQTEgdG8gc3RhcnQpIn0=
 </script>
 </div>
 <ol start="2" type="1">
@@ -1072,7 +1107,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUg
 
 </div>
 <script type="pyodide-14-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIyMgQUREIENPREUgSEVSRSJ9
 </script>
 </div>
 <p><strong>Extra.</strong> Create a plot containing both a scatter plot for <code>x_range</code> versus <code>random_sample1</code> AND a line plot for <code>x_range</code> versus <code>random_sample2</code>. Add or set the following features: - changing the <a href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html">line style</a> and colour - setting a title for your plot</p>
@@ -1082,7 +1117,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUi
 
 </div>
 <script type="pyodide-15-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMjIEFERCBDT0RFIEhFUkUifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIyMgQUREIENPREUgSEVSRSJ9
 </script>
 </div>
 <hr>
@@ -1602,279 +1637,294 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>The most widespread convention is to use the shorthand <span class="in">`plt`</span> to refer to this package with the <span class="in">`as`</span> syntax and so we can import this in the following way:</span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="fu">## Figure and Axes</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>There are two main interfaces for plotting using <span class="in">`matplotlib`</span>.</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>The first is to use Pyplot (<span class="in">`plt`</span>) to create a plot directly e.g. using <span class="in">`plt.plot()`</span>. This is the type of syntax you may see often when looking online. This way of interacting with and plotting data was created to replicate the functionality of an alternative, and common programming language called MATLAB, which a lot of early Python adopters were familiar with.</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>The second, more modern way to create plots is to use the *object-oriented* approach where the figure is created first and then explicitly referenced when creating a plot. One way to do this is by calling the <span class="in">`subplots()`</span> function to create a <span class="in">`Figure`</span> (the canvas) and an <span class="in">`Axes`</span> (the x-y axes) object which can then be used for plotting.</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>We can plot using the <span class="in">`ax`</span> object directly using whichever type of graph we want to create e.g. </span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>for a simple line graph we can use the <span class="co">[</span><span class="ot">`plot()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html)</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>for a scatter graph we can use the <span class="co">[</span><span class="ot">`scatter()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html)</span>.</span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>for a 1D histogram we can the <span class="co">[</span><span class="ot">`hist()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist.html)</span></span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>You can also add multiple graphs to the same set of Axes to plot sets of data on top of each other:</span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> random.default_rng(seed<span class="op">=</span><span class="dv">124</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## Figure and Axes</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>There are two main interfaces for plotting using <span class="in">`matplotlib`</span>.</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>The first is to use Pyplot (<span class="in">`plt`</span>) to create a plot directly e.g. using <span class="in">`plt.plot()`</span>. This is the type of syntax you may see often when looking online. This way of interacting with and plotting data was created to replicate the functionality of an alternative, and common programming language called MATLAB, which a lot of early Python adopters were familiar with.</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>The second, more modern way to create plots is to use the *object-oriented* approach where the figure is created first and then explicitly referenced when creating a plot. One way to do this is by calling the <span class="in">`subplots()`</span> function to create a <span class="in">`Figure`</span> (the canvas) and an <span class="in">`Axes`</span> (the x-y axes) object which can then be used for plotting.</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>We can plot using the <span class="in">`ax`</span> object directly using whichever type of graph we want to create e.g. </span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>for a simple line graph we can use the <span class="co">[</span><span class="ot">`plot()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html)</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>for a scatter graph we can use the <span class="co">[</span><span class="ot">`scatter()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.scatter.html)</span>.</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>for a 1D histogram we can the <span class="co">[</span><span class="ot">`hist()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.hist.html)</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>You can also add multiple graphs to the same set of Axes to plot sets of data on top of each other:</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
 <span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">56</span>, <span class="dv">5</span>)</span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> rng.normal(size<span class="op">=</span><span class="bu">len</span>(x))<span class="op">*</span><span class="dv">100</span> <span class="co"># Add random noise to our scatter points</span></span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-57"><a href="#cb2-57" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-58"><a href="#cb2-58" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1)      <span class="co"># Plot line plot</span></span>
-<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2)   <span class="co"># Plot scatter plot as well</span></span>
-<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>You may notice that unlike other Python you have been writing, in Jupyter notebooks you should keep your plotting code together in one code cell as this will immediately be displayed when the code cell is run.</span>
-<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a>To create another plot in a new cell you can create new <span class="in">`Figure`</span> and <span class="in">`Axes`</span> objects using the same names <span class="in">`fig`</span>, <span class="in">`ax`</span> or name them something different if you'd prefer.</span>
-<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a>Matplotlib sample plots - https://matplotlib.org/3.3.3/tutorials/introductory/sample_plots.html</span>
-<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Aside: subplots</span></span>
-<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a>You may ask why the function for creating a new plot is called <span class="in">`subplots()`</span>. By default, this function allows you to create one plot on one figure, which is usually what you want for an initial plot. However, it is possible to use the <span class="in">`subplots()`</span> function to *create multiple plots on the same figure*. One way to do this is by specifying the number of rows (nrows) and number of columns (ncols) you want when using the `subplots()` function. Note that this will pass back an *array of Axes* objects rather than just one which you can then use to plot.</span>
-<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a>We won't explore this further, but for more details on how this is done have a look at the <span class="co">[</span><span class="ot">subplots demo</span><span class="co">](https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html)</span>.</span>
-<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise A (Worked through as needed in class)</span></span>
-<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>For this exercise, we have created some random sample data which we can plot. Here we have created several numpy arrays each 100 elements long (based on <span class="in">`num_points`</span>).</span>
-<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
-<span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> random.default_rng(seed<span class="op">=</span><span class="dv">68</span>)</span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">100</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>x_range <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">1.0</span>, num_points)</span>
-<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>random_sample1 <span class="op">=</span> rng.normal(<span class="fl">0.1</span>, <span class="fl">0.5</span>, size<span class="op">=</span>num_points)</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a>random_sample2 <span class="op">=</span> rng.random(num_points)</span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> random.default_rng(seed<span class="op">=</span><span class="dv">124</span>)</span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.arange(<span class="dv">1</span>, <span class="dv">56</span>, <span class="dv">5</span>)</span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a>y1 <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a>y2 <span class="op">=</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> rng.normal(size<span class="op">=</span><span class="bu">len</span>(x))<span class="op">*</span><span class="dv">100</span> <span class="co"># Add random noise to our scatter points</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-59"><a href="#cb2-59" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-60"><a href="#cb2-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-61"><a href="#cb2-61" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb2-62"><a href="#cb2-62" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1)      <span class="co"># Plot line plot</span></span>
+<span id="cb2-63"><a href="#cb2-63" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2)   <span class="co"># Plot scatter plot as well</span></span>
+<span id="cb2-64"><a href="#cb2-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-65"><a href="#cb2-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-66"><a href="#cb2-66" aria-hidden="true" tabindex="-1"></a>You may notice that unlike other Python you have been writing, in Jupyter notebooks you should keep your plotting code together in one code cell as this will immediately be displayed when the code cell is run.</span>
+<span id="cb2-67"><a href="#cb2-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-68"><a href="#cb2-68" aria-hidden="true" tabindex="-1"></a>To create another plot in a new cell you can create new <span class="in">`Figure`</span> and <span class="in">`Axes`</span> objects using the same names <span class="in">`fig`</span>, <span class="in">`ax`</span> or name them something different if you'd prefer.</span>
+<span id="cb2-69"><a href="#cb2-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-70"><a href="#cb2-70" aria-hidden="true" tabindex="-1"></a>Matplotlib sample plots - https://matplotlib.org/3.3.3/tutorials/introductory/sample_plots.html</span>
+<span id="cb2-71"><a href="#cb2-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-72"><a href="#cb2-72" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Aside: subplots</span></span>
+<span id="cb2-73"><a href="#cb2-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-74"><a href="#cb2-74" aria-hidden="true" tabindex="-1"></a>You may ask why the function for creating a new plot is called <span class="in">`subplots()`</span>. By default, this function allows you to create one plot on one figure, which is usually what you want for an initial plot. However, it is possible to use the <span class="in">`subplots()`</span> function to *create multiple plots on the same figure*. One way to do this is by specifying the number of rows (nrows) and number of columns (ncols) you want when using the `subplots()` function. Note that this will pass back an *array of Axes* objects rather than just one which you can then use to plot.</span>
+<span id="cb2-75"><a href="#cb2-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-76"><a href="#cb2-76" aria-hidden="true" tabindex="-1"></a>We won't explore this further, but for more details on how this is done have a look at the <span class="co">[</span><span class="ot">subplots demo</span><span class="co">](https://matplotlib.org/stable/gallery/subplots_axes_and_figures/subplots_demo.html)</span>.</span>
+<span id="cb2-77"><a href="#cb2-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-78"><a href="#cb2-78" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise A (Worked through as needed in class)</span></span>
+<span id="cb2-81"><a href="#cb2-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-82"><a href="#cb2-82" aria-hidden="true" tabindex="-1"></a>For this exercise, we have created some random sample data which we can plot. Here we have created several numpy arrays each 100 elements long (based on <span class="in">`num_points`</span>).</span>
+<span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> random.default_rng(seed<span class="op">=</span><span class="dv">68</span>)</span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>num_points <span class="op">=</span> <span class="dv">100</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>x_range <span class="op">=</span> np.linspace(<span class="fl">0.0</span>, <span class="fl">1.0</span>, num_points)</span>
 <span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Create a scatter plot of <span class="in">`x_range`</span> versus <span class="in">`random_sample1`</span>.</span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*Start by creating your Figure and Axes objects (fig, ax) using the subplots function*</span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*Use the scatter method to plot your data using your Axes object*</span>
-<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Create a line plot of <span class="in">`x_range`</span> versus <span class="in">`random_sample2`</span></span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*As before, start by creating your Figure and Axes objects (fig, ax) using the subplots function*</span>
-<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*Use the plot method to plot your data using your Axes object*</span>
+<span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a>random_sample1 <span class="op">=</span> rng.normal(<span class="fl">0.1</span>, <span class="fl">0.5</span>, size<span class="op">=</span>num_points)</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>random_sample2 <span class="op">=</span> rng.random(num_points)</span>
+<span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Create a scatter plot of <span class="in">`x_range`</span> versus <span class="in">`random_sample1`</span>.</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*Start by creating your Figure and Axes objects (fig, ax) using the subplots function*</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*Use the scatter method to plot your data using your Axes object*</span>
+<span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
+<span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
-<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="fu">## Annotating and adding features</span></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a>As well as plotting you can, and should, add additional information to your plot as appropriate. For instance, you can:</span>
+<span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Create a line plot of <span class="in">`x_range`</span> versus <span class="in">`random_sample2`</span></span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*As before, start by creating your Figure and Axes objects (fig, ax) using the subplots function*</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*Use the plot method to plot your data using your Axes object*</span>
+<span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
+<span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>change the style, colour etc. of your initial plot (e.g. see examples within <span class="co">[</span><span class="ot">matplotlib decoration</span><span class="co">](fun_matplotlib_decoration.qmd)</span>)</span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>add additional features such as axis labels, legend etc.</span>
-<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>The code below demonstrates how we could customise the plot above using these inputs:</span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Using more of the available plotting options</span></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a><span class="fu">## Annotating and adding features</span></span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>As well as plotting you can, and should, add additional information to your plot as appropriate. For instance, you can:</span>
+<span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>change the style, colour etc. of your initial plot (e.g. see examples within <span class="co">[</span><span class="ot">matplotlib decoration</span><span class="co">](fun_matplotlib_decoration.qmd)</span>)</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>add additional features such as axis labels, legend etc.</span>
+<span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>The code below demonstrates how we could customise the plot above using these inputs:</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a><span class="fu">### 1. Using more of the available plotting options</span></span>
 <span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1, color<span class="op">=</span><span class="st">"slategrey"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2, color<span class="op">=</span><span class="st">"indianred"</span>, marker<span class="op">=</span><span class="st">'+'</span>, s<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a>We can include more inputs for both our <span class="in">`subplots`</span> function and our plotting functions such as <span class="in">`plot()`</span> and <span class="in">`scatter()`</span>:</span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>For the <span class="in">`subplots()`</span> initial step we specified the figure size, <span class="in">`figsize`</span>, as an input. This is set using a tuple of (width, height) in inches.</span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>For the <span class="co">[</span><span class="ot">`plot` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)</span> we set:</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the colour to be a named colour called "slategrey" using the <span class="in">`color`</span> input</span>
-<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the style of the line to be dashed, using "--" and the <span class="in">`linestyle`</span> input</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>For the <span class="co">[</span><span class="ot">`scatter` function</span><span class="co">](https://matplotlib.org/3.3.3/api/_as_gen/matplotlib.axes.Axes.scatter.html)</span> we set:</span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the colour to be a named colour called "indianred" using the <span class="in">`color`</span> input</span>
-<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the marker shape to a cross shape, using "+" and the <span class="in">`marker`</span> input</span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>size to be 60 (area of the marker) using the <span class="in">`s`</span> input</span>
-<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>For in-built options see:</span>
-<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Colours - https://matplotlib.org/stable/gallery/color/named_colors.html</span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Line style - https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html</span>
-<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Markers - https://matplotlib.org/api/markers_api.html</span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Setting properties on the plot</span></span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1, color<span class="op">=</span><span class="st">"slategrey"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2, color<span class="op">=</span><span class="st">"indianred"</span>, marker<span class="op">=</span><span class="st">'+'</span>, s<span class="op">=</span><span class="dv">60</span>)</span>
+<span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>We can include more inputs for both our <span class="in">`subplots`</span> function and our plotting functions such as <span class="in">`plot()`</span> and <span class="in">`scatter()`</span>:</span>
+<span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>For the <span class="in">`subplots()`</span> initial step we specified the figure size, <span class="in">`figsize`</span>, as an input. This is set using a tuple of (width, height) in inches.</span>
+<span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>For the <span class="co">[</span><span class="ot">`plot` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)</span> we set:</span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the colour to be a named colour called "slategrey" using the <span class="in">`color`</span> input</span>
+<span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the style of the line to be dashed, using "--" and the <span class="in">`linestyle`</span> input</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>For the <span class="co">[</span><span class="ot">`scatter` function</span><span class="co">](https://matplotlib.org/3.3.3/api/_as_gen/matplotlib.axes.Axes.scatter.html)</span> we set:</span>
+<span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the colour to be a named colour called "indianred" using the <span class="in">`color`</span> input</span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>the marker shape to a cross shape, using "+" and the <span class="in">`marker`</span> input</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="ss">  - </span>size to be 60 (area of the marker) using the <span class="in">`s`</span> input</span>
 <span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a>For in-built options see:</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Colours - https://matplotlib.org/stable/gallery/color/named_colors.html</span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Line style - https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Markers - https://matplotlib.org/api/markers_api.html</span>
 <span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1, color<span class="op">=</span><span class="st">"slategrey"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2, color<span class="op">=</span><span class="st">"indianred"</span>, marker<span class="op">=</span><span class="st">'+'</span>, s<span class="op">=</span><span class="dv">60</span>)</span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a><span class="co">### ADDED x and y labels and an x limit</span></span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">52</span>)</span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>Here we set additional parameters for the plot - the x and y labels and an x limit. We have done this by calling the relevant functions (e.g. <span class="in">`set_xlabel`</span>, <span class="in">`set_ylim`</span>) on our <span class="in">`ax`</span> variable.</span>
+<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a><span class="fu">### 2. Setting properties on the plot</span></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1, color<span class="op">=</span><span class="st">"slategrey"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>)</span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2, color<span class="op">=</span><span class="st">"indianred"</span>, marker<span class="op">=</span><span class="st">'+'</span>, s<span class="op">=</span><span class="dv">60</span>)</span>
 <span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>For some examples of different <span class="in">`Axes`</span> functions of this type see:</span>
-<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Axes - labels and limits - https://matplotlib.org/stable/api/axes_api.html#axis-labels-title-and-legend</span>
-<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Axes - tick labels - https://matplotlib.org/stable/api/axes_api.html#ticks-and-tick-labels</span>
-<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Additional labelling - legend</span></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="co">### ADDED x and y labels and an x limit</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
+<span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">52</span>)</span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a><span class="co">### Added labels for each of the plots</span></span>
-<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1, color<span class="op">=</span><span class="st">"slategrey"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"Fitted line"</span>)  <span class="co"># label input added when plotting</span></span>
-<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2, color<span class="op">=</span><span class="st">"indianred"</span>, marker<span class="op">=</span><span class="st">'+'</span>, s<span class="op">=</span><span class="dv">60</span>, label<span class="op">=</span><span class="st">"Measurements"</span>)  <span class="co"># label input added when plotting</span></span>
-<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
-<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
-<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">52</span>)</span>
-<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a><span class="co">### Asked for a legend to be displayed</span></span>
-<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a>A legend can be created using the <span class="in">`.legend()`</span> function (method) and this will use the <span class="in">`label`</span> value supplied when creating each plot. If <span class="in">`ax.legend()`</span> is not included then, even if a <span class="in">`label`</span> variable is specified, no legend will be added to the plot.</span>
-<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>See:</span>
-<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>legend function - https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html</span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a>Here we set additional parameters for the plot - the x and y labels and an x limit. We have done this by calling the relevant functions (e.g. <span class="in">`set_xlabel`</span>, <span class="in">`set_ylim`</span>) on our <span class="in">`ax`</span> variable.</span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>For some examples of different <span class="in">`Axes`</span> functions of this type see:</span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Axes - labels and limits - https://matplotlib.org/stable/api/axes_api.html#axis-labels-title-and-legend</span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Axes - tick labels - https://matplotlib.org/stable/api/axes_api.html#ticks-and-tick-labels</span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a><span class="fu">### 3. Additional labelling - legend</span></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a><span class="co">### Added labels for each of the plots</span></span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y1, color<span class="op">=</span><span class="st">"slategrey"</span>, linestyle<span class="op">=</span><span class="st">"--"</span>, label<span class="op">=</span><span class="st">"Fitted line"</span>)  <span class="co"># label input added when plotting</span></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>ax.scatter(x, y2, color<span class="op">=</span><span class="st">"indianred"</span>, marker<span class="op">=</span><span class="st">'+'</span>, s<span class="op">=</span><span class="dv">60</span>, label<span class="op">=</span><span class="st">"Measurements"</span>)  <span class="co"># label input added when plotting</span></span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"x"</span>)</span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"y"</span>)</span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="dv">0</span>, <span class="dv">52</span>)</span>
 <span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other plot types</span></span>
-<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>We can also apply similiar principles to other plot types. We can generate some more random data to look at this. Here we have created two normal distributions containing different numbers of points.</span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a><span class="co">### Asked for a legend to be displayed</span></span>
+<span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a><span class="co"># Create random numbers (normal distribution) to plot</span></span>
-<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
-<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> random.default_rng(seed<span class="op">=</span><span class="dv">68</span>)</span>
-<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>number_of_points_1 <span class="op">=</span> <span class="dv">5000</span></span>
-<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>number_of_points_2 <span class="op">=</span> <span class="dv">500</span></span>
-<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>x_rand1 <span class="op">=</span> rng.normal(size<span class="op">=</span>number_of_points_1)</span>
-<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a>x_rand2 <span class="op">=</span> rng.normal(size<span class="op">=</span>number_of_points_2)</span>
-<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a>We could create a simple plot using the <span class="in">`subplots`</span> function and the <span class="co">[</span><span class="ot">`hist()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html)</span>:</span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a>A legend can be created using the <span class="in">`.legend()`</span> function (method) and this will use the <span class="in">`label`</span> value supplied when creating each plot. If <span class="in">`ax.legend()`</span> is not included then, even if a <span class="in">`label`</span> variable is specified, no legend will be added to the plot.</span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a>See:</span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>legend function - https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html</span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a><span class="fu">## Other plot types</span></span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>We can also apply similiar principles to other plot types. We can generate some more random data to look at this. Here we have created two normal distributions containing different numbers of points.</span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a><span class="co"># Create random numbers (normal distribution) to plot</span></span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> numpy <span class="im">import</span> random</span>
 <span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand1)</span>
-<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand2)</span>
-<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a>Using the exact same data we could update our plot using relevant inputs for our <span class="in">`hist`</span> function and setting values on our axis:</span>
-<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> random.default_rng(seed<span class="op">=</span><span class="dv">68</span>)</span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a>number_of_points_1 <span class="op">=</span> <span class="dv">5000</span></span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a>number_of_points_2 <span class="op">=</span> <span class="dv">500</span></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a>x_rand1 <span class="op">=</span> rng.normal(size<span class="op">=</span>number_of_points_1)</span>
+<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>x_rand2 <span class="op">=</span> rng.normal(size<span class="op">=</span>number_of_points_2)</span>
+<span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a>We could create a simple plot using the <span class="in">`subplots`</span> function and the <span class="co">[</span><span class="ot">`hist()` function</span><span class="co">](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html)</span>:</span>
+<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
 <span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
 <span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an explicit range to use for our histogram bins</span></span>
-<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.2</span>)</span>
-<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a><span class="co"># Include colour, transparency (alpha), plot type (density) inputs as well as a label</span></span>
-<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand1, color<span class="op">=</span><span class="st">"skyblue"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, bins<span class="op">=</span>bins, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">"Sample 1"</span>)</span>
-<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand2, color<span class="op">=</span><span class="st">"tan"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, bins<span class="op">=</span>bins, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">"Sample 2"</span>)</span>
-<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a><span class="co"># Update plotting area to label and set axes limits</span></span>
-<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"y"</span>)</span>
-<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number in x"</span>)</span>
-<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
-<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="fl">0.5</span>)</span>
-<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend to the plot (uses labels defined above)</span></span>
-<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>For our histogram, in addition to options we used for our scatter and line plot, we have set more options available to us:</span>
-<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`alpha`</span> - This allows us to make our data partially transparent to better view overlapping data</span>
-<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`bins`</span> - We defined and included an input for the bin sizes rather than using the default</span>
-<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`density`</span> - This is a plot type we can set which normalised our data for the different datasets. This can be useful if you are comparing datasets which have different sample sizes.</span>
-<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>In general, you will need to look at the specific documentation for each of the the plot types to see what options are available.</span>
-<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a><span class="fu">## Anatomy of a figure</span></span>
-<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a>This is a <span class="co">[</span><span class="ot">summary image</span><span class="co">](https://matplotlib.org/examples/showcase/anatomy.html)</span> to show the make up (anatomy) of a plot in matplotlib.</span>
-<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"images/Anatomy_plot_matplotlib.png"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Matplotlib Plot"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:block;margin-left:auto;margin-right:auto;width:40%"</span><span class="dt">/&gt;</span></span>
-<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a>You can see some features we have described above such as "Figure", "Axes", "x axis label", "y axis label", "legend". But you can also see how our inputs have influenced other aspects of the plot e.g. "Major tick", "Minor tick", "Major tick label", "Minor tick label", which were updated when we set the limits on the x and y axes, and "Markers" from our scatter plot which updated the marker style and colour.</span>
-<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a>Becoming familiar with this terminology when applied to a matplotlib figure allows you to put a name to any part of the plot you wish to modify and to dig into the features offered for how to update these plots. </span>
+<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand1)</span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand2)</span>
+<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a>Using the exact same data we could update our plot using relevant inputs for our <span class="in">`hist`</span> function and setting values on our axis:</span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an explicit range to use for our histogram bins</span></span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a>bins <span class="op">=</span> np.arange(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>, <span class="fl">0.2</span>)</span>
+<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="co"># Include colour, transparency (alpha), plot type (density) inputs as well as a label</span></span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand1, color<span class="op">=</span><span class="st">"skyblue"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, bins<span class="op">=</span>bins, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">"Sample 1"</span>)</span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>ax.hist(x_rand2, color<span class="op">=</span><span class="st">"tan"</span>, alpha<span class="op">=</span><span class="fl">0.7</span>, bins<span class="op">=</span>bins, density<span class="op">=</span><span class="va">True</span>, label<span class="op">=</span><span class="st">"Sample 2"</span>)</span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a><span class="co"># Update plotting area to label and set axes limits</span></span>
+<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">"y"</span>)</span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">"Number in x"</span>)</span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>ax.set_xlim(<span class="op">-</span><span class="dv">3</span>, <span class="dv">3</span>)</span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a>ax.set_ylim(<span class="dv">0</span>, <span class="fl">0.5</span>)</span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a><span class="co"># Add legend to the plot (uses labels defined above)</span></span>
+<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a>For our histogram, in addition to options we used for our scatter and line plot, we have set more options available to us:</span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`alpha`</span> - This allows us to make our data partially transparent to better view overlapping data</span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`bins`</span> - We defined and included an input for the bin sizes rather than using the default</span>
+<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span><span class="in">`density`</span> - This is a plot type we can set which normalised our data for the different datasets. This can be useful if you are comparing datasets which have different sample sizes.</span>
 <span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a>In general, you will need to look at the specific documentation for each of the the plot types to see what options are available.</span>
 <span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise B (Worked through as needed in class)</span></span>
+<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a><span class="fu">## Anatomy of a figure</span></span>
 <span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Create a scatter plot with the same data from Exercise A showing <span class="in">`x_range`</span> versus <span class="in">`random_sample1`</span> adding or setting the following features:</span>
-<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>changing the <span class="co">[</span><span class="ot">marker</span><span class="co">](https://matplotlib.org/api/markers_api.html)</span> and <span class="co">[</span><span class="ot">colour</span><span class="co">](https://matplotlib.org/stable/gallery/color/named_colors.html)</span></span>
-<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>setting appropriate x and y labels</span>
-<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a>*Remember, you always need to recreate your fig and ax objects using the subplots function to create a new plot using Jupyter notebooks*</span>
+<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a>This is a <span class="co">[</span><span class="ot">summary image</span><span class="co">](https://matplotlib.org/examples/showcase/anatomy.html)</span> to show the make up (anatomy) of a plot in matplotlib.</span>
+<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">img</span><span class="ot"> src</span><span class="op">=</span><span class="st">"images/Anatomy_plot_matplotlib.png"</span><span class="ot"> alt</span><span class="op">=</span><span class="st">"Matplotlib Plot"</span><span class="ot"> style</span><span class="op">=</span><span class="st">"display:block;margin-left:auto;margin-right:auto;width:40%"</span><span class="dt">/&gt;</span></span>
+<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a>You can see some features we have described above such as "Figure", "Axes", "x axis label", "y axis label", "legend". But you can also see how our inputs have influenced other aspects of the plot e.g. "Major tick", "Minor tick", "Major tick label", "Minor tick label", which were updated when we set the limits on the x and y axes, and "Markers" from our scatter plot which updated the marker style and colour.</span>
 <span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE (copy code from Exercise A1 to start)</span></span>
-<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a>Becoming familiar with this terminology when applied to a matplotlib figure allows you to put a name to any part of the plot you wish to modify and to dig into the features offered for how to update these plots. </span>
+<span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="fu">### Exercise B (Worked through as needed in class)</span></span>
 <span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Create a histogram plot overlaying data from <span class="in">`random_sample1`</span> and <span class="in">`random_sample2`</span>. </span>
-<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>Experiment with different inputs to see if you can improve the default plot (e.g. setting the bin size, including transparency, changing the colours etc.)</span>
-<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*You can also look at the [`hist()` function documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html) for more inputs to try e.g. `histtype`.*</span>
-<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
-<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a>**Extra.** Create a plot containing both a scatter plot for <span class="in">`x_range`</span> versus <span class="in">`random_sample1`</span> AND a line plot for <span class="in">`x_range`</span> versus <span class="in">`random_sample2`</span>. Add or set the following features:</span>
-<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>changing the <span class="co">[</span><span class="ot">line style</span><span class="co">](https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html)</span> and colour</span>
-<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>setting a title for your plot</span>
+<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Create a scatter plot with the same data from Exercise A showing <span class="in">`x_range`</span> versus <span class="in">`random_sample1`</span> adding or setting the following features:</span>
+<span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>changing the <span class="co">[</span><span class="ot">marker</span><span class="co">](https://matplotlib.org/api/markers_api.html)</span> and <span class="co">[</span><span class="ot">colour</span><span class="co">](https://matplotlib.org/stable/gallery/color/named_colors.html)</span></span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>setting appropriate x and y labels</span>
+<span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a>*Remember, you always need to recreate your fig and ax objects using the subplots function to create a new plot using Jupyter notebooks*</span>
+<span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE (copy code from Exercise A1 to start)</span></span>
+<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Create a histogram plot overlaying data from <span class="in">`random_sample1`</span> and <span class="in">`random_sample2`</span>. </span>
 <span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a>*Hint: Look at "set_" commands within https://matplotlib.org/stable/api/axes_api.html#axis-labels-title-and-legend*</span>
-<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
-<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>Experiment with different inputs to see if you can improve the default plot (e.g. setting the bin size, including transparency, changing the colours etc.)</span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>*You can also look at the [`hist()` function documentation](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.hist.html) for more inputs to try e.g. `histtype`.*</span>
+<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a>*Extended: Pick an interesting plot from the [matplotlib gallery](https://matplotlib.org/gallery/index.html) and see if you replicate some of the additional features for these plots.*</span>
-<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a>**Extra.** Create a plot containing both a scatter plot for <span class="in">`x_range`</span> versus <span class="in">`random_sample1`</span> AND a line plot for <span class="in">`x_range`</span> versus <span class="in">`random_sample2`</span>. Add or set the following features:</span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>changing the <span class="co">[</span><span class="ot">line style</span><span class="co">](https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html)</span> and colour</span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a><span class="ss"> - </span>setting a title for your plot</span>
 <span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a>You can now proceed with the remaining exercises</span>
+<span id="cb2-317"><a href="#cb2-317" aria-hidden="true" tabindex="-1"></a>*Hint: Look at "set_" commands within https://matplotlib.org/stable/api/axes_api.html#axis-labels-title-and-legend*</span>
 <span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Exercise C</span><span class="co">](exercises_plotting_data_from_file.qmd)</span> - Plotting data from a file</span>
-<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">A fun session</span><span class="co">](fun_matplotlib_decoration.qmd)</span> - Using matplotlib to create a fun plot</span>
+<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a><span class="co">### ADD CODE HERE</span></span>
+<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a>*Extended: Pick an interesting plot from the [matplotlib gallery](https://matplotlib.org/gallery/index.html) and see if you replicate some of the additional features for these plots.*</span>
+<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a>You can now proceed with the remaining exercises</span>
+<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Exercise C</span><span class="co">](exercises_plotting_data_from_file.qmd)</span> - Plotting data from a file</span>
+<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">A fun session</span><span class="co">](fun_matplotlib_decoration.qmd)</span> - Using matplotlib to create a fun plot</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

@@ -197,6 +197,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../16/lecture_pandas_vs_numpy.html">
  <span class="dropdown-text">16 - Pandas vs Numpy</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../17/lecture_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting with Python</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -259,6 +263,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy.html">
  <span class="dropdown-text">16 - Pandas vs Numpy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../17/exercises_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting Exercises</span></a>
   </li>  
     </ul>
   </li>
@@ -326,6 +334,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../15/exercises_pandas_plotting_solutions.html">
  <span class="dropdown-text">15 - Pandas Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy_solutions.qmd">
+ <span class="dropdown-text">16 - Pandas vs Numpy Solutions</span></a>
   </li>  
     </ul>
   </li>
@@ -800,6 +812,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false">
+ <span class="menu-text">17 Advanced Plotting with Python</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/lecture_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/exercises_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting Exercises: Building Dashboards with Seaborn and Plotly</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -857,7 +892,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6ImltcG9ydCBwYW5kYXMgYXMgcGRcblxuIyBSZWFkIGZyb20gYSBVUkxcbnVybCA9IFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2FsYW5qb25lczIvdWstaGlzdG9yaWNhbC13ZWF0aGVyL3JlZnMvaGVhZHMvbWFpbi9kYXRhL0NhcmRpZmZfQnV0ZV9QYXJrLmNzdlwiXG5kZiA9IHBkLnJlYWRfY3N2KHVybClcblxuIyBPciByZWFkIGZyb20gYSBsb2NhbCBmaWxlXG4jIGRmID0gcGQucmVhZF9jc3YoJ2RhdGEvd2VhdGhlci5jc3YnKVxuXG5wcmludChmXCJMb2FkZWQge2RmLnNoYXBlWzBdfSByb3dzIGFuZCB7ZGYuc2hhcGVbMV19IGNvbHVtbnNcIilcbmRmLmhlYWQoMykifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiJpbXBvcnQgcGFuZGFzIGFzIHBkXG5cbiMgUmVhZCBmcm9tIGEgVVJMXG51cmwgPSBcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9hbGFuam9uZXMyL3VrLWhpc3RvcmljYWwtd2VhdGhlci9yZWZzL2hlYWRzL21haW4vZGF0YS9DYXJkaWZmX0J1dGVfUGFyay5jc3ZcIlxuZGYgPSBwZC5yZWFkX2Nzdih1cmwpXG5cbiMgT3IgcmVhZCBmcm9tIGEgbG9jYWwgZmlsZVxuIyBkZiA9IHBkLnJlYWRfY3N2KCdkYXRhL3dlYXRoZXIuY3N2JylcblxucHJpbnQoZlwiTG9hZGVkIHtkZi5zaGFwZVswXX0gcm93cyBhbmQge2RmLnNoYXBlWzFdfSBjb2x1bW5zXCIpXG5kZi5oZWFkKDMpIn0=
 </script>
 </div>
 </section>
@@ -869,7 +904,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgQmFzaWMgZXhwbG9yYXRpb25cbnByaW50KGZcIlNoYXBlOiB7ZGYuc2hhcGV9XCIpXG5wcmludChmXCJcXG5Db2x1bW5zOiB7ZGYuY29sdW1ucy50b2xpc3QoKX1cIilcbnByaW50KFwiXFxuXCIgKyBcIj1cIio1MClcblxuIyBDb21wcmVoZW5zaXZlIGluZm9cbmRmLmluZm8oKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIEJhc2ljIGV4cGxvcmF0aW9uXG5wcmludChmXCJTaGFwZToge2RmLnNoYXBlfVwiKVxucHJpbnQoZlwiXFxuQ29sdW1uczoge2RmLmNvbHVtbnMudG9saXN0KCl9XCIpXG5wcmludChcIlxcblwiICsgXCI9XCIqNTApXG5cbiMgQ29tcHJlaGVuc2l2ZSBpbmZvXG5kZi5pbmZvKCkifQ==
 </script>
 </div>
 </section>
@@ -881,7 +916,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgR2V0IHN1bW1hcnkgc3RhdGlzdGljc1xuc3RhdHMgPSBkZi5kZXNjcmliZSgpXG5wcmludChzdGF0cylcblxuIyBBY2Nlc3Mgc3BlY2lmaWMgc3RhdGlzdGljc1xucHJpbnQoZlwiXFxuTWVhbiB0ZW1wZXJhdHVyZToge3N0YXRzLmxvY1snbWVhbicsICdUbWVhbiddOi4yZn3CsENcIikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIEdldCBzdW1tYXJ5IHN0YXRpc3RpY3NcbnN0YXRzID0gZGYuZGVzY3JpYmUoKVxucHJpbnQoc3RhdHMpXG5cbiMgQWNjZXNzIHNwZWNpZmljIHN0YXRpc3RpY3NcbnByaW50KGZcIlxcbk1lYW4gdGVtcGVyYXR1cmU6IHtzdGF0cy5sb2NbJ21lYW4nLCAnVG1lYW4nXTouMmZ9wrBDXCIpIn0=
 </script>
 </div>
 </section>
@@ -893,7 +928,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgQ29udmVydCB0ZXh0IHRvIGRhdGV0aW1lXG5kZlsnRGF0ZSddID0gcGQudG9fZGF0ZXRpbWUoZGZbJ0RhdGUnXSlcblxucHJpbnQoZlwiRGF0ZSB0eXBlOiB7ZGZbJ0RhdGUnXS5kdHlwZX1cIilcbnByaW50KGZcIkRhdGUgcmFuZ2U6IHtkZlsnRGF0ZSddLm1pbigpfSB0byB7ZGZbJ0RhdGUnXS5tYXgoKX1cIilcblxuIyBOb3cgd2UgY2FuIGZpbHRlciBieSBkYXRlc1xucmVjZW50X2RhdGEgPSBkZltkZlsnRGF0ZSddID4gJzIwMjAtMDEtMDEnXVxucHJpbnQoZlwiXFxuUm93cyBhZnRlciAyMDIwOiB7bGVuKHJlY2VudF9kYXRhKX1cIikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIENvbnZlcnQgdGV4dCB0byBkYXRldGltZVxuZGZbJ0RhdGUnXSA9IHBkLnRvX2RhdGV0aW1lKGRmWydEYXRlJ10pXG5cbnByaW50KGZcIkRhdGUgdHlwZToge2RmWydEYXRlJ10uZHR5cGV9XCIpXG5wcmludChmXCJEYXRlIHJhbmdlOiB7ZGZbJ0RhdGUnXS5taW4oKX0gdG8ge2RmWydEYXRlJ10ubWF4KCl9XCIpXG5cbiMgTm93IHdlIGNhbiBmaWx0ZXIgYnkgZGF0ZXNcbnJlY2VudF9kYXRhID0gZGZbZGZbJ0RhdGUnXSA+ICcyMDIwLTAxLTAxJ11cbnByaW50KGZcIlxcblJvd3MgYWZ0ZXIgMjAyMDoge2xlbihyZWNlbnRfZGF0YSl9XCIpIn0=
 </script>
 </div>
 </section>
@@ -905,7 +940,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgU2V0IGRhdGUgYXMgaW5kZXhcbmRmID0gZGYuc2V0X2luZGV4KCdEYXRlJylcblxuIyBEcm9wIHVubmVjZXNzYXJ5IGNvbHVtbnNcbmRmID0gZGYuZHJvcCgnVW5uYW1lZDogMCcsIGF4aXM9MSlcblxucHJpbnQoXCJOZXcgc3RydWN0dXJlOlwiKVxucHJpbnQoZGYuaGVhZCgzKSlcbnByaW50KGZcIlxcbkluZGV4IG5hbWU6IHtkZi5pbmRleC5uYW1lfVwiKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIFNldCBkYXRlIGFzIGluZGV4XG5kZiA9IGRmLnNldF9pbmRleCgnRGF0ZScpXG5cbiMgRHJvcCB1bm5lY2Vzc2FyeSBjb2x1bW5zXG5kZiA9IGRmLmRyb3AoJ1VubmFtZWQ6IDAnLCBheGlzPTEpXG5cbnByaW50KFwiTmV3IHN0cnVjdHVyZTpcIilcbnByaW50KGRmLmhlYWQoMykpXG5wcmludChmXCJcXG5JbmRleCBuYW1lOiB7ZGYuaW5kZXgubmFtZX1cIikifQ==
 </script>
 </div>
 </section>
@@ -917,7 +952,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgQ291bnQgbWlzc2luZyB2YWx1ZXNcbm1pc3NpbmcgPSBkZi5pc251bGwoKS5zdW0oKVxucHJpbnQoXCJNaXNzaW5nIHZhbHVlcyBwZXIgY29sdW1uOlwiKVxucHJpbnQobWlzc2luZylcblxuIyBGaW5kIHJvd3Mgd2l0aCBtaXNzaW5nIHZhbHVlcyBpbiBhIHNwZWNpZmljIGNvbHVtblxubWlzc2luZ19zdW4gPSBkZltkZlsnU3VuJ10uaXNudWxsKCldXG5wcmludChmXCJcXG5Sb3dzIHdpdGggbWlzc2luZyBTdW4gZGF0YToge2xlbihtaXNzaW5nX3N1bil9XCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIENvdW50IG1pc3NpbmcgdmFsdWVzXG5taXNzaW5nID0gZGYuaXNudWxsKCkuc3VtKClcbnByaW50KFwiTWlzc2luZyB2YWx1ZXMgcGVyIGNvbHVtbjpcIilcbnByaW50KG1pc3NpbmcpXG5cbiMgRmluZCByb3dzIHdpdGggbWlzc2luZyB2YWx1ZXMgaW4gYSBzcGVjaWZpYyBjb2x1bW5cbm1pc3Npbmdfc3VuID0gZGZbZGZbJ1N1biddLmlzbnVsbCgpXVxucHJpbnQoZlwiXFxuUm93cyB3aXRoIG1pc3NpbmcgU3VuIGRhdGE6IHtsZW4obWlzc2luZ19zdW4pfVwiKSJ9
 </script>
 </div>
 </section>
@@ -929,7 +964,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgU3RyYXRlZ3kgMTogRHJvcCBjb2x1bW5zIHdpdGggbW9zdGx5IG1pc3NpbmcgZGF0YVxuZGYgPSBkZi5kcm9wKCdzdGF0dXMnLCBheGlzPTEpXG5cbiMgU3RyYXRlZ3kgMjogRmlsbCB3aXRoIGEgdmFsdWVcbmRmWydSYWluJ10gPSBkZlsnUmFpbiddLmZpbGxuYSgwKVxuXG4jIFN0cmF0ZWd5IDM6IEludGVycG9sYXRlXG5kZlsnU3VuJ10gPSBkZlsnU3VuJ10uaW50ZXJwb2xhdGUobWV0aG9kPSdsaW5lYXInKVxuXG5wcmludChmXCJSZW1haW5pbmcgbWlzc2luZyB2YWx1ZXM6IHtkZi5pc251bGwoKS5zdW0oKS5zdW0oKX1cIikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIFN0cmF0ZWd5IDE6IERyb3AgY29sdW1ucyB3aXRoIG1vc3RseSBtaXNzaW5nIGRhdGFcbmRmID0gZGYuZHJvcCgnc3RhdHVzJywgYXhpcz0xKVxuXG4jIFN0cmF0ZWd5IDI6IEZpbGwgd2l0aCBhIHZhbHVlXG5kZlsnUmFpbiddID0gZGZbJ1JhaW4nXS5maWxsbmEoMClcblxuIyBTdHJhdGVneSAzOiBJbnRlcnBvbGF0ZVxuZGZbJ1N1biddID0gZGZbJ1N1biddLmludGVycG9sYXRlKG1ldGhvZD0nbGluZWFyJylcblxucHJpbnQoZlwiUmVtYWluaW5nIG1pc3NpbmcgdmFsdWVzOiB7ZGYuaXNudWxsKCkuc3VtKCkuc3VtKCl9XCIpIn0=
 </script>
 </div>
 </section>
@@ -941,7 +976,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6ImltcG9ydCBudW1weSBhcyBucFxuXG4jIENyZWF0ZSBzYW1wbGUgZGF0YSB3aXRoIGdhcHNcbmRhdGEgPSBwZC5TZXJpZXMoWzEuMCwgMi4wLCBucC5uYW4sIG5wLm5hbiwgNS4wLCA2LjBdKVxucHJpbnQoXCJCZWZvcmUgaW50ZXJwb2xhdGlvbjpcIilcbnByaW50KGRhdGEpXG5cbiMgTGluZWFyIGludGVycG9sYXRpb25cbmRhdGFfaW50ZXJwID0gZGF0YS5pbnRlcnBvbGF0ZShtZXRob2Q9J2xpbmVhcicpXG5wcmludChcIlxcbkFmdGVyIGludGVycG9sYXRpb246XCIpXG5wcmludChkYXRhX2ludGVycCkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcblxuIyBDcmVhdGUgc2FtcGxlIGRhdGEgd2l0aCBnYXBzXG5kYXRhID0gcGQuU2VyaWVzKFsxLjAsIDIuMCwgbnAubmFuLCBucC5uYW4sIDUuMCwgNi4wXSlcbnByaW50KFwiQmVmb3JlIGludGVycG9sYXRpb246XCIpXG5wcmludChkYXRhKVxuXG4jIExpbmVhciBpbnRlcnBvbGF0aW9uXG5kYXRhX2ludGVycCA9IGRhdGEuaW50ZXJwb2xhdGUobWV0aG9kPSdsaW5lYXInKVxucHJpbnQoXCJcXG5BZnRlciBpbnRlcnBvbGF0aW9uOlwiKVxucHJpbnQoZGF0YV9pbnRlcnApIn0=
 </script>
 </div>
 </section>
@@ -953,7 +988,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgRXh0cmFjdCBkYXRlIGNvbXBvbmVudHMgZnJvbSB0aGUgaW5kZXhcbmRmWydZZWFyJ10gPSBkZi5pbmRleC55ZWFyXG5kZlsnTW9udGgnXSA9IGRmLmluZGV4Lm1vbnRoXG5kZlsnTW9udGhfTmFtZSddID0gZGYuaW5kZXgubW9udGhfbmFtZSgpXG5kZlsnUXVhcnRlciddID0gZGYuaW5kZXgucXVhcnRlclxuXG5wcmludChkZltbJ1llYXInLCAnTW9udGgnLCAnTW9udGhfTmFtZScsICdRdWFydGVyJ11dLmhlYWQoNikpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIEV4dHJhY3QgZGF0ZSBjb21wb25lbnRzIGZyb20gdGhlIGluZGV4XG5kZlsnWWVhciddID0gZGYuaW5kZXgueWVhclxuZGZbJ01vbnRoJ10gPSBkZi5pbmRleC5tb250aFxuZGZbJ01vbnRoX05hbWUnXSA9IGRmLmluZGV4Lm1vbnRoX25hbWUoKVxuZGZbJ1F1YXJ0ZXInXSA9IGRmLmluZGV4LnF1YXJ0ZXJcblxucHJpbnQoZGZbWydZZWFyJywgJ01vbnRoJywgJ01vbnRoX05hbWUnLCAnUXVhcnRlciddXS5oZWFkKDYpKSJ9
 </script>
 </div>
 </section>
@@ -965,7 +1000,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-10-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgRGVmaW5lIGEgY3VzdG9tIGZ1bmN0aW9uXG5kZWYgZ2V0X3NlYXNvbihtb250aCk6XG4gICAgaWYgbW9udGggaW4gWzEyLCAxLCAyXTpcbiAgICAgICAgcmV0dXJuICdXaW50ZXInXG4gICAgZWxpZiBtb250aCBpbiBbMywgNCwgNV06XG4gICAgICAgIHJldHVybiAnU3ByaW5nJ1xuICAgIGVsaWYgbW9udGggaW4gWzYsIDcsIDhdOlxuICAgICAgICByZXR1cm4gJ1N1bW1lcidcbiAgICBlbHNlOlxuICAgICAgICByZXR1cm4gJ0F1dHVtbidcblxuIyBBcHBseSBpdCB0byBjcmVhdGUgYSBuZXcgY29sdW1uXG5kZlsnU2Vhc29uJ10gPSBkZlsnTW9udGgnXS5hcHBseShnZXRfc2Vhc29uKVxucHJpbnQoZGZbWydNb250aCcsICdNb250aF9OYW1lJywgJ1NlYXNvbiddXS5oZWFkKDEyKSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIERlZmluZSBhIGN1c3RvbSBmdW5jdGlvblxuZGVmIGdldF9zZWFzb24obW9udGgpOlxuICAgIGlmIG1vbnRoIGluIFsxMiwgMSwgMl06XG4gICAgICAgIHJldHVybiAnV2ludGVyJ1xuICAgIGVsaWYgbW9udGggaW4gWzMsIDQsIDVdOlxuICAgICAgICByZXR1cm4gJ1NwcmluZydcbiAgICBlbGlmIG1vbnRoIGluIFs2LCA3LCA4XTpcbiAgICAgICAgcmV0dXJuICdTdW1tZXInXG4gICAgZWxzZTpcbiAgICAgICAgcmV0dXJuICdBdXR1bW4nXG5cbiMgQXBwbHkgaXQgdG8gY3JlYXRlIGEgbmV3IGNvbHVtblxuZGZbJ1NlYXNvbiddID0gZGZbJ01vbnRoJ10uYXBwbHkoZ2V0X3NlYXNvbilcbnByaW50KGRmW1snTW9udGgnLCAnTW9udGhfTmFtZScsICdTZWFzb24nXV0uaGVhZCgxMikpIn0=
 </script>
 </div>
 </section>
@@ -977,7 +1012,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-11-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgQXJpdGhtZXRpYyBvcGVyYXRpb25cbmRmWydUZW1wX1JhbmdlJ10gPSBkZlsnVG1heCddIC0gZGZbJ1RtaW4nXVxuXG4jIEJvb2xlYW4gY29uZGl0aW9uc1xuZGZbJ1JhaW55X01vbnRoJ10gPSBkZlsnUmFpbiddID4gMTAwXG5kZlsnU3VubnlfTW9udGgnXSA9IGRmWydTdW4nXSA+IDE1MFxuXG5wcmludChkZltbJ1RtYXgnLCAnVG1pbicsICdUZW1wX1JhbmdlJywgJ1JhaW4nLCAnUmFpbnlfTW9udGgnXV0uaGVhZCgpKVxucHJpbnQoZlwiXFxuUmFpbnkgbW9udGhzOiB7ZGZbJ1JhaW55X01vbnRoJ10uc3VtKCl9ICh7ZGZbJ1JhaW55X01vbnRoJ10ubWVhbigpKjEwMDouMWZ9JSlcIikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIEFyaXRobWV0aWMgb3BlcmF0aW9uXG5kZlsnVGVtcF9SYW5nZSddID0gZGZbJ1RtYXgnXSAtIGRmWydUbWluJ11cblxuIyBCb29sZWFuIGNvbmRpdGlvbnNcbmRmWydSYWlueV9Nb250aCddID0gZGZbJ1JhaW4nXSA+IDEwMFxuZGZbJ1N1bm55X01vbnRoJ10gPSBkZlsnU3VuJ10gPiAxNTBcblxucHJpbnQoZGZbWydUbWF4JywgJ1RtaW4nLCAnVGVtcF9SYW5nZScsICdSYWluJywgJ1JhaW55X01vbnRoJ11dLmhlYWQoKSlcbnByaW50KGZcIlxcblJhaW55IG1vbnRoczoge2RmWydSYWlueV9Nb250aCddLnN1bSgpfSAoe2RmWydSYWlueV9Nb250aCddLm1lYW4oKSoxMDA6LjFmfSUpXCIpIn0=
 </script>
 </div>
 </section>
@@ -989,7 +1024,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-12-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgR3JvdXAgYnkgc2Vhc29uIGFuZCBjYWxjdWxhdGUgbWVhbiB0ZW1wZXJhdHVyZVxuc2Vhc29uYWxfdGVtcCA9IGRmLmdyb3VwYnkoJ1NlYXNvbicpWydUbWVhbiddLm1lYW4oKVxucHJpbnQoXCJBdmVyYWdlIHRlbXBlcmF0dXJlIGJ5IHNlYXNvbjpcIilcbnByaW50KHNlYXNvbmFsX3RlbXAucm91bmQoMikpXG5cbiMgUGVyY2VudGFnZSBvZiByYWlueSBtb250aHMgYnkgbW9udGggbmFtZVxucmFpbnlfcGN0ID0gZGYuZ3JvdXBieSgnTW9udGhfTmFtZScpWydSYWlueV9Nb250aCddLm1lYW4oKSAqIDEwMFxucHJpbnQoXCJcXG5SYWluaWVzdCBtb250aHM6XCIpXG5wcmludChyYWlueV9wY3Quc29ydF92YWx1ZXMoYXNjZW5kaW5nPUZhbHNlKS5oZWFkKCkpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIEdyb3VwIGJ5IHNlYXNvbiBhbmQgY2FsY3VsYXRlIG1lYW4gdGVtcGVyYXR1cmVcbnNlYXNvbmFsX3RlbXAgPSBkZi5ncm91cGJ5KCdTZWFzb24nKVsnVG1lYW4nXS5tZWFuKClcbnByaW50KFwiQXZlcmFnZSB0ZW1wZXJhdHVyZSBieSBzZWFzb246XCIpXG5wcmludChzZWFzb25hbF90ZW1wLnJvdW5kKDIpKVxuXG4jIFBlcmNlbnRhZ2Ugb2YgcmFpbnkgbW9udGhzIGJ5IG1vbnRoIG5hbWVcbnJhaW55X3BjdCA9IGRmLmdyb3VwYnkoJ01vbnRoX05hbWUnKVsnUmFpbnlfTW9udGgnXS5tZWFuKCkgKiAxMDBcbnByaW50KFwiXFxuUmFpbmllc3QgbW9udGhzOlwiKVxucHJpbnQocmFpbnlfcGN0LnNvcnRfdmFsdWVzKGFzY2VuZGluZz1GYWxzZSkuaGVhZCgpKSJ9
 </script>
 </div>
 </section>
@@ -1001,7 +1036,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-13-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZSwic2xpZGVzaG93Ijp7InNsaWRlX3R5cGUiOiJmcmFnbWVudCJ9fSwiY29kZSI6IiMgU2VsZWN0IGNvbHVtbnMgdG8gZXhwb3J0XG5kZl9leHBvcnQgPSBkZltbJ1llYXInLCAnTW9udGgnLCAnVG1heCcsICdUbWluJywgJ1JhaW4nLCAnU3VuJ11dXG5cbiMgRXhwb3J0IHRvIENTVlxuZGZfZXhwb3J0LnRvX2Nzdignd2VhdGhlcl9jbGVhbmVkLmNzdicpXG5wcmludChcIkV4cG9ydGVkIHRvIENTVlwiKVxuXG4jIEV4cG9ydCB0byBFeGNlbCAocmVxdWlyZXMgb3BlbnB5eGwpXG4jIGRmX2V4cG9ydC50b19leGNlbCgnd2VhdGhlcl9jbGVhbmVkLnhsc3gnKVxuXG4jIEV4cG9ydCB0byBKU09OXG4jIGRmX2V4cG9ydC50b19qc29uKCd3ZWF0aGVyX2NsZWFuZWQuanNvbicsIG9yaWVudD0ncmVjb3JkcycsIGluZGVudD0yKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsInNsaWRlc2hvdyI6eyJzbGlkZV90eXBlIjoiZnJhZ21lbnQifX0sImNvZGUiOiIjIFNlbGVjdCBjb2x1bW5zIHRvIGV4cG9ydFxuZGZfZXhwb3J0ID0gZGZbWydZZWFyJywgJ01vbnRoJywgJ1RtYXgnLCAnVG1pbicsICdSYWluJywgJ1N1biddXVxuXG4jIEV4cG9ydCB0byBDU1ZcbmRmX2V4cG9ydC50b19jc3YoJ3dlYXRoZXJfY2xlYW5lZC5jc3YnKVxucHJpbnQoXCJFeHBvcnRlZCB0byBDU1ZcIilcblxuIyBFeHBvcnQgdG8gRXhjZWwgKHJlcXVpcmVzIG9wZW5weXhsKVxuIyBkZl9leHBvcnQudG9fZXhjZWwoJ3dlYXRoZXJfY2xlYW5lZC54bHN4JylcblxuIyBFeHBvcnQgdG8gSlNPTlxuIyBkZl9leHBvcnQudG9fanNvbignd2VhdGhlcl9jbGVhbmVkLmpzb24nLCBvcmllbnQ9J3JlY29yZHMnLCBpbmRlbnQ9MikifQ==
 </script>
 </div>
 </section>
@@ -1518,245 +1553,232 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>Pandas provides **flexible data ingestion** capabilities that allow you to read data from various sources. The `read_csv()` function is particularly versatile, accepting both **local file paths** and **public URLs**. This makes it easy to work with data stored on your computer or hosted online without changing your code structure.</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Read from a URL</span></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/alanjones2/uk-historical-weather/refs/heads/main/data/Cardiff_Bute_Park.csv"</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Or read from a local file</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># df = pd.read_csv('data/weather.csv')</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Loaded </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows and </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns"</span>)</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="fu">## Initial Data Exploration</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>Before manipulating data, always **understand its structure**. Check the **shape**, **column names**, **data types**, and **missing values**. The <span class="in">`.info()`</span> method provides a comprehensive overview in one call.</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic exploration</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Columns: </span><span class="sc">{</span>df<span class="sc">.</span>columns<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">50</span>)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprehensive info</span></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>df.info()</span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Read from a URL</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/alanjones2/uk-historical-weather/refs/heads/main/data/Cardiff_Bute_Park.csv"</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url)</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Or read from a local file</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># df = pd.read_csv('data/weather.csv')</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Loaded </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">0</span>]<span class="sc">}</span><span class="ss"> rows and </span><span class="sc">{</span>df<span class="sc">.</span>shape[<span class="dv">1</span>]<span class="sc">}</span><span class="ss"> columns"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">3</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">## Initial Data Exploration</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>Before manipulating data, always **understand its structure**. Check the **shape**, **column names**, **data types**, and **missing values**. The <span class="in">`.info()`</span> method provides a comprehensive overview in one call.</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="co"># Basic exploration</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Shape: </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Columns: </span><span class="sc">{</span>df<span class="sc">.</span>columns<span class="sc">.</span>tolist()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span> <span class="op">+</span> <span class="st">"="</span><span class="op">*</span><span class="dv">50</span>)</span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co"># Comprehensive info</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>df.info()</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Summaries with `.describe()`</span></span>
 <span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">## Statistical Summaries with `.describe()`</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>The <span class="in">`.describe()`</span> method computes **summary statistics** (count, mean, std, min, max, quartiles) for all numerical columns. The output is itself a DataFrame, allowing further operations.</span>
 <span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>The <span class="in">`.describe()`</span> method computes **summary statistics** (count, mean, std, min, max, quartiles) for all numerical columns. The output is itself a DataFrame, allowing further operations.</span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary statistics</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> df.describe()</span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats)</span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Access specific statistics</span></span>
-<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Mean temperature: </span><span class="sc">{</span>stats<span class="sc">.</span>loc[<span class="st">'mean'</span>, <span class="st">'Tmean'</span>]<span class="sc">:.2f}</span><span class="ss">°C"</span>)</span>
-<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Converting to Datetime Types</span></span>
-<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a>Date columns are often read as **text** by default. Converting them to **datetime objects** using <span class="in">`pd.to_datetime()`</span> unlocks temporal operations like filtering by date ranges, extracting components, and creating time-aware visualizations.</span>
-<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert text to datetime</span></span>
-<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date'</span>])</span>
-<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Date type: </span><span class="sc">{</span>df[<span class="st">'Date'</span>]<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Date range: </span><span class="sc">{</span>df[<span class="st">'Date'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>df[<span class="st">'Date'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can filter by dates</span></span>
-<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>recent_data <span class="op">=</span> df[df[<span class="st">'Date'</span>] <span class="op">&gt;</span> <span class="st">'2020-01-01'</span>]</span>
-<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Rows after 2020: </span><span class="sc">{</span><span class="bu">len</span>(recent_data)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Get summary statistics</span></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>stats <span class="op">=</span> df.describe()</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(stats)</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Access specific statistics</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Mean temperature: </span><span class="sc">{</span>stats<span class="sc">.</span>loc[<span class="st">'mean'</span>, <span class="st">'Tmean'</span>]<span class="sc">:.2f}</span><span class="ss">°C"</span>)</span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="fu">## Converting to Datetime Types</span></span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a>Date columns are often read as **text** by default. Converting them to **datetime objects** using <span class="in">`pd.to_datetime()`</span> unlocks temporal operations like filtering by date ranges, extracting components, and creating time-aware visualizations.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert text to datetime</span></span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Date'</span>] <span class="op">=</span> pd.to_datetime(df[<span class="st">'Date'</span>])</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Date type: </span><span class="sc">{</span>df[<span class="st">'Date'</span>]<span class="sc">.</span>dtype<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Date range: </span><span class="sc">{</span>df[<span class="st">'Date'</span>]<span class="sc">.</span><span class="bu">min</span>()<span class="sc">}</span><span class="ss"> to </span><span class="sc">{</span>df[<span class="st">'Date'</span>]<span class="sc">.</span><span class="bu">max</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Now we can filter by dates</span></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a>recent_data <span class="op">=</span> df[df[<span class="st">'Date'</span>] <span class="op">&gt;</span> <span class="st">'2020-01-01'</span>]</span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Rows after 2020: </span><span class="sc">{</span><span class="bu">len</span>(recent_data)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting a Meaningful Index</span></span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>For time series data, using the **date as the index** simplifies plotting and slicing. Use <span class="in">`set_index()`</span> to assign a column as the index and <span class="in">`.drop(axis=1)`</span> to remove unnecessary columns.</span>
 <span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-89"><a href="#cb1-89" aria-hidden="true" tabindex="-1"></a><span class="fu">## Setting a Meaningful Index</span></span>
-<span id="cb1-90"><a href="#cb1-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a>For time series data, using the **date as the index** simplifies plotting and slicing. Use <span class="in">`set_index()`</span> to assign a column as the index and <span class="in">`.drop(axis=1)`</span> to remove unnecessary columns.</span>
-<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Set date as index</span></span>
-<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">'Date'</span>)</span>
-<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop unnecessary columns</span></span>
-<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="st">'Unnamed: 0'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-91"><a href="#cb1-91" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-92"><a href="#cb1-92" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-93"><a href="#cb1-93" aria-hidden="true" tabindex="-1"></a><span class="co"># Set date as index</span></span>
+<span id="cb1-94"><a href="#cb1-94" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.set_index(<span class="st">'Date'</span>)</span>
+<span id="cb1-95"><a href="#cb1-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-96"><a href="#cb1-96" aria-hidden="true" tabindex="-1"></a><span class="co"># Drop unnecessary columns</span></span>
+<span id="cb1-97"><a href="#cb1-97" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="st">'Unnamed: 0'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-98"><a href="#cb1-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-99"><a href="#cb1-99" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"New structure:"</span>)</span>
+<span id="cb1-100"><a href="#cb1-100" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))</span>
+<span id="cb1-101"><a href="#cb1-101" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Index name: </span><span class="sc">{</span>df<span class="sc">.</span>index<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-102"><a href="#cb1-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb1-103"><a href="#cb1-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"New structure:"</span>)</span>
-<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.head(<span class="dv">3</span>))</span>
-<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Index name: </span><span class="sc">{</span>df<span class="sc">.</span>index<span class="sc">.</span>name<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-108"><a href="#cb1-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-109"><a href="#cb1-109" aria-hidden="true" tabindex="-1"></a><span class="fu">## Detecting Missing Values</span></span>
-<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a>Real-world data often has **missing values** (`NaN`). Use `.isnull()` to identify them and `.sum()` to count missing values per column. Understanding **where and why** data is missing guides your handling strategy.</span>
-<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a><span class="co"># Count missing values</span></span>
-<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
-<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values per column:"</span>)</span>
-<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing)</span>
-<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows with missing values in a specific column</span></span>
-<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>missing_sun <span class="op">=</span> df[df[<span class="st">'Sun'</span>].isnull()]</span>
-<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Rows with missing Sun data: </span><span class="sc">{</span><span class="bu">len</span>(missing_sun)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-126"><a href="#cb1-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-127"><a href="#cb1-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="fu">## Strategies for Handling Missing Data</span></span>
-<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a>Three main approaches: **drop** rows/columns (sparse data), **fill** with values like mean or median (simple imputation), or **interpolate** from surrounding values (time series). Choose based on your **data's nature** and **missingness patterns**.</span>
-<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategy 1: Drop columns with mostly missing data</span></span>
-<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="st">'status'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategy 2: Fill with a value</span></span>
-<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Rain'</span>] <span class="op">=</span> df[<span class="st">'Rain'</span>].fillna(<span class="dv">0</span>)</span>
-<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategy 3: Interpolate</span></span>
-<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Sun'</span>] <span class="op">=</span> df[<span class="st">'Sun'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb1-104"><a href="#cb1-104" aria-hidden="true" tabindex="-1"></a><span class="fu">## Detecting Missing Values</span></span>
+<span id="cb1-105"><a href="#cb1-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-106"><a href="#cb1-106" aria-hidden="true" tabindex="-1"></a>Real-world data often has **missing values** (`NaN`). Use `.isnull()` to identify them and `.sum()` to count missing values per column. Understanding **where and why** data is missing guides your handling strategy.</span>
+<span id="cb1-107"><a href="#cb1-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-110"><a href="#cb1-110" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-111"><a href="#cb1-111" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-112"><a href="#cb1-112" aria-hidden="true" tabindex="-1"></a><span class="co"># Count missing values</span></span>
+<span id="cb1-113"><a href="#cb1-113" aria-hidden="true" tabindex="-1"></a>missing <span class="op">=</span> df.isnull().<span class="bu">sum</span>()</span>
+<span id="cb1-114"><a href="#cb1-114" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Missing values per column:"</span>)</span>
+<span id="cb1-115"><a href="#cb1-115" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(missing)</span>
+<span id="cb1-116"><a href="#cb1-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-117"><a href="#cb1-117" aria-hidden="true" tabindex="-1"></a><span class="co"># Find rows with missing values in a specific column</span></span>
+<span id="cb1-118"><a href="#cb1-118" aria-hidden="true" tabindex="-1"></a>missing_sun <span class="op">=</span> df[df[<span class="st">'Sun'</span>].isnull()]</span>
+<span id="cb1-119"><a href="#cb1-119" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Rows with missing Sun data: </span><span class="sc">{</span><span class="bu">len</span>(missing_sun)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-120"><a href="#cb1-120" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-121"><a href="#cb1-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-122"><a href="#cb1-122" aria-hidden="true" tabindex="-1"></a><span class="fu">## Strategies for Handling Missing Data</span></span>
+<span id="cb1-123"><a href="#cb1-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-124"><a href="#cb1-124" aria-hidden="true" tabindex="-1"></a>Three main approaches: **drop** rows/columns (sparse data), **fill** with values like mean or median (simple imputation), or **interpolate** from surrounding values (time series). Choose based on your **data's nature** and **missingness patterns**.</span>
+<span id="cb1-125"><a href="#cb1-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-128"><a href="#cb1-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-129"><a href="#cb1-129" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-130"><a href="#cb1-130" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategy 1: Drop columns with mostly missing data</span></span>
+<span id="cb1-131"><a href="#cb1-131" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.drop(<span class="st">'status'</span>, axis<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb1-132"><a href="#cb1-132" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-133"><a href="#cb1-133" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategy 2: Fill with a value</span></span>
+<span id="cb1-134"><a href="#cb1-134" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Rain'</span>] <span class="op">=</span> df[<span class="st">'Rain'</span>].fillna(<span class="dv">0</span>)</span>
+<span id="cb1-135"><a href="#cb1-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-136"><a href="#cb1-136" aria-hidden="true" tabindex="-1"></a><span class="co"># Strategy 3: Interpolate</span></span>
+<span id="cb1-137"><a href="#cb1-137" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Sun'</span>] <span class="op">=</span> df[<span class="st">'Sun'</span>].interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb1-138"><a href="#cb1-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-139"><a href="#cb1-139" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Remaining missing values: </span><span class="sc">{</span>df<span class="sc">.</span>isnull()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb1-140"><a href="#cb1-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-141"><a href="#cb1-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-142"><a href="#cb1-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpolation for Time Series</span></span>
+<span id="cb1-143"><a href="#cb1-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-144"><a href="#cb1-144" aria-hidden="true" tabindex="-1"></a>**Interpolation** estimates missing values from neighboring points. **Linear interpolation** draws straight lines between known values. More sophisticated methods (polynomial, spline) exist but require more computation and careful application.</span>
 <span id="cb1-145"><a href="#cb1-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-146"><a href="#cb1-146" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Remaining missing values: </span><span class="sc">{</span>df<span class="sc">.</span>isnull()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb1-147"><a href="#cb1-147" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interpolation for Time Series</span></span>
-<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a>**Interpolation** estimates missing values from neighboring points. **Linear interpolation** draws straight lines between known values. More sophisticated methods (polynomial, spline) exist but require more computation and careful application.</span>
-<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample data with gaps</span></span>
-<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.Series([<span class="fl">1.0</span>, <span class="fl">2.0</span>, np.nan, np.nan, <span class="fl">5.0</span>, <span class="fl">6.0</span>])</span>
-<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before interpolation:"</span>)</span>
-<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span>
+<span id="cb1-148"><a href="#cb1-148" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-149"><a href="#cb1-149" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-150"><a href="#cb1-150" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-151"><a href="#cb1-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-152"><a href="#cb1-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Create sample data with gaps</span></span>
+<span id="cb1-153"><a href="#cb1-153" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> pd.Series([<span class="fl">1.0</span>, <span class="fl">2.0</span>, np.nan, np.nan, <span class="fl">5.0</span>, <span class="fl">6.0</span>])</span>
+<span id="cb1-154"><a href="#cb1-154" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Before interpolation:"</span>)</span>
+<span id="cb1-155"><a href="#cb1-155" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data)</span>
+<span id="cb1-156"><a href="#cb1-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-157"><a href="#cb1-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear interpolation</span></span>
+<span id="cb1-158"><a href="#cb1-158" aria-hidden="true" tabindex="-1"></a>data_interp <span class="op">=</span> data.interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
+<span id="cb1-159"><a href="#cb1-159" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">After interpolation:"</span>)</span>
+<span id="cb1-160"><a href="#cb1-160" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_interp)</span>
+<span id="cb1-161"><a href="#cb1-161" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-162"><a href="#cb1-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-163"><a href="#cb1-163" aria-hidden="true" tabindex="-1"></a><span class="fu">## Extracting Date Components</span></span>
 <span id="cb1-164"><a href="#cb1-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a><span class="co"># Linear interpolation</span></span>
-<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a>data_interp <span class="op">=</span> data.interpolate(method<span class="op">=</span><span class="st">'linear'</span>)</span>
-<span id="cb1-167"><a href="#cb1-167" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">After interpolation:"</span>)</span>
-<span id="cb1-168"><a href="#cb1-168" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data_interp)</span>
-<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="fu">## Extracting Date Components</span></span>
-<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>Datetime objects have useful **attributes** like `.year`, `.month`, `.day`, `.dayofweek`, etc. Extract **month names** with <span class="in">`.month_name()`</span> or quarters with <span class="in">`.quarter`</span> for seasonal analysis and grouping.</span>
-<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract date components from the index</span></span>
-<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Year'</span>] <span class="op">=</span> df.index.year</span>
-<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Month'</span>] <span class="op">=</span> df.index.month</span>
-<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Month_Name'</span>] <span class="op">=</span> df.index.month_name()</span>
-<span id="cb1-184"><a href="#cb1-184" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Quarter'</span>] <span class="op">=</span> df.index.quarter</span>
-<span id="cb1-185"><a href="#cb1-185" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'Year'</span>, <span class="st">'Month'</span>, <span class="st">'Month_Name'</span>, <span class="st">'Quarter'</span>]].head(<span class="dv">6</span>))</span>
-<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functional Programming with `.apply()`</span></span>
-<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>Use <span class="in">`.apply()`</span> to apply **custom functions** to DataFrame columns. Functions are **first-class objects** that can be passed as arguments, enabling you to create derived features with custom logic.</span>
-<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a custom function</span></span>
-<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_season(month):</span>
-<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> month <span class="kw">in</span> [<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>]:</span>
-<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Winter'</span></span>
-<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]:</span>
-<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Spring'</span></span>
-<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]:</span>
-<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Summer'</span></span>
-<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
-<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Autumn'</span></span>
-<span id="cb1-208"><a href="#cb1-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-209"><a href="#cb1-209" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply it to create a new column</span></span>
-<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Season'</span>] <span class="op">=</span> df[<span class="st">'Month'</span>].<span class="bu">apply</span>(get_season)</span>
-<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'Month'</span>, <span class="st">'Month_Name'</span>, <span class="st">'Season'</span>]].head(<span class="dv">12</span>))</span>
-<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating Derived Features</span></span>
-<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>Create new columns through **arithmetic operations** or **boolean conditions**. Derived features encode domain knowledge into your data structure, like temperature ranges or threshold-based flags.</span>
-<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operation</span></span>
-<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Temp_Range'</span>] <span class="op">=</span> df[<span class="st">'Tmax'</span>] <span class="op">-</span> df[<span class="st">'Tmin'</span>]</span>
-<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean conditions</span></span>
-<span id="cb1-227"><a href="#cb1-227" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Rainy_Month'</span>] <span class="op">=</span> df[<span class="st">'Rain'</span>] <span class="op">&gt;</span> <span class="dv">100</span></span>
-<span id="cb1-228"><a href="#cb1-228" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Sunny_Month'</span>] <span class="op">=</span> df[<span class="st">'Sun'</span>] <span class="op">&gt;</span> <span class="dv">150</span></span>
-<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'Tmax'</span>, <span class="st">'Tmin'</span>, <span class="st">'Temp_Range'</span>, <span class="st">'Rain'</span>, <span class="st">'Rainy_Month'</span>]].head())</span>
-<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Rainy months: </span><span class="sc">{</span>df[<span class="st">'Rainy_Month'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>df[<span class="st">'Rainy_Month'</span>]<span class="sc">.</span>mean()<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
-<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="fu">## Grouping and Aggregation</span></span>
+<span id="cb1-165"><a href="#cb1-165" aria-hidden="true" tabindex="-1"></a>Datetime objects have useful **attributes** like `.year`, `.month`, `.day`, `.dayofweek`, etc. Extract **month names** with <span class="in">`.month_name()`</span> or quarters with <span class="in">`.quarter`</span> for seasonal analysis and grouping.</span>
+<span id="cb1-166"><a href="#cb1-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-169"><a href="#cb1-169" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-170"><a href="#cb1-170" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-171"><a href="#cb1-171" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract date components from the index</span></span>
+<span id="cb1-172"><a href="#cb1-172" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Year'</span>] <span class="op">=</span> df.index.year</span>
+<span id="cb1-173"><a href="#cb1-173" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Month'</span>] <span class="op">=</span> df.index.month</span>
+<span id="cb1-174"><a href="#cb1-174" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Month_Name'</span>] <span class="op">=</span> df.index.month_name()</span>
+<span id="cb1-175"><a href="#cb1-175" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Quarter'</span>] <span class="op">=</span> df.index.quarter</span>
+<span id="cb1-176"><a href="#cb1-176" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-177"><a href="#cb1-177" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'Year'</span>, <span class="st">'Month'</span>, <span class="st">'Month_Name'</span>, <span class="st">'Quarter'</span>]].head(<span class="dv">6</span>))</span>
+<span id="cb1-178"><a href="#cb1-178" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-179"><a href="#cb1-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-180"><a href="#cb1-180" aria-hidden="true" tabindex="-1"></a><span class="fu">## Functional Programming with `.apply()`</span></span>
+<span id="cb1-181"><a href="#cb1-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-182"><a href="#cb1-182" aria-hidden="true" tabindex="-1"></a>Use <span class="in">`.apply()`</span> to apply **custom functions** to DataFrame columns. Functions are **first-class objects** that can be passed as arguments, enabling you to create derived features with custom logic.</span>
+<span id="cb1-183"><a href="#cb1-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-186"><a href="#cb1-186" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-187"><a href="#cb1-187" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-188"><a href="#cb1-188" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a custom function</span></span>
+<span id="cb1-189"><a href="#cb1-189" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_season(month):</span>
+<span id="cb1-190"><a href="#cb1-190" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> month <span class="kw">in</span> [<span class="dv">12</span>, <span class="dv">1</span>, <span class="dv">2</span>]:</span>
+<span id="cb1-191"><a href="#cb1-191" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Winter'</span></span>
+<span id="cb1-192"><a href="#cb1-192" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">5</span>]:</span>
+<span id="cb1-193"><a href="#cb1-193" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Spring'</span></span>
+<span id="cb1-194"><a href="#cb1-194" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> month <span class="kw">in</span> [<span class="dv">6</span>, <span class="dv">7</span>, <span class="dv">8</span>]:</span>
+<span id="cb1-195"><a href="#cb1-195" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Summer'</span></span>
+<span id="cb1-196"><a href="#cb1-196" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-197"><a href="#cb1-197" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="st">'Autumn'</span></span>
+<span id="cb1-198"><a href="#cb1-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-199"><a href="#cb1-199" aria-hidden="true" tabindex="-1"></a><span class="co"># Apply it to create a new column</span></span>
+<span id="cb1-200"><a href="#cb1-200" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Season'</span>] <span class="op">=</span> df[<span class="st">'Month'</span>].<span class="bu">apply</span>(get_season)</span>
+<span id="cb1-201"><a href="#cb1-201" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'Month'</span>, <span class="st">'Month_Name'</span>, <span class="st">'Season'</span>]].head(<span class="dv">12</span>))</span>
+<span id="cb1-202"><a href="#cb1-202" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-203"><a href="#cb1-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-204"><a href="#cb1-204" aria-hidden="true" tabindex="-1"></a><span class="fu">## Creating Derived Features</span></span>
+<span id="cb1-205"><a href="#cb1-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-206"><a href="#cb1-206" aria-hidden="true" tabindex="-1"></a>Create new columns through **arithmetic operations** or **boolean conditions**. Derived features encode domain knowledge into your data structure, like temperature ranges or threshold-based flags.</span>
+<span id="cb1-207"><a href="#cb1-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-210"><a href="#cb1-210" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-211"><a href="#cb1-211" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-212"><a href="#cb1-212" aria-hidden="true" tabindex="-1"></a><span class="co"># Arithmetic operation</span></span>
+<span id="cb1-213"><a href="#cb1-213" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Temp_Range'</span>] <span class="op">=</span> df[<span class="st">'Tmax'</span>] <span class="op">-</span> df[<span class="st">'Tmin'</span>]</span>
+<span id="cb1-214"><a href="#cb1-214" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-215"><a href="#cb1-215" aria-hidden="true" tabindex="-1"></a><span class="co"># Boolean conditions</span></span>
+<span id="cb1-216"><a href="#cb1-216" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Rainy_Month'</span>] <span class="op">=</span> df[<span class="st">'Rain'</span>] <span class="op">&gt;</span> <span class="dv">100</span></span>
+<span id="cb1-217"><a href="#cb1-217" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'Sunny_Month'</span>] <span class="op">=</span> df[<span class="st">'Sun'</span>] <span class="op">&gt;</span> <span class="dv">150</span></span>
+<span id="cb1-218"><a href="#cb1-218" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-219"><a href="#cb1-219" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df[[<span class="st">'Tmax'</span>, <span class="st">'Tmin'</span>, <span class="st">'Temp_Range'</span>, <span class="st">'Rain'</span>, <span class="st">'Rainy_Month'</span>]].head())</span>
+<span id="cb1-220"><a href="#cb1-220" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"</span><span class="ch">\n</span><span class="ss">Rainy months: </span><span class="sc">{</span>df[<span class="st">'Rainy_Month'</span>]<span class="sc">.</span><span class="bu">sum</span>()<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>df[<span class="st">'Rainy_Month'</span>]<span class="sc">.</span>mean()<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb1-221"><a href="#cb1-221" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-222"><a href="#cb1-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-223"><a href="#cb1-223" aria-hidden="true" tabindex="-1"></a><span class="fu">## Grouping and Aggregation</span></span>
+<span id="cb1-224"><a href="#cb1-224" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-225"><a href="#cb1-225" aria-hidden="true" tabindex="-1"></a>The <span class="in">`.groupby()`</span> method **aggregates data** by categories. Chain three operations: group by a column, select columns to aggregate, and apply an aggregation function (mean, sum, count, etc.).</span>
+<span id="cb1-226"><a href="#cb1-226" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by season and calculate mean temperature</span></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>seasonal_temp <span class="op">=</span> df.groupby(<span class="st">'Season'</span>)[<span class="st">'Tmean'</span>].mean()</span>
+<span id="cb1-233"><a href="#cb1-233" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average temperature by season:"</span>)</span>
+<span id="cb1-234"><a href="#cb1-234" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(seasonal_temp.<span class="bu">round</span>(<span class="dv">2</span>))</span>
 <span id="cb1-235"><a href="#cb1-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a>The <span class="in">`.groupby()`</span> method **aggregates data** by categories. Chain three operations: group by a column, select columns to aggregate, and apply an aggregation function (mean, sum, count, etc.).</span>
-<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a><span class="co"># Group by season and calculate mean temperature</span></span>
-<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>seasonal_temp <span class="op">=</span> df.groupby(<span class="st">'Season'</span>)[<span class="st">'Tmean'</span>].mean()</span>
-<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Average temperature by season:"</span>)</span>
-<span id="cb1-246"><a href="#cb1-246" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(seasonal_temp.<span class="bu">round</span>(<span class="dv">2</span>))</span>
-<span id="cb1-247"><a href="#cb1-247" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage of rainy months by month name</span></span>
-<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a>rainy_pct <span class="op">=</span> df.groupby(<span class="st">'Month_Name'</span>)[<span class="st">'Rainy_Month'</span>].mean() <span class="op">*</span> <span class="dv">100</span></span>
-<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Rainiest months:"</span>)</span>
-<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rainy_pct.sort_values(ascending<span class="op">=</span><span class="va">False</span>).head())</span>
-<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exporting Cleaned Data</span></span>
-<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a>After preprocessing, **save your cleaned data** for future use. Pandas supports **CSV** (`.to_csv()`), **Excel** (`.to_excel()`), **JSON**, **SQL**, and more. Some formats require additional libraries.</span>
-<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
-<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns to export</span></span>
-<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a>df_export <span class="op">=</span> df[[<span class="st">'Year'</span>, <span class="st">'Month'</span>, <span class="st">'Tmax'</span>, <span class="st">'Tmin'</span>, <span class="st">'Rain'</span>, <span class="st">'Sun'</span>]]</span>
+<span id="cb1-236"><a href="#cb1-236" aria-hidden="true" tabindex="-1"></a><span class="co"># Percentage of rainy months by month name</span></span>
+<span id="cb1-237"><a href="#cb1-237" aria-hidden="true" tabindex="-1"></a>rainy_pct <span class="op">=</span> df.groupby(<span class="st">'Month_Name'</span>)[<span class="st">'Rainy_Month'</span>].mean() <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb1-238"><a href="#cb1-238" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Rainiest months:"</span>)</span>
+<span id="cb1-239"><a href="#cb1-239" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(rainy_pct.sort_values(ascending<span class="op">=</span><span class="va">False</span>).head())</span>
+<span id="cb1-240"><a href="#cb1-240" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-241"><a href="#cb1-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-242"><a href="#cb1-242" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exporting Cleaned Data</span></span>
+<span id="cb1-243"><a href="#cb1-243" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-244"><a href="#cb1-244" aria-hidden="true" tabindex="-1"></a>After preprocessing, **save your cleaned data** for future use. Pandas supports **CSV** (`.to_csv()`), **Excel** (`.to_excel()`), **JSON**, **SQL**, and more. Some formats require additional libraries.</span>
+<span id="cb1-245"><a href="#cb1-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-248"><a href="#cb1-248" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb1-249"><a href="#cb1-249" aria-hidden="true" tabindex="-1"></a><span class="co">#| slideshow: {slide_type: fragment}</span></span>
+<span id="cb1-250"><a href="#cb1-250" aria-hidden="true" tabindex="-1"></a><span class="co"># Select columns to export</span></span>
+<span id="cb1-251"><a href="#cb1-251" aria-hidden="true" tabindex="-1"></a>df_export <span class="op">=</span> df[[<span class="st">'Year'</span>, <span class="st">'Month'</span>, <span class="st">'Tmax'</span>, <span class="st">'Tmin'</span>, <span class="st">'Rain'</span>, <span class="st">'Sun'</span>]]</span>
+<span id="cb1-252"><a href="#cb1-252" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-253"><a href="#cb1-253" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to CSV</span></span>
+<span id="cb1-254"><a href="#cb1-254" aria-hidden="true" tabindex="-1"></a>df_export.to_csv(<span class="st">'weather_cleaned.csv'</span>)</span>
+<span id="cb1-255"><a href="#cb1-255" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exported to CSV"</span>)</span>
+<span id="cb1-256"><a href="#cb1-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-257"><a href="#cb1-257" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to Excel (requires openpyxl)</span></span>
+<span id="cb1-258"><a href="#cb1-258" aria-hidden="true" tabindex="-1"></a><span class="co"># df_export.to_excel('weather_cleaned.xlsx')</span></span>
+<span id="cb1-259"><a href="#cb1-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-260"><a href="#cb1-260" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to JSON</span></span>
+<span id="cb1-261"><a href="#cb1-261" aria-hidden="true" tabindex="-1"></a><span class="co"># df_export.to_json('weather_cleaned.json', orient='records', indent=2)</span></span>
+<span id="cb1-262"><a href="#cb1-262" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb1-263"><a href="#cb1-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-264"><a href="#cb1-264" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hands on!</span></span>
 <span id="cb1-265"><a href="#cb1-265" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to CSV</span></span>
-<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a>df_export.to_csv(<span class="st">'weather_cleaned.csv'</span>)</span>
-<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Exported to CSV"</span>)</span>
-<span id="cb1-269"><a href="#cb1-269" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-270"><a href="#cb1-270" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to Excel (requires openpyxl)</span></span>
-<span id="cb1-271"><a href="#cb1-271" aria-hidden="true" tabindex="-1"></a><span class="co"># df_export.to_excel('weather_cleaned.xlsx')</span></span>
-<span id="cb1-272"><a href="#cb1-272" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-273"><a href="#cb1-273" aria-hidden="true" tabindex="-1"></a><span class="co"># Export to JSON</span></span>
-<span id="cb1-274"><a href="#cb1-274" aria-hidden="true" tabindex="-1"></a><span class="co"># df_export.to_json('weather_cleaned.json', orient='records', indent=2)</span></span>
-<span id="cb1-275"><a href="#cb1-275" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb1-276"><a href="#cb1-276" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-277"><a href="#cb1-277" aria-hidden="true" tabindex="-1"></a><span class="fu">## Hands on!</span></span>
-<span id="cb1-278"><a href="#cb1-278" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-279"><a href="#cb1-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>You will find a wroked through example in the **lecture** notebook</span>
-<span id="cb1-280"><a href="#cb1-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The exercises will take you through two exercises using real world datasets to practice the concepts covered  today.</span>
-<span id="cb1-281"><a href="#cb1-281" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-266"><a href="#cb1-266" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>You will find a wroked through example in the **lecture** notebook</span>
+<span id="cb1-267"><a href="#cb1-267" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>The exercises will take you through two exercises using real world datasets to practice the concepts covered  today.</span>
+<span id="cb1-268"><a href="#cb1-268" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
