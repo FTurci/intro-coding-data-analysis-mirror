@@ -10,6 +10,7 @@ jupyter: python3
 I have downloaded an online image of a house for this example (from [Vector Stock](https://www.vectorstock.com/royalty-free-vector/view-of-the-house-from-the-inside-vector-19801844)). This image contains four different rooms and I want to use a rectangular mask so that only the office room is displayed. As described previously, we can open this image using a the `Image` sub-module of a module called `pillow` (imported as `PIL`) which understands how to read image files. We can then convert this input into a `numpy` `array` object.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from PIL import Image
 import numpy as np
 
@@ -20,11 +21,13 @@ im = np.array(Image.open(im_filename))
 `im` is a three dimensional `numpy` `array` object - includes height, width and colour channel (R, G, B).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 shape = im.shape
 print(shape)
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize=(8,8))
@@ -50,6 +53,7 @@ where
  - $| |$ means the magnitude of the difference
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def inside_rectangle(x,y,centre=(0,0),width=20,height=10):
     
     x0 = centre[0]
@@ -68,6 +72,7 @@ def inside_rectangle(x,y,centre=(0,0),width=20,height=10):
 For this mask, I want to define the parameters as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Input parameters
 centre = (382,320)
 width = 280
@@ -77,6 +82,7 @@ height = 218
 The `inside_rectangle` function allows you to pass the parameters for your position and your rectangle and can tell you whether the position is within your rectangle (returns a `True` value) or not (returns a `False` value). For example if we had a position of (50, 50) we could use the function as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = 50
 y = 50
 
@@ -93,6 +99,7 @@ Here we used the output of `inside_rectangle` as our condition directly (Python 
 We can use the `inside_rectangle()` function to define our mask - looping over every element and checking the x, y position with the `inside_rectangle()` function with the appropriate parameters:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ncol = shape[0]
 nrow = shape[1]
 
@@ -124,6 +131,7 @@ For creating the `im_masked` output there a few ways you could do this - the ups
 Because `im` is a three dimensional array (height x weight x colour channel), one way to apply the mask is to do this for each of the three colours (R, G, B channels) separately.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## Create an empty array of the right shape
 im_masked = np.empty(shape)
 ## OR make a copy and then apply mask

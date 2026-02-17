@@ -24,7 +24,6 @@ This notebook contains the solutions to the week 1 `Beginner`, `Intermediate` an
 **Question 1:** The solution to the question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Variables x, y and z
 x = 1
 y = 2
@@ -36,7 +35,6 @@ my_boolean = ((x**2 < y) and (y < z**3)) or ((z**3 < y) and (y < x**2))
 **Question 2:** The solution to the question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Boolean variables
 is_raining = True
 have_umbrella = False
@@ -65,7 +63,6 @@ print('Answer: ' + str(got_soaked))
 And the code for this question is:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Boolean variables
 A = True
 B = False
@@ -79,7 +76,6 @@ print(my_boolean)
 **Question 4:** The solution to this question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Height and width variables
 height = 10
 width = 3
@@ -100,7 +96,6 @@ print(perimeter, area, diag)
 **Question 5:** The solution to this question is given by:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Known variables
 v = 10
 u = 0
@@ -114,7 +109,6 @@ print(s)
 **Question 6:** The solution to this question is given by:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Compute time using variables from Question 5
 t = 2*s/(u+v)
 print(t)
@@ -123,7 +117,6 @@ print(t)
 **Question 7:** A code block containing the examples from the question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print((True and False) or True)
 print(not (False or False))
 print(True or False and False)
@@ -146,7 +139,6 @@ For the third box, `False` is printed as due to rounding errors `0.1 + 0.2` is e
 **Question 10:** The final solution is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The string we want to transform
 start_string = 'Thas as te arang we want!'
 print('Start:  ', start_string)
@@ -189,7 +181,6 @@ print('Step 5: ', step5)
 **Question 1:** The code for this question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Original list
 nums = [5, 2, 8, 2, 9]
 print("Original list:", nums)
@@ -220,7 +211,6 @@ print("After removing first occurrence of 2:", nums)
 **Question 3:** The answer to this question is the letter `k`. To see this, the below code can be used:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Here are two strings
 string1 = "This is a long random sentence - I wonder which letters it contains and which letters it doesn't."
 string2 = "This task makes a clear and coherent string with words taken inside a small set"
@@ -240,7 +230,6 @@ print(string2.difference(string1))
 **Question 4:** The code for this question is provided below.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # given tuple
 t = ('a', 'b', 'c', 'd', 'e')
 
@@ -270,7 +259,6 @@ print("Count of 'a':", count_a)
 **Question 5:** There are many ways to approach this question. Two examples are given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # ----------------------------------------------------------------
 # Option 1:
 # ----------------------------------------------------------------
@@ -301,7 +289,6 @@ clinical_data = {
 **Question 1:** The expected output is `[1,2,3,4]`. This is because `list_a` and `list_b` reference the same location in memory.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 list_a = [1, 2, 3]
 list_b = list_a
 list_a.append(4)
@@ -311,7 +298,6 @@ print(list_b)
 **Question 2:** Code A will print `[1,2,3]` whilst Code B will print `[4,5,6]`. This is because, when we replace `a` with `[4,5,6]` we change the reference to point to a new location in memory, breaking the connection between `a` and `b`. However, when we change the elements in `a` individually, both `a` and `b` remain pointing to the same location in memory. Thus, when we print `b`, we get `[4,5,6]`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = [1, 2, 3]
 b = a
 a = [4, 5, 6]
@@ -328,7 +314,6 @@ print(b)
 **Question 3:** The variable names `xyz` and `xyzsquared` are pointing to the same array. When we squared `xyzsquared` we also squared `xyz`. We could have avoided this by making `xyzsquared` a seperate copy of `xyz` using the `list` constructor like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 xyz = [1,2,3]
 
 # Make a list of x squared, y squared, z squared
