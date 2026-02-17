@@ -1397,91 +1397,91 @@
     "href": "slides/07_intro_numpy_slides.html#arrays-vs-lists",
     "title": "The numpy module",
     "section": "Arrays vs lists",
-    "text": "Arrays vs lists\n\n\nPython Lists\n\nOrdered, Mutable\n\nMixed data types\nExplicit operations needed\nSlower performance\n\n\nNumPy Arrays\n\nOrdered, Mutable\nOne data type per array\nElement-wise operations\nFast & memory efficient\n\n\n\n\n\nlist_ex = [1, 2, 3, 4]\nprint(list_ex)\n\nimport numpy as np\n#notice that we explicitly call the np.array()\narr_ex = np.array([1, 2, 3, 4]) \nprint(arr_ex)\n\nWe are going to see these differences in detail."
+    "text": "Arrays vs lists\n\n\nPython Lists\n\nOrdered, Mutable\n\nMixed data types\nExplicit operations needed\nSlower performance\n\n\nNumPy Arrays\n\nOrdered, Mutable\nOne data type per array\nElement-wise operations\nFast & memory efficient\n\n\n\n\n\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist_ex = [1, 2, 3, 4]\nprint(list_ex)\n\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\n#notice that we explicitly call the np.array()\narr_ex = np.array([1, 2, 3, 4]) \nprint(arr_ex)\n\nWe are going to see these differences in detail."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#arrays-from-lists",
     "href": "slides/07_intro_numpy_slides.html#arrays-from-lists",
     "title": "The numpy module",
     "section": "Arrays from lists",
-    "text": "Arrays from lists\nA purely numerical list can readily be converted to an array.\nimport numpy as np\n# Create array from list\nlist1 = [1.,1.,2.,3.,5.,8.]\narr1 = np.array(list1)\nprint(arr1)\n\nThe type of the elements yields the data type of the array\nprint(arr1.dtype)\n\nTry and change the list1 object to contain only integers and see the change!"
+    "text": "Arrays from lists\nA purely numerical list can readily be converted to an array.\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\n# Create array from list\nlist1 = [1.,1.,2.,3.,5.,8.]\narr1 = np.array(list1)\nprint(arr1)\n\nThe type of the elements yields the data type of the array\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(arr1.dtype)\n\nTry and change the list1 object to contain only integers and see the change!"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#array-properties",
     "href": "slides/07_intro_numpy_slides.html#array-properties",
     "title": "The numpy module",
     "section": "Array properties",
-    "text": "Array properties\nArrays possess plenty of properties.\nThese are accessed with the . notation1.\nprint(f\"Data type: {arr1.dtype}\")\nprint(f\"Shape: {arr1.shape}\")\nprint(f\"Shape: {arr1.size}\")\nFor now, we consider only 1d arrays, i.e. sequences. Their length is is their size and corresponds to the first element of the property shape.\nuse . and then TAB to see all of the properties"
+    "text": "Array properties\nArrays possess plenty of properties.\nThese are accessed with the . notation1.\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(f\"Data type: {arr1.dtype}\")\nprint(f\"Shape: {arr1.shape}\")\nprint(f\"Shape: {arr1.size}\")\nFor now, we consider only 1d arrays, i.e. sequences. Their length is is their size and corresponds to the first element of the property shape.\nuse . and then TAB to see all of the properties"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#accessing-array-elements",
     "href": "slides/07_intro_numpy_slides.html#accessing-array-elements",
     "title": "The numpy module",
     "section": "Accessing array elements",
-    "text": "Accessing array elements\nSimilarly to lists, we access an element in an array via zero-based indexing\nprint(arr1[0])    # First element\nprint(arr1[-1])   # Last element\nAgain, similarly to lists, we can access regions of the array via slicing\nprint(arr1[3:6])  # Elements from index 3 to 6"
+    "text": "Accessing array elements\nSimilarly to lists, we access an element in an array via zero-based indexing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(arr1[0])    # First element\nprint(arr1[-1])   # Last element\nAgain, similarly to lists, we can access regions of the array via slicing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(arr1[3:6])  # Elements from index 3 to 6"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations",
     "href": "slides/07_intro_numpy_slides.html#element-wise-operations",
     "title": "The numpy module",
     "section": "Element-wise Operations",
-    "text": "Element-wise Operations\nThe main motivation to use arrays is that lists are cumbersome when performing maths.\nSuppose we have a list and want to double all of its elements:\nlist1 = [1,2,3,4]\nWe need to loop over all of them and create a new list\nlist2 = []\nfor item in list1:\n    list2.append(2*item)\nprint(list2)\nIn fact, we can do this in a slightly more compact way using list comprehension\nlist2 = [item*2 for item in list1]\nStill, an explicit loop is needed. Loops in Python are slow."
+    "text": "Element-wise Operations\nThe main motivation to use arrays is that lists are cumbersome when performing maths.\nSuppose we have a list and want to double all of its elements:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist1 = [1,2,3,4]\nWe need to loop over all of them and create a new list\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist2 = []\nfor item in list1:\n    list2.append(2*item)\nprint(list2)\nIn fact, we can do this in a slightly more compact way using list comprehension\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist2 = [item*2 for item in list1]\nStill, an explicit loop is needed. Loops in Python are slow."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
     "href": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
     "title": "The numpy module",
     "section": "Element-wise Operations",
-    "text": "Element-wise Operations\nThe numpy syntax avoids the explicit Python loop.\narr1 = np.array(list1)\narr2 = 2*arr1\nprint(arr2)\nThis is not just a cosmetic change: under the hood numpy uses an efficient architecture that performs operations in compiled code, making it much faster than Python loops."
+    "text": "Element-wise Operations\nThe numpy syntax avoids the explicit Python loop.\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr1 = np.array(list1)\narr2 = 2*arr1\nprint(arr2)\nThis is not just a cosmetic change: under the hood numpy uses an efficient architecture that performs operations in compiled code, making it much faster than Python loops."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#performance-advantage",
     "href": "slides/07_intro_numpy_slides.html#performance-advantage",
     "title": "The numpy module",
     "section": "Performance advantage",
-    "text": "Performance advantage\nThis performance difference can be tracked explicitly.\nWe create a large list and a large array with identical content\n# Create a large list and array\nlarge_list = list(range(1_000_000))\nlarge_array = np.array(large_list)\nAnd then track the time for the two operations\nimport time\n#  Track the time taken for the list multiplication\nstart = time.time()\nlist_result = [x * 2 for x in large_list]\nend = time.time()\nprint(f\"List comprehension time: {end - start:.5f} seconds\")\n\n# Time array multiplication\nstart = time.time()\narray_result = large_array * 2\nend = time.time()\nprint(f\"NumPy array time: {end - start:.5f} seconds\")"
+    "text": "Performance advantage\nThis performance difference can be tracked explicitly.\nWe create a large list and a large array with identical content\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Create a large list and array\nlarge_list = list(range(1_000_000))\nlarge_array = np.array(large_list)\nAnd then track the time for the two operations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport time\n#  Track the time taken for the list multiplication\nstart = time.time()\nlist_result = [x * 2 for x in large_list]\nend = time.time()\nprint(f\"List comprehension time: {end - start:.5f} seconds\")\n\n# Time array multiplication\nstart = time.time()\narray_result = large_array * 2\nend = time.time()\nprint(f\"NumPy array time: {end - start:.5f} seconds\")"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
     "href": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
     "title": "The numpy module",
     "section": "General mathematical functions",
-    "text": "General mathematical functions\nThe multiplication we performed earlier is done element-wise: every element is update according to teh same rule.\nWe can apply plenty of element-wise operations to the arrays.\nMany of these are available as numpy functions directly accessed from the np. module\n# Element-wise functions\nprint(f\"Square root: {np.sqrt(arr1)}\")\nprint(f\"Mean: {np.mean(arr1)}\")\nprint(f\"Cosine: {np.cos(arr1)}\")\n\nThe operations do not modify the original array, but produce new copies\narr2 = arr1*3/2 + 5\nprint(f\"Original: {arr1}\")\nprint(f\"Modified: {arr2}\")"
+    "text": "General mathematical functions\nThe multiplication we performed earlier is done element-wise: every element is update according to teh same rule.\nWe can apply plenty of element-wise operations to the arrays.\nMany of these are available as numpy functions directly accessed from the np. module\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Element-wise functions\nprint(f\"Square root: {np.sqrt(arr1)}\")\nprint(f\"Mean: {np.mean(arr1)}\")\nprint(f\"Cosine: {np.cos(arr1)}\")\n\nThe operations do not modify the original array, but produce new copies\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr2 = arr1*3/2 + 5\nprint(f\"Original: {arr1}\")\nprint(f\"Modified: {arr2}\")"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#sums",
     "href": "slides/07_intro_numpy_slides.html#sums",
     "title": "The numpy module",
     "section": "Sums",
-    "text": "Sums\nOther convenent numpy functions allow you to accumulate values without loops.\nAssume we have an array \\(x\\)\nx = np.array([1,2,3,4,5,6,7,8])\nSums\n\\[\nS = \\sum_{i=1}^{n} x_i\n\\]\nIn NumPy, this is translated as:\nS = np.sum(x)\nprint(S)"
+    "text": "Sums\nOther convenent numpy functions allow you to accumulate values without loops.\nAssume we have an array \\(x\\)\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nx = np.array([1,2,3,4,5,6,7,8])\nSums\n\\[\nS = \\sum_{i=1}^{n} x_i\n\\]\nIn NumPy, this is translated as:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nS = np.sum(x)\nprint(S)"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#sums-1",
     "href": "slides/07_intro_numpy_slides.html#sums-1",
     "title": "The numpy module",
     "section": "Sums",
-    "text": "Sums\nCumulative sums\nA cumulative sum is a sequence where each element is the sum of all previous elements up to that position. \\[\ny_i = \\sum_{j=1}^{i} x_j\n\\]\nIn NumPy, this is translated as:\n y = np.cumsum(x)\n print(y)"
+    "text": "Sums\nCumulative sums\nA cumulative sum is a sequence where each element is the sum of all previous elements up to that position. \\[\ny_i = \\sum_{j=1}^{i} x_j\n\\]\nIn NumPy, this is translated as:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n y = np.cumsum(x)\n print(y)"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#example-molecular-masses",
     "href": "slides/07_intro_numpy_slides.html#example-molecular-masses",
     "title": "The numpy module",
     "section": "Example: molecular masses",
-    "text": "Example: molecular masses\nLet’s consider the formula for the molecular mass of a compound:\n\\[\nM = \\sum_{i=1}^{n} a_i m_i\n\\]\nwhere\n\n\\(a_i\\) is the number of atoms of element \\(i\\)\n\\(m_i\\) is the atomic mass of element \\(i\\)\n\n\nWith numpy, you can compute this as:\na = np.array([2, 1, 4])      # Number of atoms for each element\nm = np.array([12.01, 1.01, 16.00])  # Atomic masses (e.g., C, H, O)\nM = np.sum(a * m)\nprint(f\"Molecular mass: {M}\")"
+    "text": "Example: molecular masses\nLet’s consider the formula for the molecular mass of a compound:\n\\[\nM = \\sum_{i=1}^{n} a_i m_i\n\\]\nwhere\n\n\\(a_i\\) is the number of atoms of element \\(i\\)\n\\(m_i\\) is the atomic mass of element \\(i\\)\n\n\nWith numpy, you can compute this as:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\na = np.array([2, 1, 4])      # Number of atoms for each element\nm = np.array([12.01, 1.01, 16.00])  # Atomic masses (e.g., C, H, O)\nM = np.sum(a * m)\nprint(f\"Molecular mass: {M}\")"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#operations-between-arrays",
     "href": "slides/07_intro_numpy_slides.html#operations-between-arrays",
     "title": "The numpy module",
     "section": "Operations between arrays",
-    "text": "Operations between arrays\nYou can perform arithmetic operations directly between arrays of the same shape. Operations like addition, subtraction, multiplication, and division are applied element-wise.\nFor example:\nElement-wise operations:\nadded = arr1 + arr2\nmultiplied = arr1 * arr2\nprint(f\"Added: {added}\")\nprint(f\"Multiplied: {multiplied}\")\n\nNote: Arrays must have compatible shapes!\narr3 = np.array([1, 2, 3])\narr4 = np.array([4, 5])\nresult = arr3 + arr4"
+    "text": "Operations between arrays\nYou can perform arithmetic operations directly between arrays of the same shape. Operations like addition, subtraction, multiplication, and division are applied element-wise.\nFor example:\nElement-wise operations:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nadded = arr1 + arr2\nmultiplied = arr1 * arr2\nprint(f\"Added: {added}\")\nprint(f\"Multiplied: {multiplied}\")\n\nNote: Arrays must have compatible shapes!\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr3 = np.array([1, 2, 3])\narr4 = np.array([4, 5])\nresult = arr3 + arr4"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#combining-arrays",
     "href": "slides/07_intro_numpy_slides.html#combining-arrays",
     "title": "The numpy module",
     "section": "Combining arrays",
-    "text": "Combining arrays\nWith lists, the + operator concatenated different lists. Since for arrays the sign + corresponds to true mathematical addition, a dedicated concatenation function exists:\ncombined = np.concatenate([arr1, arr2])\nprint(f\"Unique elements: {combined}\")\nMany other variations of concatenation exist. Consult the documentation."
+    "text": "Combining arrays\nWith lists, the + operator concatenated different lists. Since for arrays the sign + corresponds to true mathematical addition, a dedicated concatenation function exists:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\ncombined = np.concatenate([arr1, arr2])\nprint(f\"Unique elements: {combined}\")\nMany other variations of concatenation exist. Consult the documentation."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#key-takeaways",
@@ -1495,28 +1495,28 @@
     "href": "slides/09_intro_matplotlib_slides.html#introduction-to-matplotlib",
     "title": "Plotting with matplotlib",
     "section": "Introduction to matplotlib",
-    "text": "Introduction to matplotlib\nmatplotlib - Powerful Python library for creating visualizations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport matplotlib.pyplot as plt\nimport numpy as np\nKey concepts: - Figure: The canvas - Axes: The x-y plotting area - Object-oriented approach (recommended)\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()  # Create figure and axes"
+    "text": "Introduction to matplotlib\nmatplotlib - Powerful Python library for creating visualizations\nimport matplotlib.pyplot as plt\nimport numpy as np\nKey concepts: - Figure: The canvas - Axes: The x-y plotting area - Object-oriented approach (recommended)\nfig, ax = plt.subplots()  # Create figure and axes"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#two-plotting-approaches",
     "href": "slides/09_intro_matplotlib_slides.html#two-plotting-approaches",
     "title": "Plotting with matplotlib",
     "section": "Two Plotting Approaches",
-    "text": "Two Plotting Approaches\nPyplot (MATLAB-style):\nplt.plot(x, y)  # Direct plotting\nObject-oriented (Recommended):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\nax.plot(x, y)  # Plot using axes object\nWhy object-oriented? - More explicit control - Better for complex plots - Modern best practice"
+    "text": "Two Plotting Approaches\nPyplot (MATLAB-style):\nplt.plot(x, y)  # Direct plotting\nObject-oriented (Recommended):\nfig, ax = plt.subplots()\nax.plot(x, y)  # Plot using axes object\nWhy object-oriented? - More explicit control - Better for complex plots - Modern best practice"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#basic-plot-types",
     "href": "slides/09_intro_matplotlib_slides.html#basic-plot-types",
     "title": "Plotting with matplotlib",
     "section": "Basic Plot Types",
-    "text": "Basic Plot Types\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Sample data\nrng = np.random.default_rng(seed=124)\nx = np.arange(1, 20, 2)\ny1 = x**2\ny2 = x**2 + rng.normal(size=len(x))*50\n\nfig, ax = plt.subplots()\nax.plot(x, y1, label=\"Line plot\")        # Line plot\nax.scatter(x, y2, label=\"Scatter plot\")  # Scatter plot\nax.legend()"
+    "text": "Basic Plot Types\n# Sample data\nrng = np.random.default_rng(seed=124)\nx = np.arange(1, 20, 2)\ny1 = x**2\ny2 = x**2 + rng.normal(size=len(x))*50\n\nfig, ax = plt.subplots()\nax.plot(x, y1, label=\"Line plot\")        # Line plot\nax.scatter(x, y2, label=\"Scatter plot\")  # Scatter plot\nax.legend()"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#customizing-appearance",
     "href": "slides/09_intro_matplotlib_slides.html#customizing-appearance",
     "title": "Plotting with matplotlib",
     "section": "Customizing Appearance",
-    "text": "Customizing Appearance\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots(figsize=(8, 4))\n\n# Styling options\nax.plot(x, y1, color=\"slategrey\", linestyle=\"--\", linewidth=2)\nax.scatter(x, y2, color=\"indianred\", marker='+', s=60)\n\n# Labels and limits\nax.set_xlabel(\"X values\")\nax.set_ylabel(\"Y values\")\nax.set_xlim(0, 20)\nax.set_title(\"Customized Plot\")"
+    "text": "Customizing Appearance\nfig, ax = plt.subplots(figsize=(8, 4))\n\n# Styling options\nax.plot(x, y1, color=\"slategrey\", linestyle=\"--\", linewidth=2)\nax.scatter(x, y2, color=\"indianred\", marker='+', s=60)\n\n# Labels and limits\nax.set_xlabel(\"X values\")\nax.set_ylabel(\"Y values\")\nax.set_xlim(0, 20)\nax.set_title(\"Customized Plot\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#common-style-options",
@@ -1530,28 +1530,28 @@
     "href": "slides/09_intro_matplotlib_slides.html#legends-and-annotations",
     "title": "Plotting with matplotlib",
     "section": "Legends and Annotations",
-    "text": "Legends and Annotations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\n\nax.plot(x, y1, label=\"Fitted line\", color=\"blue\", linestyle=\"--\")\nax.scatter(x, y2, label=\"Measurements\", color=\"red\", marker='o')\n\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\") \nax.legend()  # Uses the label parameters\nax.set_title(\"Plot with Legend\")"
+    "text": "Legends and Annotations\nfig, ax = plt.subplots()\n\nax.plot(x, y1, label=\"Fitted line\", color=\"blue\", linestyle=\"--\")\nax.scatter(x, y2, label=\"Measurements\", color=\"red\", marker='o')\n\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\") \nax.legend()  # Uses the label parameters\nax.set_title(\"Plot with Legend\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#histograms",
     "href": "slides/09_intro_matplotlib_slides.html#histograms",
     "title": "Plotting with matplotlib",
     "section": "Histograms",
-    "text": "Histograms\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Generate random data\nrng = np.random.default_rng(seed=68)\ndata1 = rng.normal(0, 1, 5000)\ndata2 = rng.normal(1, 1.5, 1000)\n\nfig, ax = plt.subplots()\nbins = np.arange(-4, 6, 0.3)\n\nax.hist(data1, bins=bins, alpha=0.7, color=\"skyblue\", \n        density=True, label=\"Dataset 1\")\nax.hist(data2, bins=bins, alpha=0.7, color=\"orange\", \n        density=True, label=\"Dataset 2\")\n\nax.set_xlabel(\"Value\")\nax.set_ylabel(\"Density\")\nax.legend()"
+    "text": "Histograms\n# Generate random data\nrng = np.random.default_rng(seed=68)\ndata1 = rng.normal(0, 1, 5000)\ndata2 = rng.normal(1, 1.5, 1000)\n\nfig, ax = plt.subplots()\nbins = np.arange(-4, 6, 0.3)\n\nax.hist(data1, bins=bins, alpha=0.7, color=\"skyblue\", \n        density=True, label=\"Dataset 1\")\nax.hist(data2, bins=bins, alpha=0.7, color=\"orange\", \n        density=True, label=\"Dataset 2\")\n\nax.set_xlabel(\"Value\")\nax.set_ylabel(\"Density\")\nax.legend()"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#histogram-options",
     "href": "slides/09_intro_matplotlib_slides.html#histogram-options",
     "title": "Plotting with matplotlib",
     "section": "Histogram Options",
-    "text": "Histogram Options\nKey parameters: - bins: Number or explicit bin edges - alpha: Transparency (0-1) - density: Normalize to show probability density - histtype: ‘bar’, ‘step’, ‘stepfilled’\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\nax.hist(data1, bins=30, alpha=0.6, histtype='step', \n        color='purple', linewidth=2)"
+    "text": "Histogram Options\nKey parameters: - bins: Number or explicit bin edges - alpha: Transparency (0-1) - density: Normalize to show probability density - histtype: ‘bar’, ‘step’, ‘stepfilled’\nfig, ax = plt.subplots()\nax.hist(data1, bins=30, alpha=0.6, histtype='step', \n        color='purple', linewidth=2)"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#multiple-plots-on-same-axes",
     "href": "slides/09_intro_matplotlib_slides.html#multiple-plots-on-same-axes",
     "title": "Plotting with matplotlib",
     "section": "Multiple Plots on Same Axes",
-    "text": "Multiple Plots on Same Axes\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots(figsize=(10, 5))\n\n# Multiple data series\nx_vals = np.linspace(0, 2*np.pi, 100)\ny1 = np.sin(x_vals)\ny2 = np.cos(x_vals)\ny3 = np.sin(2*x_vals)\n\nax.plot(x_vals, y1, label=\"sin(x)\")\nax.plot(x_vals, y2, label=\"cos(x)\", linestyle='--')\nax.scatter(x_vals[::10], y3[::10], label=\"sin(2x)\", marker='o')\n\nax.legend()\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\")"
+    "text": "Multiple Plots on Same Axes\nfig, ax = plt.subplots(figsize=(10, 5))\n\n# Multiple data series\nx_vals = np.linspace(0, 2*np.pi, 100)\ny1 = np.sin(x_vals)\ny2 = np.cos(x_vals)\ny3 = np.sin(2*x_vals)\n\nax.plot(x_vals, y1, label=\"sin(x)\")\nax.plot(x_vals, y2, label=\"cos(x)\", linestyle='--')\nax.scatter(x_vals[::10], y3[::10], label=\"sin(2x)\", marker='o')\n\nax.legend()\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#anatomy-of-a-figure",
@@ -1565,14 +1565,14 @@
     "href": "slides/09_intro_matplotlib_slides.html#figure-size-and-layout",
     "title": "Plotting with matplotlib",
     "section": "Figure Size and Layout",
-    "text": "Figure Size and Layout\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Control figure size\nfig, ax = plt.subplots(figsize=(12, 6))\n\n# Multiple subplots (brief example)\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))\nax1.plot([1, 2, 3], [1, 4, 2])\nax2.scatter([1, 2, 3], [2, 1, 3])\nax1.set_title(\"Plot 1\")\nax2.set_title(\"Plot 2\")"
+    "text": "Figure Size and Layout\n# Control figure size\nfig, ax = plt.subplots(figsize=(12, 6))\n\n# Multiple subplots (brief example)\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))\nax1.plot([1, 2, 3], [1, 4, 2])\nax2.scatter([1, 2, 3], [2, 1, 3])\nax1.set_title(\"Plot 1\")\nax2.set_title(\"Plot 2\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#best-practices",
     "href": "slides/09_intro_matplotlib_slides.html#best-practices",
     "title": "Plotting with matplotlib",
     "section": "Best Practices",
-    "text": "Best Practices\n\nAlways label your axes\nUse legends for multiple data series\nChoose appropriate plot types for your data\nControl figure size for readability\nUse colors wisely - consider colorblind accessibility\nKeep it simple - don’t over-decorate\n\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Good example\nfig, ax = plt.subplots(figsize=(8, 5))\nax.plot(x, y1, label=\"Data\")\nax.set_xlabel(\"Time (s)\")\nax.set_ylabel(\"Amplitude (V)\")\nax.set_title(\"Signal vs Time\")\nax.legend()"
+    "text": "Best Practices\n\nAlways label your axes\nUse legends for multiple data series\nChoose appropriate plot types for your data\nControl figure size for readability\nUse colors wisely - consider colorblind accessibility\nKeep it simple - don’t over-decorate\n\n# Good example\nfig, ax = plt.subplots(figsize=(8, 5))\nax.plot(x, y1, label=\"Data\")\nax.set_xlabel(\"Time (s)\")\nax.set_ylabel(\"Amplitude (V)\")\nax.set_title(\"Signal vs Time\")\nax.legend()"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#key-takeaways",
@@ -1691,56 +1691,56 @@
     "href": "slides/08_working_numpy_slides.html#array-indexing-slicing",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Array Indexing & Slicing",
-    "text": "Array Indexing & Slicing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\narr = np.array([10, 20, 30, 40, 50])\n\n# Integer indexing\nprint(\"Element at index 1:\", arr[1])\n\n# Basic slicing\nprint(\"Slice [1:4]:\", arr[1:4])\nAdvanced slicing:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Every other element:\", arr[::2])\nprint(\"Last three elements:\", arr[-3:])\nprint(\"Reversed array:\", arr[::-1])"
+    "text": "Array Indexing & Slicing\nimport numpy as np\narr = np.array([10, 20, 30, 40, 50])\n\n# Integer indexing\nprint(\"Element at index 1:\", arr[1])\n\n# Basic slicing\nprint(\"Slice [1:4]:\", arr[1:4])\nAdvanced slicing:\nprint(\"Every other element:\", arr[::2])\nprint(\"Last three elements:\", arr[-3:])\nprint(\"Reversed array:\", arr[::-1])"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#views-vs-copies",
     "href": "slides/08_working_numpy_slides.html#views-vs-copies",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Views vs Copies",
-    "text": "Views vs Copies\nSlicing creates views (shared data):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nslice_view = arr[2:5]\nslice_view[0] = 99\nprint(\"Original after view modification:\", arr)\nCreating independent copies:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([10, 20, 30, 40, 50])  # Reset\narr_copy = arr[2:5].copy()\narr_copy[0] = 100\nprint(\"Copy:\", arr_copy)\nprint(\"Original unchanged:\", arr)"
+    "text": "Views vs Copies\nSlicing creates views (shared data):\nslice_view = arr[2:5]\nslice_view[0] = 99\nprint(\"Original after view modification:\", arr)\nCreating independent copies:\narr = np.array([10, 20, 30, 40, 50])  # Reset\narr_copy = arr[2:5].copy()\narr_copy[0] = 100\nprint(\"Copy:\", arr_copy)\nprint(\"Original unchanged:\", arr)"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#boolean-indexing",
     "href": "slides/08_working_numpy_slides.html#boolean-indexing",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Boolean Indexing",
-    "text": "Boolean Indexing\nFilter data with conditions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([1, 2, 3, 4, 5, 6])\nthreshold = 3\n\nbool_mask = arr &gt; threshold\nprint(\"Boolean mask:\", bool_mask)\nprint(\"Filtered values:\", arr[bool_mask])\nUsing np.where:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Get indices where condition is True\nindices = np.where(arr &gt; threshold)[0]\nprint(\"Indices:\", indices)\n\n# Conditional selection\nresult = np.where(arr &gt; 3, arr, 0)\nprint(\"Conditional result:\", result)"
+    "text": "Boolean Indexing\nFilter data with conditions:\narr = np.array([1, 2, 3, 4, 5, 6])\nthreshold = 3\n\nbool_mask = arr &gt; threshold\nprint(\"Boolean mask:\", bool_mask)\nprint(\"Filtered values:\", arr[bool_mask])\nUsing np.where:\n# Get indices where condition is True\nindices = np.where(arr &gt; threshold)[0]\nprint(\"Indices:\", indices)\n\n# Conditional selection\nresult = np.where(arr &gt; 3, arr, 0)\nprint(\"Conditional result:\", result)"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#generating-sequences",
     "href": "slides/08_working_numpy_slides.html#generating-sequences",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Generating Sequences",
-    "text": "Generating Sequences\nnp.arange - step-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Integers:\", np.arange(0, 10, 2))\nprint(\"Floats:\", np.arange(0.0, 1.0, 0.2))\nnp.linspace - count-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"5 points from 0 to 1:\", np.linspace(0, 1, 5))\n\narange: Use when you know the step size\nlinspace: Use when you know the number of points"
+    "text": "Generating Sequences\nnp.arange - step-based:\nprint(\"Integers:\", np.arange(0, 10, 2))\nprint(\"Floats:\", np.arange(0.0, 1.0, 0.2))\nnp.linspace - count-based:\nprint(\"5 points from 0 to 1:\", np.linspace(0, 1, 5))\n\narange: Use when you know the step size\nlinspace: Use when you know the number of points"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#filled-arrays",
     "href": "slides/08_working_numpy_slides.html#filled-arrays",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Filled Arrays",
-    "text": "Filled Arrays\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Create arrays with specific values\nzeros_arr = np.zeros(5)\nones_arr = np.ones(4)\nfull_arr = np.full(3, 7)\n\nprint(\"Zeros:\", zeros_arr)\nprint(\"Ones:\", ones_arr)\nprint(\"Full:\", full_arr)\nSame shape as existing array:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\ntemplate = np.array([1, 2, 3])\nprint(\"Zeros like:\", np.zeros_like(template))\nprint(\"Ones like:\", np.ones_like(template))\nprint(\"Full like:\", np.full_like(template, 9))"
+    "text": "Filled Arrays\n# Create arrays with specific values\nzeros_arr = np.zeros(5)\nones_arr = np.ones(4)\nfull_arr = np.full(3, 7)\n\nprint(\"Zeros:\", zeros_arr)\nprint(\"Ones:\", ones_arr)\nprint(\"Full:\", full_arr)\nSame shape as existing array:\ntemplate = np.array([1, 2, 3])\nprint(\"Zeros like:\", np.zeros_like(template))\nprint(\"Ones like:\", np.ones_like(template))\nprint(\"Full like:\", np.full_like(template, 9))"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#random-number-generation",
     "href": "slides/08_working_numpy_slides.html#random-number-generation",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Random Number Generation",
-    "text": "Random Number Generation\nInitialize generator (for reproducibility):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nrng = np.random.default_rng(seed=123)\nDifferent distributions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Random integers\nprint(\"Random integers:\", rng.integers(0, 100, size=5))\n\n# Uniform floats [0, 1)\nprint(\"Uniform [0,1):\", rng.random(5))\n\n# Normal distribution\nnormal_samples = rng.normal(loc=0, scale=1, size=5)\nprint(\"Normal samples:\", normal_samples)"
+    "text": "Random Number Generation\nInitialize generator (for reproducibility):\nrng = np.random.default_rng(seed=123)\nDifferent distributions:\n# Random integers\nprint(\"Random integers:\", rng.integers(0, 100, size=5))\n\n# Uniform floats [0, 1)\nprint(\"Uniform [0,1):\", rng.random(5))\n\n# Normal distribution\nnormal_samples = rng.normal(loc=0, scale=1, size=5)\nprint(\"Normal samples:\", normal_samples)"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
     "href": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Pseudo-Random Numbers",
-    "text": "Pseudo-Random Numbers\nComputers are deterministic - they use algorithms to generate “pseudo-random” sequences\nLinear Congruential Generator example: \\[x_{n+1} = (a \\times x_n + c) \\bmod m\\]\nKey concept: Seeds enable reproducibility\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Same seed = same sequence\nrng1 = np.random.default_rng(seed=42)\nrng2 = np.random.default_rng(seed=42)\n\nprint(\"RNG1:\", rng1.integers(0, 10, size=3))\nprint(\"RNG2:\", rng2.integers(0, 10, size=3))  # Same output!"
+    "text": "Pseudo-Random Numbers\nComputers are deterministic - they use algorithms to generate “pseudo-random” sequences\nLinear Congruential Generator example: \\[x_{n+1} = (a \\times x_n + c) \\bmod m\\]\nKey concept: Seeds enable reproducibility\n# Same seed = same sequence\nrng1 = np.random.default_rng(seed=42)\nrng2 = np.random.default_rng(seed=42)\n\nprint(\"RNG1:\", rng1.integers(0, 10, size=3))\nprint(\"RNG2:\", rng2.integers(0, 10, size=3))  # Same output!"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#performance-tips",
     "href": "slides/08_working_numpy_slides.html#performance-tips",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Performance Tips",
-    "text": "Performance Tips\nPreallocate for efficiency:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Less efficient: generate one at a time\n# for _ in range(1000):\n#     val = rng.integers(0, 100)\n\n# More efficient: preallocate\nprealloc = rng.integers(0, 100, size=1000)\n# Then use values from prealloc array\nMemory vs Speed tradeoff: - Small tasks: 100-1,000 elements - Medium tasks: 10,000-100,000 elements\n- Large tasks: 1,000,000+ elements"
+    "text": "Performance Tips\nPreallocate for efficiency:\n# Less efficient: generate one at a time\n# for _ in range(1000):\n#     val = rng.integers(0, 100)\n\n# More efficient: preallocate\nprealloc = rng.integers(0, 100, size=1000)\n# Then use values from prealloc array\nMemory vs Speed tradeoff: - Small tasks: 100-1,000 elements - Medium tasks: 10,000-100,000 elements\n- Large tasks: 1,000,000+ elements"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#key-takeaways",
@@ -4434,7 +4434,7 @@
     "href": "17/exercises_advanced_plotting-solutions.html#exercise-1-import-libraries-and-load-life-expectancy-data",
     "title": "Advanced Plotting Exercises: Building Dashboards with Seaborn and Plotly",
     "section": "Exercise 1: Import Libraries and Load Life Expectancy Data",
-    "text": "Exercise 1: Import Libraries and Load Life Expectancy Data\nObjective: Set up the environment and load the life expectancy dataset for exploration.\nIn this exercise, you will:\n\nImport all necessary libraries for visualization and data manipulation\nLoad the life expectancy dataset\nExplore the dataset structure, columns, and basic statistics\nCheck for missing values and data types\n\nDataset: World Bank Life Expectancy Data https://ourworldindata.org/grapher/life-expectancy.csv?v=1&csvType=full&useColumnShortNames=false\nAlternative Approach: Load sample life expectancy data from seaborn or create a synthetic dataset matching the pattern\nYour Task: - Load the life expectancy dataset (from file or URL) - Display the first 10 rows - Show the shape, data types, and summary statistics - Identify and document any missing values - Report the time period and number of countries covered"
+    "text": "Exercise 1: Import Libraries and Load Life Expectancy Data\nObjective: Set up the environment and load the life expectancy dataset for exploration.\nIn this exercise, you will:\n\nImport all necessary libraries for visualization and data manipulation\nLoad the life expectancy dataset\nExplore the dataset structure, columns, and basic statistics\nCheck for missing values and data types\n\nDataset: World Bank Life Expectancy Data https://ourworldindata.org/grapher/life-expectancy.csv?v=1&csvType=full&useColumnShortNames=false\nYour Task:\n\nLoad the life expectancy dataset (from file or URL)\nDisplay the first 10 rows\nShow the shape, data types, and summary statistics\nIdentify and document any missing values\nReport the time period and number of countries covered"
   },
   {
     "objectID": "17/exercises_advanced_plotting-solutions.html#exercise-2-exploratory-data-visualization-with-seaborn",
@@ -4961,91 +4961,91 @@
     "href": "slides/10_multidimensional_arrays_slides.html#numpy-arrays-beyond-1d",
     "title": "Multi-dimensional Arrays",
     "section": "NumPy Arrays Beyond 1D",
-    "text": "NumPy Arrays Beyond 1D\nMulti-dimensional arrays enable representation of: - 2D: Grid/Matrix (rows × columns) - 3D: Cuboid/Tensor (depth × rows × columns) - nD: Higher dimensions\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\nfrom numpy import random\nrng = random.default_rng(seed=24)\n\n# 2D array (3×3 matrix)\narray_2d = rng.random((3, 3))\nprint(f\"Shape: {array_2d.shape}\")\nprint(array_2d)"
+    "text": "NumPy Arrays Beyond 1D\nMulti-dimensional arrays enable representation of: - 2D: Grid/Matrix (rows × columns) - 3D: Cuboid/Tensor (depth × rows × columns) - nD: Higher dimensions\nimport numpy as np\nfrom numpy import random\nrng = random.default_rng(seed=24)\n\n# 2D array (3×3 matrix)\narray_2d = rng.random((3, 3))\nprint(f\"Shape: {array_2d.shape}\")\nprint(array_2d)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#indexing-multi-dimensional-arrays",
     "href": "slides/10_multidimensional_arrays_slides.html#indexing-multi-dimensional-arrays",
     "title": "Multi-dimensional Arrays",
     "section": "Indexing Multi-dimensional Arrays",
-    "text": "Indexing Multi-dimensional Arrays\nRow-major order: [row, column] (like [y, x])\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Access single element\nprint(\"Element at [1,2]:\", array_2d[1, 2])\n\n# Access entire row\nprint(\"First row:\", array_2d[0, :])\n\n# Access entire column  \nprint(\"First column:\", array_2d[:, 0])\nSlicing works with multiple dimensions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"First 2 rows:\\n\", array_2d[:2])"
+    "text": "Indexing Multi-dimensional Arrays\nRow-major order: [row, column] (like [y, x])\n# Access single element\nprint(\"Element at [1,2]:\", array_2d[1, 2])\n\n# Access entire row\nprint(\"First row:\", array_2d[0, :])\n\n# Access entire column  \nprint(\"First column:\", array_2d[:, 0])\nSlicing works with multiple dimensions:\nprint(\"First 2 rows:\\n\", array_2d[:2])"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#array-properties",
     "href": "slides/10_multidimensional_arrays_slides.html#array-properties",
     "title": "Multi-dimensional Arrays",
     "section": "Array Properties",
-    "text": "Array Properties\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Creating arrays with different shapes\nzeros_2d = np.zeros((2, 3))  # 2 rows, 3 columns\nrandom_3d = rng.integers(0, 3, size=(2, 3, 4))  # 2×3×4 tensor\n\nprint(\"2D shape:\", zeros_2d.shape)\nprint(\"3D shape:\", random_3d.shape)\nprint(\"3D rank/dimensions:\", random_3d.ndim)\nTerminology: - Rank/ndim: Number of dimensions - Matrix: Rank 2 array - Tensor: Rank 3+ array"
+    "text": "Array Properties\n# Creating arrays with different shapes\nzeros_2d = np.zeros((2, 3))  # 2 rows, 3 columns\nrandom_3d = rng.integers(0, 3, size=(2, 3, 4))  # 2×3×4 tensor\n\nprint(\"2D shape:\", zeros_2d.shape)\nprint(\"3D shape:\", random_3d.shape)\nprint(\"3D rank/dimensions:\", random_3d.ndim)\nTerminology: - Rank/ndim: Number of dimensions - Matrix: Rank 2 array - Tensor: Rank 3+ array"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#operations-along-axes",
     "href": "slides/10_multidimensional_arrays_slides.html#operations-along-axes",
     "title": "Multi-dimensional Arrays",
     "section": "Operations Along Axes",
-    "text": "Operations Along Axes\nAxis-specific operations:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = rng.integers(0, 5, size=(3, 4))\nprint(\"Original matrix:\\n\", matrix)\n\nprint(\"Sum along axis 0 (columns):\", matrix.sum(axis=0))\nprint(\"Sum along axis 1 (rows):\", matrix.sum(axis=1))\nprint(\"Mean along axis 0:\", np.mean(matrix, axis=0))\nAxis 0: Operations across rows (result has column shape)\nAxis 1: Operations across columns (result has row shape)"
+    "text": "Operations Along Axes\nAxis-specific operations:\nmatrix = rng.integers(0, 5, size=(3, 4))\nprint(\"Original matrix:\\n\", matrix)\n\nprint(\"Sum along axis 0 (columns):\", matrix.sum(axis=0))\nprint(\"Sum along axis 1 (rows):\", matrix.sum(axis=1))\nprint(\"Mean along axis 0:\", np.mean(matrix, axis=0))\nAxis 0: Operations across rows (result has column shape)\nAxis 1: Operations across columns (result has row shape)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#reshaping-and-flattening",
     "href": "slides/10_multidimensional_arrays_slides.html#reshaping-and-flattening",
     "title": "Multi-dimensional Arrays",
     "section": "Reshaping and Flattening",
-    "text": "Reshaping and Flattening\nReshape without changing data:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr_1d = np.arange(12)\narr_2d = arr_1d.reshape((3, 4))\narr_3d = arr_1d.reshape((2, 2, 3))\n\nprint(\"1D:\", arr_1d)\nprint(\"2D (3×4):\\n\", arr_2d)\nprint(\"3D shape:\", arr_3d.shape)\nUsing -1 for automatic dimension:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# -1 means \"figure out this dimension\"\nauto_reshape = arr_1d.reshape(-1, 4)  # ? rows, 4 columns\nprint(\"Auto-reshaped:\\n\", auto_reshape)"
+    "text": "Reshaping and Flattening\nReshape without changing data:\narr_1d = np.arange(12)\narr_2d = arr_1d.reshape((3, 4))\narr_3d = arr_1d.reshape((2, 2, 3))\n\nprint(\"1D:\", arr_1d)\nprint(\"2D (3×4):\\n\", arr_2d)\nprint(\"3D shape:\", arr_3d.shape)\nUsing -1 for automatic dimension:\n# -1 means \"figure out this dimension\"\nauto_reshape = arr_1d.reshape(-1, 4)  # ? rows, 4 columns\nprint(\"Auto-reshaped:\\n\", auto_reshape)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#flattening-arrays",
     "href": "slides/10_multidimensional_arrays_slides.html#flattening-arrays",
     "title": "Multi-dimensional Arrays",
     "section": "Flattening Arrays",
-    "text": "Flattening Arrays\nravel() - returns view (shares data):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = rng.integers(0, 10, (2, 3))\nprint(\"Original:\\n\", matrix)\n\nview = matrix.ravel()\nview[0] = 99  # Changes original!\nprint(\"After modifying view:\\n\", matrix)\nflatten() - returns copy:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = rng.integers(0, 10, (2, 3))\ncopy = matrix.flatten()\ncopy[0] = 99  # Original unchanged\nprint(\"Original unchanged:\\n\", matrix)"
+    "text": "Flattening Arrays\nravel() - returns view (shares data):\nmatrix = rng.integers(0, 10, (2, 3))\nprint(\"Original:\\n\", matrix)\n\nview = matrix.ravel()\nview[0] = 99  # Changes original!\nprint(\"After modifying view:\\n\", matrix)\nflatten() - returns copy:\nmatrix = rng.integers(0, 10, (2, 3))\ncopy = matrix.flatten()\ncopy[0] = 99  # Original unchanged\nprint(\"Original unchanged:\\n\", matrix)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#broadcasting",
     "href": "slides/10_multidimensional_arrays_slides.html#broadcasting",
     "title": "Multi-dimensional Arrays",
     "section": "Broadcasting",
-    "text": "Broadcasting\nCombine arrays of different shapes automatically:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = np.array([[1, 2, 3],\n                   [4, 5, 6]])\nvector = np.array([10, 20, 30])\n\n# Vector is broadcast to each row\nresult = matrix + vector\nprint(\"Matrix + Vector:\\n\", result)\nCreate grids with broadcasting:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nrow_vec = np.arange(3).reshape(1, -1)    # Shape: (1, 3)\ncol_vec = np.arange(3).reshape(-1, 1)    # Shape: (3, 1)\ngrid = row_vec + col_vec                 # Shape: (3, 3)\nprint(\"Broadcast grid:\\n\", grid)"
+    "text": "Broadcasting\nCombine arrays of different shapes automatically:\nmatrix = np.array([[1, 2, 3],\n                   [4, 5, 6]])\nvector = np.array([10, 20, 30])\n\n# Vector is broadcast to each row\nresult = matrix + vector\nprint(\"Matrix + Vector:\\n\", result)\nCreate grids with broadcasting:\nrow_vec = np.arange(3).reshape(1, -1)    # Shape: (1, 3)\ncol_vec = np.arange(3).reshape(-1, 1)    # Shape: (3, 1)\ngrid = row_vec + col_vec                 # Shape: (3, 3)\nprint(\"Broadcast grid:\\n\", grid)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#linear-algebra-with-numpy",
     "href": "slides/10_multidimensional_arrays_slides.html#linear-algebra-with-numpy",
     "title": "Multi-dimensional Arrays",
     "section": "Linear Algebra with NumPy",
-    "text": "Linear Algebra with NumPy\nMatrix operations for solving systems: \\[A\\mathbf{x} = \\mathbf{b}\\]\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3\nA = np.array([[2, 3, 1], \n              [4, -1, 0], \n              [0, 2, 1]])\nb = np.array([[5], [1], [3]])\n\n# Solve the system\nx = np.linalg.solve(A, b)\nprint(\"Solution:\", x.flatten())\n\n# Verify: A @ x should equal b\nprint(\"Verification:\\n\", A @ x)"
+    "text": "Linear Algebra with NumPy\nMatrix operations for solving systems: \\[A\\mathbf{x} = \\mathbf{b}\\]\n# System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3\nA = np.array([[2, 3, 1], \n              [4, -1, 0], \n              [0, 2, 1]])\nb = np.array([[5], [1], [3]])\n\n# Solve the system\nx = np.linalg.solve(A, b)\nprint(\"Solution:\", x.flatten())\n\n# Verify: A @ x should equal b\nprint(\"Verification:\\n\", A @ x)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#linear-algebra-operations",
     "href": "slides/10_multidimensional_arrays_slides.html#linear-algebra-operations",
     "title": "Multi-dimensional Arrays",
     "section": "Linear Algebra Operations",
-    "text": "Linear Algebra Operations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Matrix multiplication with @\nresult = A @ x\n\n# Transpose with .T\nprint(\"b transpose:\", b.T)\n\n# Dot product\ndot_product = np.dot(b.T, b)\nprint(\"Dot product:\", dot_product)\n\n# Matrix inverse\nA_inv = np.linalg.inv(A)\nx_alt = A_inv @ b  # Alternative solution method\nNumPy.linalg provides: inverse, solve, eigenvalues, SVD, etc."
+    "text": "Linear Algebra Operations\n# Matrix multiplication with @\nresult = A @ x\n\n# Transpose with .T\nprint(\"b transpose:\", b.T)\n\n# Dot product\ndot_product = np.dot(b.T, b)\nprint(\"Dot product:\", dot_product)\n\n# Matrix inverse\nA_inv = np.linalg.inv(A)\nx_alt = A_inv @ b  # Alternative solution method\nNumPy.linalg provides: inverse, solve, eigenvalues, SVD, etc."
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#arrays-as-images",
     "href": "slides/10_multidimensional_arrays_slides.html#arrays-as-images",
     "title": "Multi-dimensional Arrays",
     "section": "Arrays as Images",
-    "text": "Arrays as Images\nVisualize 2D arrays as images:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport matplotlib.pyplot as plt\n\n# Simple matrix visualization\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))\n\nax1.matshow(matrix)\nax1.set_title('matshow')\n\nax2.imshow(matrix, origin='lower')\nax2.set_title('imshow (origin=lower)')"
+    "text": "Arrays as Images\nVisualize 2D arrays as images:\nimport matplotlib.pyplot as plt\n\n# Simple matrix visualization\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))\n\nax1.matshow(matrix)\nax1.set_title('matshow')\n\nax2.imshow(matrix, origin='lower')\nax2.set_title('imshow (origin=lower)')"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#working-with-real-images",
     "href": "slides/10_multidimensional_arrays_slides.html#working-with-real-images",
     "title": "Multi-dimensional Arrays",
     "section": "Working with Real Images",
-    "text": "Working with Real Images\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfrom skimage import data\n\n# Grayscale image\ngray_image = data.camera()\nprint(\"Image shape:\", gray_image.shape)\n\nfig, ax = plt.subplots(figsize=(6, 6))\nax.imshow(gray_image, cmap='gray')\nax.set_title('Grayscale Image')\nImages are arrays: Each pixel is a number (intensity)"
+    "text": "Working with Real Images\nfrom skimage import data\n\n# Grayscale image\ngray_image = data.camera()\nprint(\"Image shape:\", gray_image.shape)\n\nfig, ax = plt.subplots(figsize=(6, 6))\nax.imshow(gray_image, cmap='gray')\nax.set_title('Grayscale Image')\nImages are arrays: Each pixel is a number (intensity)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#color-images-3d-arrays",
     "href": "slides/10_multidimensional_arrays_slides.html#color-images-3d-arrays",
     "title": "Multi-dimensional Arrays",
     "section": "Color Images (3D Arrays)",
-    "text": "Color Images (3D Arrays)\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Color image has 3 channels: RGB\ncolor_image = data.chelsea()\nprint(\"Color image shape:\", color_image.shape)\n\nfig, axes = plt.subplots(1, 4, figsize=(15, 4))\n\naxes[0].imshow(color_image)\naxes[0].set_title('Full Color')\n\n# Individual color channels\nchannels = ['Reds', 'Greens', 'Blues']\ntitles = ['Red Channel', 'Green Channel', 'Blue Channel']\n\nfor i, (cmap, title) in enumerate(zip(channels, titles)):\n    axes[i+1].imshow(color_image[:, :, i], cmap=cmap)\n    axes[i+1].set_title(title)"
+    "text": "Color Images (3D Arrays)\n# Color image has 3 channels: RGB\ncolor_image = data.chelsea()\nprint(\"Color image shape:\", color_image.shape)\n\nfig, axes = plt.subplots(1, 4, figsize=(15, 4))\n\naxes[0].imshow(color_image)\naxes[0].set_title('Full Color')\n\n# Individual color channels\nchannels = ['Reds', 'Greens', 'Blues']\ntitles = ['Red Channel', 'Green Channel', 'Blue Channel']\n\nfor i, (cmap, title) in enumerate(zip(channels, titles)):\n    axes[i+1].imshow(color_image[:, :, i], cmap=cmap)\n    axes[i+1].set_title(title)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#boolean-operations-on-images",
     "href": "slides/10_multidimensional_arrays_slides.html#boolean-operations-on-images",
     "title": "Multi-dimensional Arrays",
     "section": "Boolean Operations on Images",
-    "text": "Boolean Operations on Images\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Extract green channel\ngreen = color_image[:, :, 1]\n\n# Create binary mask\nthreshold_mask = green &gt; 120\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))\n\nax1.imshow(green, cmap='Greens')\nax1.set_title('Green Channel')\n\nax2.imshow(threshold_mask, cmap='gray')\nax2.set_title('Thresholded (&gt;120)')\nLogical operations: & (AND), | (OR), ~ (NOT)"
+    "text": "Boolean Operations on Images\n# Extract green channel\ngreen = color_image[:, :, 1]\n\n# Create binary mask\nthreshold_mask = green &gt; 120\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))\n\nax1.imshow(green, cmap='Greens')\nax1.set_title('Green Channel')\n\nax2.imshow(threshold_mask, cmap='gray')\nax2.set_title('Thresholded (&gt;120)')\nLogical operations: & (AND), | (OR), ~ (NOT)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#key-takeaways",

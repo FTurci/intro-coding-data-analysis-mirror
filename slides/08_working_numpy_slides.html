@@ -200,65 +200,57 @@
 </section>
 <section id="array-indexing-slicing" class="slide level2">
 <h2>Array Indexing &amp; Slicing</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb1-2"><a></a>import numpy as np</span>
-<span id="cb1-3"><a></a>arr = np.array([10, 20, 30, 40, 50])</span>
-<span id="cb1-4"><a></a></span>
-<span id="cb1-5"><a></a># Integer indexing</span>
-<span id="cb1-6"><a></a>print("Element at index 1:", arr[1])</span>
-<span id="cb1-7"><a></a></span>
-<span id="cb1-8"><a></a># Basic slicing</span>
-<span id="cb1-9"><a></a>print("Slice [1:4]:", arr[1:4])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb1-1"><a></a>import numpy as np</span>
+<span id="cb1-2"><a></a>arr = np.array([10, 20, 30, 40, 50])</span>
+<span id="cb1-3"><a></a></span>
+<span id="cb1-4"><a></a># Integer indexing</span>
+<span id="cb1-5"><a></a>print("Element at index 1:", arr[1])</span>
+<span id="cb1-6"><a></a></span>
+<span id="cb1-7"><a></a># Basic slicing</span>
+<span id="cb1-8"><a></a>print("Slice [1:4]:", arr[1:4])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Advanced slicing:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb2-2"><a></a>print("Every other element:", arr[::2])</span>
-<span id="cb2-3"><a></a>print("Last three elements:", arr[-3:])</span>
-<span id="cb2-4"><a></a>print("Reversed array:", arr[::-1])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb2-1"><a></a>print("Every other element:", arr[::2])</span>
+<span id="cb2-2"><a></a>print("Last three elements:", arr[-3:])</span>
+<span id="cb2-3"><a></a>print("Reversed array:", arr[::-1])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="views-vs-copies" class="slide level2">
 <h2>Views vs Copies</h2>
 <p><strong>Slicing creates views (shared data):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb3-2"><a></a>slice_view = arr[2:5]</span>
-<span id="cb3-3"><a></a>slice_view[0] = 99</span>
-<span id="cb3-4"><a></a>print("Original after view modification:", arr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb3-1"><a></a>slice_view = arr[2:5]</span>
+<span id="cb3-2"><a></a>slice_view[0] = 99</span>
+<span id="cb3-3"><a></a>print("Original after view modification:", arr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Creating independent copies:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb4-2"><a></a>arr = np.array([10, 20, 30, 40, 50])  # Reset</span>
-<span id="cb4-3"><a></a>arr_copy = arr[2:5].copy()</span>
-<span id="cb4-4"><a></a>arr_copy[0] = 100</span>
-<span id="cb4-5"><a></a>print("Copy:", arr_copy)</span>
-<span id="cb4-6"><a></a>print("Original unchanged:", arr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb4-1"><a></a>arr = np.array([10, 20, 30, 40, 50])  # Reset</span>
+<span id="cb4-2"><a></a>arr_copy = arr[2:5].copy()</span>
+<span id="cb4-3"><a></a>arr_copy[0] = 100</span>
+<span id="cb4-4"><a></a>print("Copy:", arr_copy)</span>
+<span id="cb4-5"><a></a>print("Original unchanged:", arr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="boolean-indexing" class="slide level2">
 <h2>Boolean Indexing</h2>
 <p><strong>Filter data with conditions:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb5-2"><a></a>arr = np.array([1, 2, 3, 4, 5, 6])</span>
-<span id="cb5-3"><a></a>threshold = 3</span>
-<span id="cb5-4"><a></a></span>
-<span id="cb5-5"><a></a>bool_mask = arr &gt; threshold</span>
-<span id="cb5-6"><a></a>print("Boolean mask:", bool_mask)</span>
-<span id="cb5-7"><a></a>print("Filtered values:", arr[bool_mask])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb5-1"><a></a>arr = np.array([1, 2, 3, 4, 5, 6])</span>
+<span id="cb5-2"><a></a>threshold = 3</span>
+<span id="cb5-3"><a></a></span>
+<span id="cb5-4"><a></a>bool_mask = arr &gt; threshold</span>
+<span id="cb5-5"><a></a>print("Boolean mask:", bool_mask)</span>
+<span id="cb5-6"><a></a>print("Filtered values:", arr[bool_mask])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Using <code>np.where</code>:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb6-2"><a></a># Get indices where condition is True</span>
-<span id="cb6-3"><a></a>indices = np.where(arr &gt; threshold)[0]</span>
-<span id="cb6-4"><a></a>print("Indices:", indices)</span>
-<span id="cb6-5"><a></a></span>
-<span id="cb6-6"><a></a># Conditional selection</span>
-<span id="cb6-7"><a></a>result = np.where(arr &gt; 3, arr, 0)</span>
-<span id="cb6-8"><a></a>print("Conditional result:", result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb6-1"><a></a># Get indices where condition is True</span>
+<span id="cb6-2"><a></a>indices = np.where(arr &gt; threshold)[0]</span>
+<span id="cb6-3"><a></a>print("Indices:", indices)</span>
+<span id="cb6-4"><a></a></span>
+<span id="cb6-5"><a></a># Conditional selection</span>
+<span id="cb6-6"><a></a>result = np.where(arr &gt; 3, arr, 0)</span>
+<span id="cb6-7"><a></a>print("Conditional result:", result)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="generating-sequences" class="slide level2">
 <h2>Generating Sequences</h2>
 <p><strong><code>np.arange</code> - step-based:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb7-2"><a></a>print("Integers:", np.arange(0, 10, 2))</span>
-<span id="cb7-3"><a></a>print("Floats:", np.arange(0.0, 1.0, 0.2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb7-1"><a></a>print("Integers:", np.arange(0, 10, 2))</span>
+<span id="cb7-2"><a></a>print("Floats:", np.arange(0.0, 1.0, 0.2))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong><code>np.linspace</code> - count-based:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb8-2"><a></a>print("5 points from 0 to 1:", np.linspace(0, 1, 5))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb8-1"><a></a>print("5 points from 0 to 1:", np.linspace(0, 1, 5))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>arange</code></strong>: Use when you know the step size</li>
 <li><strong><code>linspace</code></strong>: Use when you know the number of points</li>
@@ -266,63 +258,57 @@
 </section>
 <section id="filled-arrays" class="slide level2">
 <h2>Filled Arrays</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb9-2"><a></a># Create arrays with specific values</span>
-<span id="cb9-3"><a></a>zeros_arr = np.zeros(5)</span>
-<span id="cb9-4"><a></a>ones_arr = np.ones(4)</span>
-<span id="cb9-5"><a></a>full_arr = np.full(3, 7)</span>
-<span id="cb9-6"><a></a></span>
-<span id="cb9-7"><a></a>print("Zeros:", zeros_arr)</span>
-<span id="cb9-8"><a></a>print("Ones:", ones_arr)</span>
-<span id="cb9-9"><a></a>print("Full:", full_arr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb9-1"><a></a># Create arrays with specific values</span>
+<span id="cb9-2"><a></a>zeros_arr = np.zeros(5)</span>
+<span id="cb9-3"><a></a>ones_arr = np.ones(4)</span>
+<span id="cb9-4"><a></a>full_arr = np.full(3, 7)</span>
+<span id="cb9-5"><a></a></span>
+<span id="cb9-6"><a></a>print("Zeros:", zeros_arr)</span>
+<span id="cb9-7"><a></a>print("Ones:", ones_arr)</span>
+<span id="cb9-8"><a></a>print("Full:", full_arr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Same shape as existing array:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb10-2"><a></a>template = np.array([1, 2, 3])</span>
-<span id="cb10-3"><a></a>print("Zeros like:", np.zeros_like(template))</span>
-<span id="cb10-4"><a></a>print("Ones like:", np.ones_like(template))</span>
-<span id="cb10-5"><a></a>print("Full like:", np.full_like(template, 9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb10-1"><a></a>template = np.array([1, 2, 3])</span>
+<span id="cb10-2"><a></a>print("Zeros like:", np.zeros_like(template))</span>
+<span id="cb10-3"><a></a>print("Ones like:", np.ones_like(template))</span>
+<span id="cb10-4"><a></a>print("Full like:", np.full_like(template, 9))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="random-number-generation" class="slide level2">
 <h2>Random Number Generation</h2>
 <p><strong>Initialize generator (for reproducibility):</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb11-2"><a></a>rng = np.random.default_rng(seed=123)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb11-1"><a></a>rng = np.random.default_rng(seed=123)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Different distributions:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb12-2"><a></a># Random integers</span>
-<span id="cb12-3"><a></a>print("Random integers:", rng.integers(0, 100, size=5))</span>
-<span id="cb12-4"><a></a></span>
-<span id="cb12-5"><a></a># Uniform floats [0, 1)</span>
-<span id="cb12-6"><a></a>print("Uniform [0,1):", rng.random(5))</span>
-<span id="cb12-7"><a></a></span>
-<span id="cb12-8"><a></a># Normal distribution</span>
-<span id="cb12-9"><a></a>normal_samples = rng.normal(loc=0, scale=1, size=5)</span>
-<span id="cb12-10"><a></a>print("Normal samples:", normal_samples)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb12-1"><a></a># Random integers</span>
+<span id="cb12-2"><a></a>print("Random integers:", rng.integers(0, 100, size=5))</span>
+<span id="cb12-3"><a></a></span>
+<span id="cb12-4"><a></a># Uniform floats [0, 1)</span>
+<span id="cb12-5"><a></a>print("Uniform [0,1):", rng.random(5))</span>
+<span id="cb12-6"><a></a></span>
+<span id="cb12-7"><a></a># Normal distribution</span>
+<span id="cb12-8"><a></a>normal_samples = rng.normal(loc=0, scale=1, size=5)</span>
+<span id="cb12-9"><a></a>print("Normal samples:", normal_samples)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="pseudo-random-numbers" class="slide level2">
 <h2>Pseudo-Random Numbers</h2>
 <p><strong>Computers are deterministic</strong> - they use algorithms to generate “pseudo-random” sequences</p>
 <p><strong>Linear Congruential Generator example:</strong> <span class="math display">\[x_{n+1} = (a \times x_n + c) \bmod m\]</span></p>
 <p><strong>Key concept: Seeds enable reproducibility</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb13-2"><a></a># Same seed = same sequence</span>
-<span id="cb13-3"><a></a>rng1 = np.random.default_rng(seed=42)</span>
-<span id="cb13-4"><a></a>rng2 = np.random.default_rng(seed=42)</span>
-<span id="cb13-5"><a></a></span>
-<span id="cb13-6"><a></a>print("RNG1:", rng1.integers(0, 10, size=3))</span>
-<span id="cb13-7"><a></a>print("RNG2:", rng2.integers(0, 10, size=3))  # Same output!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb13-1"><a></a># Same seed = same sequence</span>
+<span id="cb13-2"><a></a>rng1 = np.random.default_rng(seed=42)</span>
+<span id="cb13-3"><a></a>rng2 = np.random.default_rng(seed=42)</span>
+<span id="cb13-4"><a></a></span>
+<span id="cb13-5"><a></a>print("RNG1:", rng1.integers(0, 10, size=3))</span>
+<span id="cb13-6"><a></a>print("RNG2:", rng2.integers(0, 10, size=3))  # Same output!</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="performance-tips" class="slide level2">
 <h2>Performance Tips</h2>
 <p><strong>Preallocate for efficiency:</strong></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a>#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span>
-<span id="cb14-2"><a></a># Less efficient: generate one at a time</span>
-<span id="cb14-3"><a></a># for _ in range(1000):</span>
-<span id="cb14-4"><a></a>#     val = rng.integers(0, 100)</span>
-<span id="cb14-5"><a></a></span>
-<span id="cb14-6"><a></a># More efficient: preallocate</span>
-<span id="cb14-7"><a></a>prealloc = rng.integers(0, 100, size=1000)</span>
-<span id="cb14-8"><a></a># Then use values from prealloc array</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource {pyodide} number-lines code-with-copy"><code class="sourceCode"><span id="cb14-1"><a></a># Less efficient: generate one at a time</span>
+<span id="cb14-2"><a></a># for _ in range(1000):</span>
+<span id="cb14-3"><a></a>#     val = rng.integers(0, 100)</span>
+<span id="cb14-4"><a></a></span>
+<span id="cb14-5"><a></a># More efficient: preallocate</span>
+<span id="cb14-6"><a></a>prealloc = rng.integers(0, 100, size=1000)</span>
+<span id="cb14-7"><a></a># Then use values from prealloc array</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p><strong>Memory vs Speed tradeoff:</strong> - Small tasks: 100-1,000 elements - Medium tasks: 10,000-100,000 elements<br>
 - Large tasks: 1,000,000+ elements</p>
 </section>
