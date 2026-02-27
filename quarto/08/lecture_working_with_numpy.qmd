@@ -23,6 +23,7 @@ Indexing in NumPy allows you to access and modify individual elements or groups 
 We have already seen that the lements of an array are idnexed similarly to lists. The syntax simply requires you to enter the integer index of the element you want to access. For example, if you have an array `arr`, you can access the element at index 1 using `arr[1]`. You can also slice arrays using the same syntax as lists, such as `arr[1:4]` to get elements from index 1 to 3.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 arr = np.array([10, 20, 30, 40, 50])
@@ -36,6 +37,7 @@ print("Element at index 1:", arr[1])
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 
 print("Slice from index 1 to 3:", arr[1:4])
 ```
@@ -50,6 +52,7 @@ NumPy slicing can be extended beyond basic start and end indices:
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Step size: select every other element
 print("Every other element:", arr[::2])
 
@@ -69,6 +72,7 @@ Slicing creates **views**, not copies, so modifying a slice affects the original
 A **view** is a new array object that looks at the same data as the original array. Changes made to a view will affect the original array, since they share the same underlying data. For example, `arr[1:4]` returns a view of `arr`, not a separate copy.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Demonstrating that slicing creates a view, not a copy
 slice_view = arr[2:5]
 print("Original array before modification:", arr)
@@ -80,6 +84,7 @@ print("Original array after modification:", arr)  # arr is also changed
 Slices can be programmaticaly generated using the `slice` function, which allows you to create a slice object that can be reused. For example, `s = slice(1, 4)` creates a slice object that can be used as `arr[s]` to get the same result as `arr[1:4]`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Creating an independent copy of a slice
 example_slice = slice(1, 4, 2)
 print("Using slice(1, 4, 2) on arr:", arr[example_slice])
@@ -88,6 +93,7 @@ print("Using slice(1, 4, 2) on arr:", arr[example_slice])
 To create an **independent copy** of an array (rather than a view), use the `copy()` method. For example, `arr_copy = arr[1:4].copy()` creates a new array with its own data, so changes to `arr_copy` will not affect the original `arr`. This is useful when you want to modify a subset of an array without altering the original data.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Creating an independent copy of a slice
 arr_copy = arr[2:5].copy()
 arr_copy[0] = 100  # Modify the copy
@@ -100,6 +106,7 @@ print("Original arr:", arr)  # arr remains unchanged
 Boolean indexing allows you to select elements from an array based on a condition. When you apply a condition to a NumPy array, it returns a **boolean** (an array that contains only True/False values ) array indicating which elements satisfy the condition. You can then use this boolean array to filter the original array, extracting only the elements that meet the criteria. This technique is powerful for data selection and analysis.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr = np.array([1, 2, 3, 4, 5, 6])
 threshold = 3
 bool_mask = arr > threshold
@@ -118,6 +125,7 @@ The `np.where` function in NumPy is a powerful tool for conditional selection an
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 np.where(arr > threshold)
 ```
 
@@ -126,6 +134,7 @@ np.where(arr > threshold)
 So, for 1D arrays as the ones considered up to now, we should get the indices by extracting the first element of the tuple returned by `np.where`
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 np.where(arr > threshold)[0]
 ```
 
@@ -137,6 +146,7 @@ np.where(arr > threshold)[0]
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 a = np.array([1, 2, 3, 4, 5])
 b = np.array([-1, -2, -3, -4, -5])
 c = np.array([10, 20, 30, 40, 50])
@@ -163,6 +173,7 @@ The two most used functions for generating  ordered numerical sequences in NumPy
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("np.arange(0, 10, 2):", np.arange(0, 10, 2))
 print("np.linspace(0, 1, 5):", np.linspace(0, 1, 5))
 ```
@@ -170,16 +181,19 @@ print("np.linspace(0, 1, 5):", np.linspace(0, 1, 5))
 Most importantly, these functions can be used to create arrays of any kinds of numerical data, including integers and floating-point numbers. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # integers
 np.arange(0, 10, 2)  # Creates an array with values from 0 to 10 with a step of 2
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # floating-point numbers
 np.arange(0.0, 1.0, 0.2)  # Creates an array with values from 0.0 to 1.0 with a step of 0.2
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # complex numbers, by using the data type specifier `dtype=complex`
 np.arange(0, 10, 2, dtype=complex)  # Creates an array with complex numbers from 0 to 10 with a step of 2
 ```
@@ -203,6 +217,7 @@ There are also functions that create arrays with the same shape and type as an e
 - **`np.full_like(array, fill_value)`**: Creates an array filled with a specified value, with the same shape and type as the input array.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Examples using filled array generation functions
 
 # Create a 1D array of zeros with the same shape as arr
@@ -247,6 +262,7 @@ where
 In *vanilla* Python this looks like the following custom function
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def lcg(seed, a=1664525, c=1013904223, m=2**32, size=10):
     nums = []
     x = seed
@@ -257,6 +273,7 @@ def lcg(seed, a=1664525, c=1013904223, m=2**32, size=10):
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example usage:
 lcg_sequence = lcg(seed=42, size=5)
 print("LCG sequence:", lcg_sequence)
@@ -268,6 +285,7 @@ print("LCG sequence:", lcg_sequence)
 This will generate a sequence of pseudo-random integers. The choice of parameters (`a`, `c`, `m`) affects the quality and period of the generator.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example of LCG with a short period by choosing small modulus
 short_period_seq = lcg(seed=1,  a=5, c=3, m=16, size=20)
 print("LCG sequence with short period:", short_period_seq)
@@ -285,6 +303,7 @@ The standard way to to use it is the following:
 - first, one initialises a new kind of object called a **random number generator** (RNG) using `np.random.default_rng()`.  This is a `numpy` object capable of generating random numbers from various distributions. It allows us in particular to set the **seed** and therefore ensure reproducibility.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 rng = np.random.default_rng(seed=123)
 ```
 
@@ -301,6 +320,7 @@ For example:
 To sample uniformly distributed integers, we can use the `integers` method of the generator. This method allows us to specify a range and the number of integers to generate.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 rng.integers(0, 100, size=5)  # 5 random integers between 0 and 100
 ```
 
@@ -309,12 +329,14 @@ rng.integers(0, 100, size=5)  # 5 random integers between 0 and 100
 To sample uniformly distributed floats between 0 and 1, we can use the `random` method of the generator. This method generates random floats in the range [0.0, 1.0) (which means 0 included and 1 excluded).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 rng.random(1000)
 ```
 
 Alternatively, we can use the `uniform` method to sample uniformly distributed floats in a specified range. This method allows us to specify the lower and upper bounds of the range, as well as the number of samples to generate.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 rng.uniform(0,1,1000)
 ```
 
@@ -323,16 +345,19 @@ rng.uniform(0,1,1000)
 To sample from a normal distribution, we can use the `normal` method of the generator. This method allows us to specify the mean and standard deviation of the distribution, as well as the number of samples to generate. The generated samples will follow a normal (Gaussian) distribution with the specified parameters.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 normal_rv = rng.normal(loc=0, scale=4, size=10000)  # 10000 samples from a normal distribution with mean 0 and std dev 1
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # check that the sample mean and standard deviation are close to the specified values 
 
 normal_rv.mean()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 normal_rv.std()
 ```
 
@@ -341,12 +366,14 @@ normal_rv.std()
 If we only want to sample a single  value, we can simply not specify the `size` parameter, or set it to `1`. This will return a single value sampled from the specified distribution.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 rng.integers(0,100) # run this multiple times to observe the random nature of the output
 ```
 
 However, this can sometimes be more computationally costly than generating a larger sample and then selecting a single value from it. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import time
 
 # Timing a for loop that generates a random integer in each iteration

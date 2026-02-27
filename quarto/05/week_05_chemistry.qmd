@@ -77,6 +77,7 @@ You are given a string of one of the following forms: `N_P_E` or `N_E`, where:
 For instance, `12_6_C` represents $^{12}_6C$ and `12_C` represents $^{12}C$.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # A string representing the isotope of Neon with 12 neutrons and 10 protons.
 example_isotope = "22_10_Ne"
 ```
@@ -84,6 +85,7 @@ example_isotope = "22_10_Ne"
 You are also given the variable named `periodic_table`, loaded in by the below code. This includes *some of* the data displayed in the periodic table, saved as a dictionary of dictionaries.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 
 from get_periodic_table import *
 
@@ -95,6 +97,7 @@ periodic_table = get_periodic_table()
 Try running the following commands to see if you can understand how to use this variable:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(periodic_table["H"])
 print(periodic_table["H"]["relative_atomic_mass"])
 print(periodic_table["Fe"]["atomic_number"])
@@ -115,6 +118,7 @@ For an arbitrary isotope represented as described above, the challenge is to sol
 Write a function that takes two inputs; a string representing an isotope and the `periodic_table` dictionary. The function should verify whether the chemical symbol in the isotope string corresponds to a valid element in the periodic table and print a message indicating the result.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -125,6 +129,7 @@ Write a function that takes two inputs; a string representing an isotope and the
 Write a function that takes two inputs; a string representing an isotope and the `periodic_table` dictionary. The function must check whether the number of protons, if provided, matches that in the periodic table.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -133,6 +138,7 @@ Write a function that takes two inputs; a string representing an isotope and the
 Update your code from Task 2 so that, unless an incorrect number of protons is provided, it prints the number of protons, neutrons, and electrons in the isotope. Make sure your code outputs these values even if the number of protons is not explicitly included in the isotope string.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -141,6 +147,7 @@ Update your code from Task 2 so that, unless an incorrect number of protons is p
 Write a function that takes two inputs; a string representing an isotope and the `periodic_table` dictionary. The function must print the group and period of the element in the periodic table.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -149,6 +156,7 @@ Write a function that takes two inputs; a string representing an isotope and the
 Write a function which return a string representing the name of the isotope. For instance, `12_C` should return `"Carbon-12"`. Note that $^1H$,$^2H$ and $^3H$ do not follow the standard convention and are usually referred to as `"Hydrogen"`, `"Deuterium"` and `"Tritium"` rather than `"Hydrogen-1"`, `"Hydrogen-2"` and `"Hydrogen-3"`, respectively.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -157,6 +165,7 @@ Write a function which return a string representing the name of the isotope. For
 Write a function which returns a string representing the category the isotope belongs to (e.g. `"Alkali Metals"`, `"Actinides"`,..., etc).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 

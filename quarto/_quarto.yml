@@ -44,8 +44,10 @@ website:
             href: 15/lecture_pandas_plotting.qmd
           - text: "16 - Pandas vs Numpy"
             href: 16/lecture_pandas_vs_numpy.qmd
-          - text: "17 - Advanced Plotting with Python"
+          - text: "17 - Advanced Plotting"
             href: 17/lecture_advanced_plotting.qmd
+          - text: "18 - Fitting"
+            href: 18/lecture_curve_fitting.qmd
 
       - text: "Exercises"
         menu:
@@ -79,6 +81,8 @@ website:
             href: 16/exercises_pandas_vs_numpy.qmd
           - text: "17 - Advanced Plotting Exercises"
             href: 17/exercises_advanced_plotting.qmd
+          - text: "18 - Curve Fitting Exercises"
+            href: 18/exercises_curve_fitting.qmd
 
       - text: "Solutions"
         menu:
@@ -109,11 +113,16 @@ website:
           - text: "13 - Pandas Basics Solutions"
             href: 13/exercises_pandas_basics_solutions.qmd
           - text: "14 - Pandas Preprocessing Solutions"
-            href: 14/exercises_pandas_preprocessing-solutions.qmd
+            href: 14/exercises_pandas_preprocessing_solutions.qmd
           - text: "15 - Pandas Plotting Solutions"
             href: 15/exercises_pandas_plotting_solutions.qmd
           - text: "16 - Pandas vs Numpy Solutions"
             href: 16/exercises_pandas_vs_numpy-solutions.qmd
+          - text: "17 - Advanced Plotting Solutions"
+            href: 17/exercises_advanced_plotting-solutions.qmd
+          # - text: "18 - Curve Fitting Solutions"
+            # href: 18/exercises_curve_fitting-solutions.qmd  
+
    
       - text: "Formative tests"
         menu:
@@ -243,11 +252,17 @@ website:
         contents:
           - 16/lecture_pandas_vs_numpy.qmd
           - 16/exercises_pandas_vs_numpy.qmd
-      - section: "17 Advanced Plotting with Python"
+      - section: "17 Advanced Plotting"
         contents:
           - 17/lecture_advanced_plotting.qmd
           - 17/exercises_advanced_plotting.qmd
+      - section: "18 Fitting"
+        contents: 
+            - 18/lecture_curve_fitting.qmd
+            - 18/exercises_curve_fitting.qmd
 
+
+#should be completed here
 
   page-footer:
     left: "© 2025 Introduction to Coding and Data Analysis"
@@ -276,3 +291,11 @@ execute:
   cache: true
   error: true
 
+
+pyodide:
+  packages:
+    - matplotlib
+    - numpy
+    - seaborn
+    - nbformat
+    - plotly

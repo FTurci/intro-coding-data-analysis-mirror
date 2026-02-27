@@ -44,7 +44,6 @@ Both tuples and lists are built-in data types, can hold elements of arbitrary da
 Below are some examples of lists and tuples. Note again that lists and tuples can contain data of any type.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example tuple
 example_tuple = ('random string', 8, True)
 print(example_tuple)
@@ -57,7 +56,6 @@ print(example_list)
 This means they can also be nested. I.e. we can put a list in a list, a tuple in a tuple, a list in a tuple and a tuple in a list!
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 TupleAndListInTuple = (example_tuple, example_list)
 TupleAndListInList = [example_tuple, example_list]
 print(TupleAndListInTuple)
@@ -69,7 +67,6 @@ print(TupleAndListInList)
 Lists and tuples can be added to using the concatenation operator, `+`, like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_list = [1, 2, 3]
 example_list = example_list + [4]
 example_list +=  [5]
@@ -88,7 +85,6 @@ To index in python, square brackets are used. This is a common convention which 
 Python uses zero indexing, which means that the first element in a list of length `n` is indexed as `0` and the last element is indexed as `n-1`. For example see the below (note that the same can also be done for tuples):
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_list = [2,'str',4,9,0]
 
 # Work out the length of the list
@@ -105,7 +101,6 @@ Negative numbers can also be used to index lists (and other similar datatypes). 
 For a list of length `n` any index can be used between `-n` and `(n-1)` (inclusive) to access elements in the list. Indices outside of this range, however, will give an "`index out of range`" error.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Examples of circular wrap-around
 print(example_list)
 print(example_list[-2])
@@ -124,7 +119,6 @@ Note that nested lists and tuples support nested indexing but this involve multi
 You may be more familiar with indexing of the form `example_list[a,b]` (i.e. only one set of square brackets); this syntax does exist in Python but unfortunately not for lists. In fact, this syntax is used heavily by numpy arrays (which we will cover later in the course).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 exampleNested = [('str', 20, 'str2'), [False, 8, 9.5]]
 print(exampleNested[0][1])
 print(exampleNested[1][0])
@@ -136,7 +130,6 @@ print(exampleNested[1][-1])
 A range of index values can be specified to extract values from a list using a colon, `:`. This way of accessing data is known as *slicing* and can be performed as follows:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_list = [1,2,3,4,5]
 print(example_list[0:3])
 ```
@@ -146,7 +139,6 @@ print(example_list[0:3])
 When indexing in python you can leave the start and end values implicit. This will give the same effect as starting from the beginning of the list and ending at the end of the list. For example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_list = [1,2,3,4,5]
 
 # The below two lines will give the same
@@ -164,7 +156,6 @@ print(example_list[:])
 You can also indicate a step size when indexing by using the following syntax:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Print every second element between the 0th and 5th elements
 print(example_list[0:5:2])
 print(example_list[::2])
@@ -173,7 +164,6 @@ print(example_list[::2])
 And you can run backwards through the list by using negative integers as the step size. For example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Print the list backwards
 print(example_list[::-1])
 ```
@@ -183,7 +173,6 @@ print(example_list[::-1])
 Other operations are also available for lists and tuples. Most notably, the `*` symbol can be used to replicate a list or tuple like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_list = [1,2,3,4]
 print(example_list*2)
 
@@ -202,7 +191,6 @@ Other notable operations for lists include:
 A few examples of these functions are given below. Try changing and editing the below code to check your understanding! Again, this is by no means a comprehensive list; more information can be found in the [Python API](https://docs.python.org/3/tutorial/datastructures.html) or in the [W3 schools documentation](https://www.w3schools.com/python/python_lists.asp).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Here is an example list
 example_list = [1,2,3,4,5]
 print(example_list)
@@ -236,7 +224,6 @@ Not as many operations are available for tuples as tuples are immutable (not mea
 Examples of these are given below. For more information on tuples please visit the [Python API](https://docs.python.org/3/tutorial/datastructures.html) or the [W3 schools documentation](https://www.w3schools.com/python/python_tuples.asp).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_tuple = (1,2,3,3,4,5,6)
 
 # Count how many times the value 3 occurs
@@ -259,7 +246,6 @@ Like tuples and lists, both sets and dictionarys are built-in python types and c
 Below are some examples of sets and dictionarys.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_set = {1,'str',3}
 print(example_set)
 
@@ -276,7 +262,6 @@ print(example_dict)
 Elements can be added to dictionarys as `key`s and `value`s. For example; in the first line below the `key` is `a` and the `value` is `b`. Note that a key does not have to be a string; integers and floats work just as well. Values can be of any data type.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Here we assign value 'b' to key 'a'
 example_dict['a'] = 'b'
 
@@ -292,7 +277,6 @@ print(example_dict)
 We can then retreive `value`s from the dictionary using the `key`s we stored them under. This can be done with either square brackets or the built-in `get` function. For example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Using square brackets
 print(example_dict[10])
 print(example_dict['a'])
@@ -307,7 +291,6 @@ print(example_dict.get('a'))
 Elements can be removed from a dictionary using the `pop` and `del` methods. For example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example dictionary
 example_dict = {'A':1, 'B':'str', 'C':2}
 print(example_dict)
@@ -332,7 +315,6 @@ Other operations are also available for dictionarys. Some of the most useful of 
 Examples of these functions are given below. For full documentation and details on more functions see the [Python API](https://docs.python.org/3/tutorial/datastructures.html) and [W3 schools Python documentation](https://www.w3schools.com/python/python_dictionaries.asp).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_dict = {'A':1, 'B':'str', 'C':2}
 print(example_dict.keys())
 print(example_dict.values())
@@ -348,7 +330,6 @@ Note that a `set` is designed to mimic the idea of a `set` in mathematics and, t
 Multiple elements can also be added to a set at once using the `update` method.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_set = {1,'str',3}
 print(example_set)
 
@@ -369,7 +350,6 @@ print(example_set)
 However, there is no notion of indexing for Python `set`s as sets are **unordered**. This means that individual elements cannot be accessed in the same manor as in dictionarys, lists and tuples. We can check if an element is in a set, however, using the `in` keyword.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(1 in example_set)
 print(2 in example_set)
 ```
@@ -379,7 +359,6 @@ print(2 in example_set)
 Elements can be removed from a set using the `remove` function. Note: the `remove` function will errror if the requested value is not in the set.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_set.remove(1)
 print(example_set)
 ```
@@ -397,7 +376,6 @@ Other operations are also available for sets, many of which are designed to mimi
 Examples of these are given below. For full documentation and details on more functions see the [Python API](https://docs.python.org/3/tutorial/datastructures.html) and [W3 schools Python documentation](https://www.w3schools.com/python/python_sets.asp).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print('Sets')
 set1 = {1,2,3,4}
 set2 = {2,4,5,6}
@@ -428,7 +406,6 @@ print(set1.union(set2))
 **Question 1:** The below code creates a `list` of numbers:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 nums = [5, 2, 8, 2, 9]
 ```
@@ -443,14 +420,12 @@ Using this list, write code which does the following:
 Make sure to print the list after each change.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
 **Question 2:** The below code creates a `list`, casts it to a `set` and then casts it back to a `list`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create the list
 my_list = [4,2,3]
 
@@ -470,7 +445,6 @@ The new list doesn't equal the original list. Why do you think this might be?
 **Question 3:** A string can be converted to a set using the `set()` constructor. Use this fact to identify which letter appears in `string2` but not in `string1` below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Here are two strings
 string1 = "This is a long random sentence - I wonder which letters it contains and which letters it doesn't."
 string2 = "This task makes a clear and coherent string with words taken inside a small set"
@@ -481,7 +455,6 @@ string2 = "This task makes a clear and coherent string with words taken inside a
 **Question 4:** The below code creates a tuple named `t`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 t = ('a', 'b', 'c', 'd', 'e')
 ```
 
@@ -494,7 +467,6 @@ Write some code which does the following:
  5. count how many times `'a'` appears in `t`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -512,7 +484,6 @@ Write some code which does the following:
 Using the collection types introduced in this notebook (lists, tuples, sets, dictionaries - no loops or user-defined functions), choose an appropriate way to represent the clinical-trial table. Write your code in the box below.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 my_data = # Write your code here...
 ```
 
