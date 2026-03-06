@@ -234,6 +234,10 @@ window.Quarto = {
     <a class="dropdown-item" href="../18/lecture_curve_fitting.html">
  <span class="dropdown-text">18 - Fitting</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../19/lecture_modularisation.html">
+ <span class="dropdown-text">19 - Modularisation</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -304,6 +308,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../18/exercises_curve_fitting.html">
  <span class="dropdown-text">18 - Curve Fitting Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../19/exercises_modularisation.html">
+ <span class="dropdown-text">19 - Modularisation Exercises</span></a>
   </li>  
     </ul>
   </li>
@@ -379,6 +387,10 @@ window.Quarto = {
         <li>
     <a class="dropdown-item" href="../17/exercises_advanced_plotting-solutions.html">
  <span class="dropdown-text">17 - Advanced Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../18/exercises_curve_fitting-solutions.html">
+ <span class="dropdown-text">18 - Curve Fitting Solutions</span></a>
   </li>  
     </ul>
   </li>
@@ -899,6 +911,29 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false">
+ <span class="menu-text">19 Modularisation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19/lecture_modularisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modularisation in Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19/exercises_modularisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises: Modularisation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -996,7 +1031,7 @@ y
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5pbXBvcnQgbnVtcHkgYXMgbnBcblxuQSA9IG5wLmFycmF5KFtbMiwzXSwgWzQsLTFdXSkgIyBjb25zdHJ1Y3RpbmcgdGhlIG1hdHJpeCBBXG5iID0gbnAuYXJyYXkoWzUsIDNdKSAjIGNvbnN0cnVjdGluZyB0aGUgdmVjdG9yIGJcblxuc29sdXRpb24gPSBucC5saW5hbGcuc29sdmUoQSwgYikgIyBzb2x2aW5nIHRoZSBzeXN0ZW0gb2YgZXF1YXRpb25zIEFwID0gYlxuXG5zb2x1dGlvbiJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJcbmltcG9ydCBudW1weSBhcyBucFxuXG5BID0gbnAuYXJyYXkoW1syLDNdLCBbNCwtMV1dKSAjIGNvbnN0cnVjdGluZyB0aGUgbWF0cml4IEFcbmIgPSBucC5hcnJheShbNSwgM10pICMgY29uc3RydWN0aW5nIHRoZSB2ZWN0b3IgYlxuXG5zb2x1dGlvbiA9IG5wLmxpbmFsZy5zb2x2ZShBLCBiKSAjIHNvbHZpbmcgdGhlIHN5c3RlbSBvZiBlcXVhdGlvbnMgQXAgPSBiXG5cbnNvbHV0aW9uIn0=
 </script>
 </div>
 </section>
@@ -1045,7 +1080,7 @@ X^T X \theta = X^T \vec{y}
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5cbnJuZyA9IG5wLnJhbmRvbS5kZWZhdWx0X3JuZyhzZWVkPTQyKSAjIHNldHRpbmcgYSByYW5kb20gc2VlZCBmb3IgcmVwcm9kdWNpYmlsaXR5XG5cbiMgZ2VuZXJhdGUgYXJ0aWZpY2lhbCBkYXRhIGZvciBjaG9zZW4gdmFsdWVzIG9mIG0gYW5kIGJcbm1fdHJ1ZSA9IDIuNVxuYl90cnVlID0gMS4wXG5OID0gMTAwMCAjIGNoYW5nZSB0aGlzIHRvIGluY3JlYXNlL2RlY3JlYXNlIHRoZSBudW1iZXIgb2YgZGF0YSBwb2ludHNcbnggPSBucC5saW5zcGFjZSgwLCAxMCwgTikgIyBOIGV2ZW5seSBzcGFjZWQgcG9pbnRzIGJldHdlZW4gMCBhbmQgMTBcbnkgPSBtX3RydWUgKiB4ICsgYl90cnVlICsgcm5nLm5vcm1hbCgwLCAxLCBzaXplPXguc2hhcGUpICMgYWRkaW5nIHNvbWUgbm9pc2UgdG8gdGhlIGRhdGFcblxuIyBub3cgY29uc3RydWN0IHRoZSBtYXRyaXggWCBhbmQgdmVjdG9yIHkgZm9yIHRoZSBsaW5lYXIgbW9kZWxcblggPSBucC5jb2x1bW5fc3RhY2soKHgsIG5wLm9uZXNfbGlrZSh4KSkpICMgYWRkaW5nIGEgY29sdW1uIG9mIG9uZXMgZm9yIHRoZSBpbnRlcmNlcHRcblxuIyBzb2x2ZSBmb3IgdGhldGEgdXNpbmcgdGhlIG5vcm1hbCBlcXVhdGlvbnNcbnRoZXRhID0gbnAubGluYWxnLnNvbHZlKFguVCBAIFgsIFguVCBAIHkpXG5tX2VzdCwgYl9lc3QgPSB0aGV0YVxucHJpbnQoZlwiRXN0aW1hdGVkIHNsb3BlOiB7bV9lc3R9LCBFc3RpbWF0ZWQgaW50ZXJjZXB0OiB7Yl9lc3R9XCIpIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcblxucm5nID0gbnAucmFuZG9tLmRlZmF1bHRfcm5nKHNlZWQ9NDIpICMgc2V0dGluZyBhIHJhbmRvbSBzZWVkIGZvciByZXByb2R1Y2liaWxpdHlcblxuIyBnZW5lcmF0ZSBhcnRpZmljaWFsIGRhdGEgZm9yIGNob3NlbiB2YWx1ZXMgb2YgbSBhbmQgYlxubV90cnVlID0gMi41XG5iX3RydWUgPSAxLjBcbk4gPSAxMDAwICMgY2hhbmdlIHRoaXMgdG8gaW5jcmVhc2UvZGVjcmVhc2UgdGhlIG51bWJlciBvZiBkYXRhIHBvaW50c1xueCA9IG5wLmxpbnNwYWNlKDAsIDEwLCBOKSAjIE4gZXZlbmx5IHNwYWNlZCBwb2ludHMgYmV0d2VlbiAwIGFuZCAxMFxueSA9IG1fdHJ1ZSAqIHggKyBiX3RydWUgKyBybmcubm9ybWFsKDAsIDEsIHNpemU9eC5zaGFwZSkgIyBhZGRpbmcgc29tZSBub2lzZSB0byB0aGUgZGF0YVxuXG4jIG5vdyBjb25zdHJ1Y3QgdGhlIG1hdHJpeCBYIGFuZCB2ZWN0b3IgeSBmb3IgdGhlIGxpbmVhciBtb2RlbFxuWCA9IG5wLmNvbHVtbl9zdGFjaygoeCwgbnAub25lc19saWtlKHgpKSkgIyBhZGRpbmcgYSBjb2x1bW4gb2Ygb25lcyBmb3IgdGhlIGludGVyY2VwdFxuXG4jIHNvbHZlIGZvciB0aGV0YSB1c2luZyB0aGUgbm9ybWFsIGVxdWF0aW9uc1xudGhldGEgPSBucC5saW5hbGcuc29sdmUoWC5UIEAgWCwgWC5UIEAgeSlcbm1fZXN0LCBiX2VzdCA9IHRoZXRhXG5wcmludChmXCJFc3RpbWF0ZWQgc2xvcGU6IHttX2VzdH0sIEVzdGltYXRlZCBpbnRlcmNlcHQ6IHtiX2VzdH1cIikifQ==
 </script>
 </div>
 </section>
@@ -1075,7 +1110,7 @@ x_N^2 &amp; x_N &amp; 1 \end{bmatrix}
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiTiA9IDEwMCAjIGNoYW5nZSB0aGlzIHRvIGluY3JlYXNlL2RlY3JlYXNlIHRoZSBudW1iZXIgb2YgZGF0YSBwb2ludHNcbnggPSBucC5saW5zcGFjZSgwLCAxMCwgTilcbiMgZ2VuZXJhdGUgYXJ0aWZpY2lhbCBkYXRhIGZvciBjaG9zZW4gdmFsdWVzIG9mIGEsIGIsIGFuZCBjXG5hX3RydWUgPSAwLjVcbmJfdHJ1ZSA9IDEuMFxuY190cnVlID0gLTAuM1xuXG55ID0gYV90cnVlICogeCoqMiArIGJfdHJ1ZSAqIHggKyBjX3RydWUgKyBybmcubm9ybWFsKDAsIDEsIHNpemU9eC5zaGFwZSkgIyBhZGRpbmcgc29tZSBub2lzZSB0byB0aGUgZGF0YVxuIyBjb25zdHJ1Y3QgdGhlIG1hdHJpeCBYIGZvciB0aGUgcXVhZHJhdGljIG1vZGVsXG5YID0gbnAuY29sdW1uX3N0YWNrKCh4KioyLCB4LCBucC5vbmVzX2xpa2UoeCkpKSAjIHRocmVlIGNvbHVtbnMgZm9yIHheMiwgeCwgYW5kIHRoZSBpbnRlcmNlcHRcblxudGhldGEgPSBucC5saW5hbGcuc29sdmUoWC5UIEAgWCwgWC5UIEAgeSlcbmFfZXN0LCBiX2VzdCwgY19lc3QgPSB0aGV0YVxucHJpbnQoZlwiRXN0aW1hdGVkIGE6IHthX2VzdH0sIEVzdGltYXRlZCBiOiB7Yl9lc3R9LCBFc3RpbWF0ZWQgYzoge2NfZXN0fVwiKSJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJOID0gMTAwICMgY2hhbmdlIHRoaXMgdG8gaW5jcmVhc2UvZGVjcmVhc2UgdGhlIG51bWJlciBvZiBkYXRhIHBvaW50c1xueCA9IG5wLmxpbnNwYWNlKDAsIDEwLCBOKVxuIyBnZW5lcmF0ZSBhcnRpZmljaWFsIGRhdGEgZm9yIGNob3NlbiB2YWx1ZXMgb2YgYSwgYiwgYW5kIGNcbmFfdHJ1ZSA9IDAuNVxuYl90cnVlID0gMS4wXG5jX3RydWUgPSAtMC4zXG5cbnkgPSBhX3RydWUgKiB4KioyICsgYl90cnVlICogeCArIGNfdHJ1ZSArIHJuZy5ub3JtYWwoMCwgMSwgc2l6ZT14LnNoYXBlKSAjIGFkZGluZyBzb21lIG5vaXNlIHRvIHRoZSBkYXRhXG4jIGNvbnN0cnVjdCB0aGUgbWF0cml4IFggZm9yIHRoZSBxdWFkcmF0aWMgbW9kZWxcblggPSBucC5jb2x1bW5fc3RhY2soKHgqKjIsIHgsIG5wLm9uZXNfbGlrZSh4KSkpICMgdGhyZWUgY29sdW1ucyBmb3IgeF4yLCB4LCBhbmQgdGhlIGludGVyY2VwdFxuXG50aGV0YSA9IG5wLmxpbmFsZy5zb2x2ZShYLlQgQCBYLCBYLlQgQCB5KVxuYV9lc3QsIGJfZXN0LCBjX2VzdCA9IHRoZXRhXG5wcmludChmXCJFc3RpbWF0ZWQgYToge2FfZXN0fSwgRXN0aW1hdGVkIGI6IHtiX2VzdH0sIEVzdGltYXRlZCBjOiB7Y19lc3R9XCIpIn0=
 </script>
 </div>
 <p>To plot the data it is important to note that the fitted curve needs to be evaluated typically at many more pints that the original <span class="math inline">\(x_i\)</span> data, so that it looks smooth.</p>
@@ -1084,7 +1119,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiTiA9IDEwMCAjIGNoYW5nZSB0
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIucHlwbG90IGFzIHBsdFxuXG4jIHBsb3R0aW5nIHRoZSBkYXRhIGFuZCB0aGUgZml0dGVkIGN1cnZlXG5wbHQuc2NhdHRlcih4LCB5LCBsYWJlbD0nRGF0YScsIGNvbG9yPSdibHVlJywgYWxwaGE9MC41LCBtYXJrZXI9XCJ4XCIpXG5uX3BvaW50c19maXR0ZWRfY3VydmUgPSA1ICMgdHJ5IGluY3JlYXNpbmcgdGhpcyB0byBzZWUgYSBzbW9vdGhlciBjdXJ2ZVxueF9maXQgPSBucC5saW5zcGFjZSgwLCAxMCwgbl9wb2ludHNfZml0dGVkX2N1cnZlKSBcbnlfZml0ID0gYV9lc3QgKiB4X2ZpdCoqMiArIGJfZXN0ICogeF9maXQgKyBjX2VzdFxucGx0LnBsb3QoeF9maXQsIHlfZml0LCctbycsIGxhYmVsPSdGaXR0ZWQgQ3VydmUgXFxuKGRvdHMgYXJlIHRoZSBldmFsdWF0ZWQgcG9pbnRzXFxuYW5kIGxpbmVzIHNpbXBseSBpbnRlcnBvbGF0ZSknLCBjb2xvcj0ncmVkJylcbnBsdC5sZWdlbmQoKVxucGx0LnhsYWJlbCgneCcpXG5wbHQueWxhYmVsKCd5JylcbnBsdC50aXRsZSgnUXVhZHJhdGljIEZpdCB0byBEYXRhJykifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbiMgcGxvdHRpbmcgdGhlIGRhdGEgYW5kIHRoZSBmaXR0ZWQgY3VydmVcbnBsdC5zY2F0dGVyKHgsIHksIGxhYmVsPSdEYXRhJywgY29sb3I9J2JsdWUnLCBhbHBoYT0wLjUsIG1hcmtlcj1cInhcIilcbm5fcG9pbnRzX2ZpdHRlZF9jdXJ2ZSA9IDUgIyB0cnkgaW5jcmVhc2luZyB0aGlzIHRvIHNlZSBhIHNtb290aGVyIGN1cnZlXG54X2ZpdCA9IG5wLmxpbnNwYWNlKDAsIDEwLCBuX3BvaW50c19maXR0ZWRfY3VydmUpIFxueV9maXQgPSBhX2VzdCAqIHhfZml0KioyICsgYl9lc3QgKiB4X2ZpdCArIGNfZXN0XG5wbHQucGxvdCh4X2ZpdCwgeV9maXQsJy1vJywgbGFiZWw9J0ZpdHRlZCBDdXJ2ZSBcXG4oZG90cyBhcmUgdGhlIGV2YWx1YXRlZCBwb2ludHNcXG5hbmQgbGluZXMgc2ltcGx5IGludGVycG9sYXRlKScsIGNvbG9yPSdyZWQnKVxucGx0LmxlZ2VuZCgpXG5wbHQueGxhYmVsKCd4JylcbnBsdC55bGFiZWwoJ3knKVxucGx0LnRpdGxlKCdRdWFkcmF0aWMgRml0IHRvIERhdGEnKSJ9
 </script>
 </div>
 </section>
@@ -1099,7 +1134,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG1hdHBsb3RsaWIu
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZmZzID0gbnAucG9seWZpdCh4LCB5LCAyKSAjIGZpdHRpbmcgYSBxdWFkcmF0aWMgcG9seW5vbWlhbCB0byB0aGUgZGF0YVxuYV9wb2x5Zml0LCBiX3BvbHlmaXQsIGNfcG9seWZpdCA9IGNvZWZmc1xucHJpbnQoZlwiRXN0aW1hdGVkIGEgKHBvbHlmaXQpOiB7YV9wb2x5Zml0fSwgRXN0aW1hdGVkIGIgKHBvbHlmaXQpOiB7Yl9wb2x5Zml0fSwgRXN0aW1hdGVkIGMgKHBvbHlmaXQpOiB7Y19wb2x5Zml0fVwiKSAgXG5wcmludChmXCJEaWZmZXJlbmNlIGluIGE6IHthX2VzdCAtIGFfcG9seWZpdH0sIERpZmZlcmVuY2UgaW4gYjoge2JfZXN0IC0gYl9wb2x5Zml0fSwgRGlmZmVyZW5jZSBpbiBjOiB7Y19lc3QgLSBjX3BvbHlmaXR9XCIpICMgbm90aWNlIHRoYXQgdGhlIGRpZmZlcmVuY2UgaXMgZXNzZW50aWFsbHkgbnVtZXJpY2FsIG5vaXNlIn0=
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJjb2VmZnMgPSBucC5wb2x5Zml0KHgsIHksIDIpICMgZml0dGluZyBhIHF1YWRyYXRpYyBwb2x5bm9taWFsIHRvIHRoZSBkYXRhXG5hX3BvbHlmaXQsIGJfcG9seWZpdCwgY19wb2x5Zml0ID0gY29lZmZzXG5wcmludChmXCJFc3RpbWF0ZWQgYSAocG9seWZpdCk6IHthX3BvbHlmaXR9LCBFc3RpbWF0ZWQgYiAocG9seWZpdCk6IHtiX3BvbHlmaXR9LCBFc3RpbWF0ZWQgYyAocG9seWZpdCk6IHtjX3BvbHlmaXR9XCIpICBcbnByaW50KGZcIkRpZmZlcmVuY2UgaW4gYToge2FfZXN0IC0gYV9wb2x5Zml0fSwgRGlmZmVyZW5jZSBpbiBiOiB7Yl9lc3QgLSBiX3BvbHlmaXR9LCBEaWZmZXJlbmNlIGluIGM6IHtjX2VzdCAtIGNfcG9seWZpdH1cIikgIyBub3RpY2UgdGhhdCB0aGUgZGlmZmVyZW5jZSBpcyBlc3NlbnRpYWxseSBudW1lcmljYWwgbm9pc2UifQ==
 </script>
 </div>
 </section>
@@ -1125,7 +1160,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZmZzID0gbnAucG9seWZp
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZmZzLCBjb3YgPSBucC5wb2x5Zml0KHgsIHksIDIsIGNvdj1UcnVlKSAjIGZpdHRpbmcgYSBxdWFkcmF0aWMgcG9seW5vbWlhbCB0byB0aGUgZGF0YVxuXG5jb3YifQ==
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJjb2VmZnMsIGNvdiA9IG5wLnBvbHlmaXQoeCwgeSwgMiwgY292PVRydWUpICMgZml0dGluZyBhIHF1YWRyYXRpYyBwb2x5bm9taWFsIHRvIHRoZSBkYXRhXG5cbmNvdiJ9
 </script>
 </div>
 <div>
@@ -1133,7 +1168,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZmZzLCBjb3YgPSBucC5w
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyB0aGUgZGlhZ29uYWwgb2YgdGhlIGNvdmFyaWFuY2UgbWF0cml4IGdpdmVzIHVzIHRoZSB2YXJpYW5jZSBvZiB0aGUgZXN0aW1hdGVkIGNvZWZmaWNpZW50c1xudmFyX2EsIHZhcl9iLCB2YXJfYyA9IG5wLmRpYWcoY292KVxucHJpbnQoZlwiVmFyaWFuY2Ugb2YgYToge3Zhcl9hfSwgVmFyaWFuY2Ugb2YgYjoge3Zhcl9ifSwgVmFyaWFuY2Ugb2YgYzoge3Zhcl9jfVwiKSJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIHRoZSBkaWFnb25hbCBvZiB0aGUgY292YXJpYW5jZSBtYXRyaXggZ2l2ZXMgdXMgdGhlIHZhcmlhbmNlIG9mIHRoZSBlc3RpbWF0ZWQgY29lZmZpY2llbnRzXG52YXJfYSwgdmFyX2IsIHZhcl9jID0gbnAuZGlhZyhjb3YpXG5wcmludChmXCJWYXJpYW5jZSBvZiBhOiB7dmFyX2F9LCBWYXJpYW5jZSBvZiBiOiB7dmFyX2J9LCBWYXJpYW5jZSBvZiBjOiB7dmFyX2N9XCIpIn0=
 </script>
 </div>
 <div>
@@ -1141,7 +1176,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyB0aGUgZGlhZ29uYWwgb2Yg
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyB0aGUgZXJyb3JzIGFyZSB0aGVuIHRoZSBzcXVhcmUgcm9vdCBvZiB0aGUgdmFyaWFuY2VzXG5lcnJvcl9hID0gbnAuc3FydCh2YXJfYSlcbmVycm9yX2IgPSBucC5zcXJ0KHZhcl9iKVxuZXJyb3JfYyA9IG5wLnNxcnQodmFyX2MpXG5wcmludChcIkVzdGltYXRlIGEgd2l0aCBlcnJvcjogXCIsIGFfcG9seWZpdCwgXCIrLy1cIiwgZXJyb3JfYSlcbnByaW50KFwiRXN0aW1hdGUgYiB3aXRoIGVycm9yOiBcIiwgYl9wb2x5Zml0LCBcIisvLVwiLCBlcnJvcl9iKVxucHJpbnQoXCJFc3RpbWF0ZSBjIHdpdGggZXJyb3I6IFwiLCBjX3BvbHlmaXQsIFwiKy8tXCIsIGVycm9yX2MpICJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIHRoZSBlcnJvcnMgYXJlIHRoZW4gdGhlIHNxdWFyZSByb290IG9mIHRoZSB2YXJpYW5jZXNcbmVycm9yX2EgPSBucC5zcXJ0KHZhcl9hKVxuZXJyb3JfYiA9IG5wLnNxcnQodmFyX2IpXG5lcnJvcl9jID0gbnAuc3FydCh2YXJfYylcbnByaW50KFwiRXN0aW1hdGUgYSB3aXRoIGVycm9yOiBcIiwgYV9wb2x5Zml0LCBcIisvLVwiLCBlcnJvcl9hKVxucHJpbnQoXCJFc3RpbWF0ZSBiIHdpdGggZXJyb3I6IFwiLCBiX3BvbHlmaXQsIFwiKy8tXCIsIGVycm9yX2IpXG5wcmludChcIkVzdGltYXRlIGMgd2l0aCBlcnJvcjogXCIsIGNfcG9seWZpdCwgXCIrLy1cIiwgZXJyb3JfYykgIn0=
 </script>
 </div>
 <p>In practice, estimating the fitting parameters with their errors directly from the covariance matrix tends to underestimate true errors, for example when the model is not certain or when the data is not well-behaved.</p>
@@ -1162,7 +1197,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyB0aGUgZXJyb3JzIGFyZSB0
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyMgYm9vdHN0cmFwIG1ldGhvZCBmb3IgZXJyb3IgZXN0aW1hdGlvblxubl9ib290c3RyYXAgPSAxMDAwXG5ib290c3RyYXBfZXN0aW1hdGVzID0gbnAuemVyb3MoKG5fYm9vdHN0cmFwLCAzKSkgIyB0byBzdG9yZSB0aGUgZXN0aW1hdGVzXG5mb3IgaSBpbiByYW5nZShuX2Jvb3RzdHJhcCk6XG4gICAgIyBwaWNraW5nIHJhbmRvbSBpbmRpY2VzIGZvciByZXNhbXBsaW5nXG4gICAgaW5kaWNlcyA9IHJuZy5jaG9pY2UoTiwgc2l6ZT1OLCByZXBsYWNlPVRydWUpICMgcmVzYW1wbGluZyB3aXRoIHJlcGxhY2VtZW50XG5cbiAgICB4X2Jvb3RzdHJhcCA9IHhbaW5kaWNlc11cbiAgICB5X2Jvb3RzdHJhcCA9IHlbaW5kaWNlc11cbiAgICAjIGZpdHRpbmcgdGhlIG1vZGVsIHRvIHRoZSByZXNhbXBsZWQgZGF0YVxuICAgIGNvZWZmc19ib290c3RyYXAgPSBucC5wb2x5Zml0KHhfYm9vdHN0cmFwLCB5X2Jvb3RzdHJhcCwgMilcbiAgICBib290c3RyYXBfZXN0aW1hdGVzW2ldID0gY29lZmZzX2Jvb3RzdHJhcFxuXG5cbmFfYm9vdHN0cmFwX2VzdGltYXRlcyA9IGJvb3RzdHJhcF9lc3RpbWF0ZXNbOiwgMF1cbmJfYm9vdHN0cmFwX2VzdGltYXRlcyA9IGJvb3RzdHJhcF9lc3RpbWF0ZXNbOiwgMV1cbmNfYm9vdHN0cmFwX2VzdGltYXRlcyA9IGJvb3RzdHJhcF9lc3RpbWF0ZXNbOiwgMl0gICBcbnByaW50KGZcIkJvb3RzdHJhcCBlc3RpbWF0ZSBvZiBhOiB7bnAubWVhbihhX2Jvb3RzdHJhcF9lc3RpbWF0ZXMpfSB3aXRoIGVycm9yIHtucC5zdGQoYV9ib290c3RyYXBfZXN0aW1hdGVzKX1cIilcbnByaW50KGZcIkJvb3RzdHJhcCBlc3RpbWF0ZSBvZiBiOiB7bnAubWVhbihiX2Jvb3RzdHJhcF9lc3RpbWF0ZXMpfSB3aXRoIGVycm9yIHtucC5zdGQoYl9ib290c3RyYXBfZXN0aW1hdGVzKX1cIilcbnByaW50KGZcIkJvb3RzdHJhcCBlc3RpbWF0ZSBvZiBjOiB7bnAubWVhbihjX2Jvb3RzdHJhcF9lc3RpbWF0ZXMpfSB3aXRoIGVycm9yIHtucC5zdGQoY19ib290c3RyYXBfZXN0aW1hdGVzKX1cIikgICJ9
+eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIyBib290c3RyYXAgbWV0aG9kIGZvciBlcnJvciBlc3RpbWF0aW9uXG5uX2Jvb3RzdHJhcCA9IDEwMDBcbmJvb3RzdHJhcF9lc3RpbWF0ZXMgPSBucC56ZXJvcygobl9ib290c3RyYXAsIDMpKSAjIHRvIHN0b3JlIHRoZSBlc3RpbWF0ZXNcbmZvciBpIGluIHJhbmdlKG5fYm9vdHN0cmFwKTpcbiAgICAjIHBpY2tpbmcgcmFuZG9tIGluZGljZXMgZm9yIHJlc2FtcGxpbmdcbiAgICBpbmRpY2VzID0gcm5nLmNob2ljZShOLCBzaXplPU4sIHJlcGxhY2U9VHJ1ZSkgIyByZXNhbXBsaW5nIHdpdGggcmVwbGFjZW1lbnRcblxuICAgIHhfYm9vdHN0cmFwID0geFtpbmRpY2VzXVxuICAgIHlfYm9vdHN0cmFwID0geVtpbmRpY2VzXVxuICAgICMgZml0dGluZyB0aGUgbW9kZWwgdG8gdGhlIHJlc2FtcGxlZCBkYXRhXG4gICAgY29lZmZzX2Jvb3RzdHJhcCA9IG5wLnBvbHlmaXQoeF9ib290c3RyYXAsIHlfYm9vdHN0cmFwLCAyKVxuICAgIGJvb3RzdHJhcF9lc3RpbWF0ZXNbaV0gPSBjb2VmZnNfYm9vdHN0cmFwXG5cblxuYV9ib290c3RyYXBfZXN0aW1hdGVzID0gYm9vdHN0cmFwX2VzdGltYXRlc1s6LCAwXVxuYl9ib290c3RyYXBfZXN0aW1hdGVzID0gYm9vdHN0cmFwX2VzdGltYXRlc1s6LCAxXVxuY19ib290c3RyYXBfZXN0aW1hdGVzID0gYm9vdHN0cmFwX2VzdGltYXRlc1s6LCAyXSAgIFxucHJpbnQoZlwiQm9vdHN0cmFwIGVzdGltYXRlIG9mIGE6IHtucC5tZWFuKGFfYm9vdHN0cmFwX2VzdGltYXRlcyl9IHdpdGggZXJyb3Ige25wLnN0ZChhX2Jvb3RzdHJhcF9lc3RpbWF0ZXMpfVwiKVxucHJpbnQoZlwiQm9vdHN0cmFwIGVzdGltYXRlIG9mIGI6IHtucC5tZWFuKGJfYm9vdHN0cmFwX2VzdGltYXRlcyl9IHdpdGggZXJyb3Ige25wLnN0ZChiX2Jvb3RzdHJhcF9lc3RpbWF0ZXMpfVwiKVxucHJpbnQoZlwiQm9vdHN0cmFwIGVzdGltYXRlIG9mIGM6IHtucC5tZWFuKGNfYm9vdHN0cmFwX2VzdGltYXRlcyl9IHdpdGggZXJyb3Ige25wLnN0ZChjX2Jvb3RzdHJhcF9lc3RpbWF0ZXMpfVwiKSAgIn0=
 </script>
 </div>
 <p>Reassuringly, the errors are compatible with the ones obtained from the covariance matrix, but they are more robust to violations of the assumptions of the model and to outliers in the data.</p>
@@ -1739,281 +1774,291 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb2-79"><a href="#cb2-79" aria-hidden="true" tabindex="-1"></a>In <span class="in">`numpy`</span>, this is implemented in the <span class="in">`numpy.linalg.solve`</span> function, which efficiently solves the system of linear equations.</span>
 <span id="cb2-80"><a href="#cb2-80" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-83"><a href="#cb2-83" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-84"><a href="#cb2-84" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
 <span id="cb2-85"><a href="#cb2-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="op">-</span><span class="dv">1</span>]]) <span class="co"># constructing the matrix A</span></span>
-<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">3</span>]) <span class="co"># constructing the vector b</span></span>
-<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> np.linalg.solve(A, b) <span class="co"># solving the system of equations Ap = b</span></span>
+<span id="cb2-86"><a href="#cb2-86" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-87"><a href="#cb2-87" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-88"><a href="#cb2-88" aria-hidden="true" tabindex="-1"></a>A <span class="op">=</span> np.array([[<span class="dv">2</span>,<span class="dv">3</span>], [<span class="dv">4</span>,<span class="op">-</span><span class="dv">1</span>]]) <span class="co"># constructing the matrix A</span></span>
+<span id="cb2-89"><a href="#cb2-89" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array([<span class="dv">5</span>, <span class="dv">3</span>]) <span class="co"># constructing the vector b</span></span>
 <span id="cb2-90"><a href="#cb2-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>solution</span>
-<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="fu">## Constructing a linear model with data</span></span>
+<span id="cb2-91"><a href="#cb2-91" aria-hidden="true" tabindex="-1"></a>solution <span class="op">=</span> np.linalg.solve(A, b) <span class="co"># solving the system of equations Ap = b</span></span>
+<span id="cb2-92"><a href="#cb2-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-93"><a href="#cb2-93" aria-hidden="true" tabindex="-1"></a>solution</span>
+<span id="cb2-94"><a href="#cb2-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb2-95"><a href="#cb2-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a>Now, let's imagine that we have a dataset of $N$ points that we want to fit a line to. Let's call them $x_i=<span class="sc">\{</span>x_1, x_2, \dots, x_N<span class="sc">\}</span>$ and $y_i=<span class="sc">\{</span>y_1, y_2, \dots, y_N<span class="sc">\}</span>$.</span>
+<span id="cb2-96"><a href="#cb2-96" aria-hidden="true" tabindex="-1"></a><span class="fu">## Constructing a linear model with data</span></span>
 <span id="cb2-97"><a href="#cb2-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>These could be, for example, measurements of the height of a particle at different times, or the price of a stock at different days.</span>
+<span id="cb2-98"><a href="#cb2-98" aria-hidden="true" tabindex="-1"></a>Now, let's imagine that we have a dataset of $N$ points that we want to fit a line to. Let's call them $x_i=<span class="sc">\{</span>x_1, x_2, \dots, x_N<span class="sc">\}</span>$ and $y_i=<span class="sc">\{</span>y_1, y_2, \dots, y_N<span class="sc">\}</span>$.</span>
 <span id="cb2-99"><a href="#cb2-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>The idea is that there is an underlying relationhsip between $x_i$ and $y_i$ but that the data is noisy for various reasons (e.g. measurement errors, natural variability, etc.).</span>
+<span id="cb2-100"><a href="#cb2-100" aria-hidden="true" tabindex="-1"></a>These could be, for example, measurements of the height of a particle at different times, or the price of a stock at different days.</span>
 <span id="cb2-101"><a href="#cb2-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>This means that we are thinking of the data as being generated by a model of the form:</span>
+<span id="cb2-102"><a href="#cb2-102" aria-hidden="true" tabindex="-1"></a>The idea is that there is an underlying relationhsip between $x_i$ and $y_i$ but that the data is noisy for various reasons (e.g. measurement errors, natural variability, etc.).</span>
 <span id="cb2-103"><a href="#cb2-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a>y_i = m x_i + b + \epsilon_i</span>
+<span id="cb2-104"><a href="#cb2-104" aria-hidden="true" tabindex="-1"></a>This means that we are thinking of the data as being generated by a model of the form:</span>
+<span id="cb2-105"><a href="#cb2-105" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-106"><a href="#cb2-106" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>where $m$ is the slope of the line, $b$ is the intercept, and $\epsilon_i$ is the error term that captures the noise in the data.</span>
+<span id="cb2-107"><a href="#cb2-107" aria-hidden="true" tabindex="-1"></a>y_i = m x_i + b + \epsilon_i</span>
+<span id="cb2-108"><a href="#cb2-108" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb2-109"><a href="#cb2-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>What we want to find the **best values** of $m$ and $b$ that describe the relationship between $x_i$ and $y_i$ in a purely linear model.</span>
+<span id="cb2-110"><a href="#cb2-110" aria-hidden="true" tabindex="-1"></a>where $m$ is the slope of the line, $b$ is the intercept, and $\epsilon_i$ is the error term that captures the noise in the data.</span>
 <span id="cb2-111"><a href="#cb2-111" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>We can rewrite this linear model in matrix form as:</span>
+<span id="cb2-112"><a href="#cb2-112" aria-hidden="true" tabindex="-1"></a>What we want to find the **best values** of $m$ and $b$ that describe the relationship between $x_i$ and $y_i$ in a purely linear model.</span>
 <span id="cb2-113"><a href="#cb2-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>$$\boxed{\vec{y} = X \vec{\theta}}$$</span>
+<span id="cb2-114"><a href="#cb2-114" aria-hidden="true" tabindex="-1"></a>We can rewrite this linear model in matrix form as:</span>
 <span id="cb2-115"><a href="#cb2-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>where </span>
+<span id="cb2-116"><a href="#cb2-116" aria-hidden="true" tabindex="-1"></a>$$\boxed{\vec{y} = X \vec{\theta}}$$</span>
 <span id="cb2-117"><a href="#cb2-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>$$ \vec{y} = \begin{bmatrix} y_1 <span class="sc">\\</span> y_2 <span class="sc">\\</span> \vdots <span class="sc">\\</span> y_N \end{bmatrix} $$</span>
+<span id="cb2-118"><a href="#cb2-118" aria-hidden="true" tabindex="-1"></a>where </span>
 <span id="cb2-119"><a href="#cb2-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>$$  X = \begin{bmatrix} x_1 &amp; 1 <span class="sc">\\</span> x_2 &amp; 1 <span class="sc">\\</span> \vdots &amp; \vdots <span class="sc">\\</span> x_N &amp; 1 \end{bmatrix} $$</span>
+<span id="cb2-120"><a href="#cb2-120" aria-hidden="true" tabindex="-1"></a>$$ \vec{y} = \begin{bmatrix} y_1 <span class="sc">\\</span> y_2 <span class="sc">\\</span> \vdots <span class="sc">\\</span> y_N \end{bmatrix} $$</span>
 <span id="cb2-121"><a href="#cb2-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>and </span>
+<span id="cb2-122"><a href="#cb2-122" aria-hidden="true" tabindex="-1"></a>$$  X = \begin{bmatrix} x_1 &amp; 1 <span class="sc">\\</span> x_2 &amp; 1 <span class="sc">\\</span> \vdots &amp; \vdots <span class="sc">\\</span> x_N &amp; 1 \end{bmatrix} $$</span>
 <span id="cb2-123"><a href="#cb2-123" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>$$ \vec{\theta} = \begin{bmatrix} m <span class="sc">\\</span> b \end{bmatrix}$$</span>
+<span id="cb2-124"><a href="#cb2-124" aria-hidden="true" tabindex="-1"></a>and </span>
 <span id="cb2-125"><a href="#cb2-125" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a>What we want to do is therefore to find the values of $\vec{\theta}$ that minimize the distance between the predicted values $X \vec{\theta}$ and the actual values $\vec{y}$, which is equivalent to finding the values of $m$ and $b$ that minimize the sum of squared errors:</span>
+<span id="cb2-126"><a href="#cb2-126" aria-hidden="true" tabindex="-1"></a>$$ \vec{\theta} = \begin{bmatrix} m <span class="sc">\\</span> b \end{bmatrix}$$</span>
+<span id="cb2-127"><a href="#cb2-127" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-128"><a href="#cb2-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a>\text{SSE} = \sum_{i=1}^N (y_i - (m x_i + b))^2</span>
+<span id="cb2-129"><a href="#cb2-129" aria-hidden="true" tabindex="-1"></a>What we want to do is therefore to find the values of $\vec{\theta}$ that minimize the distance between the predicted values $X \vec{\theta}$ and the actual values $\vec{y}$, which is equivalent to finding the values of $m$ and $b$ that minimize the sum of squared errors:</span>
+<span id="cb2-130"><a href="#cb2-130" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-131"><a href="#cb2-131" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>It turns out that this problem can be worked analytically by taking the derivative of the SSE with respect to $m$ and $b$, setting it to zero, and solving for $m$ and $b$. This leads to the so-called **normal equations** for the determination of the parameters:</span>
+<span id="cb2-132"><a href="#cb2-132" aria-hidden="true" tabindex="-1"></a>\text{SSE} = \sum_{i=1}^N (y_i - (m x_i + b))^2</span>
+<span id="cb2-133"><a href="#cb2-133" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb2-134"><a href="#cb2-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a>\vec{\theta} = (X^T X)^{-1} X^T \vec{y}</span>
+<span id="cb2-135"><a href="#cb2-135" aria-hidden="true" tabindex="-1"></a>It turns out that this problem can be worked analytically by taking the derivative of the SSE with respect to $m$ and $b$, setting it to zero, and solving for $m$ and $b$. This leads to the so-called **normal equations** for the determination of the parameters:</span>
+<span id="cb2-136"><a href="#cb2-136" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-137"><a href="#cb2-137" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>where $X^T$ stands for the transpose of the matrix $X$ and $(X^T X)^{-1}$ is the inverse of the matrix $X^T X$. This method is called **ordinary least squares** and is the most common method for fitting linear models to data.</span>
+<span id="cb2-138"><a href="#cb2-138" aria-hidden="true" tabindex="-1"></a>\vec{\theta} = (X^T X)^{-1} X^T \vec{y}</span>
+<span id="cb2-139"><a href="#cb2-139" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb2-140"><a href="#cb2-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>The normal equations can be re-written as:</span>
+<span id="cb2-141"><a href="#cb2-141" aria-hidden="true" tabindex="-1"></a>where $X^T$ stands for the transpose of the matrix $X$ and $(X^T X)^{-1}$ is the inverse of the matrix $X^T X$. This method is called **ordinary least squares** and is the most common method for fitting linear models to data.</span>
 <span id="cb2-142"><a href="#cb2-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a>X^T X \theta = X^T \vec{y}</span>
+<span id="cb2-143"><a href="#cb2-143" aria-hidden="true" tabindex="-1"></a>The normal equations can be re-written as:</span>
+<span id="cb2-144"><a href="#cb2-144" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-145"><a href="#cb2-145" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>This is simply a system of linear equations in the form $A \vec{p} = \vec{b}$, where $A = X^T X$, $\vec{p} = \theta$, and $\vec{b} = X^T \vec{y}$. </span>
+<span id="cb2-146"><a href="#cb2-146" aria-hidden="true" tabindex="-1"></a>X^T X \theta = X^T \vec{y}</span>
+<span id="cb2-147"><a href="#cb2-147" aria-hidden="true" tabindex="-1"></a>$$</span>
 <span id="cb2-148"><a href="#cb2-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>We know how to solve this from the previous section, and this is exactly what <span class="in">`numpy.linalg.solve`</span> does when we call it with $A$ and $\vec{b}$.</span>
+<span id="cb2-149"><a href="#cb2-149" aria-hidden="true" tabindex="-1"></a>This is simply a system of linear equations in the form $A \vec{p} = \vec{b}$, where $A = X^T X$, $\vec{p} = \theta$, and $\vec{b} = X^T \vec{y}$. </span>
 <span id="cb2-150"><a href="#cb2-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-151"><a href="#cb2-151" aria-hidden="true" tabindex="-1"></a>We know how to solve this from the previous section, and this is exactly what <span class="in">`numpy.linalg.solve`</span> does when we call it with $A$ and $\vec{b}$.</span>
 <span id="cb2-152"><a href="#cb2-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a>We can see in example in actin in <span class="in">`numpy`</span> by using artificial data. In the <span class="in">`numpy`</span> implementation notice that we make use of a few handy tools:</span>
+<span id="cb2-153"><a href="#cb2-153" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-154"><a href="#cb2-154" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.ones_like(x)`</span> creates an array of ones with the same shape as <span class="in">`x`</span>, which we use to create the intercept term in our design matrix.</span>
-<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.column_stack((x, np.ones_like(x)))`</span> stacks the <span class="in">`x`</span> array and the intercept array column-wise to create the design matrix <span class="in">`X`</span>.</span>
-<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.linalg.solve`</span></span>
-<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the operator <span class="in">`@`</span> whhich performs matrix multiplication in a more readable way than <span class="in">`np.dot`</span> or <span class="in">`np.matmul`</span>.</span>
-<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-162"><a href="#cb2-162" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-163"><a href="#cb2-163" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>) <span class="co"># setting a random seed for reproducibility</span></span>
-<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a><span class="co"># generate artificial data for chosen values of m and b</span></span>
-<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>m_true <span class="op">=</span> <span class="fl">2.5</span></span>
-<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000</span> <span class="co"># change this to increase/decrease the number of data points</span></span>
-<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, N) <span class="co"># N evenly spaced points between 0 and 10</span></span>
-<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> m_true <span class="op">*</span> x <span class="op">+</span> b_true <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="dv">1</span>, size<span class="op">=</span>x.shape) <span class="co"># adding some noise to the data</span></span>
-<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a><span class="co"># now construct the matrix X and vector y for the linear model</span></span>
-<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack((x, np.ones_like(x))) <span class="co"># adding a column of ones for the intercept</span></span>
+<span id="cb2-155"><a href="#cb2-155" aria-hidden="true" tabindex="-1"></a>We can see in example in actin in <span class="in">`numpy`</span> by using artificial data. In the <span class="in">`numpy`</span> implementation notice that we make use of a few handy tools:</span>
+<span id="cb2-156"><a href="#cb2-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-157"><a href="#cb2-157" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.ones_like(x)`</span> creates an array of ones with the same shape as <span class="in">`x`</span>, which we use to create the intercept term in our design matrix.</span>
+<span id="cb2-158"><a href="#cb2-158" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.column_stack((x, np.ones_like(x)))`</span> stacks the <span class="in">`x`</span> array and the intercept array column-wise to create the design matrix <span class="in">`X`</span>.</span>
+<span id="cb2-159"><a href="#cb2-159" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`np.linalg.solve`</span></span>
+<span id="cb2-160"><a href="#cb2-160" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the operator <span class="in">`@`</span> whhich performs matrix multiplication in a more readable way than <span class="in">`np.dot`</span> or <span class="in">`np.matmul`</span>.</span>
+<span id="cb2-161"><a href="#cb2-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-164"><a href="#cb2-164" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-165"><a href="#cb2-165" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-166"><a href="#cb2-166" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb2-167"><a href="#cb2-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-168"><a href="#cb2-168" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(seed<span class="op">=</span><span class="dv">42</span>) <span class="co"># setting a random seed for reproducibility</span></span>
+<span id="cb2-169"><a href="#cb2-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-170"><a href="#cb2-170" aria-hidden="true" tabindex="-1"></a><span class="co"># generate artificial data for chosen values of m and b</span></span>
+<span id="cb2-171"><a href="#cb2-171" aria-hidden="true" tabindex="-1"></a>m_true <span class="op">=</span> <span class="fl">2.5</span></span>
+<span id="cb2-172"><a href="#cb2-172" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-173"><a href="#cb2-173" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">1000</span> <span class="co"># change this to increase/decrease the number of data points</span></span>
+<span id="cb2-174"><a href="#cb2-174" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, N) <span class="co"># N evenly spaced points between 0 and 10</span></span>
+<span id="cb2-175"><a href="#cb2-175" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> m_true <span class="op">*</span> x <span class="op">+</span> b_true <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="dv">1</span>, size<span class="op">=</span>x.shape) <span class="co"># adding some noise to the data</span></span>
 <span id="cb2-176"><a href="#cb2-176" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="co"># solve for theta using the normal equations</span></span>
-<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linalg.solve(X.T <span class="op">@</span> X, X.T <span class="op">@</span> y)</span>
-<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a>m_est, b_est <span class="op">=</span> theta</span>
-<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated slope: </span><span class="sc">{</span>m_est<span class="sc">}</span><span class="ss">, Estimated intercept: </span><span class="sc">{</span>b_est<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## Beyond linear models: polynomial fitting</span></span>
-<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a>The machinery that we have constructed for fitting with straight lines can be easily extended to fit more complex models, such as polynomials.</span>
-<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a>This is thanks to teh following observation: take, for example, a quadratic model:</span>
-<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>y_i = a x_i^2 + b x_i + c </span>
-<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>Now we have an extra parameter, $a$, that captures the curvature of the data. However, we can again rewrite the entire model in matrix form by expanding the matrix $X$ to include the new term:</span>
-<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>X = \begin{bmatrix} x_1^2 &amp; x_1 &amp; 1 <span class="sc">\\</span></span>
-<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a> x_2^2 &amp; x_2 &amp; 1 <span class="sc">\\</span></span>
-<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a> \vdots &amp; \vdots &amp; \vdots <span class="sc">\\</span></span>
-<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a> x_N^2 &amp; x_N &amp; 1 \end{bmatrix}</span>
-<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a>and then the parameter vector becomes:</span>
+<span id="cb2-177"><a href="#cb2-177" aria-hidden="true" tabindex="-1"></a><span class="co"># now construct the matrix X and vector y for the linear model</span></span>
+<span id="cb2-178"><a href="#cb2-178" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack((x, np.ones_like(x))) <span class="co"># adding a column of ones for the intercept</span></span>
+<span id="cb2-179"><a href="#cb2-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-180"><a href="#cb2-180" aria-hidden="true" tabindex="-1"></a><span class="co"># solve for theta using the normal equations</span></span>
+<span id="cb2-181"><a href="#cb2-181" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linalg.solve(X.T <span class="op">@</span> X, X.T <span class="op">@</span> y)</span>
+<span id="cb2-182"><a href="#cb2-182" aria-hidden="true" tabindex="-1"></a>m_est, b_est <span class="op">=</span> theta</span>
+<span id="cb2-183"><a href="#cb2-183" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated slope: </span><span class="sc">{</span>m_est<span class="sc">}</span><span class="ss">, Estimated intercept: </span><span class="sc">{</span>b_est<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-184"><a href="#cb2-184" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-185"><a href="#cb2-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-186"><a href="#cb2-186" aria-hidden="true" tabindex="-1"></a><span class="fu">## Beyond linear models: polynomial fitting</span></span>
+<span id="cb2-187"><a href="#cb2-187" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-188"><a href="#cb2-188" aria-hidden="true" tabindex="-1"></a>The machinery that we have constructed for fitting with straight lines can be easily extended to fit more complex models, such as polynomials.</span>
+<span id="cb2-189"><a href="#cb2-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-190"><a href="#cb2-190" aria-hidden="true" tabindex="-1"></a>This is thanks to teh following observation: take, for example, a quadratic model:</span>
+<span id="cb2-191"><a href="#cb2-191" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-192"><a href="#cb2-192" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-193"><a href="#cb2-193" aria-hidden="true" tabindex="-1"></a>y_i = a x_i^2 + b x_i + c </span>
+<span id="cb2-194"><a href="#cb2-194" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-195"><a href="#cb2-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-196"><a href="#cb2-196" aria-hidden="true" tabindex="-1"></a>Now we have an extra parameter, $a$, that captures the curvature of the data. However, we can again rewrite the entire model in matrix form by expanding the matrix $X$ to include the new term:</span>
+<span id="cb2-197"><a href="#cb2-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-198"><a href="#cb2-198" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-199"><a href="#cb2-199" aria-hidden="true" tabindex="-1"></a>X = \begin{bmatrix} x_1^2 &amp; x_1 &amp; 1 <span class="sc">\\</span></span>
+<span id="cb2-200"><a href="#cb2-200" aria-hidden="true" tabindex="-1"></a> x_2^2 &amp; x_2 &amp; 1 <span class="sc">\\</span></span>
+<span id="cb2-201"><a href="#cb2-201" aria-hidden="true" tabindex="-1"></a> \vdots &amp; \vdots &amp; \vdots <span class="sc">\\</span></span>
+<span id="cb2-202"><a href="#cb2-202" aria-hidden="true" tabindex="-1"></a> x_N^2 &amp; x_N &amp; 1 \end{bmatrix}</span>
 <span id="cb2-203"><a href="#cb2-203" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a>\vec{\theta} = \begin{bmatrix} a <span class="sc">\\</span> b <span class="sc">\\</span> c \end{bmatrix}</span>
-<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>$$</span>
-<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>so that again the model can be written as </span>
-<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a>$$\vec{y} = X \vec{\theta}$$</span>
-<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a>This means that  the solution is given by the **same normal equations** as before!</span>
-<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a>Let's see this in action again with <span class="in">`numpy`</span> and some artificial data.</span>
-<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-218"><a href="#cb2-218" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># change this to increase/decrease the number of data points</span></span>
-<span id="cb2-219"><a href="#cb2-219" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, N)</span>
-<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a><span class="co"># generate artificial data for chosen values of a, b, and c</span></span>
-<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a>a_true <span class="op">=</span> <span class="fl">0.5</span></span>
-<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">1.0</span></span>
-<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a>c_true <span class="op">=</span> <span class="op">-</span><span class="fl">0.3</span></span>
-<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a_true <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b_true <span class="op">*</span> x <span class="op">+</span> c_true <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="dv">1</span>, size<span class="op">=</span>x.shape) <span class="co"># adding some noise to the data</span></span>
-<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a><span class="co"># construct the matrix X for the quadratic model</span></span>
-<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack((x<span class="op">**</span><span class="dv">2</span>, x, np.ones_like(x))) <span class="co"># three columns for x^2, x, and the intercept</span></span>
+<span id="cb2-204"><a href="#cb2-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-205"><a href="#cb2-205" aria-hidden="true" tabindex="-1"></a>and then the parameter vector becomes:</span>
+<span id="cb2-206"><a href="#cb2-206" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-207"><a href="#cb2-207" aria-hidden="true" tabindex="-1"></a>\vec{\theta} = \begin{bmatrix} a <span class="sc">\\</span> b <span class="sc">\\</span> c \end{bmatrix}</span>
+<span id="cb2-208"><a href="#cb2-208" aria-hidden="true" tabindex="-1"></a>$$</span>
+<span id="cb2-209"><a href="#cb2-209" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-210"><a href="#cb2-210" aria-hidden="true" tabindex="-1"></a>so that again the model can be written as </span>
+<span id="cb2-211"><a href="#cb2-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-212"><a href="#cb2-212" aria-hidden="true" tabindex="-1"></a>$$\vec{y} = X \vec{\theta}$$</span>
+<span id="cb2-213"><a href="#cb2-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-214"><a href="#cb2-214" aria-hidden="true" tabindex="-1"></a>This means that  the solution is given by the **same normal equations** as before!</span>
+<span id="cb2-215"><a href="#cb2-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-216"><a href="#cb2-216" aria-hidden="true" tabindex="-1"></a>Let's see this in action again with <span class="in">`numpy`</span> and some artificial data.</span>
+<span id="cb2-217"><a href="#cb2-217" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-220"><a href="#cb2-220" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-221"><a href="#cb2-221" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-222"><a href="#cb2-222" aria-hidden="true" tabindex="-1"></a>N <span class="op">=</span> <span class="dv">100</span> <span class="co"># change this to increase/decrease the number of data points</span></span>
+<span id="cb2-223"><a href="#cb2-223" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, N)</span>
+<span id="cb2-224"><a href="#cb2-224" aria-hidden="true" tabindex="-1"></a><span class="co"># generate artificial data for chosen values of a, b, and c</span></span>
+<span id="cb2-225"><a href="#cb2-225" aria-hidden="true" tabindex="-1"></a>a_true <span class="op">=</span> <span class="fl">0.5</span></span>
+<span id="cb2-226"><a href="#cb2-226" aria-hidden="true" tabindex="-1"></a>b_true <span class="op">=</span> <span class="fl">1.0</span></span>
+<span id="cb2-227"><a href="#cb2-227" aria-hidden="true" tabindex="-1"></a>c_true <span class="op">=</span> <span class="op">-</span><span class="fl">0.3</span></span>
 <span id="cb2-228"><a href="#cb2-228" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linalg.solve(X.T <span class="op">@</span> X, X.T <span class="op">@</span> y)</span>
-<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a>a_est, b_est, c_est <span class="op">=</span> theta</span>
-<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated a: </span><span class="sc">{</span>a_est<span class="sc">}</span><span class="ss">, Estimated b: </span><span class="sc">{</span>b_est<span class="sc">}</span><span class="ss">, Estimated c: </span><span class="sc">{</span>c_est<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a>To plot the data it is important to note that the fitted curve needs to be evaluated typically at many more pints that the original $x_i$ data, so that it looks smooth.</span>
-<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting the data and the fitted curve</span></span>
-<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, label<span class="op">=</span><span class="st">'Data'</span>, color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, marker<span class="op">=</span><span class="st">"x"</span>)</span>
-<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>n_points_fitted_curve <span class="op">=</span> <span class="dv">5</span> <span class="co"># try increasing this to see a smoother curve</span></span>
-<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a>x_fit <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, n_points_fitted_curve) </span>
-<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> a_est <span class="op">*</span> x_fit<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b_est <span class="op">*</span> x_fit <span class="op">+</span> c_est</span>
-<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a>plt.plot(x_fit, y_fit,<span class="st">'-o'</span>, label<span class="op">=</span><span class="st">'Fitted Curve </span><span class="ch">\n</span><span class="st">(dots are the evaluated points</span><span class="ch">\n</span><span class="st">and lines simply interpolate)'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
-<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
-<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
-<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'y'</span>)</span>
-<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Quadratic Fit to Data'</span>)</span>
-<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Implementation: NumPy's `polyfit`</span></span>
-<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>Rather than implementing the matrix math ourselves every time, numpy provides the <span class="in">`polyfit`</span> function, which fits a polynomial of specified degree to data. For linear regression, we use degree 1.</span>
-<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a>The syntax is straigthtforward:</span>
-<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
-<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>coefficients <span class="op">=</span> np.polyfit(x, y, degree)</span>
-<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a>returns the coefficients of the polynomial.</span>
-<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> np.polyfit(x, y, <span class="dv">2</span>) <span class="co"># fitting a quadratic polynomial to the data</span></span>
-<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a>a_polyfit, b_polyfit, c_polyfit <span class="op">=</span> coeffs</span>
-<span id="cb2-270"><a href="#cb2-270" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated a (polyfit): </span><span class="sc">{</span>a_polyfit<span class="sc">}</span><span class="ss">, Estimated b (polyfit): </span><span class="sc">{</span>b_polyfit<span class="sc">}</span><span class="ss">, Estimated c (polyfit): </span><span class="sc">{</span>c_polyfit<span class="sc">}</span><span class="ss">"</span>)  </span>
-<span id="cb2-271"><a href="#cb2-271" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Difference in a: </span><span class="sc">{</span>a_est <span class="op">-</span> a_polyfit<span class="sc">}</span><span class="ss">, Difference in b: </span><span class="sc">{</span>b_est <span class="op">-</span> b_polyfit<span class="sc">}</span><span class="ss">, Difference in c: </span><span class="sc">{</span>c_est <span class="op">-</span> c_polyfit<span class="sc">}</span><span class="ss">"</span>) <span class="co"># notice that the difference is essentially numerical noise</span></span>
-<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a><span class="fu">## Errors on the fitting parameters</span></span>
-<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a>The fitting parameters we obtain are estimates under specific assumptions:</span>
-<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>that the data has a random scatter (typically thought as due to normally distributed errors)</span>
-<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>that such errors have constant variance across all observation  and zero mean</span>
-<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>that the various observations are not correlated with each other</span>
+<span id="cb2-229"><a href="#cb2-229" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> a_true <span class="op">*</span> x<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b_true <span class="op">*</span> x <span class="op">+</span> c_true <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="dv">1</span>, size<span class="op">=</span>x.shape) <span class="co"># adding some noise to the data</span></span>
+<span id="cb2-230"><a href="#cb2-230" aria-hidden="true" tabindex="-1"></a><span class="co"># construct the matrix X for the quadratic model</span></span>
+<span id="cb2-231"><a href="#cb2-231" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> np.column_stack((x<span class="op">**</span><span class="dv">2</span>, x, np.ones_like(x))) <span class="co"># three columns for x^2, x, and the intercept</span></span>
+<span id="cb2-232"><a href="#cb2-232" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-233"><a href="#cb2-233" aria-hidden="true" tabindex="-1"></a>theta <span class="op">=</span> np.linalg.solve(X.T <span class="op">@</span> X, X.T <span class="op">@</span> y)</span>
+<span id="cb2-234"><a href="#cb2-234" aria-hidden="true" tabindex="-1"></a>a_est, b_est, c_est <span class="op">=</span> theta</span>
+<span id="cb2-235"><a href="#cb2-235" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated a: </span><span class="sc">{</span>a_est<span class="sc">}</span><span class="ss">, Estimated b: </span><span class="sc">{</span>b_est<span class="sc">}</span><span class="ss">, Estimated c: </span><span class="sc">{</span>c_est<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-236"><a href="#cb2-236" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-237"><a href="#cb2-237" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a>To plot the data it is important to note that the fitted curve needs to be evaluated typically at many more pints that the original $x_i$ data, so that it looks smooth.</span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb2-245"><a href="#cb2-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-246"><a href="#cb2-246" aria-hidden="true" tabindex="-1"></a><span class="co"># plotting the data and the fitted curve</span></span>
+<span id="cb2-247"><a href="#cb2-247" aria-hidden="true" tabindex="-1"></a>plt.scatter(x, y, label<span class="op">=</span><span class="st">'Data'</span>, color<span class="op">=</span><span class="st">'blue'</span>, alpha<span class="op">=</span><span class="fl">0.5</span>, marker<span class="op">=</span><span class="st">"x"</span>)</span>
+<span id="cb2-248"><a href="#cb2-248" aria-hidden="true" tabindex="-1"></a>n_points_fitted_curve <span class="op">=</span> <span class="dv">5</span> <span class="co"># try increasing this to see a smoother curve</span></span>
+<span id="cb2-249"><a href="#cb2-249" aria-hidden="true" tabindex="-1"></a>x_fit <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, n_points_fitted_curve) </span>
+<span id="cb2-250"><a href="#cb2-250" aria-hidden="true" tabindex="-1"></a>y_fit <span class="op">=</span> a_est <span class="op">*</span> x_fit<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> b_est <span class="op">*</span> x_fit <span class="op">+</span> c_est</span>
+<span id="cb2-251"><a href="#cb2-251" aria-hidden="true" tabindex="-1"></a>plt.plot(x_fit, y_fit,<span class="st">'-o'</span>, label<span class="op">=</span><span class="st">'Fitted Curve </span><span class="ch">\n</span><span class="st">(dots are the evaluated points</span><span class="ch">\n</span><span class="st">and lines simply interpolate)'</span>, color<span class="op">=</span><span class="st">'red'</span>)</span>
+<span id="cb2-252"><a href="#cb2-252" aria-hidden="true" tabindex="-1"></a>plt.legend()</span>
+<span id="cb2-253"><a href="#cb2-253" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">'x'</span>)</span>
+<span id="cb2-254"><a href="#cb2-254" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">'y'</span>)</span>
+<span id="cb2-255"><a href="#cb2-255" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Quadratic Fit to Data'</span>)</span>
+<span id="cb2-256"><a href="#cb2-256" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-257"><a href="#cb2-257" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-258"><a href="#cb2-258" aria-hidden="true" tabindex="-1"></a><span class="fu">## Practical Implementation: NumPy's `polyfit`</span></span>
+<span id="cb2-259"><a href="#cb2-259" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-260"><a href="#cb2-260" aria-hidden="true" tabindex="-1"></a>Rather than implementing the matrix math ourselves every time, numpy provides the <span class="in">`polyfit`</span> function, which fits a polynomial of specified degree to data. For linear regression, we use degree 1.</span>
+<span id="cb2-261"><a href="#cb2-261" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-262"><a href="#cb2-262" aria-hidden="true" tabindex="-1"></a>The syntax is straigthtforward:</span>
+<span id="cb2-263"><a href="#cb2-263" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-264"><a href="#cb2-264" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb2-265"><a href="#cb2-265" aria-hidden="true" tabindex="-1"></a>coefficients <span class="op">=</span> np.polyfit(x, y, degree)</span>
+<span id="cb2-266"><a href="#cb2-266" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-267"><a href="#cb2-267" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-268"><a href="#cb2-268" aria-hidden="true" tabindex="-1"></a>returns the coefficients of the polynomial.</span>
+<span id="cb2-269"><a href="#cb2-269" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-272"><a href="#cb2-272" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-273"><a href="#cb2-273" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-274"><a href="#cb2-274" aria-hidden="true" tabindex="-1"></a>coeffs <span class="op">=</span> np.polyfit(x, y, <span class="dv">2</span>) <span class="co"># fitting a quadratic polynomial to the data</span></span>
+<span id="cb2-275"><a href="#cb2-275" aria-hidden="true" tabindex="-1"></a>a_polyfit, b_polyfit, c_polyfit <span class="op">=</span> coeffs</span>
+<span id="cb2-276"><a href="#cb2-276" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Estimated a (polyfit): </span><span class="sc">{</span>a_polyfit<span class="sc">}</span><span class="ss">, Estimated b (polyfit): </span><span class="sc">{</span>b_polyfit<span class="sc">}</span><span class="ss">, Estimated c (polyfit): </span><span class="sc">{</span>c_polyfit<span class="sc">}</span><span class="ss">"</span>)  </span>
+<span id="cb2-277"><a href="#cb2-277" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Difference in a: </span><span class="sc">{</span>a_est <span class="op">-</span> a_polyfit<span class="sc">}</span><span class="ss">, Difference in b: </span><span class="sc">{</span>b_est <span class="op">-</span> b_polyfit<span class="sc">}</span><span class="ss">, Difference in c: </span><span class="sc">{</span>c_est <span class="op">-</span> c_polyfit<span class="sc">}</span><span class="ss">"</span>) <span class="co"># notice that the difference is essentially numerical noise</span></span>
+<span id="cb2-278"><a href="#cb2-278" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-279"><a href="#cb2-279" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-280"><a href="#cb2-280" aria-hidden="true" tabindex="-1"></a><span class="fu">## Errors on the fitting parameters</span></span>
 <span id="cb2-281"><a href="#cb2-281" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a>The resulting estimates are associated with an uncertainty which can be quantified.</span>
+<span id="cb2-282"><a href="#cb2-282" aria-hidden="true" tabindex="-1"></a>The fitting parameters we obtain are estimates under specific assumptions:</span>
 <span id="cb2-283"><a href="#cb2-283" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a>We can use the Sum of Squared Errors to construct a benchmark:</span>
-<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a>$$\sigma^2 = \dfrac{SSE}{N-p}$$</span>
+<span id="cb2-284"><a href="#cb2-284" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>that the data has a random scatter (typically thought as due to normally distributed errors)</span>
+<span id="cb2-285"><a href="#cb2-285" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>that such errors have constant variance across all observation  and zero mean</span>
+<span id="cb2-286"><a href="#cb2-286" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>that the various observations are not correlated with each other</span>
 <span id="cb2-287"><a href="#cb2-287" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a>where $N$ is the number of data points and $p$ is the number of parameters in the model (e.g. $p=2$ for a linear model).</span>
+<span id="cb2-288"><a href="#cb2-288" aria-hidden="true" tabindex="-1"></a>The resulting estimates are associated with an uncertainty which can be quantified.</span>
 <span id="cb2-289"><a href="#cb2-289" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a>We can then use this to obatin **covariance matrix** of the parameters, which is given by:</span>
+<span id="cb2-290"><a href="#cb2-290" aria-hidden="true" tabindex="-1"></a>We can use the Sum of Squared Errors to construct a benchmark:</span>
 <span id="cb2-291"><a href="#cb2-291" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(\vec{\theta}) = \sigma^2 (X^T X)^{-1}$$</span>
+<span id="cb2-292"><a href="#cb2-292" aria-hidden="true" tabindex="-1"></a>$$\sigma^2 = \dfrac{SSE}{N-p}$$</span>
 <span id="cb2-293"><a href="#cb2-293" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a>where $X$ is the design matrix we constructed for the fitting. This is a $p \times p$ matrix that contains the variances of the parameters on the diagonal and the covariances between parameters on the off-diagonal.</span>
+<span id="cb2-294"><a href="#cb2-294" aria-hidden="true" tabindex="-1"></a>where $N$ is the number of data points and $p$ is the number of parameters in the model (e.g. $p=2$ for a linear model).</span>
 <span id="cb2-295"><a href="#cb2-295" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a>The expression above can be thought as a ratio between the performance of the fit (as measured by $\sigma^2$) and the mutual independence of the parameters (as measured by the inverse of $X^T X$): the least clustered are the data points in the $x$ space, the more independent are the parameters and the smaller is the covariance matrix. Conversely, if the data points are clustered together, the parameters become more correlated and the covariance matrix becomes larger.</span>
+<span id="cb2-296"><a href="#cb2-296" aria-hidden="true" tabindex="-1"></a>We can then use this to obatin **covariance matrix** of the parameters, which is given by:</span>
 <span id="cb2-297"><a href="#cb2-297" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a>In numpy we can obtain the covariance matrix of the parameters by using the <span class="in">`cov`</span> argument of the <span class="in">`polyfit`</span> function:</span>
-<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a>coeffs, cov <span class="op">=</span> np.polyfit(x, y, <span class="dv">2</span>, cov<span class="op">=</span><span class="va">True</span>) <span class="co"># fitting a quadratic polynomial to the data</span></span>
-<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a>cov</span>
-<span id="cb2-307"><a href="#cb2-307" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-308"><a href="#cb2-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a><span class="co"># the diagonal of the covariance matrix gives us the variance of the estimated coefficients</span></span>
-<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a>var_a, var_b, var_c <span class="op">=</span> np.diag(cov)</span>
-<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Variance of a: </span><span class="sc">{</span>var_a<span class="sc">}</span><span class="ss">, Variance of b: </span><span class="sc">{</span>var_b<span class="sc">}</span><span class="ss">, Variance of c: </span><span class="sc">{</span>var_c<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-316"><a href="#cb2-316" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="co"># the errors are then the square root of the variances</span></span>
-<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a>error_a <span class="op">=</span> np.sqrt(var_a)</span>
-<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a>error_b <span class="op">=</span> np.sqrt(var_b)</span>
-<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a>error_c <span class="op">=</span> np.sqrt(var_c)</span>
-<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimate a with error: "</span>, a_polyfit, <span class="st">"+/-"</span>, error_a)</span>
-<span id="cb2-325"><a href="#cb2-325" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimate b with error: "</span>, b_polyfit, <span class="st">"+/-"</span>, error_b)</span>
-<span id="cb2-326"><a href="#cb2-326" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimate c with error: "</span>, c_polyfit, <span class="st">"+/-"</span>, error_c) </span>
-<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a>In practice, estimating the fitting parameters with their errors directly from the covariance matrix tends to underestimate true errors, for example when the model is not certain or when the data is not well-behaved. </span>
-<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a>A conceptually simply and robust approach is to recur to resampling: this method is called **bootstrap**.</span>
-<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a><span class="fu">### Errors from bootstrapping</span></span>
-<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a>Instead of computing the covariance matrix, we can augment our dataset by resampling it with replacement, and then fitting the model to each resampled dataset.</span>
-<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a>The variability of the estimates yields immediately a variance of the parameters, which can be used to quantify the uncertainty of the estimates.</span>
-<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a>The procedure goes as follows:</span>
+<span id="cb2-298"><a href="#cb2-298" aria-hidden="true" tabindex="-1"></a>$$\text{Cov}(\vec{\theta}) = \sigma^2 (X^T X)^{-1}$$</span>
+<span id="cb2-299"><a href="#cb2-299" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-300"><a href="#cb2-300" aria-hidden="true" tabindex="-1"></a>where $X$ is the design matrix we constructed for the fitting. This is a $p \times p$ matrix that contains the variances of the parameters on the diagonal and the covariances between parameters on the off-diagonal.</span>
+<span id="cb2-301"><a href="#cb2-301" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-302"><a href="#cb2-302" aria-hidden="true" tabindex="-1"></a>The expression above can be thought as a ratio between the performance of the fit (as measured by $\sigma^2$) and the mutual independence of the parameters (as measured by the inverse of $X^T X$): the least clustered are the data points in the $x$ space, the more independent are the parameters and the smaller is the covariance matrix. Conversely, if the data points are clustered together, the parameters become more correlated and the covariance matrix becomes larger.</span>
+<span id="cb2-303"><a href="#cb2-303" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-304"><a href="#cb2-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-305"><a href="#cb2-305" aria-hidden="true" tabindex="-1"></a>In numpy we can obtain the covariance matrix of the parameters by using the <span class="in">`cov`</span> argument of the <span class="in">`polyfit`</span> function:</span>
+<span id="cb2-306"><a href="#cb2-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-309"><a href="#cb2-309" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-310"><a href="#cb2-310" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-311"><a href="#cb2-311" aria-hidden="true" tabindex="-1"></a>coeffs, cov <span class="op">=</span> np.polyfit(x, y, <span class="dv">2</span>, cov<span class="op">=</span><span class="va">True</span>) <span class="co"># fitting a quadratic polynomial to the data</span></span>
+<span id="cb2-312"><a href="#cb2-312" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-313"><a href="#cb2-313" aria-hidden="true" tabindex="-1"></a>cov</span>
+<span id="cb2-314"><a href="#cb2-314" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-315"><a href="#cb2-315" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-318"><a href="#cb2-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-319"><a href="#cb2-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-320"><a href="#cb2-320" aria-hidden="true" tabindex="-1"></a><span class="co"># the diagonal of the covariance matrix gives us the variance of the estimated coefficients</span></span>
+<span id="cb2-321"><a href="#cb2-321" aria-hidden="true" tabindex="-1"></a>var_a, var_b, var_c <span class="op">=</span> np.diag(cov)</span>
+<span id="cb2-322"><a href="#cb2-322" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Variance of a: </span><span class="sc">{</span>var_a<span class="sc">}</span><span class="ss">, Variance of b: </span><span class="sc">{</span>var_b<span class="sc">}</span><span class="ss">, Variance of c: </span><span class="sc">{</span>var_c<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-323"><a href="#cb2-323" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-324"><a href="#cb2-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-327"><a href="#cb2-327" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-328"><a href="#cb2-328" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-329"><a href="#cb2-329" aria-hidden="true" tabindex="-1"></a><span class="co"># the errors are then the square root of the variances</span></span>
+<span id="cb2-330"><a href="#cb2-330" aria-hidden="true" tabindex="-1"></a>error_a <span class="op">=</span> np.sqrt(var_a)</span>
+<span id="cb2-331"><a href="#cb2-331" aria-hidden="true" tabindex="-1"></a>error_b <span class="op">=</span> np.sqrt(var_b)</span>
+<span id="cb2-332"><a href="#cb2-332" aria-hidden="true" tabindex="-1"></a>error_c <span class="op">=</span> np.sqrt(var_c)</span>
+<span id="cb2-333"><a href="#cb2-333" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimate a with error: "</span>, a_polyfit, <span class="st">"+/-"</span>, error_a)</span>
+<span id="cb2-334"><a href="#cb2-334" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimate b with error: "</span>, b_polyfit, <span class="st">"+/-"</span>, error_b)</span>
+<span id="cb2-335"><a href="#cb2-335" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Estimate c with error: "</span>, c_polyfit, <span class="st">"+/-"</span>, error_c) </span>
+<span id="cb2-336"><a href="#cb2-336" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-337"><a href="#cb2-337" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-338"><a href="#cb2-338" aria-hidden="true" tabindex="-1"></a>In practice, estimating the fitting parameters with their errors directly from the covariance matrix tends to underestimate true errors, for example when the model is not certain or when the data is not well-behaved. </span>
+<span id="cb2-339"><a href="#cb2-339" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-340"><a href="#cb2-340" aria-hidden="true" tabindex="-1"></a>A conceptually simply and robust approach is to recur to resampling: this method is called **bootstrap**.</span>
+<span id="cb2-341"><a href="#cb2-341" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-342"><a href="#cb2-342" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we resample the data to produce a series of the **same size** as the original dataset, but with replacement (i.e. some data points may be repeated and some may be left out).</span>
-<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we fit the model to each bootstrap sample to obtain a distribution of parameter estimates.</span>
-<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we compute the standard deviation of the parameter estimates across the bootstrap samples to obtain an estimate of the uncertainty of the parameters.</span>
-<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a>The tuneable parameter is the number of bootstrap samples, which typically is in the range of 1000-10000.</span>
-<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a><span class="co">## bootstrap method for error estimation</span></span>
-<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a>n_bootstrap <span class="op">=</span> <span class="dv">1000</span></span>
-<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a>bootstrap_estimates <span class="op">=</span> np.zeros((n_bootstrap, <span class="dv">3</span>)) <span class="co"># to store the estimates</span></span>
-<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_bootstrap):</span>
-<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a>    <span class="co"># picking random indices for resampling</span></span>
-<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> rng.choice(N, size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>) <span class="co"># resampling with replacement</span></span>
-<span id="cb2-358"><a href="#cb2-358" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-359"><a href="#cb2-359" aria-hidden="true" tabindex="-1"></a>    x_bootstrap <span class="op">=</span> x[indices]</span>
-<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a>    y_bootstrap <span class="op">=</span> y[indices]</span>
-<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fitting the model to the resampled data</span></span>
-<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a>    coeffs_bootstrap <span class="op">=</span> np.polyfit(x_bootstrap, y_bootstrap, <span class="dv">2</span>)</span>
-<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a>    bootstrap_estimates[i] <span class="op">=</span> coeffs_bootstrap</span>
-<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a>a_bootstrap_estimates <span class="op">=</span> bootstrap_estimates[:, <span class="dv">0</span>]</span>
-<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a>b_bootstrap_estimates <span class="op">=</span> bootstrap_estimates[:, <span class="dv">1</span>]</span>
-<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a>c_bootstrap_estimates <span class="op">=</span> bootstrap_estimates[:, <span class="dv">2</span>]   </span>
-<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap estimate of a: </span><span class="sc">{</span>np<span class="sc">.</span>mean(a_bootstrap_estimates)<span class="sc">}</span><span class="ss"> with error </span><span class="sc">{</span>np<span class="sc">.</span>std(a_bootstrap_estimates)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap estimate of b: </span><span class="sc">{</span>np<span class="sc">.</span>mean(b_bootstrap_estimates)<span class="sc">}</span><span class="ss"> with error </span><span class="sc">{</span>np<span class="sc">.</span>std(b_bootstrap_estimates)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap estimate of c: </span><span class="sc">{</span>np<span class="sc">.</span>mean(c_bootstrap_estimates)<span class="sc">}</span><span class="ss"> with error </span><span class="sc">{</span>np<span class="sc">.</span>std(c_bootstrap_estimates)<span class="sc">}</span><span class="ss">"</span>)  </span>
-<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb2-373"><a href="#cb2-373" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-374"><a href="#cb2-374" aria-hidden="true" tabindex="-1"></a>Reassuringly, the errors are compatible with the ones obtained from the covariance matrix, but they are more robust to violations of the assumptions of the model and to outliers in the data.</span>
+<span id="cb2-343"><a href="#cb2-343" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-344"><a href="#cb2-344" aria-hidden="true" tabindex="-1"></a><span class="fu">### Errors from bootstrapping</span></span>
+<span id="cb2-345"><a href="#cb2-345" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-346"><a href="#cb2-346" aria-hidden="true" tabindex="-1"></a>Instead of computing the covariance matrix, we can augment our dataset by resampling it with replacement, and then fitting the model to each resampled dataset.</span>
+<span id="cb2-347"><a href="#cb2-347" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-348"><a href="#cb2-348" aria-hidden="true" tabindex="-1"></a>The variability of the estimates yields immediately a variance of the parameters, which can be used to quantify the uncertainty of the estimates.</span>
+<span id="cb2-349"><a href="#cb2-349" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-350"><a href="#cb2-350" aria-hidden="true" tabindex="-1"></a>The procedure goes as follows:</span>
+<span id="cb2-351"><a href="#cb2-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-352"><a href="#cb2-352" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we resample the data to produce a series of the **same size** as the original dataset, but with replacement (i.e. some data points may be repeated and some may be left out).</span>
+<span id="cb2-353"><a href="#cb2-353" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we fit the model to each bootstrap sample to obtain a distribution of parameter estimates.</span>
+<span id="cb2-354"><a href="#cb2-354" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>we compute the standard deviation of the parameter estimates across the bootstrap samples to obtain an estimate of the uncertainty of the parameters.</span>
+<span id="cb2-355"><a href="#cb2-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-356"><a href="#cb2-356" aria-hidden="true" tabindex="-1"></a>The tuneable parameter is the number of bootstrap samples, which typically is in the range of 1000-10000.</span>
+<span id="cb2-357"><a href="#cb2-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-360"><a href="#cb2-360" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb2-361"><a href="#cb2-361" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
+<span id="cb2-362"><a href="#cb2-362" aria-hidden="true" tabindex="-1"></a><span class="co">## bootstrap method for error estimation</span></span>
+<span id="cb2-363"><a href="#cb2-363" aria-hidden="true" tabindex="-1"></a>n_bootstrap <span class="op">=</span> <span class="dv">1000</span></span>
+<span id="cb2-364"><a href="#cb2-364" aria-hidden="true" tabindex="-1"></a>bootstrap_estimates <span class="op">=</span> np.zeros((n_bootstrap, <span class="dv">3</span>)) <span class="co"># to store the estimates</span></span>
+<span id="cb2-365"><a href="#cb2-365" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n_bootstrap):</span>
+<span id="cb2-366"><a href="#cb2-366" aria-hidden="true" tabindex="-1"></a>    <span class="co"># picking random indices for resampling</span></span>
+<span id="cb2-367"><a href="#cb2-367" aria-hidden="true" tabindex="-1"></a>    indices <span class="op">=</span> rng.choice(N, size<span class="op">=</span>N, replace<span class="op">=</span><span class="va">True</span>) <span class="co"># resampling with replacement</span></span>
+<span id="cb2-368"><a href="#cb2-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-369"><a href="#cb2-369" aria-hidden="true" tabindex="-1"></a>    x_bootstrap <span class="op">=</span> x[indices]</span>
+<span id="cb2-370"><a href="#cb2-370" aria-hidden="true" tabindex="-1"></a>    y_bootstrap <span class="op">=</span> y[indices]</span>
+<span id="cb2-371"><a href="#cb2-371" aria-hidden="true" tabindex="-1"></a>    <span class="co"># fitting the model to the resampled data</span></span>
+<span id="cb2-372"><a href="#cb2-372" aria-hidden="true" tabindex="-1"></a>    coeffs_bootstrap <span class="op">=</span> np.polyfit(x_bootstrap, y_bootstrap, <span class="dv">2</span>)</span>
+<span id="cb2-373"><a href="#cb2-373" aria-hidden="true" tabindex="-1"></a>    bootstrap_estimates[i] <span class="op">=</span> coeffs_bootstrap</span>
+<span id="cb2-374"><a href="#cb2-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-375"><a href="#cb2-375" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-376"><a href="#cb2-376" aria-hidden="true" tabindex="-1"></a>a_bootstrap_estimates <span class="op">=</span> bootstrap_estimates[:, <span class="dv">0</span>]</span>
+<span id="cb2-377"><a href="#cb2-377" aria-hidden="true" tabindex="-1"></a>b_bootstrap_estimates <span class="op">=</span> bootstrap_estimates[:, <span class="dv">1</span>]</span>
+<span id="cb2-378"><a href="#cb2-378" aria-hidden="true" tabindex="-1"></a>c_bootstrap_estimates <span class="op">=</span> bootstrap_estimates[:, <span class="dv">2</span>]   </span>
+<span id="cb2-379"><a href="#cb2-379" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap estimate of a: </span><span class="sc">{</span>np<span class="sc">.</span>mean(a_bootstrap_estimates)<span class="sc">}</span><span class="ss"> with error </span><span class="sc">{</span>np<span class="sc">.</span>std(a_bootstrap_estimates)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-380"><a href="#cb2-380" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap estimate of b: </span><span class="sc">{</span>np<span class="sc">.</span>mean(b_bootstrap_estimates)<span class="sc">}</span><span class="ss"> with error </span><span class="sc">{</span>np<span class="sc">.</span>std(b_bootstrap_estimates)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-381"><a href="#cb2-381" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Bootstrap estimate of c: </span><span class="sc">{</span>np<span class="sc">.</span>mean(c_bootstrap_estimates)<span class="sc">}</span><span class="ss"> with error </span><span class="sc">{</span>np<span class="sc">.</span>std(c_bootstrap_estimates)<span class="sc">}</span><span class="ss">"</span>)  </span>
+<span id="cb2-382"><a href="#cb2-382" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb2-383"><a href="#cb2-383" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-384"><a href="#cb2-384" aria-hidden="true" tabindex="-1"></a>Reassuringly, the errors are compatible with the ones obtained from the covariance matrix, but they are more robust to violations of the assumptions of the model and to outliers in the data.</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
