@@ -1,0 +1,2116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Writing Scientific Reports on Computational Projects – Introduction to Coding and Data Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d69ecb9bfb3452960edd708ecf92c3b3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+<meta name="robots" content="noindex, nofollow">
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Intro to Coding &amp; Data Analysis</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="../index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-lessons" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Lessons</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-lessons">    
+        <li>
+    <a class="dropdown-item" href="../01/week_01_home.html">
+ <span class="dropdown-text">01 - Introduction to Data Types</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02/week_02_home.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03/week_03_home.html">
+ <span class="dropdown-text">03 - Loops</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04/week_04_home.html">
+ <span class="dropdown-text">04 - Functions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05/week_05_home.html">
+ <span class="dropdown-text">05 - Consolidation: Python on the field</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/lecture_intro_numpy.html">
+ <span class="dropdown-text">07 - Introduction to NumPy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - Working with NumPy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/lecture_intro_matplotlib.html">
+ <span class="dropdown-text">09 - Introduction to Matplotlib</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/lecture_multidimensionalArrays.html">
+ <span class="dropdown-text">10 - Multidimensional Arrays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/lecture_beyond_the_notebook.html">
+ <span class="dropdown-text">11 - Beyond the Notebook</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../13/lecture_pandas.html">
+ <span class="dropdown-text">13 - <code>pandas</code> series and data frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../14/lecture_pandas_preprocessing.html">
+ <span class="dropdown-text">14 - Pre-processing data frames</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../15/lecture_pandas_plotting.html">
+ <span class="dropdown-text">15 - Plotting with <code>pandas</code></span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../16/lecture_pandas_vs_numpy.html">
+ <span class="dropdown-text">16 - Pandas vs Numpy</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../17/lecture_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../18/lecture_curve_fitting.html">
+ <span class="dropdown-text">18 - Fitting</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../19/lecture_modularisation.html">
+ <span class="dropdown-text">19 - Modularisation</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../20/lecture_writing_reports.html">
+ <span class="dropdown-text">20 - Writing Reports</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-exercises" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Exercises</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-exercises">    
+        <li>
+    <a class="dropdown-item" href="../01/exercises_intro.html">
+ <span class="dropdown-text">01 - Intro to Data Types Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02/exercises_bool.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03/exercises_loop.html">
+ <span class="dropdown-text">03 - Loops Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04/exercises_function.html">
+ <span class="dropdown-text">04 - Functions Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05/exercises_python_on_the_field.html">
+ <span class="dropdown-text">05 - Python in the Field Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/exercises_numpy.html">
+ <span class="dropdown-text">07 - NumPy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/exercises_lecture_working_with_numpy.html">
+ <span class="dropdown-text">08 - Working with Numpy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/exercises_plotting_data_from_file.html">
+ <span class="dropdown-text">09 - Plotting Data Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_multid.html">
+ <span class="dropdown-text">10 - Working with multidimensional arrays</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_riddles.html">
+ <span class="dropdown-text">11 - Riddles</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../13/exercises_pandas_basics.html">
+ <span class="dropdown-text">13 - Pandas Basics Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../14/exercises_pandas_preprocessing.html">
+ <span class="dropdown-text">14 - Pandas Preprocessing Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../15/exercises_pandas_plotting.html">
+ <span class="dropdown-text">15 - Pandas Plotting Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy.html">
+ <span class="dropdown-text">16 - Pandas vs Numpy Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../17/exercises_advanced_plotting.html">
+ <span class="dropdown-text">17 - Advanced Plotting Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../18/exercises_curve_fitting.html">
+ <span class="dropdown-text">18 - Curve Fitting Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../19/exercises_modularisation.html">
+ <span class="dropdown-text">19 - Modularisation Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../20/exercises_writing_reports.html">
+ <span class="dropdown-text">20 - Writing Reports Exercises</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-solutions" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Solutions</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-solutions">    
+        <li>
+    <a class="dropdown-item" href="../01/week_01_solutions_demonstrator_version.html">
+ <span class="dropdown-text">01 - Intro to Data Types Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../02/week_02_solutions_demonstrator_version.html">
+ <span class="dropdown-text">02 - Booleans and Conditionals Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../03/week_03_solutions_demonstrator_version.html">
+ <span class="dropdown-text">03 - Loops Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../04/week_04_solutions_demonstrator_version.html">
+ <span class="dropdown-text">04 - Functions Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../05/week_05_solutions_demonstrator_version.html">
+ <span class="dropdown-text">05 - Python in the Field Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../07/exercises_numpy_solutions.html">
+ <span class="dropdown-text">07 - NumPy Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../08/exercises_lecture_working_with_numpy_solutions.html">
+ <span class="dropdown-text">08 - NumPy Working Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../09/exercises_plotting_data_from_file_solutions.html">
+ <span class="dropdown-text">09 - Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part1_solutions.html">
+ <span class="dropdown-text">10 - Part 1 Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../10/exercises_part2_solutions.html">
+ <span class="dropdown-text">10 - Part 2 Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_numpy_riddles_solutions.html">
+ <span class="dropdown-text">11 - NumPy Riddles Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../11/exercises_python_riddles_solutions.html">
+ <span class="dropdown-text">11 - Python Riddles Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../13/exercises_pandas_basics_solutions.html">
+ <span class="dropdown-text">13 - Pandas Basics Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../14/exercises_pandas_preprocessing_solutions.html">
+ <span class="dropdown-text">14 - Pandas Preprocessing Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../15/exercises_pandas_plotting_solutions.html">
+ <span class="dropdown-text">15 - Pandas Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../16/exercises_pandas_vs_numpy-solutions.html">
+ <span class="dropdown-text">16 - Pandas vs Numpy Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../17/exercises_advanced_plotting-solutions.html">
+ <span class="dropdown-text">17 - Advanced Plotting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../18/exercises_curve_fitting-solutions.html">
+ <span class="dropdown-text">18 - Curve Fitting Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../19/exercises_modularisation-solutions.qmd">
+ <span class="dropdown-text">19 - Modularisation Solutions</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-formative-tests" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Formative tests</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-formative-tests">    
+        <li>
+    <a class="dropdown-item" href="../formative/basic_structures.html">
+ <span class="dropdown-text">Variables, lists, dictionaries and branches</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../formative/numpy_basics.html">
+ <span class="dropdown-text">Basic numpy structures</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../20/lecture_writing_reports.html">20 Writing Reports</a></li><li class="breadcrumb-item"><a href="../20/lecture_writing_reports.html">Writing Scientific Reports on Computational Projects</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../figs/banner.png" alt="" class="sidebar-logo light-content py-0 d-lg-inline d-none">
+      <img src="../figs/banner.png" alt="" class="sidebar-logo dark-content py-0 d-lg-inline d-none">
+      </a>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
+ <span class="menu-text">Course Overview</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Coding and Data Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false">
+ <span class="menu-text">01 Introduction to Data Types</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Data Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: Basic Data Types</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Collections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../01/week_01_intro_to_data_types_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Copying and References</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false">
+ <span class="menu-text">02 Booleans and Conditionals</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Booleans and Conditionals</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: If Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Match Statements</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../02/week_02_booleans_and_conditionals_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Conditional Expressions and Lazy Evaluation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false">
+ <span class="menu-text">03 Loops</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_loops_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: For and While Loops</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_loops_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Advanced Iteration</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../03/week_03_loops_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Comprehensions</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false">
+ <span class="menu-text">04 Functions</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_functions_beginner.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beginner: Defining Functions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_functions_intermediate.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Intermediate: Flexible Inputs and Outputs</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../04/week_04_functions_advanced.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced: Lambda Functions and Functional Programming</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false">
+ <span class="menu-text">05 Consolidation: Python in the field</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_home.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Consolidation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_chemistry.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Chemistry Challenge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_physics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Physics Challenge</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../05/week_05_data_science_quarto.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Science Challenge</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">06 Consolidation week</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false">
+ <span class="menu-text">07 Introduction to NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07/lecture_intro_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">The <code>numpy</code> module</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../07/exercises_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><code>numpy</code> Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false">
+ <span class="menu-text">08 Working with NumPy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Indexing and Random Data Generation</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../08/exercises_lecture_working_with_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Working with <code>numpy</code>: Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false">
+ <span class="menu-text">09 Introduction to Matplotlib</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/lecture_intro_matplotlib.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>matplotlib</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/exercises_plotting_data_from_file.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting data from file</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../09/fun_matplotlib_decoration.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Add some decoration</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false">
+ <span class="menu-text">10 Multidimensional Arrays</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/lecture_multidimensionalArrays.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multi-dimensional arrays</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Creating a mask containing a circle</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../10/exercises_part2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Using a mask</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false">
+ <span class="menu-text">11 Beyond the Notebook</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/lecture_beyond_the_notebook.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Beyond the notebook</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../11/exercises_riddles.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Riddles</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">12 Winter break</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false">
+ <span class="menu-text">13 <code>pandas</code> series and data frames</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13/lecture_pandas.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../13/exercises_pandas_basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Basics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false">
+ <span class="menu-text">14 Pre-processing data frames</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14/lecture_pandas_preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Pre-processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../14/exercises_pandas_preprocessing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas Data Preprocessing - Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false">
+ <span class="menu-text">15 Plotting with <code>pandas</code></span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15/lecture_pandas_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Plotting with <code>pandas</code></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../15/exercises_pandas_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deforestation Data</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false">
+ <span class="menu-text">16 Pandas vs Numpy</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16/lecture_pandas_vs_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Pandas vs Numpy</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../16/exercises_pandas_vs_numpy.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Numpy vs Pandas: Exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false">
+ <span class="menu-text">17 Advanced Plotting</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/lecture_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting with Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../17/exercises_advanced_plotting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Advanced Plotting Exercises: Building Dashboards with Seaborn and Plotly</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false">
+ <span class="menu-text">18 Fitting</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18/lecture_curve_fitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simple Curve Fitting in Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../18/exercises_curve_fitting.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exploring fits</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false">
+ <span class="menu-text">19 Modularisation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-20" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-20" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19/lecture_modularisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Modularisation in Python</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../19/exercises_modularisation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises: Modularisation</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="true">
+ <span class="menu-text">20 Writing Reports</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-21" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-21" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20/lecture_writing_reports.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Writing Scientific Reports on Computational Projects</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../20/exercises_writing_reports.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Exercises: Writing Scientific Reports in LaTeX</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#main-structure-of-a-report-on-a-computational-project" id="toc-main-structure-of-a-report-on-a-computational-project" class="nav-link active" data-scroll-target="#main-structure-of-a-report-on-a-computational-project">Main structure of a report on a computational project</a>
+  <ul class="collapse">
+  <li><a href="#on-referencing-and-citations" id="toc-on-referencing-and-citations" class="nav-link" data-scroll-target="#on-referencing-and-citations">On referencing and citations</a></li>
+  <li><a href="#report-quality" id="toc-report-quality" class="nav-link" data-scroll-target="#report-quality">Report quality</a></li>
+  </ul></li>
+  <li><a href="#writing-a-report-in-latex" id="toc-writing-a-report-in-latex" class="nav-link" data-scroll-target="#writing-a-report-in-latex">Writing a report in LaTeX</a>
+  <ul class="collapse">
+  <li><a href="#essential-structure-of-a-latex-document" id="toc-essential-structure-of-a-latex-document" class="nav-link" data-scroll-target="#essential-structure-of-a-latex-document">Essential structure of a LaTeX document</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../20/lecture_writing_reports.html">20 Writing Reports</a></li><li class="breadcrumb-item"><a href="../20/lecture_writing_reports.html">Writing Scientific Reports on Computational Projects</a></li></ol></nav>
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title">Writing Scientific Reports on Computational Projects</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Project 4 is your final assessment for this course (40% of your grade). The goal will be to</p>
+<ul>
+<li>analyse a dataset of your choice using Python and the many tools you’ve learned throughout the course</li>
+<li>write a scientific report that explains the background, your methodology, results, and conclusions.</li>
+</ul>
+<p>In this workshop, we focus on the <strong>report writing</strong> aspect in the specific context of a computational project.</p>
+<p>You will be provided with a template both in Microsoft Word and LaTeX. The LaTeX template is more suitable for a scientific report, but the Word template is more user-friendly for those new to LaTeX.</p>
+<p>In this workshop, we will introduce you to:</p>
+<ul>
+<li>the main ideas and structure of a scientific report (applicable to both Word and LaTeX)</li>
+<li>specific advice on how to use LaTeX to write a report that is both rigorous and visually appealing</li>
+</ul>
+<section id="main-structure-of-a-report-on-a-computational-project" class="level2">
+<h2 class="anchored" data-anchor-id="main-structure-of-a-report-on-a-computational-project">Main structure of a report on a computational project</h2>
+<p>A <strong>report</strong> is a brief, structured document that explains the motivation, the methods, the results, and the conclusions of a project.</p>
+<p>Its focus is on <strong>clarity</strong>, <strong>purpose</strong> and <strong>rigour</strong>. You can think of this as a first draft of a scientific paper, but without the need for a comprehensive literature review or a detailed discussion of related work. The emphasis is on the <strong>methodology</strong> and the <strong>results</strong>.</p>
+<p>For your report, we will provide you with a template that includes the following sections:</p>
+<ul>
+<li><p><strong>Title</strong>: A concise and informative title that reflects the content of your report.</p></li>
+<li><p><strong>Abstract</strong>: This a extremely brief summary, usually no more than 100-150 words, that gives a quick overview of the problem, the methods, the results, and the conclusions.</p></li>
+<li><p><strong>Introduction</strong>: In this section you want to <strong>contextualise</strong> your problem, providing motivation and background. You want to answer the following questions:</p></li>
+<li><p>What kind of problem are we looking at?</p></li>
+<li><p>Why does this matter?</p></li>
+<li><p>What are we trying to achieve?</p></li>
+</ul>
+<p>It can be useful to briefly outline your roadmap to the reader, so they know what to expect in the rest of the report.</p>
+<ul>
+<li><p><strong>Methodology</strong>: Here you prepare the reader with the necessary information to understand your approach. This means that here you will define all the quantities of interest that will be tracked in your results section, and you will explain the rationale behind your choices. You want to answer questions such as:</p></li>
+<li><p>What data are we using?</p></li>
+<li><p>What quantities are we tracking?</p></li>
+<li><p>What specific scientific question or hypothesis are we trying to answer or validate with such quantities?</p></li>
+<li><p>Are we defining any new metrics?</p></li>
+<li><p>Are we using specific models to fit/explain the data?</p></li>
+</ul>
+<p>Here you can add equations to help you with the definition of your metrics, or to explain the rationale behind your model choice and the scientific question you are interested in.</p>
+<ul>
+<li><p><strong>Results</strong>: This is the heart of your report. Here come your figures, maybe some tables, and the description of your findings. You want to answer questions such as:</p></li>
+<li><p>What did we find?</p></li>
+<li><p>How do we interpret these results?</p></li>
+<li><p>What do they mean in the context of our problem?</p></li>
+</ul>
+<section id="dos" class="level4">
+<h4 class="anchored" data-anchor-id="dos">DOs:</h4>
+<ul>
+<li>Make the text and figures work together to tell a coherent story.<br>
+</li>
+<li>Make the figures clear and informative, maximising the ratio of <em>information to ink</em></li>
+<li>Provide clear and informative captions for your figures, so that they can be understood even without reading the main text.</li>
+<li>Annotate the figures (with arrows or text) to highlight the key findings, and to guide the reader’s attention to the most important aspects.</li>
+<li>Use tables to summarize key results, but avoid overwhelming the reader with too much information.</li>
+<li>Lead the reader step by step, showing how the results build on each other to support your conclusions.</li>
+</ul>
+</section>
+<section id="donts" class="level4">
+<h4 class="anchored" data-anchor-id="donts">DON’Ts:</h4>
+<ul>
+<li><p>Don’t produce many figures with the same information. Combine them together, especially if the combination allows for easier comparison.</p></li>
+<li><p>Do not add figures that are not explained in the text. Every figure should be referenced and explained.</p></li>
+<li><p>Do not speculate on the results. Speculative interpretation can be added in the conclusion/discussion, but the results focus on the facts.</p></li>
+<li><p><strong>Conclusions</strong>: Here you want to briefly summarise your findings and their implications. You should clearly address the scientific questions that you set out in the earlier sections (e.g.&nbsp;the introduction and the methodology), and explain how your results answer those questions.</p></li>
+</ul>
+<p>In practice, in the conclusions you should more briefly recap what you wanted to tell us, confirm the main statements and findings, and then add a discussion of the limitations of your approach and possible future directions for research.</p>
+</section>
+<section id="on-referencing-and-citations" class="level3">
+<h3 class="anchored" data-anchor-id="on-referencing-and-citations">On referencing and citations</h3>
+<p>In the scientific literature, references are key as they situate the work within context, allows for comparisons with previous work, and gives credit to the original authors. In the context of a short computational reports, references can be more limited and focussed on:</p>
+<ul>
+<li>Linking to broader introductory context.</li>
+<li>Explicitly citing the data source, if it is not original data collected by you.</li>
+<li>Citing the specific algorithms or models you are using, especially if they are not standard</li>
+<li>Citing specific libraries or tools that you are using, especially if they are not widely known.</li>
+</ul>
+<p>This means that it is definitely possible to cite <code>numpy</code> or <code>pandas</code> or <code>seaborn</code>, but not strictly necessary since these are widely used.</p>
+</section>
+<section id="report-quality" class="level3">
+<h3 class="anchored" data-anchor-id="report-quality">Report quality</h3>
+<p>The quality of a report is multi-faceted. When completing your report, ask yourself the following questions:</p>
+<ul>
+<li>How accessible is my report to a reader who is not an expert in the field? You can test this by asking a friend to read your report and give you feedback on what they understood and what they found confusing.</li>
+<li>Is the report well organised? If the structure is incoherent (e.g.&nbsp;figures are not referenced in the order they appear) it is likely that you need to rethink.</li>
+<li>Is my motivation clear? Why should anyone care about this problem? Try to think of the bigger picture and the context of your work. Even if this is mostly an exercise, it uses real data and can be linked to a scientific question.</li>
+<li>What are my key statements? Are they clear to identify? You could have ended up muddling the key points in a sea of details. Try to find the key points and make sure they are clearly highlighted in the text.</li>
+<li>Are my statements actually supported by my figures? Figures (and tables) are the main evidence for your quantitative analysis. You should use annotations and captions to make clear that the data is coherent with your story.</li>
+<li>Are my conclusions committal enough? You should be able to clearly state what your main findings are, and what they mean in the context of your problem. Avoid being too vague or speculative in your conclusions.</li>
+</ul>
+<p><strong>Style</strong> is also important. Scientific writing should focus on <strong>clarity</strong>, <strong>precision</strong> and <strong>conciseness</strong>. Some practical advice includes:</p>
+<ul>
+<li>Use as much as possible simple and direct language: do not redefine common concepts and do not use unnecessary complex words.</li>
+<li>Use first person when appropriate: this is an individual report, so you cans safely use <code>I</code> to refer to yourself. This can make the writing more engaging and easier to read.</li>
+<li>Active vs passive voice: both are acceptable, but if you have the choice, prefer the active voice as it is more direct. For example, instead of writing “The data was analysed using Python”, you could write “I analysed the data using Python”. This makes the sentence more concise and easier to read.</li>
+<li>Be precise when needed: specific concepts can be clearly conveyed using well-defined technical terms. For example if you want to distinguish between an arithmetic mean and a geometric mean, use this wording instead of a more vague “average”.</li>
+</ul>
+</section>
+</section>
+<section id="writing-a-report-in-latex" class="level2">
+<h2 class="anchored" data-anchor-id="writing-a-report-in-latex">Writing a report in LaTeX</h2>
+<p>There are many tools available for writing scientific reports, but one of the most widely used is <strong>LaTeX</strong>. LaTeX is a typesetting system: it takes a plain text file with some special syntax and produces a beautifully formatted document.</p>
+<p>It is a standard in many scientific fields, including physics, chemistry, computer science and mathematics. It is different from other extensively used tools such as Microsoft Word, which is a WYSIWYG (What You See Is What You Get) editor. In LaTeX, you write the content and the formatting is handled by the system.</p>
+<p>The main advantages of using LaTeX for scientific reports are:</p>
+<ul>
+<li>It produces high-quality, professional-looking documents with consistent formatting.</li>
+<li>It embeds mathematical equations and symbols seamlessly, making it ideal for scientific writing.</li>
+<li>It has powerful features for handling references, citations, and bibliographies.</li>
+</ul>
+<p>A LaTeX editing environment can be installed on any machine. However, the University of Bristol provides you with complete access to an online LaTeX editor called <strong>Overleaf</strong>. This is a cloud-based platform that allows you to write, edit, and collaborate on LaTeX documents in real time.</p>
+<p>You can access your account from this link: <a href="https://www.overleaf.com/edu/bristol">Overleaf - University of Bristol</a></p>
+<section id="essential-structure-of-a-latex-document" class="level3">
+<h3 class="anchored" data-anchor-id="essential-structure-of-a-latex-document">Essential structure of a LaTeX document</h3>
+<p>It is useful to think of a LaTeX document as a script: we provide a series of instructions to teh LaTeX system. and this (through a process called <strong>compilation</strong>) produces a final human readable document (e.g.&nbsp;a PDF).</p>
+<p>Similar to your Python scripts, a LaTeX document has a specific structure. The main components are:</p>
+<ul>
+<li><strong>Preamble</strong>: This is the section at the beginning of the document where you specify the document class, load packages, and set up any custom commands or configurations. The preamble is crucial for defining the overall structure and formatting of your document.</li>
+<li><strong>Document Body</strong>: This is the main content of your document, enclosed between <code>\begin{document}</code> and <code>\end{document}</code>. Here you write the actual text, include figures, tables, and any other content that will appear in the final document.</li>
+<li><strong>Sections and Subsections</strong>: LaTeX provides commands for structuring your document into sections, subsections, and subsubsections. This helps to organize your content and makes it easier for readers to navigate through your report.</li>
+<li><strong>Figures and Tables</strong>: You can include figures and tables in your LaTeX document using the <code>figure</code> and <code>table</code> environments. This allows you to add captions, labels, and references to your figures and tables, making them an integral part of your report.</li>
+<li><strong>Bibliography</strong>: If you are using references, this is the section where you list all the sources you cited in your document. This can be done manually or using a bibliography management tool like BibTeX.</li>
+</ul>
+<p>In LaTeX, commands are typically identified by a backslash <code>\</code> followed by the command name. For example, <code>\section{Introduction}</code> creates a new section titled “Introduction”.</p>
+<p>Similar to a Python, script one can add comments, by prepending a line with a <code>%</code> symbol. This is useful for adding notes to yourself or to collaborators without affecting the final output of the document, or to temporarily disable parts of the code.</p>
+<section id="preamble" class="level4">
+<h4 class="anchored" data-anchor-id="preamble">Preamble</h4>
+<p>At the top of our file, we have a few lines that specify:</p>
+<ul>
+<li>what kind of document we are writing: this is called a <code>document class</code>.</li>
+<li>what kind of packages we need to include in order to have all the functionalities we need (colours, figures, tables, etc.); this is very similar, in spirit, to importing libraries in Python via the <code>import</code> statement. Packages in LaTeX are included with a <code>\usepackage{}</code></li>
+</ul>
+<p>For example</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\documentclass</span>{<span class="ex">article</span>} <span class="co">% This specifies that we are writing an article. Other options include report, book, etc</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>[utf8]{<span class="ex">inputenc</span>} <span class="co">% This package allows us to use UTF-8 encoding, which is standard for most documents</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">graphicx</span>} <span class="co">% This package allows us to include graphics (figures)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">amsmath</span>} <span class="co">% This package provides advanced mathematical typesetting capabilities</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">\usepackage</span>{<span class="ex">hyperref</span>} <span class="co">% This package allows us to create hyperlinks in our document</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="document-body" class="level4">
+<h4 class="anchored" data-anchor-id="document-body">Document body</h4>
+<p>In the document body we have the actual content of the report. We add here our title, abstract, sections, figures, tables, etc.</p>
+<p>The body is enclosed between <code>\begin{document}</code> and <code>\end{document}</code>. This may be thought as a single block of code (e.g.&nbsp;an indented block in Python) that contains all the content of our report. LaTeX extensively uses such <code>\begin{...} ... \end{..}</code> blocks called <strong>environments</strong> to structure the content, e.g.&nbsp;for figures and tables.</p>
+</section>
+<section id="sections-and-subsections" class="level4">
+<h4 class="anchored" data-anchor-id="sections-and-subsections">Sections and subsections</h4>
+<p>To construct sections, LaTeX has has a hierarchy of command:</p>
+<ul>
+<li><code>\section{}</code> for sections</li>
+<li><code>\subsection{}</code> for subsections</li>
+<li><code>\subsubsection{}</code> for subsubsections (if available in the document class)</li>
+</ul>
+<p>LaTeX automatically numbers these sections and keeps track of the hierarchy, without you having to worry about it.</p>
+<p>You can avoid numbering sections by using the <code>*</code> version of the command, e.g.&nbsp;<code>\section*{}</code> or with global settings taht depend on your document class.</p>
+</section>
+<section id="figures-and-tables" class="level4">
+<h4 class="anchored" data-anchor-id="figures-and-tables">Figures and tables</h4>
+<p>Figure and tables are specific <em>environments</em> in LaTeX, which means that they are enclosed between <code>\begin{figure} ... \end{figure}</code> and <code>\begin{table} ... \end{table}</code> respectively.</p>
+<p>A figure is quite a complex environment composed of many parts:</p>
+<ul>
+<li>an <code>\includegraphics{}</code> command that specifies the path to the image file you want to include in your document</li>
+<li>a <code>\caption{}</code> command that provides a caption for the figure, which is important for explaining what the figure shows and for referencing it in the text</li>
+<li>a <code>\label{}</code> command that assigns a unique identifier to the figure, allowing you to reference it later in the text using a <code>\ref{}</code> command.</li>
+</ul>
+<p>For example</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">figure</span>}[htbp] <span class="co">% This specifies that the figure should be placed here (h), at the top of the page (t), at the bottom of the page (b), or on a separate page (p)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\centering</span> <span class="co">% This centers the figure</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="bu">\includegraphics</span>[width=0.8<span class="fu">\textwidth</span>]{<span class="ex">path/to/your/figure.png</span>} <span class="co">% This includes the figure and specifies its width as 80% of the text width</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\caption</span>{This is the caption for the figure.}</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">\label</span>{<span class="ex">fig:my_figure</span>} <span class="co">% This assigns a label to the figure for referencing</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">figure</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>We can reference this figure in the main text using <code>\ref{fig:my_figure}</code>, which will automatically insert the correct figure number. This means, again, that we do not need to worry about the numbering of our figures, as LaTeX will handle it for us.</p>
+<p>Tables also have a specific structure. One first constructs a <code>\begin{table} ... \end{table}</code> environment, similar to figures. Then, inside the table environment, we can use the <code>tabular</code> environment to create the actual table.</p>
+<p>The <code>tabular</code> environment allows you to define the number of columns and their alignment. For example:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">\begin</span>{<span class="ex">table</span>}[htbp]</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\centering</span>  </span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">\begin</span>{<span class="ex">tabular</span>}{|c|c|c|} <span class="co">% This specifies a table with 3 columns, all centered, and with vertical lines between them</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">\hline</span> <span class="co">% This adds a horizontal line at the top of the table</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        Column 1 <span class="op">&amp;</span> Column 2 <span class="op">&amp;</span> Column 3 <span class="fu">\\</span> <span class="co">% This is the header row</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">\hline</span> <span class="co">% This adds a horizontal line after the header</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        Data 1 <span class="op">&amp;</span> Data 2 <span class="op">&amp;</span> Data 3 <span class="fu">\\</span> <span class="co">% This is the first data row</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        Data 4 <span class="op">&amp;</span> Data 5 <span class="op">&amp;</span> Data 6 <span class="fu">\\</span> <span class="co">% This is the second data row</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">\hline</span> <span class="co">% This adds a horizontal line at the bottom of the table</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">\end</span>{<span class="ex">tabular</span>}</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">\caption</span>{This is the caption for the table.}</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">\label</span>{<span class="ex">tab:my_table</span>} <span class="co">%this could be any string but the convention is to start with "tab:" for tables and "fig:" for figures</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="kw">\end</span>{<span class="ex">table</span>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As you can see the construction of the table involves many instructions:</p>
+<ul>
+<li>the <code>\begin{tabular}{|c|c|c|}</code> command specifies that we want a table with 3 columns, all centered (indicated by <code>c</code>), and with vertical lines between them (indicated by <code>|</code>). We could have different alignments (e.g.&nbsp;<code>l</code> for left-aligned, <code>r</code> for right-aligned) and different numbers of columns as well as different line styles (e.g.&nbsp;no lines, or double lines).</li>
+<li>the <code>\hline</code> command adds a horizontal line to the table. We can use it to separate the header from the data, and to add lines at the top and bottom of the table.</li>
+<li>the <code>&amp;</code> symbol is used to separate columns within a row, and the <code>\\</code> symbol is used to indicate the end of a row.</li>
+</ul>
+<section id="placement-of-floats" class="level6">
+<h6 class="anchored" data-anchor-id="placement-of-floats">Placement of floats</h6>
+<p>Figures and tables are so-called <em>floats</em> in LaTeX. This behaviour can be quite surprising (and often annoying) when encountering LaTeX for the first time.</p>
+<p>In practice, LaTeX will try to optimise the placement of figures and tables, and it may not always place them exactly where you put the code for them in the document. This “optimum” is very often not what we want and it actuyally can depend on how much text precedes or follows the figure in your source LaTeX file (the pure text code).</p>
+<p>LaTeX can take some hints from you for the placement, in the form of the optional argument in <code>\begin{figure}[htbp]</code> and <code>\begin{table}[htbp]</code>. The letters in the square brackets indicate your preferences for where the figure or table should be placed:</p>
+<ul>
+<li><code>h</code> (here): Place the float at the position in the text where the code is written.</li>
+<li><code>t</code> (top): Place the float at the top of a page.</li>
+<li><code>b</code> (bottom): Place the float at the bottom of a page.</li>
+<li><code>p</code> (page): Place the float on a separate page dedicated to floats.</li>
+</ul>
+<p>For a report, modelled on the appearence of scientific papers, it is best to prefer figures that are placed either at the top or at the bottom of the page, as this is the most common style in scientific writing. This means that you should use <code>[tb]</code> as your placement specifier for figures and tables.</p>
+</section>
+</section>
+<section id="references-and-citations" class="level4">
+<h4 class="anchored" data-anchor-id="references-and-citations">References and citations</h4>
+<p>In this report, you will not perform a literature review. You may still have a few references as indicated above. There are two main strategies to include references in a LaTeX document:</p>
+<ul>
+<li><p><strong>Manual referencing</strong>: You can manually add references in a bibliography section at the end of your document. This involves creating a list of references and citing them in the text using <code>\cite{}</code> commands. This may be largely sufficient for our short report but requires care in typing the correct bibliographic information.</p></li>
+<li><p><strong>Automatic referencing with BibTeX</strong>: The true advantage of using LaTeX for references is that it can use a database of references (stored in a sepearate <code>.bib</code> file) to create a reference section according to the cited material using an utomatic tool called <code>BibTeX</code> which is fully (and automatically integrated in Overleaf). This is flexible and much less error prone. We will focus on this second method.</p></li>
+</ul>
+<section id="bibtex-files" class="level5">
+<h5 class="anchored" data-anchor-id="bibtex-files">BibTeX files</h5>
+<p>A BibTeX file is a separate plain text file that you will also find in you Project template. It has a <code>.bib</code> extension and it contains a list of references in a specific format. Each reference is defined by an entry that starts with an <code>@</code> symbol followed by the type of reference (e.g.&nbsp;<code>@article</code>, <code>@book</code>, etc.) and a <strong>unique identifier</strong> for that reference (an alphanumeric string). These entries are very similar to a Python dictionary, with key-value pairs that provide the bibliographic information for each reference (e.g.&nbsp;author, title, year, etc.).</p>
+<p>For example, a BibTeX entry for a <strong>journal article</strong> might look like this:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="va">@article</span>{<span class="ot">metropolis1953</span>,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">author</span> = {Metropolis, Nicholas and Rosenbluth, Arianna W. and Rosenbluth, Marshall N. and Teller, Augusta H. and Teller, Edward},</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">title</span> = {Equation of State Calculations by Fast Computing Machines},</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">journal</span> = {The Journal of Chemical Physics},</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">volume</span> = {21},</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="dt">number</span> = {6},</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="dt">pages</span> = {1087-1092},</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="dt">year</span> = {1953},</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">month</span> = {06},</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">issn</span> = {0021-9606},</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">doi</span> = {10.1063/1.1699114},</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">url</span> = {https://doi.org/10.1063/1.1699114},</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>As you can see, the individual entry is very rich. The <code>metropolis1953</code> string is the cite key, the unique identifier that we can use to refer to the refernce throughouts our document using the command <code>\cite{metropolis1953}</code>. There follows a number of fields envoding a lot of information, including in mnay cases urls.</p>
+<p>This is useful, as it can make a refernece section interactive with hyperlinks (by the combined addition of the <code>\usepackage{hyperref}</code> in the preamble).</p>
+<p>Other kinds of items include:</p>
+<p><strong>Book:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="va">@book</span>{<span class="ot">Womersley2022</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {Womersley, Jane},</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {Fundamentals of Data Analysis for Environmental Science},</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">publisher</span> = {Oxford University Press},</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2022},</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">edition</span> = {2nd}</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Website/Online Documentation:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="va">@misc</span>{<span class="ot">PandasDevelopmentTeam2024</span>,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="dt">author</span> = {{The Pandas Development Team}},</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="dt">title</span> = {Pandas: Python Data Analysis Library},</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="dt">year</span> = {2024},</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  <span class="dt">url</span> = {https://pandas.pydata.org/},</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">note</span> = {Accessed: March 12, 2026}</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Dataset:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">@dataset{Kaggle2024,</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">  author = {{Kaggle}},</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">  title = {Titanic: Machine Learning from Disaster},</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">  year = {2024},</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">  url = {https://www.kaggle.com/c/titanic},</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">  note = {Dataset retrieved from Kaggle}</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Software</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bibtex code-with-copy"><code class="sourceCode bibtex"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">@software{reback2020pandas,</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">    author       = {The pandas development team},</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">    title        = {pandas-dev/pandas: Pandas},</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">    month        = feb,</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co">    year         = 2020,</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co">    publisher    = {Zenodo},</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co">    version      = {latest},</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co">    doi          = {10.5281/zenodo.3509134},</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co">    url          = {https://doi.org/10.5281/zenodo.3509134}</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co">}</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>To use the BibTeX file in your LaTeX document, you need to include the following commands in the body of your document at the end, where you want the bibliography to appear:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode latex code-with-copy"><code class="sourceCode latex"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="bu">\bibliographystyle</span>{<span class="ex">plain</span>} <span class="co">% This specifies the bibliography style (e.g. plain)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="bu">\bibliography</span>{<span class="ex">references</span>} <span class="co">% This specifies the name of your .bib file (without the .bib extension)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>You can choose different bibliography styles. The recommended styles for scientific reports are</p>
+<ul>
+<li><code>plain</code>: This style sorts the bibliography entries alphabetically by author and formats them in a simple, straightforward manner.</li>
+<li><code>unsrt</code>: This style is similar to <code>plain</code>, but it does not sort the bibliography entries. Instead, it lists them in the order they are cited in the document.</li>
+<li><code>abbrv</code>: This style is similar to <code>plain</code>, but it uses abbreviated first names and journal names to save space.</li>
+<li>whhen using the <code>revtex4-2</code> document class (as in your report) we advise you to use the <code>apsrev4-2</code> bibliography style.</li>
+</ul>
+
+
+<!-- -->
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+</section>
+</section>
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../20";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+    const viewSource = window.document.getElementById('quarto-view-source') ||
+                       window.document.getElementById('quarto-code-tools-source');
+    if (viewSource) {
+      const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+      viewSource.addEventListener("click", function(e) {
+        if (sourceUrl) {
+          // rstudio viewer pane
+          if (/\bcapabilities=\b/.test(window.location)) {
+            window.open(sourceUrl);
+          } else {
+            window.location.href = sourceUrl;
+          }
+        } else {
+          const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+          modal.show();
+        }
+        return false;
+      });
+    }
+    function toggleCodeHandler(show) {
+      return function(e) {
+        const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+        for (let i=0; i<detailsSrc.length; i++) {
+          const details = detailsSrc[i].parentElement;
+          if (show) {
+            details.open = true;
+          } else {
+            details.removeAttribute("open");
+          }
+        }
+        const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+        const fromCls = show ? "hidden" : "unhidden";
+        const toCls = show ? "unhidden" : "hidden";
+        for (let i=0; i<cellCodeDivs.length; i++) {
+          const codeDiv = cellCodeDivs[i];
+          if (codeDiv.classList.contains(fromCls)) {
+            codeDiv.classList.remove(fromCls);
+            codeDiv.classList.add(toCls);
+          } 
+        }
+        return false;
+      }
+    }
+    const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+    if (hideAllCode) {
+      hideAllCode.addEventListener("click", toggleCodeHandler(false));
+    }
+    const showAllCode = window.document.getElementById("quarto-show-all-code");
+    if (showAllCode) {
+      showAllCode.addEventListener("click", toggleCodeHandler(true));
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/FTurci\.github\.io\/intro-coding-data-analysis-mirror\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Writing Scientific Reports on Computational Projects"</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>Project 4 is your final assessment for this course (40% of your grade). The goal will be to </span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>analyse a dataset of your choice using Python and the many tools you've learned throughout the course </span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>write a scientific report that explains the background, your methodology, results, and conclusions.</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>In this workshop, we focus on the **report writing** aspect in the specific context of a computational project.</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>You will be provided with a template both in Microsoft Word and LaTeX. The LaTeX template is more suitable for a scientific report, but the Word template is more user-friendly for those new to LaTeX.</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>In this workshop, we will introduce you to:</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the main ideas and structure of a scientific report (applicable to both Word and LaTeX)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>specific advice on how to use LaTeX to write a report that is both rigorous and visually appealing</span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu">## Main structure of a report on a computational project</span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>A **report** is a brief, structured document that explains the motivation, the methods, the results, and the conclusions of a project. </span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>Its focus is on **clarity**, **purpose** and **rigour**. You can think of this as a first draft of a scientific paper, but without the need for a comprehensive literature review or a detailed discussion of related work. The emphasis is on the **methodology** and the **results**.</span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>For your report, we will provide you with a template that includes the following sections:</span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Title**: A concise and informative title that reflects the content of your report.</span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Abstract**: This a extremely brief summary, usually no more than 100-150 words, that gives a quick overview of the problem, the methods, the results, and the conclusions.</span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Introduction**: In this section you want to **contextualise** your problem, providing motivation and background. You want to answer the following questions:</span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What kind of problem are we looking at?</span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Why does this matter?</span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What are we trying to achieve?</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>It can be useful to briefly outline your roadmap to the reader, so they know what to expect in the rest of the report.</span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Methodology**: Here you prepare the reader with the necessary information to understand your approach. This means that here you will define all the quantities of interest that will be tracked in your results section, and you will explain the rationale behind your choices. You want to answer questions such as:</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What data are we using?</span>
+<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What quantities are we tracking?</span>
+<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What specific scientific question or hypothesis are we trying to answer or validate with such quantities?</span>
+<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Are we defining any new metrics?</span>
+<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Are we using specific models to fit/explain the data?</span>
+<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a>Here you can add equations to help you with the definition of your metrics, or to explain the rationale behind your model choice and the scientific question you are interested in. </span>
+<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Results**: This is the heart of your report. Here come your figures, maybe some tables, and the description of your findings. You want to answer questions such as:</span>
+<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What did we find?</span>
+<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How do we interpret these results?</span>
+<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What do they mean in the context of our problem?</span>
+<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="fu">#### DOs:</span></span>
+<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make the text and figures work together to tell a coherent story.  </span>
+<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Make the figures clear and informative, maximising the ratio of *information to ink*</span>
+<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Provide clear and informative captions for your figures, so that they can be understood even without reading the main text.</span>
+<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Annotate the figures (with arrows or text) to highlight the key findings, and to guide the reader's attention to the most important aspects.</span>
+<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use tables to summarize key results, but avoid overwhelming the reader with too much information.</span>
+<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Lead the reader step by step, showing how the results build on each other to support your conclusions.</span>
+<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="fu">#### DON'Ts:</span></span>
+<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Don't produce many figures with the same information. Combine them together, especially if the combination allows for easier comparison.</span>
+<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Do not add figures that are not explained in the text. Every figure should be referenced and explained.</span>
+<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="ss">-  </span>Do not speculate on the results. Speculative interpretation can be added in the conclusion/discussion, but the results focus on the facts.</span>
+<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Conclusions**: Here you want to briefly summarise your findings and their implications.  You should clearly address the scientific questions that you set out in the earlier sections (e.g. the introduction and the methodology), and explain how your results answer those questions.</span>
+<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>In practice, in the conclusions you should more briefly recap what you wanted to tell us, confirm the main statements and findings, and then add a discussion of the limitations of your approach and possible future directions for research.</span>
+<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="fu">### On referencing and citations</span></span>
+<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a>In the scientific literature, references are key as they situate the work within context, allows for comparisons with previous work, and gives credit to the original authors. In the context of a short computational reports, references can be more limited and focussed on:</span>
+<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Linking to broader introductory context.</span>
+<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Explicitly citing the data source, if it is not original data collected by you.</span>
+<span id="cb10-84"><a href="#cb10-84" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Citing the specific algorithms or models you are using, especially if they are not standard </span>
+<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Citing specific libraries or tools that you are using, especially if they are not widely known.</span>
+<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>This means that it is definitely possible to cite <span class="in">`numpy`</span> or <span class="in">`pandas`</span> or <span class="in">`seaborn`</span>, but not strictly necessary since these are widely used.</span>
+<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="fu">### Report quality</span></span>
+<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a>The quality of a report is multi-faceted. When completing your report, ask yourself the following questions:</span>
+<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How accessible is my report to a reader who is not an expert in the field? You can test this by asking a friend to read your report and give you feedback on what they understood and what they found confusing.</span>
+<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Is the report well organised? If the structure is incoherent (e.g. figures are not referenced in the order they appear) it is likely that you need to rethink.</span>
+<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Is my motivation clear? Why should anyone care about this problem? Try to think of the bigger picture and the context of your work. Even if this is mostly an exercise, it uses real data and can be linked to a scientific question.</span>
+<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>What are my key statements? Are they clear to identify? You could have ended up muddling the key points in a sea of details. Try to find the key points and make sure they are clearly highlighted in the text.</span>
+<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Are my statements actually supported by my figures? Figures (and tables) are the main evidence for your quantitative analysis. You should use annotations and captions to make clear that the data is coherent with your story.</span>
+<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Are my conclusions committal enough? You should be able to clearly state what your main findings are, and what they mean in the context of your problem. Avoid being too vague or speculative in your conclusions.</span>
+<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a>**Style** is also important. Scientific writing should focus on **clarity**, **precision** and **conciseness**. Some practical advice includes:</span>
+<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use as much as possible simple and direct language: do not redefine common concepts and  do not use unnecessary complex words. </span>
+<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Use first person when appropriate: this is an individual report, so you cans safely use <span class="in">`I`</span> to refer to yourself. This can make the writing more engaging and easier to read.</span>
+<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Active vs passive voice: both are acceptable, but if you have the choice, prefer the active voice as it is more direct. For example, instead of writing "The data was analysed using Python", you could write "I analysed the data using Python". This makes the sentence more concise and easier to read.</span>
+<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Be precise when needed: specific concepts can be clearly conveyed using well-defined technical terms. For example if you want to distinguish between an arithmetic mean and a geometric mean, use this wording instead of a more vague "average".</span>
+<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a><span class="fu">## Writing a report in LaTeX</span></span>
+<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-110"><a href="#cb10-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a>There are many tools available for writing scientific reports, but one of the most widely used is **LaTeX**.</span>
+<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a>LaTeX is a typesetting system: it takes a plain text file with some special syntax and produces a beautifully formatted document.</span>
+<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a>It is a standard in many scientific fields, including physics, chemistry, computer science and mathematics. It is different from other extensively used tools such as Microsoft Word, which is a WYSIWYG (What You See Is What You Get) editor. In LaTeX, you write the content and the formatting is handled by the system. </span>
+<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a>The main advantages of using LaTeX for scientific reports are:</span>
+<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>It produces high-quality, professional-looking documents with consistent formatting.</span>
+<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>It embeds mathematical equations and symbols seamlessly, making it ideal for scientific writing.</span>
+<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>It has powerful features for handling references, citations, and bibliographies.</span>
+<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a>A LaTeX editing environment can be installed on any machine. However, the University of Bristol provides you with complete access to an online LaTeX editor called **Overleaf**. This is a cloud-based platform that allows you to write, edit, and collaborate on LaTeX documents in real time. </span>
+<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a>You can access your account from this link: <span class="co">[</span><span class="ot">Overleaf - University of Bristol</span><span class="co">](https://www.overleaf.com/edu/bristol)</span></span>
+<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a><span class="fu">### Essential structure of a LaTeX document</span></span>
+<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a>It is useful to think of a LaTeX document as a script: we provide a series of instructions to teh LaTeX system. and this (through a process called **compilation**) produces a final human readable document (e.g. a PDF).</span>
+<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a>Similar to your Python scripts, a LaTeX document has a specific structure. The main components are:</span>
+<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Preamble**: This is the section at the beginning of the document where you specify the document class, load packages, and set up any custom commands or configurations. The preamble is crucial for defining the overall structure and formatting of your document.</span>
+<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Document Body**: This is the main content of your document, enclosed between <span class="in">`\begin{document}`</span> and <span class="in">`\end{document}`</span>. Here you write the actual text, include figures, tables, and any other content that will appear in the final document.</span>
+<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Sections and Subsections**: LaTeX provides commands for structuring your document into sections, subsections, and subsubsections. This helps to organize your content and makes it easier for readers to navigate through your report.</span>
+<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Figures and Tables**: You can include figures and tables in your LaTeX document using the <span class="in">`figure`</span> and <span class="in">`table`</span> environments. This allows you to add captions, labels, and references to your figures and tables, making them an integral part of your report.</span>
+<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Bibliography**: If you are using references, this is the section where you list all the sources you cited in your document. This can be done manually or using a bibliography management tool like BibTeX.</span>
+<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a>In LaTeX, commands are typically identified by a backslash <span class="in">`\`</span> followed by the command name. For example, <span class="in">`\section{Introduction}`</span> creates a new section titled "Introduction".</span>
+<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>Similar to a Python, script one can add comments, by prepending a line with a <span class="in">`%`</span> symbol. This is useful for adding notes to yourself or to collaborators without affecting the final output of the document, or to temporarily disable parts of the code.</span>
+<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Preamble</span></span>
+<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a>At the top of our file, we have a few lines that specify:</span>
+<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>what kind of document we are writing: this is called a <span class="in">`document class`</span>. </span>
+<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>what kind of packages we need to include in order to have all the functionalities we need (colours, figures, tables, etc.); this is very similar, in spirit, to importing libraries in Python via the <span class="in">`import`</span> statement. Packages in LaTeX are included with a <span class="in">`\usepackage{}`</span></span>
+<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a>For example</span>
+<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="in">```latex</span></span>
+<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a><span class="in">\documentclass{article} % This specifies that we are writing an article. Other options include report, book, etc</span></span>
+<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage[utf8]{inputenc} % This package allows us to use UTF-8 encoding, which is standard for most documents</span></span>
+<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage{graphicx} % This package allows us to include graphics (figures)</span></span>
+<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage{amsmath} % This package provides advanced mathematical typesetting capabilities</span></span>
+<span id="cb10-157"><a href="#cb10-157" aria-hidden="true" tabindex="-1"></a><span class="in">\usepackage{hyperref} % This package allows us to create hyperlinks in our document</span></span>
+<span id="cb10-158"><a href="#cb10-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-159"><a href="#cb10-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-160"><a href="#cb10-160" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Document body</span></span>
+<span id="cb10-161"><a href="#cb10-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-162"><a href="#cb10-162" aria-hidden="true" tabindex="-1"></a>In the document body we have the actual content of the report. We add here our title, abstract, sections, figures, tables, etc.</span>
+<span id="cb10-163"><a href="#cb10-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-164"><a href="#cb10-164" aria-hidden="true" tabindex="-1"></a>The body is enclosed between <span class="in">`\begin{document}`</span> and <span class="in">`\end{document}`</span>. This may be thought as a single block of code (e.g. an indented block in Python) that contains all the content of our report. LaTeX extensively uses such <span class="in">`\begin{...} ... \end{..}`</span> blocks called **environments** to structure the content, e.g. for figures and tables.</span>
+<span id="cb10-165"><a href="#cb10-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-166"><a href="#cb10-166" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Sections and subsections</span></span>
+<span id="cb10-167"><a href="#cb10-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-168"><a href="#cb10-168" aria-hidden="true" tabindex="-1"></a>To construct sections, LaTeX has has a hierarchy of command:</span>
+<span id="cb10-169"><a href="#cb10-169" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-170"><a href="#cb10-170" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`\section{}`</span> for sections</span>
+<span id="cb10-171"><a href="#cb10-171" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`\subsection{}`</span> for subsections</span>
+<span id="cb10-172"><a href="#cb10-172" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`\subsubsection{}`</span> for subsubsections (if available in the document class)</span>
+<span id="cb10-173"><a href="#cb10-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-174"><a href="#cb10-174" aria-hidden="true" tabindex="-1"></a>LaTeX automatically numbers these sections and keeps track of the hierarchy, without you having to worry about it.</span>
+<span id="cb10-175"><a href="#cb10-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-176"><a href="#cb10-176" aria-hidden="true" tabindex="-1"></a>You can avoid numbering sections by using the <span class="in">`*`</span> version of the command, e.g. <span class="in">`\section*{}`</span> or with global settings taht depend on your document class. </span>
+<span id="cb10-177"><a href="#cb10-177" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-178"><a href="#cb10-178" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-179"><a href="#cb10-179" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-180"><a href="#cb10-180" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Figures and tables</span></span>
+<span id="cb10-181"><a href="#cb10-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-182"><a href="#cb10-182" aria-hidden="true" tabindex="-1"></a>Figure and tables are specific *environments* in LaTeX, which means that they are enclosed between <span class="in">`\begin{figure} ... \end{figure}`</span> and <span class="in">`\begin{table} ... \end{table}`</span> respectively.</span>
+<span id="cb10-183"><a href="#cb10-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-184"><a href="#cb10-184" aria-hidden="true" tabindex="-1"></a>A figure is quite a complex environment composed of many parts:</span>
+<span id="cb10-185"><a href="#cb10-185" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-186"><a href="#cb10-186" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>an <span class="in">`\includegraphics{}`</span> command that specifies the path to the image file you want to include in your document</span>
+<span id="cb10-187"><a href="#cb10-187" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>a <span class="in">`\caption{}`</span> command that provides a caption for the figure, which is important for explaining what the figure shows and for referencing it in the text</span>
+<span id="cb10-188"><a href="#cb10-188" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>a <span class="in">`\label{}`</span> command that assigns a unique identifier to the figure, allowing you to reference it later in the text using a <span class="in">`\ref{}`</span> command.</span>
+<span id="cb10-189"><a href="#cb10-189" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-190"><a href="#cb10-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-191"><a href="#cb10-191" aria-hidden="true" tabindex="-1"></a>For example</span>
+<span id="cb10-192"><a href="#cb10-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-193"><a href="#cb10-193" aria-hidden="true" tabindex="-1"></a><span class="in">```latex</span></span>
+<span id="cb10-194"><a href="#cb10-194" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{figure}[htbp] % This specifies that the figure should be placed here (h), at the top of the page (t), at the bottom of the page (b), or on a separate page (p)</span></span>
+<span id="cb10-195"><a href="#cb10-195" aria-hidden="true" tabindex="-1"></a><span class="in">    \centering % This centers the figure</span></span>
+<span id="cb10-196"><a href="#cb10-196" aria-hidden="true" tabindex="-1"></a><span class="in">    \includegraphics[width=0.8\textwidth]{path/to/your/figure.png} % This includes the figure and specifies its width as 80% of the text width</span></span>
+<span id="cb10-197"><a href="#cb10-197" aria-hidden="true" tabindex="-1"></a><span class="in">    \caption{This is the caption for the figure.}</span></span>
+<span id="cb10-198"><a href="#cb10-198" aria-hidden="true" tabindex="-1"></a><span class="in">    \label{fig:my_figure} % This assigns a label to the figure for referencing</span></span>
+<span id="cb10-199"><a href="#cb10-199" aria-hidden="true" tabindex="-1"></a><span class="in">\end{figure}</span></span>
+<span id="cb10-200"><a href="#cb10-200" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-201"><a href="#cb10-201" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-202"><a href="#cb10-202" aria-hidden="true" tabindex="-1"></a>We can reference this figure in the main text using <span class="in">`\ref{fig:my_figure}`</span>, which will automatically insert the correct figure number. This means, again, that we do not need to worry about the numbering of our figures, as LaTeX will handle it for us.</span>
+<span id="cb10-203"><a href="#cb10-203" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-204"><a href="#cb10-204" aria-hidden="true" tabindex="-1"></a>Tables also have a specific structure. One first constructs a <span class="in">`\begin{table} ... \end{table}`</span> environment, similar to figures. Then, inside the table environment, we can use the <span class="in">`tabular`</span> environment to create the actual table.</span>
+<span id="cb10-205"><a href="#cb10-205" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-206"><a href="#cb10-206" aria-hidden="true" tabindex="-1"></a>The <span class="in">`tabular`</span> environment allows you to define the number of columns and their alignment. For example:</span>
+<span id="cb10-207"><a href="#cb10-207" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-208"><a href="#cb10-208" aria-hidden="true" tabindex="-1"></a><span class="in">```latex</span></span>
+<span id="cb10-209"><a href="#cb10-209" aria-hidden="true" tabindex="-1"></a><span class="in">\begin{table}[htbp]</span></span>
+<span id="cb10-210"><a href="#cb10-210" aria-hidden="true" tabindex="-1"></a><span class="in">    \centering  </span></span>
+<span id="cb10-211"><a href="#cb10-211" aria-hidden="true" tabindex="-1"></a><span class="in">    \begin{tabular}{|c|c|c|} % This specifies a table with 3 columns, all centered, and with vertical lines between them</span></span>
+<span id="cb10-212"><a href="#cb10-212" aria-hidden="true" tabindex="-1"></a><span class="in">        \hline % This adds a horizontal line at the top of the table</span></span>
+<span id="cb10-213"><a href="#cb10-213" aria-hidden="true" tabindex="-1"></a><span class="in">        Column 1 &amp; Column 2 &amp; Column 3 \\ % This is the header row</span></span>
+<span id="cb10-214"><a href="#cb10-214" aria-hidden="true" tabindex="-1"></a><span class="in">        \hline % This adds a horizontal line after the header</span></span>
+<span id="cb10-215"><a href="#cb10-215" aria-hidden="true" tabindex="-1"></a><span class="in">        Data 1 &amp; Data 2 &amp; Data 3 \\ % This is the first data row</span></span>
+<span id="cb10-216"><a href="#cb10-216" aria-hidden="true" tabindex="-1"></a><span class="in">        Data 4 &amp; Data 5 &amp; Data 6 \\ % This is the second data row</span></span>
+<span id="cb10-217"><a href="#cb10-217" aria-hidden="true" tabindex="-1"></a><span class="in">        \hline % This adds a horizontal line at the bottom of the table</span></span>
+<span id="cb10-218"><a href="#cb10-218" aria-hidden="true" tabindex="-1"></a><span class="in">    \end{tabular}</span></span>
+<span id="cb10-219"><a href="#cb10-219" aria-hidden="true" tabindex="-1"></a><span class="in">    \caption{This is the caption for the table.}</span></span>
+<span id="cb10-220"><a href="#cb10-220" aria-hidden="true" tabindex="-1"></a><span class="in">    \label{tab:my_table} %this could be any string but the convention is to start with "tab:" for tables and "fig:" for figures</span></span>
+<span id="cb10-221"><a href="#cb10-221" aria-hidden="true" tabindex="-1"></a><span class="in">\end{table}</span></span>
+<span id="cb10-222"><a href="#cb10-222" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-223"><a href="#cb10-223" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-224"><a href="#cb10-224" aria-hidden="true" tabindex="-1"></a>As you can see the construction of the table involves many instructions:</span>
+<span id="cb10-225"><a href="#cb10-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-226"><a href="#cb10-226" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the <span class="in">`\begin{tabular}{|c|c|c|}`</span> command specifies that we want a table with 3 columns, all centered (indicated by <span class="in">`c`</span>), and with vertical lines between them (indicated by <span class="in">`|`</span>). We could have different alignments (e.g. <span class="in">`l`</span> for left-aligned, <span class="in">`r`</span> for right-aligned) and different numbers of columns as well as different line styles (e.g. no lines, or double lines).</span>
+<span id="cb10-227"><a href="#cb10-227" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the <span class="in">`\hline`</span> command adds a horizontal line to the table. We can use it to separate the header from the data, and to add lines at the top and bottom of the table.</span>
+<span id="cb10-228"><a href="#cb10-228" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>the <span class="in">`&amp;`</span> symbol is used to separate columns within a row, and the <span class="in">`\\`</span> symbol is used to indicate the end of a row.</span>
+<span id="cb10-229"><a href="#cb10-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-230"><a href="#cb10-230" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-231"><a href="#cb10-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-232"><a href="#cb10-232" aria-hidden="true" tabindex="-1"></a><span class="fu">###### Placement of floats</span></span>
+<span id="cb10-233"><a href="#cb10-233" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-234"><a href="#cb10-234" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-235"><a href="#cb10-235" aria-hidden="true" tabindex="-1"></a>Figures and tables are so-called *floats* in LaTeX. This behaviour can be quite surprising (and often annoying) when encountering LaTeX for the first time.</span>
+<span id="cb10-236"><a href="#cb10-236" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-237"><a href="#cb10-237" aria-hidden="true" tabindex="-1"></a>In practice, LaTeX will try to optimise the placement of figures and tables, and it may not always place them exactly where you put the code for them in the document. This "optimum" is very often not what we want and it actuyally can depend on how much text precedes or follows the figure in your source LaTeX file (the pure text code). </span>
+<span id="cb10-238"><a href="#cb10-238" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-239"><a href="#cb10-239" aria-hidden="true" tabindex="-1"></a>LaTeX can take some hints from you for the placement, in the form of the optional argument in <span class="in">`\begin{figure}[htbp]`</span> and <span class="in">`\begin{table}[htbp]`</span>. The letters in the square brackets indicate your preferences for where the figure or table should be placed:</span>
+<span id="cb10-240"><a href="#cb10-240" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-241"><a href="#cb10-241" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`h`</span> (here): Place the float at the position in the text where the code is written.</span>
+<span id="cb10-242"><a href="#cb10-242" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`t`</span> (top): Place the float at the top of a page.</span>
+<span id="cb10-243"><a href="#cb10-243" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`b`</span> (bottom): Place the float at the bottom of a page.</span>
+<span id="cb10-244"><a href="#cb10-244" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`p`</span> (page): Place the float on a separate page dedicated to floats.</span>
+<span id="cb10-245"><a href="#cb10-245" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-246"><a href="#cb10-246" aria-hidden="true" tabindex="-1"></a>For a report, modelled on the appearence of scientific papers, it is best to prefer figures that are placed either at the top or at the bottom of the page, as this is the most common style in scientific writing. This means that you should use <span class="in">`[tb]`</span> as your placement specifier for figures and tables.</span>
+<span id="cb10-247"><a href="#cb10-247" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-248"><a href="#cb10-248" aria-hidden="true" tabindex="-1"></a><span class="fu">#### References and citations</span></span>
+<span id="cb10-249"><a href="#cb10-249" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-250"><a href="#cb10-250" aria-hidden="true" tabindex="-1"></a>In this report, you will not perform a literature review. You may still have a few references as indicated above. There are two main strategies to include references in a LaTeX document:</span>
+<span id="cb10-251"><a href="#cb10-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-252"><a href="#cb10-252" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Manual referencing**: You can manually add references in a bibliography section at the end of your document. This involves creating a list of references and citing them in the text using <span class="in">`\cite{}`</span> commands. This may be largely sufficient for our short report but requires care in typing the correct bibliographic information.</span>
+<span id="cb10-253"><a href="#cb10-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-254"><a href="#cb10-254" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Automatic referencing with BibTeX**: The true advantage of using LaTeX for references is that it can use a database of references (stored in a sepearate <span class="in">`.bib`</span> file) to create a reference section according to the cited material using an utomatic tool called <span class="in">`BibTeX`</span> which is fully (and automatically integrated in Overleaf). This is flexible and much less error prone. We will focus on this second method.</span>
+<span id="cb10-255"><a href="#cb10-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-256"><a href="#cb10-256" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-257"><a href="#cb10-257" aria-hidden="true" tabindex="-1"></a><span class="fu">##### BibTeX files</span></span>
+<span id="cb10-258"><a href="#cb10-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-259"><a href="#cb10-259" aria-hidden="true" tabindex="-1"></a>A BibTeX file is a separate plain text file that you will also find in you Project template. It has a <span class="in">`.bib`</span> extension and it contains a list of references in a specific format. Each reference is defined by an entry that starts with an <span class="in">`@`</span> symbol followed by the type of reference (e.g. <span class="in">`@article`</span>, <span class="in">`@book`</span>, etc.) and a **unique identifier** for that reference (an alphanumeric string). These entries are very similar to a Python dictionary, with key-value pairs that provide the bibliographic information for each reference (e.g. author, title, year, etc.).</span>
+<span id="cb10-260"><a href="#cb10-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-261"><a href="#cb10-261" aria-hidden="true" tabindex="-1"></a>For example, a BibTeX entry for a **journal article** might look like this:</span>
+<span id="cb10-262"><a href="#cb10-262" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-263"><a href="#cb10-263" aria-hidden="true" tabindex="-1"></a><span class="in">```bibtex</span></span>
+<span id="cb10-264"><a href="#cb10-264" aria-hidden="true" tabindex="-1"></a><span class="in">@article{metropolis1953,</span></span>
+<span id="cb10-265"><a href="#cb10-265" aria-hidden="true" tabindex="-1"></a><span class="in">    author = {Metropolis, Nicholas and Rosenbluth, Arianna W. and Rosenbluth, Marshall N. and Teller, Augusta H. and Teller, Edward},</span></span>
+<span id="cb10-266"><a href="#cb10-266" aria-hidden="true" tabindex="-1"></a><span class="in">    title = {Equation of State Calculations by Fast Computing Machines},</span></span>
+<span id="cb10-267"><a href="#cb10-267" aria-hidden="true" tabindex="-1"></a><span class="in">    journal = {The Journal of Chemical Physics},</span></span>
+<span id="cb10-268"><a href="#cb10-268" aria-hidden="true" tabindex="-1"></a><span class="in">    volume = {21},</span></span>
+<span id="cb10-269"><a href="#cb10-269" aria-hidden="true" tabindex="-1"></a><span class="in">    number = {6},</span></span>
+<span id="cb10-270"><a href="#cb10-270" aria-hidden="true" tabindex="-1"></a><span class="in">    pages = {1087-1092},</span></span>
+<span id="cb10-271"><a href="#cb10-271" aria-hidden="true" tabindex="-1"></a><span class="in">    year = {1953},</span></span>
+<span id="cb10-272"><a href="#cb10-272" aria-hidden="true" tabindex="-1"></a><span class="in">    month = {06},</span></span>
+<span id="cb10-273"><a href="#cb10-273" aria-hidden="true" tabindex="-1"></a><span class="in">    issn = {0021-9606},</span></span>
+<span id="cb10-274"><a href="#cb10-274" aria-hidden="true" tabindex="-1"></a><span class="in">    doi = {10.1063/1.1699114},</span></span>
+<span id="cb10-275"><a href="#cb10-275" aria-hidden="true" tabindex="-1"></a><span class="in">    url = {https://doi.org/10.1063/1.1699114},</span></span>
+<span id="cb10-276"><a href="#cb10-276" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb10-277"><a href="#cb10-277" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-278"><a href="#cb10-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-279"><a href="#cb10-279" aria-hidden="true" tabindex="-1"></a>As you can see, the individual entry is very rich. The <span class="in">`metropolis1953`</span> string is the cite key, the unique identifier that we can use to refer to the refernce throughouts our document using the command <span class="in">`\cite{metropolis1953}`</span>. There follows a number of fields envoding a lot of information, including in mnay cases urls. </span>
+<span id="cb10-280"><a href="#cb10-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-281"><a href="#cb10-281" aria-hidden="true" tabindex="-1"></a>This is useful, as it can make a refernece section interactive with hyperlinks (by the combined addition of the <span class="in">`\usepackage{hyperref}`</span> in the preamble).</span>
+<span id="cb10-282"><a href="#cb10-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-283"><a href="#cb10-283" aria-hidden="true" tabindex="-1"></a>Other kinds of items include:</span>
+<span id="cb10-284"><a href="#cb10-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-285"><a href="#cb10-285" aria-hidden="true" tabindex="-1"></a>**Book:**</span>
+<span id="cb10-286"><a href="#cb10-286" aria-hidden="true" tabindex="-1"></a><span class="in">```bibtex</span></span>
+<span id="cb10-287"><a href="#cb10-287" aria-hidden="true" tabindex="-1"></a><span class="in">@book{Womersley2022,</span></span>
+<span id="cb10-288"><a href="#cb10-288" aria-hidden="true" tabindex="-1"></a><span class="in">  author = {Womersley, Jane},</span></span>
+<span id="cb10-289"><a href="#cb10-289" aria-hidden="true" tabindex="-1"></a><span class="in">  title = {Fundamentals of Data Analysis for Environmental Science},</span></span>
+<span id="cb10-290"><a href="#cb10-290" aria-hidden="true" tabindex="-1"></a><span class="in">  publisher = {Oxford University Press},</span></span>
+<span id="cb10-291"><a href="#cb10-291" aria-hidden="true" tabindex="-1"></a><span class="in">  year = {2022},</span></span>
+<span id="cb10-292"><a href="#cb10-292" aria-hidden="true" tabindex="-1"></a><span class="in">  edition = {2nd}</span></span>
+<span id="cb10-293"><a href="#cb10-293" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb10-294"><a href="#cb10-294" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-295"><a href="#cb10-295" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-296"><a href="#cb10-296" aria-hidden="true" tabindex="-1"></a>**Website/Online Documentation:**</span>
+<span id="cb10-297"><a href="#cb10-297" aria-hidden="true" tabindex="-1"></a><span class="in">```bibtex</span></span>
+<span id="cb10-298"><a href="#cb10-298" aria-hidden="true" tabindex="-1"></a><span class="in">@misc{PandasDevelopmentTeam2024,</span></span>
+<span id="cb10-299"><a href="#cb10-299" aria-hidden="true" tabindex="-1"></a><span class="in">  author = {{The Pandas Development Team}},</span></span>
+<span id="cb10-300"><a href="#cb10-300" aria-hidden="true" tabindex="-1"></a><span class="in">  title = {Pandas: Python Data Analysis Library},</span></span>
+<span id="cb10-301"><a href="#cb10-301" aria-hidden="true" tabindex="-1"></a><span class="in">  year = {2024},</span></span>
+<span id="cb10-302"><a href="#cb10-302" aria-hidden="true" tabindex="-1"></a><span class="in">  url = {https://pandas.pydata.org/},</span></span>
+<span id="cb10-303"><a href="#cb10-303" aria-hidden="true" tabindex="-1"></a><span class="in">  note = {Accessed: March 12, 2026}</span></span>
+<span id="cb10-304"><a href="#cb10-304" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb10-305"><a href="#cb10-305" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-306"><a href="#cb10-306" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-307"><a href="#cb10-307" aria-hidden="true" tabindex="-1"></a>**Dataset:**</span>
+<span id="cb10-308"><a href="#cb10-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-309"><a href="#cb10-309" aria-hidden="true" tabindex="-1"></a><span class="in">```bibtex</span></span>
+<span id="cb10-310"><a href="#cb10-310" aria-hidden="true" tabindex="-1"></a><span class="in">@dataset{Kaggle2024,</span></span>
+<span id="cb10-311"><a href="#cb10-311" aria-hidden="true" tabindex="-1"></a><span class="in">  author = {{Kaggle}},</span></span>
+<span id="cb10-312"><a href="#cb10-312" aria-hidden="true" tabindex="-1"></a><span class="in">  title = {Titanic: Machine Learning from Disaster},</span></span>
+<span id="cb10-313"><a href="#cb10-313" aria-hidden="true" tabindex="-1"></a><span class="in">  year = {2024},</span></span>
+<span id="cb10-314"><a href="#cb10-314" aria-hidden="true" tabindex="-1"></a><span class="in">  url = {https://www.kaggle.com/c/titanic},</span></span>
+<span id="cb10-315"><a href="#cb10-315" aria-hidden="true" tabindex="-1"></a><span class="in">  note = {Dataset retrieved from Kaggle}</span></span>
+<span id="cb10-316"><a href="#cb10-316" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb10-317"><a href="#cb10-317" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-318"><a href="#cb10-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-319"><a href="#cb10-319" aria-hidden="true" tabindex="-1"></a>**Software**</span>
+<span id="cb10-320"><a href="#cb10-320" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-321"><a href="#cb10-321" aria-hidden="true" tabindex="-1"></a><span class="in">```bibtex</span></span>
+<span id="cb10-322"><a href="#cb10-322" aria-hidden="true" tabindex="-1"></a><span class="in">@software{reback2020pandas,</span></span>
+<span id="cb10-323"><a href="#cb10-323" aria-hidden="true" tabindex="-1"></a><span class="in">    author       = {The pandas development team},</span></span>
+<span id="cb10-324"><a href="#cb10-324" aria-hidden="true" tabindex="-1"></a><span class="in">    title        = {pandas-dev/pandas: Pandas},</span></span>
+<span id="cb10-325"><a href="#cb10-325" aria-hidden="true" tabindex="-1"></a><span class="in">    month        = feb,</span></span>
+<span id="cb10-326"><a href="#cb10-326" aria-hidden="true" tabindex="-1"></a><span class="in">    year         = 2020,</span></span>
+<span id="cb10-327"><a href="#cb10-327" aria-hidden="true" tabindex="-1"></a><span class="in">    publisher    = {Zenodo},</span></span>
+<span id="cb10-328"><a href="#cb10-328" aria-hidden="true" tabindex="-1"></a><span class="in">    version      = {latest},</span></span>
+<span id="cb10-329"><a href="#cb10-329" aria-hidden="true" tabindex="-1"></a><span class="in">    doi          = {10.5281/zenodo.3509134},</span></span>
+<span id="cb10-330"><a href="#cb10-330" aria-hidden="true" tabindex="-1"></a><span class="in">    url          = {https://doi.org/10.5281/zenodo.3509134}</span></span>
+<span id="cb10-331"><a href="#cb10-331" aria-hidden="true" tabindex="-1"></a><span class="in">}</span></span>
+<span id="cb10-332"><a href="#cb10-332" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-333"><a href="#cb10-333" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-334"><a href="#cb10-334" aria-hidden="true" tabindex="-1"></a>To use the BibTeX file in your LaTeX document, you need to include the following commands in the body of your document at the end, where you want the bibliography to appear:</span>
+<span id="cb10-335"><a href="#cb10-335" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-336"><a href="#cb10-336" aria-hidden="true" tabindex="-1"></a><span class="in">```latex</span></span>
+<span id="cb10-337"><a href="#cb10-337" aria-hidden="true" tabindex="-1"></a><span class="in">\bibliographystyle{plain} % This specifies the bibliography style (e.g. plain)</span></span>
+<span id="cb10-338"><a href="#cb10-338" aria-hidden="true" tabindex="-1"></a><span class="in">\bibliography{references} % This specifies the name of your .bib file (without the .bib extension)</span></span>
+<span id="cb10-339"><a href="#cb10-339" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb10-340"><a href="#cb10-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-341"><a href="#cb10-341" aria-hidden="true" tabindex="-1"></a>You can choose different bibliography styles. The recommended styles for scientific reports are</span>
+<span id="cb10-342"><a href="#cb10-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-343"><a href="#cb10-343" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`plain`</span>: This style sorts the bibliography entries alphabetically by author and formats them in a simple, straightforward manner.</span>
+<span id="cb10-344"><a href="#cb10-344" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`unsrt`</span>: This style is similar to <span class="in">`plain`</span>, but it does not sort the bibliography entries. Instead, it lists them in the order they are cited in the document.</span>
+<span id="cb10-345"><a href="#cb10-345" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`abbrv`</span>: This style is similar to <span class="in">`plain`</span>, but it uses abbreviated first names and journal names to save space.</span>
+<span id="cb10-346"><a href="#cb10-346" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>whhen using the <span class="in">`revtex4-2`</span> document class (as in your report) we advise you to use the <span class="in">`apsrev4-2`</span> bibliography style.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Introduction to Coding and Data Analysis</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>
