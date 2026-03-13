@@ -5234,50 +5234,50 @@
     "text": "Now that we have masked out just the pixels related to the galaxy, one parameter we can derive is to calculate the galaxy brightness for a particular colour. Normally, this would not be done from an RGB image but we can use this to make an approximation.\nThe magnitude of an object is given by the equation:\n\\[ m_{AB} = -2.5\\log_{10}(f_v) + 8.90 \\]\nwhere: - \\(m_{AB}\\) is the magnitude (on the AB scale) - \\(f_v\\) is the spectral flux density (in units of Jansky, \\(Jy\\))\n\n\n\nWe can calculate an approximation of the spectral flux density, \\(f_{v}\\), by summing the pixel values from our image and by applying a scale factor of \\(2.8\\times10^{-7}\\).\nFrom your masked image of the galaxy, and using the details above, calculate an approximation of the magnitude of the Blue channel (the third channel) from this image.\nHow does this compare to the true value for “B (AB)”? - available here: http://simbad.u-strasbg.fr/simbad/sim-id?Ident=NGC+253&jsessionid=262A420D60A8A4D72D3384528AA0980A.main\nHint: - Additional numpy functions which will be useful: - sum() - https://numpy.org/doc/stable/reference/generated/numpy.sum.html - log10() - https://numpy.org/doc/stable/reference/generated/numpy.log10.html"
   },
   {
-    "objectID": "19/exercises_modularisation-solution.html",
-    "href": "19/exercises_modularisation-solution.html",
+    "objectID": "19/exercises_modularisation-solutions.html",
+    "href": "19/exercises_modularisation-solutions.html",
     "title": "Exercises: Modularisation",
     "section": "",
     "text": "Use this notebook for the practical tasks.\nBefore starting, ensure plot_example.py is open side-by-side with this notebook."
   },
   {
-    "objectID": "19/exercises_modularisation-solution.html#setup",
-    "href": "19/exercises_modularisation-solution.html#setup",
+    "objectID": "19/exercises_modularisation-solutions.html#setup",
+    "href": "19/exercises_modularisation-solutions.html#setup",
     "title": "Exercises: Modularisation",
     "section": "Setup",
     "text": "Setup\n\nImportant when editing modules\nIf you change plot_example.py while this notebook is open, you must refresh what the notebook sees.\nimportlib is a standard Python library module for working with imports programmatically.\nimportlib.reload(module_name) tells Python to re-read that module file from disk and replace the in-memory version.\nYou can either restart and run all cells, or reload the module in-place:\nimport importlib\nimport plot_example\nimportlib.reload(plot_example)\nUse reload whenever you edit functions in plot_example.py and want those edits to be used immediately in this notebook session."
   },
   {
-    "objectID": "19/exercises_modularisation-solution.html#exercise-1",
-    "href": "19/exercises_modularisation-solution.html#exercise-1",
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-1",
+    "href": "19/exercises_modularisation-solutions.html#exercise-1",
     "title": "Exercises: Modularisation",
     "section": "Exercise 1",
     "text": "Exercise 1\nLearning goal: implement a missing function in a module and call it from a notebook.\nIn plot_example.py, find the plot_uncert() function stub (currently with pass).\nUse this code inside plot_uncert():\n# Define upper and lower bounds of shading using the error term\ny_low = y - yerr\ny_high = y + yerr\n\n# Plot the line and the shading around it\nax.plot(x, y)\nax.fill_between(x, y1=y_low, y2=y_high, alpha=0.3, label=label)\n\nax.legend()\nSteps 1) Update plot_example.py with this implementation.\n\nSave the module, then import and run the test plot below.\nIf your edits do not appear, run importlib.reload(plot_example) before testing.\n\nSuccess check: your figure should show a line with a shaded uncertainty region around it."
   },
   {
-    "objectID": "19/exercises_modularisation-solution.html#exercise-2",
-    "href": "19/exercises_modularisation-solution.html#exercise-2",
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-2",
+    "href": "19/exercises_modularisation-solutions.html#exercise-2",
     "title": "Exercises: Modularisation",
     "section": "Exercise 2",
     "text": "Exercise 2\nLearning goal: identify reusable vs dataset-specific code and wrap reusable parts in a function.\nSteps 1) Recreate the matplotlib stackplot demo in the cell below: https://matplotlib.org/stable/gallery/lines_bars_and_markers/stackplot_demo.html\n\n\n\n\n\n\nConsider which parts are generic and which are specific to one dataset.\n\nIn plot_example.py, use the provided plot_population_stacked() stub (or create your own more generic function).\nImport your function and test it in this notebook.\n\nSuccess check: your function plots a stackplot from inputs, rather than hard-coded values.\n\n\n\n\n\n\n\n\n\n\n\n\nQuestions - How could this function be improved? - How could it be made generic enough for any stackplot, not just year vs population? - Could the input structure be improved beyond a dictionary of lists?"
   },
   {
-    "objectID": "19/exercises_modularisation-solution.html#exercise-3",
-    "href": "19/exercises_modularisation-solution.html#exercise-3",
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-3",
+    "href": "19/exercises_modularisation-solutions.html#exercise-3",
     "title": "Exercises: Modularisation",
     "section": "Exercise 3",
     "text": "Exercise 3\nLearning goal: understand notebook module caching and verify that reload applies code edits.\nSteps 1) In plot_example.py, modify time_scatter() so it accepts an optional marker argument (default '+') and uses that marker in ax.scatter(...). 2) Save plot_example.py, then reload the module in this notebook and test two different markers. 3) Briefly note what happened before and after reloading.\nSuccess check: your plot displays different marker styles, and your notes explain why reload was needed.\n\n\n\n\n\n\nWrite 2-3 sentences: Why is reloading needed in notebooks when a module file changes?"
   },
   {
-    "objectID": "19/exercises_modularisation-solution.html#exercise-4",
-    "href": "19/exercises_modularisation-solution.html#exercise-4",
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-4",
+    "href": "19/exercises_modularisation-solutions.html#exercise-4",
     "title": "Exercises: Modularisation",
     "section": "Exercise 4",
     "text": "Exercise 4\nLearning goal: improve function robustness with validation and configurable parameters.\nSteps 1) Update plot_population_stacked() so it checks that every population series has the same length as year. 2) If a mismatch is found, raise a ValueError with a clear message. 3) Add optional inputs legend_loc='upper left' and alpha=0.85, then use them in the plot. 4) Demonstrate one valid call and one invalid call (inside try/except) below.\nSuccess check: the valid example plots correctly, and the invalid example raises your custom error message."
   },
   {
-    "objectID": "19/exercises_modularisation-solution.html#exercise-5",
-    "href": "19/exercises_modularisation-solution.html#exercise-5",
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-5",
+    "href": "19/exercises_modularisation-solutions.html#exercise-5",
     "title": "Exercises: Modularisation",
     "section": "Exercise 5",
     "text": "Exercise 5\nNow you can create your own modularised plotting function. The problem you want to solve is to take input data in x and y sequences and construct a funciton that plots the data together with an arbitrary polynomial fit of specified degree. You can use numpy.polyfit() to compute the polynomial coefficients and numpy.polyval() to create a polynomial function that can be evaluated at any x value.\nSteps\n\nWrite the function in the notebook first, and experiment a bit\nMove the function to plot_example.py and test it in this notebook.\nMake sure that you have added suitable error handling to your function, and test that it works by calling the function with wrong inputs.\nMake sure that you have added a docstring to your function, and test that it is informative and clear by calling help(your_function_name).\n\n\nSuccess check Test the function with some synthetic data.\nThen test it again with a real dataset, by taking the UK time series from the Energy per person dataset from Our World in Data here below.\n\n\n\n\n\n\n\nSolution: Plot with polynomial fit\nHere’s the complete function with docstring, validation, and error handling:\n\n\n\n\n\n\n\n\nTest 1: Synthetic data (with error handling)\n\n\n\n\n\n\n\n\nTest 2: Error handling\n\n\n\n\n\n\n\n\nTest 3: Real-world UK energy data"
