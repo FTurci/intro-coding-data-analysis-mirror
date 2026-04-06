@@ -1397,91 +1397,91 @@
     "href": "slides/07_intro_numpy_slides.html#arrays-vs-lists",
     "title": "The numpy module",
     "section": "Arrays vs lists",
-    "text": "Arrays vs lists\n\n\nPython Lists\n\nOrdered, Mutable\n\nMixed data types\nExplicit operations needed\nSlower performance\n\n\nNumPy Arrays\n\nOrdered, Mutable\nOne data type per array\nElement-wise operations\nFast & memory efficient\n\n\n\n\n\nlist_ex = [1, 2, 3, 4]\nprint(list_ex)\n\nimport numpy as np\n#notice that we explicitly call the np.array()\narr_ex = np.array([1, 2, 3, 4]) \nprint(arr_ex)\n\nWe are going to see these differences in detail."
+    "text": "Arrays vs lists\n\n\nPython Lists\n\nOrdered, Mutable\n\nMixed data types\nExplicit operations needed\nSlower performance\n\n\nNumPy Arrays\n\nOrdered, Mutable\nOne data type per array\nElement-wise operations\nFast & memory efficient\n\n\n\n\n\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist_ex = [1, 2, 3, 4]\nprint(list_ex)\n\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\n#notice that we explicitly call the np.array()\narr_ex = np.array([1, 2, 3, 4]) \nprint(arr_ex)\n\nWe are going to see these differences in detail."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#arrays-from-lists",
     "href": "slides/07_intro_numpy_slides.html#arrays-from-lists",
     "title": "The numpy module",
     "section": "Arrays from lists",
-    "text": "Arrays from lists\nA purely numerical list can readily be converted to an array.\nimport numpy as np\n# Create array from list\nlist1 = [1.,1.,2.,3.,5.,8.]\narr1 = np.array(list1)\nprint(arr1)\n\nThe type of the elements yields the data type of the array\nprint(arr1.dtype)\n\nTry and change the list1 object to contain only integers and see the change!"
+    "text": "Arrays from lists\nA purely numerical list can readily be converted to an array.\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\n# Create array from list\nlist1 = [1.,1.,2.,3.,5.,8.]\narr1 = np.array(list1)\nprint(arr1)\n\nThe type of the elements yields the data type of the array\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(arr1.dtype)\n\nTry and change the list1 object to contain only integers and see the change!"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#array-properties",
     "href": "slides/07_intro_numpy_slides.html#array-properties",
     "title": "The numpy module",
     "section": "Array properties",
-    "text": "Array properties\nArrays possess plenty of properties.\nThese are accessed with the . notation1.\nprint(f\"Data type: {arr1.dtype}\")\nprint(f\"Shape: {arr1.shape}\")\nprint(f\"Shape: {arr1.size}\")\nFor now, we consider only 1d arrays, i.e. sequences. Their length is is their size and corresponds to the first element of the property shape.\nuse . and then TAB to see all of the properties"
+    "text": "Array properties\nArrays possess plenty of properties.\nThese are accessed with the . notation1.\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(f\"Data type: {arr1.dtype}\")\nprint(f\"Shape: {arr1.shape}\")\nprint(f\"Shape: {arr1.size}\")\nFor now, we consider only 1d arrays, i.e. sequences. Their length is is their size and corresponds to the first element of the property shape.\nuse . and then TAB to see all of the properties"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#accessing-array-elements",
     "href": "slides/07_intro_numpy_slides.html#accessing-array-elements",
     "title": "The numpy module",
     "section": "Accessing array elements",
-    "text": "Accessing array elements\nSimilarly to lists, we access an element in an array via zero-based indexing\nprint(arr1[0])    # First element\nprint(arr1[-1])   # Last element\nAgain, similarly to lists, we can access regions of the array via slicing\nprint(arr1[3:6])  # Elements from index 3 to 6"
+    "text": "Accessing array elements\nSimilarly to lists, we access an element in an array via zero-based indexing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(arr1[0])    # First element\nprint(arr1[-1])   # Last element\nAgain, similarly to lists, we can access regions of the array via slicing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(arr1[3:6])  # Elements from index 3 to 6"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations",
     "href": "slides/07_intro_numpy_slides.html#element-wise-operations",
     "title": "The numpy module",
     "section": "Element-wise Operations",
-    "text": "Element-wise Operations\nThe main motivation to use arrays is that lists are cumbersome when performing maths.\nSuppose we have a list and want to double all of its elements:\nlist1 = [1,2,3,4]\nWe need to loop over all of them and create a new list\nlist2 = []\nfor item in list1:\n    list2.append(2*item)\nprint(list2)\nIn fact, we can do this in a slightly more compact way using list comprehension\nlist2 = [item*2 for item in list1]\nStill, an explicit loop is needed. Loops in Python are slow."
+    "text": "Element-wise Operations\nThe main motivation to use arrays is that lists are cumbersome when performing maths.\nSuppose we have a list and want to double all of its elements:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist1 = [1,2,3,4]\nWe need to loop over all of them and create a new list\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist2 = []\nfor item in list1:\n    list2.append(2*item)\nprint(list2)\nIn fact, we can do this in a slightly more compact way using list comprehension\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nlist2 = [item*2 for item in list1]\nStill, an explicit loop is needed. Loops in Python are slow."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
     "href": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
     "title": "The numpy module",
     "section": "Element-wise Operations",
-    "text": "Element-wise Operations\nThe numpy syntax avoids the explicit Python loop.\narr1 = np.array(list1)\narr2 = 2*arr1\nprint(arr2)\nThis is not just a cosmetic change: under the hood numpy uses an efficient architecture that performs operations in compiled code, making it much faster than Python loops."
+    "text": "Element-wise Operations\nThe numpy syntax avoids the explicit Python loop.\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr1 = np.array(list1)\narr2 = 2*arr1\nprint(arr2)\nThis is not just a cosmetic change: under the hood numpy uses an efficient architecture that performs operations in compiled code, making it much faster than Python loops."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#performance-advantage",
     "href": "slides/07_intro_numpy_slides.html#performance-advantage",
     "title": "The numpy module",
     "section": "Performance advantage",
-    "text": "Performance advantage\nThis performance difference can be tracked explicitly.\nWe create a large list and a large array with identical content\n# Create a large list and array\nlarge_list = list(range(1_000_000))\nlarge_array = np.array(large_list)\nAnd then track the time for the two operations\nimport time\n#  Track the time taken for the list multiplication\nstart = time.time()\nlist_result = [x * 2 for x in large_list]\nend = time.time()\nprint(f\"List comprehension time: {end - start:.5f} seconds\")\n\n# Time array multiplication\nstart = time.time()\narray_result = large_array * 2\nend = time.time()\nprint(f\"NumPy array time: {end - start:.5f} seconds\")"
+    "text": "Performance advantage\nThis performance difference can be tracked explicitly.\nWe create a large list and a large array with identical content\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Create a large list and array\nlarge_list = list(range(1_000_000))\nlarge_array = np.array(large_list)\nAnd then track the time for the two operations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport time\n#  Track the time taken for the list multiplication\nstart = time.time()\nlist_result = [x * 2 for x in large_list]\nend = time.time()\nprint(f\"List comprehension time: {end - start:.5f} seconds\")\n\n# Time array multiplication\nstart = time.time()\narray_result = large_array * 2\nend = time.time()\nprint(f\"NumPy array time: {end - start:.5f} seconds\")"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
     "href": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
     "title": "The numpy module",
     "section": "General mathematical functions",
-    "text": "General mathematical functions\nThe multiplication we performed earlier is done element-wise: every element is update according to teh same rule.\nWe can apply plenty of element-wise operations to the arrays.\nMany of these are available as numpy functions directly accessed from the np. module\n# Element-wise functions\nprint(f\"Square root: {np.sqrt(arr1)}\")\nprint(f\"Mean: {np.mean(arr1)}\")\nprint(f\"Cosine: {np.cos(arr1)}\")\n\nThe operations do not modify the original array, but produce new copies\narr2 = arr1*3/2 + 5\nprint(f\"Original: {arr1}\")\nprint(f\"Modified: {arr2}\")"
+    "text": "General mathematical functions\nThe multiplication we performed earlier is done element-wise: every element is update according to teh same rule.\nWe can apply plenty of element-wise operations to the arrays.\nMany of these are available as numpy functions directly accessed from the np. module\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Element-wise functions\nprint(f\"Square root: {np.sqrt(arr1)}\")\nprint(f\"Mean: {np.mean(arr1)}\")\nprint(f\"Cosine: {np.cos(arr1)}\")\n\nThe operations do not modify the original array, but produce new copies\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr2 = arr1*3/2 + 5\nprint(f\"Original: {arr1}\")\nprint(f\"Modified: {arr2}\")"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#sums",
     "href": "slides/07_intro_numpy_slides.html#sums",
     "title": "The numpy module",
     "section": "Sums",
-    "text": "Sums\nOther convenent numpy functions allow you to accumulate values without loops.\nAssume we have an array \\(x\\)\nx = np.array([1,2,3,4,5,6,7,8])\nSums\n\\[\nS = \\sum_{i=1}^{n} x_i\n\\]\nIn NumPy, this is translated as:\nS = np.sum(x)\nprint(S)"
+    "text": "Sums\nOther convenent numpy functions allow you to accumulate values without loops.\nAssume we have an array \\(x\\)\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nx = np.array([1,2,3,4,5,6,7,8])\nSums\n\\[\nS = \\sum_{i=1}^{n} x_i\n\\]\nIn NumPy, this is translated as:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nS = np.sum(x)\nprint(S)"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#sums-1",
     "href": "slides/07_intro_numpy_slides.html#sums-1",
     "title": "The numpy module",
     "section": "Sums",
-    "text": "Sums\nCumulative sums\nA cumulative sum is a sequence where each element is the sum of all previous elements up to that position. \\[\ny_i = \\sum_{j=1}^{i} x_j\n\\]\nIn NumPy, this is translated as:\n y = np.cumsum(x)\n print(y)"
+    "text": "Sums\nCumulative sums\nA cumulative sum is a sequence where each element is the sum of all previous elements up to that position. \\[\ny_i = \\sum_{j=1}^{i} x_j\n\\]\nIn NumPy, this is translated as:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n y = np.cumsum(x)\n print(y)"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#example-molecular-masses",
     "href": "slides/07_intro_numpy_slides.html#example-molecular-masses",
     "title": "The numpy module",
     "section": "Example: molecular masses",
-    "text": "Example: molecular masses\nLet’s consider the formula for the molecular mass of a compound:\n\\[\nM = \\sum_{i=1}^{n} a_i m_i\n\\]\nwhere\n\n\\(a_i\\) is the number of atoms of element \\(i\\)\n\\(m_i\\) is the atomic mass of element \\(i\\)\n\n\nWith numpy, you can compute this as:\na = np.array([2, 1, 4])      # Number of atoms for each element\nm = np.array([12.01, 1.01, 16.00])  # Atomic masses (e.g., C, H, O)\nM = np.sum(a * m)\nprint(f\"Molecular mass: {M}\")"
+    "text": "Example: molecular masses\nLet’s consider the formula for the molecular mass of a compound:\n\\[\nM = \\sum_{i=1}^{n} a_i m_i\n\\]\nwhere\n\n\\(a_i\\) is the number of atoms of element \\(i\\)\n\\(m_i\\) is the atomic mass of element \\(i\\)\n\n\nWith numpy, you can compute this as:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\na = np.array([2, 1, 4])      # Number of atoms for each element\nm = np.array([12.01, 1.01, 16.00])  # Atomic masses (e.g., C, H, O)\nM = np.sum(a * m)\nprint(f\"Molecular mass: {M}\")"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#operations-between-arrays",
     "href": "slides/07_intro_numpy_slides.html#operations-between-arrays",
     "title": "The numpy module",
     "section": "Operations between arrays",
-    "text": "Operations between arrays\nYou can perform arithmetic operations directly between arrays of the same shape. Operations like addition, subtraction, multiplication, and division are applied element-wise.\nFor example:\nElement-wise operations:\nadded = arr1 + arr2\nmultiplied = arr1 * arr2\nprint(f\"Added: {added}\")\nprint(f\"Multiplied: {multiplied}\")\n\nNote: Arrays must have compatible shapes!\narr3 = np.array([1, 2, 3])\narr4 = np.array([4, 5])\nresult = arr3 + arr4"
+    "text": "Operations between arrays\nYou can perform arithmetic operations directly between arrays of the same shape. Operations like addition, subtraction, multiplication, and division are applied element-wise.\nFor example:\nElement-wise operations:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nadded = arr1 + arr2\nmultiplied = arr1 * arr2\nprint(f\"Added: {added}\")\nprint(f\"Multiplied: {multiplied}\")\n\nNote: Arrays must have compatible shapes!\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr3 = np.array([1, 2, 3])\narr4 = np.array([4, 5])\nresult = arr3 + arr4"
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#combining-arrays",
     "href": "slides/07_intro_numpy_slides.html#combining-arrays",
     "title": "The numpy module",
     "section": "Combining arrays",
-    "text": "Combining arrays\nWith lists, the + operator concatenated different lists. Since for arrays the sign + corresponds to true mathematical addition, a dedicated concatenation function exists:\ncombined = np.concatenate([arr1, arr2])\nprint(f\"Unique elements: {combined}\")\nMany other variations of concatenation exist. Consult the documentation."
+    "text": "Combining arrays\nWith lists, the + operator concatenated different lists. Since for arrays the sign + corresponds to true mathematical addition, a dedicated concatenation function exists:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\ncombined = np.concatenate([arr1, arr2])\nprint(f\"Unique elements: {combined}\")\nMany other variations of concatenation exist. Consult the documentation."
   },
   {
     "objectID": "slides/07_intro_numpy_slides.html#key-takeaways",
@@ -1495,28 +1495,28 @@
     "href": "slides/09_intro_matplotlib_slides.html#introduction-to-matplotlib",
     "title": "Plotting with matplotlib",
     "section": "Introduction to matplotlib",
-    "text": "Introduction to matplotlib\nmatplotlib - Powerful Python library for creating visualizations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport matplotlib.pyplot as plt\nimport numpy as np\nKey concepts: - Figure: The canvas - Axes: The x-y plotting area - Object-oriented approach (recommended)\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()  # Create figure and axes"
+    "text": "Introduction to matplotlib\nmatplotlib - Powerful Python library for creating visualizations\nimport matplotlib.pyplot as plt\nimport numpy as np\nKey concepts: - Figure: The canvas - Axes: The x-y plotting area - Object-oriented approach (recommended)\nfig, ax = plt.subplots()  # Create figure and axes"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#two-plotting-approaches",
     "href": "slides/09_intro_matplotlib_slides.html#two-plotting-approaches",
     "title": "Plotting with matplotlib",
     "section": "Two Plotting Approaches",
-    "text": "Two Plotting Approaches\nPyplot (MATLAB-style):\nplt.plot(x, y)  # Direct plotting\nObject-oriented (Recommended):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\nax.plot(x, y)  # Plot using axes object\nWhy object-oriented? - More explicit control - Better for complex plots - Modern best practice"
+    "text": "Two Plotting Approaches\nPyplot (MATLAB-style):\nplt.plot(x, y)  # Direct plotting\nObject-oriented (Recommended):\nfig, ax = plt.subplots()\nax.plot(x, y)  # Plot using axes object\nWhy object-oriented? - More explicit control - Better for complex plots - Modern best practice"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#basic-plot-types",
     "href": "slides/09_intro_matplotlib_slides.html#basic-plot-types",
     "title": "Plotting with matplotlib",
     "section": "Basic Plot Types",
-    "text": "Basic Plot Types\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Sample data\nrng = np.random.default_rng(seed=124)\nx = np.arange(1, 20, 2)\ny1 = x**2\ny2 = x**2 + rng.normal(size=len(x))*50\n\nfig, ax = plt.subplots()\nax.plot(x, y1, label=\"Line plot\")        # Line plot\nax.scatter(x, y2, label=\"Scatter plot\")  # Scatter plot\nax.legend()"
+    "text": "Basic Plot Types\n# Sample data\nrng = np.random.default_rng(seed=124)\nx = np.arange(1, 20, 2)\ny1 = x**2\ny2 = x**2 + rng.normal(size=len(x))*50\n\nfig, ax = plt.subplots()\nax.plot(x, y1, label=\"Line plot\")        # Line plot\nax.scatter(x, y2, label=\"Scatter plot\")  # Scatter plot\nax.legend()"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#customizing-appearance",
     "href": "slides/09_intro_matplotlib_slides.html#customizing-appearance",
     "title": "Plotting with matplotlib",
     "section": "Customizing Appearance",
-    "text": "Customizing Appearance\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots(figsize=(8, 4))\n\n# Styling options\nax.plot(x, y1, color=\"slategrey\", linestyle=\"--\", linewidth=2)\nax.scatter(x, y2, color=\"indianred\", marker='+', s=60)\n\n# Labels and limits\nax.set_xlabel(\"X values\")\nax.set_ylabel(\"Y values\")\nax.set_xlim(0, 20)\nax.set_title(\"Customized Plot\")"
+    "text": "Customizing Appearance\nfig, ax = plt.subplots(figsize=(8, 4))\n\n# Styling options\nax.plot(x, y1, color=\"slategrey\", linestyle=\"--\", linewidth=2)\nax.scatter(x, y2, color=\"indianred\", marker='+', s=60)\n\n# Labels and limits\nax.set_xlabel(\"X values\")\nax.set_ylabel(\"Y values\")\nax.set_xlim(0, 20)\nax.set_title(\"Customized Plot\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#common-style-options",
@@ -1530,28 +1530,28 @@
     "href": "slides/09_intro_matplotlib_slides.html#legends-and-annotations",
     "title": "Plotting with matplotlib",
     "section": "Legends and Annotations",
-    "text": "Legends and Annotations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\n\nax.plot(x, y1, label=\"Fitted line\", color=\"blue\", linestyle=\"--\")\nax.scatter(x, y2, label=\"Measurements\", color=\"red\", marker='o')\n\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\") \nax.legend()  # Uses the label parameters\nax.set_title(\"Plot with Legend\")"
+    "text": "Legends and Annotations\nfig, ax = plt.subplots()\n\nax.plot(x, y1, label=\"Fitted line\", color=\"blue\", linestyle=\"--\")\nax.scatter(x, y2, label=\"Measurements\", color=\"red\", marker='o')\n\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\") \nax.legend()  # Uses the label parameters\nax.set_title(\"Plot with Legend\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#histograms",
     "href": "slides/09_intro_matplotlib_slides.html#histograms",
     "title": "Plotting with matplotlib",
     "section": "Histograms",
-    "text": "Histograms\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Generate random data\nrng = np.random.default_rng(seed=68)\ndata1 = rng.normal(0, 1, 5000)\ndata2 = rng.normal(1, 1.5, 1000)\n\nfig, ax = plt.subplots()\nbins = np.arange(-4, 6, 0.3)\n\nax.hist(data1, bins=bins, alpha=0.7, color=\"skyblue\", \n        density=True, label=\"Dataset 1\")\nax.hist(data2, bins=bins, alpha=0.7, color=\"orange\", \n        density=True, label=\"Dataset 2\")\n\nax.set_xlabel(\"Value\")\nax.set_ylabel(\"Density\")\nax.legend()"
+    "text": "Histograms\n# Generate random data\nrng = np.random.default_rng(seed=68)\ndata1 = rng.normal(0, 1, 5000)\ndata2 = rng.normal(1, 1.5, 1000)\n\nfig, ax = plt.subplots()\nbins = np.arange(-4, 6, 0.3)\n\nax.hist(data1, bins=bins, alpha=0.7, color=\"skyblue\", \n        density=True, label=\"Dataset 1\")\nax.hist(data2, bins=bins, alpha=0.7, color=\"orange\", \n        density=True, label=\"Dataset 2\")\n\nax.set_xlabel(\"Value\")\nax.set_ylabel(\"Density\")\nax.legend()"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#histogram-options",
     "href": "slides/09_intro_matplotlib_slides.html#histogram-options",
     "title": "Plotting with matplotlib",
     "section": "Histogram Options",
-    "text": "Histogram Options\nKey parameters: - bins: Number or explicit bin edges - alpha: Transparency (0-1) - density: Normalize to show probability density - histtype: ‘bar’, ‘step’, ‘stepfilled’\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\nax.hist(data1, bins=30, alpha=0.6, histtype='step', \n        color='purple', linewidth=2)"
+    "text": "Histogram Options\nKey parameters: - bins: Number or explicit bin edges - alpha: Transparency (0-1) - density: Normalize to show probability density - histtype: ‘bar’, ‘step’, ‘stepfilled’\nfig, ax = plt.subplots()\nax.hist(data1, bins=30, alpha=0.6, histtype='step', \n        color='purple', linewidth=2)"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#multiple-plots-on-same-axes",
     "href": "slides/09_intro_matplotlib_slides.html#multiple-plots-on-same-axes",
     "title": "Plotting with matplotlib",
     "section": "Multiple Plots on Same Axes",
-    "text": "Multiple Plots on Same Axes\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots(figsize=(10, 5))\n\n# Multiple data series\nx_vals = np.linspace(0, 2*np.pi, 100)\ny1 = np.sin(x_vals)\ny2 = np.cos(x_vals)\ny3 = np.sin(2*x_vals)\n\nax.plot(x_vals, y1, label=\"sin(x)\")\nax.plot(x_vals, y2, label=\"cos(x)\", linestyle='--')\nax.scatter(x_vals[::10], y3[::10], label=\"sin(2x)\", marker='o')\n\nax.legend()\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\")"
+    "text": "Multiple Plots on Same Axes\nfig, ax = plt.subplots(figsize=(10, 5))\n\n# Multiple data series\nx_vals = np.linspace(0, 2*np.pi, 100)\ny1 = np.sin(x_vals)\ny2 = np.cos(x_vals)\ny3 = np.sin(2*x_vals)\n\nax.plot(x_vals, y1, label=\"sin(x)\")\nax.plot(x_vals, y2, label=\"cos(x)\", linestyle='--')\nax.scatter(x_vals[::10], y3[::10], label=\"sin(2x)\", marker='o')\n\nax.legend()\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#anatomy-of-a-figure",
@@ -1565,14 +1565,14 @@
     "href": "slides/09_intro_matplotlib_slides.html#figure-size-and-layout",
     "title": "Plotting with matplotlib",
     "section": "Figure Size and Layout",
-    "text": "Figure Size and Layout\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Control figure size\nfig, ax = plt.subplots(figsize=(12, 6))\n\n# Multiple subplots (brief example)\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))\nax1.plot([1, 2, 3], [1, 4, 2])\nax2.scatter([1, 2, 3], [2, 1, 3])\nax1.set_title(\"Plot 1\")\nax2.set_title(\"Plot 2\")"
+    "text": "Figure Size and Layout\n# Control figure size\nfig, ax = plt.subplots(figsize=(12, 6))\n\n# Multiple subplots (brief example)\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))\nax1.plot([1, 2, 3], [1, 4, 2])\nax2.scatter([1, 2, 3], [2, 1, 3])\nax1.set_title(\"Plot 1\")\nax2.set_title(\"Plot 2\")"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#best-practices",
     "href": "slides/09_intro_matplotlib_slides.html#best-practices",
     "title": "Plotting with matplotlib",
     "section": "Best Practices",
-    "text": "Best Practices\n\nAlways label your axes\nUse legends for multiple data series\nChoose appropriate plot types for your data\nControl figure size for readability\nUse colors wisely - consider colorblind accessibility\nKeep it simple - don’t over-decorate\n\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Good example\nfig, ax = plt.subplots(figsize=(8, 5))\nax.plot(x, y1, label=\"Data\")\nax.set_xlabel(\"Time (s)\")\nax.set_ylabel(\"Amplitude (V)\")\nax.set_title(\"Signal vs Time\")\nax.legend()"
+    "text": "Best Practices\n\nAlways label your axes\nUse legends for multiple data series\nChoose appropriate plot types for your data\nControl figure size for readability\nUse colors wisely - consider colorblind accessibility\nKeep it simple - don’t over-decorate\n\n# Good example\nfig, ax = plt.subplots(figsize=(8, 5))\nax.plot(x, y1, label=\"Data\")\nax.set_xlabel(\"Time (s)\")\nax.set_ylabel(\"Amplitude (V)\")\nax.set_title(\"Signal vs Time\")\nax.legend()"
   },
   {
     "objectID": "slides/09_intro_matplotlib_slides.html#key-takeaways",
@@ -1691,56 +1691,56 @@
     "href": "slides/08_working_numpy_slides.html#array-indexing-slicing",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Array Indexing & Slicing",
-    "text": "Array Indexing & Slicing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\narr = np.array([10, 20, 30, 40, 50])\n\n# Integer indexing\nprint(\"Element at index 1:\", arr[1])\n\n# Basic slicing\nprint(\"Slice [1:4]:\", arr[1:4])\nAdvanced slicing:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Every other element:\", arr[::2])\nprint(\"Last three elements:\", arr[-3:])\nprint(\"Reversed array:\", arr[::-1])"
+    "text": "Array Indexing & Slicing\nimport numpy as np\narr = np.array([10, 20, 30, 40, 50])\n\n# Integer indexing\nprint(\"Element at index 1:\", arr[1])\n\n# Basic slicing\nprint(\"Slice [1:4]:\", arr[1:4])\nAdvanced slicing:\nprint(\"Every other element:\", arr[::2])\nprint(\"Last three elements:\", arr[-3:])\nprint(\"Reversed array:\", arr[::-1])"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#views-vs-copies",
     "href": "slides/08_working_numpy_slides.html#views-vs-copies",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Views vs Copies",
-    "text": "Views vs Copies\nSlicing creates views (shared data):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nslice_view = arr[2:5]\nslice_view[0] = 99\nprint(\"Original after view modification:\", arr)\nCreating independent copies:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([10, 20, 30, 40, 50])  # Reset\narr_copy = arr[2:5].copy()\narr_copy[0] = 100\nprint(\"Copy:\", arr_copy)\nprint(\"Original unchanged:\", arr)"
+    "text": "Views vs Copies\nSlicing creates views (shared data):\nslice_view = arr[2:5]\nslice_view[0] = 99\nprint(\"Original after view modification:\", arr)\nCreating independent copies:\narr = np.array([10, 20, 30, 40, 50])  # Reset\narr_copy = arr[2:5].copy()\narr_copy[0] = 100\nprint(\"Copy:\", arr_copy)\nprint(\"Original unchanged:\", arr)"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#boolean-indexing",
     "href": "slides/08_working_numpy_slides.html#boolean-indexing",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Boolean Indexing",
-    "text": "Boolean Indexing\nFilter data with conditions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([1, 2, 3, 4, 5, 6])\nthreshold = 3\n\nbool_mask = arr &gt; threshold\nprint(\"Boolean mask:\", bool_mask)\nprint(\"Filtered values:\", arr[bool_mask])\nUsing np.where:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Get indices where condition is True\nindices = np.where(arr &gt; threshold)[0]\nprint(\"Indices:\", indices)\n\n# Conditional selection\nresult = np.where(arr &gt; 3, arr, 0)\nprint(\"Conditional result:\", result)"
+    "text": "Boolean Indexing\nFilter data with conditions:\narr = np.array([1, 2, 3, 4, 5, 6])\nthreshold = 3\n\nbool_mask = arr &gt; threshold\nprint(\"Boolean mask:\", bool_mask)\nprint(\"Filtered values:\", arr[bool_mask])\nUsing np.where:\n# Get indices where condition is True\nindices = np.where(arr &gt; threshold)[0]\nprint(\"Indices:\", indices)\n\n# Conditional selection\nresult = np.where(arr &gt; 3, arr, 0)\nprint(\"Conditional result:\", result)"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#generating-sequences",
     "href": "slides/08_working_numpy_slides.html#generating-sequences",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Generating Sequences",
-    "text": "Generating Sequences\nnp.arange - step-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Integers:\", np.arange(0, 10, 2))\nprint(\"Floats:\", np.arange(0.0, 1.0, 0.2))\nnp.linspace - count-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"5 points from 0 to 1:\", np.linspace(0, 1, 5))\n\narange: Use when you know the step size\nlinspace: Use when you know the number of points"
+    "text": "Generating Sequences\nnp.arange - step-based:\nprint(\"Integers:\", np.arange(0, 10, 2))\nprint(\"Floats:\", np.arange(0.0, 1.0, 0.2))\nnp.linspace - count-based:\nprint(\"5 points from 0 to 1:\", np.linspace(0, 1, 5))\n\narange: Use when you know the step size\nlinspace: Use when you know the number of points"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#filled-arrays",
     "href": "slides/08_working_numpy_slides.html#filled-arrays",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Filled Arrays",
-    "text": "Filled Arrays\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Create arrays with specific values\nzeros_arr = np.zeros(5)\nones_arr = np.ones(4)\nfull_arr = np.full(3, 7)\n\nprint(\"Zeros:\", zeros_arr)\nprint(\"Ones:\", ones_arr)\nprint(\"Full:\", full_arr)\nSame shape as existing array:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\ntemplate = np.array([1, 2, 3])\nprint(\"Zeros like:\", np.zeros_like(template))\nprint(\"Ones like:\", np.ones_like(template))\nprint(\"Full like:\", np.full_like(template, 9))"
+    "text": "Filled Arrays\n# Create arrays with specific values\nzeros_arr = np.zeros(5)\nones_arr = np.ones(4)\nfull_arr = np.full(3, 7)\n\nprint(\"Zeros:\", zeros_arr)\nprint(\"Ones:\", ones_arr)\nprint(\"Full:\", full_arr)\nSame shape as existing array:\ntemplate = np.array([1, 2, 3])\nprint(\"Zeros like:\", np.zeros_like(template))\nprint(\"Ones like:\", np.ones_like(template))\nprint(\"Full like:\", np.full_like(template, 9))"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#random-number-generation",
     "href": "slides/08_working_numpy_slides.html#random-number-generation",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Random Number Generation",
-    "text": "Random Number Generation\nInitialize generator (for reproducibility):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nrng = np.random.default_rng(seed=123)\nDifferent distributions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Random integers\nprint(\"Random integers:\", rng.integers(0, 100, size=5))\n\n# Uniform floats [0, 1)\nprint(\"Uniform [0,1):\", rng.random(5))\n\n# Normal distribution\nnormal_samples = rng.normal(loc=0, scale=1, size=5)\nprint(\"Normal samples:\", normal_samples)"
+    "text": "Random Number Generation\nInitialize generator (for reproducibility):\nrng = np.random.default_rng(seed=123)\nDifferent distributions:\n# Random integers\nprint(\"Random integers:\", rng.integers(0, 100, size=5))\n\n# Uniform floats [0, 1)\nprint(\"Uniform [0,1):\", rng.random(5))\n\n# Normal distribution\nnormal_samples = rng.normal(loc=0, scale=1, size=5)\nprint(\"Normal samples:\", normal_samples)"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
     "href": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Pseudo-Random Numbers",
-    "text": "Pseudo-Random Numbers\nComputers are deterministic - they use algorithms to generate “pseudo-random” sequences\nLinear Congruential Generator example: \\[x_{n+1} = (a \\times x_n + c) \\bmod m\\]\nKey concept: Seeds enable reproducibility\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Same seed = same sequence\nrng1 = np.random.default_rng(seed=42)\nrng2 = np.random.default_rng(seed=42)\n\nprint(\"RNG1:\", rng1.integers(0, 10, size=3))\nprint(\"RNG2:\", rng2.integers(0, 10, size=3))  # Same output!"
+    "text": "Pseudo-Random Numbers\nComputers are deterministic - they use algorithms to generate “pseudo-random” sequences\nLinear Congruential Generator example: \\[x_{n+1} = (a \\times x_n + c) \\bmod m\\]\nKey concept: Seeds enable reproducibility\n# Same seed = same sequence\nrng1 = np.random.default_rng(seed=42)\nrng2 = np.random.default_rng(seed=42)\n\nprint(\"RNG1:\", rng1.integers(0, 10, size=3))\nprint(\"RNG2:\", rng2.integers(0, 10, size=3))  # Same output!"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#performance-tips",
     "href": "slides/08_working_numpy_slides.html#performance-tips",
     "title": "Working with NumPy: Indexing and Random Data",
     "section": "Performance Tips",
-    "text": "Performance Tips\nPreallocate for efficiency:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Less efficient: generate one at a time\n# for _ in range(1000):\n#     val = rng.integers(0, 100)\n\n# More efficient: preallocate\nprealloc = rng.integers(0, 100, size=1000)\n# Then use values from prealloc array\nMemory vs Speed tradeoff: - Small tasks: 100-1,000 elements - Medium tasks: 10,000-100,000 elements\n- Large tasks: 1,000,000+ elements"
+    "text": "Performance Tips\nPreallocate for efficiency:\n# Less efficient: generate one at a time\n# for _ in range(1000):\n#     val = rng.integers(0, 100)\n\n# More efficient: preallocate\nprealloc = rng.integers(0, 100, size=1000)\n# Then use values from prealloc array\nMemory vs Speed tradeoff: - Small tasks: 100-1,000 elements - Medium tasks: 10,000-100,000 elements\n- Large tasks: 1,000,000+ elements"
   },
   {
     "objectID": "slides/08_working_numpy_slides.html#key-takeaways",
@@ -1750,100 +1750,233 @@
     "text": "Key Takeaways\n\nViews share data, copies are independent\nBoolean indexing enables powerful data filtering\narange vs linspace serve different use cases\nRandom generators need seeds for reproducibility\nPreallocating arrays improves performance\nChoose array generation method based on your needs"
   },
   {
-    "objectID": "19/lecture_modularisation.html",
-    "href": "19/lecture_modularisation.html",
-    "title": "Modularisation in Python",
+    "objectID": "21/exercises_reflections.html",
+    "href": "21/exercises_reflections.html",
+    "title": "Revision exercises",
     "section": "",
-    "text": "Notebooks are a great way to write and run code, but they can become unmanageable as they grow larger.\nModularisation is the process of breaking down code into smaller, reusable pieces. In Python, an easy way to achieve modularisation is by using modules and functions.\nA module is a file containing Python definitions and statements. The file name is the module name with the suffix .py added. Modules can define functions, classes, and variables, and can also include runnable code (we have seen a bit of this in a previous lecture).\nNotice that a module is not a notebook: it is a pure text file containing Python code. It can be edited and viewed in Noteable or any other editor.",
+    "text": "These exercises are an occasion to consolidate some techniues and see some of the potential ahead (e.g. using scipy).)\nEach exercise has a short description, a PROVIDED code cell with data or setup you should not modify, and a COMPLETE THIS CODE cell where you write your solution.",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
   },
   {
-    "objectID": "19/lecture_modularisation.html#jupyter-lab",
-    "href": "19/lecture_modularisation.html#jupyter-lab",
-    "title": "Modularisation in Python",
-    "section": "Jupyter Lab",
-    "text": "Jupyter Lab\nWhen launching Noteable, you have mostly used the Classic Jupyter (Legacy) interface. However, Noteable support many other interfaces.\nThe Jupyter Lab interface is a more modern and feature-rich interface for working with Jupyter notebooks. It provides a more flexible and powerful environment for working with notebooks, code, and data.\nIn this session, it will be useful to use the Jupyter Lab interface, as it allows us to easily view and edit module files alongside our notebooks.\nyou access it by selecting Standard Python 3 from the initial dropdown menu.\n\n\n\nselecting Jupyter Lab interface\n\n\nAfter launching, the interface should look like this (or similar):\n\n\n\nmain",
+    "objectID": "21/exercises_reflections.html#exercise-1-customising-plot-styles",
+    "href": "21/exercises_reflections.html#exercise-1-customising-plot-styles",
+    "title": "Revision exercises",
+    "section": "Exercise 1: Customising Plot Styles",
+    "text": "Exercise 1: Customising Plot Styles\nObjective: Practice using matplotlib’s colour, linestyle, and marker options to produce a well-formatted figure.\nMatplotlib supports a wide range of style options:\n\nColours: named strings (\"red\", \"midnightblue\"), greyscale fractions (\"0.5\"), hex codes, or default cycle colours (\"C0\", \"C1\", \"C2\"). See the colour reference.\nLinestyles: \"-\" (solid), \"--\" (dashed), \":\" (dotted), \"-.\" (dash-dot). See the linestyle gallery.\nMarkers: \"o\" (circle), \"x\" (cross), \".\" (point), \"^\" (triangle), etc. See the marker reference.\n\nTask: The provided cell below defines three wave signals. Create a single figure with all three curves on the same axes:\n\ny1 — red, dashed line with circle markers (\"o\")\ny2 — midnightblue, solid line, no markers\ny3 — grey (\"0.5\"), dotted line with cross markers (\"x\")\n\nAdd a title, x-label, y-label, and a legend.",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
   },
   {
-    "objectID": "19/lecture_modularisation.html#using-a-module-file-from-a-notebook",
-    "href": "19/lecture_modularisation.html#using-a-module-file-from-a-notebook",
-    "title": "Modularisation in Python",
-    "section": "Using a module file from a notebook",
-    "text": "Using a module file from a notebook\nIn this lecture notebook, we focus on using a module file (a .py file) from a notebook.\nWe will use plot_example.py – present in this same directory – which contains plotting functions created from code patterns used in class.",
+    "objectID": "21/exercises_reflections.html#exercise-2-saving-figures",
+    "href": "21/exercises_reflections.html#exercise-2-saving-figures",
+    "title": "Revision exercises",
+    "section": "Exercise 2: Saving Figures",
+    "text": "Exercise 2: Saving Figures\nObjective: Practice saving matplotlib and pandas figures to file using fig.savefig().\nThe file format is determined by the extension you provide:\n\n.png — PNG raster image (default)\n.pdf — PDF vector format (ideal for publications)\nOther formats: .eps, .ps, .svg\n\nTask:\n\nThe provided cell creates a matplotlib figure. Save it as both \"sqrt_plot.png\" and \"sqrt_plot.pdf\".\nThen practice saving a pandas plot using two different approaches:\n\nApproach 1: Create a fig, ax pair with plt.subplots(), pass ax to df.plot(ax=ax), then save via fig.savefig().\nApproach 2: Don’t create a fig explicitly — capture the Axes returned by ax = df.plot(), retrieve the Figure with ax.get_figure(), then save.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nApproach 1 (Pandas): Pass an Axes object to df.plot() so you already hold the fig handle:\n\n\n\n\n\n\nApproach 2 (Pandas): Let df.plot() return the Axes, then retrieve the Figure from it:",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
   },
   {
-    "objectID": "19/lecture_modularisation.html#what-is-in-the-module",
-    "href": "19/lecture_modularisation.html#what-is-in-the-module",
-    "title": "Modularisation in Python",
-    "section": "What is in the module?",
-    "text": "What is in the module?\nIf we open plot_example.py, we can see import statements and function definitions such as time_scatter().\n\nWe immediately recognise the same code structure as in our previous code:\n\nimport statements at the top of the file\nfunction definitions below\n\nSyntax highlighting and indentation make it easy to read and understand the code structure.",
+    "objectID": "21/exercises_reflections.html#exercise-3-index-based-scatter-plot-with-pandas",
+    "href": "21/exercises_reflections.html#exercise-3-index-based-scatter-plot-with-pandas",
+    "title": "Revision exercises",
+    "section": "Exercise 3: Index-based Scatter Plot with Pandas",
+    "text": "Exercise 3: Index-based Scatter Plot with Pandas\nObjective: Learn how to create scatter-like plots in pandas when the x-axis should be the DataFrame index.\ndf.plot.scatter() requires two column names and cannot use the index as the x-axis. To produce a scatter-like appearance (markers, no connecting line) against the index, use df.plot.line() with two key parameters:\n\nmarker= — any marker symbol, e.g. \"o\", \"x\", \".\"\nlinestyle=\"None\" (or \" \" or \"\") — suppresses the connecting line\n\nTask:\n\nUsing the weather DataFrame provided below, plot the \"temperature\" column as a scatter-like plot: circle markers (\"o\"), no connecting line.\nIn the second code cell, create the same plot without linestyle=\"None\" and observe what changes.",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
   },
   {
-    "objectID": "19/lecture_modularisation.html#importing-a-module",
-    "href": "19/lecture_modularisation.html#importing-a-module",
-    "title": "Modularisation in Python",
-    "section": "Importing a module",
-    "text": "Importing a module\nTo access functions in the file, import the module name (without .py).\nThis works because plot_example.py is in the same folder as this notebook (a relative import).\n\n\n\n\n\n\nMore generally, specific paths to files can be used using a particular syntax:\n\nimport plot_example (if the file is in the same folder as the notebook)\nimport folder_name.plot_example (if the file is in a subfolder of the notebook)\nimport ..folder_name.plot_example (if the file is in a parent folder of the notebook)\n\nIt is recommended to use relative imports (i.e. the first two options) when working on a project, as they are more portable and easier to manage.\nOnce the module is imported, all functions and variables defined in the module are available for use in the notebook. You can then access module functions with dot syntax, e.g. plot_example.time_scatter(...).",
+    "objectID": "21/exercises_reflections.html#exercise-4-dual-y-axis-plots-with-twinx",
+    "href": "21/exercises_reflections.html#exercise-4-dual-y-axis-plots-with-twinx",
+    "title": "Revision exercises",
+    "section": "Exercise 4: Dual Y-axis Plots with twinx()",
+    "text": "Exercise 4: Dual Y-axis Plots with twinx()\nObjective: Create a figure that displays two datasets with different scales using two y-axes.\nWhen two quantities have very different units or magnitudes, you can use ax.twinx() to create a second Axes that shares the x-axis but has an independent y-axis on the right side. Match the axis label and tick colours to the corresponding dataset so the figure is easy to read.\nThe default matplotlib cycle colours \"C0\", \"C1\", etc. are useful for visually separating the two datasets.\nTask: Using the monthly climate data provided below, create a dual y-axis figure:\n\nLeft y-axis: monthly average temperature (°C) plotted as a line, coloured \"C0\"\nRight y-axis: monthly rainfall (mm) plotted as a bar chart, coloured \"C1\"\nColour each y-axis label and its tick labels to match the data series\nSet the x-tick labels to month names and add a title",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
   },
   {
-    "objectID": "19/lecture_modularisation.html#introspection",
-    "href": "19/lecture_modularisation.html#introspection",
-    "title": "Modularisation in Python",
-    "section": "Introspection",
-    "text": "Introspection\nSuppose we are give a module from a friend or colleague and we want to know what functions are available in the module. We can use introspection to inspect the module and find out what functions it contains.\nIntrospection is the ability of a program to examine the type or properties of an object at runtime. In Python, we can use the dir() function to get a list of all the actions and properties possessed by any object in python (i.e. any names including functions, variables, etc.).\nThis is powerful because it allows us to explore and understand the contents of a module without having to read through the entire code.\nA convention in Python is that if we write our own module and want to hide some properties to a final user (i.e. we don’t want them to be accessed directly), we can prefix the name of these properties with an underscore (e.g. _hidden_function()). This is a convention, not a strict rule, but it is widely followed in the Python community.\n\nExample: inspect available functions\nSuppose we want to know what functions are available in the plot_example module.\nWe could try dir()\n\n\n\n\n\n\nAs you see, this would yield a long list of names, including functions, variables, and other properties. To filter out the functions, we can use a list comprehension to exclude any names that start with an underscore (as these are typically used for internal purposes and are not meant to be accessed directly by users):\n\n\n\n\n\n\n\n\nImporting one function directly\nWe can be very selective when importing from a module. As we did with numpy or event plotly, we can instruct Python to import only specific functions from a module.\nIf you only need one function, you can import it directly using from ... import ....\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClearly, our function time_scatter() is available in the module and must be wrapping specific plotting code. As for any other python function, we can use help() to get more information about how to use it.\n\n\n\n\n\n\nThis retrieves the docstring of the function, which is a string that describes what the function does, its parameters, and its return value. This information is crucial for understanding how to use the function correctly. You shoudl be able to see it directly inside the module file, as a string immediately following the function definition.\nWe can also inspect the code of the function itself by using ??:\n\n\n\n\n\n\nNotice that the ?? command exposes what is called as the signature of the function, which shows the parameters that the function takes and their default values (if any). This is very useful for understanding how to call the function correctly.\nIt also presents the first few lines of the function code, which can be helpful for understanding how the function works and what it does. In this case we get most of the initial docstring: notice that triple quotes are used to write multi-line docstrings, which can be very useful for providing detailed documentation for functions.\nA useful docstring should include:\n\nA brief description of what the function does\nA description of the parameters, including their types and what they represent\nA description of the return value(s), including their type and what they represents\n\nThere is an even more direct way to access the docstring of a function: by using the __doc__ attribute of the function, e.g. time_scatter.__doc__. Basically we access a specific (hidden) property of the function that contains the docstring, and get it as a genuine python string. This is yet another example of accessing features of Python objects using dot syntax, a hint to the Object Oriented Programming (OOP) paradigm that you will see in the future.",
+    "objectID": "21/exercises_reflections.html#exercise-5-revision-of-random-number-generation-with-numpy",
+    "href": "21/exercises_reflections.html#exercise-5-revision-of-random-number-generation-with-numpy",
+    "title": "Revision exercises",
+    "section": "Exercise 5: Revision of Random Number Generation with NumPy",
+    "text": "Exercise 5: Revision of Random Number Generation with NumPy\nObjective: Practice creating and using a NumPy random number generator.\nThe modern NumPy approach is to create a generator object first, optionally with a fixed seed so results are reproducible:\nfrom numpy import random\nrng = random.default_rng(seed=42)\nYou can then call methods on rng to draw samples:\n\nrng.integers(low, high) — a single random integer in [low, high)\nrng.integers(low, high, size=n) — an array of n random integers\nrng.choice(seq) — a single random element from a sequence\nrng.choice(seq, size=k, replace=False) — k unique elements (no repeats)\nrng.shuffle(seq) — shuffle a list in-place\n\nTasks:\n\nCreate a generator with seed=99.\nGenerate an array of 10 random integers between 1 and 100 (inclusive of 1, exclusive of 100).\nFrom the list [\"rock\", \"paper\", \"scissors\"], simulate 5 random choices with replacement.\nShuffle the list [1, 2, 3, 4, 5] in-place and print it before and after.",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
   },
   {
-    "objectID": "19/lecture_modularisation.html#important-making-changes-to-a-module",
-    "href": "19/lecture_modularisation.html#important-making-changes-to-a-module",
-    "title": "Modularisation in Python",
-    "section": "Important: making changes to a module",
-    "text": "Important: making changes to a module\nWhen working with modules, files are edited frequently and eventually imported in notebooks.\nBut notebooks do not automatically reload the module when it is changed, which can cause many headaches if you are not aware of it!\nThere are two ways to ensure that your notebook uses the latest module code:\n\nThe simplest is to simply restart the kernel and run all notebook cells after saving the module file. This ensures your notebook uses the latest module code.\nA more advanced way is to use the importlib library to reload the module without restarting the kernel. This can be done with the following code:\n\nimport importlib\nimport plot_example\n## ensure that the latest version of the module is used\nimportlib.reload(plot_example)\nUsing importlib.reload() is particularly useful when you are actively developing a module and want to test changes without restarting the kernel.\nIt allows you not to lose the state of your notebook (e.g. variables, imports, etc.) while still ensuring that you are using the latest version of the module.",
+    "objectID": "21/exercises_reflections.html#exercise-6-datetimeindex-and-filtering-by-month",
+    "href": "21/exercises_reflections.html#exercise-6-datetimeindex-and-filtering-by-month",
+    "title": "Revision exercises",
+    "section": "Exercise 6: DatetimeIndex and Filtering by Month",
+    "text": "Exercise 6: DatetimeIndex and Filtering by Month\nObjective: Work with a pandas DatetimeIndex to filter rows by a specific month.\nWhen a DataFrame has a DatetimeIndex, you can access time components via .index.month, .index.year, .index.day, etc. These return integer arrays you can use as boolean filters.\nTasks — using the DataFrame provided below:\n\nConfirm the index is a DatetimeIndex by printing df.index.\nExtract only the rows from March (month 3) using .index.month.\nCalculate the mean value for each month across all years. (Hint: group by df.index.month using df.groupby(df.index.month).mean().)",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
   },
   {
-    "objectID": "19/lecture_modularisation.html#catching-exceptions",
-    "href": "19/lecture_modularisation.html#catching-exceptions",
-    "title": "Modularisation in Python",
-    "section": "Catching exceptions",
-    "text": "Catching exceptions\nWhen working with modules, it is common to encounter errors or exceptions: these can be due to syntax errors in the module code, missing dependencies, or incorrect usage of functions.\nThis is because the final use is often blind to the details of the module code, and relies on the module to work correctly.\nThis means that we code modules it is important that we strive to consider possible exceptions and errors that may arise, and to handle them gracefully without crashing the entire program.\nFor this purpose, Python has a built-in syntax that helps with handling such situations: the try-except block. This allows us to catch exceptions and handle them in a way that does not crash the entire program, but instead provides useful feedback to the user or takes corrective action.\nThe starting point is to note that errors in Python are associated with specific types: for example, a SyntaxError is raised when there is a syntax error in the code, while a NameError is raised when a variable or function name is not defined.\n\n\n\n\n\n\n\n\n\n\n\n\nExceptions use the error type information to construct a conditional flow of the program: if a specific type of error is raised, the program can execute a specific block of code to handle that error.\nFore example, if a NameError is raised, we can catch it and print a message to the user indicating that a variable or function name is not defined, instead of crashing the entire program.\nTo do so we have a block where:\n\nthe try keyword is used to indicate the block of code that we want to execute and that may raise an exception\nthe except keyword is used to indicate the block of code that we want to execute\nthe else keyword can be used to indicate a block of code that should be executed if no exceptions are raised in the try block\nthe finally keyword can be used to indicate a block of code that should be executed regardless of whether an exception was raised or not, typically used for cleanup actions (e.g. closing files, releasing resources, etc.)\n\nFor example, in the following code, we try to divide a number by zero, which raises a ZeroDivisionError. We catch this specific error and print a message to the user indicating that you cannot divide by zero, instead of crashing the entire program.\n\n\n\n\n\n\nNotice that throwing an exception means that an error is raised during the execution of the code, while catching an exception means that we handle the error without crashing the program.\nCatching exceptions significantly improves our modules:\n\nit allows us to enforce correct usage of our functions\nit provides useful feedback to users when they make mistakes\nit prevents our programs from crashing due to errors\n\nTake our original code for time_scatter() as an example: according to its signature and docstring, it expects sequences for the x and y parameters. If a user accidentally passes a non-sequence (e.g. a single number), this raises errors:\n\n\n\n\n\n\nWe can use a try-except block to catch specific exceptions that may arise and provide a useful error message to the user, instead of crashing the entire program:\ndef time_scatter(x, y):\n    try:\n        # original code for time_scatter() goes here\n    except Exception as e:\n        print(f\"Errors occurred, possibly wrong inputs\\n {e}\")\n    else:\n        print(\"Plot created successfully.\")\nNotice that here we catch all kinds of exceptions and also catch the error message itself (using as e) to provide more specific feedback to the user about what went wrong. This is a common practice when catching exceptions, as it allows us to provide more informative error messages that can help users understand and fix their mistakes.",
+    "objectID": "21/exercises_reflections.html#exercise-7-nan-propagation",
+    "href": "21/exercises_reflections.html#exercise-7-nan-propagation",
+    "title": "Revision exercises",
+    "section": "Exercise 7: NaN Propagation",
+    "text": "Exercise 7: NaN Propagation\nObjective: Understand how NaN values behave in arithmetic operations on pandas Series.\nKey rules:\n\nNaN + number → NaN (NaN is “viral” in arithmetic)\nPandas aggregation functions (.mean(), .sum(), etc.) skip NaN by default\nYou can fill NaN values before operating with df[\"col\"].fillna(value)\n\nTasks — using the DataFrame provided below:\n\nAdd the two columns \"a\" and \"b\" together. Observe what happens where one value is NaN.\nAdd 100 to column \"b\". What happens to the NaN entries?\nCompute the mean of \"b\" — does pandas skip the NaN values?\nFill the NaN values in \"b\" with 0 first, then add 100. How does the result differ?",
     "crumbs": [
       "Home",
-      "19 Modularisation",
-      "Modularisation in Python"
+      "21 Reflections",
+      "Revision exercises"
     ]
+  },
+  {
+    "objectID": "21/exercises_reflections.html#exercise-8-finding-a-minimum-with-scipy.optimize",
+    "href": "21/exercises_reflections.html#exercise-8-finding-a-minimum-with-scipy.optimize",
+    "title": "Revision exercises",
+    "section": "Exercise 8: Finding a Minimum with scipy.optimize",
+    "text": "Exercise 8: Finding a Minimum with scipy.optimize\nObjective: Use scipy.optimize.minimize_scalar to find the minimum of a function, and restrict the search to a specific interval using bounds.\nThe lecture showed minimising \\(f(x) = x^2\\) — a simple case where the minimum is at 0. In practice you often need to find a minimum inside a specific range. Passing method=\"bounded\" and bounds=(a, b) restricts the search to \\([a, b]\\):\nfrom scipy.optimize import minimize_scalar\nresult = minimize_scalar(f, bounds=(0, 10), method=\"bounded\")\nprint(result.x, result.fun)\nTasks:\n\nDefine the function \\(f(x) = \\sin(x) + 0.1 \\, x^2\\).\nUse minimize_scalar with bounds=(0, 10) and method=\"bounded\" to find its minimum in \\([0, 10]\\).\nPlot \\(f(x)\\) over \\([0, 10]\\) and mark the minimum with a red dot. Label the axes and add a legend.",
+    "crumbs": [
+      "Home",
+      "21 Reflections",
+      "Revision exercises"
+    ]
+  },
+  {
+    "objectID": "21/exercises_reflections.html#exercise-9-sampling-from-distributions-with-scipy.stats",
+    "href": "21/exercises_reflections.html#exercise-9-sampling-from-distributions-with-scipy.stats",
+    "title": "Revision exercises",
+    "section": "Exercise 9: Sampling from Distributions with scipy.stats",
+    "text": "Exercise 9: Sampling from Distributions with scipy.stats\nObjective: Use scipy.stats distribution objects to draw random samples and plot theoretical probability density functions (PDFs).\nscipy.stats provides objects for many statistical distributions. Each object lets you:\n\n.rvs(size=n, random_state=rng) — draw n random samples\n.pdf(x) — evaluate the theoretical probability density at each point in x\n.mean(), .std() — get the theoretical mean and standard deviation\n\nFor example, a normal distribution with mean 5 and standard deviation 2:\nfrom scipy import stats\ndist = stats.norm(loc=5, scale=2)\n\nsamples = dist.rvs(size=200, random_state=42)\nTasks:\n\nCreate a normal distribution with mean 10 and standard deviation 3. Draw 500 samples from it.\nPlot a normalised histogram (density=True) of the samples.\nOn the same axes, overlay the theoretical PDF curve using .pdf() evaluated over a suitable range of x values.\nPrint the theoretical mean and standard deviation using .mean() and .std(), and compare them to samples.mean() and samples.std().",
+    "crumbs": [
+      "Home",
+      "21 Reflections",
+      "Revision exercises"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "",
+    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
+    "crumbs": [
+      "Home",
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
+    ]
+  },
+  {
+    "objectID": "index.html#welcome-to-the-course",
+    "href": "index.html#welcome-to-the-course",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "",
+    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
+    "crumbs": [
+      "Home",
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
+    ]
+  },
+  {
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "How to use",
+    "text": "How to use\n\nYou will find the more theoretical introduction under Lesson\nThe hands-on exercises will be under Exercises\nOver the course of the weeks the solutions will be released under Solutions\nRegularly, interactive formative tests will be released under Formative tests\n\nImportant. You can use the search button 🔎 to search across all the pages and skim through the course.\nNote. Many of the following pages also allow you to interact with the code by running Python snippets inside your browser. It is useful\n\nAs a fallback option if Noteable is unreachable.\nFor the regularly released formative tests.\n\nNote. In the online cells, you press\n\nCtrl/Cmd+Enter to run ▶ the cell\nCtrl/Cmd+] to indent ⇥\nCtrl/Cmd+[ to unindent ⇤\n\nThe content in this website mirrors the interactive notebooks released on Noteable.",
+    "crumbs": [
+      "Home",
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
+    ]
+  },
+  {
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "Getting Started",
+    "text": "Getting Started\nNavigate through the course using the sidebar or the navigation menu above. Each Week builds upon the previous one, so it’s recommended to work through them in order.",
+    "crumbs": [
+      "Home",
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
+    ]
+  },
+  {
+    "objectID": "index.html#features",
+    "href": "index.html#features",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "Features",
+    "text": "Features\n\nInteractive Jupyter notebooks\nStep-by-step exercises with solutions\nComprehensive coverage of NumPy and Matplotlib\nReal-world examples and applications",
+    "crumbs": [
+      "Home",
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
+    ]
+  },
+  {
+    "objectID": "19/exercises_modularisation-solutions.html",
+    "href": "19/exercises_modularisation-solutions.html",
+    "title": "Exercises: Modularisation",
+    "section": "",
+    "text": "Use this notebook for the practical tasks.\nBefore starting, ensure plot_example.py is open side-by-side with this notebook."
+  },
+  {
+    "objectID": "19/exercises_modularisation-solutions.html#setup",
+    "href": "19/exercises_modularisation-solutions.html#setup",
+    "title": "Exercises: Modularisation",
+    "section": "Setup",
+    "text": "Setup\n\nImportant when editing modules\nIf you change plot_example.py while this notebook is open, you must refresh what the notebook sees.\nimportlib is a standard Python library module for working with imports programmatically.\nimportlib.reload(module_name) tells Python to re-read that module file from disk and replace the in-memory version.\nYou can either restart and run all cells, or reload the module in-place:\nimport importlib\nimport plot_example\nimportlib.reload(plot_example)\nUse reload whenever you edit functions in plot_example.py and want those edits to be used immediately in this notebook session."
+  },
+  {
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-1",
+    "href": "19/exercises_modularisation-solutions.html#exercise-1",
+    "title": "Exercises: Modularisation",
+    "section": "Exercise 1",
+    "text": "Exercise 1\nLearning goal: implement a missing function in a module and call it from a notebook.\nIn plot_example.py, find the plot_uncert() function stub (currently with pass).\nUse this code inside plot_uncert():\n# Define upper and lower bounds of shading using the error term\ny_low = y - yerr\ny_high = y + yerr\n\n# Plot the line and the shading around it\nax.plot(x, y)\nax.fill_between(x, y1=y_low, y2=y_high, alpha=0.3, label=label)\n\nax.legend()\nSteps 1) Update plot_example.py with this implementation.\n\nSave the module, then import and run the test plot below.\nIf your edits do not appear, run importlib.reload(plot_example) before testing.\n\nSuccess check: your figure should show a line with a shaded uncertainty region around it."
+  },
+  {
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-2",
+    "href": "19/exercises_modularisation-solutions.html#exercise-2",
+    "title": "Exercises: Modularisation",
+    "section": "Exercise 2",
+    "text": "Exercise 2\nLearning goal: identify reusable vs dataset-specific code and wrap reusable parts in a function.\nSteps 1) Recreate the matplotlib stackplot demo in the cell below: https://matplotlib.org/stable/gallery/lines_bars_and_markers/stackplot_demo.html\n\n\n\n\n\n\nConsider which parts are generic and which are specific to one dataset.\n\nIn plot_example.py, use the provided plot_population_stacked() stub (or create your own more generic function).\nImport your function and test it in this notebook.\n\nSuccess check: your function plots a stackplot from inputs, rather than hard-coded values.\n\n\n\n\n\n\n\n\n\n\n\n\nQuestions - How could this function be improved? - How could it be made generic enough for any stackplot, not just year vs population? - Could the input structure be improved beyond a dictionary of lists?"
+  },
+  {
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-3",
+    "href": "19/exercises_modularisation-solutions.html#exercise-3",
+    "title": "Exercises: Modularisation",
+    "section": "Exercise 3",
+    "text": "Exercise 3\nLearning goal: understand notebook module caching and verify that reload applies code edits.\nSteps 1) In plot_example.py, modify time_scatter() so it accepts an optional marker argument (default '+') and uses that marker in ax.scatter(...). 2) Save plot_example.py, then reload the module in this notebook and test two different markers. 3) Briefly note what happened before and after reloading.\nSuccess check: your plot displays different marker styles, and your notes explain why reload was needed.\n\n\n\n\n\n\nWrite 2-3 sentences: Why is reloading needed in notebooks when a module file changes?"
+  },
+  {
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-4",
+    "href": "19/exercises_modularisation-solutions.html#exercise-4",
+    "title": "Exercises: Modularisation",
+    "section": "Exercise 4",
+    "text": "Exercise 4\nLearning goal: improve function robustness with validation and configurable parameters.\nSteps 1) Update plot_population_stacked() so it checks that every population series has the same length as year. 2) If a mismatch is found, raise a ValueError with a clear message. 3) Add optional inputs legend_loc='upper left' and alpha=0.85, then use them in the plot. 4) Demonstrate one valid call and one invalid call (inside try/except) below.\nSuccess check: the valid example plots correctly, and the invalid example raises your custom error message."
+  },
+  {
+    "objectID": "19/exercises_modularisation-solutions.html#exercise-5",
+    "href": "19/exercises_modularisation-solutions.html#exercise-5",
+    "title": "Exercises: Modularisation",
+    "section": "Exercise 5",
+    "text": "Exercise 5\nNow you can create your own modularised plotting function. The problem you want to solve is to take input data in x and y sequences and construct a funciton that plots the data together with an arbitrary polynomial fit of specified degree. You can use numpy.polyfit() to compute the polynomial coefficients and numpy.polyval() to create a polynomial function that can be evaluated at any x value.\nSteps\n\nWrite the function in the notebook first, and experiment a bit\nMove the function to plot_example.py and test it in this notebook.\nMake sure that you have added suitable error handling to your function, and test that it works by calling the function with wrong inputs.\nMake sure that you have added a docstring to your function, and test that it is informative and clear by calling help(your_function_name).\n\n\nSuccess check Test the function with some synthetic data.\nThen test it again with a real dataset, by taking the UK time series from the Energy per person dataset from Our World in Data here below.\n\n\n\n\n\n\n\nSolution: Plot with polynomial fit\nHere’s the complete function with docstring, validation, and error handling:\n\n\n\n\n\n\n\n\nTest 1: Synthetic data (with error handling)\n\n\n\n\n\n\n\n\nTest 2: Error handling\n\n\n\n\n\n\n\n\nTest 3: Real-world UK energy data"
   },
   {
     "objectID": "19/exercises_modularisation.html",
@@ -5234,112 +5367,228 @@
     "text": "Now that we have masked out just the pixels related to the galaxy, one parameter we can derive is to calculate the galaxy brightness for a particular colour. Normally, this would not be done from an RGB image but we can use this to make an approximation.\nThe magnitude of an object is given by the equation:\n\\[ m_{AB} = -2.5\\log_{10}(f_v) + 8.90 \\]\nwhere: - \\(m_{AB}\\) is the magnitude (on the AB scale) - \\(f_v\\) is the spectral flux density (in units of Jansky, \\(Jy\\))\n\n\n\nWe can calculate an approximation of the spectral flux density, \\(f_{v}\\), by summing the pixel values from our image and by applying a scale factor of \\(2.8\\times10^{-7}\\).\nFrom your masked image of the galaxy, and using the details above, calculate an approximation of the magnitude of the Blue channel (the third channel) from this image.\nHow does this compare to the true value for “B (AB)”? - available here: http://simbad.u-strasbg.fr/simbad/sim-id?Ident=NGC+253&jsessionid=262A420D60A8A4D72D3384528AA0980A.main\nHint: - Additional numpy functions which will be useful: - sum() - https://numpy.org/doc/stable/reference/generated/numpy.sum.html - log10() - https://numpy.org/doc/stable/reference/generated/numpy.log10.html"
   },
   {
-    "objectID": "19/exercises_modularisation-solutions.html",
-    "href": "19/exercises_modularisation-solutions.html",
+    "objectID": "19/exercises_modularisation-solution.html",
+    "href": "19/exercises_modularisation-solution.html",
     "title": "Exercises: Modularisation",
     "section": "",
     "text": "Use this notebook for the practical tasks.\nBefore starting, ensure plot_example.py is open side-by-side with this notebook."
   },
   {
-    "objectID": "19/exercises_modularisation-solutions.html#setup",
-    "href": "19/exercises_modularisation-solutions.html#setup",
+    "objectID": "19/exercises_modularisation-solution.html#setup",
+    "href": "19/exercises_modularisation-solution.html#setup",
     "title": "Exercises: Modularisation",
     "section": "Setup",
     "text": "Setup\n\nImportant when editing modules\nIf you change plot_example.py while this notebook is open, you must refresh what the notebook sees.\nimportlib is a standard Python library module for working with imports programmatically.\nimportlib.reload(module_name) tells Python to re-read that module file from disk and replace the in-memory version.\nYou can either restart and run all cells, or reload the module in-place:\nimport importlib\nimport plot_example\nimportlib.reload(plot_example)\nUse reload whenever you edit functions in plot_example.py and want those edits to be used immediately in this notebook session."
   },
   {
-    "objectID": "19/exercises_modularisation-solutions.html#exercise-1",
-    "href": "19/exercises_modularisation-solutions.html#exercise-1",
+    "objectID": "19/exercises_modularisation-solution.html#exercise-1",
+    "href": "19/exercises_modularisation-solution.html#exercise-1",
     "title": "Exercises: Modularisation",
     "section": "Exercise 1",
     "text": "Exercise 1\nLearning goal: implement a missing function in a module and call it from a notebook.\nIn plot_example.py, find the plot_uncert() function stub (currently with pass).\nUse this code inside plot_uncert():\n# Define upper and lower bounds of shading using the error term\ny_low = y - yerr\ny_high = y + yerr\n\n# Plot the line and the shading around it\nax.plot(x, y)\nax.fill_between(x, y1=y_low, y2=y_high, alpha=0.3, label=label)\n\nax.legend()\nSteps 1) Update plot_example.py with this implementation.\n\nSave the module, then import and run the test plot below.\nIf your edits do not appear, run importlib.reload(plot_example) before testing.\n\nSuccess check: your figure should show a line with a shaded uncertainty region around it."
   },
   {
-    "objectID": "19/exercises_modularisation-solutions.html#exercise-2",
-    "href": "19/exercises_modularisation-solutions.html#exercise-2",
+    "objectID": "19/exercises_modularisation-solution.html#exercise-2",
+    "href": "19/exercises_modularisation-solution.html#exercise-2",
     "title": "Exercises: Modularisation",
     "section": "Exercise 2",
     "text": "Exercise 2\nLearning goal: identify reusable vs dataset-specific code and wrap reusable parts in a function.\nSteps 1) Recreate the matplotlib stackplot demo in the cell below: https://matplotlib.org/stable/gallery/lines_bars_and_markers/stackplot_demo.html\n\n\n\n\n\n\nConsider which parts are generic and which are specific to one dataset.\n\nIn plot_example.py, use the provided plot_population_stacked() stub (or create your own more generic function).\nImport your function and test it in this notebook.\n\nSuccess check: your function plots a stackplot from inputs, rather than hard-coded values.\n\n\n\n\n\n\n\n\n\n\n\n\nQuestions - How could this function be improved? - How could it be made generic enough for any stackplot, not just year vs population? - Could the input structure be improved beyond a dictionary of lists?"
   },
   {
-    "objectID": "19/exercises_modularisation-solutions.html#exercise-3",
-    "href": "19/exercises_modularisation-solutions.html#exercise-3",
+    "objectID": "19/exercises_modularisation-solution.html#exercise-3",
+    "href": "19/exercises_modularisation-solution.html#exercise-3",
     "title": "Exercises: Modularisation",
     "section": "Exercise 3",
     "text": "Exercise 3\nLearning goal: understand notebook module caching and verify that reload applies code edits.\nSteps 1) In plot_example.py, modify time_scatter() so it accepts an optional marker argument (default '+') and uses that marker in ax.scatter(...). 2) Save plot_example.py, then reload the module in this notebook and test two different markers. 3) Briefly note what happened before and after reloading.\nSuccess check: your plot displays different marker styles, and your notes explain why reload was needed.\n\n\n\n\n\n\nWrite 2-3 sentences: Why is reloading needed in notebooks when a module file changes?"
   },
   {
-    "objectID": "19/exercises_modularisation-solutions.html#exercise-4",
-    "href": "19/exercises_modularisation-solutions.html#exercise-4",
+    "objectID": "19/exercises_modularisation-solution.html#exercise-4",
+    "href": "19/exercises_modularisation-solution.html#exercise-4",
     "title": "Exercises: Modularisation",
     "section": "Exercise 4",
     "text": "Exercise 4\nLearning goal: improve function robustness with validation and configurable parameters.\nSteps 1) Update plot_population_stacked() so it checks that every population series has the same length as year. 2) If a mismatch is found, raise a ValueError with a clear message. 3) Add optional inputs legend_loc='upper left' and alpha=0.85, then use them in the plot. 4) Demonstrate one valid call and one invalid call (inside try/except) below.\nSuccess check: the valid example plots correctly, and the invalid example raises your custom error message."
   },
   {
-    "objectID": "19/exercises_modularisation-solutions.html#exercise-5",
-    "href": "19/exercises_modularisation-solutions.html#exercise-5",
+    "objectID": "19/exercises_modularisation-solution.html#exercise-5",
+    "href": "19/exercises_modularisation-solution.html#exercise-5",
     "title": "Exercises: Modularisation",
     "section": "Exercise 5",
     "text": "Exercise 5\nNow you can create your own modularised plotting function. The problem you want to solve is to take input data in x and y sequences and construct a funciton that plots the data together with an arbitrary polynomial fit of specified degree. You can use numpy.polyfit() to compute the polynomial coefficients and numpy.polyval() to create a polynomial function that can be evaluated at any x value.\nSteps\n\nWrite the function in the notebook first, and experiment a bit\nMove the function to plot_example.py and test it in this notebook.\nMake sure that you have added suitable error handling to your function, and test that it works by calling the function with wrong inputs.\nMake sure that you have added a docstring to your function, and test that it is informative and clear by calling help(your_function_name).\n\n\nSuccess check Test the function with some synthetic data.\nThen test it again with a real dataset, by taking the UK time series from the Energy per person dataset from Our World in Data here below.\n\n\n\n\n\n\n\nSolution: Plot with polynomial fit\nHere’s the complete function with docstring, validation, and error handling:\n\n\n\n\n\n\n\n\nTest 1: Synthetic data (with error handling)\n\n\n\n\n\n\n\n\nTest 2: Error handling\n\n\n\n\n\n\n\n\nTest 3: Real-world UK energy data"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Introduction to Coding and Data Analysis",
+    "objectID": "19/lecture_modularisation.html",
+    "href": "19/lecture_modularisation.html",
+    "title": "Modularisation in Python",
     "section": "",
-    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
+    "text": "Notebooks are a great way to write and run code, but they can become unmanageable as they grow larger.\nModularisation is the process of breaking down code into smaller, reusable pieces. In Python, an easy way to achieve modularisation is by using modules and functions.\nA module is a file containing Python definitions and statements. The file name is the module name with the suffix .py added. Modules can define functions, classes, and variables, and can also include runnable code (we have seen a bit of this in a previous lecture).\nNotice that a module is not a notebook: it is a pure text file containing Python code. It can be edited and viewed in Noteable or any other editor.",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "19 Modularisation",
+      "Modularisation in Python"
     ]
   },
   {
-    "objectID": "index.html#welcome-to-the-course",
-    "href": "index.html#welcome-to-the-course",
-    "title": "Introduction to Coding and Data Analysis",
+    "objectID": "19/lecture_modularisation.html#jupyter-lab",
+    "href": "19/lecture_modularisation.html#jupyter-lab",
+    "title": "Modularisation in Python",
+    "section": "Jupyter Lab",
+    "text": "Jupyter Lab\nWhen launching Noteable, you have mostly used the Classic Jupyter (Legacy) interface. However, Noteable support many other interfaces.\nThe Jupyter Lab interface is a more modern and feature-rich interface for working with Jupyter notebooks. It provides a more flexible and powerful environment for working with notebooks, code, and data.\nIn this session, it will be useful to use the Jupyter Lab interface, as it allows us to easily view and edit module files alongside our notebooks.\nyou access it by selecting Standard Python 3 from the initial dropdown menu.\n\n\n\nselecting Jupyter Lab interface\n\n\nAfter launching, the interface should look like this (or similar):\n\n\n\nmain",
+    "crumbs": [
+      "Home",
+      "19 Modularisation",
+      "Modularisation in Python"
+    ]
+  },
+  {
+    "objectID": "19/lecture_modularisation.html#using-a-module-file-from-a-notebook",
+    "href": "19/lecture_modularisation.html#using-a-module-file-from-a-notebook",
+    "title": "Modularisation in Python",
+    "section": "Using a module file from a notebook",
+    "text": "Using a module file from a notebook\nIn this lecture notebook, we focus on using a module file (a .py file) from a notebook.\nWe will use plot_example.py – present in this same directory – which contains plotting functions created from code patterns used in class.",
+    "crumbs": [
+      "Home",
+      "19 Modularisation",
+      "Modularisation in Python"
+    ]
+  },
+  {
+    "objectID": "19/lecture_modularisation.html#what-is-in-the-module",
+    "href": "19/lecture_modularisation.html#what-is-in-the-module",
+    "title": "Modularisation in Python",
+    "section": "What is in the module?",
+    "text": "What is in the module?\nIf we open plot_example.py, we can see import statements and function definitions such as time_scatter().\n\nWe immediately recognise the same code structure as in our previous code:\n\nimport statements at the top of the file\nfunction definitions below\n\nSyntax highlighting and indentation make it easy to read and understand the code structure.",
+    "crumbs": [
+      "Home",
+      "19 Modularisation",
+      "Modularisation in Python"
+    ]
+  },
+  {
+    "objectID": "19/lecture_modularisation.html#importing-a-module",
+    "href": "19/lecture_modularisation.html#importing-a-module",
+    "title": "Modularisation in Python",
+    "section": "Importing a module",
+    "text": "Importing a module\nTo access functions in the file, import the module name (without .py).\nThis works because plot_example.py is in the same folder as this notebook (a relative import).\n\n\n\n\n\n\nMore generally, specific paths to files can be used using a particular syntax:\n\nimport plot_example (if the file is in the same folder as the notebook)\nimport folder_name.plot_example (if the file is in a subfolder of the notebook)\nimport ..folder_name.plot_example (if the file is in a parent folder of the notebook)\n\nIt is recommended to use relative imports (i.e. the first two options) when working on a project, as they are more portable and easier to manage.\nOnce the module is imported, all functions and variables defined in the module are available for use in the notebook. You can then access module functions with dot syntax, e.g. plot_example.time_scatter(...).",
+    "crumbs": [
+      "Home",
+      "19 Modularisation",
+      "Modularisation in Python"
+    ]
+  },
+  {
+    "objectID": "19/lecture_modularisation.html#introspection",
+    "href": "19/lecture_modularisation.html#introspection",
+    "title": "Modularisation in Python",
+    "section": "Introspection",
+    "text": "Introspection\nSuppose we are give a module from a friend or colleague and we want to know what functions are available in the module. We can use introspection to inspect the module and find out what functions it contains.\nIntrospection is the ability of a program to examine the type or properties of an object at runtime. In Python, we can use the dir() function to get a list of all the actions and properties possessed by any object in python (i.e. any names including functions, variables, etc.).\nThis is powerful because it allows us to explore and understand the contents of a module without having to read through the entire code.\nA convention in Python is that if we write our own module and want to hide some properties to a final user (i.e. we don’t want them to be accessed directly), we can prefix the name of these properties with an underscore (e.g. _hidden_function()). This is a convention, not a strict rule, but it is widely followed in the Python community.\n\nExample: inspect available functions\nSuppose we want to know what functions are available in the plot_example module.\nWe could try dir()\n\n\n\n\n\n\nAs you see, this would yield a long list of names, including functions, variables, and other properties. To filter out the functions, we can use a list comprehension to exclude any names that start with an underscore (as these are typically used for internal purposes and are not meant to be accessed directly by users):\n\n\n\n\n\n\n\n\nImporting one function directly\nWe can be very selective when importing from a module. As we did with numpy or event plotly, we can instruct Python to import only specific functions from a module.\nIf you only need one function, you can import it directly using from ... import ....\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClearly, our function time_scatter() is available in the module and must be wrapping specific plotting code. As for any other python function, we can use help() to get more information about how to use it.\n\n\n\n\n\n\nThis retrieves the docstring of the function, which is a string that describes what the function does, its parameters, and its return value. This information is crucial for understanding how to use the function correctly. You shoudl be able to see it directly inside the module file, as a string immediately following the function definition.\nWe can also inspect the code of the function itself by using ??:\n\n\n\n\n\n\nNotice that the ?? command exposes what is called as the signature of the function, which shows the parameters that the function takes and their default values (if any). This is very useful for understanding how to call the function correctly.\nIt also presents the first few lines of the function code, which can be helpful for understanding how the function works and what it does. In this case we get most of the initial docstring: notice that triple quotes are used to write multi-line docstrings, which can be very useful for providing detailed documentation for functions.\nA useful docstring should include:\n\nA brief description of what the function does\nA description of the parameters, including their types and what they represent\nA description of the return value(s), including their type and what they represents\n\nThere is an even more direct way to access the docstring of a function: by using the __doc__ attribute of the function, e.g. time_scatter.__doc__. Basically we access a specific (hidden) property of the function that contains the docstring, and get it as a genuine python string. This is yet another example of accessing features of Python objects using dot syntax, a hint to the Object Oriented Programming (OOP) paradigm that you will see in the future.",
+    "crumbs": [
+      "Home",
+      "19 Modularisation",
+      "Modularisation in Python"
+    ]
+  },
+  {
+    "objectID": "19/lecture_modularisation.html#important-making-changes-to-a-module",
+    "href": "19/lecture_modularisation.html#important-making-changes-to-a-module",
+    "title": "Modularisation in Python",
+    "section": "Important: making changes to a module",
+    "text": "Important: making changes to a module\nWhen working with modules, files are edited frequently and eventually imported in notebooks.\nBut notebooks do not automatically reload the module when it is changed, which can cause many headaches if you are not aware of it!\nThere are two ways to ensure that your notebook uses the latest module code:\n\nThe simplest is to simply restart the kernel and run all notebook cells after saving the module file. This ensures your notebook uses the latest module code.\nA more advanced way is to use the importlib library to reload the module without restarting the kernel. This can be done with the following code:\n\n\n\n\n\n\n\nUsing importlib.reload() is particularly useful when you are actively developing a module and want to test changes without restarting the kernel.\nIt allows you not to lose the state of your notebook (e.g. variables, imports, etc.) while still ensuring that you are using the latest version of the module.",
+    "crumbs": [
+      "Home",
+      "19 Modularisation",
+      "Modularisation in Python"
+    ]
+  },
+  {
+    "objectID": "19/lecture_modularisation.html#catching-exceptions",
+    "href": "19/lecture_modularisation.html#catching-exceptions",
+    "title": "Modularisation in Python",
+    "section": "Catching exceptions",
+    "text": "Catching exceptions\nWhen working with modules, it is common to encounter errors or exceptions: these can be due to syntax errors in the module code, missing dependencies, or incorrect usage of functions.\nThis is because the final use is often blind to the details of the module code, and relies on the module to work correctly.\nThis means that we code modules it is important that we strive to consider possible exceptions and errors that may arise, and to handle them gracefully without crashing the entire program.\nFor this purpose, Python has a built-in syntax that helps with handling such situations: the try-except block. This allows us to catch exceptions and handle them in a way that does not crash the entire program, but instead provides useful feedback to the user or takes corrective action.\nThe starting point is to note that errors in Python are associated with specific types: for example, a SyntaxError is raised when there is a syntax error in the code, while a NameError is raised when a variable or function name is not defined.\n\n\n\n\n\n\n\n\n\n\n\n\nExceptions use the error type information to construct a conditional flow of the program: if a specific type of error is raised, the program can execute a specific block of code to handle that error.\nFore example, if a NameError is raised, we can catch it and print a message to the user indicating that a variable or function name is not defined, instead of crashing the entire program.\nTo do so we have a block where:\n\nthe try keyword is used to indicate the block of code that we want to execute and that may raise an exception\nthe except keyword is used to indicate the block of code that we want to execute\nthe else keyword can be used to indicate a block of code that should be executed if no exceptions are raised in the try block\nthe finally keyword can be used to indicate a block of code that should be executed regardless of whether an exception was raised or not, typically used for cleanup actions (e.g. closing files, releasing resources, etc.)\n\nFor example, in the following code, we try to divide a number by zero, which raises a ZeroDivisionError. We catch this specific error and print a message to the user indicating that you cannot divide by zero, instead of crashing the entire program.\n\n\n\n\n\n\nNotice that throwing an exception means that an error is raised during the execution of the code, while catching an exception means that we handle the error without crashing the program.\nCatching exceptions significantly improves our modules:\n\nit allows us to enforce correct usage of our functions\nit provides useful feedback to users when they make mistakes\nit prevents our programs from crashing due to errors\n\nTake our original code for time_scatter() as an example: according to its signature and docstring, it expects sequences for the x and y parameters. If a user accidentally passes a non-sequence (e.g. a single number), this raises errors:\n\n\n\n\n\n\nWe can use a try-except block to catch specific exceptions that may arise and provide a useful error message to the user, instead of crashing the entire program:\n\n\n\n\n\n\nNotice that here we catch all kinds of exceptions and also catch the error message itself (using as e) to provide more specific feedback to the user about what went wrong. This is a common practice when catching exceptions, as it allows us to provide more informative error messages that can help users understand and fix their mistakes.",
+    "crumbs": [
+      "Home",
+      "19 Modularisation",
+      "Modularisation in Python"
+    ]
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-2-saving-figures",
+    "href": "21/exercises_reflections-solutions.html#exercise-2-saving-figures",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 2: Saving Figures",
+    "text": "Exercise 2: Saving Figures"
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-3-index-based-scatter-plot-with-pandas",
+    "href": "21/exercises_reflections-solutions.html#exercise-3-index-based-scatter-plot-with-pandas",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 3: Index-based Scatter Plot with Pandas",
+    "text": "Exercise 3: Index-based Scatter Plot with Pandas"
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-4-dual-y-axis-plots-with-twinx",
+    "href": "21/exercises_reflections-solutions.html#exercise-4-dual-y-axis-plots-with-twinx",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 4: Dual Y-axis Plots with twinx()",
+    "text": "Exercise 4: Dual Y-axis Plots with twinx()"
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-5-random-number-generation-with-numpy",
+    "href": "21/exercises_reflections-solutions.html#exercise-5-random-number-generation-with-numpy",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 5: Random Number Generation with NumPy",
+    "text": "Exercise 5: Random Number Generation with NumPy"
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-6-datetimeindex-and-filtering-by-month",
+    "href": "21/exercises_reflections-solutions.html#exercise-6-datetimeindex-and-filtering-by-month",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 6: DatetimeIndex and Filtering by Month",
+    "text": "Exercise 6: DatetimeIndex and Filtering by Month"
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-7-nan-propagation",
+    "href": "21/exercises_reflections-solutions.html#exercise-7-nan-propagation",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 7: NaN Propagation",
+    "text": "Exercise 7: NaN Propagation"
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-8-finding-a-minimum-with-scipy.optimize",
+    "href": "21/exercises_reflections-solutions.html#exercise-8-finding-a-minimum-with-scipy.optimize",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 8: Finding a Minimum with scipy.optimize",
+    "text": "Exercise 8: Finding a Minimum with scipy.optimize"
+  },
+  {
+    "objectID": "21/exercises_reflections-solutions.html#exercise-9-sampling-from-distributions-with-scipy.stats",
+    "href": "21/exercises_reflections-solutions.html#exercise-9-sampling-from-distributions-with-scipy.stats",
+    "title": "Revision exercises — Solutions",
+    "section": "Exercise 9: Sampling from Distributions with scipy.stats",
+    "text": "Exercise 9: Sampling from Distributions with scipy.stats"
+  },
+  {
+    "objectID": "21/lecture_reflections.html",
+    "href": "21/lecture_reflections.html",
+    "title": "Reflections",
     "section": "",
-    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
+    "text": "This year we explored the Python programming language and how to use it to analyze data.\nWe covered the following topics:\nThe journey entailed a lot of syntax and semantics of Python, but we also touched on the philosophy of programming and data analysis. We discussed how to think about problems, how to break them down into smaller pieces, and how to communicate our findings effectively.\nThese skills come to fruit in Project 4, where you will apply what you’ve learned to a real-world dataset and write a report on your findings. This project will be an opportunity to demonstrate your ability to analyze data, draw conclusions, and communicate your r",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "21 Reflections",
+      "Reflections"
     ]
   },
   {
-    "objectID": "index.html#how-to-use",
-    "href": "index.html#how-to-use",
-    "title": "Introduction to Coding and Data Analysis",
-    "section": "How to use",
-    "text": "How to use\n\nYou will find the more theoretical introduction under Lesson\nThe hands-on exercises will be under Exercises\nOver the course of the weeks the solutions will be released under Solutions\nRegularly, interactive formative tests will be released under Formative tests\n\nImportant. You can use the search button 🔎 to search across all the pages and skim through the course.\nNote. Many of the following pages also allow you to interact with the code by running Python snippets inside your browser. It is useful\n\nAs a fallback option if Noteable is unreachable.\nFor the regularly released formative tests.\n\nNote. In the online cells, you press\n\nCtrl/Cmd+Enter to run ▶ the cell\nCtrl/Cmd+] to indent ⇥\nCtrl/Cmd+[ to unindent ⇤\n\nThe content in this website mirrors the interactive notebooks released on Noteable.",
+    "objectID": "21/lecture_reflections.html#conclusion",
+    "href": "21/lecture_reflections.html#conclusion",
+    "title": "Reflections",
+    "section": "Conclusion",
+    "text": "Conclusion\nWe hope you have enjoyed this course and you will continue to explore the fascinating world of data analysis.\nWe remain available to support you with any questions you have about the content of this course and more in general if you want to continue learning about data analysis and scientific computing. You can reach out to us via email.",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
-    ]
-  },
-  {
-    "objectID": "index.html#getting-started",
-    "href": "index.html#getting-started",
-    "title": "Introduction to Coding and Data Analysis",
-    "section": "Getting Started",
-    "text": "Getting Started\nNavigate through the course using the sidebar or the navigation menu above. Each Week builds upon the previous one, so it’s recommended to work through them in order.",
-    "crumbs": [
-      "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
-    ]
-  },
-  {
-    "objectID": "index.html#features",
-    "href": "index.html#features",
-    "title": "Introduction to Coding and Data Analysis",
-    "section": "Features",
-    "text": "Features\n\nInteractive Jupyter notebooks\nStep-by-step exercises with solutions\nComprehensive coverage of NumPy and Matplotlib\nReal-world examples and applications",
-    "crumbs": [
-      "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "21 Reflections",
+      "Reflections"
     ]
   },
   {
@@ -5431,91 +5680,91 @@
     "href": "slides/10_multidimensional_arrays_slides.html#numpy-arrays-beyond-1d",
     "title": "Multi-dimensional Arrays",
     "section": "NumPy Arrays Beyond 1D",
-    "text": "NumPy Arrays Beyond 1D\nMulti-dimensional arrays enable representation of: - 2D: Grid/Matrix (rows × columns) - 3D: Cuboid/Tensor (depth × rows × columns) - nD: Higher dimensions\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\nfrom numpy import random\nrng = random.default_rng(seed=24)\n\n# 2D array (3×3 matrix)\narray_2d = rng.random((3, 3))\nprint(f\"Shape: {array_2d.shape}\")\nprint(array_2d)"
+    "text": "NumPy Arrays Beyond 1D\nMulti-dimensional arrays enable representation of: - 2D: Grid/Matrix (rows × columns) - 3D: Cuboid/Tensor (depth × rows × columns) - nD: Higher dimensions\nimport numpy as np\nfrom numpy import random\nrng = random.default_rng(seed=24)\n\n# 2D array (3×3 matrix)\narray_2d = rng.random((3, 3))\nprint(f\"Shape: {array_2d.shape}\")\nprint(array_2d)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#indexing-multi-dimensional-arrays",
     "href": "slides/10_multidimensional_arrays_slides.html#indexing-multi-dimensional-arrays",
     "title": "Multi-dimensional Arrays",
     "section": "Indexing Multi-dimensional Arrays",
-    "text": "Indexing Multi-dimensional Arrays\nRow-major order: [row, column] (like [y, x])\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Access single element\nprint(\"Element at [1,2]:\", array_2d[1, 2])\n\n# Access entire row\nprint(\"First row:\", array_2d[0, :])\n\n# Access entire column  \nprint(\"First column:\", array_2d[:, 0])\nSlicing works with multiple dimensions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"First 2 rows:\\n\", array_2d[:2])"
+    "text": "Indexing Multi-dimensional Arrays\nRow-major order: [row, column] (like [y, x])\n# Access single element\nprint(\"Element at [1,2]:\", array_2d[1, 2])\n\n# Access entire row\nprint(\"First row:\", array_2d[0, :])\n\n# Access entire column  \nprint(\"First column:\", array_2d[:, 0])\nSlicing works with multiple dimensions:\nprint(\"First 2 rows:\\n\", array_2d[:2])"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#array-properties",
     "href": "slides/10_multidimensional_arrays_slides.html#array-properties",
     "title": "Multi-dimensional Arrays",
     "section": "Array Properties",
-    "text": "Array Properties\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Creating arrays with different shapes\nzeros_2d = np.zeros((2, 3))  # 2 rows, 3 columns\nrandom_3d = rng.integers(0, 3, size=(2, 3, 4))  # 2×3×4 tensor\n\nprint(\"2D shape:\", zeros_2d.shape)\nprint(\"3D shape:\", random_3d.shape)\nprint(\"3D rank/dimensions:\", random_3d.ndim)\nTerminology: - Rank/ndim: Number of dimensions - Matrix: Rank 2 array - Tensor: Rank 3+ array"
+    "text": "Array Properties\n# Creating arrays with different shapes\nzeros_2d = np.zeros((2, 3))  # 2 rows, 3 columns\nrandom_3d = rng.integers(0, 3, size=(2, 3, 4))  # 2×3×4 tensor\n\nprint(\"2D shape:\", zeros_2d.shape)\nprint(\"3D shape:\", random_3d.shape)\nprint(\"3D rank/dimensions:\", random_3d.ndim)\nTerminology: - Rank/ndim: Number of dimensions - Matrix: Rank 2 array - Tensor: Rank 3+ array"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#operations-along-axes",
     "href": "slides/10_multidimensional_arrays_slides.html#operations-along-axes",
     "title": "Multi-dimensional Arrays",
     "section": "Operations Along Axes",
-    "text": "Operations Along Axes\nAxis-specific operations:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = rng.integers(0, 5, size=(3, 4))\nprint(\"Original matrix:\\n\", matrix)\n\nprint(\"Sum along axis 0 (columns):\", matrix.sum(axis=0))\nprint(\"Sum along axis 1 (rows):\", matrix.sum(axis=1))\nprint(\"Mean along axis 0:\", np.mean(matrix, axis=0))\nAxis 0: Operations across rows (result has column shape)\nAxis 1: Operations across columns (result has row shape)"
+    "text": "Operations Along Axes\nAxis-specific operations:\nmatrix = rng.integers(0, 5, size=(3, 4))\nprint(\"Original matrix:\\n\", matrix)\n\nprint(\"Sum along axis 0 (columns):\", matrix.sum(axis=0))\nprint(\"Sum along axis 1 (rows):\", matrix.sum(axis=1))\nprint(\"Mean along axis 0:\", np.mean(matrix, axis=0))\nAxis 0: Operations across rows (result has column shape)\nAxis 1: Operations across columns (result has row shape)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#reshaping-and-flattening",
     "href": "slides/10_multidimensional_arrays_slides.html#reshaping-and-flattening",
     "title": "Multi-dimensional Arrays",
     "section": "Reshaping and Flattening",
-    "text": "Reshaping and Flattening\nReshape without changing data:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr_1d = np.arange(12)\narr_2d = arr_1d.reshape((3, 4))\narr_3d = arr_1d.reshape((2, 2, 3))\n\nprint(\"1D:\", arr_1d)\nprint(\"2D (3×4):\\n\", arr_2d)\nprint(\"3D shape:\", arr_3d.shape)\nUsing -1 for automatic dimension:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# -1 means \"figure out this dimension\"\nauto_reshape = arr_1d.reshape(-1, 4)  # ? rows, 4 columns\nprint(\"Auto-reshaped:\\n\", auto_reshape)"
+    "text": "Reshaping and Flattening\nReshape without changing data:\narr_1d = np.arange(12)\narr_2d = arr_1d.reshape((3, 4))\narr_3d = arr_1d.reshape((2, 2, 3))\n\nprint(\"1D:\", arr_1d)\nprint(\"2D (3×4):\\n\", arr_2d)\nprint(\"3D shape:\", arr_3d.shape)\nUsing -1 for automatic dimension:\n# -1 means \"figure out this dimension\"\nauto_reshape = arr_1d.reshape(-1, 4)  # ? rows, 4 columns\nprint(\"Auto-reshaped:\\n\", auto_reshape)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#flattening-arrays",
     "href": "slides/10_multidimensional_arrays_slides.html#flattening-arrays",
     "title": "Multi-dimensional Arrays",
     "section": "Flattening Arrays",
-    "text": "Flattening Arrays\nravel() - returns view (shares data):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = rng.integers(0, 10, (2, 3))\nprint(\"Original:\\n\", matrix)\n\nview = matrix.ravel()\nview[0] = 99  # Changes original!\nprint(\"After modifying view:\\n\", matrix)\nflatten() - returns copy:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = rng.integers(0, 10, (2, 3))\ncopy = matrix.flatten()\ncopy[0] = 99  # Original unchanged\nprint(\"Original unchanged:\\n\", matrix)"
+    "text": "Flattening Arrays\nravel() - returns view (shares data):\nmatrix = rng.integers(0, 10, (2, 3))\nprint(\"Original:\\n\", matrix)\n\nview = matrix.ravel()\nview[0] = 99  # Changes original!\nprint(\"After modifying view:\\n\", matrix)\nflatten() - returns copy:\nmatrix = rng.integers(0, 10, (2, 3))\ncopy = matrix.flatten()\ncopy[0] = 99  # Original unchanged\nprint(\"Original unchanged:\\n\", matrix)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#broadcasting",
     "href": "slides/10_multidimensional_arrays_slides.html#broadcasting",
     "title": "Multi-dimensional Arrays",
     "section": "Broadcasting",
-    "text": "Broadcasting\nCombine arrays of different shapes automatically:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nmatrix = np.array([[1, 2, 3],\n                   [4, 5, 6]])\nvector = np.array([10, 20, 30])\n\n# Vector is broadcast to each row\nresult = matrix + vector\nprint(\"Matrix + Vector:\\n\", result)\nCreate grids with broadcasting:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nrow_vec = np.arange(3).reshape(1, -1)    # Shape: (1, 3)\ncol_vec = np.arange(3).reshape(-1, 1)    # Shape: (3, 1)\ngrid = row_vec + col_vec                 # Shape: (3, 3)\nprint(\"Broadcast grid:\\n\", grid)"
+    "text": "Broadcasting\nCombine arrays of different shapes automatically:\nmatrix = np.array([[1, 2, 3],\n                   [4, 5, 6]])\nvector = np.array([10, 20, 30])\n\n# Vector is broadcast to each row\nresult = matrix + vector\nprint(\"Matrix + Vector:\\n\", result)\nCreate grids with broadcasting:\nrow_vec = np.arange(3).reshape(1, -1)    # Shape: (1, 3)\ncol_vec = np.arange(3).reshape(-1, 1)    # Shape: (3, 1)\ngrid = row_vec + col_vec                 # Shape: (3, 3)\nprint(\"Broadcast grid:\\n\", grid)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#linear-algebra-with-numpy",
     "href": "slides/10_multidimensional_arrays_slides.html#linear-algebra-with-numpy",
     "title": "Multi-dimensional Arrays",
     "section": "Linear Algebra with NumPy",
-    "text": "Linear Algebra with NumPy\nMatrix operations for solving systems: \\[A\\mathbf{x} = \\mathbf{b}\\]\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3\nA = np.array([[2, 3, 1], \n              [4, -1, 0], \n              [0, 2, 1]])\nb = np.array([[5], [1], [3]])\n\n# Solve the system\nx = np.linalg.solve(A, b)\nprint(\"Solution:\", x.flatten())\n\n# Verify: A @ x should equal b\nprint(\"Verification:\\n\", A @ x)"
+    "text": "Linear Algebra with NumPy\nMatrix operations for solving systems: \\[A\\mathbf{x} = \\mathbf{b}\\]\n# System: 2x + 3y + z = 5, 4x - y = 1, 2y + z = 3\nA = np.array([[2, 3, 1], \n              [4, -1, 0], \n              [0, 2, 1]])\nb = np.array([[5], [1], [3]])\n\n# Solve the system\nx = np.linalg.solve(A, b)\nprint(\"Solution:\", x.flatten())\n\n# Verify: A @ x should equal b\nprint(\"Verification:\\n\", A @ x)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#linear-algebra-operations",
     "href": "slides/10_multidimensional_arrays_slides.html#linear-algebra-operations",
     "title": "Multi-dimensional Arrays",
     "section": "Linear Algebra Operations",
-    "text": "Linear Algebra Operations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Matrix multiplication with @\nresult = A @ x\n\n# Transpose with .T\nprint(\"b transpose:\", b.T)\n\n# Dot product\ndot_product = np.dot(b.T, b)\nprint(\"Dot product:\", dot_product)\n\n# Matrix inverse\nA_inv = np.linalg.inv(A)\nx_alt = A_inv @ b  # Alternative solution method\nNumPy.linalg provides: inverse, solve, eigenvalues, SVD, etc."
+    "text": "Linear Algebra Operations\n# Matrix multiplication with @\nresult = A @ x\n\n# Transpose with .T\nprint(\"b transpose:\", b.T)\n\n# Dot product\ndot_product = np.dot(b.T, b)\nprint(\"Dot product:\", dot_product)\n\n# Matrix inverse\nA_inv = np.linalg.inv(A)\nx_alt = A_inv @ b  # Alternative solution method\nNumPy.linalg provides: inverse, solve, eigenvalues, SVD, etc."
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#arrays-as-images",
     "href": "slides/10_multidimensional_arrays_slides.html#arrays-as-images",
     "title": "Multi-dimensional Arrays",
     "section": "Arrays as Images",
-    "text": "Arrays as Images\nVisualize 2D arrays as images:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport matplotlib.pyplot as plt\n\n# Simple matrix visualization\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))\n\nax1.matshow(matrix)\nax1.set_title('matshow')\n\nax2.imshow(matrix, origin='lower')\nax2.set_title('imshow (origin=lower)')"
+    "text": "Arrays as Images\nVisualize 2D arrays as images:\nimport matplotlib.pyplot as plt\n\n# Simple matrix visualization\nmatrix = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))\n\nax1.matshow(matrix)\nax1.set_title('matshow')\n\nax2.imshow(matrix, origin='lower')\nax2.set_title('imshow (origin=lower)')"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#working-with-real-images",
     "href": "slides/10_multidimensional_arrays_slides.html#working-with-real-images",
     "title": "Multi-dimensional Arrays",
     "section": "Working with Real Images",
-    "text": "Working with Real Images\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfrom skimage import data\n\n# Grayscale image\ngray_image = data.camera()\nprint(\"Image shape:\", gray_image.shape)\n\nfig, ax = plt.subplots(figsize=(6, 6))\nax.imshow(gray_image, cmap='gray')\nax.set_title('Grayscale Image')\nImages are arrays: Each pixel is a number (intensity)"
+    "text": "Working with Real Images\nfrom skimage import data\n\n# Grayscale image\ngray_image = data.camera()\nprint(\"Image shape:\", gray_image.shape)\n\nfig, ax = plt.subplots(figsize=(6, 6))\nax.imshow(gray_image, cmap='gray')\nax.set_title('Grayscale Image')\nImages are arrays: Each pixel is a number (intensity)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#color-images-3d-arrays",
     "href": "slides/10_multidimensional_arrays_slides.html#color-images-3d-arrays",
     "title": "Multi-dimensional Arrays",
     "section": "Color Images (3D Arrays)",
-    "text": "Color Images (3D Arrays)\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Color image has 3 channels: RGB\ncolor_image = data.chelsea()\nprint(\"Color image shape:\", color_image.shape)\n\nfig, axes = plt.subplots(1, 4, figsize=(15, 4))\n\naxes[0].imshow(color_image)\naxes[0].set_title('Full Color')\n\n# Individual color channels\nchannels = ['Reds', 'Greens', 'Blues']\ntitles = ['Red Channel', 'Green Channel', 'Blue Channel']\n\nfor i, (cmap, title) in enumerate(zip(channels, titles)):\n    axes[i+1].imshow(color_image[:, :, i], cmap=cmap)\n    axes[i+1].set_title(title)"
+    "text": "Color Images (3D Arrays)\n# Color image has 3 channels: RGB\ncolor_image = data.chelsea()\nprint(\"Color image shape:\", color_image.shape)\n\nfig, axes = plt.subplots(1, 4, figsize=(15, 4))\n\naxes[0].imshow(color_image)\naxes[0].set_title('Full Color')\n\n# Individual color channels\nchannels = ['Reds', 'Greens', 'Blues']\ntitles = ['Red Channel', 'Green Channel', 'Blue Channel']\n\nfor i, (cmap, title) in enumerate(zip(channels, titles)):\n    axes[i+1].imshow(color_image[:, :, i], cmap=cmap)\n    axes[i+1].set_title(title)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#boolean-operations-on-images",
     "href": "slides/10_multidimensional_arrays_slides.html#boolean-operations-on-images",
     "title": "Multi-dimensional Arrays",
     "section": "Boolean Operations on Images",
-    "text": "Boolean Operations on Images\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Extract green channel\ngreen = color_image[:, :, 1]\n\n# Create binary mask\nthreshold_mask = green &gt; 120\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))\n\nax1.imshow(green, cmap='Greens')\nax1.set_title('Green Channel')\n\nax2.imshow(threshold_mask, cmap='gray')\nax2.set_title('Thresholded (&gt;120)')\nLogical operations: & (AND), | (OR), ~ (NOT)"
+    "text": "Boolean Operations on Images\n# Extract green channel\ngreen = color_image[:, :, 1]\n\n# Create binary mask\nthreshold_mask = green &gt; 120\n\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4))\n\nax1.imshow(green, cmap='Greens')\nax1.set_title('Green Channel')\n\nax2.imshow(threshold_mask, cmap='gray')\nax2.set_title('Thresholded (&gt;120)')\nLogical operations: & (AND), | (OR), ~ (NOT)"
   },
   {
     "objectID": "slides/10_multidimensional_arrays_slides.html#key-takeaways",

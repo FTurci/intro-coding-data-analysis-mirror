@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.36">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>Exercises: Modularisation – Introduction to Coding and Data Analysis</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -67,15 +70,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <meta name="quarto:offset" content="../">
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-065a5179aebd64318d7ea99d77b64a9e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-a06763021a52c43c40a351ac8b799b8f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-d69ecb9bfb3452960edd708ecf92c3b3.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-536cbd581a5e90c174399826ec64454f.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
 <link href="../site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -120,8 +122,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Intro to Coding &amp; Data Analysis</span>
     </a>
@@ -213,6 +213,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="dropdown-item" href="../20/lecture_writing_reports.html">
  <span class="dropdown-text">20 - Writing Reports</span></a>
   </li>  
+        <li>
+    <a class="dropdown-item" href="../21/lecture_reflections.html">
+ <span class="dropdown-text">21 - Reflections</span></a>
+  </li>  
     </ul>
   </li>
   <li class="nav-item dropdown ">
@@ -291,6 +295,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../20/exercises_writing_reports.html">
  <span class="dropdown-text">20 - Writing Reports Exercises</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../21/exercises_reflections.html">
+ <span class="dropdown-text">21 - Reflections Exercises</span></a>
   </li>  
     </ul>
   </li>
@@ -374,6 +382,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li>
     <a class="dropdown-item" href="../19/exercises_modularisation-solutions.html">
  <span class="dropdown-text">19 - Modularisation Solutions</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../21/exercises_reflections-solutions.html">
+ <span class="dropdown-text">21 - Reflections Solutions</span></a>
   </li>  
     </ul>
   </li>
@@ -940,6 +952,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false">
+ <span class="menu-text">21 Reflections</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-22" role="navigation" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-22" class="collapse list-unstyled sidebar-section depth1 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21/lecture_reflections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Reflections</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../21/exercises_reflections.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Revision exercises</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -1009,7 +1044,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 </div>
 <script type="pyodide-1-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcblxudGltZSA9IG5wLmFyYW5nZSgwLCAxMCwgMC4xKVxueSA9IG5wLmxpbnNwYWNlKDAsIDUsIGxlbih0aW1lKSkqKjIifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5cbnRpbWUgPSBucC5hcmFuZ2UoMCwgMTAsIDAuMSlcbnkgPSBucC5saW5zcGFjZSgwLCA1LCBsZW4odGltZSkpKioyIn0=
 </script>
 </div>
 <hr>
@@ -1040,7 +1075,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-2-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEFkZCB5b3VyIGltcG9ydCBoZXJlXG4jIGZyb20gcGxvdF9leGFtcGxlIGltcG9ydCBwbG90X3VuY2VydCJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBBZGQgeW91ciBpbXBvcnQgaGVyZVxuIyBmcm9tIHBsb3RfZXhhbXBsZSBpbXBvcnQgcGxvdF91bmNlcnQifQ==
 </script>
 </div>
 <div>
@@ -1048,7 +1083,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-3-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFVuY29tbWVudCBhZnRlciBwbG90X3VuY2VydCgpIGlzIGltcGxlbWVudGVkXG4jIGZpZywgYXggPSBwbHQuc3VicGxvdHMoKVxuIyB5X2VyciA9IHkgKiAwLjFcbiMgcGxvdF91bmNlcnQodGltZSwgeSwgeV9lcnIsIGF4LCBsYWJlbD0neCcpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBVbmNvbW1lbnQgYWZ0ZXIgcGxvdF91bmNlcnQoKSBpcyBpbXBsZW1lbnRlZFxuIyBmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcbiMgeV9lcnIgPSB5ICogMC4xXG4jIHBsb3RfdW5jZXJ0KHRpbWUsIHksIHlfZXJyLCBheCwgbGFiZWw9J3gnKSJ9
 </script>
 </div>
 <hr>
@@ -1062,7 +1097,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-4-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIENvcHkgc3RhY2twbG90IGRlbW8gY29kZSBoZXJlIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBDb3B5IHN0YWNrcGxvdCBkZW1vIGNvZGUgaGVyZSJ9
 </script>
 </div>
 <p>Consider which parts are generic and which are specific to one dataset.</p>
@@ -1076,7 +1111,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-5-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEVkaXQgcGxvdF9wb3B1bGF0aW9uX3N0YWNrZWQoKSBpbiBwbG90X2V4YW1wbGUucHlcbiMgVGhlbiBpbXBvcnQgeW91ciBmdW5jdGlvbiBoZXJlIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFZGl0IHBsb3RfcG9wdWxhdGlvbl9zdGFja2VkKCkgaW4gcGxvdF9leGFtcGxlLnB5XG4jIFRoZW4gaW1wb3J0IHlvdXIgZnVuY3Rpb24gaGVyZSJ9
 </script>
 </div>
 <div>
@@ -1084,7 +1119,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-6-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEFkZCBjb2RlIHRvIHRlc3QgeW91ciBzdGFja3Bsb3QgZnVuY3Rpb24gaGVyZSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBBZGQgY29kZSB0byB0ZXN0IHlvdXIgc3RhY2twbG90IGZ1bmN0aW9uIGhlcmUifQ==
 </script>
 </div>
 <p><strong>Questions</strong> - How could this function be improved? - How could it be made generic enough for any stackplot, not just year vs population? - Could the input structure be improved beyond a dictionary of lists?</p>
@@ -1100,7 +1135,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-7-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFJlbG9hZCBhbmQgdGVzdCB5b3VyIHVwZGF0ZWQgZnVuY3Rpb24gaGVyZVxuIyBpbXBvcnQgaW1wb3J0bGliXG4jIGltcG9ydCBwbG90X2V4YW1wbGVcbiMgaW1wb3J0bGliLnJlbG9hZChwbG90X2V4YW1wbGUpXG4jXG4jIGZpZywgYXggPSBwbHQuc3VicGxvdHMoKVxuIyBwbG90X2V4YW1wbGUudGltZV9zY2F0dGVyKHRpbWUsIHksIGF4PWF4LCBsYWJlbD0ncGx1cycsIG1hcmtlcj0nKycpXG4jIHBsb3RfZXhhbXBsZS50aW1lX3NjYXR0ZXIodGltZSwgeSowLjgsIGF4PWF4LCBsYWJlbD0nY2lyY2xlJywgbWFya2VyPSdvJykifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBSZWxvYWQgYW5kIHRlc3QgeW91ciB1cGRhdGVkIGZ1bmN0aW9uIGhlcmVcbiMgaW1wb3J0IGltcG9ydGxpYlxuIyBpbXBvcnQgcGxvdF9leGFtcGxlXG4jIGltcG9ydGxpYi5yZWxvYWQocGxvdF9leGFtcGxlKVxuI1xuIyBmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcbiMgcGxvdF9leGFtcGxlLnRpbWVfc2NhdHRlcih0aW1lLCB5LCBheD1heCwgbGFiZWw9J3BsdXMnLCBtYXJrZXI9JysnKVxuIyBwbG90X2V4YW1wbGUudGltZV9zY2F0dGVyKHRpbWUsIHkqMC44LCBheD1heCwgbGFiZWw9J2NpcmNsZScsIG1hcmtlcj0nbycpIn0=
 </script>
 </div>
 <p>Write 2-3 sentences: Why is reloading needed in notebooks when a module file changes?</p>
@@ -1116,7 +1151,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-8-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIERlbW9uc3RyYXRlIHZhbGlkIGFuZCBpbnZhbGlkIGNhbGxzIHRvIHlvdXIgaW1wcm92ZWQgc3RhY2twbG90IGZ1bmN0aW9uXG4jICh1c2UgdHJ5L2V4Y2VwdCBmb3IgdGhlIGludmFsaWQgY2FzZSkifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBEZW1vbnN0cmF0ZSB2YWxpZCBhbmQgaW52YWxpZCBjYWxscyB0byB5b3VyIGltcHJvdmVkIHN0YWNrcGxvdCBmdW5jdGlvblxuIyAodXNlIHRyeS9leGNlcHQgZm9yIHRoZSBpbnZhbGlkIGNhc2UpIn0=
 </script>
 </div>
 </section>
@@ -1138,7 +1173,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-9-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgcGFuZGFzIGFzIHBkXG4jIEZldGNoIHRoZSBkYXRhLlxuZGYgPSBwZC5yZWFkX2NzdihcImh0dHBzOi8vb3Vyd29ybGRpbmRhdGEub3JnL2dyYXBoZXIvcGVyLWNhcGl0YS1lbmVyZ3ktdXNlLmNzdj92PTEmY3N2VHlwZT1mdWxsJnVzZUNvbHVtblNob3J0TmFtZXM9dHJ1ZVwiLCBcbiAgICAgICAgICAgICAgICAgKVxuXG4jIFVLIHNlcmllc1xuZGZfdWsgPSBkZltkZlsnZW50aXR5J10gPT0gJ1VuaXRlZCBLaW5nZG9tJ11cbmRmX3VrLnBsb3QoeD0neWVhcicsIHk9J3ByaW1hcnlfZW5lcmd5X2NvbnN1bXB0aW9uX3Blcl9jYXBpdGFfX2t3aCcpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IHBhbmRhcyBhcyBwZFxuIyBGZXRjaCB0aGUgZGF0YS5cbmRmID0gcGQucmVhZF9jc3YoXCJodHRwczovL291cndvcmxkaW5kYXRhLm9yZy9ncmFwaGVyL3Blci1jYXBpdGEtZW5lcmd5LXVzZS5jc3Y/dj0xJmNzdlR5cGU9ZnVsbCZ1c2VDb2x1bW5TaG9ydE5hbWVzPXRydWVcIiwgXG4gICAgICAgICAgICAgICAgIClcblxuIyBVSyBzZXJpZXNcbmRmX3VrID0gZGZbZGZbJ2VudGl0eSddID09ICdVbml0ZWQgS2luZ2RvbSddXG5kZl91ay5wbG90KHg9J3llYXInLCB5PSdwcmltYXJ5X2VuZXJneV9jb25zdW1wdGlvbl9wZXJfY2FwaXRhX19rd2gnKSJ9
 </script>
 </div>
 <section id="solution-plot-with-polynomial-fit" class="level3">
@@ -1149,7 +1184,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-10-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiJpbXBvcnQgbnVtcHkgYXMgbnBcbmltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcbmRlZiBwbG90X3dpdGhfcG9seW5vbWlhbF9maXQoeCwgeSwgYXgsIGRlZ3JlZT0yLCBsYWJlbD1Ob25lKTpcbiAgICAnJydcbiAgICBQbG90IGRhdGEgcG9pbnRzIHdpdGggYW4gb3ZlcmxhaWQgcG9seW5vbWlhbCBmaXQgbGluZS5cbiAgICBcbiAgICBBcmdzOlxuICAgICAgICB4IChhcnJheS1saWtlKTogXG4gICAgICAgICAgICBYLXZhbHVlcyAobXVzdCBiZSBudW1lcmljIGFuZCBpdGVyYWJsZSlcbiAgICAgICAgeSAoYXJyYXktbGlrZSk6IFxuICAgICAgICAgICAgWS12YWx1ZXMgKG11c3QgYmUgbnVtZXJpYywgc2FtZSBsZW5ndGggYXMgeClcbiAgICAgICAgYXggKG1hdHBsb3RsaWIuYXhlcy5BeGVzKTogXG4gICAgICAgICAgICBBeGVzIG9iamVjdCB0byB1c2UgZm9yIHBsb3R0aW5nXG4gICAgICAgIGRlZ3JlZSAoaW50LCBvcHRpb25hbCk6IFxuICAgICAgICAgICAgRGVncmVlIG9mIHBvbHlub21pYWwgZml0IChkZWZhdWx0ID0gMiwgaS5lLiBxdWFkcmF0aWMpXG4gICAgICAgIGxhYmVsIChzdHIsIG9wdGlvbmFsKTogXG4gICAgICAgICAgICBMYWJlbCBmb3IgdGhlIGRhdGEgcG9pbnRzIGluIHRoZSBsZWdlbmQgKGRlZmF1bHQgPSBOb25lKVxuICAgIFxuICAgIFJldHVybnM6XG4gICAgICAgIE5vbmVcbiAgICAgICAgTW9kaWZpZXMgYGF4YCBpbnB1dCB0byBhZGQgc2NhdHRlciBwbG90IGFuZCBwb2x5bm9taWFsIGZpdCBsaW5lLlxuICAgIFxuICAgIFJhaXNlczpcbiAgICAgICAgVmFsdWVFcnJvcjogXG4gICAgICAgICAgICBJZiB4IGFuZCB5IGhhdmUgZGlmZmVyZW50IGxlbmd0aHNcbiAgICAgICAgVHlwZUVycm9yOiBcbiAgICAgICAgICAgIElmIHggb3IgeSBjYW5ub3QgYmUgY29udmVydGVkIHRvIG51bWVyaWMgYXJyYXlzXG4gICAgXG4gICAgRXhhbXBsZTpcbiAgICAgICAgPj4+IGltcG9ydCBtYXRwbG90bGliLnB5cGxvdCBhcyBwbHRcbiAgICAgICAgPj4+IGltcG9ydCBudW1weSBhcyBucFxuICAgICAgICA+Pj4geF9kYXRhID0gbnAubGluc3BhY2UoMCwgMTAsIDUwKVxuICAgICAgICA+Pj4geV9kYXRhID0geF9kYXRhKioyICsgbnAucmFuZG9tLm5vcm1hbCgwLCA1LCA1MClcbiAgICAgICAgPj4+IGZpZywgYXggPSBwbHQuc3VicGxvdHMoKVxuICAgICAgICA+Pj4gcGxvdF93aXRoX3BvbHlub21pYWxfZml0KHhfZGF0YSwgeV9kYXRhLCBheCwgZGVncmVlPTIsIGxhYmVsPSdkYXRhJylcbiAgICAnJydcbiAgICB0cnk6XG4gICAgICAgICMgQ29udmVydCB0byBudW1weSBhcnJheXNcbiAgICAgICAgeCA9IG5wLmFzYXJyYXkoeCwgZHR5cGU9ZmxvYXQpXG4gICAgICAgIHkgPSBucC5hc2FycmF5KHksIGR0eXBlPWZsb2F0KVxuICAgICAgICBcbiAgICAgICAgIyBWYWxpZGF0ZSBsZW5ndGhzIG1hdGNoXG4gICAgICAgIGlmIGxlbih4KSAhPSBsZW4oeSk6XG4gICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGZcInggYW5kIHkgbXVzdCBoYXZlIHRoZSBzYW1lIGxlbmd0aC4gR290IHtsZW4oeCl9IGFuZCB7bGVuKHkpfVwiKVxuICAgICAgICBcbiAgICAgICAgIyBWYWxpZGF0ZSB3ZSBoYXZlIGVub3VnaCBwb2ludHMgZm9yIHRoZSBmaXRcbiAgICAgICAgaWYgbGVuKHgpIDwgZGVncmVlICsgMTpcbiAgICAgICAgICAgIHJhaXNlIFZhbHVlRXJyb3IoZlwiTmVlZCBhdCBsZWFzdCB7ZGVncmVlICsgMX0gcG9pbnRzIGZvciBkZWdyZWUge2RlZ3JlZX0gcG9seW5vbWlhbCBmaXQuIEdvdCB7bGVuKHgpfVwiKVxuICAgICAgICBcbiAgICAgICAgIyBDb21wdXRlIHBvbHlub21pYWwgZml0XG4gICAgICAgIGNvZWZmcyA9IG5wLnBvbHlmaXQoeCwgeSwgZGVncmVlKVxuICAgICAgICBwb2x5X2ZuID0gbnAucG9seTFkKGNvZWZmcylcbiAgICAgICAgXG4gICAgICAgICMgQ3JlYXRlIHNtb290aCBsaW5lIGZvciBkaXNwbGF5XG4gICAgICAgIHhfc21vb3RoID0gbnAubGluc3BhY2UoeC5taW4oKSwgeC5tYXgoKSwgMjAwKVxuICAgICAgICB5X3Ntb290aCA9IHBvbHlfZm4oeF9zbW9vdGgpXG4gICAgICAgIFxuICAgICAgICAjIFBsb3Qgb3JpZ2luYWwgZGF0YSBhbmQgZml0XG4gICAgICAgIGF4LnNjYXR0ZXIoeCwgeSwgbGFiZWw9bGFiZWwsIG1hcmtlcj0nbycsIGFscGhhPTAuNilcbiAgICAgICAgYXgucGxvdCh4X3Ntb290aCwgeV9zbW9vdGgsICdyLScsIGxpbmV3aWR0aD0yLCBsYWJlbD1mJ1BvbHlub21pYWwgZml0IChkZWdyZWUge2RlZ3JlZX0pJylcbiAgICAgICAgYXguc2V0X3hsYWJlbCgneCcpXG4gICAgICAgIGF4LnNldF95bGFiZWwoJ3knKVxuICAgICAgICBheC5sZWdlbmQoKVxuICAgICAgICBcbiAgICBleGNlcHQgVmFsdWVFcnJvciBhcyBlOlxuICAgICAgICBwcmludChmXCJWYWxpZGF0aW9uIGVycm9yOiB7ZX1cIilcbiAgICBleGNlcHQgRXhjZXB0aW9uIGFzIGU6XG4gICAgICAgIHByaW50KGZcIkFuIHVuZXhwZWN0ZWQgZXJyb3Igb2NjdXJyZWQ6IHtlfVwiKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiaW1wb3J0IG51bXB5IGFzIG5wXG5pbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG5kZWYgcGxvdF93aXRoX3BvbHlub21pYWxfZml0KHgsIHksIGF4LCBkZWdyZWU9MiwgbGFiZWw9Tm9uZSk6XG4gICAgJycnXG4gICAgUGxvdCBkYXRhIHBvaW50cyB3aXRoIGFuIG92ZXJsYWlkIHBvbHlub21pYWwgZml0IGxpbmUuXG4gICAgXG4gICAgQXJnczpcbiAgICAgICAgeCAoYXJyYXktbGlrZSk6IFxuICAgICAgICAgICAgWC12YWx1ZXMgKG11c3QgYmUgbnVtZXJpYyBhbmQgaXRlcmFibGUpXG4gICAgICAgIHkgKGFycmF5LWxpa2UpOiBcbiAgICAgICAgICAgIFktdmFsdWVzIChtdXN0IGJlIG51bWVyaWMsIHNhbWUgbGVuZ3RoIGFzIHgpXG4gICAgICAgIGF4IChtYXRwbG90bGliLmF4ZXMuQXhlcyk6IFxuICAgICAgICAgICAgQXhlcyBvYmplY3QgdG8gdXNlIGZvciBwbG90dGluZ1xuICAgICAgICBkZWdyZWUgKGludCwgb3B0aW9uYWwpOiBcbiAgICAgICAgICAgIERlZ3JlZSBvZiBwb2x5bm9taWFsIGZpdCAoZGVmYXVsdCA9IDIsIGkuZS4gcXVhZHJhdGljKVxuICAgICAgICBsYWJlbCAoc3RyLCBvcHRpb25hbCk6IFxuICAgICAgICAgICAgTGFiZWwgZm9yIHRoZSBkYXRhIHBvaW50cyBpbiB0aGUgbGVnZW5kIChkZWZhdWx0ID0gTm9uZSlcbiAgICBcbiAgICBSZXR1cm5zOlxuICAgICAgICBOb25lXG4gICAgICAgIE1vZGlmaWVzIGBheGAgaW5wdXQgdG8gYWRkIHNjYXR0ZXIgcGxvdCBhbmQgcG9seW5vbWlhbCBmaXQgbGluZS5cbiAgICBcbiAgICBSYWlzZXM6XG4gICAgICAgIFZhbHVlRXJyb3I6IFxuICAgICAgICAgICAgSWYgeCBhbmQgeSBoYXZlIGRpZmZlcmVudCBsZW5ndGhzXG4gICAgICAgIFR5cGVFcnJvcjogXG4gICAgICAgICAgICBJZiB4IG9yIHkgY2Fubm90IGJlIGNvbnZlcnRlZCB0byBudW1lcmljIGFycmF5c1xuICAgIFxuICAgIEV4YW1wbGU6XG4gICAgICAgID4+PiBpbXBvcnQgbWF0cGxvdGxpYi5weXBsb3QgYXMgcGx0XG4gICAgICAgID4+PiBpbXBvcnQgbnVtcHkgYXMgbnBcbiAgICAgICAgPj4+IHhfZGF0YSA9IG5wLmxpbnNwYWNlKDAsIDEwLCA1MClcbiAgICAgICAgPj4+IHlfZGF0YSA9IHhfZGF0YSoqMiArIG5wLnJhbmRvbS5ub3JtYWwoMCwgNSwgNTApXG4gICAgICAgID4+PiBmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcbiAgICAgICAgPj4+IHBsb3Rfd2l0aF9wb2x5bm9taWFsX2ZpdCh4X2RhdGEsIHlfZGF0YSwgYXgsIGRlZ3JlZT0yLCBsYWJlbD0nZGF0YScpXG4gICAgJycnXG4gICAgdHJ5OlxuICAgICAgICAjIENvbnZlcnQgdG8gbnVtcHkgYXJyYXlzXG4gICAgICAgIHggPSBucC5hc2FycmF5KHgsIGR0eXBlPWZsb2F0KVxuICAgICAgICB5ID0gbnAuYXNhcnJheSh5LCBkdHlwZT1mbG9hdClcbiAgICAgICAgXG4gICAgICAgICMgVmFsaWRhdGUgbGVuZ3RocyBtYXRjaFxuICAgICAgICBpZiBsZW4oeCkgIT0gbGVuKHkpOlxuICAgICAgICAgICAgcmFpc2UgVmFsdWVFcnJvcihmXCJ4IGFuZCB5IG11c3QgaGF2ZSB0aGUgc2FtZSBsZW5ndGguIEdvdCB7bGVuKHgpfSBhbmQge2xlbih5KX1cIilcbiAgICAgICAgXG4gICAgICAgICMgVmFsaWRhdGUgd2UgaGF2ZSBlbm91Z2ggcG9pbnRzIGZvciB0aGUgZml0XG4gICAgICAgIGlmIGxlbih4KSA8IGRlZ3JlZSArIDE6XG4gICAgICAgICAgICByYWlzZSBWYWx1ZUVycm9yKGZcIk5lZWQgYXQgbGVhc3Qge2RlZ3JlZSArIDF9IHBvaW50cyBmb3IgZGVncmVlIHtkZWdyZWV9IHBvbHlub21pYWwgZml0LiBHb3Qge2xlbih4KX1cIilcbiAgICAgICAgXG4gICAgICAgICMgQ29tcHV0ZSBwb2x5bm9taWFsIGZpdFxuICAgICAgICBjb2VmZnMgPSBucC5wb2x5Zml0KHgsIHksIGRlZ3JlZSlcbiAgICAgICAgcG9seV9mbiA9IG5wLnBvbHkxZChjb2VmZnMpXG4gICAgICAgIFxuICAgICAgICAjIENyZWF0ZSBzbW9vdGggbGluZSBmb3IgZGlzcGxheVxuICAgICAgICB4X3Ntb290aCA9IG5wLmxpbnNwYWNlKHgubWluKCksIHgubWF4KCksIDIwMClcbiAgICAgICAgeV9zbW9vdGggPSBwb2x5X2ZuKHhfc21vb3RoKVxuICAgICAgICBcbiAgICAgICAgIyBQbG90IG9yaWdpbmFsIGRhdGEgYW5kIGZpdFxuICAgICAgICBheC5zY2F0dGVyKHgsIHksIGxhYmVsPWxhYmVsLCBtYXJrZXI9J28nLCBhbHBoYT0wLjYpXG4gICAgICAgIGF4LnBsb3QoeF9zbW9vdGgsIHlfc21vb3RoLCAnci0nLCBsaW5ld2lkdGg9MiwgbGFiZWw9ZidQb2x5bm9taWFsIGZpdCAoZGVncmVlIHtkZWdyZWV9KScpXG4gICAgICAgIGF4LnNldF94bGFiZWwoJ3gnKVxuICAgICAgICBheC5zZXRfeWxhYmVsKCd5JylcbiAgICAgICAgYXgubGVnZW5kKClcbiAgICAgICAgXG4gICAgZXhjZXB0IFZhbHVlRXJyb3IgYXMgZTpcbiAgICAgICAgcHJpbnQoZlwiVmFsaWRhdGlvbiBlcnJvcjoge2V9XCIpXG4gICAgZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOlxuICAgICAgICBwcmludChmXCJBbiB1bmV4cGVjdGVkIGVycm9yIG9jY3VycmVkOiB7ZX1cIikifQ==
 </script>
 </div>
 </section>
@@ -1160,7 +1195,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-11-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIFZhbGlkIGNhc2U6IHN5bnRoZXRpYyBxdWFkcmF0aWMgZGF0YSB3aXRoIG5vaXNlXG54X3N5bnRoZXRpYyA9IG5wLmxpbnNwYWNlKDAsIDEwLCA1MClcbnlfc3ludGhldGljID0geF9zeW50aGV0aWMqKjIgKyBucC5yYW5kb20ubm9ybWFsKDAsIDEwLCA1MClcblxuZmlnLCBheCA9IHBsdC5zdWJwbG90cyhmaWdzaXplPSg4LCA1KSlcbnBsb3Rfd2l0aF9wb2x5bm9taWFsX2ZpdCh4X3N5bnRoZXRpYywgeV9zeW50aGV0aWMsIGF4LCBkZWdyZWU9MiwgbGFiZWw9J1N5bnRoZXRpYyBkYXRhJylcbnBsdC50aXRsZShcIlZhbGlkIHRlc3Q6IFBvbHlub21pYWwgZml0IG9uIHN5bnRoZXRpYyBkYXRhXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBWYWxpZCBjYXNlOiBzeW50aGV0aWMgcXVhZHJhdGljIGRhdGEgd2l0aCBub2lzZVxueF9zeW50aGV0aWMgPSBucC5saW5zcGFjZSgwLCAxMCwgNTApXG55X3N5bnRoZXRpYyA9IHhfc3ludGhldGljKioyICsgbnAucmFuZG9tLm5vcm1hbCgwLCAxMCwgNTApXG5cbmZpZywgYXggPSBwbHQuc3VicGxvdHMoZmlnc2l6ZT0oOCwgNSkpXG5wbG90X3dpdGhfcG9seW5vbWlhbF9maXQoeF9zeW50aGV0aWMsIHlfc3ludGhldGljLCBheCwgZGVncmVlPTIsIGxhYmVsPSdTeW50aGV0aWMgZGF0YScpXG5wbHQudGl0bGUoXCJWYWxpZCB0ZXN0OiBQb2x5bm9taWFsIGZpdCBvbiBzeW50aGV0aWMgZGF0YVwiKSJ9
 </script>
 </div>
 </section>
@@ -1171,7 +1206,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-12-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEVycm9yIGNhc2UgMTogTWlzbWF0Y2hlZCBsZW5ndGhzXG5wcmludChcIkVycm9yIGNhc2UgMTogTWlzbWF0Y2hlZCB4IGFuZCB5IGxlbmd0aHNcIilcbnRyeTpcbiAgICBmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcbiAgICBwbG90X3dpdGhfcG9seW5vbWlhbF9maXQoWzEsIDIsIDNdLCBbMSwgMl0sIGF4LCBkZWdyZWU9MilcbmV4Y2VwdCBFeGNlcHRpb24gYXMgZTpcbiAgICBwcmludChmXCJDYXVnaHQgZXhjZXB0aW9uOiB7ZX1cXG5cIilcblxuIyBFcnJvciBjYXNlIDI6IE5vdCBlbm91Z2ggcG9pbnRzIGZvciBwb2x5bm9taWFsIGRlZ3JlZVxucHJpbnQoXCJFcnJvciBjYXNlIDI6IE5vdCBlbm91Z2ggZGF0YSBwb2ludHMgZm9yIGZpdFwiKVxudHJ5OlxuICAgIGZpZywgYXggPSBwbHQuc3VicGxvdHMoKVxuICAgIHBsb3Rfd2l0aF9wb2x5bm9taWFsX2ZpdChbMSwgMl0sIFsxLCAyXSwgYXgsIGRlZ3JlZT0zKVxuZXhjZXB0IEV4Y2VwdGlvbiBhcyBlOlxuICAgIHByaW50KGZcIkNhdWdodCBleGNlcHRpb246IHtlfVxcblwiKVxuXG4jIEVycm9yIGNhc2UgMzogTm9uLW51bWVyaWMgZGF0YVxucHJpbnQoXCJFcnJvciBjYXNlIDM6IE5vbi1udW1lcmljIGRhdGFcIilcbnRyeTpcbiAgICBmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcbiAgICBwbG90X3dpdGhfcG9seW5vbWlhbF9maXQoWydhJywgJ2InLCAnYyddLCBbMSwgMiwgM10sIGF4LCBkZWdyZWU9MSlcbmV4Y2VwdCBFeGNlcHRpb24gYXMgZTpcbiAgICBwcmludChmXCJDYXVnaHQgZXhjZXB0aW9uOiB7ZX1cXG5cIikifQ==
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFcnJvciBjYXNlIDE6IE1pc21hdGNoZWQgbGVuZ3Roc1xucHJpbnQoXCJFcnJvciBjYXNlIDE6IE1pc21hdGNoZWQgeCBhbmQgeSBsZW5ndGhzXCIpXG50cnk6XG4gICAgZmlnLCBheCA9IHBsdC5zdWJwbG90cygpXG4gICAgcGxvdF93aXRoX3BvbHlub21pYWxfZml0KFsxLCAyLCAzXSwgWzEsIDJdLCBheCwgZGVncmVlPTIpXG5leGNlcHQgRXhjZXB0aW9uIGFzIGU6XG4gICAgcHJpbnQoZlwiQ2F1Z2h0IGV4Y2VwdGlvbjoge2V9XFxuXCIpXG5cbiMgRXJyb3IgY2FzZSAyOiBOb3QgZW5vdWdoIHBvaW50cyBmb3IgcG9seW5vbWlhbCBkZWdyZWVcbnByaW50KFwiRXJyb3IgY2FzZSAyOiBOb3QgZW5vdWdoIGRhdGEgcG9pbnRzIGZvciBmaXRcIilcbnRyeTpcbiAgICBmaWcsIGF4ID0gcGx0LnN1YnBsb3RzKClcbiAgICBwbG90X3dpdGhfcG9seW5vbWlhbF9maXQoWzEsIDJdLCBbMSwgMl0sIGF4LCBkZWdyZWU9MylcbmV4Y2VwdCBFeGNlcHRpb24gYXMgZTpcbiAgICBwcmludChmXCJDYXVnaHQgZXhjZXB0aW9uOiB7ZX1cXG5cIilcblxuIyBFcnJvciBjYXNlIDM6IE5vbi1udW1lcmljIGRhdGFcbnByaW50KFwiRXJyb3IgY2FzZSAzOiBOb24tbnVtZXJpYyBkYXRhXCIpXG50cnk6XG4gICAgZmlnLCBheCA9IHBsdC5zdWJwbG90cygpXG4gICAgcGxvdF93aXRoX3BvbHlub21pYWxfZml0KFsnYScsICdiJywgJ2MnXSwgWzEsIDIsIDNdLCBheCwgZGVncmVlPTEpXG5leGNlcHQgRXhjZXB0aW9uIGFzIGU6XG4gICAgcHJpbnQoZlwiQ2F1Z2h0IGV4Y2VwdGlvbjoge2V9XFxuXCIpIn0=
 </script>
 </div>
 </section>
@@ -1182,7 +1217,7 @@ eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKH
 
 </div>
 <script type="pyodide-13-contents">
-eyJhdHRyIjp7ImNhcHRpb24iOiLilrYgQ3RybC9DbWQrRW50ZXIgfCDih6UgQ3RybC9DbWQrXSB8IOKHpCBDdHJsL0NtZCtbIiwiZWRpdCI6dHJ1ZSwiZXZhbCI6dHJ1ZX0sImNvZGUiOiIjIEV4dHJhY3QgVUsgZGF0YSAocmVtb3ZlIGFueSBOYU4gdmFsdWVzKVxudWtfeWVhcnMgPSBkZl91a1sneWVhciddLmRyb3BuYSgpLnZhbHVlc1xudWtfZW5lcmd5ID0gZGZfdWtbJ3ByaW1hcnlfZW5lcmd5X2NvbnN1bXB0aW9uX3Blcl9jYXBpdGFfX2t3aCddLmRyb3BuYSgpLnZhbHVlc1xuXG4jIEFsaWduIHRoZSBkYXRhIChyZW1vdmUgcm93cyB3aGVyZSBlaXRoZXIgaXMgTmFOKVxudmFsaWRfaWR4ID0gfihucC5pc25hbih1a195ZWFycykgfCBucC5pc25hbih1a19lbmVyZ3kpKVxudWtfeWVhcnMgPSB1a195ZWFyc1t2YWxpZF9pZHhdXG51a19lbmVyZ3kgPSB1a19lbmVyZ3lbdmFsaWRfaWR4XVxuXG4jIFBsb3Qgd2l0aCBvdXIgZnVuY3Rpb25cbmZpZywgYXggPSBwbHQuc3VicGxvdHMoZmlnc2l6ZT0oMTAsIDYpKVxucGxvdF93aXRoX3BvbHlub21pYWxfZml0KHVrX3llYXJzLCB1a19lbmVyZ3ksIGF4LCBkZWdyZWU9MywgbGFiZWw9J1VLIEVuZXJneSBwZXIgY2FwaXRhJylcbmF4LnNldF94bGFiZWwoJ1llYXInKVxuYXguc2V0X3lsYWJlbCgnRW5lcmd5IGNvbnN1bXB0aW9uIChrV2ggcGVyIGNhcGl0YSknKVxuYXguc2V0X3RpdGxlKCdVSyBFbmVyZ3kgUGVyIENhcGl0YSB3aXRoIFBvbHlub21pYWwgRml0JylcbnBsdC50aWdodF9sYXlvdXQoKSJ9
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyBFeHRyYWN0IFVLIGRhdGEgKHJlbW92ZSBhbnkgTmFOIHZhbHVlcylcbnVrX3llYXJzID0gZGZfdWtbJ3llYXInXS5kcm9wbmEoKS52YWx1ZXNcbnVrX2VuZXJneSA9IGRmX3VrWydwcmltYXJ5X2VuZXJneV9jb25zdW1wdGlvbl9wZXJfY2FwaXRhX19rd2gnXS5kcm9wbmEoKS52YWx1ZXNcblxuIyBBbGlnbiB0aGUgZGF0YSAocmVtb3ZlIHJvd3Mgd2hlcmUgZWl0aGVyIGlzIE5hTilcbnZhbGlkX2lkeCA9IH4obnAuaXNuYW4odWtfeWVhcnMpIHwgbnAuaXNuYW4odWtfZW5lcmd5KSlcbnVrX3llYXJzID0gdWtfeWVhcnNbdmFsaWRfaWR4XVxudWtfZW5lcmd5ID0gdWtfZW5lcmd5W3ZhbGlkX2lkeF1cblxuIyBQbG90IHdpdGggb3VyIGZ1bmN0aW9uXG5maWcsIGF4ID0gcGx0LnN1YnBsb3RzKGZpZ3NpemU9KDEwLCA2KSlcbnBsb3Rfd2l0aF9wb2x5bm9taWFsX2ZpdCh1a195ZWFycywgdWtfZW5lcmd5LCBheCwgZGVncmVlPTMsIGxhYmVsPSdVSyBFbmVyZ3kgcGVyIGNhcGl0YScpXG5heC5zZXRfeGxhYmVsKCdZZWFyJylcbmF4LnNldF95bGFiZWwoJ0VuZXJneSBjb25zdW1wdGlvbiAoa1doIHBlciBjYXBpdGEpJylcbmF4LnNldF90aXRsZSgnVUsgRW5lcmd5IFBlciBDYXBpdGEgd2l0aCBQb2x5bm9taWFsIEZpdCcpXG5wbHQudGlnaHRfbGF5b3V0KCkifQ==
 </script>
 </div>
 
@@ -1713,312 +1748,299 @@ window._ojs.runtime.interpretFromScriptTags();
 <span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>Use reload whenever you edit functions in <span class="in">`plot_example.py`</span> and want those edits to be used immediately in this notebook session.</span>
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="bu">len</span>(time))<span class="op">**</span><span class="dv">2</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>**Learning goal:** implement a missing function in a module and call it from a notebook.</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>In <span class="in">`plot_example.py`</span>, find the <span class="in">`plot_uncert()`</span> function stub (currently with <span class="in">`pass`</span>).</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>Use this code inside <span class="in">`plot_uncert()`</span>:</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a><span class="co"># Define upper and lower bounds of shading using the error term</span></span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>y_low <span class="op">=</span> y <span class="op">-</span> yerr</span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>y_high <span class="op">=</span> y <span class="op">+</span> yerr</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the line and the shading around it</span></span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y)</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>ax.fill_between(x, y1<span class="op">=</span>y_low, y2<span class="op">=</span>y_high, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span>label)</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>1) Update <span class="in">`plot_example.py`</span> with this implementation.</span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>2) Save the module, then import and run the test plot below.</span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>3) If your edits do not appear, run <span class="in">`importlib.reload(plot_example)`</span> before testing.</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>**Success check:** your figure should show a line with a shaded uncertainty region around it.</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="co"># Add your import here</span></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a><span class="co"># from plot_example import plot_uncert</span></span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment after plot_uncert() is implemented</span></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="co"># fig, ax = plt.subplots()</span></span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="co"># y_err = y * 0.1</span></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_uncert(time, y, y_err, ax, label='x')</span></span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2</span></span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>**Learning goal:** identify reusable vs dataset-specific code and wrap reusable parts in a function.</span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
-<span id="cb3-103"><a href="#cb3-103" aria-hidden="true" tabindex="-1"></a>1) Recreate the matplotlib stackplot demo in the cell below:</span>
-<span id="cb3-104"><a href="#cb3-104" aria-hidden="true" tabindex="-1"></a>https://matplotlib.org/stable/gallery/lines_bars_and_markers/stackplot_demo.html</span>
-<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy stackplot demo code here</span></span>
-<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a>Consider which parts are generic and which are specific to one dataset.</span>
-<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a>2) In <span class="in">`plot_example.py`</span>, use the provided <span class="in">`plot_population_stacked()`</span> stub (or create your own more generic function).</span>
-<span id="cb3-116"><a href="#cb3-116" aria-hidden="true" tabindex="-1"></a>3) Import your function and test it in this notebook.</span>
-<span id="cb3-117"><a href="#cb3-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a>**Success check:** your function plots a stackplot from inputs, rather than hard-coded values.</span>
-<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-123"><a href="#cb3-123" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-124"><a href="#cb3-124" aria-hidden="true" tabindex="-1"></a><span class="co"># Edit plot_population_stacked() in plot_example.py</span></span>
-<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="co"># Then import your function here</span></span>
-<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="co"># Add code to test your stackplot function here</span></span>
-<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a>**Questions**</span>
-<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How could this function be improved?</span>
-<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How could it be made generic enough for any stackplot, not just year vs population?</span>
-<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Could the input structure be improved beyond a dictionary of lists?</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>time <span class="op">=</span> np.arange(<span class="dv">0</span>, <span class="dv">10</span>, <span class="fl">0.1</span>)</span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">5</span>, <span class="bu">len</span>(time))<span class="op">**</span><span class="dv">2</span></span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 1</span></span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>**Learning goal:** implement a missing function in a module and call it from a notebook.</span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>In <span class="in">`plot_example.py`</span>, find the <span class="in">`plot_uncert()`</span> function stub (currently with <span class="in">`pass`</span>).</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>Use this code inside <span class="in">`plot_uncert()`</span>:</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a><span class="in">```python</span></span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a><span class="co"># Define upper and lower bounds of shading using the error term</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>y_low <span class="op">=</span> y <span class="op">-</span> yerr</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>y_high <span class="op">=</span> y <span class="op">+</span> yerr</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the line and the shading around it</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>ax.plot(x, y)</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>ax.fill_between(x, y1<span class="op">=</span>y_low, y2<span class="op">=</span>y_high, alpha<span class="op">=</span><span class="fl">0.3</span>, label<span class="op">=</span>label)</span>
+<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>ax.legend()</span>
+<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
+<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>1) Update <span class="in">`plot_example.py`</span> with this implementation.</span>
+<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>2) Save the module, then import and run the test plot below.</span>
+<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>3) If your edits do not appear, run <span class="in">`importlib.reload(plot_example)`</span> before testing.</span>
+<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>**Success check:** your figure should show a line with a shaded uncertainty region around it.</span>
+<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a><span class="co"># Add your import here</span></span>
+<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a><span class="co"># from plot_example import plot_uncert</span></span>
+<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment after plot_uncert() is implemented</span></span>
+<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="co"># fig, ax = plt.subplots()</span></span>
+<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="co"># y_err = y * 0.1</span></span>
+<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_uncert(time, y, y_err, ax, label='x')</span></span>
+<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 2</span></span>
+<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a>**Learning goal:** identify reusable vs dataset-specific code and wrap reusable parts in a function.</span>
+<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
+<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>1) Recreate the matplotlib stackplot demo in the cell below:</span>
+<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>https://matplotlib.org/stable/gallery/lines_bars_and_markers/stackplot_demo.html</span>
+<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-105"><a href="#cb3-105" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-106"><a href="#cb3-106" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy stackplot demo code here</span></span>
+<span id="cb3-107"><a href="#cb3-107" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-108"><a href="#cb3-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-109"><a href="#cb3-109" aria-hidden="true" tabindex="-1"></a>Consider which parts are generic and which are specific to one dataset.</span>
+<span id="cb3-110"><a href="#cb3-110" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-111"><a href="#cb3-111" aria-hidden="true" tabindex="-1"></a>2) In <span class="in">`plot_example.py`</span>, use the provided <span class="in">`plot_population_stacked()`</span> stub (or create your own more generic function).</span>
+<span id="cb3-112"><a href="#cb3-112" aria-hidden="true" tabindex="-1"></a>3) Import your function and test it in this notebook.</span>
+<span id="cb3-113"><a href="#cb3-113" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-114"><a href="#cb3-114" aria-hidden="true" tabindex="-1"></a>**Success check:** your function plots a stackplot from inputs, rather than hard-coded values.</span>
+<span id="cb3-115"><a href="#cb3-115" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-118"><a href="#cb3-118" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-119"><a href="#cb3-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Edit plot_population_stacked() in plot_example.py</span></span>
+<span id="cb3-120"><a href="#cb3-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Then import your function here</span></span>
+<span id="cb3-121"><a href="#cb3-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-122"><a href="#cb3-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-125"><a href="#cb3-125" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-126"><a href="#cb3-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Add code to test your stackplot function here</span></span>
+<span id="cb3-127"><a href="#cb3-127" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-128"><a href="#cb3-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-129"><a href="#cb3-129" aria-hidden="true" tabindex="-1"></a>**Questions**</span>
+<span id="cb3-130"><a href="#cb3-130" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How could this function be improved?</span>
+<span id="cb3-131"><a href="#cb3-131" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>How could it be made generic enough for any stackplot, not just year vs population?</span>
+<span id="cb3-132"><a href="#cb3-132" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Could the input structure be improved beyond a dictionary of lists?</span>
+<span id="cb3-133"><a href="#cb3-133" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-134"><a href="#cb3-134" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-135"><a href="#cb3-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-136"><a href="#cb3-136" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3</span></span>
+<span id="cb3-137"><a href="#cb3-137" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-138"><a href="#cb3-138" aria-hidden="true" tabindex="-1"></a>**Learning goal:** understand notebook module caching and verify that reload applies code edits.</span>
 <span id="cb3-139"><a href="#cb3-139" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 3</span></span>
-<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a>**Learning goal:** understand notebook module caching and verify that reload applies code edits.</span>
-<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
-<span id="cb3-147"><a href="#cb3-147" aria-hidden="true" tabindex="-1"></a>1) In <span class="in">`plot_example.py`</span>, modify <span class="in">`time_scatter()`</span> so it accepts an optional <span class="in">`marker`</span> argument (default <span class="in">`'+'`</span>) and uses that marker in <span class="in">`ax.scatter(...)`</span>.</span>
-<span id="cb3-148"><a href="#cb3-148" aria-hidden="true" tabindex="-1"></a>2) Save <span class="in">`plot_example.py`</span>, then reload the module in this notebook and test two different markers.</span>
-<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a>3) Briefly note what happened before and after reloading.</span>
-<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a>**Success check:** your plot displays different marker styles, and your notes explain why reload was needed.</span>
-<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="co"># Reload and test your updated function here</span></span>
-<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a><span class="co"># import importlib</span></span>
-<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a><span class="co"># import plot_example</span></span>
-<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a><span class="co"># importlib.reload(plot_example)</span></span>
-<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a><span class="co"># fig, ax = plt.subplots()</span></span>
-<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_example.time_scatter(time, y, ax=ax, label='plus', marker='+')</span></span>
-<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_example.time_scatter(time, y*0.8, ax=ax, label='circle', marker='o')</span></span>
-<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a>Write 2-3 sentences: Why is reloading needed in notebooks when a module file changes?</span>
-<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>---</span>
-<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4</span></span>
-<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a>**Learning goal:** improve function robustness with validation and configurable parameters.</span>
-<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
-<span id="cb3-176"><a href="#cb3-176" aria-hidden="true" tabindex="-1"></a>1) Update <span class="in">`plot_population_stacked()`</span> so it checks that every population series has the same length as <span class="in">`year`</span>.</span>
-<span id="cb3-177"><a href="#cb3-177" aria-hidden="true" tabindex="-1"></a>2) If a mismatch is found, raise a <span class="in">`ValueError`</span> with a clear message.</span>
-<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a>3) Add optional inputs <span class="in">`legend_loc='upper left'`</span> and <span class="in">`alpha=0.85`</span>, then use them in the plot.</span>
-<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a>4) Demonstrate one valid call and one invalid call (inside <span class="in">`try/except`</span>) below.</span>
-<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a>**Success check:** the valid example plots correctly, and the invalid example raises your custom error message.</span>
+<span id="cb3-140"><a href="#cb3-140" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
+<span id="cb3-141"><a href="#cb3-141" aria-hidden="true" tabindex="-1"></a>1) In <span class="in">`plot_example.py`</span>, modify <span class="in">`time_scatter()`</span> so it accepts an optional <span class="in">`marker`</span> argument (default <span class="in">`'+'`</span>) and uses that marker in <span class="in">`ax.scatter(...)`</span>.</span>
+<span id="cb3-142"><a href="#cb3-142" aria-hidden="true" tabindex="-1"></a>2) Save <span class="in">`plot_example.py`</span>, then reload the module in this notebook and test two different markers.</span>
+<span id="cb3-143"><a href="#cb3-143" aria-hidden="true" tabindex="-1"></a>3) Briefly note what happened before and after reloading.</span>
+<span id="cb3-144"><a href="#cb3-144" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-145"><a href="#cb3-145" aria-hidden="true" tabindex="-1"></a>**Success check:** your plot displays different marker styles, and your notes explain why reload was needed.</span>
+<span id="cb3-146"><a href="#cb3-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-149"><a href="#cb3-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-150"><a href="#cb3-150" aria-hidden="true" tabindex="-1"></a><span class="co"># Reload and test your updated function here</span></span>
+<span id="cb3-151"><a href="#cb3-151" aria-hidden="true" tabindex="-1"></a><span class="co"># import importlib</span></span>
+<span id="cb3-152"><a href="#cb3-152" aria-hidden="true" tabindex="-1"></a><span class="co"># import plot_example</span></span>
+<span id="cb3-153"><a href="#cb3-153" aria-hidden="true" tabindex="-1"></a><span class="co"># importlib.reload(plot_example)</span></span>
+<span id="cb3-154"><a href="#cb3-154" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb3-155"><a href="#cb3-155" aria-hidden="true" tabindex="-1"></a><span class="co"># fig, ax = plt.subplots()</span></span>
+<span id="cb3-156"><a href="#cb3-156" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_example.time_scatter(time, y, ax=ax, label='plus', marker='+')</span></span>
+<span id="cb3-157"><a href="#cb3-157" aria-hidden="true" tabindex="-1"></a><span class="co"># plot_example.time_scatter(time, y*0.8, ax=ax, label='circle', marker='o')</span></span>
+<span id="cb3-158"><a href="#cb3-158" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-159"><a href="#cb3-159" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-160"><a href="#cb3-160" aria-hidden="true" tabindex="-1"></a>Write 2-3 sentences: Why is reloading needed in notebooks when a module file changes?</span>
+<span id="cb3-161"><a href="#cb3-161" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-162"><a href="#cb3-162" aria-hidden="true" tabindex="-1"></a>---</span>
+<span id="cb3-163"><a href="#cb3-163" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-164"><a href="#cb3-164" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 4</span></span>
+<span id="cb3-165"><a href="#cb3-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-166"><a href="#cb3-166" aria-hidden="true" tabindex="-1"></a>**Learning goal:** improve function robustness with validation and configurable parameters.</span>
+<span id="cb3-167"><a href="#cb3-167" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-168"><a href="#cb3-168" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
+<span id="cb3-169"><a href="#cb3-169" aria-hidden="true" tabindex="-1"></a>1) Update <span class="in">`plot_population_stacked()`</span> so it checks that every population series has the same length as <span class="in">`year`</span>.</span>
+<span id="cb3-170"><a href="#cb3-170" aria-hidden="true" tabindex="-1"></a>2) If a mismatch is found, raise a <span class="in">`ValueError`</span> with a clear message.</span>
+<span id="cb3-171"><a href="#cb3-171" aria-hidden="true" tabindex="-1"></a>3) Add optional inputs <span class="in">`legend_loc='upper left'`</span> and <span class="in">`alpha=0.85`</span>, then use them in the plot.</span>
+<span id="cb3-172"><a href="#cb3-172" aria-hidden="true" tabindex="-1"></a>4) Demonstrate one valid call and one invalid call (inside <span class="in">`try/except`</span>) below.</span>
+<span id="cb3-173"><a href="#cb3-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-174"><a href="#cb3-174" aria-hidden="true" tabindex="-1"></a>**Success check:** the valid example plots correctly, and the invalid example raises your custom error message.</span>
+<span id="cb3-175"><a href="#cb3-175" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-178"><a href="#cb3-178" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-179"><a href="#cb3-179" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate valid and invalid calls to your improved stackplot function</span></span>
+<span id="cb3-180"><a href="#cb3-180" aria-hidden="true" tabindex="-1"></a><span class="co"># (use try/except for the invalid case)</span></span>
+<span id="cb3-181"><a href="#cb3-181" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb3-182"><a href="#cb3-182" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a><span class="co"># Demonstrate valid and invalid calls to your improved stackplot function</span></span>
-<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a><span class="co"># (use try/except for the invalid case)</span></span>
-<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 5</span></span>
-<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a>Now you can create your own modularised plotting function. The problem you want to solve is to take input data in <span class="in">`x`</span> and <span class="in">`y`</span> sequences and construct a funciton that plots the data together with an arbitrary polynomial fit of specified degree. You can use <span class="in">`numpy.polyfit()`</span> to compute the polynomial coefficients and <span class="in">`numpy.polyval()`</span> to create a polynomial function that can be evaluated at any <span class="in">`x`</span> value.</span>
-<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
-<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Write the function in the notebook first, and experiment a bit</span>
-<span id="cb3-198"><a href="#cb3-198" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Move the function to <span class="in">`plot_example.py`</span> and test it in this notebook.</span>
-<span id="cb3-199"><a href="#cb3-199" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Make sure that you have added suitable error handling to your function, and test that it works by calling the function with wrong inputs.</span>
-<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Make sure that you have added a docstring to your function, and test that it is informative and clear by calling <span class="in">`help(your_function_name)`</span>.\</span>
-<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a>**Success check** Test the function with some synthetic data. </span>
-<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>Then test it again with a real dataset, by taking the UK time series from  the *Energy per person dataset* from Our World in Data here below.</span>
+<span id="cb3-183"><a href="#cb3-183" aria-hidden="true" tabindex="-1"></a><span class="fu">## Exercise 5</span></span>
+<span id="cb3-184"><a href="#cb3-184" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-185"><a href="#cb3-185" aria-hidden="true" tabindex="-1"></a>Now you can create your own modularised plotting function. The problem you want to solve is to take input data in <span class="in">`x`</span> and <span class="in">`y`</span> sequences and construct a funciton that plots the data together with an arbitrary polynomial fit of specified degree. You can use <span class="in">`numpy.polyfit()`</span> to compute the polynomial coefficients and <span class="in">`numpy.polyval()`</span> to create a polynomial function that can be evaluated at any <span class="in">`x`</span> value.</span>
+<span id="cb3-186"><a href="#cb3-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-187"><a href="#cb3-187" aria-hidden="true" tabindex="-1"></a>**Steps**</span>
+<span id="cb3-188"><a href="#cb3-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-189"><a href="#cb3-189" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Write the function in the notebook first, and experiment a bit</span>
+<span id="cb3-190"><a href="#cb3-190" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Move the function to <span class="in">`plot_example.py`</span> and test it in this notebook.</span>
+<span id="cb3-191"><a href="#cb3-191" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Make sure that you have added suitable error handling to your function, and test that it works by calling the function with wrong inputs.</span>
+<span id="cb3-192"><a href="#cb3-192" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Make sure that you have added a docstring to your function, and test that it is informative and clear by calling <span class="in">`help(your_function_name)`</span>.\</span>
+<span id="cb3-193"><a href="#cb3-193" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-194"><a href="#cb3-194" aria-hidden="true" tabindex="-1"></a>**Success check** Test the function with some synthetic data. </span>
+<span id="cb3-195"><a href="#cb3-195" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-196"><a href="#cb3-196" aria-hidden="true" tabindex="-1"></a>Then test it again with a real dataset, by taking the UK time series from  the *Energy per person dataset* from Our World in Data here below.</span>
+<span id="cb3-197"><a href="#cb3-197" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-200"><a href="#cb3-200" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-201"><a href="#cb3-201" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-202"><a href="#cb3-202" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the data.</span></span>
+<span id="cb3-203"><a href="#cb3-203" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://ourworldindata.org/grapher/per-capita-energy-use.csv?v=1&amp;csvType=full&amp;useColumnShortNames=true"</span>, </span>
+<span id="cb3-204"><a href="#cb3-204" aria-hidden="true" tabindex="-1"></a>                 )</span>
 <span id="cb3-205"><a href="#cb3-205" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch the data.</span></span>
-<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">"https://ourworldindata.org/grapher/per-capita-energy-use.csv?v=1&amp;csvType=full&amp;useColumnShortNames=true"</span>, </span>
-<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a>                 )</span>
-<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a><span class="co"># UK series</span></span>
-<span id="cb3-216"><a href="#cb3-216" aria-hidden="true" tabindex="-1"></a>df_uk <span class="op">=</span> df[df[<span class="st">'entity'</span>] <span class="op">==</span> <span class="st">'United Kingdom'</span>]</span>
-<span id="cb3-217"><a href="#cb3-217" aria-hidden="true" tabindex="-1"></a>df_uk.plot(x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'primary_energy_consumption_per_capita__kwh'</span>)</span>
-<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solution: Plot with polynomial fit</span></span>
-<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a>Here's the complete function with docstring, validation, and error handling:</span>
-<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_with_polynomial_fit(x, y, ax, degree<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
-<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot data points with an overlaid polynomial fit line.</span></span>
-<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
-<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a><span class="co">        x (array-like): </span></span>
-<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a><span class="co">            X-values (must be numeric and iterable)</span></span>
-<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a><span class="co">        y (array-like): </span></span>
-<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a><span class="co">            Y-values (must be numeric, same length as x)</span></span>
-<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a><span class="co">        ax (matplotlib.axes.Axes): </span></span>
-<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a><span class="co">            Axes object to use for plotting</span></span>
-<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a><span class="co">        degree (int, optional): </span></span>
-<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a><span class="co">            Degree of polynomial fit (default = 2, i.e. quadratic)</span></span>
-<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="co">        label (str, optional): </span></span>
-<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a><span class="co">            Label for the data points in the legend (default = None)</span></span>
+<span id="cb3-206"><a href="#cb3-206" aria-hidden="true" tabindex="-1"></a><span class="co"># UK series</span></span>
+<span id="cb3-207"><a href="#cb3-207" aria-hidden="true" tabindex="-1"></a>df_uk <span class="op">=</span> df[df[<span class="st">'entity'</span>] <span class="op">==</span> <span class="st">'United Kingdom'</span>]</span>
+<span id="cb3-208"><a href="#cb3-208" aria-hidden="true" tabindex="-1"></a>df_uk.plot(x<span class="op">=</span><span class="st">'year'</span>, y<span class="op">=</span><span class="st">'primary_energy_consumption_per_capita__kwh'</span>)</span>
+<span id="cb3-209"><a href="#cb3-209" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-210"><a href="#cb3-210" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-211"><a href="#cb3-211" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-212"><a href="#cb3-212" aria-hidden="true" tabindex="-1"></a><span class="fu">### Solution: Plot with polynomial fit</span></span>
+<span id="cb3-213"><a href="#cb3-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-214"><a href="#cb3-214" aria-hidden="true" tabindex="-1"></a>Here's the complete function with docstring, validation, and error handling:</span>
+<span id="cb3-215"><a href="#cb3-215" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-218"><a href="#cb3-218" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-219"><a href="#cb3-219" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-220"><a href="#cb3-220" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-221"><a href="#cb3-221" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_with_polynomial_fit(x, y, ax, degree<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb3-222"><a href="#cb3-222" aria-hidden="true" tabindex="-1"></a>    <span class="co">'''</span></span>
+<span id="cb3-223"><a href="#cb3-223" aria-hidden="true" tabindex="-1"></a><span class="co">    Plot data points with an overlaid polynomial fit line.</span></span>
+<span id="cb3-224"><a href="#cb3-224" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb3-225"><a href="#cb3-225" aria-hidden="true" tabindex="-1"></a><span class="co">    Args:</span></span>
+<span id="cb3-226"><a href="#cb3-226" aria-hidden="true" tabindex="-1"></a><span class="co">        x (array-like): </span></span>
+<span id="cb3-227"><a href="#cb3-227" aria-hidden="true" tabindex="-1"></a><span class="co">            X-values (must be numeric and iterable)</span></span>
+<span id="cb3-228"><a href="#cb3-228" aria-hidden="true" tabindex="-1"></a><span class="co">        y (array-like): </span></span>
+<span id="cb3-229"><a href="#cb3-229" aria-hidden="true" tabindex="-1"></a><span class="co">            Y-values (must be numeric, same length as x)</span></span>
+<span id="cb3-230"><a href="#cb3-230" aria-hidden="true" tabindex="-1"></a><span class="co">        ax (matplotlib.axes.Axes): </span></span>
+<span id="cb3-231"><a href="#cb3-231" aria-hidden="true" tabindex="-1"></a><span class="co">            Axes object to use for plotting</span></span>
+<span id="cb3-232"><a href="#cb3-232" aria-hidden="true" tabindex="-1"></a><span class="co">        degree (int, optional): </span></span>
+<span id="cb3-233"><a href="#cb3-233" aria-hidden="true" tabindex="-1"></a><span class="co">            Degree of polynomial fit (default = 2, i.e. quadratic)</span></span>
+<span id="cb3-234"><a href="#cb3-234" aria-hidden="true" tabindex="-1"></a><span class="co">        label (str, optional): </span></span>
+<span id="cb3-235"><a href="#cb3-235" aria-hidden="true" tabindex="-1"></a><span class="co">            Label for the data points in the legend (default = None)</span></span>
+<span id="cb3-236"><a href="#cb3-236" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb3-237"><a href="#cb3-237" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb3-238"><a href="#cb3-238" aria-hidden="true" tabindex="-1"></a><span class="co">        None</span></span>
+<span id="cb3-239"><a href="#cb3-239" aria-hidden="true" tabindex="-1"></a><span class="co">        Modifies `ax` input to add scatter plot and polynomial fit line.</span></span>
+<span id="cb3-240"><a href="#cb3-240" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
+<span id="cb3-241"><a href="#cb3-241" aria-hidden="true" tabindex="-1"></a><span class="co">    Raises:</span></span>
+<span id="cb3-242"><a href="#cb3-242" aria-hidden="true" tabindex="-1"></a><span class="co">        ValueError: </span></span>
+<span id="cb3-243"><a href="#cb3-243" aria-hidden="true" tabindex="-1"></a><span class="co">            If x and y have different lengths</span></span>
+<span id="cb3-244"><a href="#cb3-244" aria-hidden="true" tabindex="-1"></a><span class="co">        TypeError: </span></span>
+<span id="cb3-245"><a href="#cb3-245" aria-hidden="true" tabindex="-1"></a><span class="co">            If x or y cannot be converted to numeric arrays</span></span>
 <span id="cb3-246"><a href="#cb3-246" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
-<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a><span class="co">        None</span></span>
-<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a><span class="co">        Modifies `ax` input to add scatter plot and polynomial fit line.</span></span>
-<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a><span class="co">    Raises:</span></span>
-<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="co">        ValueError: </span></span>
-<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a><span class="co">            If x and y have different lengths</span></span>
-<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="co">        TypeError: </span></span>
-<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a><span class="co">            If x or y cannot be converted to numeric arrays</span></span>
-<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a><span class="co">    </span></span>
-<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a><span class="co">    Example:</span></span>
-<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span></span>
-<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; import numpy as np</span></span>
-<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; x_data = np.linspace(0, 10, 50)</span></span>
-<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; y_data = x_data**2 + np.random.normal(0, 5, 50)</span></span>
-<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; fig, ax = plt.subplots()</span></span>
-<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; plot_with_polynomial_fit(x_data, y_data, ax, degree=2, label='data')</span></span>
-<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
-<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
-<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert to numpy arrays</span></span>
-<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> np.asarray(x, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> np.asarray(y, dtype<span class="op">=</span><span class="bu">float</span>)</span>
-<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Validate lengths match</span></span>
-<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(x) <span class="op">!=</span> <span class="bu">len</span>(y):</span>
-<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"x and y must have the same length. Got </span><span class="sc">{</span><span class="bu">len</span>(x)<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span><span class="bu">len</span>(y)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Validate we have enough points for the fit</span></span>
-<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(x) <span class="op">&lt;</span> degree <span class="op">+</span> <span class="dv">1</span>:</span>
-<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Need at least </span><span class="sc">{</span>degree <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> points for degree </span><span class="sc">{</span>degree<span class="sc">}</span><span class="ss"> polynomial fit. Got </span><span class="sc">{</span><span class="bu">len</span>(x)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute polynomial fit</span></span>
-<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a>        coeffs <span class="op">=</span> np.polyfit(x, y, degree)</span>
-<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a>        poly_fn <span class="op">=</span> np.poly1d(coeffs)</span>
-<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create smooth line for display</span></span>
-<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a>        x_smooth <span class="op">=</span> np.linspace(x.<span class="bu">min</span>(), x.<span class="bu">max</span>(), <span class="dv">200</span>)</span>
-<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a>        y_smooth <span class="op">=</span> poly_fn(x_smooth)</span>
-<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot original data and fit</span></span>
-<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a>        ax.scatter(x, y, label<span class="op">=</span>label, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
-<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a>        ax.plot(x_smooth, y_smooth, <span class="st">'r-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f'Polynomial fit (degree </span><span class="sc">{</span>degree<span class="sc">}</span><span class="ss">)'</span>)</span>
-<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'x'</span>)</span>
-<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'y'</span>)</span>
-<span id="cb3-291"><a href="#cb3-291" aria-hidden="true" tabindex="-1"></a>        ax.legend()</span>
-<span id="cb3-292"><a href="#cb3-292" aria-hidden="true" tabindex="-1"></a>        </span>
-<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
-<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Validation error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"An unexpected error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test 1: Synthetic data (with error handling)</span></span>
-<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-305"><a href="#cb3-305" aria-hidden="true" tabindex="-1"></a><span class="co"># Valid case: synthetic quadratic data with noise</span></span>
-<span id="cb3-306"><a href="#cb3-306" aria-hidden="true" tabindex="-1"></a>x_synthetic <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
-<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a>y_synthetic <span class="op">=</span> x_synthetic<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
-<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
-<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a>plot_with_polynomial_fit(x_synthetic, y_synthetic, ax, degree<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Synthetic data'</span>)</span>
-<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Valid test: Polynomial fit on synthetic data"</span>)</span>
-<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test 2: Error handling</span></span>
+<span id="cb3-247"><a href="#cb3-247" aria-hidden="true" tabindex="-1"></a><span class="co">    Example:</span></span>
+<span id="cb3-248"><a href="#cb3-248" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; import matplotlib.pyplot as plt</span></span>
+<span id="cb3-249"><a href="#cb3-249" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; import numpy as np</span></span>
+<span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; x_data = np.linspace(0, 10, 50)</span></span>
+<span id="cb3-251"><a href="#cb3-251" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; y_data = x_data**2 + np.random.normal(0, 5, 50)</span></span>
+<span id="cb3-252"><a href="#cb3-252" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; fig, ax = plt.subplots()</span></span>
+<span id="cb3-253"><a href="#cb3-253" aria-hidden="true" tabindex="-1"></a><span class="co">        &gt;&gt;&gt; plot_with_polynomial_fit(x_data, y_data, ax, degree=2, label='data')</span></span>
+<span id="cb3-254"><a href="#cb3-254" aria-hidden="true" tabindex="-1"></a><span class="co">    '''</span></span>
+<span id="cb3-255"><a href="#cb3-255" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb3-256"><a href="#cb3-256" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Convert to numpy arrays</span></span>
+<span id="cb3-257"><a href="#cb3-257" aria-hidden="true" tabindex="-1"></a>        x <span class="op">=</span> np.asarray(x, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb3-258"><a href="#cb3-258" aria-hidden="true" tabindex="-1"></a>        y <span class="op">=</span> np.asarray(y, dtype<span class="op">=</span><span class="bu">float</span>)</span>
+<span id="cb3-259"><a href="#cb3-259" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-260"><a href="#cb3-260" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Validate lengths match</span></span>
+<span id="cb3-261"><a href="#cb3-261" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(x) <span class="op">!=</span> <span class="bu">len</span>(y):</span>
+<span id="cb3-262"><a href="#cb3-262" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"x and y must have the same length. Got </span><span class="sc">{</span><span class="bu">len</span>(x)<span class="sc">}</span><span class="ss"> and </span><span class="sc">{</span><span class="bu">len</span>(y)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-263"><a href="#cb3-263" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-264"><a href="#cb3-264" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Validate we have enough points for the fit</span></span>
+<span id="cb3-265"><a href="#cb3-265" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">len</span>(x) <span class="op">&lt;</span> degree <span class="op">+</span> <span class="dv">1</span>:</span>
+<span id="cb3-266"><a href="#cb3-266" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">ValueError</span>(<span class="ss">f"Need at least </span><span class="sc">{</span>degree <span class="op">+</span> <span class="dv">1</span><span class="sc">}</span><span class="ss"> points for degree </span><span class="sc">{</span>degree<span class="sc">}</span><span class="ss"> polynomial fit. Got </span><span class="sc">{</span><span class="bu">len</span>(x)<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-267"><a href="#cb3-267" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-268"><a href="#cb3-268" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Compute polynomial fit</span></span>
+<span id="cb3-269"><a href="#cb3-269" aria-hidden="true" tabindex="-1"></a>        coeffs <span class="op">=</span> np.polyfit(x, y, degree)</span>
+<span id="cb3-270"><a href="#cb3-270" aria-hidden="true" tabindex="-1"></a>        poly_fn <span class="op">=</span> np.poly1d(coeffs)</span>
+<span id="cb3-271"><a href="#cb3-271" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-272"><a href="#cb3-272" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Create smooth line for display</span></span>
+<span id="cb3-273"><a href="#cb3-273" aria-hidden="true" tabindex="-1"></a>        x_smooth <span class="op">=</span> np.linspace(x.<span class="bu">min</span>(), x.<span class="bu">max</span>(), <span class="dv">200</span>)</span>
+<span id="cb3-274"><a href="#cb3-274" aria-hidden="true" tabindex="-1"></a>        y_smooth <span class="op">=</span> poly_fn(x_smooth)</span>
+<span id="cb3-275"><a href="#cb3-275" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-276"><a href="#cb3-276" aria-hidden="true" tabindex="-1"></a>        <span class="co"># Plot original data and fit</span></span>
+<span id="cb3-277"><a href="#cb3-277" aria-hidden="true" tabindex="-1"></a>        ax.scatter(x, y, label<span class="op">=</span>label, marker<span class="op">=</span><span class="st">'o'</span>, alpha<span class="op">=</span><span class="fl">0.6</span>)</span>
+<span id="cb3-278"><a href="#cb3-278" aria-hidden="true" tabindex="-1"></a>        ax.plot(x_smooth, y_smooth, <span class="st">'r-'</span>, linewidth<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="ss">f'Polynomial fit (degree </span><span class="sc">{</span>degree<span class="sc">}</span><span class="ss">)'</span>)</span>
+<span id="cb3-279"><a href="#cb3-279" aria-hidden="true" tabindex="-1"></a>        ax.set_xlabel(<span class="st">'x'</span>)</span>
+<span id="cb3-280"><a href="#cb3-280" aria-hidden="true" tabindex="-1"></a>        ax.set_ylabel(<span class="st">'y'</span>)</span>
+<span id="cb3-281"><a href="#cb3-281" aria-hidden="true" tabindex="-1"></a>        ax.legend()</span>
+<span id="cb3-282"><a href="#cb3-282" aria-hidden="true" tabindex="-1"></a>        </span>
+<span id="cb3-283"><a href="#cb3-283" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">ValueError</span> <span class="im">as</span> e:</span>
+<span id="cb3-284"><a href="#cb3-284" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"Validation error: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-285"><a href="#cb3-285" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-286"><a href="#cb3-286" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"An unexpected error occurred: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb3-287"><a href="#cb3-287" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-288"><a href="#cb3-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-289"><a href="#cb3-289" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test 1: Synthetic data (with error handling)</span></span>
+<span id="cb3-290"><a href="#cb3-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-293"><a href="#cb3-293" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-294"><a href="#cb3-294" aria-hidden="true" tabindex="-1"></a><span class="co"># Valid case: synthetic quadratic data with noise</span></span>
+<span id="cb3-295"><a href="#cb3-295" aria-hidden="true" tabindex="-1"></a>x_synthetic <span class="op">=</span> np.linspace(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb3-296"><a href="#cb3-296" aria-hidden="true" tabindex="-1"></a>y_synthetic <span class="op">=</span> x_synthetic<span class="op">**</span><span class="dv">2</span> <span class="op">+</span> np.random.normal(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">50</span>)</span>
+<span id="cb3-297"><a href="#cb3-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-298"><a href="#cb3-298" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">8</span>, <span class="dv">5</span>))</span>
+<span id="cb3-299"><a href="#cb3-299" aria-hidden="true" tabindex="-1"></a>plot_with_polynomial_fit(x_synthetic, y_synthetic, ax, degree<span class="op">=</span><span class="dv">2</span>, label<span class="op">=</span><span class="st">'Synthetic data'</span>)</span>
+<span id="cb3-300"><a href="#cb3-300" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Valid test: Polynomial fit on synthetic data"</span>)</span>
+<span id="cb3-301"><a href="#cb3-301" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-302"><a href="#cb3-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-303"><a href="#cb3-303" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test 2: Error handling</span></span>
+<span id="cb3-304"><a href="#cb3-304" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-307"><a href="#cb3-307" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-308"><a href="#cb3-308" aria-hidden="true" tabindex="-1"></a><span class="co"># Error case 1: Mismatched lengths</span></span>
+<span id="cb3-309"><a href="#cb3-309" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Error case 1: Mismatched x and y lengths"</span>)</span>
+<span id="cb3-310"><a href="#cb3-310" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-311"><a href="#cb3-311" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb3-312"><a href="#cb3-312" aria-hidden="true" tabindex="-1"></a>    plot_with_polynomial_fit([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">1</span>, <span class="dv">2</span>], ax, degree<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb3-313"><a href="#cb3-313" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-314"><a href="#cb3-314" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Caught exception: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
 <span id="cb3-315"><a href="#cb3-315" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a><span class="co"># Error case 1: Mismatched lengths</span></span>
-<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Error case 1: Mismatched x and y lengths"</span>)</span>
-<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a>    plot_with_polynomial_fit([<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], [<span class="dv">1</span>, <span class="dv">2</span>], ax, degree<span class="op">=</span><span class="dv">2</span>)</span>
-<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Caught exception: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a><span class="co"># Error case 2: Not enough points for polynomial degree</span></span>
-<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Error case 2: Not enough data points for fit"</span>)</span>
-<span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a>    plot_with_polynomial_fit([<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">2</span>], ax, degree<span class="op">=</span><span class="dv">3</span>)</span>
-<span id="cb3-333"><a href="#cb3-333" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Caught exception: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb3-335"><a href="#cb3-335" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-336"><a href="#cb3-336" aria-hidden="true" tabindex="-1"></a><span class="co"># Error case 3: Non-numeric data</span></span>
-<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Error case 3: Non-numeric data"</span>)</span>
-<span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
-<span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
-<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a>    plot_with_polynomial_fit([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], ax, degree<span class="op">=</span><span class="dv">1</span>)</span>
-<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
-<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Caught exception: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
-<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test 3: Real-world UK energy data</span></span>
+<span id="cb3-316"><a href="#cb3-316" aria-hidden="true" tabindex="-1"></a><span class="co"># Error case 2: Not enough points for polynomial degree</span></span>
+<span id="cb3-317"><a href="#cb3-317" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Error case 2: Not enough data points for fit"</span>)</span>
+<span id="cb3-318"><a href="#cb3-318" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-319"><a href="#cb3-319" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb3-320"><a href="#cb3-320" aria-hidden="true" tabindex="-1"></a>    plot_with_polynomial_fit([<span class="dv">1</span>, <span class="dv">2</span>], [<span class="dv">1</span>, <span class="dv">2</span>], ax, degree<span class="op">=</span><span class="dv">3</span>)</span>
+<span id="cb3-321"><a href="#cb3-321" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-322"><a href="#cb3-322" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Caught exception: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-323"><a href="#cb3-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-324"><a href="#cb3-324" aria-hidden="true" tabindex="-1"></a><span class="co"># Error case 3: Non-numeric data</span></span>
+<span id="cb3-325"><a href="#cb3-325" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Error case 3: Non-numeric data"</span>)</span>
+<span id="cb3-326"><a href="#cb3-326" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb3-327"><a href="#cb3-327" aria-hidden="true" tabindex="-1"></a>    fig, ax <span class="op">=</span> plt.subplots()</span>
+<span id="cb3-328"><a href="#cb3-328" aria-hidden="true" tabindex="-1"></a>    plot_with_polynomial_fit([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>], [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], ax, degree<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb3-329"><a href="#cb3-329" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb3-330"><a href="#cb3-330" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"Caught exception: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ch">\n</span><span class="ss">"</span>)</span>
+<span id="cb3-331"><a href="#cb3-331" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-332"><a href="#cb3-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-333"><a href="#cb3-333" aria-hidden="true" tabindex="-1"></a><span class="fu">### Test 3: Real-world UK energy data</span></span>
+<span id="cb3-334"><a href="#cb3-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-337"><a href="#cb3-337" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
+<span id="cb3-338"><a href="#cb3-338" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract UK data (remove any NaN values)</span></span>
+<span id="cb3-339"><a href="#cb3-339" aria-hidden="true" tabindex="-1"></a>uk_years <span class="op">=</span> df_uk[<span class="st">'year'</span>].dropna().values</span>
+<span id="cb3-340"><a href="#cb3-340" aria-hidden="true" tabindex="-1"></a>uk_energy <span class="op">=</span> df_uk[<span class="st">'primary_energy_consumption_per_capita__kwh'</span>].dropna().values</span>
+<span id="cb3-341"><a href="#cb3-341" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-342"><a href="#cb3-342" aria-hidden="true" tabindex="-1"></a><span class="co"># Align the data (remove rows where either is NaN)</span></span>
+<span id="cb3-343"><a href="#cb3-343" aria-hidden="true" tabindex="-1"></a>valid_idx <span class="op">=</span> <span class="op">~</span>(np.isnan(uk_years) <span class="op">|</span> np.isnan(uk_energy))</span>
+<span id="cb3-344"><a href="#cb3-344" aria-hidden="true" tabindex="-1"></a>uk_years <span class="op">=</span> uk_years[valid_idx]</span>
+<span id="cb3-345"><a href="#cb3-345" aria-hidden="true" tabindex="-1"></a>uk_energy <span class="op">=</span> uk_energy[valid_idx]</span>
 <span id="cb3-346"><a href="#cb3-346" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-349"><a href="#cb3-349" aria-hidden="true" tabindex="-1"></a><span class="in">```{pyodide}</span></span>
-<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a><span class="co">#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["</span></span>
-<span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract UK data (remove any NaN values)</span></span>
-<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a>uk_years <span class="op">=</span> df_uk[<span class="st">'year'</span>].dropna().values</span>
-<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a>uk_energy <span class="op">=</span> df_uk[<span class="st">'primary_energy_consumption_per_capita__kwh'</span>].dropna().values</span>
-<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a><span class="co"># Align the data (remove rows where either is NaN)</span></span>
-<span id="cb3-356"><a href="#cb3-356" aria-hidden="true" tabindex="-1"></a>valid_idx <span class="op">=</span> <span class="op">~</span>(np.isnan(uk_years) <span class="op">|</span> np.isnan(uk_energy))</span>
-<span id="cb3-357"><a href="#cb3-357" aria-hidden="true" tabindex="-1"></a>uk_years <span class="op">=</span> uk_years[valid_idx]</span>
-<span id="cb3-358"><a href="#cb3-358" aria-hidden="true" tabindex="-1"></a>uk_energy <span class="op">=</span> uk_energy[valid_idx]</span>
-<span id="cb3-359"><a href="#cb3-359" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-360"><a href="#cb3-360" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with our function</span></span>
-<span id="cb3-361"><a href="#cb3-361" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
-<span id="cb3-362"><a href="#cb3-362" aria-hidden="true" tabindex="-1"></a>plot_with_polynomial_fit(uk_years, uk_energy, ax, degree<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">'UK Energy per capita'</span>)</span>
-<span id="cb3-363"><a href="#cb3-363" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Year'</span>)</span>
-<span id="cb3-364"><a href="#cb3-364" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Energy consumption (kWh per capita)'</span>)</span>
-<span id="cb3-365"><a href="#cb3-365" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'UK Energy Per Capita with Polynomial Fit'</span>)</span>
-<span id="cb3-366"><a href="#cb3-366" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
-<span id="cb3-367"><a href="#cb3-367" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb3-368"><a href="#cb3-368" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-347"><a href="#cb3-347" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot with our function</span></span>
+<span id="cb3-348"><a href="#cb3-348" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">6</span>))</span>
+<span id="cb3-349"><a href="#cb3-349" aria-hidden="true" tabindex="-1"></a>plot_with_polynomial_fit(uk_years, uk_energy, ax, degree<span class="op">=</span><span class="dv">3</span>, label<span class="op">=</span><span class="st">'UK Energy per capita'</span>)</span>
+<span id="cb3-350"><a href="#cb3-350" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">'Year'</span>)</span>
+<span id="cb3-351"><a href="#cb3-351" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Energy consumption (kWh per capita)'</span>)</span>
+<span id="cb3-352"><a href="#cb3-352" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'UK Energy Per Capita with Polynomial Fit'</span>)</span>
+<span id="cb3-353"><a href="#cb3-353" aria-hidden="true" tabindex="-1"></a>plt.tight_layout()</span>
+<span id="cb3-354"><a href="#cb3-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb3-355"><a href="#cb3-355" aria-hidden="true" tabindex="-1"></a></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
