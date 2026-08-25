@@ -1,0 +1,510 @@
+---
+title: 'Advanced Plotting Exercises: Building Dashboards with Seaborn and Plotly'
+jupyter:
+  kernelspec:
+    display_name: 3.11.1
+    language: python
+    name: python3
+---
+
+
+In these exercises, you will learn how to create interactive and static dashboards using Seaborn and Plotly. All exercises use real-world data from [Our World in Data](https://ourworldindata.org/), a comprehensive source for global development indicators.
+
+The exercises progress from exploratory visualization with Seaborn to advanced interactive dashboards with Plotly, including 3D visualizations.
+
+Every exercise presents partly completed code snippets with comments indicating where you need to fill in the blanks. Feel free to either (i) complete the code following the instructions or (ii) write your own code.
+
+
+## Exercise 1: Import Libraries and Load Life Expectancy Data
+
+**Objective**: Set up the environment and load the life expectancy dataset for exploration.
+
+In this exercise, you will:
+
+1. Import all necessary libraries for visualization and data manipulation
+2. Load the life expectancy dataset 
+3. Explore the dataset structure, columns, and basic statistics
+4. Check for missing values and data types
+
+**Dataset**: World Bank Life Expectancy Data
+
+[https://ourworldindata.org/grapher/life-expectancy.csv?v=1&csvType=full&useColumnShortNames=false](https://ourworldindata.org/grapher/life-expectancy.csv?v=1&csvType=full&useColumnShortNames=false)
+
+**Your Task**: 
+- Load the life expectancy dataset (from file or URL)
+- Display the first 10 rows
+- Show the shape, data types, and summary statistics
+- Identify and document any missing values
+- Report the time period and number of countries covered
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+# TODO: Import pandas, numpy, matplotlib, seaborn, and other required libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+# ... (import remaining libraries)
+
+# TODO: Set up seaborn styling
+sns.set_style(...)
+sns.set_palette(...)
+
+# TODO: Load the life expectancy CSV from the URL provided in the exercise instructions
+df = pd.read_csv(...)
+
+# Display and explore the dataset
+df
+```
+
+## Exercise 2: Exploratory Data Visualization with Seaborn
+
+**Objective**: Create focused, meaningful visualizations showing life expectancy trends and distributions.
+
+**Requirements - Create exactly 3 plots in a 1x3 horizontal layout showing:**
+
+1. **(Left) Distribution of Life Expectancy in 2019**: 
+   - Filter to year 2019 only
+   - Create a simple histogram with 18 bins
+   - Title: "Global Life Expectancy Distribution - 2019"
+
+2. **(Center) Trends of 6 Key Countries Over Time**:
+   - Use these specific countries: Japan, United States, Germany, Brazil, India, Nigeria
+   - Create line plot showing Year (x) vs Life Expectancy (y)
+   - Color each country differently for clarity
+   - Include legend and use data from 1960 onwards
+   - Title: "Life Expectancy Trends: 6 Key Countries (1960-2019)"
+
+3. **(Right) Current Status in 2019 - Bar Chart**:
+   - Use the same 6 countries: Japan, United States, Germany, Brazil, India, Nigeria
+   - Create bar chart showing each country's life expectancy in 2019
+   - Title: "Life Expectancy in 2019: 6 Key Countries"
+   - Shows: Which countries have the highest/lowest life expectancy today?
+
+**All plots must have**: Clear titles, axis labels, and readable formatting
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+# TODO: Clean the data and remove rows with missing life expectancy values
+df_clean = ...  # df.dropna(...)
+
+# TODO: Create a list of the 6 key countries
+countries_six = [...]  # List of 6 country names
+df_six = df_clean[df_clean['Entity'].isin(countries_six)]
+
+# TODO: Create subplots with 1 row and 3 columns
+fig, axes = plt.subplots(...)
+
+# TODO: Plot 1 (Left) - Histogram of life expectancy in 2019
+sns.histplot(...)
+axes[0].set_title(...)
+# ... (complete histogram setup)
+
+# TODO: Plot 2 (Center) - Line plot for 6 countries (1960 onwards)
+for country in countries_six:
+    data = ...  # Filter data for this country
+    axes[1].plot(...)  # Plot year vs life expectancy
+# ... (complete line plot setup)
+
+# TODO: Plot 3 (Right) - Bar chart for 2019 values
+# ... (complete bar chart setup)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Exercise 3: Multi-plot Seaborn Dashboard with FacetGrid
+
+**Objective**: Create a FacetGrid showing life expectancy trends across different countries.
+
+**Requirements**:
+
+- Use these 6 specific countries (one per subplot, arranged in 2 rows × 3 columns):
+  - **Row 1**: Japan, Germany, United States
+  - **Row 2**: Brazil, India, Nigeria
+
+- For each country:
+  - Create a scatter plot with Year (x-axis) vs Life Expectancy (y-axis)
+  - Add a regression line in red showing the trend
+  - Title each subplot with just the country name
+  - Ensure clear axis labels: "Year" and "Life Expectancy (years)"
+
+
+Look at the trends and consider ways to address these questions quantitatively:
+
+1. Which countries show the steepest improvement (highest slope)?
+2. Which countries started with the lowest life expectancy in 1960?
+
+3. Are there any countries with plateaus or slower growth in recent decades?3. Are there any countries with plateaus or slower growth in recent decades?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+# TODO: Select the 6 countries
+countries_selected = [...]  # List of 6 countries
+df_selected = df_clean[df_clean['Entity'].isin(countries_selected)]
+
+# TODO: Create a FacetGrid with 2 rows and 3 columns
+g = sns.FacetGrid(...)
+
+# TODO: Add scatter plot with regression line to each subplot
+g.map(...)  # Use sns.regplot with scatter and line arguments
+
+# TODO: Set titles and labels
+for ax, country in zip(g.axes.flat, countries_selected):
+    ...  # Set title for each subplot
+
+g.set_axis_labels(...)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Exercise 4: Seaborn Heatmap - Life Expectancy Across Countries and Years
+
+**Objective**: Create a heatmap to visualize life expectancy patterns across countries and compare their progress over time.
+
+**Requirements**:
+
+- Select the 10 countries with the highest average life expectancy (using all available data)
+- Filter data from 2010 to 2019 (one decade)
+- Create a heatmap with:
+  - **Rows**: Countries
+  - **Columns**: Years
+  - **Values**: Life expectancy in years, annotated on each cell
+  - **Colors**: Use the 'RdYlGn' (Red-Yellow-Green) colormap to show progression
+  - **Title**: "Life Expectancy: Top 10 Countries (2010-2019)"
+  - **Clear labels**: Axis labels and colorbar label
+
+
+1. Which countries maintain the highest life expectancy throughout the decade?
+2. Are there any countries showing stagnation (no improvement) in the heatmap?
+
+3. What does the color gradient reveal about progress?3. What does the color gradient reveal about progress?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+# TODO: Find the top 10 countries by average life expectancy
+top_10_countries = ...  # Use groupby and nlargest
+
+# TODO: Filter data from 2010-2019
+df_heatmap = df_clean[(df_clean['Entity'].isin(...)) & 
+                       (df_clean['Year'] >= ...) & 
+                       (df_clean['Year'] <= ...)]
+
+# TODO: Create pivot table (rows=countries, columns=years)
+pivot = df_heatmap.pivot_table(...)
+
+# TODO: Create heatmap with seaborn
+fig, ax = plt.subplots(figsize=(12, 6))
+sns.heatmap(..., annot=True, fmt='.1f', cmap='RdYlGn', cbar_kws={'label': 'Life Expectancy (years)'}, ax=ax)
+ax.set_title(...)
+
+plt.tight_layout()
+plt.show()
+```
+
+## Exercise 5: Interactive Line Plot with Plotly
+
+**Objective**: Create an interactive line plot showing trends for multiple countries over time.
+
+**Requirements**:
+- Use the same 6 countries from Exercise 2: Japan, United States, Germany, Brazil, India, Nigeria
+- Create a line plot with time on x-axis and life expectancy on y-axis
+- Each country should have a distinct color and be connected with a line
+- Show data from 1960 onwards
+- Add markers (dots) at data points for clarity
+- Include meaningful hover information showing: country name, year, and life expectancy
+- Add title: "Life Expectancy Trends: Interactive View"
+- Add axis labels: "Year" and "Life Expectancy (years)"
+
+**Interactivity Features** (built-in to Plotly):
+
+- Hover over any line to see exact values
+- Click legend entries to hide/show countries
+- Zoom, pan, and download the plot
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+# TODO: Select the 6 countries
+countries_six = [...]  # List of 6 countries
+df_plot = df_clean[df_clean['Entity'].isin(countries_six)]
+
+# TODO: Create interactive line plot with px.line
+# Include: x='Year', y='Life expectancy', color='Entity', markers=True
+fig = px.line(...)
+
+# TODO: Add hover information and titles
+fig.update_...(...)
+
+fig.show()
+```
+
+## Exercise 6: Plotly Subplots Dashboard
+
+**Objective**: Create a simple Plotly dashboard with multiple visualizations using subplots.
+
+**Requirements**:
+
+- Create a dashboard with 2 subplots in a 1 row × 2 columns layout
+
+**Subplot 1 (Left) - Line Plot**:
+
+- Show life expectancy trends for 3 countries: Japan, Brazil, Nigeria
+- X-axis: Year (from 1960 onwards)
+- Y-axis: Life expectancy
+- Include legend and markers on the lines
+- Title: "Life Expectancy Trends: 3 Countries"
+
+**Subplot 2 (Right) - Bar Chart**:
+
+- Show average life expectancy for the top 5 countries
+- X-axis: Country names
+- Y-axis: Average life expectancy
+- Title: "Average Life Expectancy: Top 5 Countries"
+- Bars should be colored light blue
+
+**Dashboard Features**:
+
+- Hover information on all plots
+- Clear axis labels
+- Overall title: "Life Expectancy Dashboard"
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+# TODO: Prepare data for subplot 1 (line plot for 3 countries)
+countries_three = [...]  # Select 3 countries
+df_three = df_clean[df_clean['Entity'].isin(countries_three)]
+
+# TODO: Prepare data for subplot 2 (bar chart for top 5 countries)
+# DRAFT: Top 5 countries logic
+top_5 = ...  # Use groupby and nlargest
+
+# TODO: Create subplots with make_subplots (1 row, 2 columns)
+fig = make_subplots(...)
+
+# TODO: Add line traces to subplot 1
+for country in countries_three:
+    data = ...  # Filter data for this country
+    fig.add_trace(go.Scatter(...), row=1, col=1)  # Add line + markers
+
+# TODO: Add bar trace to subplot 2
+fig.add_trace(go.Bar(...), row=1, col=2)  # Bar chart
+
+# TODO: Update axes labels and layout
+fig.update_xaxes(...)
+fig.update_layout(...)
+
+fig.show()
+```
+
+## Exercise 7: 3D Line Plot - Life Expectancy Over Time
+
+Create a 3D line plot showing how 11 countries improved their life expectancy from 2000 to 2019.
+
+Use these countries organized by region:
+
+- Asia: Japan, China
+- Europe: Germany, France
+- Americas: United States, Canada, Mexico, Brazil, Paraguay
+- Africa: Lesotho
+- Oceania: Australia, Tuvalu
+
+The plot should have:
+- X-axis: Year (2000-2019)
+- Y-axis: Life expectancy in years
+- Z-axis: Improvement from 2000 baseline
+- Color: Income level (green, orange, red)
+- Lines: One line per country showing its trajectory
+
+
+Plot each country's path to see which groups improved the most. High-income countries should have flat lines (already high, little room to improve). Low-income countries should have steep upward lines (more room to gain).Hover to see country name, year, life expectancy, and improvement amount.
+
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+# TODO: Select countries (use the countries list below)
+countries = ['Japan', 'China', 'Germany', 'France', 'United States', 'Canada', 
+             'Mexico', 'Brazil', 'Paraguay', 'Lesotho', 'Australia', 'Tuvalu']
+
+# TODO: Filter data from 2000 onwards and sort by Entity and Year
+df_plot = ...  # Filter and sort
+
+# TODO: Calculate improvement from 2000 baseline for each country
+# DRAFT: Loop through countries and calculate: 2020_value - 2000_value
+for country in countries:
+    baseline_val = ...  # Get 2000 baseline value
+    if len(baseline_val) > 0:
+        df_plot.loc[df_plot['Entity'] == country, 'Improvement'] = ...
+
+# TODO: Define regions dictionary (maps country -> region)
+regions = {
+    # 'Japan': 'Asia',
+    # 'China': 'Asia',
+    # ... (map all 12 countries to their regions: Asia, Europe, Americas, Africa, Oceania)
+}
+
+# TODO: Define color map for regions
+colors = {
+    # 'Asia': '#e74c3c',
+    # 'Europe': '#3498db',
+    # ... (define colors for each region)
+}
+
+# TODO: Create 3D plot using go.Figure()
+fig = go.Figure()
+for country in countries:
+    data = ...  # Filter data for country
+    
+    # DRAFT: Add Scatter3d trace with proper arguments
+    fig.add_trace(go.Scatter3d(
+        x=..., y=..., z=...,  # Year, Life Expectancy, Improvement
+        mode='lines+markers', name=country,
+        line=dict(color=..., width=4), marker=dict(size=2),  # Use colors[region]
+        hovertemplate=...  # Include country, year, life exp, improvement
+    ))
+
+# TODO: Update layout with title and scene setup
+fig.update_layout(...)
+
+fig.show()
+```
+
+## Exercise 8: Interactive Plot with Dropdown Menu
+
+**Objective**: Create an interactive line plot with a dropdown menu to filter countries by region.
+
+**How to Build a Dropdown Menu in Plotly**
+
+A dropdown menu uses Plotly's `updatemenus` feature to show/hide traces based on user selection. 
+
+To construct a dropdown menu, you typically:
+
+- Create a figure with all traces (one per country)
+- Define dropdown buttons as a list of dict objects, each with a label and update method
+- Add the dropdown to the figure's layout
+
+Here's the essential structure:
+
+```python
+# 1. Create figure with all traces
+fig = go.Figure()
+for country in all_countries:
+    data = df[df['Entity'] == country]
+    fig.add_trace(go.Scatter(x=data['Year'], y=data['Life expectancy'], name=country))
+
+# 2. Define dropdown buttons
+buttons = [
+    dict(label='All Countries',
+         method='update',
+         args=[{'visible': [True] * len(all_countries)},
+               {'title': 'All Countries'}]),
+    dict(label='Region 1',
+         method='update',
+         args=[{'visible': [country in ['Country1', 'Country2'] for country in all_countries]},
+               {'title': 'Region 1'}])
+]
+
+# 3. Add dropdown to layout
+fig.update_layout(
+    updatemenus=[
+        dict(buttons=buttons, direction='down', x=0.0, y=1.15)
+    ]
+)
+```
+
+
+
+Its key features include:
+
+- **buttons**: List of dict objects, each defining a dropdown option with a label and the action to perform
+- **visible**: Boolean list controlling which traces display (one boolean per trace, applied in order)
+- **method='update'**: Specifies that clicking the button updates the figure's data or layout
+- **args**: Contains two elements: `[{data properties}, {layout updates}]` that apply when the button is clicked
+
+**Your Task**:
+
+Create an 11-country interactive plot with 6 dropdown filters:
+
+- All Countries
+- Asia (Japan, China)
+- Europe (Germany, France)
+- Americas (United States, Canada, Mexico, Brazil, Paraguay)
+- Africa (Lesotho)
+- Oceania (Australia, Tuvalu)
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## COMPLETE THIS CODE
+
+# TODO: Define the list of 11 countries
+all_countries = [...]  # List 11 countries
+
+# TODO: Define regions dictionary
+regions_dict = {
+    # 'Japan': 'Asia',
+    # 'China': 'Asia',
+    # ... (map all countries to their regions)
+}
+
+# TODO: Filter data for these countries
+df_ex8 = df_clean[df_clean['Entity'].isin(all_countries)]
+
+# TODO: Create figure and add line traces for each country
+fig = go.Figure()
+
+for country in all_countries:
+    data = ...  # Filter data for this country
+    fig.add_trace(go.Scatter(
+        x=..., y=...,  # Year, Life Expectancy
+        mode='lines+markers', name=country,
+        hovertemplate=...  # Include country, year, life expectancy
+    ))
+
+# TODO: Create dropdown buttons for each region
+# EXAMPLE Button (All Countries) - Use as a template for other buttons:
+all_btn = dict(label='All Countries',
+               method='update',
+               args=[{'visible': [True] * len(all_countries)},
+                     {'title': 'Life Expectancy: All 11 Countries'}])
+
+# DRAFT: Create button for Asia (follow the same pattern)
+# For Asia: create list of Asia countries, set visible for those countries
+asia_btn = dict(label='Asia',
+                method='update',
+                args=[{'visible': [country in [...] for country in all_countries]},
+                      {'title': 'Life Expectancy: Asia'}])
+
+# TODO: Add buttons for Europe, Americas, Africa, Oceania
+# (Follow the same pattern as the Asia button above)
+
+buttons = [all_btn, asia_btn]  # TODO: Add remaining buttons
+
+# TODO: Add dropdown menu to layout
+fig.update_layout(
+    updatemenus=[dict(buttons=buttons, direction='down', x=0.0, xanchor='left', y=1.15, yanchor='top')],
+    title='Life Expectancy: All 11 Countries',
+    xaxis_title=..., yaxis_title=...,  # Fill in axis titles
+    height=600, width=1000, hovermode='x unified'
+)
+
+fig.show()
+```
+
+

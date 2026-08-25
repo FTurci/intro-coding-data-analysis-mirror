@@ -1,0 +1,495 @@
+---
+title: Two Practical Data Preprocessing Tasks
+jupyter: python3
+---
+
+
+In this notebook, you'll practice essential data preprocessing skills with two real-world datasets:
+
+1. **UK Met Office Weather Data** (Yeovilton station) - Time series analysis
+2. **UCI Wine Quality Dataset** - Cross-sectional analysis
+
+Through these exercises, you'll learn:
+
+- Loading data from various sources
+- Data exploration and understanding
+- Type conversions and datetime handling
+- Handling missing values
+- Feature engineering and derived variables
+- Data aggregation and grouping
+- Correlation and statistical analysis
+- Data export and documentation
+
+
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Import required libraries
+import pandas as pd
+import numpy as np
+```
+
+---
+
+# Part 1: Weather Data Analysis (UK Met Office - Yeovilton Station)
+
+The first five exercises focus on analyzing historical weather data from the UK Met Office.
+
+## Exercise 1: Load Weather Data
+
+The UK Met Office provides historical weather data for stations across the UK. Your task is to load data from Yeovilton station in Somerset, England. The data file is text-based but contains metadata lines at the top before the actual data begins.
+
+**Data Source**: https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/yeoviltondata.txt
+
+The Met Office weather data contains monthly measurements from Yeovilton station:
+
+- **`yyyy`**: Year (4 digits, e.g., 1964)
+- **`mm`**: Month (1-12, where 1 = January, 12 = December)
+- **`tmax`**: Maximum temperature for the month (°C)
+- **`tmin`**: Minimum temperature for the month (°C)
+- **`af`**: Air frost days - number of days when temperature fell below 0°C
+- **`rain`**: Total monthly rainfall (millimeters)
+- **`sun`**: Total monthly sunshine duration (hours)
+
+
+**Goal**: Load the weather data, skipping metadata, and display the first rows to verify.
+
+**Hints:**
+- `pd.read_csv(url, ...)`: Reads data from a URL or file path
+- the option `skiprows=[0,1,2,3]` can skip specific lines (in this case line 0,1,2,3)
+- The option `sep='\s+'` uses whitespace as separator (regex for "one or more spaces/tabs")
+- The option `on_bad_lines='skip'` skips malformed lines
+- `.head()` Display first 5 rows to confirm data loaded correctly
+- `.shape` Returns `(rows, columns)` showing DataFrame dimensions 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Load weather data
+url = "https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/yeoviltondata.txt"
+
+df_weather = pd.read_csv(url, skiprows=[0,1,2,3,4,6],sep=r'\s+', on_bad_lines='skip')
+
+# Display first rows
+print("First 5 rows of weather data:")
+print(df_weather.head())
+print(f"\nDataset shape: {df_weather.shape}")
+print(f"Years of data: {df_weather['yyyy'].max() - df_weather['yyyy'].min()} years")
+```
+
+## Exercise 2: Clean and Prepare Weather Data
+
+Raw data requires transformation before analysis. The Met Office data uses separate year and month columns, has '---' for missing values, and some numeric columns may be stored as strings.
+
+**Goal**: Create a clean DataFrame with datetime index, proper numeric types, and NaN for missing values. We will remove the NaN afterwards.
+
+**Expected columns**: `yyyy` (year), `mm` (month), `tmax` (max temp °C), `tmin` (min temp °C), `af` (air frost days), `rain` (mm), `sun` (hours)
+
+**Hints:**
+- Use `.dtypes` to check tha data type
+- **`df.info()`**: Shows columns, data types, and non-null counts
+- **`pd.to_datetime({'year': df['yyyy'], 'month': df['mm'], 'day': 1})`**: Creates datetime from a dictionary with data from multiple columns
+- **`df.set_index('column', inplace=True)`**: Sets a column as the DataFrame index
+- **`df.replace('---', np.nan)`**: Replaces '---' strings with NaN
+- **`pd.to_numeric(series, errors='coerce')`**: Converts to numeric, replacing failures with NaN
+- **`df.sort_index(inplace=True)`**: Sorts by index to ensure chronological order
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Check initial data types
+print("Initial data types:")
+print(df_weather.dtypes)
+
+# Create datetime index
+df_weather['date'] = pd.to_datetime({'year': df_weather['yyyy'], 
+                                      'month': df_weather['mm'], 
+                                      'day': 1})
+
+
+df_weather.set_index('date', inplace=True)
+df_weather.sort_index(inplace=True)
+
+# Replace '---' with NaN
+df_weather = df_weather.replace('---', np.nan)
+
+# Convert all measurement columns to numeric
+numeric_columns = ['tmax', 'tmin', 'af', 'rain', 'sun']
+for col in numeric_columns:
+    df_weather[col] = pd.to_numeric(df_weather[col], errors='coerce')
+
+# Verify data types
+print("\nCleaned data types:")
+print(df_weather.dtypes)
+print("\nFirst few rows with datetime index:")
+print(df_weather.head())
+```
+
+## Exercise 3: Handle Missing Values in Weather Data
+
+Historical weather records often have gaps due to equipment failures or missing measurements. Your approach should depend on the nature of each measurement.
+
+**Goal**: Analyze missing value patterns and apply appropriate filling strategies. Check that no missing values remain.
+
+**Data characteristics**:
+- **Temperature**: Changes gradually (good for interpolation)
+- **Rainfall**: Variable; 0mm vs missing are different
+- **Sunshine/frost**: Could be 0 (none) or missing (not recorded)
+
+**Hints:**
+- **`df.isnull().sum()`**: Counts missing (NaN) values per column
+- **`.interpolate(method='linear')`**: Estimates missing values from surrounding values (good for gradual changes)
+- **`.fillna(0)`**: Replaces NaN with 0 (use carefully—only when 0 is plausible or to mark a period where data is missing)
+- **`.fillna(method='ffill')`**: Forward fill—propagates last valid value forward
+- **`.fillna(method='bfill')`**: Backward fill—propagates next valid value backward
+
+
+**Reflect**: Why is interpolation better for temperature than rainfall?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Count missing values
+print("Missing values per column:")
+print(df_weather.isnull().sum())
+print("\nPercentage missing:")
+print((df_weather.isnull().sum() / len(df_weather) * 100).round(2))
+
+# Apply interpolation for temperature 
+df_weather['tmax'] = df_weather['tmax'].interpolate(method='linear')
+df_weather['tmin'] = df_weather['tmin'].interpolate(method='linear')
+
+
+# For rainfall and frost, use forward fill (more conservative)
+# Could also use 0, but ffill is safer as missing doesn't necessarily mean zero
+df_weather['rain'] = df_weather['rain'].fillna(method='ffill')
+df_weather['af'] = df_weather['af'].fillna(method='ffill')
+
+# for sunshine, we have missing data before a certain year, so we fill with  0
+df_weather['sun'] = df_weather['sun'].fillna(0)
+
+# Verify
+print("\nRemaining missing values after handling:")
+print(df_weather.isnull().sum())
+```
+
+## Exercise 4: Extract Date Components and Create Weather Features
+
+Feature engineering creates new variables to reveal patterns. Extract date components (month, season) and create derived measurements (temperature range, extremes).
+
+**Goal**: Add columns for 
+
+- year
+- month name
+- season
+- temperature range 
+- mean temp
+- hot months (the maximum temp > 25)
+
+**Hints:**
+- **`df.index.year`**, **`df.index.month`**, **`df.index.quarter`**: Extract year, month (1-12), or quarter (1-4)
+- **`df.index.month_name()`**: Returns full month name ('January', etc.)
+- **Custom function + `.apply()`**: Create season mapper: `def get_season(month): ...` then `df['season'] = df['month'].apply(get_season)`
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Part A: Date components
+df_weather['year'] = df_weather.index.year
+df_weather['month'] = df_weather.index.month
+df_weather['month_name'] = df_weather.index.month_name()
+df_weather['quarter'] = df_weather.index.quarter
+
+# Season function
+def get_season(month):
+    if month in [12, 1, 2]:
+        return 'Winter'
+    elif month in [3, 4, 5]:
+        return 'Spring'
+    elif month in [6, 7, 8]:
+        return 'Summer'
+    else:
+        return 'Autumn'
+
+df_weather['season'] = df_weather['month'].apply(get_season)
+
+# Part B: Derived features
+df_weather['temp_range'] = df_weather['tmax'] - df_weather['tmin']
+df_weather['temp_mean'] = (df_weather['tmax'] + df_weather['tmin']) / 2
+df_weather['hot'] = df_weather['tmax'] > 26
+
+```
+
+## Exercise 5: Analyze Weather Patterns with GroupBy
+
+The `groupby()` operation splits data into groups, applies functions (like mean), then combines results. 
+
+You can group by month, season, year, or decade to analyze climate patterns.
+
+**Goal**: Calculate the typical (mean) monthly temperature, rainfall, and sunshine for each month and season.
+
+
+**Hints:**
+- **`df.groupby('column')['measurement1'].mean()`**: Groups and calculates mean for one column
+- **`df.groupby('column')[['col1', 'col2']].mean()`**: Groups and calculates means for multiple columns
+
+
+**More advanced question**: Can you define decades and analyze trends over decades?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+cols = ['temp_mean', 'rain', 'sun']
+monthly_stats = df_weather.groupby('month_name')[cols].mean()
+monthly_stats
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+
+season_stats = df_weather.groupby('season')[cols].mean()
+season_stats
+```
+
+To analyse over decades, we need a new column for the 1960s, 1970s, etc etc. We can create this by integer division of the year by 10, then multiplying back by 10. For example, for year 1964:`(1964 // 10) * 10 = 1960`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+df_weather['decade'] = (df_weather.index.year // 10) * 10
+decade_stats = df_weather.groupby('decade')[cols].mean()
+decade_stats
+```
+
+---
+
+# Part 2: Wine Quality Data Analysis (UCI Wine Quality Dataset)
+
+The next five exercises focus on analyzing wine quality data with chemical properties.
+
+## Exercise 6: Load and Explore Wine Quality Data
+
+Shift from time series to cross-sectional data. This UCI dataset contains physicochemical measurements of Portuguese red wines with quality ratings from experts.
+
+**Dataset**: 11 chemical properties + 1 quality score (0-10). 
+
+**Features** (chemical properties, units in parentheses):
+- `fixed acidity` (g/L tartaric acid)
+- `volatile acidity` (g/L acetic acid) 
+- `citric acid` (g/L)
+- `residual sugar` (g/L)
+- `chlorides` (g/L sodium chloride)
+- `free sulfur dioxide` (mg/L)
+- `total sulfur dioxide` (mg/L)
+- `density` (g/cm³)
+- `pH` (0-14 scale)
+- `sulphates` (g/L potassium sulphate)
+- `alcohol` (% vol)
+
+**Target**: 
+- `quality` (score 0-10, median expert ratings)
+
+Each row = different wine sample.
+
+
+**Important**: File uses **semicolons** as delimiter, not commas.
+
+**Data Source**: https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv
+
+**Goal**: Load data correctly and look at its shape and summary statistics.
+
+**Hints:**
+- **`pd.read_csv(url, sep=';')`**: Specify semicolon delimiter
+- **`.head()`**, **`.tail()`**: Show first/last rows
+- **`.shape`**: Returns `(n_rows, n_columns)`
+- **`.info()`**: Summary of columns, types, non-null counts
+- **`.describe()`**: Statistics (mean, std, min, max, quartiles) for numeric columns
+- **`.isnull().sum()`**: Count missing values per column
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Your code here
+
+wine_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
+df_wine = pd.read_csv(wine_url, sep=';')
+
+df_wine
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+df_wine.describe()
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+df_wine.isnull().sum()
+```
+
+## Exercise 7: Create Wine Quality Categories and Clean Data
+
+Convert continuous variables into categorical groupings for easier pattern recognition. This is called **binning** or **discretization**.
+
+**Goal**: We will create three categorical columns:
+- `quality_cat`: 'Poor' (0-4), 'Average' (5-6), 'Good' (7-10)
+- `sugar_level`: which is 'Dry' (<9g/L), 'Medium-Dry' (9-18g/L), 'Sweet' (>18g/L)
+
+We then construct a table showing counts of wines in each quality category by sugar level. This is called a contingency table. and can be produced with `pd.crosstab()`.
+
+**Hints:**
+- **`pd.cut(series, bins=[...], labels=[...])`**: Bins continuous data into categories
+- `bins=[0, 4, 6, 10]` creates bins: 0-4, 4-6, 6-10
+- **`.value_counts()`**: Shows how many items in each category
+- **`pd.crosstab(df['cat1'], df['cat2'])`**: Contingency table showing counts for category combinations
+
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Create quality categories
+df_wine['quality_cat'] = pd.cut(df_wine['quality'], bins=[0, 4, 6, 10], labels=['Poor', 'Average', 'Good'])
+
+# Create sugar level categories
+df_wine['sugar_level'] = pd.cut(df_wine['residual sugar'], bins=[0, 9, 18, float('inf')], labels=['Dry', 'Medium-Dry', 'Sweet'])
+
+# Create contingency table
+print("Wine Quality by Sugar Level:")
+print(pd.crosstab(df_wine['quality_cat'], df_wine['sugar_level']))
+
+```
+
+## Exercise 8: Create Derived Features
+
+Combine existing variables to create more informative features.
+
+**Goal**: Engineer new features by combining chemical measurements:
+1. **Total Acidity**: Sum fixed + volatile acidity for total acidity
+2. **Acidity ratio**: fixed divided by volatile acidity
+3. **Balance ratios**: Create sweetness-to-total-acidity ratio to measure wine balance
+5. **Standardized scores**: Calculate z-scores for alcohol to normalize its scale. This is defined for a value in a popluation of given mean and standard deviation as `(value - mean) / std deviation`.
+
+Then analyze which derived features correlate most strongly with wine quality.
+
+**Hints:**
+- The `df[selected_cols].corr()` method can help identify strong relationships between selected columns
+- The `.describe()` method allows you to check derived features have reasonable values
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Your code here
+
+df_wine['total acidity'] = df_wine['fixed acidity'] + df_wine['volatile acidity']
+df_wine['acidity ratio'] = df_wine['fixed acidity'] / df_wine['volatile acidity']
+df_wine['balance'] = df_wine['residual sugar']/df_wine['total acidity']
+df_wine['alcohol zscore'] = (df_wine['alcohol'] - df_wine['alcohol'].mean()) / df_wine['alcohol'].std()
+
+numerical_cols = df_wine.select_dtypes(include=[np.number]).columns.tolist()
+# df_wine.corr(numerical_cols)
+df_wine[numerical_cols].corr()['quality']
+```
+
+## Exercise 9: Wine Discovery Through Filtering
+
+Let's use filtering to discover interesting wines in the dataset! Think of this as being a wine explorer—you'll use boolean conditions to find wines that match specific criteria.
+
+**Goal**: Use pandas filtering to discover
+
+1. **Hidden gems**: Good wines that don't rely on high alcohol (less than 11%)
+3. **Fresh & balanced**: Wines with low volatile acidity (< 0.4) and good citric acid (>0.3)
+
+Print the top 5 results for each query, sorted by quality descending. In particular, print out the following columns: `citric acid`, `total sulfur dioxide `, `sulphates`,`alcohol`, `acidity ratio`, `quality`.
+
+
+**Hints**:
+- `df[df['column'] > value]` filters rows where condition is true
+- Combine conditions: `df[(condition1) & (condition2)]` (AND), `df[(condition1) | (condition2)]` (OR)
+- `.sort_values('column', ascending=False)` sorts by a column
+- `.head(n)` shows top n results
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+selection = ["citric acid", "total sulfur dioxide", "sulphates","alcohol", "acidity ratio", "quality"]
+# Hidden Gems (good quality but moderate alcohol)
+print("\n=== HIDDEN GEMS (Quality 6+, Alcohol < 11%) ===")
+hidden_gems = df_wine[(df_wine['quality'] >= 6) & (df_wine['alcohol'] < 11)]
+print(f"Found {len(hidden_gems)} hidden gems")
+print("\nTop 5 by quality:")
+hidden_gems[selection].sort_values('quality', ascending=False).head()
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+
+print("\n=== FRESH & BALANCED (Vol. Acidity < 0.4, Citric Acid > 0.3) ===")
+fresh = df_wine[(df_wine['volatile acidity'] < 0.4) & (df_wine['citric acid'] > 0.3)]
+print(f"Found {len(fresh)} fresh wines")
+print(f"Average quality: {fresh['quality'].mean():.2f}")
+print("\nTop 5 by quality:")
+fresh[selection].sort_values('quality', ascending=False).head()
+```
+
+## Exercise 10: Export and Document Your Analysis
+
+(this can only work on *Noteable*)
+
+Preserve your work by exporting cleaned data and documenting your process. Specifically, export your data in at least **two different formats**.
+
+**Hints:**
+- **`.to_csv('file.csv')`**: Exports to CSV. Use `index=False` to exclude index (wine) or `index=True` to include it (weather)
+- **`.to_excel('file.xlsx')`**: Exports to Excel (requires `openpyxl`)
+- **`.to_json('file.json', orient='index')`**: Exports to JSON (`orient='records'` or `orient='index'`)
+- **`pd.read_csv('file.csv')`**: Read back to verify export
+- **`pd.DataFrame(dict)`**: Create documentation tables from dictionaries
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Your code here
+
+# Part A: Export weather data
+weather_export_cols = ['tmax', 'tmin', 'rain', 'sun', 'af', 
+                        'temp_mean', 'temp_range', 'season', 'year', 'month_name']
+# df_weather[weather_export_cols].to_csv('weather_cleaned.csv')
+
+# Weather summary statistics
+# weather_summary = df_weather.groupby('season')[['tmax', 'tmin', 'rain']].describe()
+# weather_summary.to_csv('weather_summary.csv')
+
+# Part B: Export wine data
+wine_export_cols = ['fixed acidity', 'volatile acidity', 'citric acid', 
+                    'residual sugar', 'chlorides', 'pH', 'sulphates', 'alcohol',
+                    'quality', 'quality_category', 'alcohol_category',
+                    'total_acidity', 'so2_ratio']
+# df_wine[wine_export_cols].to_csv('wine_cleaned.csv', index=False)
+
+# Wine quality analysis
+# quality_summary = df_wine.groupby('quality')[numeric_cols].mean()
+# quality_summary.to_csv('wine_quality_analysis.csv')
+
+# Part C: Data Dictionary
+print("=" * 60)
+print("DATA ANALYSIS SUMMARY")
+print("=" * 60)
+
+print("\nWEATHER DATASET:")
+print(f"  Records: {len(df_weather)}")
+print(f"  Date range: {df_weather.index.min()} to {df_weather.index.max()}")
+print(f"  Years covered: {df_weather['year'].max() - df_weather['year'].min()}")
+print(f"  Key finding: [Add your finding here]")
+
+print("\nWINE DATASET:")
+print(f"  Records: {len(df_wine)}")
+print(f"  Quality range: {df_wine['quality'].min()} to {df_wine['quality'].max()}")
+print(f"  Average quality: {df_wine['quality'].mean():.2f}")
+print(f"  Key finding: [Add your finding here]")
+
+# Part D: Comparison
+comparison_data = {
+    'Characteristic': ['Data Type', 'Records', 'Missing Data', 'Main Challenge'],
+    'Weather': ['Time series', f'{len(df_weather)}', 'Yes', 'Temporal patterns'],
+    'Wine': ['Cross-sectional', f'{len(df_wine)}', 'None', 'Quality prediction']
+}
+comparison_df = pd.DataFrame(comparison_data)
+print("\nDATASET COMPARISON:")
+print(comparison_df.to_string(index=False))
+
+# Verification
+print("\n" + "=" * 60)
+print("Export complete! Verify by reading files:")
+print("  - weather_cleaned.csv")
+print("  - wine_cleaned.csv")
+print("=" * 60)
+```
+

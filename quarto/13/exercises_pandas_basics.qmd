@@ -1,0 +1,409 @@
+---
+title: Pandas Basics
+jupyter: python3
+---
+
+
+## Setup
+
+First, let's import the necessary libraries:
+
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import pandas as pd
+import numpy as np
+```
+
+## Exercise 1: Creating DataFrames from dictionaries
+
+Create a pandas DataFrame called `elements_df` containing information about chemical elements with the following data:
+
+- Element names  "Hydrogen", "Helium", "Lithium", "Beryllium", "Boron"
+- Symbols  "H", "He", "Li", "Be", "B"
+- Atomic numbers  1, 2, 3, 4, 5
+- Atomic masses  1.008, 4.003, 6.941, 9.012, 10.81
+
+The column names should be: "name", "symbol", "atomic_number", "atomic_mass"
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE
+```
+
+## Exercise 2: Setting and using indices
+
+Using the `elements_df` DataFrame from Exercise 1:
+
+a) Set the "symbol" column as the index
+
+b) Access the row for "Li" using `.loc[]`
+
+c) Extract just the atomic mass for "He"
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+## Exercise 3: Working with real data - Tips Dataset
+
+Let's load a real dataset from an online source. We'll use the famous "tips" dataset which contains information about restaurant tips.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Load the tips dataset from a reliable online source
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"
+tips_df = pd.read_csv(url)
+
+# Display the first few rows
+tips_df.head()
+```
+
+Using the `tips_df` DataFrame:
+
+a) Display the column names
+
+b) Display the shape of the DataFrame (number of rows and columns)
+
+c) Extract the "total_bill" column
+
+d) Find the data type (dtype) of the "day" column
+
+e) Display the last 8 rows of the DataFrame
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part d
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part e
+```
+
+## Exercise 4: Statistical operations
+
+Using the `tips_df` DataFrame:
+
+a) Calculate the mean of the "total_bill" column
+
+b) Find the maximum tip amount
+
+c) Find the minimum tip amount
+
+d) Calculate the standard deviation of the "tip" column
+
+e) Find the index (row position) of the maximum total bill
+
+f) Use `.describe()` to get summary statistics for all numeric columns
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part d
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part e
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part f
+```
+
+## Exercise 5: Arithmetic operations
+
+Using the `tips_df` DataFrame:
+
+a) Create a new column called "tip_percentage" that calculates the tip as a percentage of the total bill (multiply by 100 to get percentage)
+
+b) Create a new column called "total_cost" that adds the total_bill and tip together
+
+c) Calculate the mean tip percentage
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+## Exercise 6: Filtering data (single conditions)
+
+Using the `tips_df` DataFrame:
+
+a) Filter to show only rows where the total_bill is greater than 30
+
+b) Filter to show only rows where the day is "Sun"
+
+c) Filter to show only rows where the tip percentage (from Exercise 5) is greater than 20%
+
+d) How many rows have a total bill greater than 40? (Hint: use `.shape` or `len()`)
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part d
+```
+
+## Exercise 7: Filtering with multiple conditions
+
+Using the `tips_df` DataFrame:
+
+a) Filter to show rows where total_bill is greater than 20 **and** the day is "Sat"
+
+b) Filter to show rows where tip is greater than 5 **and** size (party size) is greater than or equal to 4
+
+c) Filter to show rows where the day is "Sat" **or** the day is "Sun"
+
+d) Filter to show rows where total_bill is between 15 and 25 (inclusive)
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part d
+```
+
+## Exercise 8: Working with another dataset - Iris
+
+Let's work with the classic Iris dataset, which contains measurements of iris flowers.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Load the Iris dataset
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
+iris_df = pd.read_csv(url)
+
+iris_df.head()
+```
+
+Using the `iris_df` DataFrame:
+
+a) Set the index to be a range from 1 to the number of rows (so it starts at 1 instead of 0)
+
+b) Find how many unique species are in the dataset (Hint: use `.unique()` or `.nunique()`)
+
+c) Calculate the mean sepal_length for all flowers
+
+d) Filter to show only the "setosa" species
+
+e) For the "setosa" species, what is the maximum petal_length?
+
+f) Create a new column called "sepal_area" that multiplies sepal_length by sepal_width
+
+g) Which species has the largest average sepal_area? (This requires filtering by each species)
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part d
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part e
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part f
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part g
+```
+
+## Exercise 9: Series operations
+
+Create two pandas Series and perform operations on them:
+
+a) Create a Series called `temps_celsius` with the following data:
+   - Index: ["London", "Paris", "Berlin", "Madrid", "Rome"]
+   - Values: [15, 18, 14, 22, 24]
+
+b) Create a Series called `temps_fahrenheit` that converts the Celsius temperatures to Fahrenheit using the formula: F = (C × 9/5) + 32
+
+c) Create a new Series called `humidity` with the same cities as index and values: [75, 65, 70, 55, 60]
+
+d) Calculate the average temperature across all cities (in Celsius)
+
+e) Find which city has the highest temperature
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part d
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part e
+```
+
+## Exercise 10: Challenge - Planets Dataset
+
+Let's work with a dataset about planets in our solar system.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Load planets dataset
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/planets.csv"
+planets_df = pd.read_csv(url)
+
+planets_df.head(10)
+```
+
+This dataset contains information about discovered exoplanets (planets outside our solar system).
+
+**Challenge tasks:**
+
+a) How many planets were discovered in the year 2010?
+
+b) What is the most common discovery method?
+
+c) Calculate the average orbital period for all planets (note: there may be missing values)
+
+d) Filter to show planets discovered by the "Transit" method with an orbital period less than 10 days
+
+e) Create a new column called "discovery_decade" that shows which decade each planet was discovered (e.g., 2000s, 2010s)
+   - Hint: You can use integer division: `(year // 10) * 10` to get the decade
+
+f) What percentage of all planets were discovered using the "Radial Velocity" method?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part a
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part b
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part c
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part d
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part e
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+### YOUR CODE HERE - part f
+```
+

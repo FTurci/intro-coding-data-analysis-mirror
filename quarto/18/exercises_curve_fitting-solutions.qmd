@@ -1,0 +1,303 @@
+---
+title: Exploring fits
+jupyter:
+  kernelspec:
+    display_name: 3.11.1
+    language: python
+    name: python3
+---
+
+
+
+## Exercise: learning gravity
+
+We start with simulated data similar to where our course started from.
+
+We have a ball that is thrown up in the air, and we measure its height at different times. 
+
+We assume that we do not know the physics of the problem, and our first attempt is to explore a polynomial fit to the data.
+
+```{pyodide}
+# SOLUTION
+import numpy as np
+import matplotlib.pyplot as plt
+
+def simulate_ball_throw(g=9.81, v0=20, dt=0.1, error_std=0.5):
+    """
+    Simulate the height of a ball thrown up in the air.
+    
+    Parameters:
+    g: acceleration due to gravity (m/s^2) 
+    v0: initial velocity (m/s)
+    t_max: maximum time to simulate (s)
+    dt: time step (s)
+    error_std: standard deviation of the measurement error (m)
+    
+    """
+
+    t_max = 2 * v0 / g  # time when the ball hits the ground again
+    t = np.arange(0, t_max+dt, dt)
+    # trajectory of the ball without measurement error or air resistance
+    h = v0 * t - 0.5 * g * t**2
+    # add a measurement error to the height
+    h += np.random.normal(0, error_std, size=t.shape)
+    return t, h
+
+data = simulate_ball_throw(v0=10.,error_std=0.6, dt=0.001)
+
+plt.scatter(data[0], data[1],marker='.')
+plt.xlabel('Time (s)')
+plt.ylabel('Height (m)')
+plt.title('Height of a ball thrown up in the air')
+plt.show()
+data[0].shape, data[1].shape
+```
+
+**Task 1** Consider numpy `polyfit` and an arbitrary degree polynomial `n` to fit the data. How does the fit look for different values of `n` in the integer range 1 to 6 (included)? Use `matplotlib` to compare.
+
+**Note** It can be convenient to use `numpy.polyval` to calculate the predicted values from the fitted polynomial coefficients. Use the `numpy` documentation to find out how to use it.
+
+```{pyodide}
+# SOLUTION
+plt.scatter(data[0], data[1],marker='.', label='Data')
+for n in range(1, 7):
+    coeffs = np.polyfit(data[0], data[1], n)
+    plt.plot(data[0], np.polyval(coeffs, data[0]), label=f'Polynomial fit (degree {n})')
+plt.xlabel('Time (s)')
+plt.ylabel('Height (m)')
+plt.title('Polynomial fits (degrees 1 to 6)')
+plt.legend()
+plt.show()
+```
+
+**Task 2** Which model fitted best? To answer this question we can calculate a metric like the mean squared error (MSE) between the data and the fitted curve.
+
+The mean squared error is calculated as follows:
+
+$$MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2$$
+
+where $N$ is the number of data points, $y_i$ is the actual value of the data point, and $\hat{y}_i$ is the predicted value from the fitted curve.
+
+Which value of `n` gives the best fit according to this metric?
+
+```{pyodide}
+# SOLUTION
+
+for n in range(1, 7):
+    coeffs = np.polyfit(data[0], data[1], n)
+
+    y = data[1]
+    y_fit = np.polyval(coeffs, data[0])
+    mse = np.mean((y - y_fit) ** 2)
+    print(f'Polynomial degree {n}: MSE = {mse:.6f}')
+
+
+# The result should be that the higher the degree of the polynomial, the lower the MSE. However, this does not necessarily mean that the fit is better. Instead, it is simply the fact that we are overfitting the data: more parameters give us more room for adjustment.
+```
+
+**Task 3** The overall MSE simply tends to go down as we increase the degree of the polynomial, but this does not necessarily mean that the fit is better. In fact, a very high degree polynomial can lead to overfitting, where the curve fits the noise in the data rather than the underlying trend.
+
+A way to measure the quality of the fit is to split the data in two sets:
+
+- a first subset of data that we train to perform the fit (we call this **training set**)
+- a second subset of data that we use to evaluate the fit (we call this **test set**)
+
+This splitting is easily done by selecting a random subset for the training and using the rest for the test. Take 80% of the data for training and 20% for testing.
+
+Then, perform the polynomial fit on the training set, and calculate the MSE on the test set. Which value of `n` gives the best fit according to this metric?
+
+**Note.** Use numpy's pseudo random numbers to select a random subset of the data. To avoid repetitions, you can use a permutation of the indices, e.g:
+
+```python
+rng = np.random.default_rng(seed=42)
+n_samples = len(data[0])
+# use these scrambled indices to select the training and test sets
+indices = rng.permutation(n_samples)
+```
+
+```{pyodide}
+# SOLUTION
+# splitting the data
+n_samples = len(data[0])
+n_train = int(0.8 * n_samples)
+rng = np.random.default_rng(seed=42)
+indices = rng.permutation(n_samples)
+train_indices = indices[:n_train]
+test_indices = indices[n_train:]
+data_train = (data[0][train_indices], data[1][train_indices])
+data_test = (data[0][test_indices], data[1][test_indices])
+for n in range(1, 7):
+    coeffs = np.polyfit(data_train[0], data_train[1], n)
+    y_test = data_test[1]
+    y_test_fit = np.polyval(coeffs, data_test[0])
+    mse_test = np.mean((y_test - y_test_fit) ** 2)
+    print(f'Polynomial degree {n}: Test MSE = {mse_test:.6f}')
+```
+
+**Task 4**. Now, put your training and test splitting in one function that takes the data and the polynomial degree as input, and returns the MSE for the test set in output.
+
+For every degree `n` in the integer range 1 to 6 (included), call this function and repeat the process a number of times that is at least the number of samples. Collect all the MSE values in a list, and calculate the average test MSE for every polynomial degree. 
+
+Which value of `n` gives the best fit according to this averaged test MSE?
+
+```{pyodide}
+# SOLUTION
+def testing_mse(data, n, rng):
+    n_samples = len(data[0])
+    n_train = int(0.8 * n_samples)
+    indices = rng.permutation(n_samples)
+    train_indices = indices[:n_train]
+    test_indices = indices[n_train:]
+    data_train = (data[0][train_indices], data[1][train_indices])
+    data_test = (data[0][test_indices], data[1][test_indices])
+    coeffs = np.polyfit(data_train[0], data_train[1], n)
+    y_test = data_test[1]
+    y_test_fit = np.polyval(coeffs, data_test[0])
+    mse_test = np.mean((y_test - y_test_fit) ** 2)
+    return mse_test
+
+rng = np.random.default_rng(seed=42)
+for n in range(1, 7):
+    mse_tests = []
+    for _ in range(data[0].shape[0]):
+        mse_test = testing_mse(data, n, rng)
+        mse_tests.append(mse_test)
+    print(f'Polynomial degree {n}: Test MSE = {np.mean(mse_tests):.6f}')
+```
+
+If the exercise worked as intended (e.g. if you have taken enough permutations), you should see that the fit with the lowest average MSE is given by the second degree polynomial: we should have obtained that the most robust model is the one that actually corresponds to the true nature of the simulated model!
+
+In a way, we have rediscovered the physics of the problem by using a data-driven approach, under the simple assumption that the underlying model is a polynomial.
+
+## Extended Exercise: Not just polynomials
+
+
+We now have a look at some real data for temperature variations in London, and we will try to fit a curve to it.
+
+The goal here is not to get an interpolation of the data, but to fit a simple model to a much more complex real dynamics.
+
+In particular, this kind of data presents two characteristic features:
+
+- an overall trend, which we can see as corresponding to a linear contribution in time
+- oscillatory patterns, with (at least) one characteristic time scale
+
+
+Let us use the NASA Power API to extract the data and do some pandas processing to transform it suitably
+
+```{pyodide}
+# SOLUTION
+import pandas as pd
+# NASA POWER API for London (May-Aug 2024), hourly T2M
+# Parameters: T2M (Temp at 2 meters), HOURLY
+url = (
+    "https://power.larc.nasa.gov/api/temporal/hourly/point?"
+    "parameters=T2M&community=RE&longitude=-0.12&latitude=51.50"
+    "&start=20240501&end=20240808&format=CSV"
+) # notice the syntax that allows you to select a specific time range using the YEARMODD format (e.g., 20240101 for Jan 1, 2024)
+
+
+# NASA CSVs have a long header; we skip until the data starts
+df = pd.read_csv(url, skiprows=9)
+df
+```
+
+```{pyodide}
+# SOLUTION
+# Build a proper datetime column from YEAR, MO, DY, HR
+df["date"] = (
+    pd.to_datetime(
+        dict(year=df["YEAR"], month=df["MO"], day=df["DY"]),
+        errors="coerce"
+    )
+    + pd.to_timedelta(df["HR"], unit="h")
+)
+df.set_index("date", inplace=True)
+df.plot(y="T2M", title="Hourly Temperature in London (May-Aug 2024)", ylabel="Temperature (°C)")
+```
+
+
+Given the data above, what we want to do is to approximate the data with the following model
+
+$$ y = at+b+ c \cos(2\pi t/P)+d \sin(2\pi t/P)$$
+
+where $P$ is the period of the oscillations. This is clearly a **non-linear** model that includes trigonometric functions.
+
+However, it is quite simple, as the two trigonometric functions share the same parameter.
+
+There is also another interesting fact: for a specific value of $P$, the model is linear in the parameters $a,b,c,d$ and we can use a simple linear regression to find the best fit. Indeed (for a fixed $P$!) we can rewrite the model in matrix form as
+
+$$ y = X \theta$$
+
+where $\theta = (a,b,c,d)$ and  $X$ is now a matrix of four columns, comprising the time $t$, a column of ones, and the two trigonometric functions.
+
+**Task.** Your task is to find the best fit for the data, by finding the optimal value of $P$ and then performing a linear regression to find the best values of $a,b,c,d$.
+
+You can break the exercise into smaller steps:
+
+- first you want to fix $P$ to some value and then construct the matrix $X$ and perform a linear regression to find the best values of $a,b,c,d$. For this, remember that you can use the normal equations  
+$$
+X^T X \theta = X^T \vec{y}
+$$
+
+and solve for $\theta$ using `np.linalg.solve()`
+```python
+theta = np.linalg.solve(X.T @ X, X.T @ y)
+```
+- then improve your code to include a brute-force loop over a plausible range of values for the period $P$ and find the optimal one by calculating the sum of squared errors (SSE) for each value of $P$ and then picking the one that minimizes it. The SSE is defined as
+$$SSE = \sum_i (y_i - \hat{y}_i)^2$$
+
+where $\hat{y}_i$ is the value predicted by the model for the $i$-th data point. You can simply use `np.sum()` and `np.argmin()` for this. It is recommended to plot the SSE as a function of $P$ to see how it behaves and to check that you are finding a clear minimum.
+
+- Finally, plot the original data and the best curve together to see how good the fit is. You can use matplotlib's `plt.plot()` for this, and remember to label the axes and add a legend.
+
+In the code below, some pre-processing is already done for you (conversion from date to hours etc.). You just need to fill in the blanks and complete the code to find the best fit and plot it.
+
+```{pyodide}
+# SOLUTION
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+# elapsed time in hours (continuous axis)
+x = (df.index - df.index.min()).total_seconds() / 3600.0
+y = df["T2M"].values
+
+periods = np.linspace(1, 24 * 7 * 40, 1000)  # candidate periods in hours
+SSEs = []
+thetas = []
+for T in periods:
+    X = np.column_stack((x, np.cos(2 * np.pi * x / T), np.sin(2 * np.pi * x / T), np.ones_like(x)))
+    theta = np.linalg.solve(X.T @ X, X.T @ y)
+    y_pred = X @ theta
+    SSE = np.sum((y - y_pred) ** 2)
+    SSEs.append(SSE)
+    thetas.append(theta)
+
+plt.plot(periods, SSEs)
+plt.xlabel("Period (hours)")
+plt.ylabel("SSE")
+
+optimum = np.argmin(SSEs)
+print(f"Optimal period: {periods[optimum]:.2f} hours")
+print(f"Optimal parameters: {thetas[optimum]}")
+```
+
+```{pyodide}
+# SOLUTION
+plt.plot(x, y, "-", label="Data")
+T_opt = periods[optimum]
+print(T_opt)
+X_opt = np.column_stack((x, np.cos(2 * np.pi * x / T_opt), np.sin(2 * np.pi * x / T_opt), np.ones_like(x)))
+y_pred_opt = X_opt @ thetas[optimum]
+plt.plot(x, y_pred_opt, label="Fitted Curve")
+plt.legend()
+plt.title("Curve Fitting with Sinusoidal Components")
+plt.xlabel("Time (hours)")
+plt.ylabel("Temperature (°C)")
+plt.show()
+```
+
+Clearly, this fitting procedure is a bit convoluted (and Python has more sophisticated tools and libraries to do this such as `scipy`), but it is a good exercise to understand that when we move to non-linear models, some optimisation search is often needed.
+
+It should also make you appreciate that the space of parameters can become very complex and that our benchmarks for goodness of fit (such as the SSE) can have multiple local minima. You may want to think of these minima and maxima as a landscape with hills and valleys, or points of high and low energy. This analogy brings together computing, physics and the chemistry of transition states, and is a very powerful way to think about optimisation problems.
+

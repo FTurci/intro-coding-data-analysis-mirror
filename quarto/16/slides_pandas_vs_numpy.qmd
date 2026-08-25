@@ -1,0 +1,202 @@
+---
+title: Pandas vs NumPy
+jupyter:
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+
+
+
+## Pandas and NumPy Overview
+
+NumPy provides efficient numerical computing through n-dimensional arrays (ndarrays), while Pandas builds on top of NumPy to offer high-level data structures like DataFrames for tabular data analysis. Both libraries are essential for data analysis but serve different purposes.
+
+```{pyodide}
+import numpy as np
+import pandas as pd
+
+# Create a simple NumPy array
+np_array = np.array([1, 2, 3, 4, 5])
+print("NumPy array:", np_array)
+
+# Create a simple Pandas DataFrame
+df = pd.DataFrame({'values': [1, 2, 3, 4, 5], 'squared': [1, 4, 9, 16, 25]})
+print("\nPandas DataFrame:")
+print(df)
+```
+
+## Reading and Loading Data
+
+NumPy uses functions like `np.genfromtxt()` for text files, while Pandas offers versatile `read_csv()`, `read_excel()`, and `read_sql()` methods that preserve column names and handle missing values more elegantly.
+
+```{pyodide}
+import io
+
+# Create sample CSV data
+csv_data = """id,value1,value2
+1,10,100
+2,20,200
+3,30,300"""
+
+# NumPy approach
+np_data = np.genfromtxt(io.StringIO(csv_data), delimiter=',', skip_header=1)
+print("NumPy result:")
+print(np_data)
+
+# Pandas approach
+df_data = pd.read_csv(io.StringIO(csv_data))
+print("\nPandas result:")
+print(df_data)
+```
+
+## Converting Between DataFrames and Arrays
+
+You can seamlessly convert between Pandas DataFrames and NumPy arrays using `to_numpy()` for DataFrames or the `pd.DataFrame()` constructor to go the other direction. This enables you to leverage the strengths of each library.
+
+```{pyodide}
+# Convert DataFrame to NumPy array
+df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
+array = df.to_numpy()
+print("DataFrame to array:")
+print(array)
+
+# Convert NumPy array back to DataFrame
+new_df = pd.DataFrame(array, columns=['col1', 'col2'])
+print("\nArray to DataFrame:")
+print(new_df)
+```
+
+## Indexing and Slicing
+
+NumPy uses integer-based indexing like lists, while Pandas provides both `.iloc[]` for integer-based access and `.loc[]` for label-based access. Using `.loc[]` and `.iloc[]` is preferred over direct `[]` access for clarity.
+
+```{pyodide}
+# NumPy indexing
+arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+print("NumPy - First row:", arr[0, :])
+print("NumPy - Element [1,2]:", arr[1, 2])
+
+# Pandas indexing
+df = pd.DataFrame({'A': [1, 4, 7], 'B': [2, 5, 8], 'C': [3, 6, 9]})
+print("\nPandas - Using iloc[0, :]:", df.iloc[0, :].values)
+print("Pandas - Using loc[0, 'B']:", df.loc[0, 'B'])
+```
+
+## Handling Missing Data
+
+NumPy represents missing values as `nan` and requires manual checks with `np.isnan()`, while Pandas provides the convenient `dropna()` method to remove rows with missing values in a single call.
+
+```{pyodide}
+# Create data with missing values
+df = pd.DataFrame({'A': [1, 2, np.nan, 4], 'B': [5, np.nan, np.nan, 8]})
+print("Original DataFrame:")
+print(df)
+
+# Remove rows with any missing values
+df_clean = df.dropna()
+print("\nAfter dropna():")
+print(df_clean)
+```
+
+## Statistical Computations
+
+Both libraries provide statistical functions like `mean()`, `std()`, and `sum()` with an `axis` parameter to control the direction of computation. Note that Pandas uses the sample standard deviation by default (ddof=1) while NumPy uses population standard deviation (ddof=0).
+
+```{pyodide}
+# Create sample data
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+df = pd.DataFrame(arr, columns=['A', 'B', 'C'])
+
+# NumPy statistics
+print("NumPy mean (axis=0):", arr.mean(axis=0))
+print("NumPy std (axis=0):", arr.std(axis=0))
+
+# Pandas statistics
+print("\nPandas mean:", df.mean().values)
+print("Pandas std (sample):", df.std().values)
+```
+
+## Element-Wise Operations and Vectorization
+
+Both NumPy and Pandas support vectorized operations that apply functions element-wise to entire arrays or DataFrames. This is much faster than loops and is the foundation of efficient numerical computing in Python.
+
+```{pyodide}
+# Create sample data
+arr = np.array([1, 2, 3, 4, 5])
+df = pd.DataFrame({'values': arr})
+
+# NumPy vectorized operations
+result_np = np.sqrt(arr)
+print("NumPy sqrt:", result_np)
+
+# Pandas vectorized operations
+df['sqrt_values'] = np.sqrt(df['values'])
+print("\nPandas with new column:")
+print(df)
+```
+
+## Views versus Copies
+
+NumPy slicing creates views by default (references to original data), while explicit copies are independent. In Pandas, use `.copy()` explicitly when subsetting to avoid unexpected modifications to the original DataFrame.
+
+```{pyodide}
+# NumPy view vs copy
+original = np.array([1, 2, 3, 4, 5])
+view = original[1:4]
+view[0] = 999
+print("NumPy - After modifying slice:")
+print("Original:", original)  # Changed because view shares memory
+
+# Pandas safe approach
+df = pd.DataFrame({'A': [1, 2, 3, 4]})
+df_copy = df[df['A'] > 2].copy()
+df_copy['A'] = 0
+print("\nPandas - After modifying copy:")
+print("Original:")
+print(df)  # Unchanged
+```
+
+## Plotting and Visualization
+
+Both Pandas and NumPy work well with Matplotlib for plotting. Pandas preserves column labels automatically, while NumPy requires explicit axis labels. Converting to NumPy arrays is useful for specialized plots like contours or meshgrids.
+
+```{pyodide}
+import matplotlib.pyplot as plt
+
+# Create sample data
+df = pd.DataFrame({'x': [1, 2, 3, 4], 'y': [2, 4, 6, 8]})
+
+# Pandas plotting (columns auto-labeled)
+df.plot(x='x', y='y', title="Pandas")
+
+# NumPy plotting (explicit labels needed)
+plt.figure()
+x = df['x'].to_numpy()
+y = df['y'].to_numpy()
+plt.plot(x, y, 's-')
+plt.title('NumPy'); plt.xlabel('x');plt.ylabel('y');plt.tight_layout();plt.show()
+```
+
+# Choosing the Right Tool for the Job
+
+Use NumPy for efficient numerical computations on homogeneous arrays, while Pandas excels at data cleaning, exploratory analysis, and working with heterogeneous tabular data. Understanding when to use each library—or both together—is key to efficient data analysis.
+
+```{pyodide}
+# Example: When to use each library
+
+# NumPy: Fast numerical computation
+large_array = np.random.rand(1000000)
+result = np.sum(large_array ** 2)  # Efficient vectorized operation
+print(f"NumPy - Sum of squares: {result:.2f}")
+
+# Pandas: Data manipulation and exploration
+data = {'product': ['A', 'B', 'C'], 'sales': [100, 150, 200], 'profit': [20, 35, 50]}
+df = pd.DataFrame(data)
+df['profit_margin'] = df['profit'] / df['sales']
+print(f"\nPandas - Profit margins:")
+print(df[['product', 'profit_margin']])
+```
+
+

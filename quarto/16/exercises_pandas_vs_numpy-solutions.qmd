@@ -1,0 +1,435 @@
+---
+title: 'Numpy vs Pandas: Exercises'
+resources:
+    - sample_data.csv
+    - kaggle_solar/sol_data.csv
+---
+
+
+
+We explore a numerical dataset freely avaible under MIT license on Kaggle, a platform for data science competitions and datasets. 
+
+The dataset focuses on solar system objects and contains several attributes.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import pandas as pd 
+
+df = pd.read_csv("kaggle_solar/sol_data.csv")
+df
+```
+
+## Exercise 1: Extracting numpy arrays 
+
+- Select the columns `semimajorAxis`, `density`, and `gravity` from the DataFrame `df` and convert them into a `numpy` array named `np_solar_data`. 
+- Then, design a **test** (e.g. using an `if/else` statement or an `assert` statement) to verify that `np_solar_data` is indeed a `numpy` array. Notice that simply printing the type of `np_solar_data` is not a test!
+
+
+**Reminder.** An `assert` statement is a way to test if a condition in your code returns `True`. If not, the program will raise an `AssertionError`. 
+
+It uses the keyword `assert` followed by the condition to test and an optional error message.
+
+```python
+assert condition, "Error message if condition is False"
+```
+**Hint.** If the conversion to `numpy` array is correct, then the type of `np_solar_data` should be `np.ndarray`
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+import numpy as np
+np_solar_data = df[['semimajorAxis','density','gravity']].to_numpy()
+# checking that the conversion was successful (assertion)
+assert type(np_solar_data) == np.ndarray, "The conversion was not successful"
+# alternatively, you can use if/else
+if type(np_solar_data) == np.ndarray:
+    print("The conversion was successful")  
+else:
+    print("The conversion was not successful")
+```
+
+## Exercise 2: Extracting basic statistics
+
+- Using the `numpy` array `np_solar_data` created in Exercise 1, compute the mean and standard deviation for each of the three columns: `semimajorAxis`, `density`, and `gravity`. Store the results in two separate `numpy` arrays named `mean_values` and `std_values`.
+- Can you find  way to compute these same statistics from the original DataFrame `df` without converting it to a `numpy` array? Store these results in two separate `pandas` Series named `mean_series` and `std_series`.
+- Inspect the stand deviations in the numpy and pandas result. Can you choose parameters such that the results are identical? 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+# Compute mean and standard deviation using numpy array
+mean_values = np.mean(np_solar_data, axis=0)
+std_values = np.std(np_solar_data, axis=0)
+
+# Compute the same statistics using pandas DataFrame
+mean_series = df[['semimajorAxis', 'density', 'gravity']].mean()
+# choose the ddof parameter to match numpy's default behavior
+std_series = df[['semimajorAxis', 'density', 'gravity']].std(ddof=0)
+
+print("Mean values using numpy array:", mean_values)
+print("Mean values using pandas DataFrame:\n", mean_series)
+print("Standard deviation using numpy array:", std_values)
+print("Standard deviation using pandas DataFrame:\n", std_series)
+```
+
+## Exercise 3: Understanding Pandas `SettingWithCopyWarning`
+
+You want to analyze only the rocky planets by creating a subset and adding a calculated column.
+
+**Task:** 
+- Create a subset `rocky_planets` from `df` filtering for `isPlanet == True` and `density > 3`
+- Add a new column `mass_estimate` to `rocky_planets` calculated as `density * gravity` 
+- Observe any warnings that pandas displays
+- What does the warning mean? Why did it appear?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+# Create subset for rocky planets
+rocky_planets = df[(df['isPlanet'] == True) & (df['density'] > 3)]
+print("Rocky planets found:", len(rocky_planets))
+print(rocky_planets[['eName', 'density', 'gravity']])
+
+# Try to add a new column - this triggers SettingWithCopyWarning
+rocky_planets['mass_estimate'] = rocky_planets['density'] * rocky_planets['gravity']
+
+print("\nAdded 'mass_estimate' column")
+print(rocky_planets[['eName', 'mass_estimate']].head())
+
+# The warning appears because pandas cannot guarantee whether:
+# 1. You're modifying a view (changes might affect original df)
+# 2. You're modifying a copy (changes won't affect original df)
+# 
+# The behavior is unpredictable! To avoid this, use .copy() explicitly:
+# rocky_planets = df[(df['isPlanet'] == True) & (df['density'] > 3)].copy()
+```
+
+## Exercise 4: When Views and Copies Actually Break Your Code
+
+The warning is nice, but let's see actual unexpected behavior! You'll try to add a column categorizing planets as inner or outer solar system objects, but the code won't work as expected.
+
+**Note.** There are two types of chained indexing, both problematic:
+
+1. **Column-then-row**: `df['column'][condition] = value` (select column, then filter)
+2. **Row-then-column**: `df[condition]['column'] = value` (filter rows, then select column)
+
+Both create intermediate objects (potential copies) before assignment, so modifications may be lost!
+
+
+- Reload the DataFrame: `df = pd.read_csv("kaggle_solar/sol_data.csv")`
+- Filter for planets: `planets = df[df['isPlanet'] == True].copy()`
+- Initialize a column: `planets['outer_planet'] = False`
+
+- Try row-then-column chained indexing: `planets[planets['semimajorAxis'] > 5]['outer_planet'] = True`**Note:** Objects with semimajorAxis > 5 AU are beyond Jupiter's orbit (outer solar system).
+
+- Check if it worked, then use `.loc[]` to do it correctly
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+# Reload the data to start fresh
+df = pd.read_csv("kaggle_solar/sol_data.csv")
+planets = df[df['isPlanet'] == True].copy()
+planets['outer_planet'] = False
+
+# WRONG WAY - Row-then-column chained indexing
+# Step 1: planets[condition] returns a filtered DataFrame (might be a copy)
+# Step 2: ['outer_planet'] = True modifies that temporary copy, not planets!
+planets[planets['semimajorAxis'] > 5]['outer_planet'] = True
+
+print("WRONG WAY - After row-then-column chained indexing:")
+print(planets[['eName', 'semimajorAxis', 'outer_planet']])
+print("All values still False! Assignment was lost.\n")
+
+# RIGHT WAY - Use .loc[rows, column] to do both selections at once
+planets.loc[planets['semimajorAxis'] > 5, 'outer_planet'] = True
+
+print("RIGHT WAY - After using .loc[]:")
+print(planets[['eName', 'semimajorAxis', 'outer_planet']])
+print("Jupiter, Saturn, Uranus, Neptune are now True!")
+
+# Chained indexing (both types) creates intermediate objects between selections
+# .loc[rows, columns] does selection and assignment in one atomic operation
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+planets.columns
+```
+
+## Exercise 5: extracting data and processing it with `numpy` and `matpltolib`
+
+We now want to extract data and process it with `numpy` functions.
+
+- Using `numpy` or `pandas` extract the escape velocity and the mass in kg for all the objects and plot them in a scatter plot using `matplotlib`.
+
+- Consider that th escape velocity can be calculated as follows:
+
+$$
+v_{e s c}=\sqrt{2 g R}
+$$
+
+where:
+- $g$ is the surface gravity
+- $R$ is the radius of the object in 
+
+
+- Improve your plotting to illustrate this relationship explicitly (e.g. by changing the scales, plotting guides to the eye, etc.). Note that the radius is in km, the escape veclocity is in m/s, and the gravity is in m/s².
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+import matplotlib.pyplot as plt
+
+x = np.log(2*df['gravity']*df['meanRadius']*1000)
+y = np.log(df['escape'])
+plt.scatter(x,y )
+plt.xlabel('Log(2 g R)')
+plt.ylabel('Log(Escape Velocity)')
+plt.plot(x,0.5*x, 'r')
+```
+
+## Exercise 6: String Operations - Pandas vs NumPy
+
+Extract planet names and convert them to uppercase using both pandas and numpy approaches.
+
+**Task:**
+- Filter the DataFrame to get only planets (where `isPlanet == True`)
+- Extract the planet names (column `eName`) using pandas methods and convert them to uppercase (UPPERCASE). Store this in a variable named `pandas_upper_names`
+- Now try to do the same using `numpy`: convert the `eName` column to a numpy array and apply string operations:
+
+    - you can use a for loop to iterate through the names and convert them to uppercase (e.g. via list comprehension)
+    - or use `numpy.char` sub module for vectorized string operations
+ 
+- Which approach is easier for string operations?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+# PANDAS approach - very clean and readable
+planet_names_pandas = df[df['isPlanet'] == True]['eName'].str.upper()
+print("Pandas approach:")
+print(planet_names_pandas)
+
+# NUMPY approach - requires more manual work
+planets_mask = df['isPlanet'].to_numpy() == True
+planet_names_numpy = df['eName'].to_numpy(dtype=str)[planets_mask]
+# Need to use a list comprehension or np.char for string operations
+planet_names_upper_numpy = np.char.upper(planet_names_numpy)
+print("\nNumPy approach:")
+print(planet_names_upper_numpy)
+
+# Alternative numpy approach with list comprehension
+planet_names_upper_list = [name.upper() for name in planet_names_numpy]
+print("\nNumPy with list comprehension:")
+print(planet_names_upper_list)
+
+# Pandas is much more convenient for string operations!
+# The .str accessor provides many built-in string methods
+```
+
+## Exercise 7: Grouping and Aggregation - Pandas vs NumPy
+
+Calculate the mean density for planets vs non-planets using pandas groupby, then try to replicate this in numpy.
+
+**Task:**
+- Use pandas `groupby()` to compute the mean density grouped by `isPlanet` (True/False)
+- Now try to replicate this result using only numpy arrays:
+  - Convert the relevant columns to numpy arrays
+  - Manually separate the data into two groups (planets and non-planets)
+  - Calculate the mean for each group
+  
+- Which approach is more convenient? What happens if you need to group by multiple columns?
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+# PANDAS approach - simple and elegant
+mean_density_by_planet = df.groupby('isPlanet')['density'].mean()
+print("Pandas groupby approach:")
+print(mean_density_by_planet)
+print()
+
+# NUMPY approach - manual and verbose
+# Convert to numpy arrays
+is_planet_array = df['isPlanet'].to_numpy()
+density_array = df['density'].to_numpy()
+
+# Manually create masks for each group
+planets_mask = is_planet_array == True
+non_planets_mask = is_planet_array == False
+
+# Calculate mean for each group
+mean_density_planets = np.mean(density_array[planets_mask])
+mean_density_non_planets = np.mean(density_array[non_planets_mask])
+
+print("NumPy manual approach:")
+print(f"isPlanet = True:  {mean_density_planets}")
+print(f"isPlanet = False: {mean_density_non_planets}")
+print()
+
+# For multiple groups or multiple columns, numpy becomes very cumbersome
+# Pandas automatically handles group labels, missing values, etc.
+```
+
+## Exercise 8: Correlation Matrix - Pandas vs NumPy
+
+Calculate the correlation matrix for physical properties using pandas and numpy.
+
+**Background:** 
+
+The **covariance** between two variables $X$ and $Y$ measures how they vary together:
+$$\text{cov}(X,Y) = \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})(y_i - \bar{y})$$
+
+The **correlation coefficient** normalizes covariance by the standard deviations:
+$$r_{XY} = \frac{\text{cov}(X,Y)}{\sigma_X \sigma_Y}$$
+where $\sigma_X = \sqrt{\frac{1}{n-1}\sum(x_i - \bar{x})^2}$ is the standard deviation.
+
+Correlation ranges from -1 (perfect negative) to +1 (perfect positive), with 0 meaning no linear relationship.
+
+**Standardization:** Transform each variable to have mean = 0 and standard deviation = 1:
+$$z_i = \frac{x_i - \bar{x}}{\sigma_x}$$
+
+After standardization, the correlation matrix can be computed using matrix multiplication.
+
+**Task:**
+
+- Use pandas `.corr()` to compute the correlation matrix for `density`, `gravity`, and `meanRadius`
+- Now replicate this using `numpy` by following these steps:
+  1. **Extract data**: Get the three columns as an $n \times 3$ matrix $X$ (n rows/objects, 3 columns/variables)
+  2. **Center the data**: Subtract the mean of each column to get $X_{\text{centered}}$ (remember that you can use the `axis` parameter in `numpy` functions)
+  3. **Standardize**: Divide each centered column by its standard deviation to get $Z$ (the standardized matrix)
+  4. **Compute correlation**: The correlation matrix is $R = \frac{1}{n-1} Z^T Z$ (a $3 \times 3$ matrix)
+  5. Compare with the pandas result
+  
+**Note:** The matrix $Z$ has shape $(n \times 3)$, so $Z^T$ has shape $(3 \times n)$, and their product gives a $(3 \times 3)$ correlation matrix.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+# PANDAS approach - one line!
+columns_of_interest = ['density', 'gravity', 'meanRadius']
+corr_matrix_pandas = df[columns_of_interest].corr()
+print("Pandas correlation matrix:")
+print(corr_matrix_pandas)
+print()
+
+# NUMPY approach - manual calculation
+# Step 1: Extract the data as numpy array
+data = df[columns_of_interest].to_numpy()
+print(f"Data shape: {data.shape} (rows x columns)")
+
+# Step 2: Standardize each column (mean=0, std=1)
+# Subtract mean from each column
+data_centered = data - np.mean(data, axis=0)
+# Divide by standard deviation
+data_standardized = data_centered / np.std(data, axis=0, ddof=1)
+print(f"Standardized data has mean ~0 and std ~1")
+print(f"Means: {np.mean(data_standardized, axis=0)}")
+print(f"Stds: {np.std(data_standardized, axis=0, ddof=1)}")
+print()
+
+# Step 3: Compute correlation matrix
+# For standardized data: correlation = (1/(n-1)) * X^T @ X
+n = data.shape[0]
+corr_matrix_numpy = (1 / (n - 1)) * (data_standardized.T @ data_standardized)
+print("NumPy correlation matrix:")
+print(corr_matrix_numpy)
+print()
+
+# Step 4: Compare - they should be essentially identical
+print("Difference between pandas and numpy results:")
+print(corr_matrix_pandas.values - corr_matrix_numpy)
+print("\nKey insight: Pandas .corr() does all the standardization internally!")
+print("The correlation matrix is symmetric and diagonal elements are 1.0")
+```
+
+## Exercise 9: Creating a Theoretical Model Visualization with NumPy
+
+Create a contour plot showing how escape velocity varies with surface gravity and radius, then overlay real solar system objects.
+
+**Scientific Background:** 
+
+From $v_{esc} = \sqrt{2gR}$, we can predict escape velocity for any combination of surface gravity $g$ and radius $R$. This creates a "phase space" showing where different types of objects fall.
+
+**Task:**
+
+1. **Create a grid of theoretical values using numpy:**
+   - Use `np.linspace()` to create arrays of gravity values (0.1 to 30 m/s²) and radius values (100 to 100,000 km)
+   - Use `np.meshgrid()` to create 2D grids for both variables
+   - Calculate theoretical escape velocity on this grid using the formula (remember unit conversions!)
+
+2. **Create a contour plot:**
+   - Use `plt.contourf()` or `plt.contour()` to plot the theoretical escape velocity
+   - Add contour labels showing escape velocity values
+   - Filter the dataset for the 8 true planets: Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune
+   - Overlay these planets on the contour plot using `plt.scatter()`
+
+3. **Interpretation:**
+   - Do the 8 planets fall on the theoretical contours?
+   - Can you identify different groups among the planets (rocky vs gas/ice giants)?
+
+Use the `matplotlib` documentation at https://matplotlib.org/stable/contents.html if needed.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+## SOLUTION
+
+import matplotlib.pyplot as plt
+
+# Filter for 8 true planets first
+true_planets = ['Mercury', 'Venus', 'Earth', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune']
+planets_data = df[df['eName'].isin(true_planets)]
+
+# Extract ranges from the planet data
+g_min, g_max = planets_data['gravity'].min(), planets_data['gravity'].max()
+R_min, R_max = planets_data['meanRadius'].min(), planets_data['meanRadius'].max()
+
+# Create 1D arrays for gravity and radius with some padding
+g_values = np.linspace(g_min * 0.5, g_max * 1.2, 100)
+R_values = np.linspace(R_min * 0.5, R_max * 1.2, 100)
+
+# Create 2D meshgrids for contour plot
+G_grid, R_grid = np.meshgrid(g_values, R_values)
+
+# Calculate theoretical escape velocity
+# Convert R from km to m, then result to km/s
+V_esc_grid = np.sqrt(2 * G_grid * R_grid * 1000) / 1000
+
+# Create the contour plot
+fig, ax = plt.subplots(figsize=(10, 8))
+
+# Plot filled contours and contour lines
+contour_filled = ax.contourf(R_grid, G_grid, V_esc_grid, levels=20, cmap='viridis', alpha=0.6)
+contour_lines = ax.contour(R_grid, G_grid, V_esc_grid, levels=10, colors='black', linewidths=0.5)
+# Add labels to contour lines
+ax.clabel(contour_lines, inline=True, fontsize=8, fmt='%0.0f km/s')
+
+# Overlay planets
+ax.scatter(planets_data['meanRadius'], planets_data['gravity'], 
+           s=150, c='red', marker='o', edgecolors='black', linewidths=2,
+           label='8 Planets', zorder=5)
+
+# Labels and formatting
+ax.set_xlabel('Radius (km)', fontsize=12)
+ax.set_ylabel('Surface Gravity (m/s2)', fontsize=12)
+ax.set_title('Escape Velocity as a Function of Gravity and Radius', fontsize=14)
+ax.set_xscale('log')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+# Add colorbar
+cbar = plt.colorbar(contour_filled, ax=ax, label='Escape Velocity (km/s)')
+
+plt.tight_layout()
+plt.show()
+```
+
+

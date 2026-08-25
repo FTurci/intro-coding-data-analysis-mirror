@@ -1,0 +1,482 @@
+---
+title: 'Pandas Basics: Exercises'
+jupyter: python3
+---
+
+
+This notebook contains exercises on basic pandas data structures including DataFrames and Series. Each exercise is followed by its solution.
+
+We'll use real datasets from online sources to make the exercises more interesting and practical.
+
+
+## Setup
+
+First, let's import the necessary libraries:
+
+```{pyodide}
+import pandas as pd
+import numpy as np
+```
+
+## Exercise 1: Creating DataFrames from dictionaries
+
+Create a pandas DataFrame called `elements_df` containing information about chemical elements with the following data:
+
+- Element names "Hydrogen", "Helium", "Lithium", "Beryllium", "Boron"
+- Symbols: "H", "He", "Li", "Be", "B"
+- Atomic numbers: 1, 2, 3, 4, 5
+- Atomic masses: 1.008, 4.003, 6.941, 9.012, 10.81
+
+The column names should be: "name", "symbol", "atomic_number", "atomic_mass"
+
+### Solution 1
+
+```{pyodide}
+elements_dict = {
+    "name": ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron"],
+    "symbol": ["H", "He", "Li", "Be", "B"],
+    "atomic_number": [1, 2, 3, 4, 5],
+    "atomic_mass": [1.008, 4.003, 6.941, 9.012, 10.81]
+}
+
+elements_df = pd.DataFrame(elements_dict)
+elements_df
+```
+
+## Exercise 2: Setting and using indices
+
+Using the `elements_df` DataFrame from Exercise 1:
+
+a) Set the "symbol" column as the index
+
+b) Access the row for "Li" using `.loc[]`
+
+c) Extract just the atomic mass for "He"
+
+### Solution 2
+
+```{pyodide}
+# Part a: Set symbol as index
+elements_df = elements_df.set_index("symbol")
+elements_df
+```
+
+```{pyodide}
+# Part b: Access row for Li
+elements_df.loc["Li"]
+```
+
+```{pyodide}
+# Part c: Extract atomic mass for He
+elements_df.loc["He", "atomic_mass"]
+```
+
+## Exercise 3: Working with real data - Tips Dataset
+
+Let's load a real dataset from an online source. We'll use the famous "tips" dataset which contains information about restaurant tips.
+
+```{pyodide}
+# Load the tips dataset from a reliable online source
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"
+tips_df = pd.read_csv(url)
+
+# Display the first few rows
+tips_df.head()
+```
+
+Using the `tips_df` DataFrame:
+
+a) Display the column names
+
+b) Display the shape of the DataFrame (number of rows and columns)
+
+c) Extract the "total_bill" column
+
+d) Find the data type (dtype) of the "day" column
+
+e) Display the last 8 rows of the DataFrame
+
+### Solution 3
+
+```{pyodide}
+# Part a: Column names
+tips_df.columns
+```
+
+```{pyodide}
+# Part b: Shape
+tips_df.shape
+```
+
+```{pyodide}
+# Part c: Extract total_bill column
+tips_df["total_bill"]
+```
+
+```{pyodide}
+# Part d: Data type of day column
+tips_df["day"].dtype
+```
+
+```{pyodide}
+# Part e: Last 8 rows
+tips_df.tail(8)
+```
+
+## Exercise 4: Statistical operations
+
+Using the `tips_df` DataFrame:
+
+a) Calculate the mean of the "total_bill" column
+
+b) Find the maximum tip amount
+
+c) Find the minimum tip amount
+
+d) Calculate the standard deviation of the "tip" column
+
+e) Find the index (row position) of the maximum total bill
+
+f) Use `.describe()` to get summary statistics for all numeric columns
+
+### Solution 4
+
+```{pyodide}
+# Part a: Mean total bill
+tips_df["total_bill"].mean()
+```
+
+```{pyodide}
+# Part b: Maximum tip
+tips_df["tip"].max()
+```
+
+```{pyodide}
+# Part c: Minimum tip
+tips_df["tip"].min()
+```
+
+```{pyodide}
+# Part d: Standard deviation of tips
+tips_df["tip"].std()
+```
+
+```{pyodide}
+# Part e: Index of maximum total bill
+tips_df["total_bill"].idxmax()
+```
+
+```{pyodide}
+# Part f: Summary statistics
+tips_df.describe()
+```
+
+## Exercise 5: Arithmetic operations
+
+Using the `tips_df` DataFrame:
+
+a) Create a new column called "tip_percentage" that calculates the tip as a percentage of the total bill (multiply by 100 to get percentage)
+
+b) Create a new column called "total_cost" that adds the total_bill and tip together
+
+c) Calculate the mean tip percentage
+
+### Solution 5
+
+```{pyodide}
+# Part a: Tip percentage
+tips_df["tip_percentage"] = (tips_df["tip"] / tips_df["total_bill"]) * 100
+tips_df.head()
+```
+
+```{pyodide}
+# Part b: Total cost
+tips_df["total_cost"] = tips_df["total_bill"] + tips_df["tip"]
+tips_df.head()
+```
+
+```{pyodide}
+# Part c: Mean tip percentage
+tips_df["tip_percentage"].mean()
+```
+
+## Exercise 6: Filtering data (single conditions)
+
+Using the `tips_df` DataFrame:
+
+a) Filter to show only rows where the total_bill is greater than 30
+
+b) Filter to show only rows where the day is "Sun"
+
+c) Filter to show only rows where the tip percentage (from Exercise 5) is greater than 20%
+
+d) How many rows have a total bill greater than 40? (Hint: use `.shape` or `len()`)
+
+### Solution 6
+
+```{pyodide}
+# Part a: Total bill > 30
+tips_df[tips_df["total_bill"] > 30]
+```
+
+```{pyodide}
+# Part b: Day is Sun
+tips_df[tips_df["day"] == "Sun"]
+```
+
+```{pyodide}
+# Part c: Tip percentage > 20
+tips_df[tips_df["tip_percentage"] > 20]
+```
+
+```{pyodide}
+# Part d: Count of rows with total bill > 40
+filtered_df = tips_df[tips_df["total_bill"] > 40]
+print(f"Number of rows: {len(filtered_df)}")
+# Alternative: filtered_df.shape[0]
+```
+
+## Exercise 7: Filtering with multiple conditions
+
+Using the `tips_df` DataFrame:
+
+a) Filter to show rows where total_bill is greater than 20 **and** the day is "Sat"
+
+b) Filter to show rows where tip is greater than 5 **and** size (party size) is greater than or equal to 4
+
+c) Filter to show rows where the day is "Sat" **or** the day is "Sun"
+
+d) Filter to show rows where total_bill is between 15 and 25 (inclusive)
+
+### Solution 7
+
+```{pyodide}
+# Part a: total_bill > 20 AND day is Sat
+tips_df[(tips_df["total_bill"] > 20) & (tips_df["day"] == "Sat")]
+```
+
+```{pyodide}
+# Part b: tip > 5 AND size >= 4
+tips_df[(tips_df["tip"] > 5) & (tips_df["size"] >= 4)]
+```
+
+```{pyodide}
+# Part c: day is Sat OR day is Sun
+tips_df[(tips_df["day"] == "Sat") | (tips_df["day"] == "Sun")]
+```
+
+```{pyodide}
+# Part d: total_bill between 15 and 25
+tips_df[(tips_df["total_bill"] >= 15) & (tips_df["total_bill"] <= 25)]
+```
+
+## Exercise 8: Working with another dataset - Iris
+
+Let's work with the classic Iris dataset, which contains measurements of iris flowers.
+
+```{pyodide}
+# Load the Iris dataset
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
+iris_df = pd.read_csv(url)
+
+iris_df.head()
+```
+
+Using the `iris_df` DataFrame:
+
+a) Set the index to be a range from 1 to the number of rows (so it starts at 1 instead of 0)
+
+b) Find how many unique species are in the dataset (Hint: use `.unique()` or `.nunique()`)
+
+c) Calculate the mean sepal_length for all flowers
+
+d) Filter to show only the "setosa" species
+
+e) For the "setosa" species, what is the maximum petal_length?
+
+f) Create a new column called "sepal_area" that multiplies sepal_length by sepal_width
+
+g) Which species has the largest average sepal_area? (This requires filtering by each species)
+
+### Solution 8
+
+```{pyodide}
+# Part a: Set index starting from 1
+iris_df.index = range(1, len(iris_df) + 1)
+iris_df.head()
+```
+
+```{pyodide}
+# Part b: Number of unique species
+print(f"Unique species: {iris_df['species'].unique()}")
+print(f"Number of unique species: {iris_df['species'].nunique()}")
+```
+
+```{pyodide}
+# Part c: Mean sepal length
+iris_df["sepal_length"].mean()
+```
+
+```{pyodide}
+# Part d: Filter for setosa
+iris_df[iris_df["species"] == "setosa"]
+```
+
+```{pyodide}
+# Part e: Maximum petal length for setosa
+setosa_df = iris_df[iris_df["species"] == "setosa"]
+setosa_df["petal_length"].max()
+```
+
+```{pyodide}
+# Part f: Create sepal_area column
+iris_df["sepal_area"] = iris_df["sepal_length"] * iris_df["sepal_width"]
+iris_df.head()
+```
+
+```{pyodide}
+# Part g: Species with largest average sepal_area
+setosa_mean = iris_df[iris_df["species"] == "setosa"]["sepal_area"].mean()
+versicolor_mean = iris_df[iris_df["species"] == "versicolor"]["sepal_area"].mean()
+virginica_mean = iris_df[iris_df["species"] == "virginica"]["sepal_area"].mean()
+
+print(f"Setosa mean sepal area: {setosa_mean:.2f}")
+print(f"Versicolor mean sepal area: {versicolor_mean:.2f}")
+print(f"Virginica mean sepal area: {virginica_mean:.2f}")
+
+# Find the maximum
+species_means = {
+    "setosa": setosa_mean,
+    "versicolor": versicolor_mean,
+    "virginica": virginica_mean
+}
+max_species = max(species_means, key=species_means.get)
+print(f"\nSpecies with largest average sepal area: {max_species}")
+```
+
+## Exercise 9: Series operations
+
+Create two pandas Series and perform operations on them:
+
+a) Create a Series called `temps_celsius` with the following data:
+   - Index: ["London", "Paris", "Berlin", "Madrid", "Rome"]
+   - Values: [15, 18, 14, 22, 24]
+
+b) Create a Series called `temps_fahrenheit` that converts the Celsius temperatures to Fahrenheit using the formula: F = (C × 9/5) + 32
+
+c) Create a new Series called `humidity` with the same cities as index and values: [75, 65, 70, 55, 60]
+
+d) Calculate the average temperature across all cities (in Celsius)
+
+e) Find which city has the highest temperature
+
+### Solution 9
+
+```{pyodide}
+# Part a: Create temps_celsius Series
+temps_celsius = pd.Series(
+    [15, 18, 14, 22, 24],
+    index=["London", "Paris", "Berlin", "Madrid", "Rome"]
+)
+temps_celsius
+```
+
+```{pyodide}
+# Part b: Convert to Fahrenheit
+temps_fahrenheit = (temps_celsius * 9/5) + 32
+temps_fahrenheit
+```
+
+```{pyodide}
+# Part c: Create humidity Series
+humidity = pd.Series(
+    [75, 65, 70, 55, 60],
+    index=["London", "Paris", "Berlin", "Madrid", "Rome"]
+)
+humidity
+```
+
+```{pyodide}
+# Part d: Average temperature
+temps_celsius.mean()
+```
+
+```{pyodide}
+# Part e: City with highest temperature
+temps_celsius.idxmax()
+```
+
+## Exercise 10: Challenge - Planets Dataset
+
+Let's work with a dataset about planets in our solar system.
+
+```{pyodide}
+# Load planets dataset
+url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/planets.csv"
+planets_df = pd.read_csv(url)
+
+planets_df.head(10)
+```
+
+This dataset contains information about discovered exoplanets (planets outside our solar system).
+
+**Challenge tasks:**
+
+a) How many planets were discovered in the year 2010?
+
+b) What is the most common discovery method?
+
+c) Calculate the average orbital period for all planets (note: there may be missing values)
+
+d) Filter to show planets discovered by the "Transit" method with an orbital period less than 10 days
+
+e) Create a new column called "discovery_decade" that shows which decade each planet was discovered (e.g., 2000s, 2010s)
+   - Hint: You can use integer division: `(year // 10) * 10` to get the decade
+
+f) What percentage of all planets were discovered using the "Radial Velocity" method?
+
+### Solution 10
+
+```{pyodide}
+# Part a: Planets discovered in 2010
+planets_2010 = planets_df[planets_df["year"] == 2010]
+print(f"Number of planets discovered in 2010: {len(planets_2010)}")
+```
+
+```{pyodide}
+# Part b: Most common discovery method
+print(planets_df["method"].value_counts())
+print(f"\nMost common method: {planets_df['method'].value_counts().idxmax()}")
+```
+
+```{pyodide}
+# Part c: Average orbital period (ignoring NaN values)
+print(f"Average orbital period: {planets_df['orbital_period'].mean():.2f} days")
+```
+
+```{pyodide}
+# Part d: Transit method with orbital period < 10 days
+transit_short = planets_df[
+    (planets_df["method"] == "Transit") & 
+    (planets_df["orbital_period"] < 10)
+]
+transit_short
+```
+
+```{pyodide}
+# Part e: Discovery decade
+planets_df["discovery_decade"] = (planets_df["year"] // 10) * 10
+planets_df[["year", "discovery_decade"]].head(10)
+```
+
+```{pyodide}
+# Part f: Percentage of Radial Velocity discoveries
+total_planets = len(planets_df)
+radial_velocity_planets = len(planets_df[planets_df["method"] == "Radial Velocity"])
+percentage = (radial_velocity_planets / total_planets) * 100
+
+print(f"Total planets: {total_planets}")
+print(f"Radial Velocity planets: {radial_velocity_planets}")
+print(f"Percentage: {percentage:.2f}%")
+```
+

@@ -1,0 +1,293 @@
+---
+title: Beyond the Notebook and some riddles
+jupyter: python3
+---
+
+
+
+## Today
+
+- Explore alternative ways to interact with Python code beyond Jupyter Notebooks
+- Discover some basic file management tools
+
+- Consolidate your Python understanding with a few riddles 
+
+## Aims
+
+**Aim**: We will explore more advanced ways to use the notebook and to use `python` beyond the notebook.
+
+Today's session will give you pointers on how to interact with the notebook in a more advanced an productive way.
+
+You will learn about how to navigate directories and use files called **python scripts** to store useful code for future re-use.
+
+The session will be rely on some **live demonstrations**.
+
+## Jupyter Notebook vs Jupyter Lab
+
+- All previous workshops have used Jupyter Notebooks by selecting `Jupyter Classic (Legacy)` from teh Noteable interface.
+- A richer environment is available by selecting **Jupyter Lab** from the Noteable interface, selecting `Standard Python 3` 
+
+![image.png](attachment:image.png)
+
+## Jupyter Lab interface
+
+- The interface is **more complex**, but also **more powerful**.
+- We have on the left a **file browser** that allows us to navigate the file system.
+- On the right using the **launcher** we can create new notebooks, text files, terminals, and other useful items.
+
+(Live demonstration)
+
+![image.png](attachment:image.png)
+
+## Files and folders 
+
+Using the graphical file manager, you can create, delete, move, and organize files and folders on your computer. Here are some common tasks you can perform:
+
+- **Create a new folder**: Right-click in the file browser and select "New Folder" to create a new directory.
+- **Upload files**: Click the "Upload" button to upload files from your local machine to the current directory.
+- **Rename files/folders**: Right-click on a file or folder and select "Rename
+- **Create a new file**: Click on File -> New -> Text File or Python File
+
+## Python files vs notebooks
+
+- Python files are pure text files that contain Python code. They have a `.py` extension.
+- Notebooks are interactive documents that can contain code, text, images, and more. They have a `.ipynb` extension. They are the primary way we have been interacting with Python so far.
+- Python files are useful for storing reusable code, while notebooks are great for exploration and documentation.
+
+## Interact with the file systems from a notebook: `Bash`
+
+From a notebook we can interact with the file system to scan directories, create files and folders, and move files around.
+
+We do this by leveraging *special commands* using the `!` character.
+
+This allows us to run **shell commands** from within a notebook cell. These are commands that you would normally run in a terminal or command prompt. They use a special language that is different from Python but is very useful for file management.
+
+The language is called `Bash`. 
+
+`Bash` is important because it allows us to interact with the operating system and perform tasks that are not directly related to Python programming. 
+
+For example, it is useful when communicating with remote servers, managing files, and automating tasks.
+
+From Jupyter,  you can launch a `Terminal` if you want to explore a purely Bash environment. 
+
+## Basic Bash commands from a notebook
+
+In the next few slides we will explore some basic Bash commands that you can use from within a Jupyter notebook.
+
+You can run these commands by prefixing them with the `!` character in a notebook cell.
+
+## Pathway to the current directory
+
+First, let's check where we are right now in the file system. To do so, we query the **p**athway to the **w**orking ***d***irectory with the `pwd` command.
+
+```{pyodide}
+! pwd
+```
+
+This shows where we currently are, and each of you should have a different path, with a different username.
+
+## Listing the content of the current directory
+
+The `ls` command lists the files and directories in the current directory. The current directory is represented by a `.` (dot).
+
+```{pyodide}
+! ls 
+```
+
+## Creating a new directory
+
+The `mkdir` command creates a new directory in the specified path. For example, to create a new directory in the current directory we can write
+
+```{pyodide}
+! mkdir new_directory 
+```
+
+We can check its existence with `ls`.
+
+```{pyodide}
+! ls
+```
+
+Equally, we can go back to the `jupyter` interface and see the new directory in the graphical user interface.
+
+## Changing directory
+
+It is easy to change the current directory with the `cd` command. For example, to go to the `new_directory` with
+
+```{pyodide}
+! cd new_directory
+```
+
+And we we can go back to the previous directory with the `cd` command again using `..`
+
+```{pyodide}
+! cd ..
+```
+
+## Creating an empty file
+
+The `touch` command creates a new file in the specified path. For example, to create a new file in the current directory we can write
+
+```{pyodide}
+! touch new_directory/new_file.txt
+```
+
+
+We can check its existence with `ls`.
+
+```{pyodide}
+! ls new_directory
+```
+
+We can open this file in the graphical user interface and edit the contents
+
+
+[follows demonstration in *Noteable* with dummy text in the file `new_file.txt`]
+
+## Viewing file content
+
+The `cat` command prints the content of a file. For example, to view the content of `new_file.txt` we can write
+
+```{pyodide}
+! cat new_directory/new_file.txt 
+```
+
+Several other commands exist to display parts of files, such as `head`, `tail` etc. Try them if you like!
+
+## Exercise
+
+- Create a new jupyter notebook using the graphical user interface.
+- From the **notebook**, use the commands above to create:
+    - a new directory called `src`
+    - a new file inside the directory called `naive_script.py`
+    - open it with double click for the files tab in `jupyter` and write a minimal code
+
+    ```python
+    print("Hello, World!")
+
+    ```
+
+
+
+    - save the file
+    - use the `cat` command from the notebook to view the content of `naive_script.py`
+
+
+## Running scripts: from the notebook
+
+For the entire duration of this course, you have been running `python` codes by typing them inside the notebook cells and executing the code cells.
+
+The notebooks are complex files, that contain a lot of information beyond your code: the markdown, images, and a lot of extra data (called metadata).
+
+A much more essential way to store `python` code is to use **scripts**. These are files with the `.py` extension, like your `naive_script.py` file. Inside a script you can only have
+
+- `python` code
+- `python` comments to the code (i.e. lines prepended by the `#`)
+
+This means that the scripts are simple, portable pure text files containing **instructions** in the `python` language.
+
+Can we execute such instructions? Yes, we **run** a script in various way. A simple way is to do it directly from a code  cell in the notebook. For this we use a special `jupyter` command called `run` followed by the path to the script.
+
+[check that you are in the correct path and the script exist]
+
+```{pyodide}
+run src/naive_script.py
+```
+
+As you can see, we have executed the instructions of the script and its textual output has been printed in the notebook. No variables are created during the process.
+
+## The Terminal
+
+
+All the commands that we have seen above can be used in a pure-text environment called **the terminal**. The terminal is a text-based interface to an operating system (local or remote).
+
+
+You do not use the mouse to perform actions. Instead, you **write** commands. These commands belong to the scripting language called `bash` (see [here](https://www.gnu.org/software/bash/manual/html_node/index.html) for more information). It is different from `python`, they can interact together in the notebook.
+
+
+You can launch a terminal directly from `Noteable` (Legacy) by clicking on the `New` button, then selecting `Terminal`.
+
+
+![image.png](attachment:image.png)
+
+## Exercise
+
+- We try to navigate folders from the terminal and create a file
+- Open the terminal and
+    - change the directory to `src` (using `cd`)
+    - create a new file inside the directory called `parabola.py` (use `touch`)
+    - go back to the `Noteable` file tab, refresh the web-page and open the `parabola.py`  file
+    - open it and write a minimal code to plot a parabola. For example:
+
+    ```python
+    import numpy as np
+    import matplotlib.pyplot as plt
+    a = 1.
+    b =1.
+    c = 2
+    xlo = 0
+    xhi = 10
+    npoints = 100
+    x = np.linspace(xlo, xhi, npoints)
+    y = a*x**2 + b*x + c
+    plt.plot(x,y)
+    plt.savefig("parabola.png")
+
+
+    ```
+
+    - save the file and go back to the Terminal tab
+    - use the `cat` command to check the content 
+
+
+##  Exercise: Running scripts from the Terminal
+
+We have seen that we can run the scripts from the notebook using the `run` command. In a very similar way, we can run scripts from the terminal, just by using the `python` command followed by the path to the script.
+
+
+Do the following:
+
+- first run the `parabola` script from the notebook using `run`: you should see the plot appear in the notebook.
+- then go back to the Terminal and run the `parabola.py` script using the `python` command followed by the path to the script: e.g.  `python src/parabola.py`. Where is the output?
+
+```{pyodide}
+run src/parabola.py
+```
+
+## Reusing code
+
+
+The most useful feature of the scripts is that they can store code for future usage in an organized manner. We do not need to have all of our code in a single notebook: we can split the relvant bits, put them into scripts and use them again and again in different projects.
+
+What allows us to do this is the  special `python` keywork `import`, that we have already used many times. 
+
+
+Let's move our working directory to `src` and try importing our `parabola.py` script
+
+```{pyodide}
+cd src
+```
+
+In `python` we can only import `.py` files, so we drop the `.py` extension when importing.
+
+```{pyodide}
+import parabola
+```
+
+Now the variables defined in `parabola.py` are available in our current notebook.
+
+```{pyodide}
+print(parabola.xhi)
+```
+
+Congratulations! You have written your first `python` **module**!
+
+## Exercises
+
+- In the `lecture_beyond_notebook.ipynb`file you will find some more exercises on how to interact with files and scripts.
+- These topics are **important** and **complementary** to your learning, but** not essential** for the rest of the course.
+- Hence, you can also choose to adapt use this session to do further consolidation work. For this, we have prepared some **riddles** that you can try to solve using your `python` knowledge so far.
+    - Numpy riddles in `exercises_numpy_riddles.ipynb`
+    - Python riddles in `exercises_python_riddles.ipynb`
+
+

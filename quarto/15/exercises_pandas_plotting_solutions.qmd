@@ -1,0 +1,413 @@
+---
+title: Practicing plotting with `pandas`
+jupyter: python3
+---
+
+
+
+In this suite of exercises, we will practice creating various types of plots using the `pandas` library in Python.
+
+As usual, we will root our work on `actual data` and perform a realistic  (albeit minimal) scientifc analysis.
+
+
+## Deforestation Data
+
+We use the [Our World in Data deforestation dataset](https://ourworldindata.org/forests-and-deforestation).
+
+It contains data on forest area and deforestation data for various countries over time. 
+
+Its link is 
+
+[https://ourworldindata.org/grapher/annual-deforestation.csv?v=1&csvType=full&useColumnShortNames=false](https://ourworldindata.org/grapher/annual-deforestation.csv?v=1&csvType=full&useColumnShortNames=false)
+
+## Exercise 1: Loading and pivoting the data
+
+Read in the dataset using `pandas`. 
+
+Then, pivot the data so that you have years as the index, countries as the columns, and deforestation as the values.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+import pandas as pd
+import requests
+
+# Fetch the data.
+df = pd.read_csv("https://ourworldindata.org/grapher/annual-deforestation.csv?v=1&csvType=full&useColumnShortNames=false")
+
+df
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+df_pivot = df.pivot(index="Year", columns="Entity", values="Deforestation")
+df_pivot
+```
+
+## Exercise 2 : Plotting deforestation for regions
+
+The datasets contains rates in ha/year (hectares per year) for many different countries, as well as the various regions including the world as a whole.
+
+Find the names of such regions in the dataset and create a plot with multiple lines, one for each region, showing deforestation over time. Include also the world as a whole.
+
+**Plot requirements:**
+
+- The plot should have appropriate labels and a legend. 
+- The lines should also have markers.
+- The lines should be distinguishable by color and line style.
+- The line for the World should be thicker than the others.
+- The deforestation values should be shown in millions of hectares per year (i.e., divide the values by 1,000,000).
+
+**Notes.** 
+- If you look carefully at the original dataset, you will notice that you have a `Code` column that contains codes for countries and regions.
+- You can provide a list of styles to the style argument of the `plot` method to have different line styles for each line.
+- If `ax` is an axis returned by a plot object, you can access its last plotted line as `ax.lines[-1]` and sets its properties with methods such as `set_linewidth()` or `set_color()`.
+
+
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# the unique codes are
+# clearly only the WORLD has its own code OWID_WRL
+# hence the regions have NaN
+df['Code'].unique()
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# Find entities without country codes - these are typically regions
+regions = df[df['Code'].isna()]['Entity'].unique()
+print("Regions (non-country entities):")
+print(regions)
+# add the world to the list
+all_regions = list(regions) + ['World']
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+markers = ['o', 's', '^', 'v', 'D', 'p', '*', 'h', 'x', '+', 'd', 'H']
+
+ax = (df_pivot[all_regions] / 1_000_000).plot(figsize=(12, 6), 
+                                          title="Annual Deforestation by Region", 
+                                          ylabel="Deforestation (Mha/year)", 
+                                          xlabel="Year",
+                                          style=[f'-{m}' for m in markers],
+                                          legend=True)
+
+# Make the World line thicker
+ax.lines[-1].set_linewidth(4)
+```
+
+## Exercise 3 : Share of deforestation by continent in 2020
+
+Pick now year 2020 and create a pie chart showing the share of deforestation for that year between the various continents (i.e., Africa, Asia, Europe, North America, Oceania, South America). The share is the fraction of the total deforestation in the world that is due to each continent.
+
+**Notes.**
+
+- You can improve the rendering of the pie chart by adding formatted percentage labels with the `autopct` to plot using the `pie` kind.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#SOLUTION
+continents = ['Africa', 'Asia', 'Europe', 'North America', 'Oceania', 'South America']
+year = 2020
+shares = df_pivot.loc[year, continents] / df_pivot.loc[year, 'World'] * 100
+shares.plot(kind='pie', autopct='%1.1f%%', figsize=(8, 8), title=f"Deforestation Share by Continent in {year}", ylabel='')
+```
+
+## Exercise 4: Stacked area plot of regional deforestation
+
+Create a stacked area plot showing how deforestation is distributed across continents over time (1990-2020).
+
+**Requirements:**
+- Use only the continental regions (Africa, Asia, Europe, North America, Oceania, South America)
+- Show values in millions of hectares per year
+- Only include positive values (deforestation, not reforestation)
+- Add appropriate title and labels
+
+
+**Hint:** Use `kind='area'` and set `stacked=True`. 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+
+# Filter for continental regions and positive deforestation values
+df_continents = df_pivot[continents].loc[1990:2020]
+df_continents = df_continents[df_continents > 0]
+
+# Convert to millions of hectares
+df_continents_mha = df_continents / 1_000_000
+
+# Create stacked area plot
+df_continents_mha.plot(kind='area', stacked=True, figsize=(12, 6),
+                       title='Deforestation by Continent (1990-2020)',
+                       xlabel='Year',
+                       ylabel='Deforestation (Mha/year)')
+```
+
+## Exercise 5: Bar plot of top 10 countries with highest deforestation in 2010
+
+Using the data for 2010, create a **bar plot** showing the top 10 countries with the highest deforestation rates in absolute terms. 
+
+Plot them so that they are sorted (ascending or descending, as you prefer).
+
+You need to **exclude regions** and only consider countries.
+
+**Note.**
+- Boolean operators can be used to filter dataframes. For example, if we want to filter a dataframe to include only rows where the column `A` doe not contain the value `foo`, we can do:    
+```python
+filtered_df = df[~(df['A'] == 'foo')]
+```
+where the `~` operator negates the boolean condition.
+- You can use `barh` as the kind of plot to create horizontal bar plots.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+year = 2010
+
+df_no_regions = df[~df['Entity'].isin(all_regions)]
+
+top_10 = df_no_regions.loc[df['Year'] == year].sort_values(by='Deforestation', ascending=False).head(10)[['Entity', 'Deforestation']]
+top_10
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+top_10.plot(kind='barh', x='Entity', y='Deforestation', figsize=(10, 6), 
+            title=f"Top 10 Countries by Deforestation in {year}", 
+            xlabel="Deforestation (ha/year)", ylabel="Country", legend=False)
+```
+
+## Exercise 6: Merging datasets and normalisation by area
+
+The comparison above is  in part unfair because countries have different sizes (and hence extent of forested surfaces).
+
+As a first approximation, we can normalise deforestation rates by the total area of each country.
+
+To retrieve the total area data for countries, you'll need to load a CSV file containing country areas. We can use the Our World in Data dataset on land area.
+
+Here's the link to the dataset:
+
+[https://ourworldindata.org/grapher/land-area-km.csv](https://ourworldindata.org/grapher/land-area-km.csv)
+
+We can read this second dataset into a separate dataframe.
+
+A powerful feature of `pandas` is the ability to merge dataframes based on common columns.
+
+This is done using the `pd.merge` function as follows:
+
+```python
+merged_df = pd.merge(df1, df2, on=list_of_common_columns)
+``` 
+
+Using merging, combine the deforestation data for 2010 with the land area data.
+
+Then, create a new column in the merged dataframe that contains the deforestation rate per square kilometer for each country.
+
+Finally, create a bar plot showing the top 10 countries with the highest deforestation rates per square kilometer in 2010.
+
+**Notes.**
+
+- When merging, provide a list of common columns to the `on` argument. In this case, the common columns are likely to be `Entity`, `Year` and `Code`.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+df_areas = pd.read_csv("https://ourworldindata.org/grapher/land-area-km.csv")
+df_areas
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+df_merged = pd.merge(df, df_areas, on=['Entity',"Year","Code"])
+
+df_merged
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+df_merged['Fraction of deforested surface'] = df_merged['Deforestation'] / (df_merged['Land area (sq. km)'] * 100)
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+df_no_regions = df_merged[~df_merged['Entity'].isin(all_regions)]
+
+top_10_def_area = df_no_regions.loc[df_merged['Year'] == year].sort_values(by='Fraction of deforested surface', ascending=False).head(10)[['Entity', 'Fraction of deforested surface']]
+top_10_def_area
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+top_10_def_area.plot(kind='barh', x='Entity', y='Fraction of deforested surface', figsize=(10, 6), 
+            title=f"Top 10 Countries by Deforestation in {year}", 
+            xlabel='Fraction of deforested surface', ylabel="Country", legend=False)
+```
+
+## Exercise 7: Bringing vegetable oil data in
+
+We can further extend our analysis by bringing in data on vegetable oil production, which is a significant driver of deforestation in some regions.
+
+First, we load the vegetable oil production dataset from Our World in Data, which contains production data for various types of oils (palm oil, soybean oil, sunflower oil, etc.).
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+import pandas as pd
+
+
+# Fetch the data.
+df_oil = pd.read_csv("https://ourworldindata.org/grapher/vegetable-oil-production.csv?v=1&csvType=full&useColumnShortNames=false")
+
+# df_oil = df_oil.dropna(subset=['Palm oil | 00000257 || Production | 005510 || tonnes'])
+df_oil
+```
+
+Since deforestation is driven by various oil crops (not just palm oil), **sum all vegetable oil production types to get a total for each country and year** and store it as a new column. This provides a more comprehensive view of agricultural oil pressure.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# sum all vegetable oils
+
+oil_columns = [col for col in df_oil.columns if 'Production' in col and 'tonnes' in col]
+print("Available oils:", oil_columns)
+# Sum all oil production for each country-year
+df_oil['Total_Oil_Production'] = df_oil[oil_columns].sum(axis=1)
+
+# df_oil['Total vegetable oil production'] = 
+```
+
+## Exercise 8: Pivot by country the vegetable oil data
+
+To get a by country view of vegetable oil production, pivot the vegetable oil dataset so that you have years as the index, countries as the columns, and total vegetable oil production as the values.
+
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# Pivot by country
+df_total_oil = df_oil.pivot(index="Year", columns="Entity", values="Total_Oil_Production")
+
+
+df_total_oil
+```
+
+## Exercise 9: Select countries for comparison
+
+Filter to include only countries that appear in both the top 10 deforestation list (from 2010, Exercise 5) AND have oil production data.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# take a selction of countires presnet in the top deforestation and in teh oil data
+
+country_selection = top_10['Entity'].tolist()
+country_selection = [country for country in country_selection if country in df_total_oil.columns]
+
+print(country_selection)
+```
+
+## Exercise 10: Plot vegetable oil production over time for selected countries
+
+We normalize all oil production values relative to 1990 (baseline = 100) to make it easier to compare growth rates across countries of different sizes.
+
+Produce two plots:
+
+- first the normalised vegetable oil production over time for the selected countries
+- then a smoothened version of the same plot (using a rolling mean with a window of 10 years).
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# Make values relative to year 1990 (base year = 100)
+df_total_oil_relative = (df_total_oil / df_total_oil.loc[1990]) * 100
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# Plot relative growth
+df_total_oil_relative[country_selection].plot(figsize=(12, 6),
+                                               title='Vegetable Oil Production Growth (Relative to Year 1990)',
+                                               ylabel='Index (1990 = 100)',
+                                               xlabel='Year')
+```
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+# smoothened
+df_total_oil_relative_smooth = df_total_oil_relative.rolling(window=10, center=True).mean()
+# Plot relative growth
+df_total_oil_relative_smooth[country_selection].plot(figsize=(12, 6),
+                                               title='Vegetable Oil Production Growth - Smoothed (Relative to Year 1990)',
+                                               ylabel='Index (1990 = 100)',
+                                               xlabel='Year')
+```
+
+## Exercise 11: Comparing deforestation and oil production over time
+
+For each of the following countries (Brazil, the Democratic Republic of Congo, India and Indonesia) plot a figure with the two lines:
+
+- the normalised vegetable oil production over time (use the smoothed version from Exercise 10)
+- the deforestation rate over time (also normalised to 1990)
+
+Both lines should be on the same plot with the same y-axis scale (since both use 1990 = 100 as baseline).
+
+**Note:** You may observe inverse correlations in some countries - this is expected and scientifically meaningful (see interpretation below).
+
+
+**Hints.**
+
+- You may need to drop `NaN` values with the `dropna()` method to get continuous lines
+- You need first to normalise your deforestation data
+- You may want to create a new dataframe using pd.DataFrame and a suitable dictionary
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# SOLUTION
+
+# Normalize deforestation to 1990 baseline
+df_deforestation_relative = (df_pivot / df_pivot.loc[1990]) * 100
+
+countries = 'Brazil, Democratic Republic of Congo, India, Indonesia'.split(', ')
+# Create plots for the first 4 countries
+for country in countries:
+    # Combine both series into a single dataframe
+    df_combined = pd.DataFrame({
+        'Deforestation Index': df_deforestation_relative[country],
+        'Oil Production Index': df_total_oil_relative_smooth[country]
+    })
+    # Drop rows with NaN values so that the lines are continuous
+    df_combined = df_combined.dropna()
+    # Plot using pandas with both lines on the same scale
+    df_combined.plot(figsize=(5, 3),
+                     title=f'{country} (1990 = 100)',
+                     xlabel='Year',
+                     ylabel='Index (1990 = 100)',
+                     )
+```
+
+## Interpretation of Results
+
+You should observe different trends depending on the countries of consideration that can reflect different modes of production, deforestation and shifts in policies:
+
+- Some countries show correlations between deforestation rates and vegetable oil production: this is typically when vegetable oil production requires direct area increases and deforestation is diffuse (small-scale clearing of land)
+- Other countries can show inverse correlation: this can have various causes, for example time-lags between extensive deforestation and usage of the land, as well as different means of expanding vegetable oil production (conversion of already cleared land, e.g. pasture, into crops)
+
+This exercise demonstrates that macroscale data analysis can be rather complex and requires multiple layers of information and datasets to be properly interpreted. In this specific case, we would need more information on the modes of production, land use changes, policies and economic drivers to make sense of the observed trends.
+
+
+

@@ -1,0 +1,317 @@
+---
+title: Reflections
+jupyter: python3
+---
+
+
+
+This year we explored the Python programming language and how to use it to analyze data.
+
+We covered the following topics:
+
+- Python basics: variables, data types, control flow, functions, and modules.
+- Data analysis libraries: NumPy, pandas, and Matplotlib.
+- Data manipulation and cleaning techniques, inclucding basic fitting.
+- Data visualization techniques.
+- Real-world applications of data analysis (e.g. using Our World in Data datasets).
+- Some ideas for software engineering practices (e.g. using Jupyter Lab, code organisation and modularisation)
+- Report writing and communication of findings.
+
+The journey entailed a lot of **syntax** and **semantics** of Python, but we also touched on the **philosophy** of programming and data analysis. We discussed how to think about problems, how to break them down into smaller pieces, and how to communicate our findings effectively.
+
+
+These skills come to fruit in Project 4, where you will apply what you've learned to a real-world dataset and write a report on your findings. This project will be an opportunity to demonstrate your ability to analyze data, draw conclusions, and communicate your r
+
+### A local Python environment
+
+You have been using Python via remote Jupyter Notebook on Noteable. This is conveniengt, but not standard.
+
+Python is normally installed on your computer, so that you can code and analyse data offline safely and securely, with your own version of Python and its packages.
+
+
+Installing Python on your computer is a great way to continue learning and practicing your coding skills. It allows you to work on projects, experiment with code, and learn at your own pace without relying on an internet connection.
+
+This is highly dependent on your operating systems and strictly requires a computer (not really possible on a tablet or smartphone). If you have a computer, you can install Python and start coding right away.
+
+You will do this in SCIF20002 next year if you join the module. Nonetheless, here are some pointers:
+
+### Anaconda
+
+
+
+<img src="images/anaconda-logo.png" alt="Anaconda logo" style="display:block;margin-left:auto;margin-right:auto;width:25%"/>
+
+The simplest and relatively generic way to install Python is to use the Anaconda distribution, which includes Python and many popular data science libraries. You can download it from [https://www.anaconda.com/products/distribution](https://www.anaconda.com/products/distribution) and follow the installation instructions for your operating system.
+
+This will install a local application called Anaconda Navigator, which provides a graphical interface to manage your Python environments and launch Jupyter Notebooks. You can use it to create a new environment for your data analysis projects and install any additional packages you need.
+
+
+### More advanced users
+
+To have a more fine grained control over your system and Python installation, the recommendation is to have a package management tool, and this depends on your operating system.
+
+For Windows, the recommendation radical, and it is to use the [Windows Subsystem for Linux (WSL)](https://learn.microsoft.com/en-us/windows/wsl/install), which allows you to run a Linux environment on your Windows machine. This way, you can use the same tools and commands as you would on a Linux system, including package managers like `apt` or `conda`. This will allow you to have a more consistent experience across different operating systems and to use the same tools as your peers who are using Linux or macOS.
+
+For MacOS, the recommendation is to use Homebrew, which is a popular package manager for macOS. It allows you to easily install and manage software packages, including Python and its libraries. You can install Homebrew from [https://brew.sh/](https://brew.sh/) and then use it to install Python and any additional packages you need.
+
+For Linux, the recommendation is to use the package manager that comes with your distribution (e.g. `apt` for Debian-based systems, `yum` for Red Hat-based systems, etc.) to install Python and its libraries. You can also use `conda` if you prefer a more consistent experience across different operating systems.
+
+
+
+### Download Anaconda
+
+An alternative is provided by  the Anaconda (Individual Edition) on your own computer.
+
+This is free to download and use and has Jupyter notebooks (and JupyterLab) built in.
+
+Go to: https://www.anaconda.com/download
+ - Download the appropriate version for your operating system (may have been pre-detected).
+
+### Analysing data
+
+<img src="images/pandas.svg" alt="Pandas logo" style="display:block;margin-left:auto;margin-right:auto;width:15%"/>
+
+We have covered the fundamentals for using the `pandas` module in this course and have started to look at some more complex topics. If you've found this to be useful, you can continue learning more about pandas for data analysis and the other methods it provides.
+
+Start off with:
+
+#### 10 minutes to pandas
+
+This gives an overview of some key pandas concepts, including some topics we have covered and some we haven't. Work through this for an overview:
+
+- https://pandas.pydata.org/docs/user_guide/10min.html
+
+#### More concepts in pandas
+- [**Split-apply-combine** methods](https://pandas.pydata.org/docs/user_guide/groupby.html) (including grouping, [resampling](https://pandas.pydata.org/docs/user_guide/timeseries.html#timeseries-resampling) and [window](https://pandas.pydata.org/docs/user_guide/window.html) methods)
+- **Binning data** (e.g. [cut function](https://pandas.pydata.org/docs/reference/api/pandas.cut.html))
+- **Using functions** across whole rows/columns (including [apply method](https://pandas.pydata.org/docs/user_guide/basics.html#row-or-column-wise-function-application), [string methods](https://pandas.pydata.org/docs/user_guide/text.html#text-string-methods), [datetime methods](https://pandas.pydata.org/docs/user_guide/basics.html#dt-accessor))
+- **Styling** your data table look how you want (e.g. [Styling your DataFrame](https://pandas.pydata.org/docs/user_guide/style.html))
+
+### Parametrising data
+
+<img src="images/scikit-learn-logo.png" alt="Scikit-learn logo" style="display:block;margin-left:auto;margin-right:auto;width:15%"/>
+
+The [scikit-learn package](https://scikit-learn.org/stable/) provides lots of methods for applying different parametrisations to data including simple linear regression and more complex fits.
+
+The scipy module also provides a lot of tools for both fitting data and performing statistical tests. Including:
+ - curve_fit - https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html
+ - stats module - https://docs.scipy.org/doc/scipy/reference/stats.html (e.g. https://docs.scipy.org/doc/scipy/tutorial/stats.html#analysing-one-sample)
+
+### Creating algorithms and models
+
+#### Scipy
+
+For our numerical algorihms, we have mostly restricted ourselves to using the numpy module. However, many more advanced algorithms are implemented in a dedicated scientific computing module called `scipy`. This includes methods for:
+
+- **Optimisation** (e.g. https://docs.scipy.org/doc/scipy/reference/optimize.html), i.e. finding the minimum of a function or the best fit parameters for a model.
+- **Integration** (e.g. https://docs.scipy.org/doc/scipy/reference/integrate.html), i.e. calculating the area under a curve or solving differential equations.
+- **Interpolation** (e.g. https://docs.scipy.org/doc/scipy/reference/interpolate.html), i.e. estimating values between known data points.
+- **Linear algebra** (e.g. https://docs.scipy.org/doc/scipy/reference/linalg.html), i.e. solving systems of linear equations or finding eigenvalues and eigenvectors.
+- **Signal processing** (e.g. https://docs.scipy.org/doc/scipy/reference/signal.html), i.e. filtering and analysing signals.
+- **Statistics** (e.g. https://docs.scipy.org/doc/scipy/reference/stats.html), i.e. performing statistical tests and analysing data distributions.
+- **Sparse matrices** (e.g. https://docs.scipy.org/doc/scipy/reference/sparse.html), i.e. working with large, sparse datasets.
+- **Spatial data** (e.g. https://docs.scipy.org/doc/scipy/reference/spatial.html), i.e. working with spatial data and performing spatial analysis.
+- **Special functions** (e.g. https://docs.scipy.org/doc/scipy/reference/special.html), i.e. working with special mathematical functions.
+
+The following examples are purely illustrative of the potential and are not meant to be comprehensive. You can explore the documentation for more details and examples of how to use these methods. Some of these methods are quite advanced and may require a good understanding of the underlying mathematics to use effectively, but they can be very powerful tools for data analysis and scientific computing.
+
+##### Minimum of a function using `scipy`
+
+A scalar function takes a single variable as input and produces a single output. For example, the function `f(x) = x^2` takes a single variable `x` and produces a single output `f(x)`. We may be interested in finding its minimum value, which occurs at `x = 0` where `f(0) = 0`. We can use the `scipy.optimize.minimize_scalar` function to find the minimum of a scalar function. Here's an example (tweak it to find the minimum of a different function!):
+
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import scipy.optimize as optimize_scalar
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+def f(x):
+    return x**2
+
+result = optimize_scalar.minimize_scalar(f)
+print("The minimum value of f(x) is:", result.fun)
+print("The value of x that minimizes f(x) is:", result.x)
+
+x = np.linspace(-10, 10, 100)
+y = f(x)
+plt.plot(x, y)
+plt.scatter(result.x, result.fun, color='red', label='Minimum')
+plt.title('Plot of f(x) = x^2')
+plt.xlabel('x')
+plt.ylabel('f(x)')
+plt.legend()
+plt.show()
+```
+
+##### Finding pairwise distances using `scipy`
+
+Suppose we have N points in a 2D space, and we want to find the pairwise distances between them. We can use the `scipy.spatial.distance.pdist` function to compute the pairwise distances efficiently. Here's an example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import numpy as np
+from scipy.spatial import distance
+
+# Generate random points in 2D space
+N = 5
+points = np.random.rand(N, 2) 
+# Compute pairwise distances
+pairwise_distances = distance.pdist(points)
+print("Pairwise distances between points:")
+print(pairwise_distances)
+```
+
+Notice that this should be identical (but much faster) to using nested loops to compute the distances between each pair of points:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+explicit_distances = []
+for i in range(N):
+    for j in range(i + 1, N):
+        dist = np.sqrt(np.sum((points[i] - points[j]) ** 2))
+        explicit_distances.append(dist)
+print("Explicit pairwise distances between points:")
+print(explicit_distances)
+```
+
+> Test the speed using `time` or `timeit` to see the difference in performance between the two methods.
+
+##### Special functions using `scipy`
+
+The `scipy.special` module provides a collection of special mathematical functions that are commonly used in scientific computing. 
+
+Functions that you may have heard of include 
+
+- the gamma function $\Gamma(n)$, which generalizes the factorial function to non-integer values, [wiki link](https://en.wikipedia.org/wiki/Gamma_function) .
+
+$$\Gamma(z)=\int_0^{\infty} t^{z-1} e^{-t} d t, \quad \Re(z)>0$$
+
+- the error function $\operatorname{erf}(x)$, which is derived from the Gaussian distribution and is used in probability theory and statistics, [wiki link](https://en.wikipedia.org/wiki/Error_function) .
+
+$$\operatorname{erf}(x)=\frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} d t$$
+
+
+Scipy includes efficient implementations of both and many others:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import matplotlib.pyplot as plt
+from scipy.special import erf
+import numpy as np
+
+x = np.linspace(-2, 2, 100)
+
+plt.plot(x, erf(x))
+plt.title('Plot of the error function')
+plt.xlabel('x')
+plt.ylabel('erf(x)')
+plt.show()
+```
+
+
+#### Scikit-learn
+
+In this course we constructed some polynomial fits to data using the `numpy.polyfit` method. However, there are many more complex models and algorithms that can be applied to data using the `scikit-learn` module. This includes methods for:
+
+- **Regression** (e.g. https://scikit-learn.org/stable/modules/linear_model.html), i.e. fitting a model to data and making predictions.
+- **Classification** (e.g. https://scikit-learn.org/stable/modules/svm.html), i.e. categorising data into different classes.
+- **Clustering** (e.g. https://scikit-learn.org/stable/modules/clustering.html), i.e. grouping data into clusters based on similarity.
+- **Dimensionality reduction** (e.g. https://scikit-learn.org/stable/modules/decomposition.html), i.e. reducing the number of features in a dataset while retaining as much information as possible.
+- **Model selection** (e.g. https://scikit-learn.org/stable/modules/model_selection.html), i.e. selecting the best model for a given dataset and evaluating its performance.
+- **Preprocessing** (e.g. https://scikit-learn.org/stable/modules/preprocessing.html), i.e. preparing data for analysis by scaling, normalising, or encoding it.    
+
+Over the next few years, you will have the opportunity to explore these methods in more detail and apply them to real-world datasets.
+
+#### Object-oriented approach
+
+[Object oriented programming](https://realpython.com/python3-object-oriented-programming/) is a way of coding centred around the idea of both data and behaviour being linked together into objects.
+
+Languages such as Python, C++ and Java allow an object oriented approach to be taken.
+
+In Python, we have already encountered lots of different *objects* and made use of their *methods* and *attributes*.
+
+For example, when we create a string we are actually creating a *str object*. Our string object contains the data we used to construct it but also gives us access to string *methods*:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+string = "hello world!"
+string.split()
+```
+
+Methods are the specific functions that are associated with the object, in this case any string type. They are available for strings but wouldn't make sense for other types like an integer or a boolean.
+
+Similiarly, when we create a numpy array, we are creating a *ndarray object*. We can access ndarray methods (like we did for a string) but also *attributes* for that object:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+import numpy as np
+arr1 = np.array([[3,2,1],[6.0, 7., 6],[5,4,3]])
+arr1.shape
+```
+
+This is some other data which we didn't define explicitly but gives us information about the object we have created. In this case it tells us about the shape of our ndarray.
+
+**Each of the objects we create contain both the data (input data and attributes) and the different ways to process and interact with that data (methods).**
+
+#### Classes
+
+In object-oriented programming, you can create something called [**classes**](https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes). A class is a *blueprint* for your new object which defines the properties you want this to have. This includes how you want to define it, the data you want to store and what functions you want to be able use.
+
+This example below includes a `Dog` class which includes values for the dog's name, colour and how much energy it has. You can also see that some functions (methods) have been defined called `describe()` and `exercise()`:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+class Dog:
+    def __init__(self, name, colour):
+        self.name = name
+        self.colour = colour
+        self.energy = 11
+
+    def describe(self):
+        return f"{self.name} is {self.colour}"
+    
+    def exercise(self):
+        print(f"You take {self.name} for a walk")
+        self.energy -= 1
+```
+
+To use this class you would write:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+my_dog = Dog("Luna", "black and white")
+```
+
+And you could access the `exercise()` method using:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+#| slideshow: {slide_type: fragment}
+energy_before_exercise = my_dog.energy
+
+my_dog.exercise()
+
+energy_after_exercise = my_dog.energy
+
+print(f"{my_dog.name} had energy of {energy_before_exercise} but after the walk now has energy of {energy_after_exercise}")
+```
+
+Thee is no expectation that you will use classes in Project 4, but it is important that you are aware that this additional level of complexity exists and that it is under the hood of every object you create in Python.
+
+
+Classes and object-oriented programming are going to be explored in the SCIF20002 module next year. You can have a sneak peek of the content here [https://fturci.github.io/oop-git](https://fturci.github.io/oop-git)
+
+
+## Conclusion
+
+We hope you have enjoyed this course and you will continue to explore the fascinating world of data analysis.
+
+We remain available to support you with any questions you have about the content of this course and more in general if you want to continue learning about data analysis and scientific computing. You can reach out to us via email.
+
+

@@ -1,0 +1,310 @@
+---
+title: Multi-dimensional Arrays
+jupyter: python3
+---
+
+
+
+
+## What are Multi-dimensional Arrays?
+
+`numpy` arrays can be **multi-dimensional**, not just 1D lists.
+
+- **1D array**: a sequence of numbers
+- **2D array**: a grid (rows and columns)
+- **3D array**: a cuboid
+- And so on...
+
+The key property is **shape** - the size of each dimension.
+
+
+
+
+## Creating a 2D Array
+
+Simple example: you can create a 2D array with random numbers by specifying the shape of the array
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import numpy as np
+from numpy import random
+
+rng = random.default_rng(seed=24)
+shape = (3, 3)  # 3 rows, 3 columns
+array1 = rng.random(shape)
+print(array1.shape)
+print(array1)
+```
+
+## Indexing in 2D
+
+We extend  the one dimensional notation by putting the desired index in a sequence separated by commas.
+For example, in 2D, access elements using **row, column** notation:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# array1[row_index, column_index]
+print(array1[1, 2])  # 2nd row, 3rd column
+```
+
+Remember: indices start at 0, and order is `[row, column]` (like `[y, x]`).
+
+## Selecting Rows and Columns
+
+Use the `:` operator to select entire dimensions:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Select entire first row (all columns)
+print(array1[0, :])
+
+# Select entire first column (all rows)
+print(array1[:, 0])
+```
+
+The `:` means "all elements" in that dimension.
+
+
+
+
+## Array Shape and Initialization
+
+Create arrays with specific shapes using familiar functions:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Create a 2×3 array of zeros
+zeros = np.zeros((2, 3))
+
+# Create a 2×5 array of random values
+random_matrix = rng.uniform(-1, 1, size=(2, 5))
+
+print("Shape:", random_matrix.shape)
+```
+
+Shape is always a tuple: `(rows, columns)` for 2D.
+
+
+
+
+## Rank = Dimensions
+
+The number of dimensions (i.e. the number of indices needed to access an element) is called the **rank** of the array.
+**Rank** = number of dimensions, accessible via `.ndim`:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# A matrix has rank 2
+matrix = rng.uniform(-1, 1, size=(2, 5))
+print("Rank:", matrix.ndim)  # 2
+
+# A tensor has rank 3 or higher
+tensor = rng.integers(0, 3, size=(2, 3, 4))
+print("Rank:", tensor.ndim)  # 3
+```
+
+## Operations Along Axes
+
+It is very useful to be able to perform operations only along specific dimensions (axes) of an array.
+If you think that a 2d array is like a table, we can  in one go compute useful operations like the sum of each column, or the mean of each row by specifiying the axis along which to perform the operation.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Create a small example matrix for demonstrations
+table = np.array([[1, 2, 3],
+                        [4, 5, 6], 
+                        [7, 8, 9]])
+
+print("Example table:")
+print(table)
+
+# Sum along axis 0 (sum of each column)
+print("\nSum along columns (axis=0):")
+print(np.sum(table, axis=0))
+
+# Sum along axis 1 (sum of each row) 
+print("\nSum along rows (axis=1):")
+print(np.sum(table, axis=1))
+```
+
+`axis=0` operates on rows, `axis=1` operates on columns.
+
+
+## Statistical Operations
+
+Apply statistics along axes too:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Mean along axis 0 (mean of each column)
+print(np.mean(table, axis=0))
+
+# Standard deviation along axis 1
+print(np.std(table, axis=1))
+```
+
+Works with `mean`, `std`, `min`, `max`, etc.
+
+
+
+## Slicing Multi-dimensional Arrays
+
+Slicing is the operation of selecting sub-portions of an array. With multi-dimensional arrays, you can slice along multiple axes at once by re-using the syntax we saw for 1D arrays, but separating the slices for each dimension with commas.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# First two rows, all columns
+print(table[:2, :])
+
+# All rows, first column
+print(table[:, 0])
+
+# Reverse rows, first column only
+print(table[::-1, :1])
+```
+
+## Flattening: ravel() vs flatten()
+
+AFrequently we convert higher dimensional arrays to a simple one-dimnensional sequence of numbers (this is for example very common in machine learning applications where for example images get mapped onto a vector).
+
+There aare dedicated ways to do this:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+matrix = rng.integers(0, 10, size=(2, 3))
+# ravel() creates a view (modifies original)
+view = matrix.ravel()
+view[0] = 100
+print(matrix)  # Changed!
+# flatten() creates a copy (independent)
+copy = matrix.flatten()
+copy[0] = 100
+print(matrix)  # Unchanged
+```
+
+## Broadcasting
+
+`numpy` allows us in general to avoid teh usage of for loops. A particularly nice featre is that `numpy` tries automatically to expand arrays of different shapes to make operations possible. This is called **broadcasting**.
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+matrix = np.array([[1, 2, 3],
+                   [4, 5, 6]])
+vector = np.array([10, 20, 30])
+
+# Vector is added to each row
+result = matrix + vector
+print(result)
+# [[11, 22, 33],
+#  [14, 25, 36]]
+```
+
+`numpy` expands the smaller array to match the larger one.
+
+
+
+## Matrices as Images
+
+One very interesting use of `numpy` multi dimensional array is to represent images.
+
+An image is the n a grid of numbers, and every number is a apixel with its intensity level. Then, 2D arrays can represent grayscale images:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+import matplotlib.pyplot as plt
+
+# Display a matrix as an image
+plt.imshow(matrix, cmap='gray')
+plt.colorbar()
+plt.show()
+```
+
+Each number is a pixel intensity value.
+
+
+## Working with Color Images
+
+Color images are 3D arrays: `(height, width, channels)`
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+from skimage import data
+
+# Load a color image
+image = data.chelsea()
+print("Shape:", image.shape)  # (300, 451, 3)
+
+# Extract red channel
+red_channel = image[:, :, 0]
+plt.imshow(red_channel, cmap='Reds')
+```
+
+Three channels: Red, Green, Blue (RGB).
+
+
+## Boolean Indexing on Images
+
+We saw boolean indexing with numpy vectors. Well, the same principle applies to multi-dimensional arrays. We can perform tests and conditions on arays to produce new arrays with the same shape but with True/False values that we can use as masks to filter the original array. 
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+# Get green channel
+green = image[:, :, 1]
+
+# Create binary mask (threshold at 100)
+mask = green > 100
+plt.imshow(mask, cmap='gray')
+```
+
+
+## Logical Operations on Masks
+
+Logical arrays can be combined element-by-element using logical operators:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+green = image[:, :, 1]
+red = image[:, :, 0]
+
+# Both green AND red above threshold
+bright_yellow = (green > 120) & (red > 120)
+
+# NOT green
+not_green = np.logical_not(green > 100)
+
+plt.imshow(bright_yellow, cmap='gray')
+```
+
+Use `&` (AND), `|` (OR), `~` (NOT).
+
+
+
+## Key Takeaways
+
+- Multi-dimensional arrays have **shape** and **rank**
+- Index with `[row, column]` notation
+- Operations can work along specific **axes**
+- **Reshape** and **flatten** change array structure
+- **Broadcasting** automatically expands arrays
+- 2D/3D arrays represent images naturally
+- Boolean indexing creates powerful masks
+
+
+
+
+## Pair programming exercise
+
+- First, have a look at the multi-dimensonal array lecture material and understand its conent
+- Then, try to work accorcin to the **pair programming paradigm**:
+    - One person is the "driver" (writes the code)
+    - The other is the "navigator" (reviews, suggests, finds docs)
+
+- You have two exercises :
+    1. *Creating a mask containing a circle*
+    1. *Using a mask*
+
+- Student A starts as driver, Student B as navigator in exercise 1 and they switch roles in exercise 2.
+- Discuss and agree on the solution together
+
+- Alteranatively, you can also work alone if you prefer so.
+
