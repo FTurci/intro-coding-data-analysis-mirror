@@ -26,16 +26,16 @@ jupyter: python3
    - Pandas dataframes
    - Plotting and visualisation
  - Classes:
-   - 1 lecture per week (Thursday)
+   - 1 lecture per week (Tuesday)
    - 1 small-group tutorial per two weeks (date should be on calendar) 
 
 # About us
 
 
-- Dr Francesco Turci (Course director, School of Physics)
+- Dr Francesco Turci (Unit director, School of Physics)
     - f.turci@bristol.ac.uk
-- Dr Thomas Maullin-Sapey (lecturer, School of Mathematics)
-  - thomas.maullin-sapey@bristol.ac.uk
+- Dr James Martin (lecturer, School of Mathematics)
+  - james.martin@bristol.ac.uk
 
 ## Lectures
 
@@ -56,7 +56,7 @@ jupyter: python3
 ## Assignments
 
  - Formative:
-   - Weekly (optional) assignments available on quarto
+   - Optional assignments to test your knowedge 
  - Summative:
    - This module is 100% coursework
    - 4 pieces of coursework
@@ -87,7 +87,7 @@ jupyter: python3
    - Make sure `Jupyter Classic (Legacy)` is selected.
    - Click Start
  - Click `+GitRepo`
- - Paste into Git Repository URL: `git@github.com:TomMaullin/SCIF10002-2025.git`
+ - Paste into Git Repository URL: `https://github.com/FTurci/intro-coding-data-analysis-mirror.git`
  - Press clone
 
 <img src="./images/noteable2.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:20%"/>
@@ -97,7 +97,7 @@ jupyter: python3
  - In this module, we shall be learning to code in Python
  - Python is a programming language
 
-<img src="./images/python.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:20%"/>
+<img src="./images/python.png" alt="Welcome page for the unit on Blackboard" style="display:block;margin-left:auto;margin-right:auto;width:05%"/>
 
 
  - In the same way humans communicate using different languages, there are many languages we can use to communicate with a computer
@@ -110,6 +110,7 @@ jupyter: python3
    - Machine learning and AI
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 def greet(name):
     """Return a friendly greeting."""
@@ -152,6 +153,7 @@ greet("Bob")
  - To get a desired **output**
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Start with two ingredients (inputs)
 x = 7
@@ -176,6 +178,7 @@ Here we are producing some output that might be difficult to  compute or evaluat
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 x = 7
 y = 4
@@ -190,6 +193,7 @@ y = 4
 ## Data Types
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 x = 7        # an integer
 y = "hello"  # a string of text
@@ -207,6 +211,7 @@ z = True     # a boolean (true/false)
 ## Numeric Data Types
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Start with an integer and a float
 x = 7 # integer
@@ -231,6 +236,26 @@ y_as_int = int(y)
  
 **Warning:** A computer cannot actually describe arbitrarily small and large numbers – it approximates instead
 
+A tellign example:
+
+```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
+print("0.1 + 0.2 == 0.3:", 0.1 + 0.2 == 0.3)
+print("Actual result:", 0.1 + 0.2)
+```
+
+This is because computers use **powers of 2** to represent numbers (base 2). 
+
+$1/10$ in base 2
+
+$$
+0.1_{10}=0.0001100110011001100\dots_{ 2}
+$$
+
+is like $1/3$ in base 10:
+
+$$1/3 = 0.33333333\dots_{10}$$
+
 ## Strings
 
  - A string is a sequence of characters. Strings can contain: 
@@ -242,6 +267,7 @@ y_as_int = int(y)
    - Nothing at all
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Letters
 letters = "Hello"
 
@@ -266,7 +292,7 @@ empty = ""
    - Search through it
    - Replace words
    
-After todays practical you will be able to perform some of these operations!
+After today's practical you will be able to perform some of these operations!
 
 ## Booleans
 
@@ -280,6 +306,7 @@ After todays practical you will be able to perform some of these operations!
    - `cat_is_black and cat_has_four_legs` represents the sentence "The cat is black and has four legs"
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 cat_is_black = True
 cat_has_four_legs = False
@@ -303,6 +330,7 @@ print(cat_is_black and cat_has_four_legs)
    - Lists let you store, organize, and work with many values at once.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # A list of numbers
 scores = [10, 15, 20]
@@ -332,5 +360,6 @@ mixed = [42, "hello"]
    - [Option 1: Beginner - Basic Data Types](week_01_intro_to_data_types_beginner.qmd)
    - [Option 2: Intermediate - Collections](week_01_intro_to_data_types_intermediate.qmd)
    - [Option 3: Advanced - Copying and References](week_01_intro_to_data_types_advanced.qmd)
+
 
 
