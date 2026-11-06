@@ -12,6 +12,7 @@ We shall start by importing the `pandas` module. Conventionally, pandas is impor
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 ```
 
@@ -22,6 +23,7 @@ Just as `numpy` introduced the `array` object, `pandas` introduces new structure
 One way to create a `DataFrame` is using a dictionary where the keys are column names and the values are the column entries:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_data_dict = {"formula": ["CH4", "C2H6", "C3H8"],
                       "name": ["methane", "ethane", "propane"], 
                       "mol_mass": [16., 30.1, 44.1]}
@@ -42,6 +44,7 @@ The index is an important feature of pandas DataFrames. It builds upon other ord
 To make the rows more meaningful, we can label them using the *formula column*. We can set a new index from a column using the `set_index` method:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df = molecule_df.set_index("formula")
 molecule_df
 ```
@@ -51,6 +54,7 @@ molecule_df
 The benefit is that we can now access a row using our meaningful index name. We do this using the `.loc[]` syntax:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df.loc["CH4"]
 ```
 
@@ -59,12 +63,14 @@ Note that we use *square brackets not round brackets* after `.loc` - **this is u
 We can access the full set of index values using the `.index` attribute:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df.index
 ```
 
 Even though this returns an `Index` object, we can access elements using positional indexing as we would for a list or numpy array:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df.index[0]
 ```
 
@@ -73,6 +79,7 @@ molecule_df.index[0]
 Each column can be accessed from a pandas DataFrame by using the name of the column:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df["mol_mass"]
 ```
 
@@ -81,10 +88,12 @@ This is similar to accessing values using keys in a dictionary. Each column is s
 To find the full names of all columns in a DataFrame, we can access the `.columns` attribute:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df.columns
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df.columns[0]
 ```
 
@@ -93,6 +102,7 @@ molecule_df.columns[0]
 A pandas DataFrame contains values for each row and column. Each column (Series) has a particular `dtype`, which is the data type (e.g. float, int, str) associated with that data. This is the same terminology we saw with `numpy`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 molecule_df["mol_mass"].dtype
 ```
 
@@ -101,6 +111,7 @@ To access one element in a DataFrame, we can:
 - Use `.loc[]` with both row and column (similar to multi-indexing in numpy)
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Method 1: Sequential selection
 row = molecule_df.loc["CH4"]
 element = row["mol_mass"]
@@ -108,6 +119,7 @@ print(element)
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Method 2: Using .loc with both dimensions (comma-separated)
 element = molecule_df.loc["CH4", "mol_mass"]
 print(element)
@@ -118,6 +130,7 @@ print(element)
 The `pandas` module is built on underlying `numpy` arrays and brings across similar functionality. You can even access the underlying numpy array using the `.values` attribute:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 column = molecule_df["mol_mass"]
 underlying_values = column.values
 print(underlying_values, type(underlying_values))
@@ -126,12 +139,14 @@ print(underlying_values, type(underlying_values))
 As with numpy arrays, we can perform arithmetic or logical operations across a whole column (a pandas Series) at once:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 column / 2
 ```
 
 We can also combine multiple pandas Series with the same indices:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a Series object directly
 index = column.index
 number_of_carbon_atoms = pd.Series([1, 2, 3], index=index)
@@ -148,31 +163,37 @@ Similar to numpy arrays, pandas provides many methods for performing statistical
 Common statistical operations include:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Calculate the mean
 column.mean()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Calculate the sum
 column.sum()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Find the maximum
 column.max()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Find the position of the maximum
 column.argmax()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Find the index of the maximum
 column.idxmax()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Use this index to extract the relevant row
 index_max = column.idxmax()
 molecule_df.loc[index_max]
@@ -183,6 +204,7 @@ molecule_df.loc[index_max]
 Let's create a new DataFrame to demonstrate how to update and add new information:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 city_data = {"city": ["Melbourne", "Mumbai", "Paris", "Tokyo"],
              "population": [4850740, 20667665, 11078546, 37339804],
              "area (km2)": [9992, 603, 105, 2188]}
@@ -195,12 +217,14 @@ city_df
 We can extract a column and perform operations on it:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 city_df["population"] / 1e6
 ```
 
 To add this as a new column, we use syntax similar to assigning new values to dictionaries - define a new key and assign the new data:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 city_df["population (million)"] = city_df["population"] / 1e6
 city_df
 ```
@@ -210,6 +234,7 @@ When assigning a new value, it must be the same length as the number of rows in 
 We can also apply operations between columns to create new columns. For instance, we can calculate population density:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 population_million = city_df["population (million)"]
 area_sqkm = city_df["area (km2)"]
 population_density = population_million / area_sqkm
@@ -225,6 +250,7 @@ Similar to Boolean array indexing in numpy, we can filter pandas Series or DataF
 Let's filter to find cities with populations over 15 million:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 population_million = city_df["population (million)"]
 high_population = population_million[population_million > 15]
 high_population
@@ -233,6 +259,7 @@ high_population
 We can break this down into steps. First, create the filter:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 pop_filt = (population_million > 15)
 print(pop_filt)
 ```
@@ -240,6 +267,7 @@ print(pop_filt)
 The filter contains True and False values for each index. We can apply this filter to our original column:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 high_population = population_million[pop_filt]
 high_population
 ```
@@ -247,6 +275,7 @@ high_population
 We can also filter the entire DataFrame:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 city_df_high_population = city_df[pop_filt]
 city_df_high_population
 ```
@@ -254,6 +283,7 @@ city_df_high_population
 This is equivalent to writing:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 city_df_high_population = city_df[city_df["population (million)"] > 15]
 city_df_high_population
 ```
@@ -265,12 +295,14 @@ We can filter using multiple conditions with bitwise operators `&` (and) and `|`
 To find populations in a range between 15 and 25 million:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 population_million[(population_million > 15) & (population_million <= 25)]
 ```
 
 We can filter on multiple columns at once:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 filt = (city_df["population (million)"] > 15) & (city_df["area (km2)"] > 2000)
 city_df[filt]
 ```
@@ -298,6 +330,7 @@ C6H12O6,Glucose,180.156
 Here's an example of reading a csv file:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 
 import pandas as pd
 
@@ -325,6 +358,7 @@ A key option for `read_csv()` is the `sep` parameter, which allows you to specif
 We can see some examples here below where (for convenience) we use the `StringIO` module to simulate reading from a file, so that the content of the "file" is immediately apparent in the code snippet itself:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from io import StringIO
 import pandas as pd
 # Create a tab-delimited string
@@ -338,6 +372,7 @@ df_tab
 A similar example below, but with triple quotes for the multi-line string and an arbitrarily different separator (`;`):
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 tab_delimited_data = """Name;Age;City
 Alice;25;Melbourne
 Bob0;3;Paris

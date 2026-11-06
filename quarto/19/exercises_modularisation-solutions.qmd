@@ -34,6 +34,7 @@ importlib.reload(plot_example)
 Use reload whenever you edit functions in `plot_example.py` and want those edits to be used immediately in this notebook session.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -73,11 +74,13 @@ ax.legend()
 **Success check:** your figure should show a line with a shaded uncertainty region around it.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Add your import here
 # from plot_example import plot_uncert
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Uncomment after plot_uncert() is implemented
 # fig, ax = plt.subplots()
 # y_err = y * 0.1
@@ -95,6 +98,7 @@ ax.legend()
 https://matplotlib.org/stable/gallery/lines_bars_and_markers/stackplot_demo.html
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Copy stackplot demo code here
 ```
 
@@ -106,11 +110,13 @@ Consider which parts are generic and which are specific to one dataset.
 **Success check:** your function plots a stackplot from inputs, rather than hard-coded values.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Edit plot_population_stacked() in plot_example.py
 # Then import your function here
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Add code to test your stackplot function here
 ```
 
@@ -133,6 +139,7 @@ Consider which parts are generic and which are specific to one dataset.
 **Success check:** your plot displays different marker styles, and your notes explain why reload was needed.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Reload and test your updated function here
 # import importlib
 # import plot_example
@@ -160,6 +167,7 @@ Write 2-3 sentences: Why is reloading needed in notebooks when a module file cha
 **Success check:** the valid example plots correctly, and the invalid example raises your custom error message.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Demonstrate valid and invalid calls to your improved stackplot function
 # (use try/except for the invalid case)
 ```
@@ -180,6 +188,7 @@ Now you can create your own modularised plotting function. The problem you want 
 Then test it again with a real dataset, by taking the UK time series from  the *Energy per person dataset* from Our World in Data here below.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 # Fetch the data.
 df = pd.read_csv("https://ourworldindata.org/grapher/per-capita-energy-use.csv?v=1&csvType=full&useColumnShortNames=true", 
@@ -196,6 +205,7 @@ df_uk.plot(x='year', y='primary_energy_consumption_per_capita__kwh')
 Here's the complete function with docstring, validation, and error handling:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 def plot_with_polynomial_fit(x, y, ax, degree=2, label=None):
@@ -269,6 +279,7 @@ def plot_with_polynomial_fit(x, y, ax, degree=2, label=None):
 ### Test 1: Synthetic data (with error handling)
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Valid case: synthetic quadratic data with noise
 x_synthetic = np.linspace(0, 10, 50)
 y_synthetic = x_synthetic**2 + np.random.normal(0, 10, 50)
@@ -281,6 +292,7 @@ plt.title("Valid test: Polynomial fit on synthetic data")
 ### Test 2: Error handling
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Error case 1: Mismatched lengths
 print("Error case 1: Mismatched x and y lengths")
 try:
@@ -309,6 +321,7 @@ except Exception as e:
 ### Test 3: Real-world UK energy data
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Extract UK data (remove any NaN values)
 uk_years = df_uk['year'].dropna().values
 uk_energy = df_uk['primary_energy_consumption_per_capita__kwh'].dropna().values

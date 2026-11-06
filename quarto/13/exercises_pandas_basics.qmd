@@ -10,7 +10,6 @@ First, let's import the necessary libraries:
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 import numpy as np
 ```
@@ -27,7 +26,6 @@ Create a pandas DataFrame called `elements_df` containing information about chem
 The column names should be: "name", "symbol", "atomic_number", "atomic_mass"
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE
 ```
 
@@ -42,17 +40,14 @@ b) Access the row for "Li" using `.loc[]`
 c) Extract just the atomic mass for "He"
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
@@ -61,7 +56,6 @@ c) Extract just the atomic mass for "He"
 Let's load a real dataset from an online source. We'll use the famous "tips" dataset which contains information about restaurant tips.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load the tips dataset from a reliable online source
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"
 tips_df = pd.read_csv(url)
@@ -83,27 +77,22 @@ d) Find the data type (dtype) of the "day" column
 e) Display the last 8 rows of the DataFrame
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part d
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part e
 ```
 
@@ -124,32 +113,26 @@ e) Find the index (row position) of the maximum total bill
 f) Use `.describe()` to get summary statistics for all numeric columns
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part d
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part e
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part f
 ```
 
@@ -164,17 +147,14 @@ b) Create a new column called "total_cost" that adds the total_bill and tip toge
 c) Calculate the mean tip percentage
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
@@ -191,22 +171,18 @@ c) Filter to show only rows where the tip percentage (from Exercise 5) is greate
 d) How many rows have a total bill greater than 40? (Hint: use `.shape` or `len()`)
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part d
 ```
 
@@ -223,22 +199,18 @@ c) Filter to show rows where the day is "Sat" **or** the day is "Sun"
 d) Filter to show rows where total_bill is between 15 and 25 (inclusive)
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part d
 ```
 
@@ -247,7 +219,6 @@ d) Filter to show rows where total_bill is between 15 and 25 (inclusive)
 Let's work with the classic Iris dataset, which contains measurements of iris flowers.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load the Iris dataset
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
 iris_df = pd.read_csv(url)
@@ -272,37 +243,30 @@ f) Create a new column called "sepal_area" that multiplies sepal_length by sepal
 g) Which species has the largest average sepal_area? (This requires filtering by each species)
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part d
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part e
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part f
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part g
 ```
 
@@ -323,27 +287,22 @@ d) Calculate the average temperature across all cities (in Celsius)
 e) Find which city has the highest temperature
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part d
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part e
 ```
 
@@ -352,7 +311,6 @@ e) Find which city has the highest temperature
 Let's work with a dataset about planets in our solar system.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load planets dataset
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/planets.csv"
 planets_df = pd.read_csv(url)
@@ -378,32 +336,26 @@ e) Create a new column called "discovery_decade" that shows which decade each pl
 f) What percentage of all planets were discovered using the "Radial Velocity" method?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part a
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part b
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part c
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part d
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part e
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ### YOUR CODE HERE - part f
 ```
 

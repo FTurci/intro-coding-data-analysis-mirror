@@ -17,7 +17,6 @@ Compared to what you have already seen in `matplotlib`, pandas plotting is often
 The basic `pandas` object is the Series. Series have a `.plot()` method that can be used to create various types of plots.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 
 
@@ -51,19 +50,16 @@ Other parameters allow customization of the plot, such as titles, labels, colors
 Let's see some examples:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 series.plot(kind='bar', title='Bar Plot of Series', color='skyblue', xlabel='Categories', ylabel='Values')
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 series.plot(kind='pie', title='Pie Chart of Series', autopct='%1.1f%%', startangle=90)
 ```
 
 A **box** plot is diffeeent is it allows one to view the distribution of the data in a simplified form: it shows the median, quartiles, and potential outliers of the data i a single plot.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 series.plot(kind='box', title='Box Plot of Series')
 ```
 
@@ -74,7 +70,6 @@ As we have seen earlier, when working with `pandas` we typically use Dataframes 
 When plotting a DataFrame, the default behavior is to plot each column as a separate line (or bar, etc.) on the same axes. The index of the DataFrame is used for the x-axis.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a DataFrame with crop yield data across different months
 df = pd.DataFrame({
     'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
@@ -96,7 +91,6 @@ Notice that we obly had to specify the variable on the x-axis and pandas inferre
 You can have more control and specify which columns to plot on the x and y axes using the `x` and `y` parameters.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df.plot( kind='line',
         x='Month',
         y=['Wheat_Yield', 'Corn_Yield'],
@@ -107,7 +101,6 @@ df.plot( kind='line',
 Suppose we also wanted the data points to be marked with circles, we could use the `style` parameter:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df.plot( kind='line',
         style='--o',
         x='Month',
@@ -119,7 +112,6 @@ df.plot( kind='line',
 Additional parameters can be used to tune the figure property, e.g. the figure size:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df.plot( kind='line',
         style='--o',
         x='Month',
@@ -136,7 +128,6 @@ In `matplotlib`, one can create multiple axes in a single figure using subplots.
 When `subplots=True` is specified, each column of the DataFrame is plotted in its own subplot.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df.plot( kind='line',
         style='--o',
         x='Month',
@@ -151,7 +142,6 @@ df.plot( kind='line',
 We can specify the structure of the subplot grid using the `layout` parameter, which takes a tuple indicating the number of rows and columns.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df.plot( kind='line',
         style='--o',
         x='Month',
@@ -169,7 +159,6 @@ But what if we want to refine the individual subplots? For example, we may be un
 The result of the `.plot()` method when `subplots=True` is an array of `matplotlib` Axes objects, which can be further customized.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # capturing the Axes object
 axes = df.plot( kind='line',
         style='--o',
@@ -204,7 +193,6 @@ We are going to see this by using datsets from [Our World in Data](https://ourwo
 For EXAMPLE, let us take the world population data.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 
 df_population = pd.read_csv("https://ourworldindata.org/grapher/population.csv?v=1&csvType=full&useColumnShortNames=true")
@@ -216,7 +204,6 @@ The dataset contains population estimates for various countries over time (from 
 A simple operation we could do would be to filter the data for a specific country, say India, and then plot its population over time.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_india = df_population[df_population['Entity'] == 'India']
 df_india.plot(x='Year', y='population_historical', title='Population of India Over Time', xlabel='Year', ylabel='Population')
 ```
@@ -228,7 +215,6 @@ Notice however that we do not have distinct columns for each country, so we cann
 A somewhat cumbersome way is to loop over the countries and plot each one individually on the same axes. for this, we need to store the axes object returned by the first plot call, and then pass it to the subsequent calls.)
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 selection = ['France', 'Syria', 'Mexico','Ethiopia', 'China', 'India']
 # set time range
 time_range = (1000, 2025)
@@ -249,7 +235,6 @@ However, it is a bit complex, withe explicit loops and multiple plot calls.
 There is a simpler way to achieve the same result by reshaping the DataFrame using the `pivot` method. This creates a new DataFrame where each country becomes a separate column, making it easier to plot multiple countries at once.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_population_pivot = df_population.pivot(index='Year', columns='Entity', values='population_historical')
 
 df_population_pivot
@@ -258,7 +243,6 @@ df_population_pivot
 Now, plotting is straightforward, as we can directly use the DataFrame's `.plot()` method to visualize the population of multiple countries over time.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_population_pivot.plot(y=selection, xlabel='Year', ylabel='Population', title='Population Over Time', xlim=time_range, logy=True, style='--o');
 ```
 
@@ -267,14 +251,12 @@ Notice, however, that we get some broken lines in the data. This is because the 
 The easy fix is to fill the NaN values, for example via **interpolation** (which we mentioned [previously](../14/lecture_pandas_preprocessing.qmd)). This can be done *one the fly*.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_population_pivot.interpolate(kind="linear").plot(y=selection, xlabel='Year', ylabel='Population', title='Population Over Time', xlim=time_range, logy=True, )
 ```
 
 Notice the structure of the pivoted dataframe
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_population_pivot
 ```
 
@@ -283,7 +265,6 @@ The index is now the year, and each column corresponds to a country. This struct
 However, at this stage, we are not truly leveraging the datetime capabilties of pandas since the index is still just integers representing years, as it can be easily verified
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_population_pivot.index.dtype
 ```
 
@@ -293,7 +274,6 @@ df_population_pivot.index.dtype
 Let us consider a more complex data set where data are provided on a monthly basis.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies = pd.read_csv("https://ourworldindata.org/grapher/global-temperature-anomalies-by-month.csv?v=1&csvType=full&useColumnShortNames=false")
 df_anomalies
 ```
@@ -312,7 +292,6 @@ The startegy is as follows:
 - We then convert this string to a datetime object using `pd.to_datetime()`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies['Time'] = pd.to_datetime(df_anomalies['Year'].astype(str) + '-' + df_anomalies['Entity'] + '-01', format='%Y-%B-%d') # constructing a datetime column
 
 df_anomalies
@@ -321,14 +300,12 @@ df_anomalies
 We can now set this new datetime column as the index of the DataFrame.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies.set_index('Time', inplace=True)
 ```
 
 Plotting should be trivial, shouldn't it?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies.plot(y='Temperature anomaly', title='Global Temperature Anomalies Over Time', xlabel='Year', ylabel='Temperature Anomaly (°C)');
 ```
 
@@ -337,12 +314,10 @@ What happened? The data is still sorted in the original order (alphabetically by
 The solution is the simply sort the index before plotting.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies.sort_index(inplace=True)
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies.plot(y='Temperature anomaly', title='Global Temperature Anomalies Over Time', xlabel='Year', ylabel='Temperature Anomaly (°C)');
 ```
 
@@ -365,7 +340,6 @@ Let'see how this works with out temperature anomalies data.
 We can invoke the `.rolling()` method on the DataFrame, specifying the window size (e.g., 12 for a 12-month rolling mean). This produces a `Rolling` object, which, per se, does not contain any data yet.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies.rolling(window=12)
 ```
 
@@ -376,14 +350,12 @@ We do it only on the numerical data we care about (i.e. the temperature anomalie
 (Try and change the selection to include the `Entity` column and see what happens!)
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies['Temperature anomaly'].rolling(window=12).mean()
 ```
 
 Plotting can also be chained directly to the rolling mean calculation!
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_anomalies['Temperature anomaly'].rolling(window=12).mean().plot()
 ```
 
@@ -393,7 +365,6 @@ We can now produce a richer plot by combining several ideas we have seen in this
 - we can overlay the smoothed data (rolling mean) on top of the original data for comparison at different levels of smoothing
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ax = df_anomalies.plot(y='Temperature anomaly', title='Global Temperature Anomalies Over Time', xlabel='Year', ylabel='Temperature Anomaly (°C)', alpha=0.5)
 df_anomalies['Temperature anomaly'].rolling(window=12).mean().plot(ax=ax, color='red', linewidth=2, label='12-Month Moving Average')
 df_anomalies['Temperature anomaly'].rolling(window=24).mean().plot(ax=ax, color="#A5E589", linewidth=2, label='24-Month Moving Average')
@@ -411,7 +382,6 @@ There are a couple of ways.
 A first way is to use solely the axis object returned by the plot call. From the axis, we can get the figure using the `.figure` attribute, and then call `.savefig()` on it. In this case, we only use `pandas`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ax = df_anomalies.plot(y='Temperature anomaly', title='Global Temperature Anomalies Over Time', xlabel='Year', ylabel='Temperature Anomaly (°C)', alpha=0.5)
 df_anomalies['Temperature anomaly'].rolling(window=12).mean().plot(ax=ax, color='red', linewidth=2, label='12-Month Moving Average')
 df_anomalies['Temperature anomaly'].rolling(window=24).mean().plot(ax=ax, color="#A5E589", linewidth=2, label='24-Month Moving Average')
@@ -423,7 +393,6 @@ ax.figure.savefig('temperature_anomalies.png', dpi=300)
 Alternatively, we can import `matplotlib.pyplot` and use its `savefig()` function directly, passing the figure obtained from the axis object. This approach combines both `pandas` and `matplotlib`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 ax = df_anomalies.plot(y='Temperature anomaly', title='Global Temperature Anomalies Over Time', xlabel='Year', ylabel='Temperature Anomaly (°C)', alpha=0.5)
 df_anomalies['Temperature anomaly'].rolling(window=12).mean().plot(ax=ax, color='red', linewidth=2, label='12-Month Moving Average')

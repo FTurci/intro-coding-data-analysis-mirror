@@ -79,6 +79,7 @@ The algebraic, matrix formulation is easily interpreted by the computer wich use
 In `numpy`, this is implemented in the `numpy.linalg.solve` function, which efficiently solves the system of linear equations.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 
 import numpy as np
 
@@ -157,6 +158,7 @@ We can see in example in actin in `numpy` by using artificial data. In the `nump
 - the operator `@` whhich performs matrix multiplication in a more readable way than `np.dot` or `np.matmul`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 rng = np.random.default_rng(seed=42) # setting a random seed for reproducibility
@@ -210,6 +212,7 @@ This means that  the solution is given by the **same normal equations** as befor
 Let's see this in action again with `numpy` and some artificial data.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 N = 100 # change this to increase/decrease the number of data points
 x = np.linspace(0, 10, N)
 # generate artificial data for chosen values of a, b, and c
@@ -229,6 +232,7 @@ print(f"Estimated a: {a_est}, Estimated b: {b_est}, Estimated c: {c_est}")
 To plot the data it is important to note that the fitted curve needs to be evaluated typically at many more pints that the original $x_i$ data, so that it looks smooth.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 # plotting the data and the fitted curve
@@ -256,6 +260,7 @@ coefficients = np.polyfit(x, y, degree)
 returns the coefficients of the polynomial.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 coeffs = np.polyfit(x, y, 2) # fitting a quadratic polynomial to the data
 a_polyfit, b_polyfit, c_polyfit = coeffs
 print(f"Estimated a (polyfit): {a_polyfit}, Estimated b (polyfit): {b_polyfit}, Estimated c (polyfit): {c_polyfit}")  
@@ -290,18 +295,21 @@ The expression above can be thought as a ratio between the performance of the fi
 In numpy we can obtain the covariance matrix of the parameters by using the `cov` argument of the `polyfit` function:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 coeffs, cov = np.polyfit(x, y, 2, cov=True) # fitting a quadratic polynomial to the data
 
 cov
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # the diagonal of the covariance matrix gives us the variance of the estimated coefficients
 var_a, var_b, var_c = np.diag(cov)
 print(f"Variance of a: {var_a}, Variance of b: {var_b}, Variance of c: {var_c}")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # the errors are then the square root of the variances
 error_a = np.sqrt(var_a)
 error_b = np.sqrt(var_b)
@@ -332,6 +340,7 @@ The procedure goes as follows:
 The tuneable parameter is the number of bootstrap samples, which typically is in the range of 1000-10000.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## bootstrap method for error estimation
 n_bootstrap = 1000
 bootstrap_estimates = np.zeros((n_bootstrap, 3)) # to store the estimates

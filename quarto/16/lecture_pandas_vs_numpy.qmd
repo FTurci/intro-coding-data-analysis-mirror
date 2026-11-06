@@ -46,7 +46,6 @@ id,age,score,grade
 Notice that it contains some missing values.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # using a bash command to display the contents of a file
 ! cat sample_data.csv
 ```
@@ -54,7 +53,6 @@ Notice that it contains some missing values.
 We can read it in `numpy` simply with `genfromtxt`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 data = np.genfromtxt('sample_data.csv', delimiter=',', skip_header=1)
@@ -64,21 +62,18 @@ print(data)
 `numpy` by default reads data directly into ndarrays, which contain homogeneous data types (the same `dtype`) 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 data.dtype
 ```
 
 Notice that the headers have been lost and the missing values interpreted as `nan` which is a value that exists in `numpy`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 np.nan
 ```
 
 In `pandas`, we can read the same file using `read_csv()`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 
 df = pd.read_csv('sample_data.csv')
@@ -90,19 +85,16 @@ This produces a `DataFrame` object, whidh is a bit richer: it contains the heade
 Cleaning the data from the missing values in `numpy` requires some ad hoc work: for example, we could decide to remove any row that contains a `nan` value using `numpy.isnan()` and boolean indexing:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # check that an entry is NaN
 np.isnan(data)
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # check that a row contains any NaN values
 np.isnan(data).any(axis=1)
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # negate the above to get rows without NaN values
 data_clean = data[~np.isnan(data).any(axis=1)]
 # one can do the same with np.logical_not
@@ -114,7 +106,6 @@ data_clean
 The same is a bit more immediate in `pandas`, where we can use the `dropna()` method to remove rows with any missing values:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean = df.dropna()
 df_clean
 ```
@@ -124,7 +115,6 @@ Notice that the resulting `DataFrame` still retains the column names and indices
 To completely forget the indices of the original data, we can reset them using the `reset_index()` method:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean = df.dropna().reset_index(drop=True) # the drop=True avoids adding the old index as a new column
 df_clean
 ```
@@ -132,21 +122,18 @@ df_clean
 From the pandas DataFrame, we can easily convert it back to a numpy ndarray using the `to_numpy()` method:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean.to_numpy()
 ```
 
 This is also equivalent to accessing the `values` attribute of the DataFrame:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean.values
 ```
 
 The `to_numpy()` method is preferred as it provides more options for controlling the conversion process. It is also a particular instance of the many `to_...()` methods that allow you to convert DataFrames in various formats:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # printing all methods that start with 'to_'
 for method in dir(df_clean):
     if method.startswith('to_'):
@@ -163,7 +150,6 @@ Useful methods that you may immediately recognise in their utility are:
 We can also operate in the **opposite direction**, converting a `numpy` ndarray to a `pandas` DataFrame using the `pandas.DataFrame()` constructor: for this purpose, we may want to specify the column names explicitly using the `columns` parameter.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # using the numpy data_clean array to reconstruct a DataFrame
 df_reconstructed = pd.DataFrame(data_clean, columns=['id', 'age', 'score', 'grade'])
 df_reconstructed
@@ -176,14 +162,12 @@ df_reconstructed
 For the given array
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 data_clean
 ```
 
 We can pick various elements and slices:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("First element of the first row:", data_clean[0,0]) 
 print("Last element of the second row", data_clean[1,-1])
 print("All data in the first column", data_clean[:,0] )
@@ -195,7 +179,6 @@ Pandas dataframes have (as we have seen it) a quite different syntax for indexin
 The closest to `numpy`'s indexing is the `.iloc[]` method (*integer locator*), which allows integer-based indexing similar to `numpy` arrays.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("First element of the first row:", df_clean.iloc[0,0]) 
 print("Last element of the second row", df_clean.iloc[1,-1])
 print("All data in the first column\n", df_clean.iloc[:,0])
@@ -207,21 +190,18 @@ More in general, pandas provides label based indexing using the `.loc[]` method,
 In this case the index is numerical:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df.index
 ```
 
 And the columns are labelled with strings:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df.columns
 ```
 
 So we we can do the following:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("First element of the first row:", df_clean.loc[0,"id"]) 
 print("Last element of the second row", df_clean.loc[1,'grade'])
 print("All data in the first column\n", df_clean.loc[:,"id"])
@@ -238,12 +218,10 @@ When we use `[]` direftly with a DataFrame, it primarily serves two purposes: se
 **Selecting columns**: When we pass a single string or a list of strings to `[]`, it selects the corresponding columns from the DataFrame.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean["age"]
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # passing a list of strings
 df_clean[ ["id", "age"] ]
 ```
@@ -251,14 +229,12 @@ df_clean[ ["id", "age"] ]
 **Filtering rows**: When we pass a boolean array or Series to `[]`, it filters the rows based on the boolean values.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean[0:2]
 ```
 
 Oddly enough, if we pass an single integer pandas will interpret it as a column selection, not as a row selection as one might expect, and this will raise an error if there is no column with that name.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean[0]
 ```
 
@@ -276,7 +252,6 @@ They operate on rows or columns depending on the `axis` parameter:
 - axis=1 indicates that the operation is performed row-wise (i.e., along columns).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # column wise mean
 data_clean.mean(axis=0)
 ```
@@ -284,19 +259,16 @@ data_clean.mean(axis=0)
 Similar operations exist in pandas and work column-wise (default) or row-wise depending on the `axis` parameter as well.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean.mean()
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean.mean(axis=1) #averaging across columns, which makes little sense fir this dataset
 ```
 
 We can also compute standard devations:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("St deviation of each column according to numpy:\n", data_clean.std(axis=0))
 print("St deviation of each column according to pandas:\n", df_clean.std())
 ```
@@ -307,7 +279,6 @@ Oh, the two appear to provide quantitatively different results! This may come to
 For numpy this is
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 help(np.std)
 ```
 
@@ -329,7 +300,6 @@ The two have different meanings:
 In order to match the two results, we can specify `ddof=0` in the function calls
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # change this value to 1 to see the difference
 selected_ddof = 0
 print("St deviation of each column according to numpy:\n", data_clean.std(axis=0, ddof=selected_ddof))
@@ -345,7 +315,6 @@ What if we want to apply these functions to pandas DataFrames?
 We can surely create new columns by applying numpy functions to existing columns:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_clean["log grade"] = np.log(df_clean["grade"])
 
 df_clean
@@ -354,7 +323,6 @@ df_clean
 We can even apply the functions to the entire DataFrame, and `numpy` will apply them element-wise:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 np.log(df_clean) # meaningless but possible
 ```
 
@@ -375,7 +343,6 @@ This distinction is particularly important when subsetting data or performing op
 In `numpy`, **slicing creates views by default**. This is done for memory efficiency, but it means that modifying a slice will affect the original array.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a simple array
 original = np.array([1, 2, 3, 4, 5])
 print("Original array:", original)
@@ -396,7 +363,6 @@ Notice that modifying the slice changed the original array! This is because `sli
 We can verify this using `np.shares_memory()`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check if they share memory
 print("Do they share memory?", np.shares_memory(original, sliced))
 ```
@@ -404,7 +370,6 @@ print("Do they share memory?", np.shares_memory(original, sliced))
 To create an independent copy that won't affect the original, use the `.copy()` method explicitly:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a new array
 original2 = np.array([10, 20, 30, 40, 50])
 print("Original array:", original2)
@@ -429,7 +394,6 @@ The situation in `pandas` is more complex. Pandas tries to avoid unnecessary cop
 **Chained indexing** (using multiple `[]` operations in sequence) can be particularly problematic and may trigger a `SettingWithCopyWarning`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a test DataFrame
 df_test = pd.DataFrame({
     'A': [1, 2, 3, 4],
@@ -444,7 +408,6 @@ print(df_test)
 If we try to filter rows and then modify the result, pandas may issue a warning because it's unclear whether we're modifying a view or a copy:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Chained indexing - may trigger SettingWithCopyWarning
 df_subset = df_test[df_test['A'] > 1]
 df_subset['B'] = 0  # This might warn you!
@@ -458,7 +421,6 @@ print(df_test)
 **Best practice 1**: Use `.copy()` explicitly when you want to work with a subset independently:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Safe approach: explicit copy
 df_safe = df_test[df_test['A'] > 1].copy()
 df_safe['B'] = 999
@@ -472,7 +434,6 @@ print(df_test)
 **Best practice 2**: If you want to modify the original DataFrame directly, use `.loc[]` in a single operation:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Direct modification using .loc[] (modifies original)
 df_test.loc[df_test['A'] > 1, 'C'] = 0
 
@@ -498,7 +459,6 @@ Let's explore when and why you might convert data for plotting purposes.
 Both approaches work, but have different advantages:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 # Approach 1: Plotting directly with pandas (column labels preserved)
@@ -529,7 +489,6 @@ For example, create contour plots to represent fields over a grid can be more st
 In the example below, we take tabulated data, arrange it into a grid using a pivot table, with x and y coordinates as columns and rows, get (x,y) pairs via `numpy.meshgrid()`, and then plot the contour using `matplotlib`.   
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example: Creating a contour map from gridded data
 
 # Load temperature measurements from a 5x5 grid

@@ -36,7 +36,6 @@ This notebook contains the solutions to the week 4 `Beginner`, `Intermediate` an
 In the first line, the inputs are assigned according to the order they were read in, so that `x=3` and `y=4`. In the second line, they are assigned according to the keyword/variable names given, so that `x=4` and `y=3`. In the third line, `x` takes the default value of `2` whilst `y=4`. In the fourth line, both default values `x=2` and `y=1` are used. And in the final line, `y` takes the default value of `1` while `x=3`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def my_simple_function(x=2,y=1):
     
     print(x, y)
@@ -51,7 +50,6 @@ my_simple_function(x=3)
 **Question 2:** An answer to this question is provided below.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def count_uppercase(my_string):
     count = 0
     for ch in my_string:
@@ -66,7 +64,6 @@ print(count_uppercase("this Is mY string"))
 **Question 3:** The functions for this question are given below.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def calculate_kinetic_energy(mass, velocity):
     
   """
@@ -101,7 +98,6 @@ def calculate_potential_energy(mass, height, gravity):
 **Question 4:** A sample answer for this question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # ---------- Question 4 sample answer ----------
 g = 9.8          # m/s^2
 h0 = 100.0       # m
@@ -133,7 +129,6 @@ for h in heights:
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import os
 os.chdir('/home/jovyan/SCIF10002-2025.git/04/src')
 
@@ -145,7 +140,6 @@ plot_energy_over_time(times, kinetic_energy, potential_energy)
 **Question 5:** The `time()` function gives the number of seconds passed since epoch (the point where time begins, e.g. `January 1, 1970, 00:00:00 UTC` is epoch on unix systems). Some suggested code to show students for this question is given below.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # The time function can be imported like so
 from time import time
 
@@ -164,7 +158,6 @@ print("Printing the numbers 1-100 took ", t2-t1, " seconds.")
 **Question 6:** An example answer for this question is given below.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def remove_filler(text):
     fillers = ["um", "uh", "uhm", "er", "err"]
     words = text.split()  # split the string into words
@@ -189,7 +182,6 @@ print(remove_filler(text))
 **Question 8:** Here is an example answer for this question.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Here is some example input
 example_input = [3,1,2,7]
 
@@ -246,7 +238,6 @@ print(expected_output)
 **Question 9:** Example code for this question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def next_las(las_k):
     
     # It is useful to have the character as a string
@@ -299,7 +290,6 @@ def next_las(las_k):
 **Question 10:** Code for this question can be found below
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # This function must take in an integer k and return the
 # kth look and say number, l(k).
 def get_las_k(k):
@@ -354,7 +344,6 @@ kwargs: {'x': 10, 'y': 20}
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def printing_function(a, b, *args, **kwargs):
     print("a:", a)
     print("b:", b)
@@ -374,7 +363,6 @@ printing_function(1, 2, 3, 4, x=10, y=20)
 **Question 2:** An example answer for this question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def sumstrings(*args):
     
     # Work out the running sum
@@ -441,7 +429,6 @@ Here is a print statement.
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def function_with_if(a=1):
     
     # If a is greater than zero, return 1
@@ -485,7 +472,6 @@ The function returns `False` whenever we find an integer `i` (lying between `2` 
 **Question 5:** The `another_mystery_function` function takes in a string and reverses the order of the letters. The same thing can be done using, for example, the below loop:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def another_mystery_function_loop_version(word):
     reversed_word = ""
     for char in word:
@@ -498,7 +484,6 @@ def another_mystery_function_loop_version(word):
 **Question 1:** An answer to this question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of words
 words = ['footballs', 'Bilingual', 'computing', 'presentation', 'interconnect', 'to', 'be', 
          'investigation', 'ya', 'university', 'keyboard,', 'hi', 'my', 'background', 
@@ -527,7 +512,6 @@ list(filter(lambda x: len(x) > 2 and len(x) < 9, words))
 **Question 2:** Example code for this question is given below:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 people = [
     {"name": "Alice",   "age": 25, "city": "New York"},
     {"name": "Bob",     "age": 30, "city": "Los Angeles"},
@@ -552,7 +536,6 @@ print(names)
 **Question 3:** An example answer is provided below.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def my_filter(f, g, my_iterable):
     result = []
     for x in my_iterable:
@@ -580,7 +563,6 @@ print(my_filter(f, g, my_iterable))  # Should print [-2, 0, 1, 3]
 Another way of thinking about it is as doing the following:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 nums = [3, 1, 4, 1, 5, 9, 2]
 

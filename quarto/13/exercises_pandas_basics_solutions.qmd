@@ -14,6 +14,7 @@ We'll use real datasets from online sources to make the exercises more interesti
 First, let's import the necessary libraries:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 import numpy as np
 ```
@@ -32,6 +33,7 @@ The column names should be: "name", "symbol", "atomic_number", "atomic_mass"
 ### Solution 1
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 elements_dict = {
     "name": ["Hydrogen", "Helium", "Lithium", "Beryllium", "Boron"],
     "symbol": ["H", "He", "Li", "Be", "B"],
@@ -56,17 +58,20 @@ c) Extract just the atomic mass for "He"
 ### Solution 2
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Set symbol as index
 elements_df = elements_df.set_index("symbol")
 elements_df
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Access row for Li
 elements_df.loc["Li"]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Extract atomic mass for He
 elements_df.loc["He", "atomic_mass"]
 ```
@@ -76,6 +81,7 @@ elements_df.loc["He", "atomic_mass"]
 Let's load a real dataset from an online source. We'll use the famous "tips" dataset which contains information about restaurant tips.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load the tips dataset from a reliable online source
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/tips.csv"
 tips_df = pd.read_csv(url)
@@ -99,26 +105,31 @@ e) Display the last 8 rows of the DataFrame
 ### Solution 3
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Column names
 tips_df.columns
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Shape
 tips_df.shape
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Extract total_bill column
 tips_df["total_bill"]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part d: Data type of day column
 tips_df["day"].dtype
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part e: Last 8 rows
 tips_df.tail(8)
 ```
@@ -142,31 +153,37 @@ f) Use `.describe()` to get summary statistics for all numeric columns
 ### Solution 4
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Mean total bill
 tips_df["total_bill"].mean()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Maximum tip
 tips_df["tip"].max()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Minimum tip
 tips_df["tip"].min()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part d: Standard deviation of tips
 tips_df["tip"].std()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part e: Index of maximum total bill
 tips_df["total_bill"].idxmax()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part f: Summary statistics
 tips_df.describe()
 ```
@@ -184,18 +201,21 @@ c) Calculate the mean tip percentage
 ### Solution 5
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Tip percentage
 tips_df["tip_percentage"] = (tips_df["tip"] / tips_df["total_bill"]) * 100
 tips_df.head()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Total cost
 tips_df["total_cost"] = tips_df["total_bill"] + tips_df["tip"]
 tips_df.head()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Mean tip percentage
 tips_df["tip_percentage"].mean()
 ```
@@ -215,21 +235,25 @@ d) How many rows have a total bill greater than 40? (Hint: use `.shape` or `len(
 ### Solution 6
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Total bill > 30
 tips_df[tips_df["total_bill"] > 30]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Day is Sun
 tips_df[tips_df["day"] == "Sun"]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Tip percentage > 20
 tips_df[tips_df["tip_percentage"] > 20]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part d: Count of rows with total bill > 40
 filtered_df = tips_df[tips_df["total_bill"] > 40]
 print(f"Number of rows: {len(filtered_df)}")
@@ -251,21 +275,25 @@ d) Filter to show rows where total_bill is between 15 and 25 (inclusive)
 ### Solution 7
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: total_bill > 20 AND day is Sat
 tips_df[(tips_df["total_bill"] > 20) & (tips_df["day"] == "Sat")]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: tip > 5 AND size >= 4
 tips_df[(tips_df["tip"] > 5) & (tips_df["size"] >= 4)]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: day is Sat OR day is Sun
 tips_df[(tips_df["day"] == "Sat") | (tips_df["day"] == "Sun")]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part d: total_bill between 15 and 25
 tips_df[(tips_df["total_bill"] >= 15) & (tips_df["total_bill"] <= 25)]
 ```
@@ -275,6 +303,7 @@ tips_df[(tips_df["total_bill"] >= 15) & (tips_df["total_bill"] <= 25)]
 Let's work with the classic Iris dataset, which contains measurements of iris flowers.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load the Iris dataset
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv"
 iris_df = pd.read_csv(url)
@@ -301,40 +330,47 @@ g) Which species has the largest average sepal_area? (This requires filtering by
 ### Solution 8
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Set index starting from 1
 iris_df.index = range(1, len(iris_df) + 1)
 iris_df.head()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Number of unique species
 print(f"Unique species: {iris_df['species'].unique()}")
 print(f"Number of unique species: {iris_df['species'].nunique()}")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Mean sepal length
 iris_df["sepal_length"].mean()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part d: Filter for setosa
 iris_df[iris_df["species"] == "setosa"]
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part e: Maximum petal length for setosa
 setosa_df = iris_df[iris_df["species"] == "setosa"]
 setosa_df["petal_length"].max()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part f: Create sepal_area column
 iris_df["sepal_area"] = iris_df["sepal_length"] * iris_df["sepal_width"]
 iris_df.head()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part g: Species with largest average sepal_area
 setosa_mean = iris_df[iris_df["species"] == "setosa"]["sepal_area"].mean()
 versicolor_mean = iris_df[iris_df["species"] == "versicolor"]["sepal_area"].mean()
@@ -373,6 +409,7 @@ e) Find which city has the highest temperature
 ### Solution 9
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Create temps_celsius Series
 temps_celsius = pd.Series(
     [15, 18, 14, 22, 24],
@@ -382,12 +419,14 @@ temps_celsius
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Convert to Fahrenheit
 temps_fahrenheit = (temps_celsius * 9/5) + 32
 temps_fahrenheit
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Create humidity Series
 humidity = pd.Series(
     [75, 65, 70, 55, 60],
@@ -397,11 +436,13 @@ humidity
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part d: Average temperature
 temps_celsius.mean()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part e: City with highest temperature
 temps_celsius.idxmax()
 ```
@@ -411,6 +452,7 @@ temps_celsius.idxmax()
 Let's work with a dataset about planets in our solar system.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load planets dataset
 url = "https://raw.githubusercontent.com/mwaskom/seaborn-data/master/planets.csv"
 planets_df = pd.read_csv(url)
@@ -438,23 +480,27 @@ f) What percentage of all planets were discovered using the "Radial Velocity" me
 ### Solution 10
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part a: Planets discovered in 2010
 planets_2010 = planets_df[planets_df["year"] == 2010]
 print(f"Number of planets discovered in 2010: {len(planets_2010)}")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part b: Most common discovery method
 print(planets_df["method"].value_counts())
 print(f"\nMost common method: {planets_df['method'].value_counts().idxmax()}")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part c: Average orbital period (ignoring NaN values)
 print(f"Average orbital period: {planets_df['orbital_period'].mean():.2f} days")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part d: Transit method with orbital period < 10 days
 transit_short = planets_df[
     (planets_df["method"] == "Transit") & 
@@ -464,12 +510,14 @@ transit_short
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part e: Discovery decade
 planets_df["discovery_decade"] = (planets_df["year"] // 10) * 10
 planets_df[["year", "discovery_decade"]].head(10)
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part f: Percentage of Radial Velocity discoveries
 total_planets = len(planets_df)
 radial_velocity_planets = len(planets_df[planets_df["method"] == "Radial Velocity"])

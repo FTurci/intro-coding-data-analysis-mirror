@@ -15,6 +15,7 @@ We are going to explore these concepts through a walked-through approach. We wil
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # first, load the important moodules
 import pandas as pd
 import numpy as np
@@ -28,6 +29,7 @@ We'll start by loading weather data from Cardiff Bute Park. This dataset contain
 **Note.** Panda's function `read_csv()` can read both from a local file and from a public URl, as in this case.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load the Cardiff weather dataset from a publich github repository
 url = "https://raw.githubusercontent.com/alanjones2/uk-historical-weather/refs/heads/main/data/Cardiff_Bute_Park.csv"
 df_cardiff = pd.read_csv(url) 
@@ -44,6 +46,7 @@ Before we start cleaning, let's understand what we're working with.
 To do so, we first check the amount of data that we have by inspecting the **shape** of the data frame and the names of the various columns.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check the shape of the dataset
 print(f"Dataset dimensions: {df_cardiff.shape[0]} rows × {df_cardiff.shape[1]} columns")
 print(f"\nColumn names:\n{df_cardiff.columns.tolist()}")
@@ -62,6 +65,7 @@ It is clear that we read useful data but also less useful one:
 > **Note**. We can check the details of the various datatypes and amount of valid data using the dataframe method `info()`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Get detailed information about the dataset
 print("Dataset Info:")
 df_cardiff.info()
@@ -74,6 +78,7 @@ We can get quick statistics of the data distribution by calculating some main st
 The `.describe()` method computes summary statistics such as count, mean, standard deviation, minimum, maximum, and quartile values for all numerical columns in the dataframe.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check basic statistics
 print("Basic Statistics:")
 df_cardiff.describe()
@@ -82,6 +87,7 @@ df_cardiff.describe()
 > **Note.** The output of the `describe()` method is itself a dataframe. Try and explore it!
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_describe = df_cardiff.describe()
 df_describe.loc['mean', 'Month']
 ```
@@ -107,6 +113,7 @@ Let's understand what each column represents:
 Pandas has inferred the data types, but let's check if they're appropriate for our analysis.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check current data types
 print("Current data types:")
 print(df_cardiff.dtypes)
@@ -129,6 +136,7 @@ Indeed, we can  convert it to a proper **datetime type** which will preserve the
 To perform the conversion, we use the **pandas function ** `pd.to_datetime`. Notice that this is not a dataframe method.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Convert Date column to datetime
 df_cardiff['Date'] = pd.to_datetime(df_cardiff['Date'])
 
@@ -141,6 +149,7 @@ print(f"Time span: {(df_cardiff['Date'].max() - df_cardiff['Date'].min()).days /
 Now we can perform boolean tests using dates!
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # selecting all the rows of teh dataframe past 1980-05-01
 df_cardiff[df_cardiff['Date']>'1980-05-01']
 ```
@@ -154,6 +163,7 @@ The index column is important as it simplifies slicing and plotting. Since we ar
 We can do this by setting the index of the column with `set_index`
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set Date as the index
 df_cardiff = df_cardiff.set_index('Date')
 
@@ -162,6 +172,7 @@ df_cardiff = df_cardiff.drop('Unnamed: 0', axis=1)
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print("After setting index:")
 df_cardiff
 ```
@@ -173,6 +184,7 @@ Real-world data often has missing values. Let's investigate.
 Missing data in pandas is encoded as `NaN` (Not a Number). We can check for missing values using the `isnull()` method combined with `sum()` to get a count of missing values per column.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check for missing values
 print("Missing values per column:")
 missing_counts = df_cardiff.isnull().sum()
@@ -185,6 +197,7 @@ It is useful to see what the rows with missing data look like. We can do this by
 For example, we can check what the rows with a missing `Sun` value look like.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Which rows have missing Sun data?
 rows_missing_sun = df_cardiff[df_cardiff['Sun'].isnull()]
 print(f"Rows with missing Sun data: {len(rows_missing_sun)}")
@@ -208,6 +221,7 @@ Let's handle each column appropriately.
 As we have seen earlier, the `status` column is mostly empty and doesn't seem critical for our analysis. Let's drop it. uding the `drop()` method.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Drop the status column
 df_cardiff = df_cardiff.drop('status', axis=1)
 print("After dropping 'status' column:")
@@ -217,6 +231,7 @@ print(df_cardiff.columns.tolist())
 Here the `axis=1` argument specifies that we want to drop a column (not a row), avoiding potential ambiguities. Now the dataframe looks as follows:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_cardiff
 ```
 
@@ -245,6 +260,7 @@ We have various interpolation strategies that are available out of the box that 
 We can specify the method using the `method` argument in the `interpolate()` method.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Before interpolation
 print(f"Missing Sun values before: {df_cardiff['Sun'].isnull().sum()}")
 
@@ -264,6 +280,7 @@ print(df_cardiff.loc['2022-01-01':'2022-06-01', ['Year', 'Month', 'Sun']])
 We operated our interpolation only on the `Sun` column. Let's check if there are any remaining missing values in the dataframe.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Verify no missing values remain
 print("Final missing value check:")
 print(df_cardiff.isnull().sum())
@@ -273,6 +290,7 @@ print(f"\nTotal missing values: {df_cardiff.isnull().sum().sum()}")
 This is visible in plots as gaps or breaks in the lines. We can use `matpltolib` to visualize the data and check for continuity. Remember that the `.index` attribute is now our datetime index, i.e. our natural independent variable.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 plt.plot(df_cardiff.index, df_cardiff['Tmean'], label='Daily Sunlight Hours', color='orange')
 plt.gca().set(xlabel='Date', ylabel='Tmean') # set propeties of the current axis using the `getc current axis` method, i.e. gca()
 ```
@@ -280,6 +298,7 @@ plt.gca().set(xlabel='Date', ylabel='Tmean') # set propeties of the current axis
 If we want to apply a method to all columns (including `Tmean`), we can simply call the `interpolate()` method without specifying a column.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Interpolate all missing values using quadratic method, just as an example 
 df_cardiff  = df_cardiff.interpolate(method='quadratic')
 df_cardiff.isnull().sum()
@@ -288,6 +307,7 @@ df_cardiff.isnull().sum()
 Replot the data to confirm that there are no gaps (but also shows the limitations of local interpolation).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 plt.plot(df_cardiff.index, df_cardiff['Tmean'], label='Daily Sunlight Hours', color='orange')
 plt.gca().set(xlabel='Date', ylabel='Tmean') # set propeties of the current axis using the `getc current axis` method, i.e. gca()
 ```
@@ -304,18 +324,21 @@ We can use this to extract useful individual components year, month name, season
 Any daytime columns has many attributibes, such as `.year`, `.month`, `.day`, `.dayofweek`, etc.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_cardiff.index.year
 ```
 
 We can operate on them to perform insightful analyses. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_cardiff.index.year.unique() # this gives us all the unique years in the index
 ```
 
 We can for example extract the month name from the datetime index and create a new column `Month_Name` to store it. We can do the same for the quarter of the year.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Extract additional date components
 df_cardiff['Month_Name'] = df_cardiff.index.month_name()
 df_cardiff['Quarter'] = df_cardiff.index.quarter
@@ -338,6 +361,7 @@ We then **pass** the name of the custom function to the `apply()` method of a sp
 > **Note.** This is an example of Python treating functions as **first-class objects**, i.e., we can pass them as arguments to other functions/methods. It is a simple instance of a broader programming paradigm called **functional programming**.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Define a function to map months to seasons (Northern Hemisphere)
 def get_season(month):
     if month in [12, 1, 2]:
@@ -361,6 +385,7 @@ print(df_cardiff[['Month', 'Month_Name', 'Season', 'Tmax', 'Rain']].head(12))
 We can continue operating on teh data to create more derived features using simple arithmetic operations.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Temperature range (difference between max and min)
 df_cardiff['Temp_Range'] = df_cardiff['Tmax'] - df_cardiff['Tmin']
 # Is it a rainy month? (>100mm rainfall)
@@ -388,6 +413,7 @@ To do this we use the following syntax:
 <code>dataframe_name.groupby('<span style="background-color: #ffeb3b; padding: 2px 4px;">grouping_column_name</span>')['<span style="background-color: #8bc34a; padding: 2px 4px;">column_to_aggregate</span>'].<span style="background-color: #ff9800; padding: 2px 4px;">aggregation_function()</span></code>
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Group by month and calculate the percentage of rainy months for each month
 rainy_by_month = df_cardiff.groupby('Month_Name')['Rainy_Month'].mean() * 100
 
@@ -404,6 +430,7 @@ Pandas can export in many different formats. One of the most common is a **pure 
 We can use the `to_csv()` method of the dataframe to export the data to a CSV file.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a clean version with selected columns
 
 df_export = df_cardiff[['Year', 'Month', 'Tmax', 'Tmin', 'Tmean', 'Rain', 'Sun', 'Temp_Range', 'Rainy_Month', 'Sunny_Month']]
@@ -415,6 +442,7 @@ print(f"Date range: {df_export.index.min()} to {df_export.index.max()}")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Save to CSV (uncomment to actually save)
 df_export.to_csv('cardiff_weather_cleaned.csv')
 
@@ -423,6 +451,7 @@ df_export.to_csv('cardiff_weather_cleaned.csv')
 It is also possible to write (and, indicentally, read) other formats such as Excel files, JSON files, SQL databases, and more. They sometimes require additional libraries to be installed.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # if the following line doesn work, one needs to install openpyxl with ! pip install openpyxl
 df_export.to_excel('cardiff_weather_cleaned.xlsx')
 

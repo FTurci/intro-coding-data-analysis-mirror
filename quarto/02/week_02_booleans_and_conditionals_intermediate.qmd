@@ -41,6 +41,7 @@ This is similar to using lots of `if`/`elif` checks, but can be cleaner and easi
 Here’s a simple example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 1: Traffic lights
 color = "red"
 
@@ -62,6 +63,7 @@ Note that in the final case we have an underscore, `_`. This simply means "match
  > **Test your understanding:** How might you modify the above code to allow case-sensitive examples such as `color="ReD"` or `color="GreEn"`? *Hint: recall the `lower()` function from the beginner notebook in Week 1.*
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
@@ -70,6 +72,7 @@ Sometimes, you may want several different inputs to trigger the same response. I
 For example, in the below code we group "Saturday" and "Sunday" together, since both are weekend days:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Grouping weekdays
 day = "Saturday"
 match day:
@@ -88,6 +91,7 @@ One of the biggest advantages of the `match` statement is how cleanly it handles
 Suppose we want to represent different 3D solids using dictionaries. For example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 solid_data = {"type": "cylinder", "radius": 3, "height": 10}
 ```
 
@@ -96,6 +100,7 @@ solid_data = {"type": "cylinder", "radius": 3, "height": 10}
 Here, `solid_data` describes a cylinder with a given `radius` and `height`. We might also store information for other solids:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 solid_data = {"type": "sphere", "radius": 5}
 solid_data = {"type": "rectangular_prism", "width": 2, "height":9, "depth":10}
 ```
@@ -105,6 +110,7 @@ Each solid requires different keys: a `sphere` has only a radius, a `rectangular
 Now imagine we want to compute the volume automatically, regardless of which solid is described. A natural first attempt is a long chain of `if`-`elif`-`else` statements:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 if solid_data.get("type") == "sphere":
     r = solid_data.get("radius")
     if r:
@@ -141,6 +147,7 @@ While this works, it quickly becomes unwieldy. Each branch requires lots of repe
 The `match` statement for this task is much simpler. This is in part due to some useful syntax; we can unpack the values inside the dictionary immediately, without using the `.get()` function as shown below:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 match data:
     
     case {"type": "sphere", "radius": r}:
@@ -183,6 +190,7 @@ Here the code will be run if and only if the `variable` matches the `pattern` *a
 For example, suppose we're working with points in 2D space, which we write as a `tuple` and wish to describe whether they lie on the cartesian axes. Then we could do the following:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Point in space
 point = (1, 5)
 
@@ -212,12 +220,14 @@ print(f"The point {point} is {location}.")
 *Hint: A 2D point lies in a quadrant when both $x$ and $y$ are nonzero. Use `if` guards to distinguish whether each coordinate is positive or negative.*
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your answer here...
 ```
 
 **Question 2:** Convert the below `if`-`elif`-`else` statement to a `match` statement:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x = 2
 
 if x == 1:
@@ -235,6 +245,7 @@ else:
 For example, if `operator = "*"`, the program should calculate and store `my_result = a * b`.  If the operator is not one of the four listed above, your code should print `"Invalid operator"`.  
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example input
 a = 10
 b = 5
@@ -263,6 +274,7 @@ If either `currency` (from `account`) or `target_currency` is not one of the fou
 *If you are unsure what a `Tuple` is, please revisit the `week 01 intermediate` notebook on collections.* 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example input
 account = (100, "USD")      # 100 dollars
 target_currency = "EUR"     # convert to euros
@@ -282,6 +294,7 @@ Write a program that takes an `(r, g, b)` tuple as input and uses a match statem
 The color name should be saved as a string variable named `color_name`. Write your solution in the box below.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example rgb values
 rgb_values = (20,3,220)
 

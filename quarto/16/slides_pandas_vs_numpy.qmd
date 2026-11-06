@@ -14,6 +14,7 @@ jupyter:
 NumPy provides efficient numerical computing through n-dimensional arrays (ndarrays), while Pandas builds on top of NumPy to offer high-level data structures like DataFrames for tabular data analysis. Both libraries are essential for data analysis but serve different purposes.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import pandas as pd
 
@@ -32,6 +33,7 @@ print(df)
 NumPy uses functions like `np.genfromtxt()` for text files, while Pandas offers versatile `read_csv()`, `read_excel()`, and `read_sql()` methods that preserve column names and handle missing values more elegantly.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import io
 
 # Create sample CSV data
@@ -56,6 +58,7 @@ print(df_data)
 You can seamlessly convert between Pandas DataFrames and NumPy arrays using `to_numpy()` for DataFrames or the `pd.DataFrame()` constructor to go the other direction. This enables you to leverage the strengths of each library.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Convert DataFrame to NumPy array
 df = pd.DataFrame({'A': [1, 2, 3], 'B': [4, 5, 6]})
 array = df.to_numpy()
@@ -73,6 +76,7 @@ print(new_df)
 NumPy uses integer-based indexing like lists, while Pandas provides both `.iloc[]` for integer-based access and `.loc[]` for label-based access. Using `.loc[]` and `.iloc[]` is preferred over direct `[]` access for clarity.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # NumPy indexing
 arr = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
 print("NumPy - First row:", arr[0, :])
@@ -89,6 +93,7 @@ print("Pandas - Using loc[0, 'B']:", df.loc[0, 'B'])
 NumPy represents missing values as `nan` and requires manual checks with `np.isnan()`, while Pandas provides the convenient `dropna()` method to remove rows with missing values in a single call.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create data with missing values
 df = pd.DataFrame({'A': [1, 2, np.nan, 4], 'B': [5, np.nan, np.nan, 8]})
 print("Original DataFrame:")
@@ -105,6 +110,7 @@ print(df_clean)
 Both libraries provide statistical functions like `mean()`, `std()`, and `sum()` with an `axis` parameter to control the direction of computation. Note that Pandas uses the sample standard deviation by default (ddof=1) while NumPy uses population standard deviation (ddof=0).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create sample data
 arr = np.array([[1, 2, 3], [4, 5, 6]])
 df = pd.DataFrame(arr, columns=['A', 'B', 'C'])
@@ -123,6 +129,7 @@ print("Pandas std (sample):", df.std().values)
 Both NumPy and Pandas support vectorized operations that apply functions element-wise to entire arrays or DataFrames. This is much faster than loops and is the foundation of efficient numerical computing in Python.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create sample data
 arr = np.array([1, 2, 3, 4, 5])
 df = pd.DataFrame({'values': arr})
@@ -142,6 +149,7 @@ print(df)
 NumPy slicing creates views by default (references to original data), while explicit copies are independent. In Pandas, use `.copy()` explicitly when subsetting to avoid unexpected modifications to the original DataFrame.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # NumPy view vs copy
 original = np.array([1, 2, 3, 4, 5])
 view = original[1:4]
@@ -163,6 +171,7 @@ print(df)  # Unchanged
 Both Pandas and NumPy work well with Matplotlib for plotting. Pandas preserves column labels automatically, while NumPy requires explicit axis labels. Converting to NumPy arrays is useful for specialized plots like contours or meshgrids.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 # Create sample data
@@ -184,6 +193,7 @@ plt.title('NumPy'); plt.xlabel('x');plt.ylabel('y');plt.tight_layout();plt.show(
 Use NumPy for efficient numerical computations on homogeneous arrays, while Pandas excels at data cleaning, exploratory analysis, and working with heterogeneous tabular data. Understanding when to use each library—or both together—is key to efficient data analysis.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example: When to use each library
 
 # NumPy: Fast numerical computation

@@ -28,6 +28,7 @@ Matplotlib's `mplot3d` toolkit enables the creation of 3D plots. This is particu
 To use 3D plotting capabilities, we need to import the necessary libraries.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -42,6 +43,7 @@ rng = np.random.default_rng(42)
 Let's start by creating some sample 3D data and visualizing it with a scatter plot.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Generate sample 3D data
 n_points = 100
 
@@ -59,6 +61,7 @@ data_3d
 Now let's create a 3D scatter plot. When we call `plt.figure()`, we specify `projection='3d'` to create a 3D axis.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig = plt.figure(figsize=(10, 7))
 ax = fig.add_subplot(111, projection='3d')
 
@@ -84,6 +87,7 @@ plt.show()
 Surface plots are useful for visualizing functions of two variables, such as `z = f(x, y)`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a grid of x and y values
 x = np.linspace(-5, 5, 50)
 y = np.linspace(-5, 5, 50)
@@ -127,6 +131,7 @@ Together, these angles allow you to rotate a 3D plot to any desired perspective.
 - `view_init(elev=0, azim=0)` views it from the front at ground level
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create multiple views of the same surface
 fig = plt.figure(figsize=(15, 5))
 
@@ -161,6 +166,7 @@ Some key advantages of `seaborn` are:
 You can find th complete documentation for `seaborn` (with lots of examples) at [https://seaborn.pydata.org](https://seaborn.pydata.org)
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import seaborn as sns
 ```
 
@@ -171,6 +177,7 @@ One of seaborn's most powerful functions is `regplot()`, which creates a scatter
 This is useful whn we want to find trends in the data. At the moment, this is a pure black box. We will see more about fitting in the next workshops.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create sample data with a linear relationship plus noise
 n = 100
 
@@ -220,6 +227,7 @@ These components are visualized as follows:
 The `boxplot()` function creates box plots grouped by categories, while `stripplot()` shows individual data points over the boxplot itself.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create sample categorical data
 categorical_data = pd.DataFrame({
     'group': np.repeat(['A', 'B', 'C'], 50),
@@ -256,6 +264,7 @@ Heatmaps are useful for visualizing 2D arrays of data, particularly correlation 
 Seaborn's `heatmap()` function can be used to create a heatmap from a pandas DataFrame. You can customize the color scheme, add annotations, and control the display of axes. It is similar to `imshow()` in `matplotlib`, but with additional features for handling data frames and annotations.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a correlation matrix from a larger dataset
 correlation_data = pd.DataFrame({
     'A': rng.standard_normal(100),
@@ -299,6 +308,7 @@ g.map(sns.scatterplot, 'sepal_length', 'sepal_width')
 ``` 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create data with multiple categories
 facet_data = pd.DataFrame({
     'x': np.tile(rng.uniform(0, 10, 30), 3),
@@ -336,6 +346,7 @@ Plotly also supports 3D plotting and statistical plots, making it a versatile to
 All these features make `plotly` a great choice for interactive **dashboards**: these are simple web applications that allow users to explore data through interactive visualizations.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import plotly.express as px #importing the express module for quick and easy plotting
 import plotly.graph_objects as go #importing the graph objects module for more customization
 ```
@@ -345,6 +356,7 @@ import plotly.graph_objects as go #importing the graph objects module for more c
 Creating an interactive scatter plot with plotly is straightforward using `plotly.express.scatter()`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load a sample dataset
 iris_data = pd.read_csv('https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv')
 
@@ -353,6 +365,7 @@ print(f"\nDataset shape: {iris_data.shape}")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create an interactive scatter plot
 fig = px.scatter(iris_data, x='sepal_length', y='sepal_width', 
                   color='species', size='petal_length',
@@ -368,6 +381,7 @@ fig.show()
 Plotly can create interactive 3D scatter plots where you can rotate the plot using your mouse.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create an interactive 3D scatter plot
 fig = px.scatter_3d(iris_data, x='sepal_length', y='sepal_width', z='petal_length',
                      color='species', size='petal_width',
@@ -385,6 +399,7 @@ fig.show()
 Plotly also provides functions for creating interactive statistical plots.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create interactive box plot
 fig = px.box(iris_data, x='species', y='sepal_length', 
               color='species', points='all',
@@ -394,6 +409,7 @@ fig.show()
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create interactive violin plot
 fig = px.violin(iris_data, x='species', y='sepal_length', 
                  color='species', points='outliers',
@@ -407,6 +423,7 @@ fig.show()
 Line plots with plotly allow you to interactively toggle series on and off.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create sample time series data
 dates = pd.date_range('2024-01-01', periods=100)
 
@@ -435,6 +452,7 @@ fig.show()
 For more complex layouts, use `plotly.subplots.make_subplots()` to create grids of plots.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from plotly.subplots import make_subplots
 
 # Create subplots: 2 rows, 2 columns

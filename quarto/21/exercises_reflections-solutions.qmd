@@ -8,7 +8,6 @@ jupyter: python3
 ## Exercise 1: Customising Plot Styles
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -33,7 +32,6 @@ plt.show()
 ## Exercise 2: Saving Figures
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -52,7 +50,6 @@ fig.savefig("sqrt_plot.pdf")
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Approach 1: create fig, ax first, pass ax to df.plot()
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -65,7 +62,6 @@ fig.savefig("primes_approach1.png")
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Approach 2: capture the Axes returned by df.plot(), get Figure from it
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -80,7 +76,6 @@ fig.savefig("primes_approach2.png")
 ## Exercise 3: Index-based Scatter Plot with Pandas
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 
 df_weather = pd.DataFrame(
@@ -95,7 +90,6 @@ df_weather.plot.line(y="temperature", marker="o", linestyle="None")
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Without linestyle="None" — both markers and line appear
 df_weather.plot.line(y="temperature", marker="o")
 ```
@@ -103,7 +97,6 @@ df_weather.plot.line(y="temperature", marker="o")
 ## Exercise 4: Dual Y-axis Plots with `twinx()`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -137,7 +130,6 @@ plt.show()
 ## Exercise 5: Random Number Generation with NumPy
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from numpy import random
 
 rng = random.default_rng(seed=99)
@@ -157,7 +149,6 @@ print("After: ", my_list)
 ## Exercise 6: DatetimeIndex and Filtering by Month
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 import numpy as np
 
@@ -180,7 +171,6 @@ print(monthly_means)
 ## Exercise 7: NaN Propagation
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd
 import numpy as np
 
@@ -205,7 +195,6 @@ print(df_nan["b"].fillna(0) + 100)
 ## Exercise 8: Finding a Minimum with `scipy.optimize`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import minimize_scalar
@@ -229,7 +218,6 @@ plt.show()
 ## Exercise 9: Sampling from Distributions with `scipy.stats`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import stats

@@ -58,6 +58,7 @@ To access functions in the file, import the module name (without `.py`).
 This works because `plot_example.py` is in the same folder as this notebook (a relative import).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import plot_example
 ```
 
@@ -90,12 +91,14 @@ Suppose we want to know what functions are available in the `plot_example` modul
 We could try `dir()`
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 dir(plot_example)
 ```
 
 As you see, this would yield a long list of names, including functions, variables, and other properties. To filter out the functions, we can use a list comprehension to exclude any names that start with an underscore (as these are typically used for internal purposes and are not meant to be accessed directly by users):
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # we are using dir() to inspect the contents of the module and find out what functions it contains
 # we exclude any names that start with an underscore, as these are typically used for internal purposes 
 # and are not meant to be accessed directly by users
@@ -109,11 +112,13 @@ We can be very selective when importing from a module. As we did with `numpy` or
 If you only need one function, you can import it directly using `from ... import ...`.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## in this case, we import a custom function from our module
 from plot_example import time_scatter
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -122,6 +127,7 @@ y = np.linspace(0, 5, len(time))**2
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 fig, ax = plt.subplots()
 time_scatter(time, y, ax, label='x')
 plt.imshow()
@@ -130,6 +136,7 @@ plt.imshow()
 Clearly, our function `time_scatter()` is available in the module and must be wrapping specific plotting code. As for any other python function, we can use `help()` to get more information about how to use it.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 help(time_scatter)
 ```
 
@@ -138,6 +145,7 @@ This retrieves the **docstring** of the function, which is a string that describ
 We can also inspect the code of the function itself by using `??`:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 time_scatter??
 ```
 
@@ -154,6 +162,7 @@ A useful docstring should include:
 There is an even more direct way to access the docstring of a function: by using the `__doc__` attribute of the function, e.g. `time_scatter.__doc__`. Basically we access a specific (hidden) property of the function that contains the docstring, and get it as a genuine python string. This is yet another example of accessing features of Python objects using dot syntax, a hint to the Object Oriented Programming (OOP) paradigm that you will see in the future.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 docstring = time_scatter.__doc__
 print(docstring)
 ```
@@ -170,7 +179,6 @@ There are two ways to ensure that your notebook uses the latest module code:
 2. A more advanced way is to use the `importlib` library to reload the module without restarting the kernel. This can be done with the following code:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import importlib
 import plot_example
 ## ensure that the latest version of the module is used
@@ -195,10 +203,12 @@ The starting point is to note that errors in Python are associated with specific
 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 2-== 2
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 variable_that_does_not_exist_yet
 ```
 
@@ -216,6 +226,7 @@ To do so we have a block where:
 For example, in the following code, we try to divide a number by zero, which raises a `ZeroDivisionError`. We catch this specific error and print a message to the user indicating that you cannot divide by zero, instead of crashing the entire program.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 value = 0 # change this to a non-zero value to see the else block in action
 
 try:
@@ -239,13 +250,13 @@ Catching exceptions significantly improves our modules:
 Take our original code for `time_scatter()` as an example: according to its *signature* and *docstring*, it expects sequences for the `x` and `y` parameters. If a user accidentally passes a non-sequence (e.g. a single number), this raises errors:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 time_scatter(1, 2, 3)
 ```
 
 We can use a `try-except` block to catch specific exceptions that may arise and provide a useful error message to the user, instead of crashing the entire program:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def time_scatter(x, y):
     try:
         # original code for time_scatter() goes here

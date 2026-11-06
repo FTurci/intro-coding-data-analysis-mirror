@@ -15,6 +15,7 @@ One application for using a geometrical mask, like you have been developing, is 
 We can open the image of the galaxy using the following code. This uses a module called `pillow` (imported as `PIL`) which understands how to read image files and we can import the `Image` sub-module to open this file. We can convert that image into a `numpy` `array` object.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from PIL import Image
 import numpy as np
 
@@ -25,12 +26,14 @@ im = np.array(Image.open(im_filename))
 If we look at the shape of this image data we can see that is is 3D - it has height and width but also three entries for colour: Red, Green and Blue (RGB).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 print(im.shape)
 ```
 
 As we did when plotting the mask, we can use a `matplotlib` function called `imshow()` to display this image, but this time it knows how to interpret the three colour channels to display an image with colour.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 fig, ax = plt.subplots(figsize=(8,8))
@@ -44,6 +47,7 @@ This is sprial galaxy [NGC 253](https://www.eso.org/public/images/eso0902a/), al
 The `inside_ellipse` function defined below will allow you to check whether an (x, y) value is inside an ellipse with the supplied parameters. As we've seen in previous weeks, functions can be used to avoid having to repeat code. 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 def inside_ellipse(x, y, centre=(0,0), a=2, b=1, alpha=0):
     
     x0,y0 = centre
@@ -82,6 +86,7 @@ This would look like:
 The parameters needed to use `inside_ellipse` function are: the centre of the ellipse, the semi-major and semi-minor axes and the angle, $\alpha$. For example:
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 x1 = 0
 y1 = 0
 position_is_in_ellipse1 = inside_ellipse(x1, y1, centre=(0, 0), a=2, b=1, alpha=0)
@@ -110,6 +115,7 @@ For our example of the galaxy the parameters for a suitable ellipse are as follo
 As above, you can use the plotting code below which uses the `matplotlib` function `imshow()` to plot the 3D `im_masked` object as a colour image (or to plot a 2D image for one colour channel).
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # ADD CODE HERE
 rows, cols = np.indices((im.shape[0], im.shape[1]))
 centre = (500,470)
@@ -123,6 +129,7 @@ im_masked[np.logical_not(mask),:] = 0 # you can use ~ instead of the logical_not
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # UNCOMMENT THIS CODE TO PLOT YOUR MASKED IMAGE
 
 import matplotlib.pyplot as plt
@@ -159,6 +166,7 @@ Hint:
     - `log10()` - https://numpy.org/doc/stable/reference/generated/numpy.log10.html     
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # ADD CODE HERE
 
 # Select the third channel (B) and calculate the sum

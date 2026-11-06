@@ -28,7 +28,6 @@ Matplotlib supports a wide range of style options:
 Add a title, x-label, y-label, and a legend.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import numpy as np
 import matplotlib.pyplot as plt
@@ -40,7 +39,6 @@ y3 = np.sin(2 * x)
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 fig, ax = plt.subplots()
@@ -75,7 +73,6 @@ The file format is determined by the extension you provide:
    - **Approach 2**: Don't create a `fig` explicitly — capture the Axes returned by `ax = df.plot()`, retrieve the Figure with `ax.get_figure()`, then save.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import numpy as np
 import matplotlib.pyplot as plt
@@ -92,7 +89,6 @@ plt.show()
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 # TODO: save the figure above as a PNG file named "sqrt_plot.png"
@@ -103,7 +99,6 @@ plt.show()
 **Approach 1 (Pandas)**: Pass an Axes object to `df.plot()` so you already hold the `fig` handle:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 import matplotlib.pyplot as plt
@@ -121,7 +116,6 @@ df = pd.DataFrame({"prime": [2, 3, 5, 7, 11, 13], "non-prime": [1, 4, 6, 8, 9, 1
 **Approach 2 (Pandas)**: Let `df.plot()` return the Axes, then retrieve the Figure from it:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 import matplotlib.pyplot as plt
@@ -151,7 +145,6 @@ df = pd.DataFrame({"prime": [2, 3, 5, 7, 11, 13], "non-prime": [1, 4, 6, 8, 9, 1
 2. In the second code cell, create the same plot **without** `linestyle="None"` and observe what changes.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -166,7 +159,6 @@ df_weather
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 # TODO: plot the "temperature" column of df_weather as a scatter-like plot against the index
@@ -174,7 +166,6 @@ df_weather
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 # TODO: plot the same "temperature" column using df_weather.plot.line()
@@ -198,7 +189,6 @@ The default matplotlib cycle colours `"C0"`, `"C1"`, etc. are useful for visuall
 - Set the x-tick labels to month names and add a title
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import numpy as np
 import matplotlib.pyplot as plt
@@ -211,7 +201,6 @@ rainfall    = [52, 40, 47, 50, 55, 44, 47, 50, 54, 65, 58, 55]  # mm
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| editable: true
 #| slideshow: {slide_type: ''}
 #| tags: []
@@ -265,7 +254,6 @@ You can then call methods on `rng` to draw samples:
 4. Shuffle the list `[1, 2, 3, 4, 5]` in-place and print it before and after.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 from numpy import random
@@ -301,7 +289,6 @@ When a DataFrame has a `DatetimeIndex`, you can access time components via `.ind
 3. Calculate the **mean value** for each month across all years. (*Hint*: group by `df.index.month` using `df.groupby(df.index.month).mean()`.)
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import pandas as pd
 import numpy as np
@@ -313,7 +300,6 @@ df.head()
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 # TODO: print df.index — what type is it?
@@ -345,7 +331,6 @@ Key rules:
 4. Fill the NaN values in `"b"` with `0` first, then add 100. How does the result differ?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import pandas as pd
 import numpy as np
@@ -358,7 +343,6 @@ df_nan
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 # TODO: add columns "a" and "b" together — what happens where "b" is NaN?
@@ -391,7 +375,6 @@ print(result.x, result.fun)
 3. Plot $f(x)$ over $[0, 10]$ and mark the minimum with a red dot. Label the axes and add a legend.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 import numpy as np
@@ -443,7 +426,6 @@ samples = dist.rvs(size=200, random_state=42)
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## COMPLETE THIS CODE
 
 import numpy as np
@@ -460,7 +442,6 @@ print(f"Theoretical mean: {dist.mean():.2f},  sample mean: {samples.mean():.2f}"
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 
 ```
 

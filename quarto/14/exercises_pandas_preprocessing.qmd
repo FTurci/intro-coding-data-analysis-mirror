@@ -27,7 +27,6 @@ Through these exercises, you'll learn:
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Import required libraries
 import pandas as pd
 import numpy as np
@@ -67,7 +66,6 @@ The Met Office weather data contains monthly measurements from Yeovilton station
 - `.shape` Returns `(rows, columns)` showing DataFrame dimensions 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -90,7 +88,6 @@ Raw data requires transformation before analysis. The Met Office data uses separ
 - **`df.sort_index(inplace=True)`**: Sorts by index to ensure chronological order
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -117,7 +114,6 @@ Historical weather records often have gaps due to equipment failures or missing 
 **Reflect**: Why is interpolation better for temperature than rainfall?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -141,7 +137,6 @@ Feature engineering creates new variables to reveal patterns. Extract date compo
 - **Custom function + `.apply()`**: Create season mapper: `def get_season(month): ...` then `df['season'] = df['month'].apply(get_season)`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -163,14 +158,12 @@ You can group by month, season, year, or decade to analyze climate patterns.
 **More advanced question**: Can you define decades and analyze trends over decades?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
 To analyse over decades, we need a new column for the 1960s, 1970s, etc etc. We can create this by integer division of the year by 10, then multiplying back by 10. For example, for year 1964:`(1964 // 10) * 10 = 1960`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -222,7 +215,6 @@ Each row = different wine sample.
 - **`.isnull().sum()`**: Count missing values per column
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -246,7 +238,6 @@ We then construct a table showing counts of wines in each quality category by su
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -270,7 +261,6 @@ Then analyze which derived features correlate most strongly with wine quality.
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -294,7 +284,6 @@ Print the top 5 results for each query, sorted by quality descending. In particu
 - `.head(n)` shows top n results
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 
@@ -313,7 +302,6 @@ Preserve your work by exporting cleaned data and documenting your process. Speci
 - **`pd.DataFrame(dict)`**: Create documentation tables from dictionaries
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # YOUR ANSWER HERE
 ```
 

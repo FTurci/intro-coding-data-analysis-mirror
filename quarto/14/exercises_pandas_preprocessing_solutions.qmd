@@ -23,7 +23,6 @@ Through these exercises, you'll learn:
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Import required libraries
 import pandas as pd
 import numpy as np
@@ -63,7 +62,6 @@ The Met Office weather data contains monthly measurements from Yeovilton station
 - `.shape` Returns `(rows, columns)` showing DataFrame dimensions 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Load weather data
 url = "https://www.metoffice.gov.uk/pub/data/weather/uk/climate/stationdata/yeoviltondata.txt"
 
@@ -94,7 +92,6 @@ Raw data requires transformation before analysis. The Met Office data uses separ
 - **`df.sort_index(inplace=True)`**: Sorts by index to ensure chronological order
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Check initial data types
 print("Initial data types:")
 print(df_weather.dtypes)
@@ -145,7 +142,6 @@ Historical weather records often have gaps due to equipment failures or missing 
 **Reflect**: Why is interpolation better for temperature than rainfall?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Count missing values
 print("Missing values per column:")
 print(df_weather.isnull().sum())
@@ -189,7 +185,6 @@ Feature engineering creates new variables to reveal patterns. Extract date compo
 - **Custom function + `.apply()`**: Create season mapper: `def get_season(month): ...` then `df['season'] = df['month'].apply(get_season)`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Part A: Date components
 df_weather['year'] = df_weather.index.year
 df_weather['month'] = df_weather.index.month
@@ -233,14 +228,12 @@ You can group by month, season, year, or decade to analyze climate patterns.
 **More advanced question**: Can you define decades and analyze trends over decades?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 cols = ['temp_mean', 'rain', 'sun']
 monthly_stats = df_weather.groupby('month_name')[cols].mean()
 monthly_stats
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 
 season_stats = df_weather.groupby('season')[cols].mean()
 season_stats
@@ -249,7 +242,6 @@ season_stats
 To analyse over decades, we need a new column for the 1960s, 1970s, etc etc. We can create this by integer division of the year by 10, then multiplying back by 10. For example, for year 1964:`(1964 // 10) * 10 = 1960`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_weather['decade'] = (df_weather.index.year // 10) * 10
 decade_stats = df_weather.groupby('decade')[cols].mean()
 decade_stats
@@ -301,7 +293,6 @@ Each row = different wine sample.
 - **`.isnull().sum()`**: Count missing values per column
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Your code here
 
 wine_url = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine-quality/winequality-red.csv"
@@ -311,12 +302,10 @@ df_wine
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_wine.describe()
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 df_wine.isnull().sum()
 ```
 
@@ -338,7 +327,6 @@ We then construct a table showing counts of wines in each quality category by su
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create quality categories
 df_wine['quality_cat'] = pd.cut(df_wine['quality'], bins=[0, 4, 6, 10], labels=['Poor', 'Average', 'Good'])
 
@@ -368,7 +356,6 @@ Then analyze which derived features correlate most strongly with wine quality.
 - The `.describe()` method allows you to check derived features have reasonable values
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Your code here
 
 df_wine['total acidity'] = df_wine['fixed acidity'] + df_wine['volatile acidity']
@@ -400,7 +387,6 @@ Print the top 5 results for each query, sorted by quality descending. In particu
 - `.head(n)` shows top n results
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 selection = ["citric acid", "total sulfur dioxide", "sulphates","alcohol", "acidity ratio", "quality"]
 # Hidden Gems (good quality but moderate alcohol)
 print("\n=== HIDDEN GEMS (Quality 6+, Alcohol < 11%) ===")
@@ -411,7 +397,6 @@ hidden_gems[selection].sort_values('quality', ascending=False).head()
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 
 print("\n=== FRESH & BALANCED (Vol. Acidity < 0.4, Citric Acid > 0.3) ===")
 fresh = df_wine[(df_wine['volatile acidity'] < 0.4) & (df_wine['citric acid'] > 0.3)]
@@ -435,7 +420,6 @@ Preserve your work by exporting cleaned data and documenting your process. Speci
 - **`pd.DataFrame(dict)`**: Create documentation tables from dictionaries
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Your code here
 
 # Part A: Export weather data

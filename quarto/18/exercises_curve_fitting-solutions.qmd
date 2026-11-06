@@ -18,6 +18,7 @@ We have a ball that is thrown up in the air, and we measure its height at differ
 We assume that we do not know the physics of the problem, and our first attempt is to explore a polynomial fit to the data.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 import numpy as np
 import matplotlib.pyplot as plt
@@ -58,6 +59,7 @@ data[0].shape, data[1].shape
 **Note** It can be convenient to use `numpy.polyval` to calculate the predicted values from the fitted polynomial coefficients. Use the `numpy` documentation to find out how to use it.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 plt.scatter(data[0], data[1],marker='.', label='Data')
 for n in range(1, 7):
@@ -81,6 +83,7 @@ where $N$ is the number of data points, $y_i$ is the actual value of the data po
 Which value of `n` gives the best fit according to this metric?
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 
 for n in range(1, 7):
@@ -116,6 +119,7 @@ indices = rng.permutation(n_samples)
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 # splitting the data
 n_samples = len(data[0])
@@ -141,6 +145,7 @@ For every degree `n` in the integer range 1 to 6 (included), call this function 
 Which value of `n` gives the best fit according to this averaged test MSE?
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 def testing_mse(data, n, rng):
     n_samples = len(data[0])
@@ -185,6 +190,7 @@ In particular, this kind of data presents two characteristic features:
 Let us use the NASA Power API to extract the data and do some pandas processing to transform it suitably
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 import pandas as pd
 # NASA POWER API for London (May-Aug 2024), hourly T2M
@@ -202,6 +208,7 @@ df
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 # Build a proper datetime column from YEAR, MO, DY, HR
 df["date"] = (
@@ -253,6 +260,7 @@ where $\hat{y}_i$ is the value predicted by the model for the $i$-th data point.
 In the code below, some pre-processing is already done for you (conversion from date to hours etc.). You just need to fill in the blanks and complete the code to find the best fit and plot it.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 
 import numpy as np
@@ -283,6 +291,7 @@ print(f"Optimal parameters: {thetas[optimum]}")
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # SOLUTION
 plt.plot(x, y, "-", label="Data")
 T_opt = periods[optimum]

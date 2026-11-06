@@ -121,7 +121,6 @@ A scalar function takes a single variable as input and produces a single output.
 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import scipy.optimize as optimize_scalar
 
 import matplotlib.pyplot as plt
@@ -150,7 +149,6 @@ plt.show()
 Suppose we have N points in a 2D space, and we want to find the pairwise distances between them. We can use the `scipy.spatial.distance.pdist` function to compute the pairwise distances efficiently. Here's an example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 from scipy.spatial import distance
 
@@ -166,7 +164,6 @@ print(pairwise_distances)
 Notice that this should be identical (but much faster) to using nested loops to compute the distances between each pair of points:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 explicit_distances = []
 for i in range(N):
     for j in range(i + 1, N):
@@ -196,7 +193,6 @@ $$\operatorname{erf}(x)=\frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} d t$$
 Scipy includes efficient implementations of both and many others:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 from scipy.special import erf
 import numpy as np
@@ -235,7 +231,6 @@ In Python, we have already encountered lots of different *objects* and made use 
 For example, when we create a string we are actually creating a *str object*. Our string object contains the data we used to construct it but also gives us access to string *methods*:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 string = "hello world!"
 string.split()
@@ -246,7 +241,6 @@ Methods are the specific functions that are associated with the object, in this 
 Similiarly, when we create a numpy array, we are creating a *ndarray object*. We can access ndarray methods (like we did for a string) but also *attributes* for that object:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 import numpy as np
 arr1 = np.array([[3,2,1],[6.0, 7., 6],[5,4,3]])
@@ -264,7 +258,6 @@ In object-oriented programming, you can create something called [**classes**](ht
 This example below includes a `Dog` class which includes values for the dog's name, colour and how much energy it has. You can also see that some functions (methods) have been defined called `describe()` and `exercise()`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 class Dog:
     def __init__(self, name, colour):
@@ -283,7 +276,6 @@ class Dog:
 To use this class you would write:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 my_dog = Dog("Luna", "black and white")
 ```
@@ -291,7 +283,6 @@ my_dog = Dog("Luna", "black and white")
 And you could access the `exercise()` method using:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 energy_before_exercise = my_dog.energy
 

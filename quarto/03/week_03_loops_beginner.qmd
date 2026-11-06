@@ -38,7 +38,6 @@ Over the past two weeks, we have looked at some basic data types and conditional
 To begin today, let's consider a simple coding task. Suppose you are asked to `print` the first `10` [Triangle Numbers](#https://en.wikipedia.org/wiki/Triangular_number). With only what we know so far, the code might look something like this:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # First triangle number
 print(1)
 
@@ -77,7 +76,6 @@ For example: a list of students in a class, a list of prices in a shop, or a lis
 In Python, a `list` is a collection of values, written inside square brackets `[]`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 numbers = [1, 2, 3, 4, 5]
 words = ["apple", "banana", "cherry"]
 mixed = [10, "hello", True]
@@ -86,7 +84,6 @@ mixed = [10, "hello", True]
 In the same way that `float`s, `int`s, `string`s and `boolean`s are data types in Python, so is a `list`. For example:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 type(numbers)
 ```
 
@@ -95,7 +92,6 @@ A list can contain as many elements as you want, and they don't all have to be t
 You can also ask for one item at a time using its `index` (position in the list). Python uses zero-indexing, which means it starts counting from `0`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 numbers = [10, 20, 30, 40]
 print(numbers[0])  # first element - 10
 print(numbers[2])  # third element - 30
@@ -115,7 +111,6 @@ Given an iterable object, you can create something known as an `iterator`.
 An iterator is a special object that lets you step through the elements of an iterable, one at a time, and remembers where you are in the process. In Python, you can create an iterator from an iterable using the built-in function `iter()`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a list
 numbers = [2, 3, 4, 6]
 
@@ -131,7 +126,6 @@ print(iterator)
 The useful thing about an iterator is that it lets us print elements out one by one, always remembering where we were up to. Specifically, we can use the built-in next function to get each element in turn:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 numbers = [2, 3, 4, 6]
 iterator = iter(numbers)
 
@@ -151,7 +145,6 @@ print(next(iterator))
 A particularly useful example of an iterable object is the output of the `range` function. You can think of `range(n)` as a compact way of representing the numbers `0, 1, 2, ..., n-1`. In other words, it produces an iterable containing the first n non-negative integers, ready to be used in computations.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Get an iterable range object
 range_iterable = range(4)
 
@@ -186,7 +179,6 @@ In the last section, we saw how an iterator can give us the elements of an itera
 Python gives us a much simpler way to go through all the elements of an iterable: the `for` loop.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # List of numbers
 numbers = [2, 3, 4, 6]
 
@@ -241,7 +233,6 @@ Finally, inside the `loop`, we provide the code we want to run for every value o
 Let's see some examples.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 1: Mixed list, printing each element
 for element in [1,3.5,-10,"hello"]:
     
@@ -249,7 +240,6 @@ for element in [1,3.5,-10,"hello"]:
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 2: Integer list, printing the square of each number
 numbers = [1,4,5, 9, 10]
 
@@ -264,7 +254,6 @@ for x in numbers:
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 3: List of words
 my_string = "This is a sentence"
 
@@ -290,7 +279,6 @@ for word in my_words:
 **Warning:** Just like with an `if` statement, the body of a `for` loop must be indented. If you forget to indent, or if the indentation is inconsistent, Python will raise an error.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example list
 my_list = [1,2,3]
 
@@ -312,7 +300,6 @@ To handle situations like these, Python provides the `while` loop.
 A while loop repeatedly runs a block of code so long as a given Boolean statement is `True`. For example, in the below, the block of code is run while the statement `n < 10` is `True`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set n = 0
 n = 0
 
@@ -356,7 +343,6 @@ The body will keep running *again and again* as long as the boolean expression e
 Let's look at a small worked example to make the while loop syntax clearer.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 i = 0
 while i < 3:
     print(i)
@@ -366,7 +352,6 @@ while i < 3:
 In this example, we can imagine the `while` loop as if Python were repeating the indented code over and over:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 i = 0
 
 # First time through (i = 0, condition True)
@@ -391,7 +376,6 @@ After every repetition, the loop is checking whether the boolean `i < 3` is `Tru
 > For example, the following code never terminates because `i` is never updated (run this at your peril!):
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 i = 0
 while i < 3:
     print(i)   # i is always 0 here!
@@ -414,7 +398,6 @@ One of the most useful features of loops is that you can *nest them inside one a
 That means you can put a `for` loop inside a `while` loop, a `while` loop inside a `for` loop, or even nest loops of the same kind. This is powerful as it lets us perform tasks that require multiple layers of repetition. Here are some examples:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 1: A while loop inside a for loop
 for i in range(3):
     count = 0
@@ -424,7 +407,6 @@ for i in range(3):
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 2: A for loop inside a while loop
 for i in range(3):
     for j in range(3):
@@ -432,7 +414,6 @@ for i in range(3):
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Example 3: A for loop inside a for loop
 for i in range(3):
     for j in range(3):
@@ -448,7 +429,6 @@ Suppose we want to list all [prime numbers](https://en.wikipedia.org/wiki/Prime_
 Intuitively we need to check whether each number between $1$ and $n$ is prime. We can visualise this like so:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Value of n
 n = 10
 
@@ -462,7 +442,6 @@ for i in range(1,n+1):
 But how do we do the check inside the loop? Well, let's take an example value of `i`, say `i = 7`. If we were doing this task by hand, we'd check if `7` is divisible by `2`, then by `3`, then by `4`, and so on until we reach `7`. This can be done with a loop too:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Consider a single value of i
 i = 7
 
@@ -498,7 +477,6 @@ else:
 This code tells us if one value (here `i=7`) is prime. But, how can we relate this to our original problem, checking if all values between `1` and `n` are prime? The answer is simply that we can place this code inside our larger loop from earlier:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Value of n
 n = 10
 
@@ -545,7 +523,6 @@ for i in range(1,n+1):
 Each word must be seperated from the last with a space.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 first_string = 'This seems have broken two strings. thats'
 second_string = 'sentence to been into seperate Well, annoying.'
 
@@ -557,14 +534,12 @@ second_string = 'sentence to been into seperate Well, annoying.'
 **Question 2:** By looking up the documentation for the [`range` function](https://www.w3schools.com/python/ref_func_range.asp). Write some code which prints the numbers `1` to `100` in reverse order. That is, `100` should be printed first, then `99` and so on...
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
 **Question 3:** Below is an integer `n`. Using a `while` loop, compute the factorial of $n$ given by $n!=n\times (n-1)\times... \times 2 \times 1$.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Integer n
 n = 6
 
@@ -574,7 +549,6 @@ n = 6
 **Question 4:** Using a `for` loop, print the square of all of the elements in the list below which are greater than $2$ or less than $-2.5$.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 example_list = [1,-2.8,-2.1,-0.03,0.04,-1.9,1.0,20.8,1, -3,3.2]
 
 # Write your code here...
@@ -583,14 +557,12 @@ example_list = [1,-2.8,-2.1,-0.03,0.04,-1.9,1.0,20.8,1, -3,3.2]
 Now do the same, but saving the elements in a new list named `output_list`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
 *Hint: You can add a new element to a list by using the `append` method. An example of this is given in the below code block.*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # An empty list (a list with nothing in it)
 my_list = []
 print(my_list)
@@ -607,7 +579,6 @@ print(my_list)
 **Question 5:** Without running the below code, predict how many times the word `"Python"` will be printed. Explain your answer, and then verify it by running the below code.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 n = 16
 while n > 1:
     print("Python")
@@ -617,7 +588,6 @@ while n > 1:
 **Question 6:** The below code uses a `while` loop to count the number of vowels in the word `word`. However, something has gone wrong! The below code will never terminate when run. Explain why this has happened and implement a fix.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Word to count vowels in
 word = "education"
 
@@ -652,7 +622,6 @@ print("Vowel count:", vowel_count)
 **Question 7:** Using a loop, work through the dictionary of exam results below to find the difference between the highest and lowest scores. Print the names of the students who achieved those scores. *You may assume that all scores like between $0$ and $100$.*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Dictionary of exam scores
 exam_results = {
     'Liam Turner': 54,
@@ -684,7 +653,6 @@ exam_results = {
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Set the value of n
 n = 5
 ```
@@ -699,14 +667,12 @@ For example:
 Using the `range` function together with a `for` loop, compute all palindromic numbers between $0$ and $1000$.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your code here...
 ```
 
 *Hint: You can reverse a string using `[::-1]` as shown below:*
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Here's a string
 x = "string"
 
@@ -722,7 +688,6 @@ print(x_reversed)
 **Question 10:** Using a `while` loop and a `for` loop, compute the smallest positive number that is evenly divisible by all of the numbers from $1$ to $8$.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Write your answer here...
 ```
 

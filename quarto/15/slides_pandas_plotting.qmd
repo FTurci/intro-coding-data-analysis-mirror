@@ -24,7 +24,6 @@ Pandas provides built-in plotting capabilities that make it easy to visualize da
 The framework is data-centric: plots are generated directly from DataFrames and Series without needing to manually extract and format data.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: '-'}
 import pandas as pd
 
@@ -39,7 +38,6 @@ Series have a `.plot()` method that creates various types of plots. The `kind` p
 By default, the index is used for the x-axis and values for the y-axis.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: '-'}
 series = pd.Series([10, 25, 15, 30, 20], index=['A', 'B', 'C', 'D', 'E'])
 series.plot(kind='bar', title='Bar Plot', color='skyblue')
@@ -52,7 +50,6 @@ DataFrames also have a `.plot()` method. By default, each column is plotted as a
 You can specify which columns to plot using the `x` and `y` parameters.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: '-'}
 df = pd.DataFrame({'Month': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
     'Wheat': [2.5, 2.8, 3.2, 3.8, 4.2, 4.5],
@@ -67,7 +64,6 @@ Setting `subplots=True` creates separate plots for each column. The `layout` par
 The method returns an array of matplotlib Axes objects that can be further customized.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: '-'}
 df.plot(x='Month', subplots=True, layout=(1, 2), figsize=(8, 3), title='Separate Crop Plots')
 ```
@@ -79,7 +75,6 @@ Pandas automatically handles datetime formatting on the x-axis when plotting tim
 The `pivot()` method can reshape data to make plotting multiple time series straightforward.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: '-'}
 dates = pd.date_range('2020-01', periods=12, freq='M')
 ts = pd.DataFrame({'Date': dates,'Temperature': [5, 7, 12, 15, 20, 25, 28, 27, 22, 16, 10, 6]})
@@ -94,7 +89,6 @@ The `.rolling()` method creates a rolling window object for computing moving ave
 Chain `.mean()`, `.sum()`, or other aggregation methods after `.rolling()` to compute the result.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: '-'}
 data = pd.Series([10, 12, 13, 15, 14, 16, 18, 20, 19, 21])
 
@@ -110,7 +104,6 @@ Pandas plotting returns a matplotlib Axes object. You can save the figure by acc
 Specify file format and resolution with parameters like `dpi`.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 series = pd.Series([10, 25, 15, 30, 20], index=['A', 'B', 'C', 'D', 'E'])
 ax = series.plot(kind='bar', title='Example Plot')
 ax.figure.savefig('my_plot.png', dpi=300, bbox_inches='tight')

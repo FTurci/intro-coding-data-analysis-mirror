@@ -1,6 +1,69 @@
 project:
   type: website
   output-dir: _site
+  # BEGIN release_week.py: only these files are rendered, so unreleased pages are never published
+  render:
+    - "01/exercises_intro.qmd"
+    - "01/week_01_home.qmd"
+    - "01/week_01_intro_to_data_types_advanced.qmd"
+    - "01/week_01_intro_to_data_types_beginner.qmd"
+    - "01/week_01_intro_to_data_types_intermediate.qmd"
+    - "01/week_01_slides.qmd"
+    - "01/week_01_solutions.qmd"
+    - "01/week_01_solutions_demonstrator_version.qmd"
+    - "01/week_01_solutions_no_quotes.qmd"
+    - "02/exercises_bool.qmd"
+    - "02/week_02_booleans_and_conditionals_advanced.qmd"
+    - "02/week_02_booleans_and_conditionals_beginner.qmd"
+    - "02/week_02_booleans_and_conditionals_intermediate.qmd"
+    - "02/week_02_home.qmd"
+    - "02/week_02_slides.qmd"
+    - "02/week_02_solutions.qmd"
+    - "02/week_02_solutions_demonstrator_version.qmd"
+    - "03/exercises_loop.qmd"
+    - "03/week_03_home.qmd"
+    - "03/week_03_loops_advanced.qmd"
+    - "03/week_03_loops_beginner.qmd"
+    - "03/week_03_loops_intermediate.qmd"
+    - "03/week_03_slides.qmd"
+    - "03/week_03_solutions.qmd"
+    - "03/week_03_solutions_demonstrator_version.qmd"
+    - "04/exercises_function.qmd"
+    - "04/exercises_functions.qmd"
+    - "04/week_04_functions_advanced.qmd"
+    - "04/week_04_functions_beginner.qmd"
+    - "04/week_04_functions_intermediate.qmd"
+    - "04/week_04_home.qmd"
+    - "04/week_04_slides.qmd"
+    - "04/week_04_solutions.qmd"
+    - "04/week_04_solutions_demonstrator_version.qmd"
+    - "05/exercises_python_on_the_field.qmd"
+    - "05/week_05_chemistry.ipynb"
+    - "05/week_05_chemistry.qmd"
+    - "05/week_05_data_science.ipynb"
+    - "05/week_05_data_science.qmd"
+    - "05/week_05_data_science_quarto.qmd"
+    - "05/week_05_home.ipynb"
+    - "05/week_05_home.qmd"
+    - "05/week_05_physics.ipynb"
+    - "05/week_05_physics.qmd"
+    - "05/week_05_slides.qmd"
+    - "05/week_05_solutions.qmd"
+    - "05/week_05_solutions_demonstrator_version.ipynb"
+    - "05/week_05_solutions_demonstrator_version.qmd"
+    - "07/07_intro_numpy_slides.qmd"
+    - "07/exercises_numpy.qmd"
+    - "07/exercises_numpy_solutions.qmd"
+    - "07/lecture_intro_numpy.qmd"
+    - "08/exercises_lecture_working_with_numpy.qmd"
+    - "08/lecture_working_with_numpy.qmd"
+    - "08/slides_working_with_numpy.qmd"
+    - "formative/basic_structures.qmd"
+    - "index.qmd"
+    - "slides/07_intro_numpy_slides.qmd"
+    - "slides/08_working_numpy_slides.qmd"
+    - "snippets.ipynb"
+  # END release_week.py
 
 website:
   title: "Introduction to Coding and Data Analysis"
@@ -28,8 +91,8 @@ website:
             href: 05/week_05_home.qmd
           - text: "07 - Introduction to NumPy"
             href: 07/lecture_intro_numpy.qmd
-          # - text: "08 - Working with NumPy"
-          #   href: 08/lecture_working_with_numpy.qmd
+          - text: "08 - Working with NumPy"
+            href: 08/lecture_working_with_numpy.qmd
           # - text: "09 - Introduction to Matplotlib"
           #   href: 09/lecture_intro_matplotlib.qmd
           # - text: "10 - Multidimensional Arrays"
@@ -69,8 +132,8 @@ website:
             href: 05/exercises_python_on_the_field.qmd
           - text: "07 - NumPy Exercises"
             href: 07/exercises_numpy.qmd
-          # - text: "08 - Working with Numpy Exercises"
-          #   href: 08/exercises_lecture_working_with_numpy.qmd
+          - text: "08 - Working with Numpy Exercises"
+            href: 08/exercises_lecture_working_with_numpy.qmd
           # - text: "09 - Plotting Data Exercises"
           #   href: 09/exercises_plotting_data_from_file.qmd
           # - text: "10 - Working with multidimensional arrays"
@@ -108,8 +171,8 @@ website:
             href: 04/week_04_solutions_demonstrator_version.qmd
           - text: "05 - Python in the Field Solutions"
             href: 05/week_05_solutions_demonstrator_version.qmd
-      #     - text: "07 - NumPy Solutions"
-      #       href: 07/exercises_numpy_solutions.qmd
+          - text: "07 - NumPy Solutions"
+            href: 07/exercises_numpy_solutions.qmd
       #     - text: "08 - NumPy Working Solutions"
       #       href: 08/exercises_lecture_working_with_numpy_solutions.qmd
       #     - text: "09 - Plotting Solutions"
@@ -209,13 +272,13 @@ website:
         contents:
           - 07/lecture_intro_numpy.qmd
           - 07/exercises_numpy.qmd
-          # - text: "Solutions"
-            # href: 07/exercises_numpy_solutions.qmd
+          - text: "Solutions"
+            href: 07/exercises_numpy_solutions.qmd
       
-      # - section: "08 Working with NumPy"
-      #   contents:
-      #     - 08/lecture_working_with_numpy.qmd
-      #     - 08/exercises_lecture_working_with_numpy.qmd
+      - section: "08 Working with NumPy"
+        contents:
+          - 08/lecture_working_with_numpy.qmd
+          - 08/exercises_lecture_working_with_numpy.qmd
           # - text: "Solutions"
             # href: 08/exercises_lecture_working_with_numpy_solutions.qmd
       

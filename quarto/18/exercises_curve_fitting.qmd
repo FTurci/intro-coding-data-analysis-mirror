@@ -14,7 +14,6 @@ We have a ball that is thrown up in the air, and we measure its height at differ
 We assume that we do not know the physics of the problem, and our first attempt is to explore a polynomial fit to the data.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import numpy as np
 import matplotlib.pyplot as plt
@@ -51,7 +50,6 @@ data[0].shape, data[1].shape
 **Note** It can be convenient to use `numpy.polyval` to calculate the predicted values from the fitted polynomial coefficients. Use the `numpy` documentation to find out how to use it.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # TODO (Task 1)
 # 1) Plot the raw data with plt.scatter
 # 2) Loop over polynomial degrees n in range(1, 7)
@@ -71,7 +69,6 @@ where $N$ is the number of data points, $y_i$ is the actual value of the data po
 Which value of `n` gives the best fit according to this metric?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # TODO (Task 2)
 # For each n in range(1, 7):
 # - fit coefficients with np.polyfit
@@ -101,7 +98,6 @@ indices = rng.permutation(n_samples)
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # TODO (Task 3)
 # 1) Split data into 80% train and 20% test using rng.permutation
 # 2) For each n in range(1, 7), fit on train data
@@ -116,7 +112,6 @@ For every degree `n` in the integer range 1 to 6 (included), call this function 
 Which value of `n` gives the best fit according to this averaged test MSE?
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # TODO (Task 4)
 # 1) Write a function testing_mse(data, n, rng) that:
 #    - performs an 80/20 random split
@@ -146,7 +141,6 @@ In particular, this kind of data presents two characteristic features:
 Let us use the NASA Power API to extract the data and do some pandas processing to transform it suitably
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 import pandas as pd
 # NASA POWER API for London (May-Aug 2024), hourly T2M
@@ -162,7 +156,6 @@ df
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # PROVIDED
 # Build a proper datetime column from YEAR, MO, DY, HR
 df["date"] = (
@@ -214,7 +207,6 @@ where $\hat{y}_i$ is the value predicted by the model for the $i$-th data point.
 In the code below, some pre-processing is already done for you (conversion from date to hours etc.). You just need to fill in the blanks and complete the code to find the best fit and plot it.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # TODO (Extended task)
 import numpy as np
 import matplotlib.pyplot as plt
@@ -238,7 +230,6 @@ y = df["T2M"].values
 ```
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # TODO (Extended task)
 # 1) Rebuild X using the optimal period
 # 2) Compute fitted predictions

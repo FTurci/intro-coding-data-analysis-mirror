@@ -25,7 +25,6 @@ The key property is **shape** - the size of each dimension.
 Simple example: you can create a 2D array with random numbers by specifying the shape of the array
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 from numpy import random
 
@@ -42,7 +41,6 @@ We extend  the one dimensional notation by putting the desired index in a sequen
 For example, in 2D, access elements using **row, column** notation:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # array1[row_index, column_index]
 print(array1[1, 2])  # 2nd row, 3rd column
 ```
@@ -54,7 +52,6 @@ Remember: indices start at 0, and order is `[row, column]` (like `[y, x]`).
 Use the `:` operator to select entire dimensions:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Select entire first row (all columns)
 print(array1[0, :])
 
@@ -72,7 +69,6 @@ The `:` means "all elements" in that dimension.
 Create arrays with specific shapes using familiar functions:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a 2×3 array of zeros
 zeros = np.zeros((2, 3))
 
@@ -93,7 +89,6 @@ The number of dimensions (i.e. the number of indices needed to access an element
 **Rank** = number of dimensions, accessible via `.ndim`:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # A matrix has rank 2
 matrix = rng.uniform(-1, 1, size=(2, 5))
 print("Rank:", matrix.ndim)  # 2
@@ -109,7 +104,6 @@ It is very useful to be able to perform operations only along specific dimension
 If you think that a 2d array is like a table, we can  in one go compute useful operations like the sum of each column, or the mean of each row by specifiying the axis along which to perform the operation.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create a small example matrix for demonstrations
 table = np.array([[1, 2, 3],
                         [4, 5, 6], 
@@ -135,7 +129,6 @@ print(np.sum(table, axis=1))
 Apply statistics along axes too:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Mean along axis 0 (mean of each column)
 print(np.mean(table, axis=0))
 
@@ -152,7 +145,6 @@ Works with `mean`, `std`, `min`, `max`, etc.
 Slicing is the operation of selecting sub-portions of an array. With multi-dimensional arrays, you can slice along multiple axes at once by re-using the syntax we saw for 1D arrays, but separating the slices for each dimension with commas.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # First two rows, all columns
 print(table[:2, :])
 
@@ -170,7 +162,6 @@ AFrequently we convert higher dimensional arrays to a simple one-dimnensional se
 There aare dedicated ways to do this:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 matrix = rng.integers(0, 10, size=(2, 3))
 # ravel() creates a view (modifies original)
 view = matrix.ravel()
@@ -187,7 +178,6 @@ print(matrix)  # Unchanged
 `numpy` allows us in general to avoid teh usage of for loops. A particularly nice featre is that `numpy` tries automatically to expand arrays of different shapes to make operations possible. This is called **broadcasting**.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 matrix = np.array([[1, 2, 3],
                    [4, 5, 6]])
 vector = np.array([10, 20, 30])
@@ -210,7 +200,6 @@ One very interesting use of `numpy` multi dimensional array is to represent imag
 An image is the n a grid of numbers, and every number is a apixel with its intensity level. Then, 2D arrays can represent grayscale images:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import matplotlib.pyplot as plt
 
 # Display a matrix as an image
@@ -227,7 +216,6 @@ Each number is a pixel intensity value.
 Color images are 3D arrays: `(height, width, channels)`
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 from skimage import data
 
 # Load a color image
@@ -247,7 +235,6 @@ Three channels: Red, Green, Blue (RGB).
 We saw boolean indexing with numpy vectors. Well, the same principle applies to multi-dimensional arrays. We can perform tests and conditions on arays to produce new arrays with the same shape but with True/False values that we can use as masks to filter the original array. 
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Get green channel
 green = image[:, :, 1]
 
@@ -262,7 +249,6 @@ plt.imshow(mask, cmap='gray')
 Logical arrays can be combined element-by-element using logical operators:
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 green = image[:, :, 1]
 red = image[:, :, 0]
 

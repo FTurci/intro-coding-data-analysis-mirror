@@ -12,6 +12,7 @@ We explore a numerical dataset freely avaible under MIT license on Kaggle, a pla
 The dataset focuses on solar system objects and contains several attributes.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import pandas as pd 
 
 df = pd.read_csv("kaggle_solar/sol_data.csv")
@@ -34,6 +35,7 @@ assert condition, "Error message if condition is False"
 **Hint.** If the conversion to `numpy` array is correct, then the type of `np_solar_data` should be `np.ndarray`
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
@@ -44,6 +46,7 @@ assert condition, "Error message if condition is False"
 - Inspect the stand deviations in the numpy and pandas result. Can you choose parameters such that the results are identical? 
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
@@ -58,6 +61,7 @@ You want to analyze only the rocky planets by creating a subset and adding a cal
 - What does the warning mean? Why did it appear?
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
@@ -82,10 +86,12 @@ Both create intermediate objects (potential copies) before assignment, so modifi
 - Check if it worked, then use `.loc[]` to do it correctly
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 planets.columns
 ```
 
@@ -109,6 +115,7 @@ where:
 - Improve your plotting to illustrate this relationship explicitly (e.g. by changing the scales, plotting guides to the eye, etc.). Note that the radius is in km, the escape veclocity is in m/s, and the gravity is in m/s².
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
@@ -127,6 +134,7 @@ Extract planet names and convert them to uppercase using both pandas and numpy a
 - Which approach is easier for string operations?
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
@@ -144,6 +152,7 @@ Calculate the mean density for planets vs non-planets using pandas groupby, then
 - Which approach is more convenient? What happens if you need to group by multiple columns?
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
@@ -180,6 +189,7 @@ After standardization, the correlation matrix can be computed using matrix multi
 **Note:** The matrix $Z$ has shape $(n \times 3)$, so $Z^T$ has shape $(3 \times n)$, and their product gives a $(3 \times 3)$ correlation matrix.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 
@@ -211,6 +221,7 @@ From $v_{esc} = \sqrt{2gR}$, we can predict escape velocity for any combination 
 Use the `matplotlib` documentation at https://matplotlib.org/stable/contents.html if needed.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 ## YOUR SOLUTION HERE
 ```
 

@@ -25,6 +25,7 @@ Access array elements using integer indices and slicing:
 - **Reverse**: `arr[::-1]` reverses the entire array
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 import numpy as np
 
 arr = np.array([10, 20, 30, 40, 50])
@@ -47,6 +48,7 @@ print(arr[::-1])     # [50 40 30 20 10]
 This behavior is efficient but can cause unexpected side effects!
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 slice_view = arr[2:5]
 slice_view[0] = 99    # Modifies original!
 
@@ -63,6 +65,7 @@ arr_copy[0] = 100     # Original unchanged
 3. This is powerful for data analysis and filtering operations
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 arr = np.array([1, 2, 3, 4, 5, 6])
 threshold = 3
 
@@ -82,6 +85,7 @@ filtered = arr[bool_mask]    # [4 5 6]
 - Powerful for element-wise conditional logic without loops
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Get indices
 indices = np.where(arr > threshold)[0]  # [3 4 5]
 
@@ -101,6 +105,7 @@ result = np.where(a > 2, a, b)  # [−1 −2  3  4  5]
 - Choose `arange` when you know the step size, `linspace` when you know the number of points
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Evenly spaced values with step
 np.arange(0, 10, 2)           # [0 2 4 6 8]
 
@@ -122,6 +127,7 @@ Useful for creating placeholders before computations or initializing data struct
 - `np.empty()` is fastest but contains arbitrary values
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Create arrays filled with values
 np.zeros(5)              # [0. 0. 0. 0. 0.]
 np.ones(3)               # [1. 1. 1.]
@@ -143,6 +149,7 @@ np.full_like(arr, 99)
 - Same seed = same sequence (crucial for reproducible research!)
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Initialize random number generator
 rng = np.random.default_rng(seed=123)
 ```
@@ -157,6 +164,7 @@ rng = np.random.default_rng(seed=123)
 - Control sample size with `size` parameter
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Integers
 rng.integers(0, 100, size=5)     # 5 random ints [0,100)
 
@@ -180,6 +188,7 @@ Pre-allocating larger arrays is much faster!
 **Rule of thumb**: Start with 100,000 elements for most tasks.
 
 ```{pyodide}
+#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 # Slow: generate one at a time
 for _ in range(1000):
     val = rng.integers(0, 100)

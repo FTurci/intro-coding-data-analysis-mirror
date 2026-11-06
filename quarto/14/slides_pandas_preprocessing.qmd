@@ -14,7 +14,6 @@ jupyter:
 Pandas provides **flexible data ingestion** capabilities that allow you to read data from various sources. The `read_csv()` function is particularly versatile, accepting both **local file paths** and **public URLs**. This makes it easy to work with data stored on your computer or hosted online without changing your code structure.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 import pandas as pd
 
@@ -34,7 +33,6 @@ df.head(3)
 Before manipulating data, always **understand its structure**. Check the **shape**, **column names**, **data types**, and **missing values**. The `.info()` method provides a comprehensive overview in one call.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Basic exploration
 print(f"Shape: {df.shape}")
@@ -50,7 +48,6 @@ df.info()
 The `.describe()` method computes **summary statistics** (count, mean, std, min, max, quartiles) for all numerical columns. The output is itself a DataFrame, allowing further operations.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Get summary statistics
 stats = df.describe()
@@ -65,7 +62,6 @@ print(f"\nMean temperature: {stats.loc['mean', 'Tmean']:.2f}°C")
 Date columns are often read as **text** by default. Converting them to **datetime objects** using `pd.to_datetime()` unlocks temporal operations like filtering by date ranges, extracting components, and creating time-aware visualizations.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Convert text to datetime
 df['Date'] = pd.to_datetime(df['Date'])
@@ -83,7 +79,6 @@ print(f"\nRows after 2020: {len(recent_data)}")
 For time series data, using the **date as the index** simplifies plotting and slicing. Use `set_index()` to assign a column as the index and `.drop(axis=1)` to remove unnecessary columns.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Set date as index
 df = df.set_index('Date')
@@ -101,7 +96,6 @@ print(f"\nIndex name: {df.index.name}")
 Real-world data often has **missing values** (`NaN`). Use `.isnull()` to identify them and `.sum()` to count missing values per column. Understanding **where and why** data is missing guides your handling strategy.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Count missing values
 missing = df.isnull().sum()
@@ -118,7 +112,6 @@ print(f"\nRows with missing Sun data: {len(missing_sun)}")
 Three main approaches: **drop** rows/columns (sparse data), **fill** with values like mean or median (simple imputation), or **interpolate** from surrounding values (time series). Choose based on your **data's nature** and **missingness patterns**.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Strategy 1: Drop columns with mostly missing data
 df = df.drop('status', axis=1)
@@ -137,7 +130,6 @@ print(f"Remaining missing values: {df.isnull().sum().sum()}")
 **Interpolation** estimates missing values from neighboring points. **Linear interpolation** draws straight lines between known values. More sophisticated methods (polynomial, spline) exist but require more computation and careful application.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 import numpy as np
 
@@ -157,7 +149,6 @@ print(data_interp)
 Datetime objects have useful **attributes** like `.year`, `.month`, `.day`, `.dayofweek`, etc. Extract **month names** with `.month_name()` or quarters with `.quarter` for seasonal analysis and grouping.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Extract date components from the index
 df['Year'] = df.index.year
@@ -173,7 +164,6 @@ print(df[['Year', 'Month', 'Month_Name', 'Quarter']].head(6))
 Use `.apply()` to apply **custom functions** to DataFrame columns. Functions are **first-class objects** that can be passed as arguments, enabling you to create derived features with custom logic.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Define a custom function
 def get_season(month):
@@ -196,7 +186,6 @@ print(df[['Month', 'Month_Name', 'Season']].head(12))
 Create new columns through **arithmetic operations** or **boolean conditions**. Derived features encode domain knowledge into your data structure, like temperature ranges or threshold-based flags.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Arithmetic operation
 df['Temp_Range'] = df['Tmax'] - df['Tmin']
@@ -214,7 +203,6 @@ print(f"\nRainy months: {df['Rainy_Month'].sum()} ({df['Rainy_Month'].mean()*100
 The `.groupby()` method **aggregates data** by categories. Chain three operations: group by a column, select columns to aggregate, and apply an aggregation function (mean, sum, count, etc.).
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Group by season and calculate mean temperature
 seasonal_temp = df.groupby('Season')['Tmean'].mean()
@@ -232,7 +220,6 @@ print(rainy_pct.sort_values(ascending=False).head())
 After preprocessing, **save your cleaned data** for future use. Pandas supports **CSV** (`.to_csv()`), **Excel** (`.to_excel()`), **JSON**, **SQL**, and more. Some formats require additional libraries.
 
 ```{pyodide}
-#| caption: "▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+["
 #| slideshow: {slide_type: fragment}
 # Select columns to export
 df_export = df[['Year', 'Month', 'Tmax', 'Tmin', 'Rain', 'Sun']]
