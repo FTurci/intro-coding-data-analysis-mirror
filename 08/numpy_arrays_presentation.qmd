@@ -1,0 +1,228 @@
+---
+title: "Working with NumPy Arrays"
+subtitle: "Indexing and Random Data Generation"
+format: 
+  revealjs:
+    theme: simple
+    slide-number: true
+    incremental: false
+    transition: slide
+    code-overflow: wrap
+---
+
+## Overview
+
+- Array indexing and slicing
+- Boolean indexing
+- Array generation functions
+- Random data generation
+
+# Array Indexing & Slicing
+
+---
+
+## Basic Indexing
+
+Access array elements using integer indices and slicing:
+
+- **Single element**: `arr[1]` gets element at position 1
+- **Slice range**: `arr[1:4]` extracts elements 1 to 3 (end exclusive)
+- **Step size**: `arr[::2]` takes every 2nd element
+- **Reverse**: `arr[::-1]` reverses the entire array
+
+```{python}
+import numpy as np
+
+arr = np.array([10, 20, 30, 40, 50])
+print(arr[1])        # 20
+print(arr[1:4])      # [20 30 40]
+print(arr[::2])      # [10 30 50]
+print(arr[::-1])     # [50 40 30 20 10]
+```
+
+---
+
+## Views vs Copies
+
+**Important memory concept:**
+
+- **Slicing creates views** that share the same underlying data
+- Modifying a view changes the original array
+- **Use `.copy()`** to create independent arrays when needed
+
+This behavior is efficient but can cause unexpected side effects!
+
+```{python}
+slice_view = arr[2:5]
+slice_view[0] = 99    # Modifies original!
+
+arr_copy = arr[2:5].copy()
+arr_copy[0] = 100     # Original unchanged
+```
+
+# Boolean Indexing
+
+---
+
+## Filtering with Conditions
+
+**Boolean indexing** allows data filtering based on conditions:
+
+1. Apply a condition to create a **boolean mask** (True/False array)
+2. Use the mask to select only elements that meet the condition
+3. This is powerful for data analysis and filtering operations
+
+```{python}
+arr = np.array([1, 2, 3, 4, 5, 6])
+threshold = 3
+
+# Create boolean mask
+bool_mask = arr > threshold  # [False False False True True True]
+
+# Filter array
+filtered = arr[bool_mask]    # [4 5 6]
+```
+
+---
+
+## np.where Function
+
+**Advanced conditional operations:**
+
+- `np.where(condition)` returns **indices** where condition is True
+- `np.where(condition, x, y)` creates new array: elements from `x` where True, from `y` where False
+- Powerful for element-wise conditional logic without loops
+
+```{python}
+# Get indices
+indices = np.where(arr > threshold)[0]  # [3 4 5]
+
+# Conditional selection
+a = np.array([1, 2, 3, 4, 5])
+b = np.array([-1, -2, -3, -4, -5])
+
+result = np.where(a > 2, a, b)  # [−1 −2  3  4  5]
+```
+
+# Array Generation
+
+---
+
+## Sequences
+
+**Creating ordered numerical sequences:**
+
+- `np.arange(start, stop, step)` - like {Python}'s `range()` but for arrays
+- `np.linspace(start, stop, num)` - exactly `num` evenly spaced points
+- Choose `arange` when you know the step size, `linspace` when you know the number of points
+
+```{python}
+# Evenly spaced values with step
+np.arange(0, 10, 2)           # [0 2 4 6 8]
+
+# Fixed number of points
+np.linspace(0, 1, 5)          # [0.   0.25 0.5  0.75 1.  ]
+
+# Different data types
+np.arange(0.0, 1.0, 0.2)      # floats
+np.arange(0, 10, 2, dtype=complex)  # complex
+```
+
+---
+
+## Filled Arrays
+
+**Initialize arrays with specific values:**
+
+Useful for creating placeholders before computations or initializing data structures.
+
+- `*_like()` functions preserve shape and data type of existing arrays
+- `np.empty()` is fastest but contains arbitrary values
+
+```{python}
+# Create arrays filled with values
+np.zeros(5)              # [0. 0. 0. 0. 0.]
+np.ones(3)               # [1. 1. 1.]
+np.full(4, 7)            # [7 7 7 7]
+
+# Match existing array shape
+np.zeros_like(arr)
+np.ones_like(arr)
+np.full_like(arr, 99)
+```
+
+# Random Data Generation
+
+---
+
+## Pseudo-Random Numbers
+
+**Why computers need algorithms for randomness:**
+
+- Computers are deterministic machines (same input → same output)
+- **Pseudo-random number generators (PRNGs)** use mathematical algorithms
+- **Seed** value determines the starting point of the sequence
+- Same seed = same sequence (crucial for reproducible research!)
+
+```{python}
+# Initialize random number generator
+rng = np.random.default_rng(seed=123)
+```
+
+---
+
+## Random Sampling
+
+**Generate samples from different distributions:**
+
+- **Integers**: Uniform distribution over a range
+- **Floats**: Uniform distribution [0,1) or custom range  
+- **Normal**: Gaussian distribution with specified mean and standard deviation
+- Control sample size with `size` parameter
+
+```{python}
+# Integers
+rng.integers(0, 100, size=5)     # 5 random ints [0,100)
+
+# Uniform floats [0,1)
+rng.random(1000)                 # 1000 random floats
+
+# Normal distribution
+rng.normal(loc=0, scale=1, size=10000)
+
+# Single values
+rng.integers(0, 100)             # Single random int
+```
+
+---
+
+## Performance Tip
+
+**Memory vs. Speed tradeoff:**
+
+Generating random numbers one-by-one in loops is slow due to function call overhead. 
+Pre-allocating larger arrays is much faster!
+
+**Rule of thumb**: Start with 100,000 elements for most tasks.
+
+```{python}
+# Slow: generate one at a time
+for _ in range(1000):
+    val = rng.integers(0, 100)
+
+# Fast: pre-allocate
+random_values = rng.integers(0, 100, size=1000)
+for val in random_values:
+    # use val
+```
+
+## Summary
+
+- **Indexing**: Integer, slicing, boolean
+- **Views vs Copies**: Slicing creates views
+- **Generation**: `arange`, `linspace`, filled arrays
+- **Random**: Seed for reproducibility, pre-allocate for speed
+
+## Questions?
+
+Thank you!
