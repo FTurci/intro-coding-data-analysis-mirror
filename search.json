@@ -7,194 +7,361 @@
     "text": "Add the following to quarto\n\n\n\n\n\n\nremember to add\n\nresources:\n    - src"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#aims",
-    "href": "slides/07_intro_numpy_slides.html#aims",
-    "title": "The numpy module",
-    "section": "Aims",
-    "text": "Aims\nBy the end of this lecture, you will be able to:\n\nExplain what the NumPy module is and why it is used\nCreate and manipulate NumPy arrays\nPerform element-wise operations and mathematical functions on arrays\nCompare NumPy arrays with Python lists in terms of performance and functionality\nUse basic aggregation and array manipulation functions in NumPy"
+    "objectID": "slides/08_working_numpy_slides.html#array-indexing-slicing",
+    "href": "slides/08_working_numpy_slides.html#array-indexing-slicing",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Array Indexing & Slicing",
+    "text": "Array Indexing & Slicing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\narr = np.array([10, 20, 30, 40, 50])\n\n# Integer indexing\nprint(\"Element at index 1:\", arr[1])\n\n# Basic slicing\nprint(\"Slice [1:4]:\", arr[1:4])\nAdvanced slicing:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Every other element:\", arr[::2])\nprint(\"Last three elements:\", arr[-3:])\nprint(\"Reversed array:\", arr[::-1])"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#what-is-numpy",
-    "href": "slides/07_intro_numpy_slides.html#what-is-numpy",
-    "title": "The numpy module",
-    "section": "What is numpy?",
-    "text": "What is numpy?\nNumPy is a Python library that makes working with numbers and large collections of data fast and easy.\n\nComplete description at https://numpy.orgIt provides special array objects and tools for doing math efficiently, which is useful for data analysis and scientific computing.\n\nIt is imported in your session using the following command\nimport numpy\n\n\nWe will follow a common practice and use a shorthand with the as syntax\nimport numpy as np\n\n\nSo np will always mean numpy for us."
+    "objectID": "slides/08_working_numpy_slides.html#views-vs-copies",
+    "href": "slides/08_working_numpy_slides.html#views-vs-copies",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Views vs Copies",
+    "text": "Views vs Copies\nSlicing creates views (shared data):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nslice_view = arr[2:5]\nslice_view[0] = 99\nprint(\"Original after view modification:\", arr)\nCreating independent copies:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([10, 20, 30, 40, 50])  # Reset\narr_copy = arr[2:5].copy()\narr_copy[0] = 100\nprint(\"Copy:\", arr_copy)\nprint(\"Original unchanged:\", arr)"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#arrays-vs-lists",
-    "href": "slides/07_intro_numpy_slides.html#arrays-vs-lists",
-    "title": "The numpy module",
-    "section": "Arrays vs lists",
-    "text": "Arrays vs lists\n\n\nPython Lists\n\nOrdered, Mutable\n\nMixed data types\nExplicit operations needed\nSlower performance\n\n\nNumPy Arrays\n\nOrdered, Mutable\nOne data type per array\nElement-wise operations\nFast & memory efficient\n\n\n\n\n\nlist_ex = [1, 2, 3, 4]\nprint(list_ex)\n\nimport numpy as np\n#notice that we explicitly call the np.array()\narr_ex = np.array([1, 2, 3, 4]) \nprint(arr_ex)\n\nWe are going to see these differences in detail."
+    "objectID": "slides/08_working_numpy_slides.html#boolean-indexing",
+    "href": "slides/08_working_numpy_slides.html#boolean-indexing",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Boolean Indexing",
+    "text": "Boolean Indexing\nFilter data with conditions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([1, 2, 3, 4, 5, 6])\nthreshold = 3\n\nbool_mask = arr &gt; threshold\nprint(\"Boolean mask:\", bool_mask)\nprint(\"Filtered values:\", arr[bool_mask])\nUsing np.where:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Get indices where condition is True\nindices = np.where(arr &gt; threshold)[0]\nprint(\"Indices:\", indices)\n\n# Conditional selection\nresult = np.where(arr &gt; 3, arr, 0)\nprint(\"Conditional result:\", result)"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#arrays-from-lists",
-    "href": "slides/07_intro_numpy_slides.html#arrays-from-lists",
-    "title": "The numpy module",
-    "section": "Arrays from lists",
-    "text": "Arrays from lists\nA purely numerical list can readily be converted to an array.\nimport numpy as np\n# Create array from list\nlist1 = [1.,1.,2.,3.,5.,8.]\narr1 = np.array(list1)\nprint(arr1)\n\nThe type of the elements yields the data type of the array\nprint(arr1.dtype)\n\nTry and change the list1 object to contain only integers and see the change!"
+    "objectID": "slides/08_working_numpy_slides.html#generating-sequences",
+    "href": "slides/08_working_numpy_slides.html#generating-sequences",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Generating Sequences",
+    "text": "Generating Sequences\nnp.arange - step-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Integers:\", np.arange(0, 10, 2))\nprint(\"Floats:\", np.arange(0.0, 1.0, 0.2))\nnp.linspace - count-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"5 points from 0 to 1:\", np.linspace(0, 1, 5))\n\narange: Use when you know the step size\nlinspace: Use when you know the number of points"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#array-properties",
-    "href": "slides/07_intro_numpy_slides.html#array-properties",
-    "title": "The numpy module",
-    "section": "Array properties",
-    "text": "Array properties\nArrays possess plenty of properties.\nThese are accessed with the . notation1.\nprint(f\"Data type: {arr1.dtype}\")\nprint(f\"Shape: {arr1.shape}\")\nprint(f\"Shape: {arr1.size}\")\nFor now, we consider only 1d arrays, i.e. sequences. Their length is is their size and corresponds to the first element of the property shape.\nuse . and then TAB to see all of the properties"
+    "objectID": "slides/08_working_numpy_slides.html#filled-arrays",
+    "href": "slides/08_working_numpy_slides.html#filled-arrays",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Filled Arrays",
+    "text": "Filled Arrays\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Create arrays with specific values\nzeros_arr = np.zeros(5)\nones_arr = np.ones(4)\nfull_arr = np.full(3, 7)\n\nprint(\"Zeros:\", zeros_arr)\nprint(\"Ones:\", ones_arr)\nprint(\"Full:\", full_arr)\nSame shape as existing array:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\ntemplate = np.array([1, 2, 3])\nprint(\"Zeros like:\", np.zeros_like(template))\nprint(\"Ones like:\", np.ones_like(template))\nprint(\"Full like:\", np.full_like(template, 9))"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#accessing-array-elements",
-    "href": "slides/07_intro_numpy_slides.html#accessing-array-elements",
-    "title": "The numpy module",
-    "section": "Accessing array elements",
-    "text": "Accessing array elements\nSimilarly to lists, we access an element in an array via zero-based indexing\nprint(arr1[0])    # First element\nprint(arr1[-1])   # Last element\nAgain, similarly to lists, we can access regions of the array via slicing\nprint(arr1[3:6])  # Elements from index 3 to 6"
+    "objectID": "slides/08_working_numpy_slides.html#random-number-generation",
+    "href": "slides/08_working_numpy_slides.html#random-number-generation",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Random Number Generation",
+    "text": "Random Number Generation\nInitialize generator (for reproducibility):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nrng = np.random.default_rng(seed=123)\nDifferent distributions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Random integers\nprint(\"Random integers:\", rng.integers(0, 100, size=5))\n\n# Uniform floats [0, 1)\nprint(\"Uniform [0,1):\", rng.random(5))\n\n# Normal distribution\nnormal_samples = rng.normal(loc=0, scale=1, size=5)\nprint(\"Normal samples:\", normal_samples)"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations",
-    "href": "slides/07_intro_numpy_slides.html#element-wise-operations",
-    "title": "The numpy module",
-    "section": "Element-wise Operations",
-    "text": "Element-wise Operations\nThe main motivation to use arrays is that lists are cumbersome when performing maths.\nSuppose we have a list and want to double all of its elements:\nlist1 = [1,2,3,4]\nWe need to loop over all of them and create a new list\nlist2 = []\nfor item in list1:\n    list2.append(2*item)\nprint(list2)\nIn fact, we can do this in a slightly more compact way using list comprehension\nlist2 = [item*2 for item in list1]\nStill, an explicit loop is needed. Loops in Python are slow."
+    "objectID": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
+    "href": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Pseudo-Random Numbers",
+    "text": "Pseudo-Random Numbers\nComputers are deterministic - they use algorithms to generate “pseudo-random” sequences\nLinear Congruential Generator example: \\[x_{n+1} = (a \\times x_n + c) \\bmod m\\]\nKey concept: Seeds enable reproducibility\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Same seed = same sequence\nrng1 = np.random.default_rng(seed=42)\nrng2 = np.random.default_rng(seed=42)\n\nprint(\"RNG1:\", rng1.integers(0, 10, size=3))\nprint(\"RNG2:\", rng2.integers(0, 10, size=3))  # Same output!"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
-    "href": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
-    "title": "The numpy module",
-    "section": "Element-wise Operations",
-    "text": "Element-wise Operations\nThe numpy syntax avoids the explicit Python loop.\narr1 = np.array(list1)\narr2 = 2*arr1\nprint(arr2)\nThis is not just a cosmetic change: under the hood numpy uses an efficient architecture that performs operations in compiled code, making it much faster than Python loops."
+    "objectID": "slides/08_working_numpy_slides.html#performance-tips",
+    "href": "slides/08_working_numpy_slides.html#performance-tips",
+    "title": "Working with NumPy: Indexing and Random Data",
+    "section": "Performance Tips",
+    "text": "Performance Tips\nPreallocate for efficiency:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Less efficient: generate one at a time\n# for _ in range(1000):\n#     val = rng.integers(0, 100)\n\n# More efficient: preallocate\nprealloc = rng.integers(0, 100, size=1000)\n# Then use values from prealloc array\nMemory vs Speed tradeoff: - Small tasks: 100-1,000 elements - Medium tasks: 10,000-100,000 elements\n- Large tasks: 1,000,000+ elements"
   },
   {
-    "objectID": "slides/07_intro_numpy_slides.html#performance-advantage",
-    "href": "slides/07_intro_numpy_slides.html#performance-advantage",
-    "title": "The numpy module",
-    "section": "Performance advantage",
-    "text": "Performance advantage\nThis performance difference can be tracked explicitly.\nWe create a large list and a large array with identical content\n# Create a large list and array\nlarge_list = list(range(1_000_000))\nlarge_array = np.array(large_list)\nAnd then track the time for the two operations\nimport time\n#  Track the time taken for the list multiplication\nstart = time.time()\nlist_result = [x * 2 for x in large_list]\nend = time.time()\nprint(f\"List comprehension time: {end - start:.5f} seconds\")\n\n# Time array multiplication\nstart = time.time()\narray_result = large_array * 2\nend = time.time()\nprint(f\"NumPy array time: {end - start:.5f} seconds\")"
-  },
-  {
-    "objectID": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
-    "href": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
-    "title": "The numpy module",
-    "section": "General mathematical functions",
-    "text": "General mathematical functions\nThe multiplication we performed earlier is done element-wise: every element is update according to teh same rule.\nWe can apply plenty of element-wise operations to the arrays.\nMany of these are available as numpy functions directly accessed from the np. module\n# Element-wise functions\nprint(f\"Square root: {np.sqrt(arr1)}\")\nprint(f\"Mean: {np.mean(arr1)}\")\nprint(f\"Cosine: {np.cos(arr1)}\")\n\nThe operations do not modify the original array, but produce new copies\narr2 = arr1*3/2 + 5\nprint(f\"Original: {arr1}\")\nprint(f\"Modified: {arr2}\")"
-  },
-  {
-    "objectID": "slides/07_intro_numpy_slides.html#sums",
-    "href": "slides/07_intro_numpy_slides.html#sums",
-    "title": "The numpy module",
-    "section": "Sums",
-    "text": "Sums\nOther convenent numpy functions allow you to accumulate values without loops.\nAssume we have an array \\(x\\)\nx = np.array([1,2,3,4,5,6,7,8])\nSums\n\\[\nS = \\sum_{i=1}^{n} x_i\n\\]\nIn NumPy, this is translated as:\nS = np.sum(x)\nprint(S)"
-  },
-  {
-    "objectID": "slides/07_intro_numpy_slides.html#sums-1",
-    "href": "slides/07_intro_numpy_slides.html#sums-1",
-    "title": "The numpy module",
-    "section": "Sums",
-    "text": "Sums\nCumulative sums\nA cumulative sum is a sequence where each element is the sum of all previous elements up to that position. \\[\ny_i = \\sum_{j=1}^{i} x_j\n\\]\nIn NumPy, this is translated as:\n y = np.cumsum(x)\n print(y)"
-  },
-  {
-    "objectID": "slides/07_intro_numpy_slides.html#example-molecular-masses",
-    "href": "slides/07_intro_numpy_slides.html#example-molecular-masses",
-    "title": "The numpy module",
-    "section": "Example: molecular masses",
-    "text": "Example: molecular masses\nLet’s consider the formula for the molecular mass of a compound:\n\\[\nM = \\sum_{i=1}^{n} a_i m_i\n\\]\nwhere\n\n\\(a_i\\) is the number of atoms of element \\(i\\)\n\\(m_i\\) is the atomic mass of element \\(i\\)\n\n\nWith numpy, you can compute this as:\na = np.array([2, 1, 4])      # Number of atoms for each element\nm = np.array([12.01, 1.01, 16.00])  # Atomic masses (e.g., C, H, O)\nM = np.sum(a * m)\nprint(f\"Molecular mass: {M}\")"
-  },
-  {
-    "objectID": "slides/07_intro_numpy_slides.html#operations-between-arrays",
-    "href": "slides/07_intro_numpy_slides.html#operations-between-arrays",
-    "title": "The numpy module",
-    "section": "Operations between arrays",
-    "text": "Operations between arrays\nYou can perform arithmetic operations directly between arrays of the same shape. Operations like addition, subtraction, multiplication, and division are applied element-wise.\nFor example:\nElement-wise operations:\nadded = arr1 + arr2\nmultiplied = arr1 * arr2\nprint(f\"Added: {added}\")\nprint(f\"Multiplied: {multiplied}\")\n\nNote: Arrays must have compatible shapes!\narr3 = np.array([1, 2, 3])\narr4 = np.array([4, 5])\nresult = arr3 + arr4"
-  },
-  {
-    "objectID": "slides/07_intro_numpy_slides.html#combining-arrays",
-    "href": "slides/07_intro_numpy_slides.html#combining-arrays",
-    "title": "The numpy module",
-    "section": "Combining arrays",
-    "text": "Combining arrays\nWith lists, the + operator concatenated different lists. Since for arrays the sign + corresponds to true mathematical addition, a dedicated concatenation function exists:\ncombined = np.concatenate([arr1, arr2])\nprint(f\"Unique elements: {combined}\")\nMany other variations of concatenation exist. Consult the documentation."
-  },
-  {
-    "objectID": "slides/07_intro_numpy_slides.html#key-takeaways",
-    "href": "slides/07_intro_numpy_slides.html#key-takeaways",
-    "title": "The numpy module",
+    "objectID": "slides/08_working_numpy_slides.html#key-takeaways",
+    "href": "slides/08_working_numpy_slides.html#key-takeaways",
+    "title": "Working with NumPy: Indexing and Random Data",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nNumPy arrays are optimized for numerical operations\nElement-wise operations work implicitly\nPerformance benefits for large datasets\nMathematical functions apply to entire arrays\nShape compatibility required for operations\nChoose the right tool for your task"
+    "text": "Key Takeaways\n\nViews share data, copies are independent\nBoolean indexing enables powerful data filtering\narange vs linspace serve different use cases\nRandom generators need seeds for reproducibility\nPreallocating arrays improves performance\nChoose array generation method based on your needs"
   },
   {
-    "objectID": "formative/basic_structures.html",
-    "href": "formative/basic_structures.html",
-    "title": "Variables, lists, dictionaries and branches",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to Coding and Data Analysis",
     "section": "",
-    "text": "This is a formative test. It is an occasion to practice the course material. It does not contribute to your final grade.\nUsing the topics covered within the workshops (or otherwise), complete the questions below.\nMake sure to use any described variable names exactly and do not change the name of this file. This ensures the nbgrader tool can grade your work correctly.\n\n\n\n\nQuestion 1\n1A) Using the pi variable defined below (representing \\(\\pi\\) to 6 decimal places), calculate the circumference of a circle with radius of 5 and assign to a variable called circum_circle.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nRemember to define the radius and use the formula: circum_circle = 2 * pi * radius.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nradius = 5\ncircum_circle = 2 * pi * radius\n\n\n\n\n\n1B) Calculate the area of a circle with radius 2.5 and assign to area_circle.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nUse Area = pi * radius**2.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\narea_circle = pi * radius**2\n\n\n\n\n\n\n\nQuestion 2\n\n\n2A) Access the second name in the names list and assign to chemist.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nSecond element has index 1.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nchemist = names[1]\n\n\n\n\n\n2B) Add \"Albert Einstein\" to the names list.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nUse names.append(\"Albert Einstein\").\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nnames.append(\"Albert Einstein\")\n\n\n\n\n\n\n\nQuestion 3\n\n\n3A) Access the value for quantity = \"temperature\" in quantity_units and assign to units.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nAccess dictionary values with dictionary[key].\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nunits = quantity_units[quantity]\n\n\n\n\n\n3B) For the variable second_quantity defined below, check whether this key is present in the quantity_units dictionary. If this is in the dictionary create a variable called quantity_present and assign this to a value of True, otherwise assign this to a value of False.\nNotes:\n\nYou can use the print function to check the value within your quantity_present variable (boolean). If this produces a NameError, you may need to check that quantity_present has been successfully created.\nCheck your Week 3 notes for examples of how to check membership (i.e. whether a value is contained within a collection like a list or a dictionary).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nUse key in dictionary to check membership.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nif second_quantity in quantity_units:\n    quantity_present = True\nelse:\n    quantity_present = False\n# OR\nquantity_present = second_quantity in quantity_units\n\n\n\n\n\n\n\nQuestion 4\n4A) Two values of heights in units of feet are provided below in a list called height_feet. Convert these values to metres and calculate the difference in metres. Store this difference in a variable called height_difference_m.\nConversion from feet to metres can be done using the equation:\nThe conversion equation is: \\[ \\mathrm{height_{feet}} = \\mathrm{height_{m}} \\times 3.28084\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nConvert each height to metres and subtract: (h2 * conversion - h1 * conversion).\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nheight_metre = [height_feet[0]/feet_per_metre, height_feet[1]/feet_per_metre]\n# or if you have learnt about loops and list comprehension\nheight_metre = [h/feet_per_metre for h in height_feet]\n\nheight_difference_m = height_metre[1]-height_metre[0]\n\n\n\n\n\n4B) Check whether height_difference_m is:\n\nIf height_difference_m is greater than 0.5 metres (50cm), create a variable called check and set this to 1\nIf height_difference_m is between 0.3 and 0.5 metres (30 to 50cm), create a variable called check and set this to 2\nIf height_difference_m is something else, create a variable called check and set this to 3\n\ndo this by constructing and if–else block.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nYou need an if, elif else construct.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\ncheck = 0\nif height_difference_m &gt; 0.5:\n    print(f\"{height_difference_m:.3f} is greater than 0.5m\")\n    check=1\nelif height_difference_m &gt; 0.3 and height_difference_m &lt;= 0.5:\n    print(f\"{height_difference_m:.3f} is greater than 0.3m but less than or equal to 0.5m\")\n    check=2\nelse:\n    print(height_difference_m)\n    check=3"
+    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
+    "crumbs": [
+      "Home",
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
+    ]
   },
   {
-    "objectID": "08/lecture_working_with_numpy.html",
-    "href": "08/lecture_working_with_numpy.html",
-    "title": "Indexing and Random Data Generation",
+    "objectID": "index.html#welcome-to-the-course",
+    "href": "index.html#welcome-to-the-course",
+    "title": "Introduction to Coding and Data Analysis",
     "section": "",
-    "text": "NumPy is a powerful library for numerical computing in Python, providing efficient multi-dimensional array operations and a wide range of mathematical functions. With NumPy, you can perform fast element-wise computations, advanced indexing, slicing, and generate random data for simulations and analysis.\nThis notebook illustrates array indexing, boolean arrays, generating sequences using np.arange and np.linspace, and generating random samples with NumPy’s random number generator.",
+    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
     "crumbs": [
       "Home",
-      "08 Working with NumPy",
-      "Indexing and Random Data Generation"
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
     ]
   },
   {
-    "objectID": "08/lecture_working_with_numpy.html#array-indexing-slicing-views-and-copies",
-    "href": "08/lecture_working_with_numpy.html#array-indexing-slicing-views-and-copies",
-    "title": "Indexing and Random Data Generation",
-    "section": "Array indexing, slicing, views and copies",
-    "text": "Array indexing, slicing, views and copies\nIndexing in NumPy allows you to access and modify individual elements or groups of elements within an array. You can use integer indices, slices, and even boolean arrays to select data efficiently. For example:\n\nInteger Indexing: Select a single element by its position.\nSlicing: Extract a range of elements.\nBoolean Indexing: Filter elements based on a condition.\n\n\nInteger indexing\nWe have already seen that the lements of an array are idnexed similarly to lists. The syntax simply requires you to enter the integer index of the element you want to access. For example, if you have an array arr, you can access the element at index 1 using arr[1]. You can also slice arrays using the same syntax as lists, such as arr[1:4] to get elements from index 1 to 3.\n\n\n\n\n\n\n\n\nSlicing\nSlicing allows you to extract a portion of an array by specifying a start index, an end index, and an optional step. The syntax is similar to that used for lists in Python. For example, arr[1:4] retrieves elements from index 1 to 3 (the end index is exclusive).\n\n\n\n\n\n\n\n\nAdvanced Slicing Techniques\nNumPy slicing can be extended beyond basic start and end indices:\n\nStep Size: Use a third parameter to specify the step, e.g., arr[::2] selects every other element.\nNegative Indices: Negative values index from the end, e.g., arr[-3:] gets the last three elements.\nReverse Slicing: Use a negative step to reverse an array, e.g., arr[::-1].\n\n\n\n\n\n\n\nSlicing creates views, not copies, so modifying a slice affects the original array. Use arr.copy() to create a copy if needed.\nA view is a new array object that looks at the same data as the original array. Changes made to a view will affect the original array, since they share the same underlying data. For example, arr[1:4] returns a view of arr, not a separate copy.\n\n\n\n\n\n\nSlices can be programmaticaly generated using the slice function, which allows you to create a slice object that can be reused. For example, s = slice(1, 4) creates a slice object that can be used as arr[s] to get the same result as arr[1:4].\n\n\n\n\n\n\nTo create an independent copy of an array (rather than a view), use the copy() method. For example, arr_copy = arr[1:4].copy() creates a new array with its own data, so changes to arr_copy will not affect the original arr. This is useful when you want to modify a subset of an array without altering the original data.\n\n\n\n\n\n\n\n\nBoolean Indexing\nBoolean indexing allows you to select elements from an array based on a condition. When you apply a condition to a NumPy array, it returns a boolean (an array that contains only True/False values ) array indicating which elements satisfy the condition. You can then use this boolean array to filter the original array, extracting only the elements that meet the criteria. This technique is powerful for data selection and analysis.\n\n\n\n\n\n\n\n\nUsing np.where for conditional selection\nThe np.where function in NumPy is a powerful tool for conditional selection and element-wise operations. It allows you to choose values from arrays based on a condition, returning indices or constructing new arrays.\n\nBasic usage:\nnp.where(condition) returns the indices where the condition is True.\n\n\n\n\n\n\n\nnp.where(arr &gt; threshold) returns a tuple because, for 1D arrays, it provides the indices where the condition is True. In NumPy, the output is always a tuple of arrays—one for each dimension of the input array. For a 1D array, it’s a single-element tuple containing the indices. For higher dimensions, it returns a tuple with arrays for each axis. This consistent tuple format makes it easy to handle multi-dimensional indexing.\nSo, for 1D arrays as the ones considered up to now, we should get the indices by extracting the first element of the tuple returned by np.where\n\n\n\n\n\n\n\nElement-wise selection:\nnp.where(condition, x, y) returns elements from x where the condition is True, and from y where it is False. Here the result is an array of the same shape as x and y, containing values from x where the condition is met, and from y otherwise. This is useful for creating new arrays based on conditions without using loops.",
+    "objectID": "index.html#how-to-use",
+    "href": "index.html#how-to-use",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "How to use",
+    "text": "How to use\n\nYou will find the more theoretical introduction under Lesson\nThe hands-on exercises will be under Exercises\nOver the course of the weeks the solutions will be released under Solutions\nRegularly, interactive formative tests will be released under Formative tests\n\nImportant. You can use the search button 🔎 to search across all the pages and skim through the course.\nNote. Many of the following pages also allow you to interact with the code by running Python snippets inside your browser. It is useful\n\nAs a fallback option if Noteable is unreachable.\nFor the regularly released formative tests.\n\nNote. In the online cells, you press\n\nCtrl/Cmd+Enter to run ▶ the cell\nCtrl/Cmd+] to indent ⇥\nCtrl/Cmd+[ to unindent ⇤\n\nThe content in this website mirrors the interactive notebooks released on Noteable.",
     "crumbs": [
       "Home",
-      "08 Working with NumPy",
-      "Indexing and Random Data Generation"
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
     ]
   },
   {
-    "objectID": "08/lecture_working_with_numpy.html#function-to-generate-numerical-arrays",
-    "href": "08/lecture_working_with_numpy.html#function-to-generate-numerical-arrays",
-    "title": "Indexing and Random Data Generation",
-    "section": "Function to generate numerical arrays",
-    "text": "Function to generate numerical arrays\nNumPy provides automated methods for generating numerical sequences, which are essential for simulations, sampling, and creating structured data.\n\nGenerating sequences\nThe two most used functions for generating ordered numerical sequences in NumPy are np.arange and np.linspace.\n\nnp.arange(start, stop, step): Generates an array of evenly spaced values within a specified range. The start value is inclusive, while the stop value is exclusive. The step parameter defines the spacing between values.\nExample: np.arange(0, 10, 2) produces [0, 2, 4, 6, 8].\nnp.linspace(start, stop, num): Creates an array of num evenly spaced values between start and stop, inclusive. This is useful for generating a specific number of points in a range.\n\n\n\n\n\n\n\nMost importantly, these functions can be used to create arrays of any kinds of numerical data, including integers and floating-point numbers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotice that linspace is useful when we know the start and end value and the specific number of points we want to generate, while arange is useful when we know the start and end value and the step size between the points.",
+    "objectID": "index.html#getting-started",
+    "href": "index.html#getting-started",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "Getting Started",
+    "text": "Getting Started\nNavigate through the course using the sidebar or the navigation menu above. Each Week builds upon the previous one, so it’s recommended to work through them in order.",
     "crumbs": [
       "Home",
-      "08 Working with NumPy",
-      "Indexing and Random Data Generation"
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
     ]
   },
   {
-    "objectID": "08/lecture_working_with_numpy.html#generating-filled-arrays",
-    "href": "08/lecture_working_with_numpy.html#generating-filled-arrays",
-    "title": "Indexing and Random Data Generation",
-    "section": "Generating filled arrays",
-    "text": "Generating filled arrays\nNumPy provides functions to create arrays filled with specific values, such as zeros, ones, or a constant value. These functions are useful for initializing arrays before performing computations.\nThe main functions for generating filled arrays are: - np.zeros(shape): Creates an array filled with zeros, where shape specifies the dimensions of the array. - np.ones(shape): Creates an array filled with ones. - np.full(shape, fill_value): Creates an array filled with a specified value (fill_value), where shape defines the dimensions of the array.\n- np.empty(shape): Creates an uninitialized array with the specified shape. The values in this array are not set to any particular value, so they may contain random data.\nThere are also functions that create arrays with the same shape and type as an existing array, which can be useful for initializing arrays that will be used in computations:\n\nnp.zeros_like(array): Creates an array of zeros with the same shape and type as the input array.\nnp.ones_like(array): Creates an array of ones with the same shape and type as the input array.\nnp.full_like(array, fill_value): Creates an array filled with a specified value, with the same shape and type as the input array.",
+    "objectID": "index.html#features",
+    "href": "index.html#features",
+    "title": "Introduction to Coding and Data Analysis",
+    "section": "Features",
+    "text": "Features\n\nInteractive Jupyter notebooks\nStep-by-step exercises with solutions\nComprehensive coverage of NumPy and Matplotlib\nReal-world examples and applications",
     "crumbs": [
       "Home",
-      "08 Working with NumPy",
-      "Indexing and Random Data Generation"
+      "Course Overview",
+      "Introduction to Coding and Data Analysis"
     ]
   },
   {
-    "objectID": "08/lecture_working_with_numpy.html#random-data-generation",
-    "href": "08/lecture_working_with_numpy.html#random-data-generation",
-    "title": "Indexing and Random Data Generation",
-    "section": "Random Data Generation",
-    "text": "Random Data Generation\nRandom data generation is essential for simulations, statistical modeling, and testing algorithms.\nFor example, you might want to generate random samples from a normal distribution to simulate real-world data or create random datasets for testing purposes. Or you may want to simulate the effect of measurement errors in your data analysis. Or you may want to sub-sample a large dataset randomly to take a representative sample without bias.\nTo do all this, one needs methods to sample numbers that possess the statistical properties of the desired distribution, such as uniform, normal, or binomial distributions.\nStrictly speaking (classical) computers are deterministic machines, meaning they follow a set of rules and produce the same output for the same input every time. We have therefore to use algorithms to produce sequences of numbers that mimic the properties of random numbers.\nThese are called pseudo-random numbers. Pseudo-random number generators (PRNGs) use algorithms to produce sequences of numbers that appear random but are actually deterministic.\nA simple and classic example of a pseudo-random number generator is the Linear Congruential Generator (LCG). The LCG produces a sequence of numbers using the recurrence relation:\n\\[x_{n+1} = (a \\times  x_{n} + c)\\,\\mathrm{mod}\\, m\\]\nwhere\n- \\(x_n\\) is the current value,\n- \\(a\\) is the multiplier,\n- \\(c\\) is the increment,\n- \\(m\\) is the modulus.\nIn vanilla Python this looks like the following custom function\n\n\n\n\n\n\n\n\n\n\n\n\nThis will generate a sequence of pseudo-random integers. The choice of parameters (a, c, m) affects the quality and period of the generator.\n\n\n\n\n\n\nThe seed is crucial: it is the initial value that starts the algorithm to determin the subsequent values in the sequence. By setting the seed, you can ensure that the sequence is reproducible, meaning that running the same code with the same seed will produce the same sequence of numbers every time.\nIn numpy, we do not need to implement our own LCG, as it provides a built-in random number generator that is based on the Mersenne Twister algorithm, which is a widely used and efficient pseudo-random numbwer generator.\nWhat we do instead is to use the numpy.random sub-module, which provides a wide range of functions for generating random numbers from various distributions, including uniform, normal, and binomial distributions.\nThe standard way to to use it is the following:\n\nfirst, one initialises a new kind of object called a random number generator (RNG) using np.random.default_rng(). This is a numpy object capable of generating random numbers from various distributions. It allows us in particular to set the seed and therefore ensure reproducibility.\n\n\n\n\n\n\n\nWe can do this at any point in our code, but it is a good practice to do it at the beginning of our script or notebook, so that we can ensure that all random numbers generated in the script are reproducible. Putting the generator elsewhere (for example, inside a function) could lead to unexpected results, as the generator would be re-initialised each time the function is called.\nOnce we have a generator we can access any of its method to sample numbers from various distributions\nFor example:\n\nIntegers\nTo sample uniformly distributed integers, we can use the integers method of the generator. This method allows us to specify a range and the number of integers to generate.\n\n\n\n\n\n\n\n\n[0-1) uniform floats\nTo sample uniformly distributed floats between 0 and 1, we can use the random method of the generator. This method generates random floats in the range [0.0, 1.0) (which means 0 included and 1 excluded).\n\n\n\n\n\n\nAlternatively, we can use the uniform method to sample uniformly distributed floats in a specified range. This method allows us to specify the lower and upper bounds of the range, as well as the number of samples to generate.\n\n\n\n\n\n\n\n\nNormal distribution\nTo sample from a normal distribution, we can use the normal method of the generator. This method allows us to specify the mean and standard deviation of the distribution, as well as the number of samples to generate. The generated samples will follow a normal (Gaussian) distribution with the specified parameters.",
+    "objectID": "09/slides_intro_matplotlib.html",
+    "href": "09/slides_intro_matplotlib.html",
+    "title": "Introduction to Matplotlib",
+    "section": "",
+    "text": "Project 2 is being released this week (Wednesday 19 at 12h00)\nThe tasks require you to solve a scientific problem and complete a template Notebook.\nYou will have to write some code and some reflections on your code\nNo use of autograding: follow the instructions on Blackboard\n\nDownload from Blackboard\nUpload to Noteable for editing\nComplete the asssignment\nDownload and upload back to the submission point on Blackboard\n\nThe assignment will be marked by your tutors."
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#before-we-start",
+    "href": "09/slides_intro_matplotlib.html#before-we-start",
+    "title": "Introduction to Matplotlib",
+    "section": "",
+    "text": "Project 2 is being released this week (Wednesday 19 at 12h00)\nThe tasks require you to solve a scientific problem and complete a template Notebook.\nYou will have to write some code and some reflections on your code\nNo use of autograding: follow the instructions on Blackboard\n\nDownload from Blackboard\nUpload to Noteable for editing\nComplete the asssignment\nDownload and upload back to the submission point on Blackboard\n\nThe assignment will be marked by your tutors."
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#before-we-start-1",
+    "href": "09/slides_intro_matplotlib.html#before-we-start-1",
+    "title": "Introduction to Matplotlib",
+    "section": "Before we start",
+    "text": "Before we start\n\nProject 2 release\nTips:\n\nWrite clear code (comments, variable names, structure) Follow the advice provided during the tutorials.\nDo not overcomplicate (all tasks have relatively simplease solutions).\nDemonstrate understanding (using comments and in the mandatory Markdown explanation boxes)"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#today",
+    "href": "09/slides_intro_matplotlib.html#today",
+    "title": "Introduction to Matplotlib",
+    "section": "Today",
+    "text": "Today\n\nBasics of plotting in Python using matplotlib\nReading and plotting from file\nSome extra decorating tasks"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#what-is-matplotlib",
+    "href": "09/slides_intro_matplotlib.html#what-is-matplotlib",
+    "title": "Introduction to Matplotlib",
+    "section": "What is Matplotlib?",
+    "text": "What is Matplotlib?\nMatplotlib is a powerful and widely-used Python library for creating static, animated, and interactive visualizations.\nWhy do we need plotting? - Visualize patterns in data - Communicate results effectively - Explore relationships between variables - Present findings to others"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#getting-started",
+    "href": "09/slides_intro_matplotlib.html#getting-started",
+    "title": "Introduction to Matplotlib",
+    "section": "Getting Started",
+    "text": "Getting Started\nQuestion: How do we import matplotlib for plotting?\n\n\n\n\n\n\nThe most widespread convention is to use the shorthand plt to refer to the pyplot submodule.\nThis was created to replicate the functionality of MATLAB, which many early Python adopters were familiar with."
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#two-main-approaches",
+    "href": "09/slides_intro_matplotlib.html#two-main-approaches",
+    "title": "Introduction to Matplotlib",
+    "section": "Two Main Approaches",
+    "text": "Two Main Approaches\nProblem: There are different ways to create plots in matplotlib. Which should we choose?\n\nPyplot Interface\nplt.plot(x, y)\nplt.show()\n\nMATLAB-style syntax (if you know MATLAB)\nQuick and simple for basic plots\nOften seen in online examples"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#two-main-approaches-1",
+    "href": "09/slides_intro_matplotlib.html#two-main-approaches-1",
+    "title": "Introduction to Matplotlib",
+    "section": "Two Main Approaches",
+    "text": "Two Main Approaches\n\nObject-Oriented Approach\nfig, ax = plt.subplots()\nax.plot(x, y)\n\nMore modern and explicit\nfig and ax are Python objects: with the . you can explore all the things they can do and they can be passed to functions\nRecommended approach"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#understanding-figure-and-axes",
+    "href": "09/slides_intro_matplotlib.html#understanding-figure-and-axes",
+    "title": "Introduction to Matplotlib",
+    "section": "Understanding Figure and Axes",
+    "text": "Understanding Figure and Axes\nQuestion: What’s the difference between a Figure and Axes?\n\n\n\n\n\n\n\nFigure: The entire canvas - like a piece of paper\nAxes: The plotting area with x-y coordinates - where data goes"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#what-types-of-plots-can-we-create",
+    "href": "09/slides_intro_matplotlib.html#what-types-of-plots-can-we-create",
+    "title": "Introduction to Matplotlib",
+    "section": "What Types of Plots Can We Create?",
+    "text": "What Types of Plots Can We Create?\nProblem: We have different types of data - how do we choose the right visualization?\n\nContinuous Relationships\nax.plot(x, y)        # Line plot\nax.scatter(x, y)     # Scatter plot\nWhen to use: Time series, correlations\n\n\nDistributions\nax.hist(data)        # Histogram\nax.bar(categories, values)  # Bar plot\nWhen to use: Frequency distributions, comparisons"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#real-example-combining-visualizations",
+    "href": "09/slides_intro_matplotlib.html#real-example-combining-visualizations",
+    "title": "Introduction to Matplotlib",
+    "section": "Real Example: Combining Visualizations",
+    "text": "Real Example: Combining Visualizations\nScenario: We have measurements and a fitted model. How do we show both?"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#customising-plots",
+    "href": "09/slides_intro_matplotlib.html#customising-plots",
+    "title": "Introduction to Matplotlib",
+    "section": "Customising plots",
+    "text": "Customising plots\nProblem: Default plots often look bland. How do we make them professional?"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#examples",
+    "href": "09/slides_intro_matplotlib.html#examples",
+    "title": "Introduction to Matplotlib",
+    "section": "Examples",
+    "text": "Examples\nHave a look at matplotlib examples to see the raneg of things that are possible\nhttps://matplotlib.org/stable/gallery/index"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#anatomy-of-a-figure",
+    "href": "09/slides_intro_matplotlib.html#anatomy-of-a-figure",
+    "title": "Introduction to Matplotlib",
+    "section": "Anatomy of a Figure",
+    "text": "Anatomy of a Figure\n\nUnderstanding these components helps you customize any part of your plot"
+  },
+  {
+    "objectID": "09/slides_intro_matplotlib.html#workshop-today",
+    "href": "09/slides_intro_matplotlib.html#workshop-today",
+    "title": "Introduction to Matplotlib",
+    "section": "Workshop today",
+    "text": "Workshop today\n\nIn the lecture, you will find some inline Exercises A and B demonstrating the rudimenst of plotting: we will go through this together to discover the essential syntax.\nYou will then be able to complete Exercise C where we read in some data and plot it.\nYou will finally be able to experiment with matplotlib in a separate sheet named fun_matplotlib_decoration.ipynb"
+  },
+  {
+    "objectID": "09/fun_matplotlib_decoration.html",
+    "href": "09/fun_matplotlib_decoration.html",
+    "title": "Add some decoration",
+    "section": "",
+    "text": "There are two options below of template plots to build upon: a tree and a snowman.\nAs a group or individually, decorate an image (or multiple images) and when completed you can save this figure to file (uncomment the appropriate cell to do so). This can then be downloaded from Noteable and uploaded to the Padlet with your group name:\nhttps://uob.padlet.org/fturci/adding-decorations-zk4khqfwj17l2377",
     "crumbs": [
       "Home",
-      "08 Working with NumPy",
-      "Indexing and Random Data Generation"
+      "09 Introduction to Matplotlib",
+      "Add some decoration"
     ]
   },
   {
-    "objectID": "08/lecture_working_with_numpy.html#sampling-a-siingle-value",
-    "href": "08/lecture_working_with_numpy.html#sampling-a-siingle-value",
-    "title": "Indexing and Random Data Generation",
-    "section": "Sampling a siingle value",
-    "text": "Sampling a siingle value\nIf we only want to sample a single value, we can simply not specify the size parameter, or set it to 1. This will return a single value sampled from the specified distribution.\n\n\n\n\n\n\nHowever, this can sometimes be more computationally costly than generating a larger sample and then selecting a single value from it.\n\n\n\n\n\n\nThis is a good example of the tradeoff between memory usage and computational efficiency: in modern machines, memory is quite cheap, so it is often more efficient to preallocate a larger array and then sample from it, rather than generating a single value at a time.\nA good size for preallocated numbers depends on your use case and available memory. Typical choices are:\n\nSmall tasks: 100 to 1,000 elements\nMedium tasks: 10,000 to 100,000 elements\nLarge tasks: 1,000,000 or more elements\n\nFor most data analysis or simulation tasks, starting with 100,000 elements is practical and efficient. Always ensure the size fits within your system’s memory limits.",
+    "objectID": "09/fun_matplotlib_decoration.html#decorate-a-tree",
+    "href": "09/fun_matplotlib_decoration.html#decorate-a-tree",
+    "title": "Add some decoration",
+    "section": "Decorate a tree",
+    "text": "Decorate a tree\nThe code below creates the outline of a tree which you can add your decoration to:",
+    "crumbs": [
+      "Home",
+      "09 Introduction to Matplotlib",
+      "Add some decoration"
+    ]
+  },
+  {
+    "objectID": "09/fun_matplotlib_decoration.html#decorate-a-snowman",
+    "href": "09/fun_matplotlib_decoration.html#decorate-a-snowman",
+    "title": "Add some decoration",
+    "section": "Decorate a snowman",
+    "text": "Decorate a snowman\nAs an alternative, the code below creates the outline of a snowman which you can add features to:\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSome options in matplotlib\nHere are some examples of some matplotlib options and functionality that you could use:\n\n\n\n\n\n\n\n\nMore options\nColour options:\n\nhttps://matplotlib.org/3.1.0/gallery/color/named_colors.html\n\nMarker and line style options:\n\nhttps://matplotlib.org/stable/api/markers_api.html\nhttps://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html\n\nPatches (Rectangle, Circle, Polygon)\n\nhttps://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Rectangle.html\nhttps://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Polygon.html\nhttps://matplotlib.org/stable/api/_as_gen/matplotlib.patches.Circle.html\n\nOr look in the matplotlib gallery to see if anything provides inspiration:\n\nhttps://matplotlib.org/stable/gallery/index.html\n\n\nExtra Challenge: can you use random number generation to add detail to your picture?",
+    "crumbs": [
+      "Home",
+      "09 Introduction to Matplotlib",
+      "Add some decoration"
+    ]
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#overview",
+    "href": "08/slides_working_with_numpy.html#overview",
+    "title": "Working with NumPy Arrays",
+    "section": "Overview",
+    "text": "Overview\n\nArray indexing and slicing\nBoolean indexing\nArray generation functions\nRandom data generation"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#basic-indexing",
+    "href": "08/slides_working_with_numpy.html#basic-indexing",
+    "title": "Working with NumPy Arrays",
+    "section": "Basic Indexing",
+    "text": "Basic Indexing\nAccess array elements using integer indices and slicing:\n\nSingle element: arr[1] gets element at position 1\nSlice range: arr[1:4] extracts elements 1 to 3 (end exclusive)\nStep size: arr[::2] takes every 2nd element\nReverse: arr[::-1] reverses the entire array"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#views-vs-copies",
+    "href": "08/slides_working_with_numpy.html#views-vs-copies",
+    "title": "Working with NumPy Arrays",
+    "section": "Views vs Copies",
+    "text": "Views vs Copies\nImportant memory concept:\n\nSlicing creates views that share the same underlying data\nModifying a view changes the original array\nUse .copy() to create independent arrays when needed\n\nThis behavior is efficient but can cause unexpected side effects!"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#boolean-indexing-filtering-with-conditions",
+    "href": "08/slides_working_with_numpy.html#boolean-indexing-filtering-with-conditions",
+    "title": "Working with NumPy Arrays",
+    "section": "Boolean Indexing: Filtering with Conditions",
+    "text": "Boolean Indexing: Filtering with Conditions\nBoolean indexing allows data filtering based on conditions:\n\nApply a condition to create a boolean mask (True/False array)\nUse the mask to select only elements that meet the condition\nThis is powerful for data analysis and filtering operations"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#np.where-function",
+    "href": "08/slides_working_with_numpy.html#np.where-function",
+    "title": "Working with NumPy Arrays",
+    "section": "np.where Function",
+    "text": "np.where Function\nAdvanced conditional operations:\n\nnp.where(condition) returns indices where condition is True\nnp.where(condition, x, y) creates new array: elements from x where True, from y where False\nPowerful for element-wise conditional logic without loops"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#filled-arrays",
+    "href": "08/slides_working_with_numpy.html#filled-arrays",
+    "title": "Working with NumPy Arrays",
+    "section": "Filled Arrays",
+    "text": "Filled Arrays\nInitialize arrays with specific values:\nUseful for creating placeholders before computations or initializing data structures.\n\n*_like() functions preserve shape and data type of existing arrays\nnp.empty() is fastest but contains arbitrary values"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#pseudo-random-numbers",
+    "href": "08/slides_working_with_numpy.html#pseudo-random-numbers",
+    "title": "Working with NumPy Arrays",
+    "section": "Pseudo-Random Numbers",
+    "text": "Pseudo-Random Numbers\nWhy computers need algorithms for randomness:\n\nComputers are deterministic machines (same input → same output)\nPseudo-random number generators (PRNGs) use mathematical algorithms\nSeed value determines the starting point of the sequence\nSame seed = same sequence (crucial for reproducible research!)"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#random-sampling",
+    "href": "08/slides_working_with_numpy.html#random-sampling",
+    "title": "Working with NumPy Arrays",
+    "section": "Random Sampling",
+    "text": "Random Sampling\nGenerate samples from different distributions:\n\nIntegers: Uniform distribution over a range\nFloats: Uniform distribution [0,1) or custom range\n\nNormal: Gaussian distribution with specified mean and standard deviation\nControl sample size with size parameter"
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#performance-tip",
+    "href": "08/slides_working_with_numpy.html#performance-tip",
+    "title": "Working with NumPy Arrays",
+    "section": "Performance Tip",
+    "text": "Performance Tip\nMemory vs. Speed tradeoff:\nGenerating random numbers one-by-one in loops is slow due to function call overhead. Pre-allocating larger arrays is much faster!\nRule of thumb: Start with 100,000 elements for most tasks."
+  },
+  {
+    "objectID": "08/slides_working_with_numpy.html#summary",
+    "href": "08/slides_working_with_numpy.html#summary",
+    "title": "Working with NumPy Arrays",
+    "section": "Summary",
+    "text": "Summary\n\nIndexing: Integer, slicing, boolean\nViews vs Copies: Slicing creates views\nGeneration: arange, linspace, filled arrays\nRandom: Seed for reproducibility, pre-allocate for speed"
+  },
+  {
+    "objectID": "08/exercises_lecture_working_with_numpy_solutions.html",
+    "href": "08/exercises_lecture_working_with_numpy_solutions.html",
+    "title": "Working with NumPy",
+    "section": "",
+    "text": "Create a 1D NumPy array arr of integers from 10 to 19. Access the element at index 3.",
     "crumbs": [
       "Home",
       "08 Working with NumPy",
-      "Indexing and Random Data Generation"
+      "Solutions"
+    ]
+  },
+  {
+    "objectID": "08/exercises_lecture_working_with_numpy_solutions.html#exercise-9-problem-solving-with-numpy",
+    "href": "08/exercises_lecture_working_with_numpy_solutions.html#exercise-9-problem-solving-with-numpy",
+    "title": "Working with NumPy",
+    "section": "Exercise 9: Problem solving with NumPy",
+    "text": "Exercise 9: Problem solving with NumPy\nConsider the following problem:\n\nA panoramic wheel (a Ferris wheel) with a radius of 10 meters rotates anti-clockwise at a constant speed of 2 revolutions per minute. A passenger is seated in a car at the edge of the wheel. Calculate the trajectory of the passenger with respect to the center of the wheel for the duration of 30 seconds, with a time resolution of 2 seconds, assuming they start at the rightmost point of the wheel.\n\nThe problem is a two-dimensional problem. The passenger has coordinates \\(x(t), y(t)\\) and is performing uniform rotational motion, with angular velocity \\(\\omega\\) and radius \\(R\\).\nThe angle formed at which the passenger is located is \\(\\theta(t)\\) and simply evolves as\n\\[\\theta(t) = \\omega t +\\theta_0\\]\nwhere \\(\\theta_0\\) is the initial angle (\\(\\theta_0=0\\) in our case).\nHence, the trajectory is expressed by\n\\[\n\\begin{align}\nx(t) & = R\\cos\\theta(t) = R \\cos{\\omega t}+x_0\\\\\ny(t) & = R\\sin\\theta(t)  = R \\sin{\\omega t}+y_0\n\\end{align}\n\\]\nSo, we have all the theoretical knowledge that we need to solve the problem. How can we translate this into code?\nThe first approach is via using vanilla Python\n\n\n\n\n\n\nThe question now is: can you simpify this code by using NumPy? Your focus should be on avoiding for loops and using NumPy’s array operations instead.",
+    "crumbs": [
+      "Home",
+      "08 Working with NumPy",
+      "Solutions"
     ]
   },
   {
@@ -2848,196 +3015,357 @@
     ]
   },
   {
-    "objectID": "08/slides_working_with_numpy.html#overview",
-    "href": "08/slides_working_with_numpy.html#overview",
-    "title": "Working with NumPy Arrays",
-    "section": "Overview",
-    "text": "Overview\n\nArray indexing and slicing\nBoolean indexing\nArray generation functions\nRandom data generation"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#basic-indexing",
-    "href": "08/slides_working_with_numpy.html#basic-indexing",
-    "title": "Working with NumPy Arrays",
-    "section": "Basic Indexing",
-    "text": "Basic Indexing\nAccess array elements using integer indices and slicing:\n\nSingle element: arr[1] gets element at position 1\nSlice range: arr[1:4] extracts elements 1 to 3 (end exclusive)\nStep size: arr[::2] takes every 2nd element\nReverse: arr[::-1] reverses the entire array"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#views-vs-copies",
-    "href": "08/slides_working_with_numpy.html#views-vs-copies",
-    "title": "Working with NumPy Arrays",
-    "section": "Views vs Copies",
-    "text": "Views vs Copies\nImportant memory concept:\n\nSlicing creates views that share the same underlying data\nModifying a view changes the original array\nUse .copy() to create independent arrays when needed\n\nThis behavior is efficient but can cause unexpected side effects!"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#boolean-indexing-filtering-with-conditions",
-    "href": "08/slides_working_with_numpy.html#boolean-indexing-filtering-with-conditions",
-    "title": "Working with NumPy Arrays",
-    "section": "Boolean Indexing: Filtering with Conditions",
-    "text": "Boolean Indexing: Filtering with Conditions\nBoolean indexing allows data filtering based on conditions:\n\nApply a condition to create a boolean mask (True/False array)\nUse the mask to select only elements that meet the condition\nThis is powerful for data analysis and filtering operations"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#np.where-function",
-    "href": "08/slides_working_with_numpy.html#np.where-function",
-    "title": "Working with NumPy Arrays",
-    "section": "np.where Function",
-    "text": "np.where Function\nAdvanced conditional operations:\n\nnp.where(condition) returns indices where condition is True\nnp.where(condition, x, y) creates new array: elements from x where True, from y where False\nPowerful for element-wise conditional logic without loops"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#filled-arrays",
-    "href": "08/slides_working_with_numpy.html#filled-arrays",
-    "title": "Working with NumPy Arrays",
-    "section": "Filled Arrays",
-    "text": "Filled Arrays\nInitialize arrays with specific values:\nUseful for creating placeholders before computations or initializing data structures.\n\n*_like() functions preserve shape and data type of existing arrays\nnp.empty() is fastest but contains arbitrary values"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#pseudo-random-numbers",
-    "href": "08/slides_working_with_numpy.html#pseudo-random-numbers",
-    "title": "Working with NumPy Arrays",
-    "section": "Pseudo-Random Numbers",
-    "text": "Pseudo-Random Numbers\nWhy computers need algorithms for randomness:\n\nComputers are deterministic machines (same input → same output)\nPseudo-random number generators (PRNGs) use mathematical algorithms\nSeed value determines the starting point of the sequence\nSame seed = same sequence (crucial for reproducible research!)"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#random-sampling",
-    "href": "08/slides_working_with_numpy.html#random-sampling",
-    "title": "Working with NumPy Arrays",
-    "section": "Random Sampling",
-    "text": "Random Sampling\nGenerate samples from different distributions:\n\nIntegers: Uniform distribution over a range\nFloats: Uniform distribution [0,1) or custom range\n\nNormal: Gaussian distribution with specified mean and standard deviation\nControl sample size with size parameter"
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#performance-tip",
-    "href": "08/slides_working_with_numpy.html#performance-tip",
-    "title": "Working with NumPy Arrays",
-    "section": "Performance Tip",
-    "text": "Performance Tip\nMemory vs. Speed tradeoff:\nGenerating random numbers one-by-one in loops is slow due to function call overhead. Pre-allocating larger arrays is much faster!\nRule of thumb: Start with 100,000 elements for most tasks."
-  },
-  {
-    "objectID": "08/slides_working_with_numpy.html#summary",
-    "href": "08/slides_working_with_numpy.html#summary",
-    "title": "Working with NumPy Arrays",
-    "section": "Summary",
-    "text": "Summary\n\nIndexing: Integer, slicing, boolean\nViews vs Copies: Slicing creates views\nGeneration: arange, linspace, filled arrays\nRandom: Seed for reproducibility, pre-allocate for speed"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Introduction to Coding and Data Analysis",
+    "objectID": "08/lecture_working_with_numpy.html",
+    "href": "08/lecture_working_with_numpy.html",
+    "title": "Indexing and Random Data Generation",
     "section": "",
-    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
+    "text": "NumPy is a powerful library for numerical computing in Python, providing efficient multi-dimensional array operations and a wide range of mathematical functions. With NumPy, you can perform fast element-wise computations, advanced indexing, slicing, and generate random data for simulations and analysis.\nThis notebook illustrates array indexing, boolean arrays, generating sequences using np.arange and np.linspace, and generating random samples with NumPy’s random number generator.",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "08 Working with NumPy",
+      "Indexing and Random Data Generation"
     ]
   },
   {
-    "objectID": "index.html#welcome-to-the-course",
-    "href": "index.html#welcome-to-the-course",
-    "title": "Introduction to Coding and Data Analysis",
+    "objectID": "08/lecture_working_with_numpy.html#array-indexing-slicing-views-and-copies",
+    "href": "08/lecture_working_with_numpy.html#array-indexing-slicing-views-and-copies",
+    "title": "Indexing and Random Data Generation",
+    "section": "Array indexing, slicing, views and copies",
+    "text": "Array indexing, slicing, views and copies\nIndexing in NumPy allows you to access and modify individual elements or groups of elements within an array. You can use integer indices, slices, and even boolean arrays to select data efficiently. For example:\n\nInteger Indexing: Select a single element by its position.\nSlicing: Extract a range of elements.\nBoolean Indexing: Filter elements based on a condition.\n\n\nInteger indexing\nWe have already seen that the lements of an array are idnexed similarly to lists. The syntax simply requires you to enter the integer index of the element you want to access. For example, if you have an array arr, you can access the element at index 1 using arr[1]. You can also slice arrays using the same syntax as lists, such as arr[1:4] to get elements from index 1 to 3.\n\n\n\n\n\n\n\n\nSlicing\nSlicing allows you to extract a portion of an array by specifying a start index, an end index, and an optional step. The syntax is similar to that used for lists in Python. For example, arr[1:4] retrieves elements from index 1 to 3 (the end index is exclusive).\n\n\n\n\n\n\n\n\nAdvanced Slicing Techniques\nNumPy slicing can be extended beyond basic start and end indices:\n\nStep Size: Use a third parameter to specify the step, e.g., arr[::2] selects every other element.\nNegative Indices: Negative values index from the end, e.g., arr[-3:] gets the last three elements.\nReverse Slicing: Use a negative step to reverse an array, e.g., arr[::-1].\n\n\n\n\n\n\n\nSlicing creates views, not copies, so modifying a slice affects the original array. Use arr.copy() to create a copy if needed.\nA view is a new array object that looks at the same data as the original array. Changes made to a view will affect the original array, since they share the same underlying data. For example, arr[1:4] returns a view of arr, not a separate copy.\n\n\n\n\n\n\nSlices can be programmaticaly generated using the slice function, which allows you to create a slice object that can be reused. For example, s = slice(1, 4) creates a slice object that can be used as arr[s] to get the same result as arr[1:4].\n\n\n\n\n\n\nTo create an independent copy of an array (rather than a view), use the copy() method. For example, arr_copy = arr[1:4].copy() creates a new array with its own data, so changes to arr_copy will not affect the original arr. This is useful when you want to modify a subset of an array without altering the original data.\n\n\n\n\n\n\n\n\nBoolean Indexing\nBoolean indexing allows you to select elements from an array based on a condition. When you apply a condition to a NumPy array, it returns a boolean (an array that contains only True/False values ) array indicating which elements satisfy the condition. You can then use this boolean array to filter the original array, extracting only the elements that meet the criteria. This technique is powerful for data selection and analysis.\n\n\n\n\n\n\n\n\nUsing np.where for conditional selection\nThe np.where function in NumPy is a powerful tool for conditional selection and element-wise operations. It allows you to choose values from arrays based on a condition, returning indices or constructing new arrays.\n\nBasic usage:\nnp.where(condition) returns the indices where the condition is True.\n\n\n\n\n\n\n\nnp.where(arr &gt; threshold) returns a tuple because, for 1D arrays, it provides the indices where the condition is True. In NumPy, the output is always a tuple of arrays—one for each dimension of the input array. For a 1D array, it’s a single-element tuple containing the indices. For higher dimensions, it returns a tuple with arrays for each axis. This consistent tuple format makes it easy to handle multi-dimensional indexing.\nSo, for 1D arrays as the ones considered up to now, we should get the indices by extracting the first element of the tuple returned by np.where\n\n\n\n\n\n\n\nElement-wise selection:\nnp.where(condition, x, y) returns elements from x where the condition is True, and from y where it is False. Here the result is an array of the same shape as x and y, containing values from x where the condition is met, and from y otherwise. This is useful for creating new arrays based on conditions without using loops.",
+    "crumbs": [
+      "Home",
+      "08 Working with NumPy",
+      "Indexing and Random Data Generation"
+    ]
+  },
+  {
+    "objectID": "08/lecture_working_with_numpy.html#function-to-generate-numerical-arrays",
+    "href": "08/lecture_working_with_numpy.html#function-to-generate-numerical-arrays",
+    "title": "Indexing and Random Data Generation",
+    "section": "Function to generate numerical arrays",
+    "text": "Function to generate numerical arrays\nNumPy provides automated methods for generating numerical sequences, which are essential for simulations, sampling, and creating structured data.\n\nGenerating sequences\nThe two most used functions for generating ordered numerical sequences in NumPy are np.arange and np.linspace.\n\nnp.arange(start, stop, step): Generates an array of evenly spaced values within a specified range. The start value is inclusive, while the stop value is exclusive. The step parameter defines the spacing between values.\nExample: np.arange(0, 10, 2) produces [0, 2, 4, 6, 8].\nnp.linspace(start, stop, num): Creates an array of num evenly spaced values between start and stop, inclusive. This is useful for generating a specific number of points in a range.\n\n\n\n\n\n\n\nMost importantly, these functions can be used to create arrays of any kinds of numerical data, including integers and floating-point numbers.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNotice that linspace is useful when we know the start and end value and the specific number of points we want to generate, while arange is useful when we know the start and end value and the step size between the points.",
+    "crumbs": [
+      "Home",
+      "08 Working with NumPy",
+      "Indexing and Random Data Generation"
+    ]
+  },
+  {
+    "objectID": "08/lecture_working_with_numpy.html#generating-filled-arrays",
+    "href": "08/lecture_working_with_numpy.html#generating-filled-arrays",
+    "title": "Indexing and Random Data Generation",
+    "section": "Generating filled arrays",
+    "text": "Generating filled arrays\nNumPy provides functions to create arrays filled with specific values, such as zeros, ones, or a constant value. These functions are useful for initializing arrays before performing computations.\nThe main functions for generating filled arrays are: - np.zeros(shape): Creates an array filled with zeros, where shape specifies the dimensions of the array. - np.ones(shape): Creates an array filled with ones. - np.full(shape, fill_value): Creates an array filled with a specified value (fill_value), where shape defines the dimensions of the array.\n- np.empty(shape): Creates an uninitialized array with the specified shape. The values in this array are not set to any particular value, so they may contain random data.\nThere are also functions that create arrays with the same shape and type as an existing array, which can be useful for initializing arrays that will be used in computations:\n\nnp.zeros_like(array): Creates an array of zeros with the same shape and type as the input array.\nnp.ones_like(array): Creates an array of ones with the same shape and type as the input array.\nnp.full_like(array, fill_value): Creates an array filled with a specified value, with the same shape and type as the input array.",
+    "crumbs": [
+      "Home",
+      "08 Working with NumPy",
+      "Indexing and Random Data Generation"
+    ]
+  },
+  {
+    "objectID": "08/lecture_working_with_numpy.html#random-data-generation",
+    "href": "08/lecture_working_with_numpy.html#random-data-generation",
+    "title": "Indexing and Random Data Generation",
+    "section": "Random Data Generation",
+    "text": "Random Data Generation\nRandom data generation is essential for simulations, statistical modeling, and testing algorithms.\nFor example, you might want to generate random samples from a normal distribution to simulate real-world data or create random datasets for testing purposes. Or you may want to simulate the effect of measurement errors in your data analysis. Or you may want to sub-sample a large dataset randomly to take a representative sample without bias.\nTo do all this, one needs methods to sample numbers that possess the statistical properties of the desired distribution, such as uniform, normal, or binomial distributions.\nStrictly speaking (classical) computers are deterministic machines, meaning they follow a set of rules and produce the same output for the same input every time. We have therefore to use algorithms to produce sequences of numbers that mimic the properties of random numbers.\nThese are called pseudo-random numbers. Pseudo-random number generators (PRNGs) use algorithms to produce sequences of numbers that appear random but are actually deterministic.\nA simple and classic example of a pseudo-random number generator is the Linear Congruential Generator (LCG). The LCG produces a sequence of numbers using the recurrence relation:\n\\[x_{n+1} = (a \\times  x_{n} + c)\\,\\mathrm{mod}\\, m\\]\nwhere\n- \\(x_n\\) is the current value,\n- \\(a\\) is the multiplier,\n- \\(c\\) is the increment,\n- \\(m\\) is the modulus.\nIn vanilla Python this looks like the following custom function\n\n\n\n\n\n\n\n\n\n\n\n\nThis will generate a sequence of pseudo-random integers. The choice of parameters (a, c, m) affects the quality and period of the generator.\n\n\n\n\n\n\nThe seed is crucial: it is the initial value that starts the algorithm to determin the subsequent values in the sequence. By setting the seed, you can ensure that the sequence is reproducible, meaning that running the same code with the same seed will produce the same sequence of numbers every time.\nIn numpy, we do not need to implement our own LCG, as it provides a built-in random number generator that is based on the Mersenne Twister algorithm, which is a widely used and efficient pseudo-random numbwer generator.\nWhat we do instead is to use the numpy.random sub-module, which provides a wide range of functions for generating random numbers from various distributions, including uniform, normal, and binomial distributions.\nThe standard way to to use it is the following:\n\nfirst, one initialises a new kind of object called a random number generator (RNG) using np.random.default_rng(). This is a numpy object capable of generating random numbers from various distributions. It allows us in particular to set the seed and therefore ensure reproducibility.\n\n\n\n\n\n\n\nWe can do this at any point in our code, but it is a good practice to do it at the beginning of our script or notebook, so that we can ensure that all random numbers generated in the script are reproducible. Putting the generator elsewhere (for example, inside a function) could lead to unexpected results, as the generator would be re-initialised each time the function is called.\nOnce we have a generator we can access any of its method to sample numbers from various distributions\nFor example:\n\nIntegers\nTo sample uniformly distributed integers, we can use the integers method of the generator. This method allows us to specify a range and the number of integers to generate.\n\n\n\n\n\n\n\n\n[0-1) uniform floats\nTo sample uniformly distributed floats between 0 and 1, we can use the random method of the generator. This method generates random floats in the range [0.0, 1.0) (which means 0 included and 1 excluded).\n\n\n\n\n\n\nAlternatively, we can use the uniform method to sample uniformly distributed floats in a specified range. This method allows us to specify the lower and upper bounds of the range, as well as the number of samples to generate.\n\n\n\n\n\n\n\n\nNormal distribution\nTo sample from a normal distribution, we can use the normal method of the generator. This method allows us to specify the mean and standard deviation of the distribution, as well as the number of samples to generate. The generated samples will follow a normal (Gaussian) distribution with the specified parameters.",
+    "crumbs": [
+      "Home",
+      "08 Working with NumPy",
+      "Indexing and Random Data Generation"
+    ]
+  },
+  {
+    "objectID": "08/lecture_working_with_numpy.html#sampling-a-siingle-value",
+    "href": "08/lecture_working_with_numpy.html#sampling-a-siingle-value",
+    "title": "Indexing and Random Data Generation",
+    "section": "Sampling a siingle value",
+    "text": "Sampling a siingle value\nIf we only want to sample a single value, we can simply not specify the size parameter, or set it to 1. This will return a single value sampled from the specified distribution.\n\n\n\n\n\n\nHowever, this can sometimes be more computationally costly than generating a larger sample and then selecting a single value from it.\n\n\n\n\n\n\nThis is a good example of the tradeoff between memory usage and computational efficiency: in modern machines, memory is quite cheap, so it is often more efficient to preallocate a larger array and then sample from it, rather than generating a single value at a time.\nA good size for preallocated numbers depends on your use case and available memory. Typical choices are:\n\nSmall tasks: 100 to 1,000 elements\nMedium tasks: 10,000 to 100,000 elements\nLarge tasks: 1,000,000 or more elements\n\nFor most data analysis or simulation tasks, starting with 100,000 elements is practical and efficient. Always ensure the size fits within your system’s memory limits.",
+    "crumbs": [
+      "Home",
+      "08 Working with NumPy",
+      "Indexing and Random Data Generation"
+    ]
+  },
+  {
+    "objectID": "09/exercises_plotting_data_from_file.html",
+    "href": "09/exercises_plotting_data_from_file.html",
+    "title": "Plotting data from file",
     "section": "",
-    "text": "This is the course material for Introduction to coding and data analysis, SCIF10002.",
+    "text": "How can we use what we have learnt in the past few workshops to read data from a file? And how can we plot this?\nOne way to then plot this data would be to extract the index and/or multiple columns we are interested in plotting and use matplotlib as we have done before.\nAs an example, we’ll look at a new data file. This contains a simulation of the (fractional) concentration change for two species in a reaction, “A” and “B” where \\(A \\rightarrow B\\).\n\n\n\n\n\n\nIf we open this file more directly in Python when we looked at a text file) we can take quick look at the contents to see what this looks like:\n\n\n\n\n\n\nFrom printing out the first 200 characters, we can see this looks like a table of data with each column separated by spaces. This looks nicely formatted with a title row including the column names and no extra header rows.\nWe will see in the next year that there are dedicate packages to manipulate large tabulated files. However, for now we can exploit numpy as a quick and effective way to read such input.\n\n\n\n\n\n\nThis is a special kind of array called a structured array, because it has named fields. You can check this by querying the subproperties of the array:\n\n\n\n\n\n\nThese various names are the fields of the array, corresponding to the columns in the file. This syntax is reminiscent of what we have seen in the case of dictionaries, where keys are used to specific other objects stored in the dictionary.\n\n\n\n\n\n\nThis data also has a column for “Time” as the number of seconds elapsed.\n\n\n\n\n\n\nTo create a plot for time vs concentration of A, we can extract this data from our array\n\n\n\n\n\n\nWe could then use matplotlib to plot this:\n\n\n\n\n\n\nThis simulation shows a clean relationship as concentration decreases over time (in an exponential way).\nSuppose we want to filter our data and plot only concentrations less than 0.5. We can simply create a boolean array that masks the invalid data.\n\n\n\n\n\n\nHere we have filtered our data to include all fractional concentrations less than (or equal to) 0.5. Notice we have also matched our time values to plot to these concentrations by extracting the index from our new array concentration_A_low.\n\n\n\n\n\n\nYou can also see the slope is similiar (in fact it is the same) between our unfiltered and filtered data (this is due to the exponential relationship).\n\n\nExercise\n\nRe-plot the un-filtered graph created above and add another line to show concentration of B vs time from the data_kinetic_k0005 array on the same plot.\n\n\nCan you include a label for A and B?\n\n\nCalculate the the sum of the concentrations for these two columns (A and B).\nRe-plot the graph created in the previous question and add this sum as a third line.\n\n\nConsider: What does this sum tell us about “A” is decaying into “B”?",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "09 Introduction to Matplotlib",
+      "Plotting data from file"
     ]
   },
   {
-    "objectID": "index.html#how-to-use",
-    "href": "index.html#how-to-use",
-    "title": "Introduction to Coding and Data Analysis",
-    "section": "How to use",
-    "text": "How to use\n\nYou will find the more theoretical introduction under Lesson\nThe hands-on exercises will be under Exercises\nOver the course of the weeks the solutions will be released under Solutions\nRegularly, interactive formative tests will be released under Formative tests\n\nImportant. You can use the search button 🔎 to search across all the pages and skim through the course.\nNote. Many of the following pages also allow you to interact with the code by running Python snippets inside your browser. It is useful\n\nAs a fallback option if Noteable is unreachable.\nFor the regularly released formative tests.\n\nNote. In the online cells, you press\n\nCtrl/Cmd+Enter to run ▶ the cell\nCtrl/Cmd+] to indent ⇥\nCtrl/Cmd+[ to unindent ⇤\n\nThe content in this website mirrors the interactive notebooks released on Noteable.",
+    "objectID": "09/lecture_intro_matplotlib.html",
+    "href": "09/lecture_intro_matplotlib.html",
+    "title": "Plotting with matplotlib",
+    "section": "",
+    "text": "One way to plot a graph in Python is to use the matplotlib package.\nMatplotlib is a powerful and widely-used Python library for creating static, animated, and interactive visualizations. It provides a flexible framework for generating a wide variety of plots and charts, making it a popular choice for data analysis and scientific research. With matplotlib, you can customize every aspect of your figures, from colors and styles to labels and legends.\nWe start by importing the pyplot sub-module from matplotlib.\nThe most widespread convention is to use the shorthand plt to refer to this package with the as syntax and so we can import this in the following way:",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "09 Introduction to Matplotlib",
+      "Plotting with `matplotlib`"
     ]
   },
   {
-    "objectID": "index.html#getting-started",
-    "href": "index.html#getting-started",
-    "title": "Introduction to Coding and Data Analysis",
-    "section": "Getting Started",
-    "text": "Getting Started\nNavigate through the course using the sidebar or the navigation menu above. Each Week builds upon the previous one, so it’s recommended to work through them in order.",
+    "objectID": "09/lecture_intro_matplotlib.html#figure-and-axes",
+    "href": "09/lecture_intro_matplotlib.html#figure-and-axes",
+    "title": "Plotting with matplotlib",
+    "section": "Figure and Axes",
+    "text": "Figure and Axes\nThere are two main interfaces for plotting using matplotlib.\n\nThe first is to use Pyplot (plt) to create a plot directly e.g. using plt.plot(). This is the type of syntax you may see often when looking online. This way of interacting with and plotting data was created to replicate the functionality of an alternative, and common programming language called MATLAB, which a lot of early Python adopters were familiar with.\nThe second, more modern way to create plots is to use the object-oriented approach where the figure is created first and then explicitly referenced when creating a plot. One way to do this is by calling the subplots() function to create a Figure (the canvas) and an Axes (the x-y axes) object which can then be used for plotting.\n\nfig, ax = plt.subplots()\nWe can plot using the ax object directly using whichever type of graph we want to create e.g.  - for a simple line graph we can use the plot() function - for a scatter graph we can use the scatter() function. - for a 1D histogram we can the hist() function\nYou can also add multiple graphs to the same set of Axes to plot sets of data on top of each other:\n\n\n\n\n\n\n\n\n\n\n\n\nYou may notice that unlike other Python you have been writing, in Jupyter notebooks you should keep your plotting code together in one code cell as this will immediately be displayed when the code cell is run.\nTo create another plot in a new cell you can create new Figure and Axes objects using the same names fig, ax or name them something different if you’d prefer.\nMatplotlib sample plots - https://matplotlib.org/3.3.3/tutorials/introductory/sample_plots.html\n\nAside: subplots\nYou may ask why the function for creating a new plot is called subplots(). By default, this function allows you to create one plot on one figure, which is usually what you want for an initial plot. However, it is possible to use the subplots() function to create multiple plots on the same figure. One way to do this is by specifying the number of rows (nrows) and number of columns (ncols) you want when using the subplots() function. Note that this will pass back an array of Axes objects rather than just one which you can then use to plot.\nWe won’t explore this further, but for more details on how this is done have a look at the subplots demo.\n\n\n\nExercise A (Worked through as needed in class)\nFor this exercise, we have created some random sample data which we can plot. Here we have created several numpy arrays each 100 elements long (based on num_points).\n\n\n\n\n\n\n\nCreate a scatter plot of x_range versus random_sample1.\n\n\nStart by creating your Figure and Axes objects (fig, ax) using the subplots function\nUse the scatter method to plot your data using your Axes object\n\n\n\n\n\n\n\n\nCreate a line plot of x_range versus random_sample2\n\n\nAs before, start by creating your Figure and Axes objects (fig, ax) using the subplots function\nUse the plot method to plot your data using your Axes object",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "09 Introduction to Matplotlib",
+      "Plotting with `matplotlib`"
     ]
   },
   {
-    "objectID": "index.html#features",
-    "href": "index.html#features",
-    "title": "Introduction to Coding and Data Analysis",
-    "section": "Features",
-    "text": "Features\n\nInteractive Jupyter notebooks\nStep-by-step exercises with solutions\nComprehensive coverage of NumPy and Matplotlib\nReal-world examples and applications",
+    "objectID": "09/lecture_intro_matplotlib.html#annotating-and-adding-features",
+    "href": "09/lecture_intro_matplotlib.html#annotating-and-adding-features",
+    "title": "Plotting with matplotlib",
+    "section": "Annotating and adding features",
+    "text": "Annotating and adding features\nAs well as plotting you can, and should, add additional information to your plot as appropriate. For instance, you can:\n\nchange the style, colour etc. of your initial plot (e.g. see examples within matplotlib decoration)\nadd additional features such as axis labels, legend etc.\n\nThe code below demonstrates how we could customise the plot above using these inputs:\n\n1. Using more of the available plotting options\n\n\n\n\n\n\nWe can include more inputs for both our subplots function and our plotting functions such as plot() and scatter():\n\nFor the subplots() initial step we specified the figure size, figsize, as an input. This is set using a tuple of (width, height) in inches.\nFor the plot function we set:\n\nthe colour to be a named colour called “slategrey” using the color input\nthe style of the line to be dashed, using “–” and the linestyle input\n\nFor the scatter function we set:\n\nthe colour to be a named colour called “indianred” using the color input\nthe marker shape to a cross shape, using “+” and the marker input\nsize to be 60 (area of the marker) using the s input\n\n\nFor in-built options see: - Colours - https://matplotlib.org/stable/gallery/color/named_colors.html - Line style - https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html - Markers - https://matplotlib.org/api/markers_api.html\n\n\n2. Setting properties on the plot\n\n\n\n\n\n\nHere we set additional parameters for the plot - the x and y labels and an x limit. We have done this by calling the relevant functions (e.g. set_xlabel, set_ylim) on our ax variable.\nFor some examples of different Axes functions of this type see: - Axes - labels and limits - https://matplotlib.org/stable/api/axes_api.html#axis-labels-title-and-legend - Axes - tick labels - https://matplotlib.org/stable/api/axes_api.html#ticks-and-tick-labels\n\n\n3. Additional labelling - legend\n\n\n\n\n\n\nA legend can be created using the .legend() function (method) and this will use the label value supplied when creating each plot. If ax.legend() is not included then, even if a label variable is specified, no legend will be added to the plot.\nSee: - legend function - https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.legend.html",
     "crumbs": [
       "Home",
-      "Course Overview",
-      "Introduction to Coding and Data Analysis"
+      "09 Introduction to Matplotlib",
+      "Plotting with `matplotlib`"
     ]
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#array-indexing-slicing",
-    "href": "slides/08_working_numpy_slides.html#array-indexing-slicing",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Array Indexing & Slicing",
-    "text": "Array Indexing & Slicing\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport numpy as np\narr = np.array([10, 20, 30, 40, 50])\n\n# Integer indexing\nprint(\"Element at index 1:\", arr[1])\n\n# Basic slicing\nprint(\"Slice [1:4]:\", arr[1:4])\nAdvanced slicing:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Every other element:\", arr[::2])\nprint(\"Last three elements:\", arr[-3:])\nprint(\"Reversed array:\", arr[::-1])"
+    "objectID": "09/lecture_intro_matplotlib.html#other-plot-types",
+    "href": "09/lecture_intro_matplotlib.html#other-plot-types",
+    "title": "Plotting with matplotlib",
+    "section": "Other plot types",
+    "text": "Other plot types\nWe can also apply similiar principles to other plot types. We can generate some more random data to look at this. Here we have created two normal distributions containing different numbers of points.\n\n\n\n\n\n\nWe could create a simple plot using the subplots function and the hist() function:\n\n\n\n\n\n\nUsing the exact same data we could update our plot using relevant inputs for our hist function and setting values on our axis:\n\n\n\n\n\n\nFor our histogram, in addition to options we used for our scatter and line plot, we have set more options available to us: - alpha - This allows us to make our data partially transparent to better view overlapping data - bins - We defined and included an input for the bin sizes rather than using the default - density - This is a plot type we can set which normalised our data for the different datasets. This can be useful if you are comparing datasets which have different sample sizes.\nIn general, you will need to look at the specific documentation for each of the the plot types to see what options are available.",
+    "crumbs": [
+      "Home",
+      "09 Introduction to Matplotlib",
+      "Plotting with `matplotlib`"
+    ]
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#views-vs-copies",
-    "href": "slides/08_working_numpy_slides.html#views-vs-copies",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Views vs Copies",
-    "text": "Views vs Copies\nSlicing creates views (shared data):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nslice_view = arr[2:5]\nslice_view[0] = 99\nprint(\"Original after view modification:\", arr)\nCreating independent copies:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([10, 20, 30, 40, 50])  # Reset\narr_copy = arr[2:5].copy()\narr_copy[0] = 100\nprint(\"Copy:\", arr_copy)\nprint(\"Original unchanged:\", arr)"
+    "objectID": "09/lecture_intro_matplotlib.html#anatomy-of-a-figure",
+    "href": "09/lecture_intro_matplotlib.html#anatomy-of-a-figure",
+    "title": "Plotting with matplotlib",
+    "section": "Anatomy of a figure",
+    "text": "Anatomy of a figure\nThis is a summary image to show the make up (anatomy) of a plot in matplotlib.\n\nYou can see some features we have described above such as “Figure”, “Axes”, “x axis label”, “y axis label”, “legend”. But you can also see how our inputs have influenced other aspects of the plot e.g. “Major tick”, “Minor tick”, “Major tick label”, “Minor tick label”, which were updated when we set the limits on the x and y axes, and “Markers” from our scatter plot which updated the marker style and colour.\nBecoming familiar with this terminology when applied to a matplotlib figure allows you to put a name to any part of the plot you wish to modify and to dig into the features offered for how to update these plots.\n\n\nExercise B (Worked through as needed in class)\n\nCreate a scatter plot with the same data from Exercise A showing x_range versus random_sample1 adding or setting the following features:\n\n\nchanging the marker and colour\nsetting appropriate x and y labels\n\nRemember, you always need to recreate your fig and ax objects using the subplots function to create a new plot using Jupyter notebooks\n\n\n\n\n\n\n\nCreate a histogram plot overlaying data from random_sample1 and random_sample2.\n\n\nExperiment with different inputs to see if you can improve the default plot (e.g. setting the bin size, including transparency, changing the colours etc.)\nYou can also look at the hist() function documentation for more inputs to try e.g. histtype.\n\n\n\n\n\n\n\nExtra. Create a plot containing both a scatter plot for x_range versus random_sample1 AND a line plot for x_range versus random_sample2. Add or set the following features: - changing the line style and colour - setting a title for your plot\nHint: Look at “set_” commands within https://matplotlib.org/stable/api/axes_api.html#axis-labels-title-and-legend\n\n\n\n\n\n\n\nExtended: Pick an interesting plot from the matplotlib gallery and see if you replicate some of the additional features for these plots.\n\nYou can now proceed with the remaining exercises\n\nExercise C - Plotting data from a file\nA fun session - Using matplotlib to create a fun plot",
+    "crumbs": [
+      "Home",
+      "09 Introduction to Matplotlib",
+      "Plotting with `matplotlib`"
+    ]
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#boolean-indexing",
-    "href": "slides/08_working_numpy_slides.html#boolean-indexing",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Boolean Indexing",
-    "text": "Boolean Indexing\nFilter data with conditions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\narr = np.array([1, 2, 3, 4, 5, 6])\nthreshold = 3\n\nbool_mask = arr &gt; threshold\nprint(\"Boolean mask:\", bool_mask)\nprint(\"Filtered values:\", arr[bool_mask])\nUsing np.where:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Get indices where condition is True\nindices = np.where(arr &gt; threshold)[0]\nprint(\"Indices:\", indices)\n\n# Conditional selection\nresult = np.where(arr &gt; 3, arr, 0)\nprint(\"Conditional result:\", result)"
+    "objectID": "formative/basic_structures.html",
+    "href": "formative/basic_structures.html",
+    "title": "Variables, lists, dictionaries and branches",
+    "section": "",
+    "text": "This is a formative test. It is an occasion to practice the course material. It does not contribute to your final grade.\nUsing the topics covered within the workshops (or otherwise), complete the questions below.\nMake sure to use any described variable names exactly and do not change the name of this file. This ensures the nbgrader tool can grade your work correctly.\n\n\n\n\nQuestion 1\n1A) Using the pi variable defined below (representing \\(\\pi\\) to 6 decimal places), calculate the circumference of a circle with radius of 5 and assign to a variable called circum_circle.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nRemember to define the radius and use the formula: circum_circle = 2 * pi * radius.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nradius = 5\ncircum_circle = 2 * pi * radius\n\n\n\n\n\n1B) Calculate the area of a circle with radius 2.5 and assign to area_circle.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nUse Area = pi * radius**2.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\narea_circle = pi * radius**2\n\n\n\n\n\n\n\nQuestion 2\n\n\n2A) Access the second name in the names list and assign to chemist.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nSecond element has index 1.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nchemist = names[1]\n\n\n\n\n\n2B) Add \"Albert Einstein\" to the names list.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nUse names.append(\"Albert Einstein\").\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nnames.append(\"Albert Einstein\")\n\n\n\n\n\n\n\nQuestion 3\n\n\n3A) Access the value for quantity = \"temperature\" in quantity_units and assign to units.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nAccess dictionary values with dictionary[key].\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nunits = quantity_units[quantity]\n\n\n\n\n\n3B) For the variable second_quantity defined below, check whether this key is present in the quantity_units dictionary. If this is in the dictionary create a variable called quantity_present and assign this to a value of True, otherwise assign this to a value of False.\nNotes:\n\nYou can use the print function to check the value within your quantity_present variable (boolean). If this produces a NameError, you may need to check that quantity_present has been successfully created.\nCheck your Week 3 notes for examples of how to check membership (i.e. whether a value is contained within a collection like a list or a dictionary).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nUse key in dictionary to check membership.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nif second_quantity in quantity_units:\n    quantity_present = True\nelse:\n    quantity_present = False\n# OR\nquantity_present = second_quantity in quantity_units\n\n\n\n\n\n\n\nQuestion 4\n4A) Two values of heights in units of feet are provided below in a list called height_feet. Convert these values to metres and calculate the difference in metres. Store this difference in a variable called height_difference_m.\nConversion from feet to metres can be done using the equation:\nThe conversion equation is: \\[ \\mathrm{height_{feet}} = \\mathrm{height_{m}} \\times 3.28084\\]\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nConvert each height to metres and subtract: (h2 * conversion - h1 * conversion).\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\nheight_metre = [height_feet[0]/feet_per_metre, height_feet[1]/feet_per_metre]\n# or if you have learnt about loops and list comprehension\nheight_metre = [h/feet_per_metre for h in height_feet]\n\nheight_difference_m = height_metre[1]-height_metre[0]\n\n\n\n\n\n4B) Check whether height_difference_m is:\n\nIf height_difference_m is greater than 0.5 metres (50cm), create a variable called check and set this to 1\nIf height_difference_m is between 0.3 and 0.5 metres (30 to 50cm), create a variable called check and set this to 2\nIf height_difference_m is something else, create a variable called check and set this to 3\n\ndo this by constructing and if–else block.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNoteHint\n\n\n\n\n\nYou need an if, elif else construct.\n\n\n\n\n\n\n\n\n\n\n\nTipFully worked solution\n\n\n\n\n\ncheck = 0\nif height_difference_m &gt; 0.5:\n    print(f\"{height_difference_m:.3f} is greater than 0.5m\")\n    check=1\nelif height_difference_m &gt; 0.3 and height_difference_m &lt;= 0.5:\n    print(f\"{height_difference_m:.3f} is greater than 0.3m but less than or equal to 0.5m\")\n    check=2\nelse:\n    print(height_difference_m)\n    check=3"
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#generating-sequences",
-    "href": "slides/08_working_numpy_slides.html#generating-sequences",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Generating Sequences",
-    "text": "Generating Sequences\nnp.arange - step-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"Integers:\", np.arange(0, 10, 2))\nprint(\"Floats:\", np.arange(0.0, 1.0, 0.2))\nnp.linspace - count-based:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nprint(\"5 points from 0 to 1:\", np.linspace(0, 1, 5))\n\narange: Use when you know the step size\nlinspace: Use when you know the number of points"
+    "objectID": "slides/07_intro_numpy_slides.html#aims",
+    "href": "slides/07_intro_numpy_slides.html#aims",
+    "title": "The numpy module",
+    "section": "Aims",
+    "text": "Aims\nBy the end of this lecture, you will be able to:\n\nExplain what the NumPy module is and why it is used\nCreate and manipulate NumPy arrays\nPerform element-wise operations and mathematical functions on arrays\nCompare NumPy arrays with Python lists in terms of performance and functionality\nUse basic aggregation and array manipulation functions in NumPy"
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#filled-arrays",
-    "href": "slides/08_working_numpy_slides.html#filled-arrays",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Filled Arrays",
-    "text": "Filled Arrays\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Create arrays with specific values\nzeros_arr = np.zeros(5)\nones_arr = np.ones(4)\nfull_arr = np.full(3, 7)\n\nprint(\"Zeros:\", zeros_arr)\nprint(\"Ones:\", ones_arr)\nprint(\"Full:\", full_arr)\nSame shape as existing array:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\ntemplate = np.array([1, 2, 3])\nprint(\"Zeros like:\", np.zeros_like(template))\nprint(\"Ones like:\", np.ones_like(template))\nprint(\"Full like:\", np.full_like(template, 9))"
+    "objectID": "slides/07_intro_numpy_slides.html#what-is-numpy",
+    "href": "slides/07_intro_numpy_slides.html#what-is-numpy",
+    "title": "The numpy module",
+    "section": "What is numpy?",
+    "text": "What is numpy?\nNumPy is a Python library that makes working with numbers and large collections of data fast and easy.\n\nComplete description at https://numpy.orgIt provides special array objects and tools for doing math efficiently, which is useful for data analysis and scientific computing.\n\nIt is imported in your session using the following command\nimport numpy\n\n\nWe will follow a common practice and use a shorthand with the as syntax\nimport numpy as np\n\n\nSo np will always mean numpy for us."
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#random-number-generation",
-    "href": "slides/08_working_numpy_slides.html#random-number-generation",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Random Number Generation",
-    "text": "Random Number Generation\nInitialize generator (for reproducibility):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nrng = np.random.default_rng(seed=123)\nDifferent distributions:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Random integers\nprint(\"Random integers:\", rng.integers(0, 100, size=5))\n\n# Uniform floats [0, 1)\nprint(\"Uniform [0,1):\", rng.random(5))\n\n# Normal distribution\nnormal_samples = rng.normal(loc=0, scale=1, size=5)\nprint(\"Normal samples:\", normal_samples)"
+    "objectID": "slides/07_intro_numpy_slides.html#arrays-vs-lists",
+    "href": "slides/07_intro_numpy_slides.html#arrays-vs-lists",
+    "title": "The numpy module",
+    "section": "Arrays vs lists",
+    "text": "Arrays vs lists\n\n\nPython Lists\n\nOrdered, Mutable\n\nMixed data types\nExplicit operations needed\nSlower performance\n\n\nNumPy Arrays\n\nOrdered, Mutable\nOne data type per array\nElement-wise operations\nFast & memory efficient\n\n\n\n\n\nlist_ex = [1, 2, 3, 4]\nprint(list_ex)\n\nimport numpy as np\n#notice that we explicitly call the np.array()\narr_ex = np.array([1, 2, 3, 4]) \nprint(arr_ex)\n\nWe are going to see these differences in detail."
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
-    "href": "slides/08_working_numpy_slides.html#pseudo-random-numbers",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Pseudo-Random Numbers",
-    "text": "Pseudo-Random Numbers\nComputers are deterministic - they use algorithms to generate “pseudo-random” sequences\nLinear Congruential Generator example: \\[x_{n+1} = (a \\times x_n + c) \\bmod m\\]\nKey concept: Seeds enable reproducibility\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Same seed = same sequence\nrng1 = np.random.default_rng(seed=42)\nrng2 = np.random.default_rng(seed=42)\n\nprint(\"RNG1:\", rng1.integers(0, 10, size=3))\nprint(\"RNG2:\", rng2.integers(0, 10, size=3))  # Same output!"
+    "objectID": "slides/07_intro_numpy_slides.html#arrays-from-lists",
+    "href": "slides/07_intro_numpy_slides.html#arrays-from-lists",
+    "title": "The numpy module",
+    "section": "Arrays from lists",
+    "text": "Arrays from lists\nA purely numerical list can readily be converted to an array.\nimport numpy as np\n# Create array from list\nlist1 = [1.,1.,2.,3.,5.,8.]\narr1 = np.array(list1)\nprint(arr1)\n\nThe type of the elements yields the data type of the array\nprint(arr1.dtype)\n\nTry and change the list1 object to contain only integers and see the change!"
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#performance-tips",
-    "href": "slides/08_working_numpy_slides.html#performance-tips",
-    "title": "Working with NumPy: Indexing and Random Data",
-    "section": "Performance Tips",
-    "text": "Performance Tips\nPreallocate for efficiency:\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Less efficient: generate one at a time\n# for _ in range(1000):\n#     val = rng.integers(0, 100)\n\n# More efficient: preallocate\nprealloc = rng.integers(0, 100, size=1000)\n# Then use values from prealloc array\nMemory vs Speed tradeoff: - Small tasks: 100-1,000 elements - Medium tasks: 10,000-100,000 elements\n- Large tasks: 1,000,000+ elements"
+    "objectID": "slides/07_intro_numpy_slides.html#array-properties",
+    "href": "slides/07_intro_numpy_slides.html#array-properties",
+    "title": "The numpy module",
+    "section": "Array properties",
+    "text": "Array properties\nArrays possess plenty of properties.\nThese are accessed with the . notation1.\nprint(f\"Data type: {arr1.dtype}\")\nprint(f\"Shape: {arr1.shape}\")\nprint(f\"Shape: {arr1.size}\")\nFor now, we consider only 1d arrays, i.e. sequences. Their length is is their size and corresponds to the first element of the property shape.\nuse . and then TAB to see all of the properties"
   },
   {
-    "objectID": "slides/08_working_numpy_slides.html#key-takeaways",
-    "href": "slides/08_working_numpy_slides.html#key-takeaways",
-    "title": "Working with NumPy: Indexing and Random Data",
+    "objectID": "slides/07_intro_numpy_slides.html#accessing-array-elements",
+    "href": "slides/07_intro_numpy_slides.html#accessing-array-elements",
+    "title": "The numpy module",
+    "section": "Accessing array elements",
+    "text": "Accessing array elements\nSimilarly to lists, we access an element in an array via zero-based indexing\nprint(arr1[0])    # First element\nprint(arr1[-1])   # Last element\nAgain, similarly to lists, we can access regions of the array via slicing\nprint(arr1[3:6])  # Elements from index 3 to 6"
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations",
+    "href": "slides/07_intro_numpy_slides.html#element-wise-operations",
+    "title": "The numpy module",
+    "section": "Element-wise Operations",
+    "text": "Element-wise Operations\nThe main motivation to use arrays is that lists are cumbersome when performing maths.\nSuppose we have a list and want to double all of its elements:\nlist1 = [1,2,3,4]\nWe need to loop over all of them and create a new list\nlist2 = []\nfor item in list1:\n    list2.append(2*item)\nprint(list2)\nIn fact, we can do this in a slightly more compact way using list comprehension\nlist2 = [item*2 for item in list1]\nStill, an explicit loop is needed. Loops in Python are slow."
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
+    "href": "slides/07_intro_numpy_slides.html#element-wise-operations-1",
+    "title": "The numpy module",
+    "section": "Element-wise Operations",
+    "text": "Element-wise Operations\nThe numpy syntax avoids the explicit Python loop.\narr1 = np.array(list1)\narr2 = 2*arr1\nprint(arr2)\nThis is not just a cosmetic change: under the hood numpy uses an efficient architecture that performs operations in compiled code, making it much faster than Python loops."
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#performance-advantage",
+    "href": "slides/07_intro_numpy_slides.html#performance-advantage",
+    "title": "The numpy module",
+    "section": "Performance advantage",
+    "text": "Performance advantage\nThis performance difference can be tracked explicitly.\nWe create a large list and a large array with identical content\n# Create a large list and array\nlarge_list = list(range(1_000_000))\nlarge_array = np.array(large_list)\nAnd then track the time for the two operations\nimport time\n#  Track the time taken for the list multiplication\nstart = time.time()\nlist_result = [x * 2 for x in large_list]\nend = time.time()\nprint(f\"List comprehension time: {end - start:.5f} seconds\")\n\n# Time array multiplication\nstart = time.time()\narray_result = large_array * 2\nend = time.time()\nprint(f\"NumPy array time: {end - start:.5f} seconds\")"
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
+    "href": "slides/07_intro_numpy_slides.html#general-mathematical-functions",
+    "title": "The numpy module",
+    "section": "General mathematical functions",
+    "text": "General mathematical functions\nThe multiplication we performed earlier is done element-wise: every element is update according to teh same rule.\nWe can apply plenty of element-wise operations to the arrays.\nMany of these are available as numpy functions directly accessed from the np. module\n# Element-wise functions\nprint(f\"Square root: {np.sqrt(arr1)}\")\nprint(f\"Mean: {np.mean(arr1)}\")\nprint(f\"Cosine: {np.cos(arr1)}\")\n\nThe operations do not modify the original array, but produce new copies\narr2 = arr1*3/2 + 5\nprint(f\"Original: {arr1}\")\nprint(f\"Modified: {arr2}\")"
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#sums",
+    "href": "slides/07_intro_numpy_slides.html#sums",
+    "title": "The numpy module",
+    "section": "Sums",
+    "text": "Sums\nOther convenent numpy functions allow you to accumulate values without loops.\nAssume we have an array \\(x\\)\nx = np.array([1,2,3,4,5,6,7,8])\nSums\n\\[\nS = \\sum_{i=1}^{n} x_i\n\\]\nIn NumPy, this is translated as:\nS = np.sum(x)\nprint(S)"
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#sums-1",
+    "href": "slides/07_intro_numpy_slides.html#sums-1",
+    "title": "The numpy module",
+    "section": "Sums",
+    "text": "Sums\nCumulative sums\nA cumulative sum is a sequence where each element is the sum of all previous elements up to that position. \\[\ny_i = \\sum_{j=1}^{i} x_j\n\\]\nIn NumPy, this is translated as:\n y = np.cumsum(x)\n print(y)"
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#example-molecular-masses",
+    "href": "slides/07_intro_numpy_slides.html#example-molecular-masses",
+    "title": "The numpy module",
+    "section": "Example: molecular masses",
+    "text": "Example: molecular masses\nLet’s consider the formula for the molecular mass of a compound:\n\\[\nM = \\sum_{i=1}^{n} a_i m_i\n\\]\nwhere\n\n\\(a_i\\) is the number of atoms of element \\(i\\)\n\\(m_i\\) is the atomic mass of element \\(i\\)\n\n\nWith numpy, you can compute this as:\na = np.array([2, 1, 4])      # Number of atoms for each element\nm = np.array([12.01, 1.01, 16.00])  # Atomic masses (e.g., C, H, O)\nM = np.sum(a * m)\nprint(f\"Molecular mass: {M}\")"
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#operations-between-arrays",
+    "href": "slides/07_intro_numpy_slides.html#operations-between-arrays",
+    "title": "The numpy module",
+    "section": "Operations between arrays",
+    "text": "Operations between arrays\nYou can perform arithmetic operations directly between arrays of the same shape. Operations like addition, subtraction, multiplication, and division are applied element-wise.\nFor example:\nElement-wise operations:\nadded = arr1 + arr2\nmultiplied = arr1 * arr2\nprint(f\"Added: {added}\")\nprint(f\"Multiplied: {multiplied}\")\n\nNote: Arrays must have compatible shapes!\narr3 = np.array([1, 2, 3])\narr4 = np.array([4, 5])\nresult = arr3 + arr4"
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#combining-arrays",
+    "href": "slides/07_intro_numpy_slides.html#combining-arrays",
+    "title": "The numpy module",
+    "section": "Combining arrays",
+    "text": "Combining arrays\nWith lists, the + operator concatenated different lists. Since for arrays the sign + corresponds to true mathematical addition, a dedicated concatenation function exists:\ncombined = np.concatenate([arr1, arr2])\nprint(f\"Unique elements: {combined}\")\nMany other variations of concatenation exist. Consult the documentation."
+  },
+  {
+    "objectID": "slides/07_intro_numpy_slides.html#key-takeaways",
+    "href": "slides/07_intro_numpy_slides.html#key-takeaways",
+    "title": "The numpy module",
     "section": "Key Takeaways",
-    "text": "Key Takeaways\n\nViews share data, copies are independent\nBoolean indexing enables powerful data filtering\narange vs linspace serve different use cases\nRandom generators need seeds for reproducibility\nPreallocating arrays improves performance\nChoose array generation method based on your needs"
+    "text": "Key Takeaways\n\nNumPy arrays are optimized for numerical operations\nElement-wise operations work implicitly\nPerformance benefits for large datasets\nMathematical functions apply to entire arrays\nShape compatibility required for operations\nChoose the right tool for your task"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#introduction-to-matplotlib",
+    "href": "slides/09_intro_matplotlib_slides.html#introduction-to-matplotlib",
+    "title": "Plotting with matplotlib",
+    "section": "Introduction to matplotlib",
+    "text": "Introduction to matplotlib\nmatplotlib - Powerful Python library for creating visualizations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nimport matplotlib.pyplot as plt\nimport numpy as np\nKey concepts: - Figure: The canvas - Axes: The x-y plotting area - Object-oriented approach (recommended)\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()  # Create figure and axes"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#two-plotting-approaches",
+    "href": "slides/09_intro_matplotlib_slides.html#two-plotting-approaches",
+    "title": "Plotting with matplotlib",
+    "section": "Two Plotting Approaches",
+    "text": "Two Plotting Approaches\nPyplot (MATLAB-style):\nplt.plot(x, y)  # Direct plotting\nObject-oriented (Recommended):\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\nax.plot(x, y)  # Plot using axes object\nWhy object-oriented? - More explicit control - Better for complex plots - Modern best practice"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#basic-plot-types",
+    "href": "slides/09_intro_matplotlib_slides.html#basic-plot-types",
+    "title": "Plotting with matplotlib",
+    "section": "Basic Plot Types",
+    "text": "Basic Plot Types\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Sample data\nrng = np.random.default_rng(seed=124)\nx = np.arange(1, 20, 2)\ny1 = x**2\ny2 = x**2 + rng.normal(size=len(x))*50\n\nfig, ax = plt.subplots()\nax.plot(x, y1, label=\"Line plot\")        # Line plot\nax.scatter(x, y2, label=\"Scatter plot\")  # Scatter plot\nax.legend()"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#customizing-appearance",
+    "href": "slides/09_intro_matplotlib_slides.html#customizing-appearance",
+    "title": "Plotting with matplotlib",
+    "section": "Customizing Appearance",
+    "text": "Customizing Appearance\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots(figsize=(8, 4))\n\n# Styling options\nax.plot(x, y1, color=\"slategrey\", linestyle=\"--\", linewidth=2)\nax.scatter(x, y2, color=\"indianred\", marker='+', s=60)\n\n# Labels and limits\nax.set_xlabel(\"X values\")\nax.set_ylabel(\"Y values\")\nax.set_xlim(0, 20)\nax.set_title(\"Customized Plot\")"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#common-style-options",
+    "href": "slides/09_intro_matplotlib_slides.html#common-style-options",
+    "title": "Plotting with matplotlib",
+    "section": "Common Style Options",
+    "text": "Common Style Options\nColors: Named colors, hex codes, RGB - color=\"red\", color=\"#FF0000\", color=(1,0,0)\nLine styles: - linestyle=\"-\" (solid), \"--\" (dashed), \":\" (dotted)\nMarkers: - marker=\"o\" (circle), \"+\" (plus), \"^\" (triangle)\nTransparency: - alpha=0.7 (70% opaque)"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#legends-and-annotations",
+    "href": "slides/09_intro_matplotlib_slides.html#legends-and-annotations",
+    "title": "Plotting with matplotlib",
+    "section": "Legends and Annotations",
+    "text": "Legends and Annotations\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\n\nax.plot(x, y1, label=\"Fitted line\", color=\"blue\", linestyle=\"--\")\nax.scatter(x, y2, label=\"Measurements\", color=\"red\", marker='o')\n\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\") \nax.legend()  # Uses the label parameters\nax.set_title(\"Plot with Legend\")"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#histograms",
+    "href": "slides/09_intro_matplotlib_slides.html#histograms",
+    "title": "Plotting with matplotlib",
+    "section": "Histograms",
+    "text": "Histograms\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Generate random data\nrng = np.random.default_rng(seed=68)\ndata1 = rng.normal(0, 1, 5000)\ndata2 = rng.normal(1, 1.5, 1000)\n\nfig, ax = plt.subplots()\nbins = np.arange(-4, 6, 0.3)\n\nax.hist(data1, bins=bins, alpha=0.7, color=\"skyblue\", \n        density=True, label=\"Dataset 1\")\nax.hist(data2, bins=bins, alpha=0.7, color=\"orange\", \n        density=True, label=\"Dataset 2\")\n\nax.set_xlabel(\"Value\")\nax.set_ylabel(\"Density\")\nax.legend()"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#histogram-options",
+    "href": "slides/09_intro_matplotlib_slides.html#histogram-options",
+    "title": "Plotting with matplotlib",
+    "section": "Histogram Options",
+    "text": "Histogram Options\nKey parameters: - bins: Number or explicit bin edges - alpha: Transparency (0-1) - density: Normalize to show probability density - histtype: ‘bar’, ‘step’, ‘stepfilled’\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots()\nax.hist(data1, bins=30, alpha=0.6, histtype='step', \n        color='purple', linewidth=2)"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#multiple-plots-on-same-axes",
+    "href": "slides/09_intro_matplotlib_slides.html#multiple-plots-on-same-axes",
+    "title": "Plotting with matplotlib",
+    "section": "Multiple Plots on Same Axes",
+    "text": "Multiple Plots on Same Axes\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\nfig, ax = plt.subplots(figsize=(10, 5))\n\n# Multiple data series\nx_vals = np.linspace(0, 2*np.pi, 100)\ny1 = np.sin(x_vals)\ny2 = np.cos(x_vals)\ny3 = np.sin(2*x_vals)\n\nax.plot(x_vals, y1, label=\"sin(x)\")\nax.plot(x_vals, y2, label=\"cos(x)\", linestyle='--')\nax.scatter(x_vals[::10], y3[::10], label=\"sin(2x)\", marker='o')\n\nax.legend()\nax.set_xlabel(\"x\")\nax.set_ylabel(\"y\")"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#anatomy-of-a-figure",
+    "href": "slides/09_intro_matplotlib_slides.html#anatomy-of-a-figure",
+    "title": "Plotting with matplotlib",
+    "section": "Anatomy of a Figure",
+    "text": "Anatomy of a Figure\n\nMatplotlib anatomy shows the components: Figure, Axes, Labels, Legend, Ticks, etc.Key components: - Figure: Overall container - Axes: Plot area with data - Axis labels: x/y descriptions\n- Ticks: Scale markers - Legend: Data series identification"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#figure-size-and-layout",
+    "href": "slides/09_intro_matplotlib_slides.html#figure-size-and-layout",
+    "title": "Plotting with matplotlib",
+    "section": "Figure Size and Layout",
+    "text": "Figure Size and Layout\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Control figure size\nfig, ax = plt.subplots(figsize=(12, 6))\n\n# Multiple subplots (brief example)\nfig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))\nax1.plot([1, 2, 3], [1, 4, 2])\nax2.scatter([1, 2, 3], [2, 1, 3])\nax1.set_title(\"Plot 1\")\nax2.set_title(\"Plot 2\")"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#best-practices",
+    "href": "slides/09_intro_matplotlib_slides.html#best-practices",
+    "title": "Plotting with matplotlib",
+    "section": "Best Practices",
+    "text": "Best Practices\n\nAlways label your axes\nUse legends for multiple data series\nChoose appropriate plot types for your data\nControl figure size for readability\nUse colors wisely - consider colorblind accessibility\nKeep it simple - don’t over-decorate\n\n#| caption: \"▶ Ctrl/Cmd+Enter | ⇥ Ctrl/Cmd+] | ⇤ Ctrl/Cmd+[\"\n# Good example\nfig, ax = plt.subplots(figsize=(8, 5))\nax.plot(x, y1, label=\"Data\")\nax.set_xlabel(\"Time (s)\")\nax.set_ylabel(\"Amplitude (V)\")\nax.set_title(\"Signal vs Time\")\nax.legend()"
+  },
+  {
+    "objectID": "slides/09_intro_matplotlib_slides.html#key-takeaways",
+    "href": "slides/09_intro_matplotlib_slides.html#key-takeaways",
+    "title": "Plotting with matplotlib",
+    "section": "Key Takeaways",
+    "text": "Key Takeaways\n\nmatplotlib is the standard Python plotting library\nObject-oriented approach with fig, ax is recommended\nCustomization options for colors, styles, markers\nMultiple plot types: line, scatter, histogram\nAlways annotate with labels, legends, titles\nPractice with different plot types and styling options"
   }
 ]
